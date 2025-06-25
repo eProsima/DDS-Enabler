@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @file CBCallbacks.hpp
+ * @file Callbacks.hpp
  */
 
 #pragma once

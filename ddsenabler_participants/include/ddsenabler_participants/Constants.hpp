@@ -1,4 +1,4 @@
-// Copyright 2023 Proyectos y Sistemas de Mantenimiento SL (eProsima).
+// Copyright 2024 Proyectos y Sistemas de Mantenimiento SL (eProsima).
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13,29 +13,20 @@
 // limitations under the License.
 
 /**
- * @file CBHandlerConfiguration.hpp
+ * @file Constants.hpp
  */
 
 #pragma once
-
-#include <cstdint>
-#include <string>
-#include <vector>
 
 namespace eprosima {
 namespace ddsenabler {
 namespace participants {
 
-/**
- * Structure encapsulating all of \c CBHandler configuration options.
- */
-struct CBHandlerConfiguration
-{
-    CBHandlerConfiguration()
-    {
-    }
-
-};
+// QoS serialization
+constexpr const char* QOS_SERIALIZATION_RELIABILITY("reliability");
+constexpr const char* QOS_SERIALIZATION_DURABILITY("durability");
+constexpr const char* QOS_SERIALIZATION_OWNERSHIP("ownership");
+constexpr const char* QOS_SERIALIZATION_KEYED("keyed");
 
 } /* namespace participants */
 } /* namespace ddsenabler */

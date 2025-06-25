@@ -46,8 +46,8 @@ DDSEnabler::DDSEnabler(
     // Create Thread Pool
     thread_pool_ = std::make_shared<SlotThreadPool>(configuration_.n_threads);
 
-    // Create CB Handler configuration
-    participants::CBHandlerConfiguration handler_config;
+    // Create Handler configuration
+    participants::HandlerConfiguration handler_config;
 
     // Create DDS Participant
     dds_participant_ = std::make_shared<DdsParticipant>(
@@ -56,8 +56,8 @@ DDSEnabler::DDSEnabler(
         discovery_database_);
     dds_participant_->init();
 
-    // Create CB Handler
-    cb_handler_ = std::make_shared<participants::CBHandler>(
+    // Create Handler
+    handler_ = std::make_shared<participants::Handler>(
         handler_config,
         payload_pool_);
 
@@ -66,7 +66,7 @@ DDSEnabler::DDSEnabler(
         configuration_.enabler_configuration,
         payload_pool_,
         discovery_database_,
-        cb_handler_);
+        handler_);
 
     // Create Participant Database
     participants_database_ = std::make_shared<ParticipantsDatabase>();
@@ -191,19 +191,19 @@ void DDSEnabler::set_internal_callbacks_(
 {
     if (callbacks.dds.type_notification)
     {
-        cb_handler_->set_type_notification_callback(callbacks.dds.type_notification);
+        handler_->set_type_notification_callback(callbacks.dds.type_notification);
     }
     if (callbacks.dds.topic_notification)
     {
-        cb_handler_->set_topic_notification_callback(callbacks.dds.topic_notification);
+        handler_->set_topic_notification_callback(callbacks.dds.topic_notification);
     }
     if (callbacks.dds.data_notification)
     {
-        cb_handler_->set_data_notification_callback(callbacks.dds.data_notification);
+        handler_->set_data_notification_callback(callbacks.dds.data_notification);
     }
     if (callbacks.dds.type_query)
     {
-        cb_handler_->set_type_query_callback(callbacks.dds.type_query);
+        handler_->set_type_query_callback(callbacks.dds.type_query);
     }
     if (callbacks.dds.topic_query)
     {

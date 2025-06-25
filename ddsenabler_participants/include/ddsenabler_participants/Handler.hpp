@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @file CBHandler.hpp
+ * @file Handler.hpp
  */
 
 #pragma once
@@ -31,10 +31,10 @@
 
 #include <ddspipe_participants/participant/dynamic_types/ISchemaHandler.hpp>
 
-#include <ddsenabler_participants/CBCallbacks.hpp>
-#include <ddsenabler_participants/CBHandlerConfiguration.hpp>
-#include <ddsenabler_participants/CBMessage.hpp>
-#include <ddsenabler_participants/CBWriter.hpp>
+#include <ddsenabler_participants/Callbacks.hpp>
+#include <ddsenabler_participants/HandlerConfiguration.hpp>
+#include <ddsenabler_participants/Message.hpp>
+#include <ddsenabler_participants/Writer.hpp>
 #include <ddsenabler_participants/library/library_dll.h>
 
 namespace std {
@@ -59,34 +59,34 @@ namespace ddsenabler {
 namespace participants {
 
 /**
- * Class that manages the interaction between \c EnablerParticipant and CB.
- * Payloads are efficiently passed from DDS Pipe to CB without copying data (only references).
+ * Class that manages the interaction between \c EnablerParticipant and the user's app.
+ * Payloads are efficiently passed from DDS Pipe to the user's app without copying data (only references).
  *
  * @implements ISchemaHandler
  */
-class CBHandler : public ddspipe::participants::ISchemaHandler
+class Handler : public ddspipe::participants::ISchemaHandler
 {
 
 public:
 
     /**
-     * CBHandler constructor by required values.
+     * Handler constructor by required values.
      *
-     * Creates CBHandler instance with given configuration, payload pool.
+     * Creates Handler instance with given configuration, payload pool.
      *
      * @param config:       Structure encapsulating all configuration options.
      * @param payload_pool: Owner of every payload contained in received messages.
      */
     DDSENABLER_PARTICIPANTS_DllAPI
-    CBHandler(
-            const CBHandlerConfiguration& config,
+    Handler(
+            const HandlerConfiguration& config,
             const std::shared_ptr<ddspipe::core::PayloadPool>& payload_pool);
 
     /**
      * @brief Destructor
      */
     DDSENABLER_PARTICIPANTS_DllAPI
-    ~CBHandler();
+    ~Handler();
 
     /**
      * @brief Add a type schema, associated to the given \c dyn_type and \c type_id.
@@ -154,7 +154,7 @@ public:
     void set_data_notification_callback(
             participants::DdsDataNotification callback)
     {
-        cb_writer_->set_data_notification_callback(callback);
+        writer_->set_data_notification_callback(callback);
     }
 
     /**
@@ -166,7 +166,7 @@ public:
     void set_topic_notification_callback(
             participants::DdsTopicNotification callback)
     {
-        cb_writer_->set_topic_notification_callback(callback);
+        writer_->set_topic_notification_callback(callback);
     }
 
     /**
@@ -178,7 +178,7 @@ public:
     void set_type_notification_callback(
             participants::DdsTypeNotification callback)
     {
-        cb_writer_->set_type_notification_callback(callback);
+        writer_->set_type_notification_callback(callback);
     }
 
     /**
@@ -200,7 +200,7 @@ protected:
      *
      * @param [in] dyn_type DynamicType containing the type information required to generate the schema.
      * @param [in] type_id TypeIdentifier of the type.
-     * @param [in] write_schema Whether to write the schema to CB or not.
+     * @param [in] write_schema Whether to write the schema or not.
      */
     void add_schema_nts_(
             const fastdds::dds::DynamicType::_ref_type& dyn_type,
@@ -212,7 +212,7 @@ protected:
      *
      * @param [in] type_id TypeIdentifier of the type.
      * @param [in] type_obj TypeObject of the type.
-     * @param [in] write_schema Whether to write the schema to CB or not.
+     * @param [in] write_schema Whether to write the schema or not.
      * @return \c true if the schema was added successfully, \c false otherwise.
      */
     bool add_schema_nts_(
@@ -221,7 +221,7 @@ protected:
             bool write_schema = true);
 
     /**
-     * @brief Write the schema to CB.
+     * @brief Write the schema to user's app.
      *
      * @param [in] dyn_type DynamicType containing the type information required to generate the schema.
      * @param [in] type_id TypeIdentifier of the type.
@@ -231,7 +231,7 @@ protected:
             const fastdds::dds::xtypes::TypeIdentifier& type_id);
 
     /**
-     * @brief Write the topic to CB.
+     * @brief Write the topic to user's app.
      *
      * @param [in] topic DDS topic to be added.
      */
@@ -239,13 +239,13 @@ protected:
             const ddspipe::core::types::DdsTopic& topic);
 
     /**
-     * @brief Write to CB.
+     * @brief Write to user's app.
      *
-     * @param [in] msg CBMessage to be added
+     * @param [in] msg Message to be added
      * @param [in] dyn_type DynamicType containing the type information required.
      */
     void write_sample_nts_(
-            const CBMessage& msg,
+            const Message& msg,
             const fastdds::dds::DynamicType::_ref_type& dyn_type);
 
     /**
@@ -266,13 +266,13 @@ protected:
             fastdds::dds::xtypes::TypeObject& type_object);
 
     //! Handler configuration
-    CBHandlerConfiguration configuration_;
+    HandlerConfiguration configuration_;
 
     //! Payload pool
     std::shared_ptr<ddspipe::core::PayloadPool> payload_pool_;
 
-    //! CB writer
-    std::unique_ptr<CBWriter> cb_writer_;
+    //! writer
+    std::unique_ptr<Writer> writer_;
 
     //! Schemas map
     std::map<std::string,

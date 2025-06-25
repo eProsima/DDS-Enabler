@@ -361,18 +361,18 @@ if read_the_docs_build:
     os.makedirs(os.path.dirname(output_dir), exist_ok=True)
     os.makedirs(os.path.dirname(doxygen_html), exist_ok=True)
 
-    # Copy CBCallbacks.hpp from ddsenabler_participants to input_dir
+    # Copy Callbacks.hpp from ddsenabler_participants to input_dir
     src_file = os.path.abspath(
         '{}/ddsenabler_participants/include/'
-        'ddsenabler_participants/CBCallbacks.hpp'.format(projects_dir)
+        'ddsenabler_participants/Callbacks.hpp'.format(projects_dir)
     )
-    dst_file = os.path.join(input_dir, 'CBCallbacks.hpp')
+    dst_file = os.path.join(input_dir, 'Callbacks.hpp')
     os.makedirs(input_dir, exist_ok=True)
     try:
         shutil.copy(src_file, dst_file)
-        print('Copied CBCallbacks.hpp to input_dir')
+        print('Copied Callbacks.hpp to input_dir')
     except IOError as e:
-        print('Unable to copy CBCallbacks.hpp. Error: {}'.format(e))
+        print('Unable to copy Callbacks.hpp. Error: {}'.format(e))
 
     # Configure Doxyfile
     configure_doxyfile(

@@ -25,7 +25,7 @@ set(TEST_SOURCES
     )
 
 set(TEST_LIST
-    ddsenabler_participants_cb_handler_creation
+    ddsenabler_participants_handler_creation
     ddsenabler_participants_add_new_schemas
     ddsenabler_participants_add_same_type_schema
     ddsenabler_participants_add_data_with_schema

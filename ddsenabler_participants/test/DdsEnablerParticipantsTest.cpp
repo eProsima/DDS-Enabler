@@ -31,10 +31,10 @@
 
 #include <ddspipe_core/efficiency/payload/FastPayloadPool.hpp>
 
-#include <CBHandler.hpp>
-#include <CBHandlerConfiguration.hpp>
-#include <CBMessage.hpp>
-#include <CBWriter.hpp>
+#include <Handler.hpp>
+#include <HandlerConfiguration.hpp>
+#include <Message.hpp>
+#include <Writer.hpp>
 
 #include "types/DDSEnablerTestTypesPubSubTypes.hpp"
 
@@ -42,30 +42,30 @@ using namespace eprosima;
 using namespace eprosima::fastdds::dds;
 using namespace eprosima::ddsenabler;
 
-class CBWriterTest : public participants::CBWriter
+class WriterTest : public participants::Writer
 {
 public:
 
-    CBWriterTest() = default;
-    ~CBWriterTest() = default;
+    WriterTest() = default;
+    ~WriterTest() = default;
 
     // Expose protected methods
-    using CBWriter::write_data;
-    using CBWriter::write_schema;
+    using Writer::write_data;
+    using Writer::write_schema;
 };
 
-class CBHandlerTest : public participants::CBHandler
+class HandlerTest : public participants::Handler
 {
 public:
 
-    CBHandlerTest(
-            const participants::CBHandlerConfiguration& config,
+    HandlerTest(
+            const participants::HandlerConfiguration& config,
             const std::shared_ptr<ddspipe::core::PayloadPool>& payload_pool)
-        : participants::CBHandler(config, payload_pool)
+        : participants::Handler(config, payload_pool)
     {
         current_test_instance_ = this;
 
-        cb_writer_ = std::make_unique<CBWriterTest>();
+        writer_ = std::make_unique<WriterTest>();
 
         // Set the callbacks
         set_data_notification_callback(test_data_notification_callback);
@@ -75,9 +75,9 @@ public:
     }
 
     // Expose protected members
-    using participants::CBHandler::schemas_;
-    using participants::CBHandler::cb_writer_;
-    using participants::CBHandler::unique_sequence_number_;
+    using participants::Handler::schemas_;
+    using participants::Handler::writer_;
+    using participants::Handler::unique_sequence_number_;
 
     // eprosima::ddsenabler::participants::DdsTypeQuery type_query;
     static bool test_type_query_callback(
@@ -145,10 +145,10 @@ public:
 
 
     // Pointer to the current test instance (for use in the static callback)
-    static CBHandlerTest* current_test_instance_;
+    static HandlerTest* current_test_instance_;
 };
 
-CBHandlerTest* CBHandlerTest::current_test_instance_ = nullptr;
+HandlerTest* HandlerTest::current_test_instance_ = nullptr;
 
 void get_dynamic_type(
         int num_type,
@@ -234,19 +234,19 @@ void get_data_payload(
     type_support->delete_data(data);
 }
 
-TEST(DdsEnablerParticipantsTest, ddsenabler_participants_cb_handler_creation)
+TEST(DdsEnablerParticipantsTest, ddsenabler_participants_handler_creation)
 {
     // Create Payload Pool
     auto payload_pool_ = std::make_shared<ddspipe::core::FastPayloadPool>();
     ASSERT_NE(payload_pool_, nullptr);
 
-    // Create CB Handler configuration
-    participants::CBHandlerConfiguration handler_config;
+    // Create Handler configuration
+    participants::HandlerConfiguration handler_config;
 
-    // Create CB Handler
-    auto cb_handler_ = std::make_shared<participants::CBHandler>(handler_config, payload_pool_);
+    // Create Handler
+    auto handler_ = std::make_shared<participants::Handler>(handler_config, payload_pool_);
 
-    ASSERT_NE(cb_handler_, nullptr);
+    ASSERT_NE(handler_, nullptr);
 }
 
 TEST(DdsEnablerParticipantsTest, ddsenabler_participants_add_new_schemas)
@@ -255,36 +255,36 @@ TEST(DdsEnablerParticipantsTest, ddsenabler_participants_add_new_schemas)
     auto payload_pool_ = std::make_shared<ddspipe::core::FastPayloadPool>();
     ASSERT_NE(payload_pool_, nullptr);
 
-    // Create CB Handler configuration
-    participants::CBHandlerConfiguration handler_config;
+    // Create Handler configuration
+    participants::HandlerConfiguration handler_config;
 
-    // Create CB Handler
-    auto cb_handler_ = std::make_shared<CBHandlerTest>(handler_config, payload_pool_);
-    ASSERT_NE(cb_handler_, nullptr);
+    // Create Handler
+    auto handler_ = std::make_shared<HandlerTest>(handler_config, payload_pool_);
+    ASSERT_NE(handler_, nullptr);
 
     // Add a new schema
     xtypes::TypeIdentifier type_id;
     DynamicType::_ref_type dynamic_type;
     get_dynamic_type(1, dynamic_type, type_id);
 
-    ASSERT_TRUE(cb_handler_->schemas_.empty());
-    ASSERT_EQ(cb_handler_->schemas_.size(), 0);
-    cb_handler_->add_schema(dynamic_type, type_id);
-    ASSERT_FALSE(cb_handler_->schemas_.empty());
-    ASSERT_EQ(cb_handler_->schemas_.size(), 1);
-    ASSERT_EQ(cb_handler_->type_called_, 1);
+    ASSERT_TRUE(handler_->schemas_.empty());
+    ASSERT_EQ(handler_->schemas_.size(), 0);
+    handler_->add_schema(dynamic_type, type_id);
+    ASSERT_FALSE(handler_->schemas_.empty());
+    ASSERT_EQ(handler_->schemas_.size(), 1);
+    ASSERT_EQ(handler_->type_called_, 1);
 
     // Add another schema for a different type
     xtypes::TypeIdentifier type_id2;
     DynamicType::_ref_type dynamic_type2;
     get_dynamic_type(2, dynamic_type2, type_id2);
 
-    ASSERT_FALSE(cb_handler_->schemas_.empty());
-    ASSERT_EQ(cb_handler_->schemas_.size(), 1);
-    cb_handler_->add_schema(dynamic_type2, type_id2);
-    ASSERT_FALSE(cb_handler_->schemas_.empty());
-    ASSERT_EQ(cb_handler_->schemas_.size(), 2);
-    ASSERT_EQ(cb_handler_->type_called_, 2);
+    ASSERT_FALSE(handler_->schemas_.empty());
+    ASSERT_EQ(handler_->schemas_.size(), 1);
+    handler_->add_schema(dynamic_type2, type_id2);
+    ASSERT_FALSE(handler_->schemas_.empty());
+    ASSERT_EQ(handler_->schemas_.size(), 2);
+    ASSERT_EQ(handler_->type_called_, 2);
 }
 
 TEST(DdsEnablerParticipantsTest, ddsenabler_participants_add_same_type_schema)
@@ -293,36 +293,36 @@ TEST(DdsEnablerParticipantsTest, ddsenabler_participants_add_same_type_schema)
     auto payload_pool_ = std::make_shared<ddspipe::core::FastPayloadPool>();
     ASSERT_NE(payload_pool_, nullptr);
 
-    // Create CB Handler configuration
-    participants::CBHandlerConfiguration handler_config;
+    // Create Handler configuration
+    participants::HandlerConfiguration handler_config;
 
-    // Create CB Handler
-    auto cb_handler_ = std::make_shared<CBHandlerTest>(handler_config, payload_pool_);
-    ASSERT_NE(cb_handler_, nullptr);
+    // Create Handler
+    auto handler_ = std::make_shared<HandlerTest>(handler_config, payload_pool_);
+    ASSERT_NE(handler_, nullptr);
 
     // Add a new schema
     xtypes::TypeIdentifier type_id;
     DynamicType::_ref_type dynamic_type;
     get_dynamic_type(1, dynamic_type, type_id);
 
-    ASSERT_TRUE(cb_handler_->schemas_.empty());
-    ASSERT_EQ(cb_handler_->schemas_.size(), 0);
-    cb_handler_->add_schema(dynamic_type, type_id);
-    ASSERT_FALSE(cb_handler_->schemas_.empty());
-    ASSERT_EQ(cb_handler_->schemas_.size(), 1);
-    ASSERT_EQ(cb_handler_->type_called_, 1);
+    ASSERT_TRUE(handler_->schemas_.empty());
+    ASSERT_EQ(handler_->schemas_.size(), 0);
+    handler_->add_schema(dynamic_type, type_id);
+    ASSERT_FALSE(handler_->schemas_.empty());
+    ASSERT_EQ(handler_->schemas_.size(), 1);
+    ASSERT_EQ(handler_->type_called_, 1);
 
     // Add the same schema again
     xtypes::TypeIdentifier type_id2;
     DynamicType::_ref_type dynamic_type2;
     get_dynamic_type(1, dynamic_type2, type_id2);
 
-    ASSERT_FALSE(cb_handler_->schemas_.empty());
-    ASSERT_EQ(cb_handler_->schemas_.size(), 1);
-    cb_handler_->add_schema(dynamic_type2, type_id2);
-    ASSERT_FALSE(cb_handler_->schemas_.empty());
-    ASSERT_EQ(cb_handler_->schemas_.size(), 1);
-    ASSERT_EQ(cb_handler_->type_called_, 1);
+    ASSERT_FALSE(handler_->schemas_.empty());
+    ASSERT_EQ(handler_->schemas_.size(), 1);
+    handler_->add_schema(dynamic_type2, type_id2);
+    ASSERT_FALSE(handler_->schemas_.empty());
+    ASSERT_EQ(handler_->schemas_.size(), 1);
+    ASSERT_EQ(handler_->type_called_, 1);
 }
 
 TEST(DdsEnablerParticipantsTest, ddsenabler_participants_add_data_with_schema)
@@ -331,24 +331,24 @@ TEST(DdsEnablerParticipantsTest, ddsenabler_participants_add_data_with_schema)
     auto payload_pool_ = std::make_shared<ddspipe::core::FastPayloadPool>();
     ASSERT_NE(payload_pool_, nullptr);
 
-    // Create CB Handler configuration
-    participants::CBHandlerConfiguration handler_config;
+    // Create Handler configuration
+    participants::HandlerConfiguration handler_config;
 
-    // Create CB Handler
-    auto cb_handler_ = std::make_shared<CBHandlerTest>(handler_config, payload_pool_);
-    ASSERT_NE(cb_handler_, nullptr);
+    // Create Handler
+    auto handler_ = std::make_shared<HandlerTest>(handler_config, payload_pool_);
+    ASSERT_NE(handler_, nullptr);
 
     xtypes::TypeIdentifier type_identifier;
     DynamicType::_ref_type dynamic_type;
     ddspipe::core::types::DdsTopic pipe_topic;
     get_dynamic_type(1, dynamic_type, type_identifier, pipe_topic);
 
-    ASSERT_TRUE(cb_handler_->schemas_.empty());
-    ASSERT_EQ(cb_handler_->schemas_.size(), 0);
-    cb_handler_->add_schema(dynamic_type, type_identifier);
-    ASSERT_FALSE(cb_handler_->schemas_.empty());
-    ASSERT_EQ(cb_handler_->schemas_.size(), 1);
-    ASSERT_EQ(cb_handler_->type_called_, 1);
+    ASSERT_TRUE(handler_->schemas_.empty());
+    ASSERT_EQ(handler_->schemas_.size(), 0);
+    handler_->add_schema(dynamic_type, type_identifier);
+    ASSERT_FALSE(handler_->schemas_.empty());
+    ASSERT_EQ(handler_->schemas_.size(), 1);
+    ASSERT_EQ(handler_->type_called_, 1);
 
     auto data = std::make_unique<eprosima::ddspipe::core::types::RtpsPayloadData>();
 
@@ -356,10 +356,10 @@ TEST(DdsEnablerParticipantsTest, ddsenabler_participants_add_data_with_schema)
     data->payload_owner = payload_pool_.get();
     get_data_payload(1, data->payload);
 
-    ASSERT_NO_THROW(cb_handler_->add_data(pipe_topic, *data));
+    ASSERT_NO_THROW(handler_->add_data(pipe_topic, *data));
     // If the data has been added, the sequence number should be 1
-    ASSERT_TRUE(cb_handler_->unique_sequence_number_ == 1);
-    ASSERT_EQ(cb_handler_->data_called_, 1);
+    ASSERT_TRUE(handler_->unique_sequence_number_ == 1);
+    ASSERT_EQ(handler_->data_called_, 1);
 }
 
 TEST(DdsEnablerParticipantsTest, ddsenabler_participants_add_data_without_schema)
@@ -368,12 +368,12 @@ TEST(DdsEnablerParticipantsTest, ddsenabler_participants_add_data_without_schema
     auto payload_pool_ = std::make_shared<ddspipe::core::FastPayloadPool>();
     ASSERT_NE(payload_pool_, nullptr);
 
-    // Create CB Handler configuration
-    participants::CBHandlerConfiguration handler_config;
+    // Create Handler configuration
+    participants::HandlerConfiguration handler_config;
 
-    // Create CB Handler
-    auto cb_handler_ = std::make_shared<CBHandlerTest>(handler_config, payload_pool_);
-    ASSERT_NE(cb_handler_, nullptr);
+    // Create Handler
+    auto handler_ = std::make_shared<HandlerTest>(handler_config, payload_pool_);
+    ASSERT_NE(handler_, nullptr);
 
     xtypes::TypeIdentifier type_id;
     DynamicType::_ref_type dynamic_type;
@@ -386,10 +386,10 @@ TEST(DdsEnablerParticipantsTest, ddsenabler_participants_add_data_without_schema
     data->payload_owner = payload_pool_.get();
     get_data_payload(1, data->payload);
 
-    ASSERT_NO_THROW(cb_handler_->add_data(pipe_topic, *data));
+    ASSERT_NO_THROW(handler_->add_data(pipe_topic, *data));
     // As there is no schema associated, the sequence number should still be 0
-    ASSERT_TRUE(cb_handler_->unique_sequence_number_ == 0);
-    ASSERT_EQ(cb_handler_->data_called_, 0);
+    ASSERT_TRUE(handler_->unique_sequence_number_ == 0);
+    ASSERT_EQ(handler_->data_called_, 0);
 }
 
 TEST(DdsEnablerParticipantsTest, ddsenabler_participants_write_schema_first_time)
@@ -398,12 +398,12 @@ TEST(DdsEnablerParticipantsTest, ddsenabler_participants_write_schema_first_time
     auto payload_pool_ = std::make_shared<ddspipe::core::FastPayloadPool>();
     ASSERT_NE(payload_pool_, nullptr);
 
-    // Create CB Handler configuration
-    participants::CBHandlerConfiguration handler_config;
+    // Create Handler configuration
+    participants::HandlerConfiguration handler_config;
 
-    // Create CB Handler
-    auto cb_handler_ = std::make_shared<CBHandlerTest>(handler_config, payload_pool_);
-    ASSERT_NE(cb_handler_, nullptr);
+    // Create Handler
+    auto handler_ = std::make_shared<HandlerTest>(handler_config, payload_pool_);
+    ASSERT_NE(handler_, nullptr);
 
     xtypes::TypeIdentifier type_id;
     DynamicType::_ref_type dynamic_type;
@@ -416,7 +416,7 @@ TEST(DdsEnablerParticipantsTest, ddsenabler_participants_write_schema_first_time
     data->payload_owner = payload_pool_.get();
     get_data_payload(1, data->payload);
 
-    participants::CBMessage msg;
+    participants::Message msg;
     msg.sequence_number = 1;
     msg.publish_time = data->source_timestamp;
     msg.topic = pipe_topic;
@@ -425,9 +425,9 @@ TEST(DdsEnablerParticipantsTest, ddsenabler_participants_write_schema_first_time
     payload_pool_->get_payload(data->payload, msg.payload);
     msg.payload_owner = payload_pool_.get();
 
-    cb_handler_->cb_writer_->write_data(msg, dynamic_type);
+    handler_->writer_->write_data(msg, dynamic_type);
     // The data will be successfully written as the dynamic type exists and we are bypassing the handler schema check
-    ASSERT_EQ(cb_handler_->data_called_, 1);
+    ASSERT_EQ(handler_->data_called_, 1);
 
     xtypes::TypeIdentifier type_id2;
     DynamicType::_ref_type dynamic_type2;
@@ -440,7 +440,7 @@ TEST(DdsEnablerParticipantsTest, ddsenabler_participants_write_schema_first_time
     data2->payload_owner = payload_pool_.get();
     get_data_payload(2, data2->payload);
 
-    participants::CBMessage msg2;
+    participants::Message msg2;
     msg2.sequence_number = 1;
     msg2.publish_time = data2->source_timestamp;
     msg2.topic = pipe_topic2;
@@ -449,8 +449,8 @@ TEST(DdsEnablerParticipantsTest, ddsenabler_participants_write_schema_first_time
     payload_pool_->get_payload(data2->payload, msg2.payload);
     msg2.payload_owner = payload_pool_.get();
 
-    cb_handler_->cb_writer_->write_data(msg2, dynamic_type2);
-    ASSERT_EQ(cb_handler_->data_called_, 2);
+    handler_->writer_->write_data(msg2, dynamic_type2);
+    ASSERT_EQ(handler_->data_called_, 2);
 }
 
 int main(

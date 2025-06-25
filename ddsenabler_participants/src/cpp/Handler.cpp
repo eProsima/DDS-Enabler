@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @file CBHandler.cpp
+ * @file Handler.cpp
  */
 
 #include <fastdds/dds/domain/DomainParticipantFactory.hpp>
@@ -25,10 +25,10 @@
 
 #include <cpp_utils/exception/InconsistencyException.hpp>
 
-#include <ddsenabler_participants/serialization.hpp>
+#include <ddsenabler_participants/Serialization.hpp>
 #include <ddsenabler_participants/types/dynamic_types_collection/DynamicTypesCollection.hpp>
 
-#include <ddsenabler_participants/CBHandler.hpp>
+#include <ddsenabler_participants/Handler.hpp>
 
 namespace eprosima {
 namespace ddsenabler {
@@ -36,25 +36,25 @@ namespace participants {
 
 using namespace eprosima::ddspipe::core::types;
 
-CBHandler::CBHandler(
-        const CBHandlerConfiguration& config,
+Handler::Handler(
+        const HandlerConfiguration& config,
         const std::shared_ptr<ddspipe::core::PayloadPool>& payload_pool)
     : configuration_(config)
     , payload_pool_(payload_pool)
 {
-    EPROSIMA_LOG_INFO(DDSENABLER_CB_HANDLER,
-            "Creating CB handler instance.");
+    EPROSIMA_LOG_INFO(DDSENABLER_HANDLER,
+            "Creating handler instance.");
 
-    cb_writer_ = std::make_unique<CBWriter>();
+    writer_ = std::make_unique<Writer>();
 }
 
-CBHandler::~CBHandler()
+Handler::~Handler()
 {
-    EPROSIMA_LOG_INFO(DDSENABLER_CB_HANDLER,
-            "Destroying CB handler.");
+    EPROSIMA_LOG_INFO(DDSENABLER_HANDLER,
+            "Destroying handler.");
 }
 
-void CBHandler::add_schema(
+void Handler::add_schema(
         const fastdds::dds::DynamicType::_ref_type& dyn_type,
         const fastdds::dds::xtypes::TypeIdentifier& type_id)
 {
@@ -63,37 +63,37 @@ void CBHandler::add_schema(
     add_schema_nts_(dyn_type, type_id);
 }
 
-void CBHandler::add_topic(
+void Handler::add_topic(
         const DdsTopic& topic)
 {
     std::lock_guard<std::mutex> lock(mtx_);
 
-    EPROSIMA_LOG_INFO(DDSENABLER_CB_HANDLER,
+    EPROSIMA_LOG_INFO(DDSENABLER_HANDLER,
             "Adding topic: " << topic << ".");
 
     write_topic_nts_(topic);
 }
 
-void CBHandler::add_data(
+void Handler::add_data(
         const DdsTopic& topic,
         RtpsPayloadData& data)
 {
     std::lock_guard<std::mutex> lock(mtx_);
 
-    EPROSIMA_LOG_INFO(DDSENABLER_CB_HANDLER,
+    EPROSIMA_LOG_INFO(DDSENABLER_HANDLER,
             "Adding data in topic: " << topic << ".");
 
     fastdds::dds::DynamicType::_ref_type dyn_type;
     auto it = schemas_.find(topic.type_name);
     if (it == schemas_.end())
     {
-        EPROSIMA_LOG_WARNING(DDSENABLER_CB_HANDLER,
+        EPROSIMA_LOG_WARNING(DDSENABLER_HANDLER,
                 "Schema for type " << topic.type_name << " not available.");
         return;
     }
     dyn_type = it->second.second;
 
-    CBMessage msg;
+    Message msg;
     msg.sequence_number = unique_sequence_number_++;
     msg.publish_time = data.source_timestamp;
     if (data.payload.length > 0)
@@ -123,7 +123,7 @@ void CBHandler::add_data(
     write_sample_nts_(msg, dyn_type);
 }
 
-bool CBHandler::get_type_identifier(
+bool Handler::get_type_identifier(
         const std::string& type_name,
         fastdds::dds::xtypes::TypeIdentifier& type_identifier)
 {
@@ -163,7 +163,7 @@ bool CBHandler::get_type_identifier(
 
     if (!type_query_callback_)
     {
-        EPROSIMA_LOG_ERROR(DDSENABLER_CB_HANDLER,
+        EPROSIMA_LOG_ERROR(DDSENABLER_HANDLER,
                 "Type query callback not set.");
         return false;
     }
@@ -172,7 +172,7 @@ bool CBHandler::get_type_identifier(
     uint32_t serialized_type_size;
     if (!type_query_callback_(type_name.c_str(), serialized_type, serialized_type_size))
     {
-        EPROSIMA_LOG_ERROR(DDSENABLER_CB_HANDLER,
+        EPROSIMA_LOG_ERROR(DDSENABLER_HANDLER,
                 "Type query callback failed to retrieve " << type_name << " type.");
         return false;
     }
@@ -181,7 +181,7 @@ bool CBHandler::get_type_identifier(
     fastdds::dds::xtypes::TypeObject type_object;
     if (!register_type_nts_(type_name, serialized_type.get(), serialized_type_size, type_identifier, type_object))
     {
-        EPROSIMA_LOG_ERROR(DDSENABLER_CB_HANDLER,
+        EPROSIMA_LOG_ERROR(DDSENABLER_HANDLER,
                 "Failed to register type " << type_name << ".");
         return false;
     }
@@ -193,7 +193,7 @@ bool CBHandler::get_type_identifier(
     return true;
 }
 
-bool CBHandler::get_serialized_data(
+bool Handler::get_serialized_data(
         const std::string& type_name,
         const std::string& json,
         Payload& payload)
@@ -204,7 +204,7 @@ bool CBHandler::get_serialized_data(
     auto it = schemas_.find(type_name);
     if (it == schemas_.end())
     {
-        EPROSIMA_LOG_ERROR(DDSENABLER_CB_HANDLER,
+        EPROSIMA_LOG_ERROR(DDSENABLER_HANDLER,
                 "Failed to deserialize data for type " << type_name << " : schema not available.");
         return false;
     }
@@ -215,7 +215,7 @@ bool CBHandler::get_serialized_data(
             fastdds::dds::json_deserialize(json, dyn_type, fastdds::dds::DynamicDataJsonFormat::EPROSIMA,
             dyn_data)) || !dyn_data)
     {
-        EPROSIMA_LOG_ERROR(DDSENABLER_CB_HANDLER,
+        EPROSIMA_LOG_ERROR(DDSENABLER_HANDLER,
                 "Failed to deserialize data for type " << type_name << " : json deserialization failed.");
         return false;
     }
@@ -227,14 +227,14 @@ bool CBHandler::get_serialized_data(
 
     if (!payload_pool_->get_payload(payload_size, payload))
     {
-        EPROSIMA_LOG_ERROR(DDSENABLER_CB_HANDLER,
+        EPROSIMA_LOG_ERROR(DDSENABLER_HANDLER,
                 "Failed to deserialize data for type " << type_name << " : get_payload failed.");
         return false;
     }
 
     if (!pubsub_type.serialize(&dyn_data, payload, fastdds::dds::DataRepresentationId::XCDR_DATA_REPRESENTATION))
     {
-        EPROSIMA_LOG_ERROR(DDSENABLER_CB_HANDLER,
+        EPROSIMA_LOG_ERROR(DDSENABLER_HANDLER,
                 "Failed to deserialize data for type " << type_name << " : payload serialization failed.");
         return false;
     }
@@ -242,7 +242,7 @@ bool CBHandler::get_serialized_data(
     return true;
 }
 
-void CBHandler::add_schema_nts_(
+void Handler::add_schema_nts_(
         const fastdds::dds::DynamicType::_ref_type& dyn_type,
         const fastdds::dds::xtypes::TypeIdentifier& type_id,
         bool write_schema)
@@ -260,7 +260,7 @@ void CBHandler::add_schema_nts_(
     schemas_[type_name] = {type_id, dyn_type};
 
     // Add to schemas map
-    EPROSIMA_LOG_INFO(DDSENABLER_CB_HANDLER,
+    EPROSIMA_LOG_INFO(DDSENABLER_HANDLER,
             "Adding schema with name " << type_name << ".");
 
     if (write_schema)
@@ -269,7 +269,7 @@ void CBHandler::add_schema_nts_(
     }
 }
 
-bool CBHandler::add_schema_nts_(
+bool Handler::add_schema_nts_(
         const fastdds::dds::xtypes::TypeIdentifier& type_id,
         const fastdds::dds::xtypes::TypeObject& type_obj,
         bool write_schema)
@@ -280,7 +280,7 @@ bool CBHandler::add_schema_nts_(
                     ->build();
     if (!dyn_type)
     {
-        EPROSIMA_LOG_ERROR(DDSENABLER_CB_HANDLER,
+        EPROSIMA_LOG_ERROR(DDSENABLER_HANDLER,
                 "Failed to create Dynamic Type from TypeObject.");
         return false;
     }
@@ -289,27 +289,27 @@ bool CBHandler::add_schema_nts_(
     return true;
 }
 
-void CBHandler::write_schema_nts_(
+void Handler::write_schema_nts_(
         const fastdds::dds::DynamicType::_ref_type& dyn_type,
         const fastdds::dds::xtypes::TypeIdentifier& type_id)
 {
-    cb_writer_->write_schema(dyn_type, type_id);
+    writer_->write_schema(dyn_type, type_id);
 }
 
-void CBHandler::write_topic_nts_(
+void Handler::write_topic_nts_(
         const DdsTopic& topic)
 {
-    cb_writer_->write_topic(topic);
+    writer_->write_topic(topic);
 }
 
-void CBHandler::write_sample_nts_(
-        const CBMessage& msg,
+void Handler::write_sample_nts_(
+        const Message& msg,
         const fastdds::dds::DynamicType::_ref_type& dyn_type)
 {
-    cb_writer_->write_data(msg, dyn_type);
+    writer_->write_data(msg, dyn_type);
 }
 
-bool CBHandler::register_type_nts_(
+bool Handler::register_type_nts_(
         const std::string& type_name,
         const unsigned char* serialized_type,
         uint32_t serialized_type_size,
@@ -319,7 +319,7 @@ bool CBHandler::register_type_nts_(
     DynamicTypesCollection dynamic_types;
     if (!serialization::deserialize_dynamic_types(serialized_type, serialized_type_size, dynamic_types))
     {
-        EPROSIMA_LOG_ERROR(DDSENABLER_CB_HANDLER,
+        EPROSIMA_LOG_ERROR(DDSENABLER_HANDLER,
                 "Failed to deserialize dynamic types collection.");
         return false;
     }
@@ -333,7 +333,7 @@ bool CBHandler::register_type_nts_(
     {
         if (!serialization::deserialize_dynamic_type(dynamic_type, _type_name, _type_identifier, _type_object))
         {
-            EPROSIMA_LOG_ERROR(DDSENABLER_CB_HANDLER,
+            EPROSIMA_LOG_ERROR(DDSENABLER_HANDLER,
                     "Failed to deserialize " << dynamic_type.type_name() << " DynamicType.");
             return false;
         }
@@ -347,7 +347,7 @@ bool CBHandler::register_type_nts_(
                 fastdds::dds::DomainParticipantFactory::get_instance()->type_object_registry().register_type_object(
                     _type_object, type_identifiers))
         {
-            EPROSIMA_LOG_ERROR(DDSENABLER_CB_HANDLER,
+            EPROSIMA_LOG_ERROR(DDSENABLER_HANDLER,
                     "Failed to register " << dynamic_type.type_name() << " DynamicType.");
             return false;
         }
@@ -355,7 +355,7 @@ bool CBHandler::register_type_nts_(
 
     if (_type_name != type_name)
     {
-        EPROSIMA_LOG_ERROR(DDSENABLER_CB_HANDLER,
+        EPROSIMA_LOG_ERROR(DDSENABLER_HANDLER,
                 "Unexpected dynamic types collection format: " << type_name << " expected to be last item, found " << _type_name <<
                 " instead.");
         return false;

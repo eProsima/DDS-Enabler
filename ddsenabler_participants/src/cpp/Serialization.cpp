@@ -30,11 +30,11 @@
 #include <fastdds/rtps/common/SerializedPayload.hpp>
 #include <fastdds/rtps/common/Types.hpp>
 
-#include <ddsenabler_participants/constants.hpp>
+#include <ddsenabler_participants/Constants.hpp>
 #include <ddsenabler_participants/types/dynamic_types_collection/DynamicTypesCollection.hpp>
 #include <ddsenabler_participants/types/dynamic_types_collection/DynamicTypesCollectionPubSubTypes.hpp>
 
-#include <ddsenabler_participants/serialization.hpp>
+#include <ddsenabler_participants/Serialization.hpp>
 
 namespace eprosima {
 namespace ddsenabler {

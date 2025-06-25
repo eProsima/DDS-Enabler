@@ -13,20 +13,37 @@
 // limitations under the License.
 
 /**
- * @file constants.hpp
+ * @file Message.cpp
  */
 
-#pragma once
+#include <ddsenabler_participants/Message.hpp>
 
 namespace eprosima {
 namespace ddsenabler {
 namespace participants {
 
-// QoS serialization
-constexpr const char* QOS_SERIALIZATION_RELIABILITY("reliability");
-constexpr const char* QOS_SERIALIZATION_DURABILITY("durability");
-constexpr const char* QOS_SERIALIZATION_OWNERSHIP("ownership");
-constexpr const char* QOS_SERIALIZATION_KEYED("keyed");
+Message::Message(
+        const Message& msg)
+{
+    payload_owner = msg.payload_owner;
+    payload_owner->get_payload(
+        msg.payload,
+        this->payload);
+    topic = msg.topic;
+    instanceHandle = msg.instanceHandle;
+    source_guid = msg.source_guid;
+    sequence_number = msg.sequence_number;
+    publish_time = msg.publish_time;
+}
+
+Message::~Message()
+{
+    // If payload owner exists and payload has size, release it correctly in pool
+    if (payload_owner && payload.length > 0)
+    {
+        payload_owner->release_payload(payload);
+    }
+}
 
 } /* namespace participants */
 } /* namespace ddsenabler */
