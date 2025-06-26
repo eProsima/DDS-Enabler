@@ -53,7 +53,7 @@ if (BUILD_DOCS)
     get_target_property(PARTICIPANTS_INCLUDE_DIR ddsenabler_participants INTERFACE_INCLUDE_DIRECTORIES)
 
     message(STATUS "DDS Enabler include directories: ${ENABLER_INCLUDE_DIR} ; ${PARTICIPANTS_INCLUDE_DIR}")
-    set(SRC_FILE "${PARTICIPANTS_INCLUDE_DIR}/ddsenabler_participants/CBCallbacks.hpp")
+    set(SRC_FILE "${PARTICIPANTS_INCLUDE_DIR}/ddsenabler_participants/Callbacks.hpp")
     set(DST_DIR "${ENABLER_INCLUDE_DIR}/ddsenabler")
     file(COPY ${SRC_FILE} DESTINATION ${DST_DIR})
     # Collect all public headers

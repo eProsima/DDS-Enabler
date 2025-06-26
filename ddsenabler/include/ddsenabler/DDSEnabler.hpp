@@ -33,9 +33,9 @@
 #include <ddspipe_core/efficiency/payload/FastPayloadPool.hpp>
 #include <ddspipe_core/types/topic/dds/DistributedTopic.hpp>
 
-#include <ddsenabler_participants/CBCallbacks.hpp>
-#include <ddsenabler_participants/CBHandler.hpp>
-#include <ddsenabler_participants/CBHandlerConfiguration.hpp>
+#include <ddsenabler_participants/Callbacks.hpp>
+#include <ddsenabler_participants/Handler.hpp>
+#include <ddsenabler_participants/HandlerConfiguration.hpp>
 #include <ddsenabler_participants/DdsParticipant.hpp>
 #include <ddsenabler_participants/EnablerParticipant.hpp>
 
@@ -140,8 +140,8 @@ protected:
     //! Participants Database
     std::shared_ptr<ddspipe::core::ParticipantsDatabase> participants_database_;
 
-    //! CB Handler
-    std::shared_ptr<eprosima::ddsenabler::participants::CBHandler> cb_handler_;
+    //! Handler
+    std::shared_ptr<eprosima::ddsenabler::participants::Handler> handler_;
 
     //! DDS Participant
     std::shared_ptr<eprosima::ddsenabler::participants::DdsParticipant> dds_participant_;

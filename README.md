@@ -32,7 +32,7 @@
 
 <br><br>
 
-*eProsima DDS Enabler* is a modular middleware solution that bridges DDS networks and FIWARE NGSI-LD Context Brokers, providing real-time, bidirectional interoperability. It manages all required DDS participants, auto-discovers topics and types, and seamlessly routes DDS samples into NGSI-LD entities and context updates back into DDS topics.
+*eProsima DDS Enabler* is a modular middleware framework that connects DDS networks with an external system or data platform, delivering real-time, bidirectional interoperability. It orchestrates all necessary DDS participants, auto-discovers topics and types, and flexibly translates DDS samples into your target data model — and routes incoming context updates or events back into DDS topics.
 
 **Key features**
 - **Unified DDS Participant Management**
@@ -45,8 +45,10 @@ Leverage [OMG DDS-XTypes 1.3](https://www.omg.org/spec/DDS-XTypes/1.3) and Fast 
   Built on [eProsima DDS Pipe](https://github.com/eProsima/DDS-Pipe), ensuring low-latency, high-throughput payload forwarding and reliable discovery across distributed systems.
 - **Serialization Utilities**
   Convert DDS data to JSON and vice versa for REST integration and to human-readable IDL.
-- **Bidirectional FIWARE Integration**
-  Routes DDS samples to NGSI-LD Context Brokers and injects context updates back into DDS topics.
+
+## Platforms using DDS Enabler
+- **FIWARE NGSI-LD Context Broker**
+  Developed in collaboration with the FIWARE Context Broker team, *eProsima DDS Enabler* routes DDS samples into the broker (via broker-side implementation) and propagates Context Broker's context updates back into DDS topics.
 
 ## Commercial support
 

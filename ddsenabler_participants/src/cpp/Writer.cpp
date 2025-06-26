@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @file CBWriter.cpp
+ * @file Writer.cpp
  */
 
 #include <nlohmann/json.hpp>
@@ -24,10 +24,10 @@
 #include <fastdds/rtps/common/SerializedPayload.hpp>
 #include <fastdds/rtps/common/Types.hpp>
 
-#include <ddsenabler_participants/serialization.hpp>
+#include <ddsenabler_participants/Serialization.hpp>
 #include <ddsenabler_participants/types/dynamic_types_collection/DynamicTypesCollection.hpp>
 
-#include <ddsenabler_participants/CBWriter.hpp>
+#include <ddsenabler_participants/Writer.hpp>
 
 namespace eprosima {
 namespace ddsenabler {
@@ -36,7 +36,7 @@ namespace participants {
 using namespace eprosima::ddsenabler::participants::serialization;
 using namespace eprosima::ddspipe::core::types;
 
-void CBWriter::write_schema(
+void Writer::write_schema(
         const fastdds::dds::DynamicType::_ref_type& dyn_type,
         const fastdds::dds::xtypes::TypeIdentifier& type_id)
 {
@@ -45,14 +45,14 @@ void CBWriter::write_schema(
     const std::string& type_name = dyn_type->get_name().to_string();
 
     // Schema has not been registered
-    EPROSIMA_LOG_INFO(DDSENABLER_CB_WRITER,
+    EPROSIMA_LOG_INFO(DDSENABLER_WRITER,
             "Writing schema: " << type_name << ".");
 
     std::stringstream ss_idl;
     auto ret = fastdds::dds::idl_serialize(dyn_type, ss_idl);
     if (ret != fastdds::dds::RETCODE_OK)
     {
-        EPROSIMA_LOG_ERROR(DDSENABLER_CB_WRITER,
+        EPROSIMA_LOG_ERROR(DDSENABLER_WRITER,
                 "Failed to serialize DynamicType to idl for type with name: " << type_name);
         return;
     }
@@ -60,7 +60,7 @@ void CBWriter::write_schema(
     DynamicTypesCollection types_collection;
     if (!serialize_dynamic_type(type_name, type_id, types_collection))
     {
-        EPROSIMA_LOG_ERROR(DDSENABLER_CB_WRITER,
+        EPROSIMA_LOG_ERROR(DDSENABLER_WRITER,
                 "Failed to serialize dynamic types collection: " << type_name);
         return;
     }
@@ -69,7 +69,7 @@ void CBWriter::write_schema(
         types_collection);
     if (nullptr == types_collection_payload)
     {
-        EPROSIMA_LOG_ERROR(DDSENABLER_CB_WRITER,
+        EPROSIMA_LOG_ERROR(DDSENABLER_WRITER,
                 "Failed to serialize dynamic types collection: " << type_name);
         return;
     }
@@ -80,7 +80,7 @@ void CBWriter::write_schema(
             fastdds::dds::json_serialize(fastdds::dds::DynamicDataFactory::get_instance()->create_data(dyn_type),
             fastdds::dds::DynamicDataJsonFormat::EPROSIMA, ss_data_holder))
     {
-        EPROSIMA_LOG_ERROR(DDSENABLER_CB_WRITER,
+        EPROSIMA_LOG_ERROR(DDSENABLER_WRITER,
                 "Not able to generate data placeholder for type " << type_name << ".");
         return;
     }
@@ -98,10 +98,10 @@ void CBWriter::write_schema(
     }
 }
 
-void CBWriter::write_topic(
+void Writer::write_topic(
         const DdsTopic& topic)
 {
-    EPROSIMA_LOG_INFO(DDSENABLER_CB_WRITER,
+    EPROSIMA_LOG_INFO(DDSENABLER_WRITER,
             "Writting topic: " << topic.topic_name() << ".");
 
     // Notify topic reception
@@ -116,13 +116,13 @@ void CBWriter::write_topic(
     }
 }
 
-void CBWriter::write_data(
-        const CBMessage& msg,
+void Writer::write_data(
+        const Message& msg,
         const fastdds::dds::DynamicType::_ref_type& dyn_type)
 {
     assert(nullptr != dyn_type);
 
-    EPROSIMA_LOG_INFO(DDSENABLER_CB_WRITER,
+    EPROSIMA_LOG_INFO(DDSENABLER_WRITER,
             "Writing message from topic: " << msg.topic.topic_name() << ".");
 
     // Get the dynamic data to be serialized into JSON
@@ -130,7 +130,7 @@ void CBWriter::write_data(
 
     if (nullptr == dyn_data)
     {
-        EPROSIMA_LOG_ERROR(DDSENABLER_CB_WRITER,
+        EPROSIMA_LOG_ERROR(DDSENABLER_WRITER,
                 "Not able to get DynamicData from topic " << msg.topic.topic_name() << ".");
         return;
     }
@@ -140,7 +140,7 @@ void CBWriter::write_data(
     if (fastdds::dds::RETCODE_OK !=
             fastdds::dds::json_serialize(dyn_data, fastdds::dds::DynamicDataJsonFormat::EPROSIMA, ss_dyn_data))
     {
-        EPROSIMA_LOG_ERROR(DDSENABLER_CB_WRITER,
+        EPROSIMA_LOG_ERROR(DDSENABLER_WRITER,
                 "Not able to serialize data of topic " << msg.topic.topic_name() << " into JSON format.");
         return;
     }
@@ -179,8 +179,8 @@ void CBWriter::write_data(
     }
 }
 
-fastdds::dds::DynamicData::_ref_type CBWriter::get_dynamic_data_(
-        const CBMessage& msg,
+fastdds::dds::DynamicData::_ref_type Writer::get_dynamic_data_(
+        const Message& msg,
         const fastdds::dds::DynamicType::_ref_type& dyn_type) noexcept
 {
     // TODO fast this should not be done, but dyn types API is like it is.
@@ -193,7 +193,7 @@ fastdds::dds::DynamicData::_ref_type CBWriter::get_dynamic_data_(
     // Deserialize data into the DynamicData object
     if (!(get_pubsub_type_(dyn_type).deserialize(data_no_const, &dyn_data)))
     {
-        EPROSIMA_LOG_ERROR(DDSENABLER_CB_WRITER,
+        EPROSIMA_LOG_ERROR(DDSENABLER_WRITER,
                 "Failed to deserialize data for topic: " << msg.topic.topic_name());
         return nullptr;
     }
@@ -201,7 +201,7 @@ fastdds::dds::DynamicData::_ref_type CBWriter::get_dynamic_data_(
     return dyn_data;
 }
 
-fastdds::dds::DynamicPubSubType CBWriter::get_pubsub_type_(
+fastdds::dds::DynamicPubSubType Writer::get_pubsub_type_(
         const fastdds::dds::DynamicType::_ref_type& dyn_type) noexcept
 {
     // Check if we already have this pubsub type

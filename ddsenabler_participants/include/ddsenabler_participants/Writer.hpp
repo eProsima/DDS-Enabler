@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @file CBWriter.hpp
+ * @file Writer.hpp
  */
 
 #pragma once
@@ -26,28 +26,28 @@
 
 #include <ddspipe_core/types/topic/dds/DdsTopic.hpp>
 
-#include <ddsenabler_participants/CBCallbacks.hpp>
-#include <ddsenabler_participants/CBMessage.hpp>
+#include <ddsenabler_participants/Callbacks.hpp>
+#include <ddsenabler_participants/Message.hpp>
 
 namespace eprosima {
 namespace ddsenabler {
 namespace participants {
 
 /**
- * @brief Helper class encapsulating the logic to write data, topics and schemas to the CB.
+ * @brief Helper class encapsulating the logic to write data, topics and schemas to the user's app.
  *
  * @warning This class is not thread-safe.
  */
-class CBWriter
+class Writer
 {
 
 public:
 
     DDSENABLER_PARTICIPANTS_DllAPI
-    CBWriter() = default;
+    Writer() = default;
 
     DDSENABLER_PARTICIPANTS_DllAPI
-    ~CBWriter() = default;
+    ~Writer() = default;
 
     DDSENABLER_PARTICIPANTS_DllAPI
     void set_data_notification_callback(
@@ -71,7 +71,7 @@ public:
     }
 
     /**
-     * @brief Writes the schema of a DynamicType to CB.
+     * @brief Writes the schema of a DynamicType to user's app.
      *
      * @param [in] dyn_type DynamicType containing the type information required.
      * @param [in] type_id TypeIdentifier of the DynamicType.
@@ -82,7 +82,7 @@ public:
             const fastdds::dds::xtypes::TypeIdentifier& type_id);
 
     /**
-     * @brief Writes the topic to CB.
+     * @brief Writes the topic to user's app.
      *
      * @param [in] topic DDS topic to be added.
      */
@@ -98,7 +98,7 @@ public:
      */
     DDSENABLER_PARTICIPANTS_DllAPI
     void write_data(
-            const CBMessage& msg,
+            const Message& msg,
             const fastdds::dds::DynamicType::_ref_type& dyn_type);
 
 protected:
@@ -110,7 +110,7 @@ protected:
      * @param [in] dyn_type DynamicType containing the type information required.
      */
     fastdds::dds::DynamicData::_ref_type get_dynamic_data_(
-            const CBMessage& msg,
+            const Message& msg,
             const fastdds::dds::DynamicType::_ref_type& dyn_type) noexcept;
 
     /**
@@ -123,7 +123,7 @@ protected:
     fastdds::dds::DynamicPubSubType get_pubsub_type_(
             const fastdds::dds::DynamicType::_ref_type& dyn_type) noexcept;
 
-    // Callbacks to notify the CB
+    // Callbacks to notify the user's app
     DdsDataNotification data_notification_callback_;
     DdsTypeNotification type_notification_callback_;
     DdsTopicNotification topic_notification_callback_;

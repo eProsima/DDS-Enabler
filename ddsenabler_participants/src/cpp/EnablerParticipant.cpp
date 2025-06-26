@@ -22,8 +22,8 @@
 #include <ddspipe_participants/participant/rtps/CommonParticipant.hpp>
 #include <ddspipe_participants/reader/auxiliar/BlankReader.hpp>
 
-#include <ddsenabler_participants/CBHandler.hpp>
-#include <ddsenabler_participants/serialization.hpp>
+#include <ddsenabler_participants/Handler.hpp>
+#include <ddsenabler_participants/Serialization.hpp>
 
 #include <ddsenabler_participants/EnablerParticipant.hpp>
 
@@ -62,7 +62,7 @@ std::shared_ptr<IReader> EnablerParticipant::create_reader(
         // Only notify the discovery of topics that do not originate from a topic query callback
         if (dds_topic.topic_discoverer() != this->id())
         {
-            std::static_pointer_cast<CBHandler>(schema_handler_)->add_topic(dds_topic);
+            std::static_pointer_cast<Handler>(schema_handler_)->add_topic(dds_topic);
         }
     }
     cv_.notify_all();
@@ -120,7 +120,7 @@ bool EnablerParticipant::publish(
         }
 
         fastdds::dds::xtypes::TypeIdentifier type_identifier;
-        if (!std::static_pointer_cast<CBHandler>(schema_handler_)->get_type_identifier(type_name, type_identifier))
+        if (!std::static_pointer_cast<Handler>(schema_handler_)->get_type_identifier(type_name, type_identifier))
         {
             EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
                     "Failed to publish data in topic " << topic_name << " : type identifier not found.");
@@ -157,7 +157,7 @@ bool EnablerParticipant::publish(
     auto data = std::make_unique<RtpsPayloadData>();
 
     Payload payload;
-    if (!std::static_pointer_cast<CBHandler>(schema_handler_)->get_serialized_data(type_name, json, payload))
+    if (!std::static_pointer_cast<Handler>(schema_handler_)->get_serialized_data(type_name, json, payload))
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
                 "Failed to publish data in topic " << topic_name << " : data serialization failed.");

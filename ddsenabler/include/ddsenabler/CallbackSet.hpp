@@ -18,7 +18,7 @@
 
 #pragma once
 
-#include <ddsenabler_participants/CBCallbacks.hpp>
+#include <ddsenabler_participants/Callbacks.hpp>
 
 namespace eprosima {
 namespace ddsenabler {

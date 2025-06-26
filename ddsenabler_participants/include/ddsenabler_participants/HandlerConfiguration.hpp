@@ -1,4 +1,4 @@
-// Copyright 2024 Proyectos y Sistemas de Mantenimiento SL (eProsima).
+// Copyright 2023 Proyectos y Sistemas de Mantenimiento SL (eProsima).
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13,37 +13,29 @@
 // limitations under the License.
 
 /**
- * @file CBMessage.cpp
+ * @file HandlerConfiguration.hpp
  */
 
-#include <ddsenabler_participants/CBMessage.hpp>
+#pragma once
+
+#include <cstdint>
+#include <string>
+#include <vector>
 
 namespace eprosima {
 namespace ddsenabler {
 namespace participants {
 
-CBMessage::CBMessage(
-        const CBMessage& msg)
+/**
+ * Structure encapsulating all of \c Handler configuration options.
+ */
+struct HandlerConfiguration
 {
-    payload_owner = msg.payload_owner;
-    payload_owner->get_payload(
-        msg.payload,
-        this->payload);
-    topic = msg.topic;
-    instanceHandle = msg.instanceHandle;
-    source_guid = msg.source_guid;
-    sequence_number = msg.sequence_number;
-    publish_time = msg.publish_time;
-}
-
-CBMessage::~CBMessage()
-{
-    // If payload owner exists and payload has size, release it correctly in pool
-    if (payload_owner && payload.length > 0)
+    HandlerConfiguration()
     {
-        payload_owner->release_payload(payload);
     }
-}
+
+};
 
 } /* namespace participants */
 } /* namespace ddsenabler */

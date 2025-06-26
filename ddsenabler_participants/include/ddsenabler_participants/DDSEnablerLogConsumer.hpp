@@ -24,7 +24,7 @@
 #include <ddspipe_core/configuration/DdsPipeLogConfiguration.hpp>
 
 #include <ddsenabler_participants/library/library_dll.h>
-#include <ddsenabler_participants/CBCallbacks.hpp>
+#include <ddsenabler_participants/Callbacks.hpp>
 
 namespace eprosima {
 namespace ddsenabler {

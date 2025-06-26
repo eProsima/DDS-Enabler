@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @file CBMessage.hpp
+ * @file Message.hpp
  */
 
 #pragma once
@@ -32,10 +32,10 @@ namespace participants {
 /**
  * Structure with Fast DDS payload and its owner (a \c PayloadPool).
  */
-struct CBMessage
+struct Message
 {
     DDSENABLER_PARTICIPANTS_DllAPI
-    CBMessage() = default;
+    Message() = default;
 
     /**
      * Message copy constructor
@@ -47,8 +47,8 @@ struct CBMessage
      *
      */
     DDSENABLER_PARTICIPANTS_DllAPI
-    CBMessage(
-            const CBMessage& data);
+    Message(
+            const Message& data);
 
     /**
      * Message destructor
@@ -60,7 +60,7 @@ struct CBMessage
      *
      */
     DDSENABLER_PARTICIPANTS_DllAPI
-    ~CBMessage();
+    ~Message();
 
     //! DdsTopic
     ddspipe::core::types::DdsTopic topic;

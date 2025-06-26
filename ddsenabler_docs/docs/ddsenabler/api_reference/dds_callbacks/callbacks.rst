@@ -1,8 +1,8 @@
-.. _api_pim_cb_callbacks:
+.. _api_pim_callbacks:
 
 .. rst-class:: api-ref
 
-CB Callbacks
+Callbacks
 ------------
 
 .. doxygennamespace:: eprosima::ddsenabler::participants
