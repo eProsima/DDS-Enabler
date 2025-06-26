@@ -76,6 +76,11 @@ bool EnablerParticipant::publish(
 
     if (nullptr == reader)
     {
+        // FEATURE DISABLED
+        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
+                "Failed to publish data in topic " << topic_name << " : there are no subscribers.");
+        return false;
+
         if (!topic_req_callback_)
         {
             EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
