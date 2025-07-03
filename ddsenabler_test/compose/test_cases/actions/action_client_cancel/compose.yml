@@ -1,0 +1,33 @@
+# Test description:
+#   Run ddsenabler example action client with the cancel cli option against a Fibonacci action server.
+#   The action client sends a goal request and then it cancels it.
+#   All containers use domain 41.
+
+services:
+  ddsenabler:
+    image: ${DDSENABLER_COMPOSE_TEST_DOCKER_IMAGE}
+    container_name: ddsenabler
+    networks:
+      - std_net
+    volumes:
+      - ./config.yml:/config/config.yml
+      - ../persistence:/persistence
+    command: ./build/ddsenabler/examples/action/ddsenabler_example_action --announce-server false --persistence-path /persistence --config /config/config.yml --request-initial-wait 2 --cancel-requests true
+
+  fibonacci_server:
+    image: ${DDSENABLER_COMPOSE_TEST_ROS2_DOCKER_IMAGE}
+    container_name: fibonacci_server
+    depends_on:
+      - ddsenabler
+    networks:
+      - std_net
+    environment:
+      - ROS_DOMAIN_ID=41
+    volumes:
+      - ./../run_action_server_timeout.sh:/run_action_server_timeout.sh:ro
+    entrypoint: ["/bin/bash", "/run_action_server_timeout.sh"]
+
+networks:
+  std_net:
+  default:
+    driver: none

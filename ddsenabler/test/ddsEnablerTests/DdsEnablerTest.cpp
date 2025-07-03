@@ -385,6 +385,72 @@ TEST_F(DDSEnablerTest, send_history_multiple_types)
     ASSERT_EQ(get_received_data(), types * history_depth);
 }
 
+// SERVICES
+
+TEST_F(DDSEnablerTest, service_client)
+{
+    auto enabler = create_ddsenabler();
+    ASSERT_TRUE(enabler != nullptr);
+
+    std::this_thread::sleep_for(std::chrono::seconds(2));
+
+    std::string json = "{\"a\": 1, \"b\": 2}";
+    std::string service_name = "add_two_ints";
+    uint64_t request_id = 0;
+    ASSERT_FALSE(enabler->send_service_request(service_name, json, request_id));
+}
+
+
+TEST_F(DDSEnablerTest, service_server)
+{
+    auto enabler = create_ddsenabler();
+    ASSERT_TRUE(enabler != nullptr);
+
+    std::string service_name = "add_two_ints";
+
+    ASSERT_FALSE(enabler->revoke_service(service_name));
+    ASSERT_TRUE(enabler->announce_service(service_name));
+    ASSERT_FALSE(enabler->announce_service(service_name));
+
+    std::this_thread::sleep_for(std::chrono::seconds(2));
+
+    ASSERT_TRUE(enabler->revoke_service(service_name));
+    ASSERT_FALSE(enabler->revoke_service(service_name));
+}
+
+// ACTIONS
+
+TEST_F(DDSEnablerTest, action_client)
+{
+    auto enabler = create_ddsenabler();
+    ASSERT_TRUE(enabler != nullptr);
+
+    std::this_thread::sleep_for(std::chrono::seconds(2));
+
+    std::string json = "{\"order\": 20}";
+    std::string action_name = "fibonacci/_action/";
+    UUID action_id;
+
+    ASSERT_FALSE(enabler->send_action_goal(action_name, json, action_id));
+}
+
+TEST_F(DDSEnablerTest, action_server)
+{
+    auto enabler = create_ddsenabler();
+    ASSERT_TRUE(enabler != nullptr);
+
+    std::string action_name = "fibonacci/_action/";
+
+    ASSERT_FALSE(enabler->revoke_action(action_name));
+    ASSERT_TRUE(enabler->announce_action(action_name));
+    ASSERT_FALSE(enabler->announce_action(action_name));
+
+    std::this_thread::sleep_for(std::chrono::seconds(2));
+
+    ASSERT_TRUE(enabler->revoke_action(action_name));
+    ASSERT_FALSE(enabler->revoke_action(action_name));
+}
+
 int main(
         int argc,
         char** argv)

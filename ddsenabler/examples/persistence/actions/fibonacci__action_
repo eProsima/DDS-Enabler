@@ -1,0 +1,19 @@
+{
+    "action_name": "fibonacci/_action/",
+    "cancel_reply_action_serialized_qos": "reliability: true\ndurability: false\nownership: false\nkeyed: false",
+    "cancel_reply_action_type": "action_msgs::srv::dds_::CancelGoal_Response_",
+    "cancel_request_action_serialized_qos": "reliability: true\ndurability: false\nownership: false\nkeyed: false",
+    "cancel_request_action_type": "action_msgs::srv::dds_::CancelGoal_Request_",
+    "feedback_action_serialized_qos": "reliability: true\ndurability: false\nownership: false\nkeyed: false",
+    "feedback_action_type": "action_tutorials_interfaces::action::dds_::Fibonacci_FeedbackMessage_",
+    "goal_reply_action_serialized_qos": "reliability: true\ndurability: false\nownership: false\nkeyed: false",
+    "goal_reply_action_type": "action_tutorials_interfaces::action::dds_::Fibonacci_SendGoal_Response_",
+    "goal_request_action_serialized_qos": "reliability: true\ndurability: false\nownership: false\nkeyed: false",
+    "goal_request_action_type": "action_tutorials_interfaces::action::dds_::Fibonacci_SendGoal_Request_",
+    "result_reply_action_serialized_qos": "reliability: true\ndurability: false\nownership: false\nkeyed: false",
+    "result_reply_action_type": "action_tutorials_interfaces::action::dds_::Fibonacci_GetResult_Response_",
+    "result_request_action_serialized_qos": "reliability: true\ndurability: false\nownership: false\nkeyed: false",
+    "result_request_action_type": "action_tutorials_interfaces::action::dds_::Fibonacci_GetResult_Request_",
+    "status_action_serialized_qos": "reliability: true\ndurability: true\nownership: false\nkeyed: false",
+    "status_action_type": "action_msgs::msg::dds_::GoalStatusArray_"
+}
