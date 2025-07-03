@@ -1,0 +1,7 @@
+{
+    "reply_serialized_qos": "reliability: true\ndurability: false\nownership: false\nkeyed: false",
+    "reply_type_name": "example_interfaces::srv::dds_::AddTwoInts_Response_",
+    "request_serialized_qos": "reliability: true\ndurability: false\nownership: false\nkeyed: false",
+    "request_type_name": "example_interfaces::srv::dds_::AddTwoInts_Request_",
+    "service_name": "add_two_ints"
+}

@@ -18,6 +18,13 @@ set(TESTS
     publish/requested_type
     reception/topics_json
     reception/topics_yaml
+    services/service_discovery
+    services/service_server
+    services/service_client
+    actions/action_discovery
+    actions/action_client
+    actions/action_client_cancel
+    actions/action_server
 )
 
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/test_cases DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
