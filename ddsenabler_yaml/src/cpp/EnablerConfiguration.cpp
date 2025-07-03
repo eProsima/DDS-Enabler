@@ -204,23 +204,6 @@ void EnablerConfiguration::load_ddsenabler_configuration_(
             load_dds_configuration_(dds_yml, version);
         }
 
-        // Block ROS 2 services (RPC) topics
-        // RATIONALE:
-        // At the time of this writing, services in ROS 2 behave in the following manner: a ROS 2 service
-        // client awaits to discover a server, and it is then when a request is sent to this (and only this) server,
-        // from which a response is expected.
-        // Hence, if these topics are not blocked, the client would wrongly believe DDS-Enabler is a server, thus
-        // sending a request for which a response will not be received.
-        WildcardDdsFilterTopic rpc_request_topic, rpc_response_topic;
-        rpc_request_topic.topic_name.set_value("rq/*");
-        rpc_response_topic.topic_name.set_value("rr/*");
-
-        ddspipe_configuration.blocklist.insert(
-            utils::Heritable<WildcardDdsFilterTopic>::make_heritable(rpc_request_topic));
-
-        ddspipe_configuration.blocklist.insert(
-            utils::Heritable<WildcardDdsFilterTopic>::make_heritable(rpc_response_topic));
-
         // Enable manually after all callbacks are set to avoid missing notifications
         ddspipe_configuration.init_enabled = false;
 

@@ -1,0 +1,55 @@
+# Test description:
+#   Run ddsenabler example action server and a Fibonacci client sending goals.
+#   Domain 42 is used by all containers.
+
+services:
+  ddsenabler:
+    image: ${DDSENABLER_COMPOSE_TEST_DOCKER_IMAGE}
+    container_name: ddsenabler
+    networks:
+      - std_net
+    volumes:
+      - ./config.yml:/config/config.yml
+      - ../persistence:/persistence
+    command: ./build/ddsenabler/examples/action/ddsenabler_example_action --announce-server true --persistence-path /persistence --config /config/config.yml --expected-requests 3
+
+  fibonacci_client_1:
+    image: ${DDSENABLER_COMPOSE_TEST_ROS2_DOCKER_IMAGE}
+    container_name: fibonacci_client_1
+    depends_on:
+      - ddsenabler
+    networks:
+      - std_net
+    environment:
+      - ROS_DOMAIN_ID=42
+    command: >
+      sh -c "sleep 3 && ros2 run action_tutorials_cpp fibonacci_action_client"
+
+  fibonacci_client_2:
+    image: ${DDSENABLER_COMPOSE_TEST_ROS2_DOCKER_IMAGE}
+    container_name: fibonacci_client_2
+    depends_on:
+      - ddsenabler
+    networks:
+      - std_net
+    environment:
+      - ROS_DOMAIN_ID=42
+    command: >
+      sh -c "sleep 3 && ros2 run action_tutorials_cpp fibonacci_action_client"
+
+  fibonacci_client_3:
+    image: ${DDSENABLER_COMPOSE_TEST_ROS2_DOCKER_IMAGE}
+    container_name: fibonacci_client_3
+    depends_on:
+      - ddsenabler
+    networks:
+      - std_net
+    environment:
+      - ROS_DOMAIN_ID=42
+    command: >
+      sh -c "sleep 3 && ros2 run action_tutorials_cpp fibonacci_action_client"
+
+networks:
+  std_net:
+  default:
+    driver: none
