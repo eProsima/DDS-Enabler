@@ -61,10 +61,8 @@ RUN mkdir src && \
     cd src/ddspipe && git checkout ${ddspipe_branch} && cd ../.. && \
     cd src/ddsenabler && git checkout ${ddsenabler_branch} && cd ../.. && \
     cp -r src/fastdds/examples/cpp/configuration src/. && \
-    cp -r src/ddsenabler/ddsenabler_test/ddsenabler_test_app src/. && \
-    colcon build --packages-skip ddsenabler ddsenabler_docs ddsenabler_test_app --event-handlers console_direct+ --cmake-args -DLOG_INFO=ON -DSECURITY=ON && \
-    colcon build --packages-select ddsenabler --event-handlers console_direct+ --cmake-args -DLOG_INFO=ON -DCOMPILE_EXAMPLES=ON && \
-    colcon build --packages-select ddsenabler_test_app --event-handlers console_direct+ --cmake-args -DLOG_INFO=ON -DCOMPILE_EXAMPLES=ON
+    colcon build --packages-skip ddsenabler ddsenabler_docs --event-handlers console_direct+ --cmake-args -DLOG_INFO=ON -DSECURITY=ON && \
+    colcon build --packages-select ddsenabler --event-handlers console_direct+ --cmake-args -DLOG_INFO=ON -DCOMPILE_EXAMPLES=ON
 
 COPY run.bash /root/run.bash
 
