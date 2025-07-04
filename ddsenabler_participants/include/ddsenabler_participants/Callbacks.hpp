@@ -141,11 +141,11 @@ typedef bool (* DdsTopicQuery)(
  *
  * This callback is used to notify the discovery of a service and its associated request and reply types.
  *
- * @param service_name The name of the service that was discovered.
- * @param request_type_name The name of the request type associated with the service.
- * @param request_serialized_qos The serialized Quality of Service (QoS) settings for the request type.
- * @param reply_type_name The name of the reply type associated with the service.
- * @param reply_serialized_qos The serialized Quality of Service (QoS) settings for the reply type.
+ * @param [in] service_name The name of the service that was discovered.
+ * @param [in] request_type_name The name of the request type associated with the service.
+ * @param [in] reply_type_name The name of the reply type associated with the service.
+ * @param [in] request_serialized_qos The serialized Quality of Service (QoS) settings for the request type.
+ * @param [in] reply_serialized_qos The serialized Quality of Service (QoS) settings for the reply type.
  */
 typedef void (* ServiceNotification)(
         const char* service_name,
@@ -159,10 +159,10 @@ typedef void (* ServiceNotification)(
  *
  * This callback is used to notify the reception of a reply for a specific service.
  *
- * @param service_name The name of the service for which the reply was received.
- * @param json The JSON data received in the reply.
- * @param request_id The unique identifier of the request for which this is a reply.
- * @param publish_time The time at which the reply was published.
+ * @param [in] service_name The name of the service for which the reply was received.
+ * @param [in] json The JSON data received in the reply.
+ * @param [in] request_id The unique identifier of the request for which this is a reply.
+ * @param [in] publish_time The time at which the reply was published.
  */
 typedef void (* ServiceReplyNotification)(
         const char* service_name,
@@ -175,10 +175,10 @@ typedef void (* ServiceReplyNotification)(
  *
  * This callback is used to notify the reception of a request for a specific service.
  *
- * @param service_name The name of the service for which the request was received.
- * @param json The JSON data received in the request.
- * @param request_id The unique identifier of the request.
- * @param publish_time The time at which the request was published.
+ * @param [in] service_name The name of the service for which the request was received.
+ * @param [in] json The JSON data received in the request.
+ * @param [in] request_id The unique identifier of the request.
+ * @param [in] publish_time The time at which the request was published.
  *
  * @note The request_id is unique for each request and must be later used to identify the reply.
  */
@@ -193,11 +193,12 @@ typedef void (* ServiceRequestNotification)(
  *
  * This callback is used to request the type information for a service's request and reply.
  *
- * @param service_name The name of the service for which the type information is requested.
- * @param request_type_name The name of the request type associated with the service.
- * @param request_serialized_qos The serialized Quality of Service (QoS) settings for the request type.
- * @param reply_type_name The name of the reply type associated with the service.
- * @param reply_serialized_qos The serialized Quality of Service (QoS) settings for the reply type.
+ * @param [in] service_name The name of the service for which the type information is requested.
+ * @param [out] request_type_name The name of the request type associated with the service.
+ * @param [out] request_serialized_qos The serialized Quality of Service (QoS) settings for the request type.
+ * @param [out] reply_type_name The name of the reply type associated with the service.
+ * @param [out] reply_serialized_qos The serialized Quality of Service (QoS) settings for the reply type.
+ * @return \c true if the service was found and the type information was retrieved successfully, \c false otherwise.
  */
  typedef bool (* ServiceQuery)(
         const char* service_name,
@@ -217,21 +218,23 @@ typedef void (* ServiceRequestNotification)(
  *
  * This callback is used to notify the discovery of an action and its associated types.
  *
- * @param action_name The name of the action that was discovered.
- * @param goal_request_action_type The type of the goal request action.
- * @param goal_reply_action_type The type of the goal reply action.
- * @param cancel_request_action_type The type of the cancel request action.
- * @param cancel_reply_action_type The type of the cancel reply action.
- * @param result_request_action_type The type of the get result request action.
- * @param result_reply_action_type The type of the get result reply action.
- * @param feedback_action_type The type of the feedback action.
- * @param goal_request_action_serialized_qos The serialized Quality of Service (QoS) settings for the goal request action.
- * @param goal_reply_action_serialized_qos The serialized Quality of Service (QoS) settings for the goal reply action.
- * @param cancel_request_action_serialized_qos The serialized Quality of Service (QoS) settings for the cancel request action.
- * @param cancel_reply_action_serialized_qos The serialized Quality of Service (QoS) settings for the cancel reply action.
- * @param result_request_action_serialized_qos The serialized Quality of Service (QoS) settings for the get result request action.
- * @param result_reply_action_serialized_qos The serialized Quality of Service (QoS) settings for the get result reply action.
- * @param feedback_action_serialized_qos The serialized Quality of Service (QoS) settings for the feedback action.
+ * @param [in] action_name The name of the action that was discovered.
+ * @param [in] goal_request_action_type The type of the goal request action.
+ * @param [in] goal_reply_action_type The type of the goal reply action.
+ * @param [in] cancel_request_action_type The type of the cancel request action.
+ * @param [in] cancel_reply_action_type The type of the cancel reply action.
+ * @param [in] result_request_action_type The type of the get result request action.
+ * @param [in] result_reply_action_type The type of the get result reply action.
+ * @param [in] feedback_action_type The type of the feedback action.
+ * @param [in] status_action_type The type of the status action.
+ * @param [in] goal_request_action_serialized_qos The serialized Quality of Service (QoS) settings for the goal request action.
+ * @param [in] goal_reply_action_serialized_qos The serialized Quality of Service (QoS) settings for the goal reply action.
+ * @param [in] cancel_request_action_serialized_qos The serialized Quality of Service (QoS) settings for the cancel request action.
+ * @param [in] cancel_reply_action_serialized_qos The serialized Quality of Service (QoS) settings for the cancel reply action.
+ * @param [in] result_request_action_serialized_qos The serialized Quality of Service (QoS) settings for the get result request action.
+ * @param [in] result_reply_action_serialized_qos The serialized Quality of Service (QoS) settings for the get result reply action.
+ * @param [in] feedback_action_serialized_qos The serialized Quality of Service (QoS) settings for the feedback action.
+ * @param [in] status_action_serialized_qos The serialized Quality of Service (QoS) settings for the status action.
  */
 typedef void (* ActionNotification)(
         const char* action_name,
@@ -257,11 +260,11 @@ typedef void (* ActionNotification)(
  *
  * This callback is used to notify the request of an action goal.
  *
- * @param action_name The name of the action for which the goal is being requested.
- * @param json The JSON data representing the goal request.
- * @param goal_id The unique identifier of the goal associated with the action.
- * @param publish_time The time at which the goal request was published.
- * @param status_code The status code as a place holder for the current state of the action.
+ * @param [in] action_name The name of the action for which the goal is being requested.
+ * @param [in] json The JSON data representing the goal request.
+ * @param [in] goal_id The unique identifier of the goal associated with the action.
+ * @param [in] publish_time The time at which the goal request was published.
+ * @return \c true if the goal request has been accepted, \c false otherwise.
  */
 typedef bool (* ActionGoalRequestNotification)(
     const char* action_name,
@@ -279,10 +282,11 @@ typedef bool (* ActionGoalRequestNotification)(
  * If the goal ID is not empty and timestamp is zero, cancel the goal with the given ID regardless of the time it was accepted
  * If the goal ID is not empty and timestamp is not zero, cancel the goal with the given ID and all goals accepted at or before the timestamp
  *
- * @param action_name The name of the action for which the cancel request is being made.
- * @param goal_id The unique identifier of the goal associated with the action.
- * @param publish_time The time at which the cancel request was published.
- * @param status_code The status code as a place holder for the current state of the action.
+ * @param [in] action_name The name of the action for which the cancel request is being made.
+ * @param [in] goal_id The unique identifier of the goal associated with the action.
+ * @param [in] timestamp The timestamp used for discriminating which goals to cancel.
+ * @param [in] request_id The identifier of the cancel request used for dicriminating which goals to cancel.
+ * @param [in] publish_time The time at which the cancel request was published.
  */
 typedef void (* ActionCancelRequestNotification)(
     const char* action_name,
@@ -296,10 +300,10 @@ typedef void (* ActionCancelRequestNotification)(
  *
  * This callback is used to notify the feedback of an action.
  *
- * @param action_name The name of the action for which the feedback is being notified.
- * @param json The JSON data representing the feedback of the action.
- * @param goal_id The unique identifier of the goal associated with the action.
- * @param publish_time The time at which the feedback was published.
+ * @param [in] action_name The name of the action for which the feedback is being notified.
+ * @param [in] json The JSON data representing the feedback of the action.
+ * @param [in] goal_id The unique identifier of the goal associated with the action.
+ * @param [in] publish_time The time at which the feedback was published.
  */
 typedef void (* ActionFeedbackNotification)(
         const char* action_name,
@@ -312,11 +316,11 @@ typedef void (* ActionFeedbackNotification)(
  *
  * This callback is used to notify the update of the status of an action.
  *
- * @param action_name The name of the action for which the status is being notified.
- * @param goal_id The unique identifier of the goal associated with the action.
- * @param status_code The status code representing the current state of the action.
- * @param status_message A message providing additional information about the status.
- * @param publish_time The time at which the status was published.
+ * @param [in] action_name The name of the action for which the status is being notified.
+ * @param [in] goal_id The unique identifier of the goal associated with the action.
+ * @param [in] status_code The status code representing the current state of the action.
+ * @param [in] status_message A message providing additional information about the status.
+ * @param [in] publish_time The time at which the status was published.
  */
 typedef void (* ActionStatusNotification)(
     const char* action_name,
@@ -330,10 +334,10 @@ typedef void (* ActionStatusNotification)(
  *
  * This callback is used to notify the result of an action in case of success.
  *
- * @param action_name The name of the action for which the result is being notified.
- * @param json The JSON data representing the result of the action.
- * @param goal_id The unique identifier of the goal associated with the action.
- * @param publish_time The time at which the result was published.
+ * @param [in] action_name The name of the action for which the result is being notified.
+ * @param [in] json The JSON data representing the result of the action.
+ * @param [in] goal_id The unique identifier of the goal associated with the action.
+ * @param [in] publish_time The time at which the result was published.
  */
 typedef void (* ActionResultNotification)(
         const char* action_name,
@@ -346,21 +350,24 @@ typedef void (* ActionResultNotification)(
  *
  * This callback is used to request the action types for a specific action.
  *
- * @param action_name The name of the action for which the types are being requested.
- * @param goal_request_action_type The type of the goal request action.
- * @param goal_reply_action_type The type of the goal reply action.
- * @param cancel_request_action_type The type of the cancel request action.
- * @param cancel_reply_action_type The type of the cancel reply action.
- * @param result_request_action_type The type of the get result request action.
- * @param result_reply_action_type The type of the get result reply action.
- * @param feedback_action_type The type of the feedback action.
- * @param goal_request_action_serialized_qos The serialized Quality of Service (QoS) settings for the goal request action.
- * @param goal_reply_action_serialized_qos The serialized Quality of Service (QoS) settings for the goal reply action.
- * @param cancel_request_action_serialized_qos The serialized Quality of Service (QoS) settings for the cancel request action.
- * @param cancel_reply_action_serialized_qos The serialized Quality of Service (QoS) settings for the cancel reply action.
- * @param result_request_action_serialized_qos The serialized Quality of Service (QoS) settings for the get result request action.
- * @param result_reply_action_serialized_qos The serialized Quality of Service (QoS) settings for the get result reply action.
- * @param feedback_action_serialized_qos The serialized Quality of Service (QoS) settings for the feedback action.
+ * @param [in] action_name The name of the action for which the types are being requested.
+ * @param [out] goal_request_action_type The type of the goal request action.
+ * @param [out] goal_reply_action_type The type of the goal reply action.
+ * @param [out] cancel_request_action_type The type of the cancel request action.
+ * @param [out] cancel_reply_action_type The type of the cancel reply action.
+ * @param [out] result_request_action_type The type of the get result request action.
+ * @param [out] result_reply_action_type The type of the get result reply action.
+ * @param [out] feedback_action_type The type of the feedback action.
+ * @param [out] status_action_type The type of the status action.
+ * @param [out] goal_request_action_serialized_qos The serialized Quality of Service (QoS) settings for the goal request action.
+ * @param [out] goal_reply_action_serialized_qos The serialized Quality of Service (QoS) settings for the goal reply action.
+ * @param [out] cancel_request_action_serialized_qos The serialized Quality of Service (QoS) settings for the cancel request action.
+ * @param [out] cancel_reply_action_serialized_qos The serialized Quality of Service (QoS) settings for the cancel reply action.
+ * @param [out] result_request_action_serialized_qos The serialized Quality of Service (QoS) settings for the get result request action.
+ * @param [out] result_reply_action_serialized_qos The serialized Quality of Service (QoS) settings for the get result reply action.
+ * @param [out] feedback_action_serialized_qos The serialized Quality of Service (QoS) settings for the feedback action.
+ * @param [out] status_action_serialized_qos The serialized Quality of Service (QoS) settings for the status action.
+ * @return \c true if the action was found and the types were retrieved successfully, \c false otherwise.
  */
 typedef bool (* ActionQuery)(
     const char* action_name,
