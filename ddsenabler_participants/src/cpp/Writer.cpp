@@ -754,16 +754,6 @@ bool Writer::prepare_json_data_(
         json_output[msg.topic.topic_name()]["data"][ss_instanceHandle.str()] = nlohmann::json::parse(ss_dyn_data.str());
     }
 
-    // Notify data reception
-    if (data_notification_callback_)
-    {
-        data_notification_callback_(
-            msg.topic.topic_name().c_str(),
-            json_output.dump(4).c_str(),
-            msg.publish_time.to_ns()
-            );
-    }
-
     return true;
 }
 
