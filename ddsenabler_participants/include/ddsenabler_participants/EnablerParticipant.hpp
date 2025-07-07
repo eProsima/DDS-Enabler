@@ -23,11 +23,14 @@
 #include <mutex>
 
 #include <ddspipe_participants/participant/dynamic_types/SchemaParticipant.hpp>
-#include <ddspipe_participants/reader/auxiliar/InternalReader.hpp>
 
 #include <ddsenabler_participants/Callbacks.hpp>
 #include <ddsenabler_participants/EnablerParticipantConfiguration.hpp>
 #include <ddsenabler_participants/library/library_dll.h>
+#include <ddsenabler_participants/InternalRpcReader.hpp>
+#include <ddsenabler_participants/RpcUtils.hpp>
+#include <ddsenabler_participants/RpcStructs.hpp>
+
 
 namespace eprosima {
 namespace ddsenabler {
@@ -45,6 +48,12 @@ public:
             std::shared_ptr<ddspipe::participants::ISchemaHandler> schema_handler);
 
     DDSENABLER_PARTICIPANTS_DllAPI
+    bool is_rtps_kind() const noexcept override
+    {
+        return true; // Temporal workaround until Pipe refactor
+    }
+
+    DDSENABLER_PARTICIPANTS_DllAPI
     std::shared_ptr<ddspipe::core::IReader> create_reader(
             const ddspipe::core::ITopic& topic) override;
 
@@ -54,28 +63,119 @@ public:
             const std::string& json);
 
     DDSENABLER_PARTICIPANTS_DllAPI
+    bool publish_rpc(
+            const std::string&  topic_name,
+            const std::string& json,
+            const uint64_t request_id);
+
+    DDSENABLER_PARTICIPANTS_DllAPI
     void set_topic_query_callback(
             participants::DdsTopicQuery callback)
     {
         topic_query_callback_ = callback;
     }
 
+    DDSENABLER_PARTICIPANTS_DllAPI
+    void set_service_query_callback(
+            participants::ServiceQuery callback)
+    {
+        service_query_callback_ = callback;
+    }
+
+    DDSENABLER_PARTICIPANTS_DllAPI
+    void set_action_query_callback(
+            participants::ActionQuery callback)
+    {
+        action_query_callback_ = callback;
+    }
+
+    DDSENABLER_PARTICIPANTS_DllAPI
+    bool announce_service(
+            const std::string& service_name);
+
+    DDSENABLER_PARTICIPANTS_DllAPI
+    bool revoke_service(
+            const std::string& service_name);
+
+    DDSENABLER_PARTICIPANTS_DllAPI
+    bool announce_action(
+            const std::string& action_name);
+
+    DDSENABLER_PARTICIPANTS_DllAPI
+    bool revoke_action(
+            const std::string& action_name);
+
 protected:
 
-    std::shared_ptr<ddspipe::participants::InternalReader> lookup_reader_nts_(
+    bool query_topic_nts_(
+            const std::string& topic_name,
+            ddspipe::core::types::DdsTopic& topic);
+
+    bool query_service_nts_(
+            std::shared_ptr<ServiceDiscovered> service);
+
+    bool query_action_nts_(
+            ActionDiscovered& action,
+            std::unique_lock<std::mutex>& lck);
+
+    bool create_topic_writer_nts_(
+            const ddspipe::core::types::DdsTopic& topic,
+            std::shared_ptr<eprosima::ddspipe::core::IReader>& reader,
+            ddspipe::core::types::Endpoint& request_edp,
+            std::unique_lock<std::mutex>& lck);
+
+    bool create_service_request_writer_nts_(
+            std::shared_ptr<ServiceDiscovered> service,
+            std::unique_lock<std::mutex>& lck);
+
+    bool fullfill_topic_type_nts_(
+        const std::string& topic_name,
+        const std::string _type_name,
+        const std::string serialized_qos_content,
+        ddspipe::core::types::DdsTopic& topic);
+
+    bool fullfill_service_type_nts_(
+            const std::string _request_type_name,
+            const std::string serialized_request_qos_content,
+            const std::string _reply_type_name,
+            const std::string serialized_reply_qos_content,
+            std::shared_ptr<ServiceDiscovered> service);
+
+    std::shared_ptr<ddspipe::core::IReader> lookup_reader_nts_(
             const std::string& topic_name,
             std::string& type_name) const;
 
-    std::shared_ptr<ddspipe::participants::InternalReader> lookup_reader_nts_(
+    std::shared_ptr<ddspipe::core::IReader> lookup_reader_nts_(
             const std::string& topic_name) const;
 
-    std::map<ddspipe::core::types::DdsTopic, std::shared_ptr<ddspipe::participants::InternalReader>> readers_;
+    bool service_discovered_nts_(
+            const std::string& service_name,
+            const ddspipe::core::types::DdsTopic& topic,
+            RpcUtils::RpcType rpc_type);
+
+    bool action_discovered_nts_(
+            const std::string& action_name,
+            const ddspipe::core::types::DdsTopic& topic,
+            RpcUtils::RpcType rpc_type);
+
+    bool revoke_service_nts_(
+            const std::string& service_name);
+
+    std::map<ddspipe::core::types::DdsTopic, std::shared_ptr<ddspipe::core::IReader>> readers_;
+
+    std::map<std::string, std::shared_ptr<ServiceDiscovered>> services_;
+
+    std::map<std::string, ActionDiscovered> actions_;
 
     std::mutex mtx_;
 
     std::condition_variable cv_;
 
     DdsTopicQuery topic_query_callback_;
+
+    ServiceQuery service_query_callback_;
+
+    ActionQuery action_query_callback_;
 };
 
 } /* namespace participants */

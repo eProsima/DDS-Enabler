@@ -51,7 +51,7 @@ public:
     static void print_help(
             uint8_t return_code)
     {
-        std::cout << "Usage: ddsenabler_example [options]"                                              << std::endl;
+        std::cout << "Usage: ddsenabler_example_publish [options]"                                      << std::endl;
         std::cout << ""                                                                                 << std::endl;
         std::cout << "--config <str>                        Path to the configuration file"             << std::endl;
         std::cout << "                                      (Default: '')"                              << std::endl;

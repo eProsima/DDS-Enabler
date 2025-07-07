@@ -40,6 +40,14 @@ set(TEST_LIST
     send_history_bigger_than_writer
     send_history_smaller_than_writer
     send_history_multiple_types
+    manual_service_discovery
+    manual_request
+    manual_reply
+    manual_action_discovery
+    manual_action_client
+    manual_action_client_cancel
+    manual_action_server
+    manual_action_server_cancel
 )
 
 set(TEST_NEEDED_SOURCES

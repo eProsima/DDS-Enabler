@@ -18,7 +18,7 @@ services:
       - std_net
     volumes:
       - ./config.json:/config/config.json
-    command: ./build/ddsenabler/examples/ddsenabler_example --config /config/config.json --expected-types 1 --expected-topics 1 --expected-data 3 --timeout 6
+    command: ./build/ddsenabler/examples/publish/ddsenabler_example_publish --config /config/config.json --expected-types 1 --expected-topics 1 --expected-data 3 --timeout 6
 
   talker:
     image: ${DDSENABLER_COMPOSE_TEST_ROS2_DOCKER_IMAGE}
