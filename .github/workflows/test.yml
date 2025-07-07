@@ -38,7 +38,7 @@ on:
       dependencies_artifact_postfix:
         description: 'Postfix name to add to artifact name to download dependencies. This is use to download a specific artifact version from eProsima-CI.'
         required: true
-        default: '_ddsenabler'
+        default: '_nightly'
 
   pull_request:
   push:
@@ -51,7 +51,7 @@ jobs:
     name: reusable_tests
     uses: ./.github/workflows/reusable-ubuntu-ci.yml
     with:
-      dependencies_artifact_postfix: ${{ inputs.dependencies_artifact_postfix || '_ddsenabler' }}
+      dependencies_artifact_postfix: ${{ inputs.dependencies_artifact_postfix || '_nightly' }}
       ref: ${{ github.ref }}
     secrets: inherit
 
@@ -59,7 +59,7 @@ jobs:
     name: reusable_tests
     uses: ./.github/workflows/reusable-windows-ci.yml
     with:
-      dependencies_artifact_postfix: ${{ inputs.dependencies_artifact_postfix || '_ddsenabler' }}
+      dependencies_artifact_postfix: ${{ inputs.dependencies_artifact_postfix || '_nightly' }}
       ref: ${{ github.ref }}
     secrets: inherit
 
@@ -68,10 +68,10 @@ jobs:
     uses: ./.github/workflows/docker-reusable-workflow.yml
     with:
       fastcdr_branch: ${{ inputs.fastcdr_branch || 'master' }}
-      fastdds_branch: ${{ inputs.fastdds_branch || 'feature/json-deserialize' }}
+      fastdds_branch: ${{ inputs.fastdds_branch || 'master' }}
       devutils_branch: ${{ inputs.devutils_branch || 'main' }}
       ddspipe_branch: ${{ inputs.ddspipe_branch || 'main' }}
       ddsenabler_branch: ${{ inputs.ddsenabler_branch || github.head_ref || github.ref_name }}
-      dependencies_artifact_postfix: ${{ inputs.dependencies_artifact_postfix || '_ddsenabler' }}
+      dependencies_artifact_postfix: ${{ inputs.dependencies_artifact_postfix || '_nightly' }}
       ref: ${{ github.ref }}
     secrets: inherit
