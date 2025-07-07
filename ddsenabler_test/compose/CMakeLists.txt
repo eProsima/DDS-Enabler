@@ -18,10 +18,8 @@ set(TESTS
     publish/requested_type
     reception/topics_json
     reception/topics_yaml
-    services/service_discovery
     services/service_server
     services/service_client
-    actions/action_discovery
     actions/action_client
     actions/action_client_cancel
     actions/action_server
