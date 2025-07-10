@@ -13,7 +13,7 @@ jobs:
     uses: ./.github/workflows/docker-reusable-workflow.yml
     with:
       fastcdr_branch: 'master'
-      fastdds_branch: 'feature/json-deserialize'
+      fastdds_branch: 'master'
       devutils_branch: 'main'
       ddspipe_branch: 'main'
       ddsenabler_branch: 'main'
