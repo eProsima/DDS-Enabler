@@ -47,7 +47,7 @@ runs:
       id: fastdds_version
       shell: bash
       run: |
-        if [ "${{ inputs.dependencies_artifact_postfix }}" = "_nightly" ]; then
+        if [ "${{ inputs.dependencies_artifact_postfix }}" = "_nightly" ] || [ "${{ inputs.dependencies_artifact_postfix }}" = "_nightly_tsan" ]; then
           echo "value=v3" >> $GITHUB_OUTPUT
         else
           echo "value=custom" >> $GITHUB_OUTPUT
