@@ -70,4 +70,5 @@ Structure of the documentation
 This documentation is organized into the following main sections:
 
 * :ref:`Introduction <index_introduction>`
+* :ref:`Installation <installation_sources_linux>`
 * :ref:`API Reference <api_reference>`
