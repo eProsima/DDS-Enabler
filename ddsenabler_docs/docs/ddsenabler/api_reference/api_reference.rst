@@ -19,4 +19,4 @@ The following pages document the classes, functions, and types exposed by *DDS E
    /ddsenabler/api_reference/dds_enabler/dds_enabler
    /ddsenabler/api_reference/callback_set/callback_set
    /ddsenabler/api_reference/dds_callbacks/dds_callbacks
-   /ddsenabler/api_reference/dds_callbacks/cb_callbacks
+   /ddsenabler/api_reference/dds_callbacks/callbacks

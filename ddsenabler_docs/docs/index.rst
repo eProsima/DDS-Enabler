@@ -13,15 +13,17 @@
    /02-formalia/titlepage
 
 
-.. .. _index_installation:
+.. _index_installation:
 
-.. .. toctree::
-..    :caption: Installation Manual
-..    :maxdepth: 2
-..    :numbered: 5
-..    :hidden:
+.. toctree::
+   :caption: Installation Manual
+   :maxdepth: 2
+   :numbered: 5
+   :hidden:
 
-..    Linux </installation/linux.rst>
+   Linux installation from sources </ddsenabler/installation/linux.rst>
+   Windows installation from sources </ddsenabler/installation/windows.rst>
+   CMake Options </ddsenabler/installation/cmake_options.rst>
 
 
 .. .. _index_getting_started:
