@@ -34,18 +34,11 @@ The installation of *eProsima DDS Enabler* in a Linux environment from sources r
 
 * CMake, g++, pip, wget and git
 * Colcon [optional, for colcon installation only]
-* Gtest [optional, for test only]
-
-.. note::
-    By default, *eProsima DDS Enabler* does not compile tests.
-    It is possible to activate them with the opportune `CMake options <https://colcon.readthedocs.io/en/released/reference/verb/build.html#cmake-options>`_ when calling colcon_ or CMake_.
-    For more details, please refer to the :ref:`cmake_options` section.
 
 .. code-block:: bash
 
     sudo apt install cmake g++ pip wget git
     pip3 install -U colcon-common-extensions vcstool # optional, for colcon installation only
-    git clone --branch release-1.12.0 https://github.com/google/googletest src/googletest-distribution # optional, for test only
 
 .. _dependencies:
 
@@ -60,22 +53,38 @@ Dependencies
 
 .. code-block:: bash
 
-    sudo apt install libasio-dev libtinyxml2-dev
-    sudo apt install libssl-dev
-    sudo apt install libyaml-cpp-dev
+    sudo apt install libasio-dev libtinyxml2-dev libssl-dev libyaml-cpp-dev
 
 .. _eprosima_dependencies:
 
 eProsima dependencies
 ^^^^^^^^^^^^^^^^^^^^^
 
-If it already exists in the system an installation of *Fast DDS* and *DDS Pipe* libraries, just source this libraries when building *eProsima DDS Enabler* by running the following commands.
+If it already exists in the system an installation of *Fast DDS* and *DDS Pipe* libraries, just source these libraries when building *eProsima DDS Enabler* by running the following commands.
 In other case, just skip this step.
 
 .. code-block:: bash
 
     source <fastdds-installation-path>/install/setup.bash
     source <ddspipe-installation-path>/install/setup.bash
+
+.. _gtest_sl:
+
+Gtest
+^^^^^
+
+Gtest_ is a unit testing library for C++.
+By default, *eProsima DDS Enabler* does not compile tests.
+It is possible to activate them with the opportune `CMake options <https://colcon.readthedocs.io/en/released/reference/verb/build.html#cmake-options>`_ when calling colcon_ or CMake_.
+For more details, please refer to the :ref:`cmake_options` section.
+For a detailed description of the Gtest_ installation process, please refer to the `Gtest Installation Guide <https://github.com/google/googletest>`_.
+
+It is also possible to clone the Gtest_ Github repository into the *eProsima DDS Enabler* workspace and compile it with colcon_ as a dependency package.
+Use the following command to download the code:
+
+.. code-block:: bash
+
+    git clone --branch release-1.12.0 https://github.com/google/googletest src/googletest-distribution
 
 
 
