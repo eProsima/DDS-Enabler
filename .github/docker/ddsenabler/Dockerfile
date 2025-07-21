@@ -53,7 +53,7 @@ RUN echo "fastcdr branch: <${fastcdr_branch}>" && \
     echo "ddsenabler branch: <${ddsenabler_branch}>"
 
 RUN mkdir src && \
-    wget https://raw.githubusercontent.com/eProsima/FIWARE-DDS-Enabler/${ddsenabler_branch}/ddsenabler.repos && \
+    wget https://raw.githubusercontent.com/eProsima/DDS-Enabler/${ddsenabler_branch}/ddsenabler.repos && \
     vcs import src < ddsenabler.repos && \
     cd src/fastcdr && git checkout ${fastcdr_branch} && cd ../.. && \
     cd src/fastdds && git checkout ${fastdds_branch} && cd ../.. && \

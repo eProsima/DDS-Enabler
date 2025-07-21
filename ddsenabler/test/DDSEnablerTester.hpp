@@ -35,7 +35,7 @@ using namespace eprosima::fastdds::dds;
 #define TEST_SERVICE_NAME "add_two_ints"
 #define TEST_ACTION_NAME "fibonacci/_action/"
 
-#define TEST_FILE_DIRECTORY "/home/eugenio/Documents/enabler_suite/fast_suite/src/FIWARE-DDS-Enabler/ddsenabler/test/test_files/"
+#define TEST_FILE_DIRECTORY "/home/eugenio/Documents/enabler_suite/fast_suite/src/DDS-Enabler/ddsenabler/test/test_files/"
 #define TEST_SERVICE_FILE "test_service.json"
 #define TEST_ACTION_FILE "test_action.json"
 
