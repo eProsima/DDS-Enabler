@@ -225,6 +225,10 @@ CMake installation
 
 This section explains how to compile *eProsima DDS Enabler* with CMake_, either :ref:`locally <windows_sources_local_installation>` or :ref:`globally <windows_sources_global_installation>`.
 
+.. note::
+
+    This section is not required if you have already installed the *eProsima DDS Enabler* using Colcon.
+
 .. _windows_sources_local_installation:
 
 Local installation
