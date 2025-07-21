@@ -32,60 +32,20 @@ Requirements
 
 The installation of *eProsima DDS Enabler* in a Linux environment from sources requires the following tools to be installed in the system:
 
-* :ref:`cmake_gcc_pip_wget_git_sl`
-* :ref:`colcon_install` [optional]
-* :ref:`gtest_sl` [for test only]
+* CMake, g++, pip, wget and git
+* Colcon [optional, for colcon installation only]
+* Gtest [optional, for test only]
 
-
-.. _cmake_gcc_pip_wget_git_sl:
-
-CMake, g++, pip, wget and git
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-These packages provide the tools required to install *eProsima DDS Enabler* and its dependencies from command line.
-Install CMake_, `g++ <https://gcc.gnu.org/>`_, pip_, wget_ and git_ using the package manager of the appropriate Linux distribution.
-For example, on Ubuntu use the command:
+.. note::
+    By default, *eProsima DDS Enabler* does not compile tests.
+    It is possible to activate them with the opportune `CMake options <https://colcon.readthedocs.io/en/released/reference/verb/build.html#cmake-options>`_ when calling colcon_ or CMake_.
+    For more details, please refer to the :ref:`cmake_options` section.
 
 .. code-block:: bash
 
     sudo apt install cmake g++ pip wget git
-
-
-.. _colcon_install:
-
-Colcon
-^^^^^^
-
-colcon_ is a command line tool based on CMake_ aimed at building sets of software packages.
-Install the ROS 2 development tools (colcon_ and vcstool_) by executing the following command:
-
-.. code-block:: bash
-
-    pip3 install -U colcon-common-extensions vcstool
-
-.. note::
-
-    If this fails due to an Environment Error, add the :code:`--user` flag to the :code:`pip3` installation command.
-
-
-.. _gtest_sl:
-
-Gtest
-^^^^^
-
-Gtest_ is a unit testing library for C++.
-By default, *eProsima DDS Enabler* does not compile tests.
-It is possible to activate them with the opportune `CMake options <https://colcon.readthedocs.io/en/released/reference/verb/build.html#cmake-options>`_ when calling colcon_ or CMake_.
-For more details, please refer to the :ref:`cmake_options` section.
-For a detailed description of the Gtest_ installation process, please refer to the `Gtest Installation Guide <https://github.com/google/googletest>`_.
-
-It is also possible to clone the Gtest_ Github repository into the *eProsima DDS Enabler* workspace and compile it with colcon_ as a dependency package.
-Use the following command to download the code:
-
-.. code-block:: bash
-
-    git clone --branch release-1.12.0 https://github.com/google/googletest src/googletest-distribution
-
+    pip3 install -U colcon-common-extensions vcstool # optional, for colcon installation only
+    git clone --branch release-1.12.0 https://github.com/google/googletest src/googletest-distribution # optional, for test only
 
 .. _dependencies:
 
@@ -94,50 +54,15 @@ Dependencies
 
 *eProsima DDS Enabler* has the following dependencies, when installed from sources in a Linux environment:
 
-* :ref:`asiotinyxml2_sl`
-* :ref:`openssl_sl`
-* :ref:`yaml_cpp`
-* :ref:`eprosima_dependencies`
-
-.. _asiotinyxml2_sl:
-
-Asio and TinyXML2 libraries
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Asio is a cross-platform C++ library for network and low-level I/O programming, which provides a consistent asynchronous model.
-TinyXML2 is a simple, small and efficient C++ XML parser.
-Install these libraries using the package manager of the appropriate Linux distribution.
-For example, on Ubuntu use the command:
+* Asio and TinyXML2 libraries
+* OpenSSL library
+* YAML-CPP library
 
 .. code-block:: bash
 
     sudo apt install libasio-dev libtinyxml2-dev
-
-.. _openssl_sl:
-
-OpenSSL
-^^^^^^^
-
-OpenSSL is a robust toolkit for the TLS and SSL protocols and a general-purpose cryptography library.
-Install OpenSSL_ using the package manager of the appropriate Linux distribution.
-For example, on Ubuntu use the command:
-
-.. code-block:: bash
-
-   sudo apt install libssl-dev
-
-.. _yaml_cpp:
-
-yaml-cpp
-^^^^^^^^
-
-yaml-cpp is a YAML parser and emitter in C++ matching the YAML 1.2 spec, and is used by *eProsima DDS Enabler* application to parse the provided configuration files.
-Install yaml-cpp using the package manager of the appropriate Linux distribution.
-For example, on Ubuntu use the command:
-
-.. code-block:: bash
-
-   sudo apt install libyaml-cpp-dev
+    sudo apt install libssl-dev
+    sudo apt install libyaml-cpp-dev
 
 .. _eprosima_dependencies:
 
