@@ -1,4 +1,3 @@
-
 What is DDS Enabler?
 ^^^^^^^^^^^^^^^^^^^^
 
@@ -31,9 +30,9 @@ Key features
 - **Flexible YAML Configuration**
   Fine-tune QoS, network filters, topic allow-listing/deny-listing and discovery via a human-readable YAML file.
 - **Dynamic Types via XTypes**
-  Leverage [OMG DDS-XTypes 1.3](https://www.omg.org/spec/DDS-XTypes/1.3) and Fast DDS serialization utilities for runtime type registration and discovery.
+  Leverage `OMG DDS-XTypes 1.3 <https://www.omg.org/spec/DDS-XTypes/1.3>`_ and Fast DDS serialization utilities for runtime type registration and discovery.
 - **Core Engine Powered by DDS-Pipe**
-  Built on [eProsima DDS Pipe](https://github.com/eProsima/DDS-Pipe), ensuring low-latency, high-throughput payload forwarding and reliable discovery across distributed systems.
+  Built on `eProsima DDS Pipe <https://github.com/eProsima/DDS-Pipe>`_, ensuring low-latency, high-throughput payload forwarding and reliable discovery across distributed systems.
 - **Serialization Utilities**
   Convert DDS data to JSON and vice versa for REST integration and to human-readable IDL.
 
