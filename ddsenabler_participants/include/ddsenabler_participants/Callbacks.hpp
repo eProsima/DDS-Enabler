@@ -155,22 +155,6 @@ typedef void (* ServiceNotification)(
         const char* reply_serialized_qos);
 
 /**
- * @brief Callback for reception of RPC reply data.
- *
- * This callback is used to notify the reception of a reply for a specific service.
- *
- * @param [in] service_name The name of the service for which the reply was received.
- * @param [in] json The JSON data received in the reply.
- * @param [in] request_id The unique identifier of the request for which this is a reply.
- * @param [in] publish_time The time at which the reply was published.
- */
-typedef void (* ServiceReplyNotification)(
-        const char* service_name,
-        const char* json,
-        uint64_t request_id,
-        int64_t publish_time);
-
-/**
  * @brief Callback for reception of service request data.
  *
  * This callback is used to notify the reception of a request for a specific service.
@@ -183,6 +167,22 @@ typedef void (* ServiceReplyNotification)(
  * @note The request_id is unique for each request and must be later used to identify the reply.
  */
 typedef void (* ServiceRequestNotification)(
+        const char* service_name,
+        const char* json,
+        uint64_t request_id,
+        int64_t publish_time);
+
+/**
+ * @brief Callback for reception of RPC reply data.
+ *
+ * This callback is used to notify the reception of a reply for a specific service.
+ *
+ * @param [in] service_name The name of the service for which the reply was received.
+ * @param [in] json The JSON data received in the reply.
+ * @param [in] request_id The unique identifier of the request for which this is a reply.
+ * @param [in] publish_time The time at which the reply was published.
+ */
+typedef void (* ServiceReplyNotification)(
         const char* service_name,
         const char* json,
         uint64_t request_id,
