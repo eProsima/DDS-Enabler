@@ -164,6 +164,10 @@ static void test_service_notification_callback(
             app_cv_.notify_all();
         }
     }
+    else
+    {
+        std::cout << "Ignoring service callback for: " << service_name << std::endl;
+    }
 }
 
 // Static service query callback
