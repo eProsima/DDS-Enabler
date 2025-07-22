@@ -189,6 +189,10 @@ static void test_action_notification_callback(
             app_cv_.notify_all();
         }
     }
+    else
+    {
+        std::cout << "Ignoring action callback for: " << action_name << std::endl;
+    }
 }
 
 // Static action query callback
