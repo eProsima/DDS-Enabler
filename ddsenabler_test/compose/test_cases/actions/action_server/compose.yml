@@ -11,7 +11,7 @@ services:
     volumes:
       - ./config.yml:/config/config.yml
       - ../persistence:/persistence
-    command: ./build/ddsenabler/examples/action/ddsenabler_example_action --announce-server true --persistence-path /persistence --config /config/config.yml --expected-requests 3
+    command: ./build/ddsenabler/examples/action/ddsenabler_example_action -server --persistence-path /persistence --config /config/config.yml --expected-requests 3
 
   fibonacci_client_1:
     image: ${DDSENABLER_COMPOSE_TEST_ROS2_DOCKER_IMAGE}
