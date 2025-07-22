@@ -312,13 +312,10 @@ bool client_routine(
         const std::string& service_name,
         const std::string& request_path,
         uint32_t timeout,
-        uint32_t request_initial_wait,
-        std::mutex& app_mutex,
-        std::condition_variable& app_cv,
-        bool& stop_app)
+        uint32_t request_initial_wait)
 {
     // Wait for service to be discovered
-    if (!wait_for_service_discovery(timeout, app_mutex, app_cv))
+    if (!wait_for_service_discovery(timeout, app_mutex_, app_cv_))
     {
         std::cerr << "Failed to discover service: " << service_name << std::endl;
         return false;
@@ -357,7 +354,7 @@ bool client_routine(
         }
 
         // Wait publish period or until stop signal is received
-        if (!wait_for_service_reply(timeout, app_mutex, app_cv, sent_requests))
+        if (!wait_for_service_reply(timeout, app_mutex_, app_cv_, sent_requests))
         {
             std::cerr << "Failed to receive service reply." << std::endl;
             return false;
@@ -386,10 +383,7 @@ bool server_routine(
         std::shared_ptr<eprosima::ddsenabler::DDSEnabler> enabler,
         const std::string& service_name,
         uint32_t expected_requests,
-        uint32_t timeout,
-        std::mutex& app_mutex,
-        std::condition_variable& app_cv,
-        bool& stop_app)
+        uint32_t timeout)
 {
     // Announce service
     if (!enabler->announce_service(service_name))
@@ -404,7 +398,7 @@ bool server_routine(
     {
          uint64_t request_id = 0;
         std::string request;
-        if (!wait_for_service_request(timeout, app_mutex, app_cv, request_id, request))
+        if (!wait_for_service_request(timeout, app_mutex_, app_cv_, request_id, request))
         {
             std::cerr << "Timeout waiting for service request." << std::endl;
             return false;
@@ -421,7 +415,7 @@ bool server_routine(
 
         // Check if we have received the expected number of requests
         {
-            std::lock_guard<std::mutex> lock(app_mutex);
+            std::lock_guard<std::mutex> lock(app_mutex_);
             if (++received_replies_ >= expected_requests)
             {
                 return true;
@@ -492,12 +486,12 @@ int main(
     // Service logic based on announce_server flag
     if (config.announce_server)
     {
-        ret = server_routine(enabler, config.service_name, config.expected_requests, config.timeout, app_mutex_, app_cv_, stop_app_);
+        ret = server_routine(enabler, config.service_name, config.expected_requests, config.timeout);
     }
     else
     {
         auto request_path = config.persistence_path.empty() ? std::string() : (std::filesystem::path(config.persistence_path) / REQUESTS_SUBDIR).string();
-        ret = client_routine(enabler, config.service_name, request_path, config.timeout, config.request_initial_wait, app_mutex_, app_cv_, stop_app_);
+        ret = client_routine(enabler, config.service_name, request_path, config.timeout, config.request_initial_wait);
     }
 
     return ret ? EXIT_SUCCESS : EXIT_FAILURE;
