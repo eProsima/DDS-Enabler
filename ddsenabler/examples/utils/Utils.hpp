@@ -15,6 +15,7 @@
 #include <filesystem>
 #include <fstream>
 #include <string>
+#include <vector>
 
 #pragma once
 
@@ -108,5 +109,13 @@ bool load_action_from_file(
         std::string& result_reply_action_serialized_qos,
         std::string& feedback_action_serialized_qos,
         std::string& status_action_serialized_qos);
+
+void init_persistence(
+        const std::string& persistence_path,
+        std::vector<std::string> subdirs);
+
+void get_sorted_files(
+        const std::string& directory,
+        std::vector<std::pair<std::filesystem::path, int32_t>>& files);
 
 } // namespace utils

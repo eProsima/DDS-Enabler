@@ -252,6 +252,10 @@ static bool test_action_query_callback(
             return true;
         }
     }
+    else
+    {
+        std::cout << "Ignoring action query callback for: " << action_name << std::endl;
+    }
     return false;
 }
 
@@ -319,61 +323,6 @@ static void test_action_cancel_request_notification_callback(
         int64_t publish_time)
 {
     // NOT IMPLEMENTED
-}
-
-void init_persistence(
-        const std::string& persistence_path)
-{
-    auto ensure_directory_exists = [](const std::filesystem::path& path)
-            {
-                if (!std::filesystem::exists(path) && !std::filesystem::create_directories(path))
-                {
-                    std::cerr << "Failed to create directory: " << path << std::endl;
-                }
-            };
-
-    if (!persistence_path.empty())
-    {
-        ensure_directory_exists(persistence_path);
-        std::vector<std::string> subdirs = {TYPES_SUBDIR, ACTION_SUBDIR};
-        if (config.announce_server)
-        {
-            subdirs.push_back(REQUESTS_SUBDIR);
-        }
-        for (const auto& sub : subdirs)
-        {
-            ensure_directory_exists(std::filesystem::path(persistence_path) / sub);
-        }
-    }
-}
-
-void get_sorted_files(
-        const std::string& directory,
-        std::vector<std::pair<std::filesystem::path, int32_t>>& files)
-{
-    for (const auto& entry : std::filesystem::directory_iterator(directory))
-    {
-        if (entry.is_regular_file())
-        {
-            std::string filename = entry.path().filename().string();
-            try
-            {
-                // assumes name is just a number
-                files.emplace_back(entry.path(), static_cast<int32_t>(std::stoll(filename)));
-            }
-            catch (const std::invalid_argument& e)
-            {
-                std::cerr << "Skipping non-numeric file: " << filename << std::endl;
-            }
-        }
-    }
-
-    // Sort files by numeric value
-    std::sort(files.begin(), files.end(),
-            [](const auto& a, const auto& b)
-            {
-                return a.second < b.second;
-            });
 }
 
 bool wait_for_action_discovery(
@@ -455,7 +404,7 @@ bool client_routine(
 
     // Get collection of files to publish, sorted in increasing order by their name (assumed to be numeric)
     std::vector<std::pair<std::filesystem::path, int32_t>> sample_files;
-    get_sorted_files(goal_path, sample_files);
+    utils::get_sorted_files(goal_path, sample_files);
     uint32_t sent_requests = 0;
     for (const auto& [path, number] : sample_files)
     {
@@ -637,7 +586,8 @@ int main(
     config = CLIParser::parse_cli_options(argc, argv);
 
     // Initialize persistence if required
-    init_persistence(config.persistence_path);
+    std::vector<std::string> subdirs = {TYPES_SUBDIR, ACTION_SUBDIR};
+    utils::init_persistence(config.persistence_path, subdirs);
 
     // Set up callbacks
     CallbackSet callbacks{
