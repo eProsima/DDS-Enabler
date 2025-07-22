@@ -22,32 +22,11 @@
 #include <memory>
 #include <string>
 
+#include "RpcTypes.hpp"
+
 namespace eprosima {
 namespace ddsenabler {
 namespace participants {
-
-using UUID = std::array<uint8_t, 16>;
-
-enum STATUS_CODE {
-        STATUS_UNKNOWN = 0,
-        STATUS_ACCEPTED,
-        STATUS_EXECUTING,
-        STATUS_CANCELING,
-        STATUS_SUCCEEDED,
-        STATUS_CANCELED,
-        STATUS_ABORTED,
-        STATUS_REJECTED,
-        STATUS_TIMEOUT,
-        STATUS_FAILED,
-        STATUS_CANCEL_REQUEST_FAILED
-    };
-
-enum CANCEL_CODE {
-        ERROR_NONE = 0,
-        ERROR_REJECTED,
-        ERROR_UNKNOWN_GOAL_ID,
-        ERROR_GOAL_TERMINATED
-};
 
 /**
  * DdsLogFunc - callback executed when consuming log messages
