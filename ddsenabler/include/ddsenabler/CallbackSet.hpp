@@ -67,13 +67,13 @@ struct ActionCallbacks
     //! Callback for notifying the reception of action goal requests
     participants::ActionGoalRequestNotification action_goal_request_notification{nullptr};
 
-    //! Callback for notifying the reception of action goal responses
+    //! Callback for notifying the reception of action feedback
     participants::ActionFeedbackNotification action_feedback_notification{nullptr};
 
-    //! Callback for notifying the reception of action goal results
+    //! Callback for notifying the reception of action cancel requests
     participants::ActionCancelRequestNotification action_cancel_request_notification{nullptr};
 
-    //! Callback for notifying the reception of action goal results
+    //! Callback for notifying the reception of action results
     participants::ActionResultNotification action_result_notification{nullptr};
 
     //! Callback for notifying the reception of action status notifications
