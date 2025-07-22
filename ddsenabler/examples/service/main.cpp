@@ -178,26 +178,41 @@ static bool test_service_query_callback(
         std::string& reply_type_name,
         std::string& reply_serialized_qos)
 {
-    app_cv_.notify_all();
+    std::lock_guard<std::mutex> lock(app_mutex_);
 
-    std::cout << "Service type request callback received: " << service_name << std::endl;
-
-    std::string service_file = (std::filesystem::path(
-            config.persistence_path) /
-            SERVICES_SUBDIR
-            ).string();
-    if (utils::load_service_from_file(
-                service_file,
-                service_name,
-                request_type_name,
-                reply_type_name,
-                request_serialized_qos,
-                reply_serialized_qos))
+    if (config.persistence_path.empty())
     {
-        return true;
+        std::cerr << "Persistence path is not set, cannot query service: " << service_name << std::endl;
+        return false;
     }
-    std::cout << "ERROR Tester: fail to load service from file: " << service_file << std::endl;
-    return false;
+
+    if (config.service_name == std::string(service_name))
+    {
+        std::cout << "Service type request callback received: " << service_name << std::endl;
+
+        std::string service_file = (std::filesystem::path(
+                config.persistence_path) /
+                SERVICES_SUBDIR
+                ).string();
+        if (utils::load_service_from_file(
+                    service_file,
+                    service_name,
+                    request_type_name,
+                    reply_type_name,
+                    request_serialized_qos,
+                    reply_serialized_qos))
+        {
+            app_cv_.notify_all();
+            return true;
+        }
+        std::cout << "ERROR: fail to load service from file: " << service_file << std::endl;
+        return false;
+    }
+    else
+    {
+        std::cout << "Ignoring service type request callback for: " << service_name << std::endl;
+        return false;
+    }
 }
 
 // Static service reply notification callback
@@ -227,61 +242,6 @@ static void test_service_request_notification_callback(
     std::cout << "Request callback received with id: " << request_id << " for service: " << service_name << std::endl;
     received_requests_.emplace_back(request_id, json);
     app_cv_.notify_all();
-}
-
-void init_persistence(
-        const std::string& persistence_path)
-{
-    auto ensure_directory_exists = [](const std::filesystem::path& path)
-            {
-                if (!std::filesystem::exists(path) && !std::filesystem::create_directories(path))
-                {
-                    std::cerr << "Failed to create directory: " << path << std::endl;
-                }
-            };
-
-    if (!persistence_path.empty())
-    {
-        ensure_directory_exists(persistence_path);
-        std::vector<std::string> subdirs = {TYPES_SUBDIR, SERVICES_SUBDIR};
-        if (config.announce_server)
-        {
-            subdirs.push_back(REQUESTS_SUBDIR);
-        }
-        for (const auto& sub : subdirs)
-        {
-            ensure_directory_exists(std::filesystem::path(persistence_path) / sub);
-        }
-    }
-}
-
-void get_sorted_files(
-        const std::string& directory,
-        std::vector<std::pair<std::filesystem::path, int32_t>>& files)
-{
-    for (const auto& entry : std::filesystem::directory_iterator(directory))
-    {
-        if (entry.is_regular_file())
-        {
-            std::string filename = entry.path().filename().string();
-            try
-            {
-                // assumes name is just a number
-                files.emplace_back(entry.path(), static_cast<int32_t>(std::stoll(filename)));
-            }
-            catch (const std::invalid_argument& e)
-            {
-                std::cerr << "Skipping non-numeric file: " << filename << std::endl;
-            }
-        }
-    }
-
-    // Sort files by numeric value
-    std::sort(files.begin(), files.end(),
-            [](const auto& a, const auto& b)
-            {
-                return a.second < b.second;
-            });
 }
 
 bool wait_for_service_discovery(
@@ -362,7 +322,7 @@ bool client_routine(
 
     // Get collection of files to publish, sorted in increasing order by their name (assumed to be numeric)
     std::vector<std::pair<std::filesystem::path, int32_t>> sample_files;
-    get_sorted_files(request_path, sample_files);
+    utils::get_sorted_files(request_path, sample_files);
     uint32_t sent_requests = 0;
     for (const auto& [path, number] : sample_files)
     {
@@ -495,7 +455,8 @@ int main(
     config = CLIParser::parse_cli_options(argc, argv);
 
     // Initialize persistence if required
-    init_persistence(config.persistence_path);
+    std::vector<std::string> subdirs = {TYPES_SUBDIR, SERVICES_SUBDIR};
+    utils::init_persistence(config.persistence_path, subdirs);
 
     // Set up callbacks
     CallbackSet callbacks{

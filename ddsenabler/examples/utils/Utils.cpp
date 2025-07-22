@@ -596,5 +596,56 @@ bool load_action_from_file(
     return true;
 }
 
+void init_persistence(
+        const std::string& persistence_path,
+        std::vector<std::string> subdirs)
+{
+    auto ensure_directory_exists = [](const std::filesystem::path& path)
+            {
+                if (!std::filesystem::exists(path) && !std::filesystem::create_directories(path))
+                {
+                    std::cerr << "Failed to create directory: " << path << std::endl;
+                }
+            };
+
+    if (!persistence_path.empty())
+    {
+        ensure_directory_exists(persistence_path);
+        for (const auto& sub : subdirs)
+        {
+            ensure_directory_exists(std::filesystem::path(persistence_path) / sub);
+        }
+    }
+}
+
+void get_sorted_files(
+        const std::string& directory,
+        std::vector<std::pair<std::filesystem::path, int32_t>>& files)
+{
+    for (const auto& entry : std::filesystem::directory_iterator(directory))
+    {
+        if (entry.is_regular_file())
+        {
+            std::string filename = entry.path().filename().string();
+            try
+            {
+                // assumes name is just a number
+                files.emplace_back(entry.path(), static_cast<int32_t>(std::stoll(filename)));
+            }
+            catch (const std::invalid_argument& e)
+            {
+                std::cerr << "Skipping non-numeric file: " << filename << std::endl;
+            }
+        }
+    }
+
+    // Sort files by numeric value
+    std::sort(files.begin(), files.end(),
+            [](const auto& a, const auto& b)
+            {
+                return a.second < b.second;
+            });
+}
+
 
 } // namespace utils

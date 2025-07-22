@@ -216,57 +216,6 @@ bool expected_received(
     return validate_received(config);
 }
 
-void init_persistence(
-        const std::string& persistence_path)
-{
-    auto ensure_directory_exists = [](const std::filesystem::path& path)
-            {
-                if (!std::filesystem::exists(path) && !std::filesystem::create_directories(path))
-                {
-                    std::cerr << "Failed to create directory: " << path << std::endl;
-                }
-            };
-
-    if (!persistence_path.empty())
-    {
-        ensure_directory_exists(persistence_path);
-        std::vector<std::string> subdirs = {SAMPLES_SUBDIR, TYPES_SUBDIR, TOPICS_SUBDIR};
-        for (const auto& sub : subdirs)
-        {
-            ensure_directory_exists(std::filesystem::path(persistence_path) / sub);
-        }
-    }
-}
-
-void get_sorted_files(
-        const std::string& directory,
-        std::vector<std::pair<std::filesystem::path, int32_t>>& files)
-{
-    for (const auto& entry : std::filesystem::directory_iterator(directory))
-    {
-        if (entry.is_regular_file())
-        {
-            std::string filename = entry.path().filename().string();
-            try
-            {
-                // assumes name is just a number
-                files.emplace_back(entry.path(), static_cast<int32_t>(std::stoll(filename)));
-            }
-            catch (const std::invalid_argument& e)
-            {
-                std::cerr << "Skipping non-numeric file: " << filename << std::endl;
-            }
-        }
-    }
-
-    // Sort files by numeric value
-    std::sort(files.begin(), files.end(),
-            [](const auto& a, const auto& b)
-            {
-                return a.second < b.second;
-            });
-}
-
 void publish_routine(
         std::shared_ptr<eprosima::ddsenabler::DDSEnabler> enabler,
         const std::string& publish_path,
@@ -282,7 +231,7 @@ void publish_routine(
 
     // Get collection of files to publish, sorted in increasing order by their name (assumed to be numeric)
     std::vector<std::pair<std::filesystem::path, int32_t>> sample_files;
-    get_sorted_files(publish_path, sample_files);
+    utils::get_sorted_files(publish_path, sample_files);
 
     for (const auto& [path, number] : sample_files)
     {
@@ -342,7 +291,8 @@ int main(
 
     config = CLIParser::parse_cli_options(argc, argv);
 
-    init_persistence(config.persistence_path);
+    std::vector<std::string> subdirs = {SAMPLES_SUBDIR, TYPES_SUBDIR, TOPICS_SUBDIR};
+    utils::init_persistence(config.persistence_path, subdirs);
 
     CallbackSet callbacks{
         test_log_callback,
