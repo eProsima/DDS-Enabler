@@ -17,7 +17,8 @@ project(ddsenabler_example_service LANGUAGES CXX)
 
 add_executable(ddsenabler_example_service main.cpp)
 
-target_link_libraries(ddsenabler_example_service PRIVATE ddsenabler)
+target_include_directories(ddsenabler_example_service PRIVATE ${PROJECT_SOURCE_DIR}/../utils)
+target_link_libraries(ddsenabler_example_service PRIVATE ddsenabler utils)
 
 # Install rule
 install(TARGETS ddsenabler_example_service

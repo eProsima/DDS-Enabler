@@ -12,9 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Add subdirectories for examples
-add_subdirectory(utils)
-add_subdirectory(publish)
-add_subdirectory(service)
-add_subdirectory(action)
+cmake_minimum_required(VERSION 3.20)
+project(ddsenabler_example_utils LANGUAGES CXX)
 
+add_library(utils STATIC
+    Utils.cpp
+)
+
+target_include_directories(utils PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}
+)

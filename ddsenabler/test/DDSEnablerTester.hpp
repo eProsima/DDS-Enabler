@@ -23,7 +23,6 @@
 #include <fastdds/dds/xtypes/dynamic_types/DynamicTypeBuilder.hpp>
 #include <fastdds/dds/xtypes/dynamic_types/DynamicTypeBuilderFactory.hpp>
 #include <fastdds/dds/xtypes/type_representation/TypeObject.hpp>
-#include <ddsenabler_participants/Utils.hpp>
 
 #include "ddsenabler/dds_enabler_runner.hpp"
 
@@ -31,13 +30,6 @@ using namespace eprosima::ddspipe;
 using namespace eprosima::ddsenabler;
 using namespace eprosima::ddsenabler::participants;
 using namespace eprosima::fastdds::dds;
-
-#define TEST_SERVICE_NAME "add_two_ints"
-#define TEST_ACTION_NAME "fibonacci/_action/"
-
-#define TEST_FILE_DIRECTORY "/home/eugenio/Documents/enabler_suite/fast_suite/src/DDS-Enabler/ddsenabler/test/test_files/"
-#define TEST_SERVICE_FILE "test_service.json"
-#define TEST_ACTION_FILE "test_action.json"
 
 namespace ddsenablertester {
 
@@ -346,49 +338,6 @@ public:
             int category,
             const char* msg)
     {
-    }
-
-    // eprosima::ddsenabler::participants::ServiceTypeQuery type_req_callback;
-    static bool test_service_type_request_callback(
-            const char* service_name,
-            char*& request_type_name,
-            char*& request_serialized_qos,
-            char*& reply_type_name,
-            char*& reply_serialized_qos)
-    {
-        if (current_test_instance_)
-        {
-            std::lock_guard<std::mutex> lock(current_test_instance_->rpc_mutex_);
-
-            std::string service_file = TEST_FILE_DIRECTORY;
-            std::string request_type_name_str;
-            std::string reply_type_name_str;
-            std::string request_serialized_qos_str;
-            std::string reply_serialized_qos_str;
-            if (eprosima::ddsenabler::participants::utils::load_service_from_file(
-                    service_file,
-                    service_name,
-                    request_type_name_str,
-                    reply_type_name_str,
-                    request_serialized_qos_str,
-                    reply_serialized_qos_str))
-            {
-                request_type_name = new char[request_type_name_str.size() + 1];
-                std::strcpy(request_type_name, request_type_name_str.c_str());
-
-                reply_type_name = new char[reply_type_name_str.size() + 1];
-                std::strcpy(reply_type_name, reply_type_name_str.c_str());
-
-                request_serialized_qos = new char[request_serialized_qos_str.size() + 1];
-                std::strcpy(request_serialized_qos, request_serialized_qos_str.c_str());
-
-                reply_serialized_qos = new char[reply_serialized_qos_str.size() + 1];
-                std::strcpy(reply_serialized_qos, reply_serialized_qos_str.c_str());
-                return true;
-            }
-            std::cout << "ERROR DDSEnablerTester: fail to load service from file: " << service_file << std::endl;
-        }
-        return false;
     }
 
     int get_received_types()

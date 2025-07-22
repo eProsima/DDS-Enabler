@@ -28,7 +28,7 @@
 #include <thread>
 #include <vector>
 
-#include "ddsenabler_participants/Utils.hpp"
+#include <Utils.hpp>
 
 #include "ddsenabler/dds_enabler_runner.hpp"
 #include "ddsenabler/DDSEnabler.hpp"
@@ -88,7 +88,7 @@ static void test_type_notification_callback(
         std::cout << "Type callback received: " << type_name << ", Total types: " <<
             received_types_ << std::endl << serialized_type << std::endl << std::endl;
         if (!config.persistence_path.empty() &&
-                !eprosima::ddsenabler::participants::utils::save_type_to_file((std::filesystem::path(config.persistence_path) / TYPES_SUBDIR).string(), type_name,
+                !utils::save_type_to_file((std::filesystem::path(config.persistence_path) / TYPES_SUBDIR).string(), type_name,
                 serialized_type_internal, serialized_type_internal_size))
         {
             std::cerr << "Failed to save type: " << type_name << std::endl;
@@ -113,7 +113,7 @@ static bool test_type_query_callback(
     }
 
     // Load the type from file
-    if (!eprosima::ddsenabler::participants::utils::load_type_from_file((std::filesystem::path(config.persistence_path) / TYPES_SUBDIR).string(), type_name,
+    if (!utils::load_type_from_file((std::filesystem::path(config.persistence_path) / TYPES_SUBDIR).string(), type_name,
             serialized_type_internal, serialized_type_internal_size))
     {
         std::cerr << "Failed to load type: " << type_name << std::endl;
@@ -135,7 +135,7 @@ static void test_topic_notification_callback(
         std::cout << "Topic callback received: " << topic_name << " of type " << type_name << ", Total topics: " <<
             received_topics_ << std::endl << serialized_qos << std::endl << std::endl;
         if (!config.persistence_path.empty() &&
-                !eprosima::ddsenabler::participants::utils::save_topic_to_file((std::filesystem::path(config.persistence_path) / TOPICS_SUBDIR).string(),
+                !utils::save_topic_to_file((std::filesystem::path(config.persistence_path) / TOPICS_SUBDIR).string(),
                 topic_name,
                 type_name, serialized_qos))
         {
@@ -161,7 +161,7 @@ static bool test_topic_query_callback(
     }
 
     // Load the topic from file
-    if (!eprosima::ddsenabler::participants::utils::load_topic_from_file((std::filesystem::path(config.persistence_path) / TOPICS_SUBDIR).string(), topic_name,
+    if (!utils::load_topic_from_file((std::filesystem::path(config.persistence_path) / TOPICS_SUBDIR).string(), topic_name,
             type_name,
             serialized_qos))
     {
@@ -184,7 +184,7 @@ static void test_data_notification_callback(
         std::cout << "Data callback received: " << topic_name << ", Total data: " <<
             received_data_ << std::endl << json << std::endl << std::endl;
         if (!config.persistence_path.empty() &&
-                !eprosima::ddsenabler::participants::utils::save_data_to_file((std::filesystem::path(config.persistence_path) / SAMPLES_SUBDIR).string(),
+                !utils::save_data_to_file((std::filesystem::path(config.persistence_path) / SAMPLES_SUBDIR).string(),
                 topic_name, json,
                 publish_time))
         {

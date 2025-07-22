@@ -13,20 +13,16 @@
 // limitations under the License.
 
 /**
- * @file RpcUtils.cpp
+ * @file Utils.cpp
  */
 
-#include <ddsenabler_participants/Utils.hpp>
+#include "Utils.hpp"
 
 #include <nlohmann/json.hpp>
 #include <fstream>
 #include <random>
 #include <iostream>
 
-
-namespace eprosima {
-namespace ddsenabler {
-namespace participants {
 namespace utils {
 
 std::string safe_file_name(
@@ -602,6 +598,3 @@ bool load_action_from_file(
 
 
 } // namespace utils
-} // namespace participants
-} // namespace ddsenabler
-} // namespace eprosima
