@@ -346,7 +346,9 @@ bool wait_for_action_discovery(
 bool wait_for_action_request(
         uint32_t timeout,
         std::mutex& app_mutex,
-        std::condition_variable& app_cv)
+        std::condition_variable& app_cv,
+        eprosima::ddsenabler::participants::UUID& request_id,
+        std::string& goal_json)
 {
     std::unique_lock<std::mutex> lock(app_mutex);
     if (!app_cv.wait_for(lock, std::chrono::seconds(timeout),
@@ -358,6 +360,10 @@ bool wait_for_action_request(
         std::cerr << "Timeout waiting for service request." << std::endl;
         return false;
     }
+
+    request_id = received_requests_.back().first;
+    goal_json = received_requests_.back().second;
+    received_requests_.pop_back();
     return true;
 }
 
@@ -518,17 +524,15 @@ bool server_routine(
 
     while (true)
     {
-        if (!wait_for_action_request(timeout, app_mutex, app_cv))
+        eprosima::ddsenabler::participants::UUID request_id;
+        std::string goal_json;
+        if (!wait_for_action_request(timeout, app_mutex, app_cv, request_id, goal_json))
         {
             std::cerr << "Timeout waiting for action request." << std::endl;
             return false;
         }
 
-        // Pop the last request from the received requests vector
-        eprosima::ddsenabler::participants::UUID request_id = received_requests_.back().first;
-        std::string goal_json = received_requests_.back().second;
         uint64_t fibonacci_number = 5; // Default Fibonacci number, can be parsed from json if needed
-        received_requests_.pop_back();
         std::cout << "Received request for action: " << action_name << " with request ID: " << request_id << std::endl;
         std::this_thread::sleep_for(std::chrono::milliseconds(500)); // Simulate processing time
 

@@ -265,7 +265,9 @@ bool wait_for_service_discovery(
 bool wait_for_service_request(
         uint32_t timeout,
         std::mutex& app_mutex,
-        std::condition_variable& app_cv)
+        std::condition_variable& app_cv,
+        uint64_t& request_id,
+        std::string& request)
 {
     std::unique_lock<std::mutex> lock(app_mutex);
     if (!app_cv.wait_for(lock, std::chrono::seconds(timeout),
@@ -277,6 +279,11 @@ bool wait_for_service_request(
         std::cerr << "Timeout waiting for service request." << std::endl;
         return false;
     }
+
+    // Pop the last request from the received requests vector
+    request_id = received_requests_.back().first;
+    request = received_requests_.back().second;
+    received_requests_.pop_back();
     return true;
 }
 
@@ -395,16 +402,14 @@ bool server_routine(
 
     while (true)
     {
-        if (!wait_for_service_request(timeout, app_mutex, app_cv))
+         uint64_t request_id = 0;
+        std::string request;
+        if (!wait_for_service_request(timeout, app_mutex, app_cv, request_id, request))
         {
             std::cerr << "Timeout waiting for service request." << std::endl;
             return false;
         }
 
-        // Pop the last request from the received requests vector
-        uint64_t request_id = received_requests_.back().first;
-        std::string request = received_requests_.back().second;
-        received_requests_.pop_back();
         std::cout << "Received request for service: " << service_name << " with request ID: " << request_id << std::endl;
 
         // Example response
