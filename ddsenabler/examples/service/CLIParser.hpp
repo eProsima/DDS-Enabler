@@ -54,8 +54,8 @@ public:
         std::cout << "                                      (Default: '')"                                         << std::endl;
         std::cout << "--service-name <str>                  Name of the service to be registered"                  << std::endl;
         std::cout << "                                      (Default: 'add_two_ints')"                             << std::endl;
-        std::cout << "--announce-server <bool>               Whether to be server or client"                       << std::endl;
-        std::cout << "                                      (Default: true)"                                       << std::endl;
+        std::cout << "-client                               Run as a client (mutually exclusive with -server)"    << std::endl;
+        std::cout << "-server                               Run as a server (mutually exclusive with -client)"    << std::endl;
         std::cout << "--timeout <num>                       Time (seconds) to wait before stopping the"            << std::endl;
         std::cout << "                                      program if expectations are not met"                   << std::endl;
         std::cout << "                                      (Default: 30)"                                         << std::endl;
@@ -90,6 +90,9 @@ public:
             std::cerr << "Configuration file path is required" << std::endl;
             print_help(EXIT_FAILURE);
         }
+
+        bool client_flag = false;
+        bool server_flag = false;
 
         for (int i = 1; i < argc; ++i)
         {
@@ -128,19 +131,25 @@ public:
                     print_help(EXIT_FAILURE);
                 }
             }
-            else if (arg == "--announce-server")
+            else if (arg == "-client")
             {
-                if (++i < argc)
+                if (server_flag)
                 {
-                    config.announce_server = (std::string(argv[i]) == "true") ||
-                                             (std::string(argv[i]) == "True") ||
-                                             (std::string(argv[i]) == "1");
-                }
-                else
-                {
-                    std::cerr << "Failed to parse --announce-server argument" << std::endl;
+                    std::cerr << "Cannot specify both -client and -server flags" << std::endl;
                     print_help(EXIT_FAILURE);
                 }
+                client_flag = true;
+                config.announce_server = false;
+            }
+            else if (arg == "-server")
+            {
+                if (client_flag)
+                {
+                    std::cerr << "Cannot specify both -client and -server flags" << std::endl;
+                    print_help(EXIT_FAILURE);
+                }
+                server_flag = true;
+                config.announce_server = true;
             }
             else if (arg == "--timeout")
             {
@@ -219,6 +228,12 @@ public:
                 std::cerr << "Failed to parse unknown argument: " << arg << std::endl;
                 print_help(EXIT_FAILURE);
             }
+        }
+
+        if (!client_flag && !server_flag)
+        {
+            std::cerr << "Either -client or -server flag must be specified" << std::endl;
+            print_help(EXIT_FAILURE);
         }
 
         if (config.config_file_path.empty())
