@@ -28,7 +28,7 @@
 #include <thread>
 #include <vector>
 
-#include "ddsenabler_participants/Utils.hpp"
+#include <Utils.hpp>
 
 #include "ddsenabler/dds_enabler_runner.hpp"
 #include "ddsenabler/DDSEnabler.hpp"
@@ -80,7 +80,7 @@ static void test_type_notification_callback(
     std::lock_guard<std::mutex> lock(app_mutex_);
     std::cout << "Type callback received: " << type_name << std::endl;
     if (!config.persistence_path.empty() &&
-            !eprosima::ddsenabler::participants::utils::save_type_to_file((std::filesystem::path(config.persistence_path) / TYPES_SUBDIR).string(), type_name,
+            !utils::save_type_to_file((std::filesystem::path(config.persistence_path) / TYPES_SUBDIR).string(), type_name,
             serialized_type_internal, serialized_type_internal_size))
     {
         std::cerr << "Failed to save type: " << type_name << std::endl;
@@ -100,7 +100,7 @@ static bool test_type_query_callback(
     }
 
     // Load the type from file
-    if (!eprosima::ddsenabler::participants::utils::load_type_from_file((std::filesystem::path(config.persistence_path) / TYPES_SUBDIR).string(), type_name,
+    if (!utils::load_type_from_file((std::filesystem::path(config.persistence_path) / TYPES_SUBDIR).string(), type_name,
             serialized_type_internal, serialized_type_internal_size))
     {
         std::cerr << "Failed to load type: " << type_name << std::endl;
@@ -152,7 +152,7 @@ static void test_service_notification_callback(
                 ).string();
         if (!config.persistence_path.empty())
         {
-            eprosima::ddsenabler::participants::utils::save_service_to_file(
+            utils::save_service_to_file(
                 service_file,
                 service_name,
                 request_type_name,
@@ -182,7 +182,7 @@ static bool test_service_query_callback(
             config.persistence_path) /
             SERVICES_SUBDIR
             ).string();
-    if (eprosima::ddsenabler::participants::utils::load_service_from_file(
+    if (utils::load_service_from_file(
                 service_file,
                 service_name,
                 request_type_name,

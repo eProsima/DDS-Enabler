@@ -16,13 +16,8 @@
 #include <fstream>
 #include <string>
 
-#include <nlohmann/json.hpp>
-
 #pragma once
 
-namespace eprosima {
-namespace ddsenabler {
-namespace participants {
 namespace utils {
 
 std::string safe_file_name(
@@ -115,6 +110,3 @@ bool load_action_from_file(
         std::string& status_action_serialized_qos);
 
 } // namespace utils
-} // namespace participants
-} // namespace ddsenabler
-} // namespace eprosima
