@@ -109,15 +109,96 @@ RpcType get_service_direction(RpcType rpc_type);
  */
 ActionType get_action_type(RpcType rpc_type);
 
+/**
+ * @brief Generates a UUID.
+ *
+ * @return A new UUID.
+ */
 UUID generate_UUID();
 
+// ROS 2 ACTION MSGS
 /**
  * @brief Creates a JSON string for sending a goal request.
  *
  * @param goal_json The JSON string representing the goal (without the UUID part).
  * @return The JSON string for sending the goal request.
  */
-std::string make_send_goal_request_json(const std::string& goal_json, UUID& goal_id);
+std::string create_goal_request_msg(const std::string& goal_json, UUID& goal_id);
+
+/**
+ * @brief Creates a JSON string for sending a goal reply.
+ *
+ * @param accepted Indicates whether the goal was accepted or not.
+ * @return A JSON string representing the goal reply.
+ */
+std::string create_goal_reply_msg(
+        bool accepted);
+
+/**
+ * @brief Creates a cancel message for an action.
+ *
+ * @param goal_id The UUID of the goal to cancel.
+ * @param timestamp The timestamp for canceling logic.
+ * @return A JSON string representing the cancel message.
+ */
+std::string create_cancel_request_msg(
+        const UUID& goal_id,
+        const int64_t timestamp);
+
+/**
+ * @brief Creates a cancel reply message for an action.
+ *
+ * @param cancelling_goals A vector of pairs containing the UUIDs of the goals to cancel and their timestamps.
+ * @param cancel_code The cancel code indicating the result of the cancellation.
+ * @return A JSON string representing the cancel reply message.
+ */
+std::string create_cancel_reply_msg(
+        std::vector<std::pair<UUID, std::chrono::system_clock::time_point>> cancelling_goals,
+        const CANCEL_CODE& cancel_code);
+
+/**
+ * @brief Creates a result request message for an action.
+ *
+ * @param goal_id The UUID of the goal for which the result is being requested.
+ * @return A JSON string representing the result request message.
+ */
+std::string create_result_request_msg(
+        const UUID& goal_id);
+
+/**
+ * @brief Creates a result reply message for an action.
+ *
+ * @param status_code The status code of the action result.
+ * @param json The JSON string representing the result.
+ * @return A JSON string representing the result reply message.
+ */
+std::string create_result_reply_msg(
+        const STATUS_CODE& status_code,
+        const char* json);
+
+/**
+ * @brief Creates a feedback message for an action.
+ *
+ * @param json The JSON string representing the feedback.
+ * @param goal_id The UUID of the goal for which the feedback is being sent.
+ * @return A JSON string representing the feedback message.
+ */
+std::string create_feedback_msg(
+        const char* json,
+        const UUID& goal_id);
+
+/**
+ * @brief Creates a status message for an action.
+ *
+ * @param goal_id The UUID of the goal.
+ * @param status_code The status code of the action.
+ * @param goal_accepted_stamp The timestamp when the goal was accepted.
+ * @return A JSON string representing the status message.
+ */
+std::string create_status_msg(
+        const UUID& goal_id,
+        const STATUS_CODE& status_code,
+        std::chrono::system_clock::time_point goal_accepted_stamp);
 
 } // namespace RpcUtils
 } // namespace participants

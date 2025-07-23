@@ -28,6 +28,9 @@ constexpr const char* QOS_SERIALIZATION_DURABILITY("durability");
 constexpr const char* QOS_SERIALIZATION_OWNERSHIP("ownership");
 constexpr const char* QOS_SERIALIZATION_KEYED("keyed");
 
+// Topic mangling
+constexpr const char* TOPIC_PREFIX("rt/");
+
 // Service mangling
 constexpr const char* REQUEST_PREFIX("rq/");
 constexpr const char* REQUEST_SUFFIX("Request");
@@ -38,8 +41,8 @@ constexpr const char* REPLY_SUFFIX("Reply");
 constexpr const char* ACTION_GOAL_SUFFIX("send_goal");
 constexpr const char* ACTION_RESULT_SUFFIX("get_result");
 constexpr const char* ACTION_CANCEL_SUFFIX("cancel_goal");
-constexpr const char* ACTION_FEEDBACK_SUFFIX("/feedback");
-constexpr const char* ACTION_STATUS_SUFFIX("/status");
+constexpr const char* ACTION_FEEDBACK_SUFFIX("feedback");
+constexpr const char* ACTION_STATUS_SUFFIX("status");
 
 } /* namespace participants */
 } /* namespace ddsenabler */
