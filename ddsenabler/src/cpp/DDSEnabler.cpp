@@ -296,14 +296,13 @@ bool DDSEnabler::send_service_request(
     const std::string& json,
     uint64_t& request_id)
 {
-    sent_request_id_++;
+    request_id = handler_->get_new_request_id();
     if (!enabler_participant_->publish_rpc(
             std::string(participants::REQUEST_PREFIX) + service_name + participants::REQUEST_SUFFIX,
             json,
-            sent_request_id_))
+            request_id))
         return false;
 
-    request_id = sent_request_id_;
     return true;
 }
 
@@ -333,28 +332,32 @@ bool DDSEnabler::send_action_goal(
     UUID& action_id)
 {
     std::string goal_json = RpcUtils::make_send_goal_request_json(json, action_id);
-    uint64_t goal_request_id = 0;
     std::string goal_request_topic = action_name + participants::ACTION_GOAL_SUFFIX;
+    uint64_t goal_request_id = 0;
 
-    if (handler_->store_action_request(
-            action_name,
-            action_id,
-            sent_request_id_+1,
-            RpcUtils::ActionType::GOAL)
-        &&
-        send_service_request(
+    if (!send_service_request(
             goal_request_topic,
             goal_json,
             goal_request_id))
     {
-        return true;
+        EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
+                "Failed to send action goal request to action " << action_name);
+        return false;
     }
 
-    handler_->erase_action_UUID(action_id, ActionEraseReason::FORCED);
+    if (!handler_->store_action_request(
+            action_name,
+            action_id,
+            goal_request_id,
+            RpcUtils::ActionType::GOAL))
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
+                "Failed to store action goal request to action " << action_name);
+        handler_->erase_action_UUID(action_id, ActionEraseReason::FORCED);
+        return false;
+    }
 
-    EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
-            "Failed to send action goal to action " << action_name);
-    return false;
+    return true;
 }
 
 bool DDSEnabler::send_action_get_result_request(
@@ -375,25 +378,30 @@ bool DDSEnabler::send_action_get_result_request(
     std::string get_result_request_topic = action_name + participants::ACTION_RESULT_SUFFIX;
     uint64_t get_result_request_id = 0;
 
-    if (handler_->store_action_request(
-            action_name,
-            action_id,
-            sent_request_id_+1,
-            RpcUtils::ActionType::RESULT)
-        &&
-        send_service_request(
+    if (!send_service_request(
             get_result_request_topic,
             json,
             get_result_request_id))
     {
-        return true;
+        EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
+                "Failed to send action get result request to action " << action_name);
+        return false;
     }
 
-    EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
-            "Failed to send action get result request to action " << action_name
-            << ": cancelling.");
-    cancel_action_goal(action_name, action_id, 0);
-    return false;
+    if (!handler_->store_action_request(
+            action_name,
+            action_id,
+            get_result_request_id,
+            RpcUtils::ActionType::RESULT))
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
+                "Failed to store action get result request to action " << action_name
+                << ": cancelling.");
+        cancel_action_goal(action_name, action_id, 0);
+        return false;
+    }
+
+    return true;
 }
 
 bool DDSEnabler::cancel_action_goal(
