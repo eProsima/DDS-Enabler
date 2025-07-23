@@ -165,10 +165,10 @@ void Handler::add_data(
         // SERVICES
         case RpcUtils::RpcType::RPC_REQUEST:
         {
-            received_requests_id_++;
+            requests_id_++;
             RpcPayloadData& rpc_data = dynamic_cast<RpcPayloadData&>(data);
-            rpc_data.sent_sequence_number = eprosima::fastdds::rtps::SequenceNumber_t(received_requests_id_);
-            write_service_request_nts_(msg, dyn_type, received_requests_id_);
+            rpc_data.sent_sequence_number = eprosima::fastdds::rtps::SequenceNumber_t(requests_id_);
+            write_service_request_nts_(msg, dyn_type, requests_id_);
             break;
         }
 
@@ -222,9 +222,9 @@ void Handler::add_data(
         case RpcUtils::RpcType::ACTION_GOAL_REQUEST:
         case RpcUtils::RpcType::ACTION_CANCEL_REQUEST:
         {
-            received_requests_id_++;
+            requests_id_++;
             RpcPayloadData& rpc_data = dynamic_cast<RpcPayloadData&>(data);
-            rpc_data.sent_sequence_number = eprosima::fastdds::rtps::SequenceNumber_t(received_requests_id_);
+            rpc_data.sent_sequence_number = eprosima::fastdds::rtps::SequenceNumber_t(requests_id_);
             UUID uuid;
             if (!writer_->uuid_from_request_json(
                     msg,
@@ -239,10 +239,10 @@ void Handler::add_data(
             if (store_action_request(
                 rpc_name,
                 uuid,
-                received_requests_id_,
+                requests_id_,
                 RpcUtils::get_action_type(rpc_type)))
             {
-                write_action_request_nts_(msg, dyn_type, received_requests_id_);
+                write_action_request_nts_(msg, dyn_type, requests_id_);
             }
 
             break;
@@ -261,13 +261,13 @@ void Handler::add_data(
                 return;
             }
 
-            received_requests_id_++;
+            requests_id_++;
             RpcPayloadData& rpc_data = dynamic_cast<RpcPayloadData&>(data);
-            rpc_data.sent_sequence_number = eprosima::fastdds::rtps::SequenceNumber_t(received_requests_id_);
+            rpc_data.sent_sequence_number = eprosima::fastdds::rtps::SequenceNumber_t(requests_id_);
             if (!store_action_request(
                 rpc_name,
                 uuid,
-                received_requests_id_,
+                requests_id_,
                 RpcUtils::ActionType::RESULT))
             {
                 EPROSIMA_LOG_ERROR(DDSENABLER_HANDLER,
@@ -284,7 +284,7 @@ void Handler::add_data(
                         rpc_name,
                         uuid,
                         result,
-                        received_requests_id_);
+                        requests_id_);
                 }
             }
             break;
@@ -862,6 +862,12 @@ void Handler::set_send_action_get_result_reply_callback(
         std::function<bool(const std::string&, const UUID&, const std::string&, const uint64_t)> callback)
 {
     send_action_get_result_reply_callback_ = callback;
+}
+
+uint64_t Handler::get_new_request_id()
+{
+    std::lock_guard<std::recursive_mutex> lock(mtx_);
+    return ++requests_id_;
 }
 
 } /* namespace participants */

@@ -415,9 +415,6 @@ protected:
 
     //! Mutex to protect class attributes
     mutable std::mutex mutex_;
-
-    //! Request identifyer for sent requests (incremented by one after each request)
-    uint64_t sent_request_id_ = 0;
 };
 
 } /* namespace ddsenabler */

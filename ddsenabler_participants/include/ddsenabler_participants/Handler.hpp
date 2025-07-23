@@ -389,6 +389,13 @@ public:
     void set_send_action_get_result_reply_callback(
             std::function<bool(const std::string&, const UUID&, const std::string&, const uint64_t)> callback);
 
+    /**
+     * @brief Get a new request ID (incremented by one) for creating a service or action request.
+     *
+     * @return A new request ID.
+     */
+    uint64_t get_new_request_id();
+
 protected:
 
     /**
@@ -614,8 +621,8 @@ protected:
     //! Callback to request types from the user
     DdsTypeQuery type_query_callback_;
 
-    //! Counter of received requests
-    uint64_t received_requests_id_{0};
+    //! Identifier for the received and sent requests
+    uint64_t requests_id_{0};
 
     //! Map of all ActionRequestInfos to their UUIDs
     std::unordered_map<participants::UUID, ActionRequestInfo> action_request_id_to_uuid_;
