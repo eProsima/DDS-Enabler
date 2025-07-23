@@ -64,9 +64,9 @@ public:
 
     DDSENABLER_PARTICIPANTS_DllAPI
     bool publish_rpc(
-            const std::string&  topic_name,
+            const std::string& topic_name,
             const std::string& json,
-            const uint64_t request_id);
+            const uint64_t& request_id);
 
     DDSENABLER_PARTICIPANTS_DllAPI
     void set_topic_query_callback(
@@ -128,7 +128,7 @@ protected:
             std::shared_ptr<ServiceDiscovered> service,
             std::unique_lock<std::mutex>& lck);
 
-    bool fullfill_topic_type_nts_(
+    bool fill_topic_struct_nts_(
         const std::string& topic_name,
         const std::string _type_name,
         const std::string serialized_qos_content,
