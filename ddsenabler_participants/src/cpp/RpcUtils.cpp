@@ -54,13 +54,13 @@ RpcType get_rpc_name(const std::string& topic_name, std::string& rpc_name)
     else
     {
         // Check for action feedback/status topics
-        if (rpc_name.size() >= 9 && rpc_name.substr(rpc_name.size() - 9) == ACTION_FEEDBACK_SUFFIX)
+        if (rpc_name.size() >= 9 && rpc_name.substr(rpc_name.size() - 9) == (std::string("/") + ACTION_FEEDBACK_SUFFIX))
         {
             rpc_name = rpc_name.substr(0, rpc_name.size() - 8);
             rpc_name = rpc_name.substr(3);
             return ACTION_FEEDBACK;
         }
-        else if (rpc_name.size() >= 7 && rpc_name.substr(rpc_name.size() - 7) == ACTION_STATUS_SUFFIX)
+        else if (rpc_name.size() >= 7 && rpc_name.substr(rpc_name.size() - 7) == (std::string("/") + ACTION_STATUS_SUFFIX))
         {
             rpc_name = rpc_name.substr(0, rpc_name.size() - 6);
             rpc_name = rpc_name.substr(3);
@@ -213,21 +213,116 @@ UUID generate_UUID()
     return uuid;
 }
 
-std::string make_send_goal_request_json(const std::string& goal_json, UUID& goal_id)
+std::string create_goal_request_msg(const std::string& goal_json, UUID& goal_id)
 {
     goal_id = generate_UUID();
 
-    std::string json = "{\"goal_id\": {\"uuid\": [";
-    for (size_t i = 0; i < sizeof(goal_id); ++i)
+    nlohmann::json j;
+    j["goal_id"]["uuid"] = goal_id;
+    j["goal"] = nlohmann::json::parse(goal_json);
+    return j.dump(4);
+}
+
+std::string create_goal_reply_msg(
+        bool accepted)
+{
+    auto now = std::chrono::system_clock::now();
+    auto duration_since_epoch = now.time_since_epoch();
+    auto sec = std::chrono::duration_cast<std::chrono::seconds>(duration_since_epoch).count();
+    auto nanosec = std::chrono::duration_cast<std::chrono::nanoseconds>(duration_since_epoch).count() % 1'000'000'000;
+
+    nlohmann::json j;
+    j["accepted"] = accepted;
+    j["stamp"]["sec"] = static_cast<int64_t>(sec);
+    j["stamp"]["nanosec"] = static_cast<uint32_t>(nanosec);
+    return j.dump(4);
+}
+
+std::string create_cancel_request_msg(
+        const UUID& goal_id,
+        const int64_t timestamp)
+{
+    nlohmann::json j;
+    int64_t sec = timestamp / 1'000'000'000;
+    uint32_t nanosec = timestamp % 1'000'000'000;
+    j["goal_info"]["stamp"]["sec"] = static_cast<int64_t>(sec);
+    j["goal_info"]["stamp"]["nanosec"] = static_cast<uint32_t>(nanosec);
+    j["goal_info"]["goal_id"]["uuid"] = goal_id;
+    return j.dump(4);
+}
+
+std::string create_cancel_reply_msg(
+        std::vector<std::pair<UUID, std::chrono::system_clock::time_point>> cancelling_goals,
+        const CANCEL_CODE& cancel_code)
+{
+    nlohmann::json j;
+    j["return_code"] = cancel_code;
+    j["goals_canceling"] = nlohmann::json::array();
+    for (const auto& [goal_id, timestamp] : cancelling_goals)
     {
-        json += std::to_string(goal_id[i]);
-        if (i != sizeof(goal_id) - 1)
-        {
-            json += ", ";
-        }
+        nlohmann::json goal_json;
+        goal_json["goal_id"]["uuid"] = goal_id;
+        auto duration_since_epoch = timestamp.time_since_epoch();
+        auto sec = std::chrono::duration_cast<std::chrono::seconds>(duration_since_epoch).count();
+        auto nanosec = std::chrono::duration_cast<std::chrono::nanoseconds>(duration_since_epoch).count() % 1'000'000'000;
+        goal_json["stamp"]["sec"] = static_cast<int64_t>(sec);
+        goal_json["stamp"]["nanosec"] = static_cast<uint32_t>(nanosec);
+        j["goals_canceling"].push_back(goal_json);
     }
-    json += "]}, \"goal\": " + goal_json + "}";
-    return json;
+    return j.dump(4);
+}
+
+std::string create_result_request_msg(
+        const UUID& goal_id)
+{
+    nlohmann::json j;
+    j["goal_id"]["uuid"] = goal_id;
+    return j.dump(4);
+}
+
+std::string create_result_reply_msg(
+        const STATUS_CODE& status_code,
+        const char* json)
+{
+    nlohmann::json j;
+    j["status"] = status_code;
+    j["result"] = nlohmann::json::parse(json);
+    return j.dump(4);
+}
+
+std::string create_status_msg(
+        const UUID& goal_id,
+        const STATUS_CODE& status_code,
+        std::chrono::system_clock::time_point goal_accepted_stamp)
+{
+    auto duration_since_epoch = goal_accepted_stamp.time_since_epoch();
+    auto sec = std::chrono::duration_cast<std::chrono::seconds>(duration_since_epoch).count();
+    auto nanosec = std::chrono::duration_cast<std::chrono::nanoseconds>(duration_since_epoch).count() % 1'000'000'000;
+
+    nlohmann::json goal_info;
+    goal_info["goal_id"]["uuid"] = goal_id;
+    goal_info["stamp"]["sec"] = static_cast<int64_t>(sec);
+    goal_info["stamp"]["nanosec"] = static_cast<uint32_t>(nanosec);
+
+
+    nlohmann::json goal_status;
+    goal_status["goal_info"] = goal_info;
+    goal_status["status"] = status_code;
+
+    nlohmann::json j;
+    j["status_list"] = nlohmann::json::array({goal_status});
+
+    return j.dump(4);
+}
+
+std::string create_feedback_msg(
+        const char* json,
+        const UUID& goal_id)
+{
+    nlohmann::json j;
+    j["goal_id"]["uuid"] = goal_id;
+    j["feedback"] = nlohmann::json::parse(json);
+    return j.dump(4);
 }
 
 } // namespace RpcUtils

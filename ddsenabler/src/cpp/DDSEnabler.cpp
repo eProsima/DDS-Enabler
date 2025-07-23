@@ -20,8 +20,6 @@
 #include "ddsenabler/DDSEnabler.hpp"
 #include "ddsenabler_participants/RpcUtils.hpp"
 
-#include <nlohmann/json.hpp>
-
 namespace eprosima {
 namespace ddsenabler {
 
@@ -331,7 +329,7 @@ bool DDSEnabler::send_action_goal(
     const std::string& json,
     UUID& action_id)
 {
-    std::string goal_json = RpcUtils::make_send_goal_request_json(json, action_id);
+    std::string goal_json = RpcUtils::create_goal_request_msg(json, action_id);
     std::string goal_request_topic = action_name + participants::ACTION_GOAL_SUFFIX;
     uint64_t goal_request_id = 0;
 
@@ -364,16 +362,7 @@ bool DDSEnabler::send_action_get_result_request(
     const std::string& action_name,
     const UUID& action_id)
 {
-    std::string json = "{\"goal_id\": {\"uuid\": [";
-    for (size_t i = 0; i < sizeof(action_id); ++i)
-    {
-        json += std::to_string(action_id[i]);
-        if (i != sizeof(action_id) - 1)
-        {
-            json += ", ";
-        }
-    }
-    json += "]}}";
+    std::string json = participants::RpcUtils::create_result_request_msg(action_id);
 
     std::string get_result_request_topic = action_name + participants::ACTION_RESULT_SUFFIX;
     uint64_t get_result_request_id = 0;
@@ -418,14 +407,7 @@ bool DDSEnabler::cancel_action_goal(
         return false;
     }
 
-    // Create JSON object
-    nlohmann::json j;
-    int64_t sec = timestamp / 1'000'000'000;
-    uint32_t nanosec = timestamp % 1'000'000'000;
-    j["goal_info"]["stamp"]["sec"] = static_cast<int64_t>(sec);
-    j["goal_info"]["stamp"]["nanosec"] = static_cast<uint32_t>(nanosec);
-    j["goal_info"]["goal_id"]["uuid"] = goal_id;
-    std::string cancel_json = j.dump(4);
+    std::string cancel_json = participants::RpcUtils::create_cancel_request_msg(goal_id, timestamp);
 
     uint64_t cancel_request_id = 0;
     std::string cancel_request_topic = action_name + participants::ACTION_CANCEL_SUFFIX;
@@ -460,18 +442,7 @@ void DDSEnabler::send_action_send_goal_reply(
     const uint64_t goal_id,
     bool accepted)
 {
-    // Get current time in seconds and nanoseconds
-    auto now = std::chrono::system_clock::now();
-    auto duration_since_epoch = now.time_since_epoch();
-    auto sec = std::chrono::duration_cast<std::chrono::seconds>(duration_since_epoch).count();
-    auto nanosec = std::chrono::duration_cast<std::chrono::nanoseconds>(duration_since_epoch).count() % 1'000'000'000;
-
-    // Create JSON object
-    nlohmann::json j;
-    j["accepted"] = accepted;
-    j["stamp"]["sec"] = static_cast<int64_t>(sec);
-    j["stamp"]["nanosec"] = static_cast<uint32_t>(nanosec);
-    std::string reply_json = j.dump(4);
+    std::string reply_json = participants::RpcUtils::create_goal_reply_msg(accepted);
 
     if (!send_service_reply(
             action_name + participants::ACTION_GOAL_SUFFIX,
@@ -491,31 +462,18 @@ bool DDSEnabler::send_action_cancel_goal_reply(
     const participants::CANCEL_CODE& cancel_code,
     const uint64_t request_id)
 {
-    // Create JSON object
-    nlohmann::json j;
-    j["return_code"] = cancel_code;
-    j["goals_canceling"] = nlohmann::json::array();
+    std::vector<std::pair<participants::UUID, std::chrono::system_clock::time_point>> cancelling_goals;
     for (const auto& goal_id : goal_ids)
     {
         std::chrono::system_clock::time_point timestamp;
         if (!handler_->is_UUID_active(action_name, goal_id, &timestamp))
         {
-            // EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
-            //         "Not including goal " << goal_id << " in cancel reply for action "
-            //         << action_name << ": goal id not found.");
             continue;
         }
 
-        nlohmann::json goal_json;
-        goal_json["goal_id"]["uuid"] = goal_id;
-        auto duration_since_epoch = timestamp.time_since_epoch();
-        auto sec = std::chrono::duration_cast<std::chrono::seconds>(duration_since_epoch).count();
-        auto nanosec = std::chrono::duration_cast<std::chrono::nanoseconds>(duration_since_epoch).count() % 1'000'000'000;
-        goal_json["stamp"]["sec"] = static_cast<int64_t>(sec);
-        goal_json["stamp"]["nanosec"] = static_cast<uint32_t>(nanosec);
-        j["goals_canceling"].push_back(goal_json);
+        cancelling_goals.emplace_back(goal_id, timestamp);
     }
-    std::string reply_json = j.dump(4);
+    std::string reply_json = participants::RpcUtils::create_cancel_reply_msg(cancelling_goals, cancel_code);
 
     if (!send_service_reply(
             std::string(action_name) + participants::ACTION_CANCEL_SUFFIX,
@@ -539,16 +497,12 @@ bool DDSEnabler::send_action_result(
     if (!handler_->is_UUID_active(action_name,goal_id))
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
-                "Failed to send action feedback to action " << action_name
+                "Failed to send action result to action " << action_name
                 << ": goal id not found.");
         return false;
     }
 
-    // Create JSON object
-    nlohmann::json j;
-    j["status"] = status_code;
-    j["result"] = nlohmann::json::parse(json);
-    std::string reply_json = j.dump(4);
+    std::string reply_json = participants::RpcUtils::create_result_reply_msg(status_code, json);
 
     return handler_->handle_action_result(action_name, goal_id, reply_json);
 }
@@ -586,12 +540,8 @@ bool DDSEnabler::send_action_feedback(
         return false;
     }
 
-    // Create JSON object
-    nlohmann::json j;
-    j["goal_id"]["uuid"] = goal_id;
-    j["feedback"] = nlohmann::json::parse(json);
-    std::string feedback_json = j.dump(4);
-    std::string feedback_topic = "rt/" + std::string(action_name) + "feedback";
+    std::string feedback_json = participants::RpcUtils::create_feedback_msg(json, goal_id);
+    std::string feedback_topic = participants::TOPIC_PREFIX + std::string(action_name) + participants::ACTION_FEEDBACK_SUFFIX;
 
     return enabler_participant_->publish(feedback_topic, feedback_json);
 }
@@ -610,25 +560,8 @@ bool DDSEnabler::update_action_status(
         return false;
     }
 
-    auto duration_since_epoch = goal_accepted_stamp.time_since_epoch();
-    auto sec = std::chrono::duration_cast<std::chrono::seconds>(duration_since_epoch).count();
-    auto nanosec = std::chrono::duration_cast<std::chrono::nanoseconds>(duration_since_epoch).count() % 1'000'000'000;
-
-    nlohmann::json goal_info;
-    goal_info["goal_id"]["uuid"] = goal_id;
-    goal_info["stamp"]["sec"] = static_cast<int64_t>(sec);
-    goal_info["stamp"]["nanosec"] = static_cast<uint32_t>(nanosec);
-
-
-    nlohmann::json goal_status;
-    goal_status["goal_info"] = goal_info;
-    goal_status["status"] = status_code;
-
-    nlohmann::json j;
-    j["status_list"] = nlohmann::json::array({goal_status});
-
-    std::string status_json = j.dump(4);
-    std::string status_topic = "rt/" + action_name + "status";
+    std::string status_json = participants::RpcUtils::create_status_msg(goal_id, status_code, goal_accepted_stamp);
+    std::string status_topic = participants::TOPIC_PREFIX + action_name + participants::ACTION_STATUS_SUFFIX;
     return enabler_participant_->publish(status_topic, status_json);
 }
 

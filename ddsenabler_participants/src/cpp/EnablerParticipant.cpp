@@ -729,7 +729,7 @@ bool EnablerParticipant::query_action_nts_(
     services_.insert_or_assign(result_service_name, result_service);
     action.result = result_service;
 
-    std::string feedback_topic_name = "rt/" + action.action_name + "feedback";
+    std::string feedback_topic_name = participants::TOPIC_PREFIX + action.action_name + participants::ACTION_FEEDBACK_SUFFIX;
     DdsTopic feedback_topic;
     if(!fullfill_topic_type_nts_(
             feedback_topic_name,
@@ -757,7 +757,7 @@ bool EnablerParticipant::query_action_nts_(
     action.feedback = feedback_topic;
     action.feedback_discovered = true;
 
-    std::string status_topic_name = "rt/" + action.action_name + "status";
+    std::string status_topic_name = participants::TOPIC_PREFIX + action.action_name + participants::ACTION_STATUS_SUFFIX;
     DdsTopic status_topic;
     if(!fullfill_topic_type_nts_(
             status_topic_name,
