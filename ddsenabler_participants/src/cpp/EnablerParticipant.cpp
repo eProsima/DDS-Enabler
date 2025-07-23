@@ -182,11 +182,10 @@ bool EnablerParticipant::publish(
     std::unique_lock<std::mutex> lck(mtx_);
 
     std::string type_name;
-    auto i_reader = std::dynamic_pointer_cast<IReader>(lookup_reader_nts_(topic_name, type_name));
+    auto i_reader = lookup_reader_nts_(topic_name, type_name);
 
     if (nullptr == i_reader)
     {
-
         DdsTopic topic;
         if(!query_topic_nts_(topic_name, topic))
         {
@@ -229,7 +228,7 @@ bool EnablerParticipant::publish(
 bool EnablerParticipant::publish_rpc(
     const std::string& topic_name,
     const std::string& json,
-    const uint64_t request_id)
+    const uint64_t& request_id)
 {
     std::unique_lock<std::mutex> lck(mtx_);
 
@@ -306,7 +305,7 @@ bool EnablerParticipant::create_service_request_writer_nts_(
         std::unique_lock<std::mutex>& lck)
 {
     std::string _;
-    auto reader = std::dynamic_pointer_cast<IReader>(lookup_reader_nts_(service->topic_request.m_topic_name, _));
+    auto reader = lookup_reader_nts_(service->topic_request.m_topic_name, _);
 
     if (nullptr == reader)
     {
@@ -320,10 +319,11 @@ bool EnablerParticipant::create_service_request_writer_nts_(
             service->endpoint_request = request_edp;
             return true;
         }
+        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
+                "Failed to create service request writer for service " << service->service_name << ".");
         return false;
     }
 
-    // TODO What if there is a server already running in ROS2, currently the announce will fail
     EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
             "Failed to create server as it is already running in ROS2.");
     return false;
@@ -480,7 +480,6 @@ bool EnablerParticipant::query_topic_nts_(
     const std::string& topic_name,
     DdsTopic& topic)
 {
-
     if (!topic_query_callback_)
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
@@ -497,10 +496,10 @@ bool EnablerParticipant::query_topic_nts_(
         return false;
     }
 
-    return fullfill_topic_type_nts_(topic_name, type_name, serialized_qos, topic);
+    return fill_topic_struct_nts_(topic_name, type_name, serialized_qos, topic);
 }
 
-bool EnablerParticipant::fullfill_topic_type_nts_(
+bool EnablerParticipant::fill_topic_struct_nts_(
     const std::string& topic_name,
     const std::string type_name,
     const std::string serialized_qos,
@@ -549,13 +548,13 @@ bool EnablerParticipant::fullfill_service_type_nts_(
 
     DdsTopic topic_request;
     std::string topic_request_name = std::string(REQUEST_PREFIX) + service->service_name + REQUEST_SUFFIX;
-    if(!fullfill_topic_type_nts_(topic_request_name, _request_type_name, serialized_request_qos_content, topic_request))
+    if(!fill_topic_struct_nts_(topic_request_name, _request_type_name, serialized_request_qos_content, topic_request))
         return false;
     service->add_topic(topic_request, RpcUtils::RPC_REQUEST);
 
     DdsTopic topic_reply;
     std::string topic_reply_name = std::string(REPLY_PREFIX) + service->service_name + REPLY_SUFFIX;
-    if(!fullfill_topic_type_nts_(topic_reply_name, _reply_type_name, serialized_reply_qos_content, topic_reply))
+    if(!fill_topic_struct_nts_(topic_reply_name, _reply_type_name, serialized_reply_qos_content, topic_reply))
         return false;
     service->add_topic(topic_reply, RpcUtils::RPC_REPLY);
 
@@ -731,7 +730,7 @@ bool EnablerParticipant::query_action_nts_(
 
     std::string feedback_topic_name = participants::TOPIC_PREFIX + action.action_name + participants::ACTION_FEEDBACK_SUFFIX;
     DdsTopic feedback_topic;
-    if(!fullfill_topic_type_nts_(
+    if(!fill_topic_struct_nts_(
             feedback_topic_name,
             feedback_action_type,
             feedback_action_serialized_qos,
@@ -743,7 +742,7 @@ bool EnablerParticipant::query_action_nts_(
     }
     {
         std::string _;
-        auto feedback_reader = std::dynamic_pointer_cast<IReader>(lookup_reader_nts_(feedback_topic_name, _));
+        auto feedback_reader = lookup_reader_nts_(feedback_topic_name, _);
         if (!feedback_reader)
         {
             ddspipe::core::types::Endpoint _;
@@ -759,7 +758,7 @@ bool EnablerParticipant::query_action_nts_(
 
     std::string status_topic_name = participants::TOPIC_PREFIX + action.action_name + participants::ACTION_STATUS_SUFFIX;
     DdsTopic status_topic;
-    if(!fullfill_topic_type_nts_(
+    if(!fill_topic_struct_nts_(
             status_topic_name,
             status_action_type,
             status_action_serialized_qos,
@@ -771,7 +770,7 @@ bool EnablerParticipant::query_action_nts_(
     }
     {
         std::string _;
-        auto status_reader = std::dynamic_pointer_cast<IReader>(lookup_reader_nts_(action.status.m_topic_name, _));
+        auto status_reader = lookup_reader_nts_(action.status.m_topic_name, _);
         if (!status_reader)
         {
             ddspipe::core::types::Endpoint _;
