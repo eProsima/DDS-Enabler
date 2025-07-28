@@ -177,13 +177,15 @@ public:
     void write_service_reply_notification(
             const Message& msg,
             const fastdds::dds::DynamicType::_ref_type& dyn_type,
-            const uint64_t request_id);
+            const uint64_t request_id,
+            const std::string& service_name);
 
     DDSENABLER_PARTICIPANTS_DllAPI
     void write_service_request_notification(
             const Message& msg,
             const fastdds::dds::DynamicType::_ref_type& dyn_type,
-            const uint64_t request_id);
+            const uint64_t request_id,
+            const std::string& service_name);
 
     DDSENABLER_PARTICIPANTS_DllAPI
     void write_action_notification(
@@ -193,35 +195,42 @@ public:
     void write_action_result_notification(
             const Message& msg,
             const fastdds::dds::DynamicType::_ref_type& dyn_type,
-            const UUID& action_id);
+            const UUID& action_id,
+            const std::string& action_name);
 
     DDSENABLER_PARTICIPANTS_DllAPI
     void write_action_feedback_notification(
             const Message& msg,
-            const fastdds::dds::DynamicType::_ref_type& dyn_type);
+            const fastdds::dds::DynamicType::_ref_type& dyn_type,
+            const std::string& action_name);
 
     DDSENABLER_PARTICIPANTS_DllAPI
     void write_action_goal_reply_notification(
             const Message& msg,
             const fastdds::dds::DynamicType::_ref_type& dyn_type,
-            const UUID& action_id);
+            const UUID& action_id,
+            const std::string& action_name);
 
     DDSENABLER_PARTICIPANTS_DllAPI
     void write_action_cancel_reply_notification(
             const Message& msg,
             const fastdds::dds::DynamicType::_ref_type& dyn_type,
-            const uint64_t request_id);
+            const uint64_t request_id,
+            const std::string& action_name);
 
     DDSENABLER_PARTICIPANTS_DllAPI
     void write_action_status_notification(
             const Message& msg,
-            const fastdds::dds::DynamicType::_ref_type& dyn_type);
+            const fastdds::dds::DynamicType::_ref_type& dyn_type,
+            const std::string& action_name);
 
     DDSENABLER_PARTICIPANTS_DllAPI
     void write_action_request_notification(
             const Message& msg,
             const fastdds::dds::DynamicType::_ref_type& dyn_type,
-            const uint64_t request_id);
+            const uint64_t request_id,
+            const std::string& action_name,
+            const RpcUtils::RpcType& rpc_type);
 
     DDSENABLER_PARTICIPANTS_DllAPI
     void set_is_UUID_active_callback(

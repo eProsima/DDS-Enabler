@@ -168,14 +168,14 @@ void Handler::add_data(
             requests_id_++;
             RpcPayloadData& rpc_data = dynamic_cast<RpcPayloadData&>(data);
             rpc_data.sent_sequence_number = eprosima::fastdds::rtps::SequenceNumber_t(requests_id_);
-            write_service_request_nts_(msg, dyn_type, requests_id_);
+            write_service_request_nts_(msg, dyn_type, requests_id_, rpc_name);
             break;
         }
 
         case RpcUtils::RpcType::RPC_REPLY:
         {
             auto request_id = dynamic_cast<ddspipe::core::types::RpcPayloadData&>(data).write_params.get_reference().related_sample_identity().sequence_number().to64long();
-            write_service_reply_nts_(msg, dyn_type, request_id);
+            write_service_reply_nts_(msg, dyn_type, request_id, rpc_name);
             break;
         }
 
@@ -185,7 +185,7 @@ void Handler::add_data(
             auto action_id = dynamic_cast<ddspipe::core::types::RpcPayloadData&>(data).write_params.get_reference().related_sample_identity().sequence_number().to64long();
             UUID action_id_uuid;
             if (get_action_request_UUID(action_id, RpcUtils::ActionType::RESULT, action_id_uuid))
-                write_action_result_nts_(msg, dyn_type, action_id_uuid);
+                write_action_result_nts_(msg, dyn_type, action_id_uuid, rpc_name);
             erase_action_UUID(action_id_uuid, ActionEraseReason::RESULT);
             break;
         }
@@ -195,26 +195,26 @@ void Handler::add_data(
             auto action_id = dynamic_cast<ddspipe::core::types::RpcPayloadData&>(data).write_params.get_reference().related_sample_identity().sequence_number().to64long();
             UUID action_id_uuid;
             if (get_action_request_UUID(action_id, RpcUtils::ActionType::GOAL, action_id_uuid))
-                write_action_goal_reply_nts_(msg, dyn_type, action_id_uuid);
+                write_action_goal_reply_nts_(msg, dyn_type, action_id_uuid, rpc_name);
             break;
         }
 
         case RpcUtils::RpcType::ACTION_CANCEL_REPLY:
         {
             auto request_id = dynamic_cast<ddspipe::core::types::RpcPayloadData&>(data).write_params.get_reference().related_sample_identity().sequence_number().to64long();
-            write_action_cancel_reply_nts_(msg, dyn_type, request_id);
+            write_action_cancel_reply_nts_(msg, dyn_type, request_id, rpc_name);
             break;
         }
 
         case RpcUtils::RpcType::ACTION_FEEDBACK:
         {
-            write_action_feedback_nts_(msg, dyn_type);
+            write_action_feedback_nts_(msg, dyn_type, rpc_name);
             break;
         }
 
         case RpcUtils::RpcType::ACTION_STATUS:
         {
-            write_action_status_nts_(msg, dyn_type);
+            write_action_status_nts_(msg, dyn_type, rpc_name);
             break;
         }
 
@@ -242,7 +242,7 @@ void Handler::add_data(
                 requests_id_,
                 RpcUtils::get_action_type(rpc_type)))
             {
-                write_action_request_nts_(msg, dyn_type, requests_id_);
+                write_action_request_nts_(msg, dyn_type, requests_id_, rpc_name, rpc_type);
             }
 
             break;
@@ -490,19 +490,21 @@ void Handler::write_service_nts_(
 }
 
 void Handler::write_service_reply_nts_(
-    const Message& msg,
-    const fastdds::dds::DynamicType::_ref_type& dyn_type,
-    const uint64_t request_id)
+        const Message& msg,
+        const fastdds::dds::DynamicType::_ref_type& dyn_type,
+        const uint64_t request_id,
+        const std::string& service_name)
 {
-    writer_->write_service_reply_notification(msg, dyn_type, request_id);
+    writer_->write_service_reply_notification(msg, dyn_type, request_id, service_name);
 }
 
 void Handler::write_service_request_nts_(
-    const Message& msg,
-    const fastdds::dds::DynamicType::_ref_type& dyn_type,
-    const uint64_t request_id)
+        const Message& msg,
+        const fastdds::dds::DynamicType::_ref_type& dyn_type,
+        const uint64_t request_id,
+        const std::string& service_name)
 {
-    writer_->write_service_request_notification(msg, dyn_type, request_id);
+    writer_->write_service_request_notification(msg, dyn_type, request_id, service_name);
 }
 
 void Handler::write_action_nts_(
@@ -512,49 +514,56 @@ void Handler::write_action_nts_(
 }
 
 void Handler::write_action_result_nts_(
-    const Message& msg,
-    const fastdds::dds::DynamicType::_ref_type& dyn_type,
-    const UUID& action_id)
+        const Message& msg,
+        const fastdds::dds::DynamicType::_ref_type& dyn_type,
+        const UUID& action_id,
+        const std::string& action_name)
 {
-    writer_->write_action_result_notification(msg, dyn_type, action_id);
+    writer_->write_action_result_notification(msg, dyn_type, action_id, action_name);
 }
 
 void Handler::write_action_feedback_nts_(
-    const Message& msg,
-    const fastdds::dds::DynamicType::_ref_type& dyn_type)
+        const Message& msg,
+        const fastdds::dds::DynamicType::_ref_type& dyn_type,
+        const std::string& action_name)
 {
-    writer_->write_action_feedback_notification(msg, dyn_type);
+    writer_->write_action_feedback_notification(msg, dyn_type, action_name);
 }
 
 void Handler::write_action_goal_reply_nts_(
-    const Message& msg,
-    const fastdds::dds::DynamicType::_ref_type& dyn_type,
-    const UUID& action_id)
+        const Message& msg,
+        const fastdds::dds::DynamicType::_ref_type& dyn_type,
+        const UUID& action_id,
+        const std::string& action_name)
 {
-    writer_->write_action_goal_reply_notification(msg, dyn_type, action_id);
+    writer_->write_action_goal_reply_notification(msg, dyn_type, action_id, action_name);
 }
 
 void Handler::write_action_cancel_reply_nts_(
-    const Message& msg,
-    const fastdds::dds::DynamicType::_ref_type& dyn_type,
-    const uint64_t request_id)
+        const Message& msg,
+        const fastdds::dds::DynamicType::_ref_type& dyn_type,
+        const uint64_t request_id,
+        const std::string& action_name)
 {
-    writer_->write_action_cancel_reply_notification(msg, dyn_type, request_id);
+    writer_->write_action_cancel_reply_notification(msg, dyn_type, request_id, action_name);
 }
 
 void Handler::write_action_status_nts_(
-    const Message& msg,
-    const fastdds::dds::DynamicType::_ref_type& dyn_type)
+        const Message& msg,
+        const fastdds::dds::DynamicType::_ref_type& dyn_type,
+        const std::string& action_name)
 {
-    writer_->write_action_status_notification(msg, dyn_type);
+    writer_->write_action_status_notification(msg, dyn_type, action_name);
 }
 
 void Handler::write_action_request_nts_(
-    const Message& msg,
-    const fastdds::dds::DynamicType::_ref_type& dyn_type,
-    const uint64_t request_id)
+        const Message& msg,
+        const fastdds::dds::DynamicType::_ref_type& dyn_type,
+        const uint64_t request_id,
+        const std::string& action_name,
+        const RpcUtils::RpcType& rpc_type)
 {
-    writer_->write_action_request_notification(msg, dyn_type, request_id);
+    writer_->write_action_request_notification(msg, dyn_type, request_id, action_name, rpc_type);
 }
 
 bool Handler::register_type_nts_(

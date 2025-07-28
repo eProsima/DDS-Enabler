@@ -500,7 +500,8 @@ protected:
     void write_service_reply_nts_(
             const Message& msg,
             const fastdds::dds::DynamicType::_ref_type& dyn_type,
-            const uint64_t request_id);
+            const uint64_t request_id,
+            const std::string& service_name);
 
     /**
      * @brief Write the service request to user's app.
@@ -512,7 +513,8 @@ protected:
     void write_service_request_nts_(
             const Message& msg,
             const fastdds::dds::DynamicType::_ref_type& dyn_type,
-            const uint64_t request_id);
+            const uint64_t request_id,
+            const std::string& service_name);
 
     /**
      * @brief Write the action result to user's app.
@@ -524,7 +526,8 @@ protected:
     void write_action_result_nts_(
             const Message& msg,
             const fastdds::dds::DynamicType::_ref_type& dyn_type,
-            const UUID& action_id);
+            const UUID& action_id,
+            const std::string& action_name);
 
     /**
      * @brief Write the action feedback to user's app.
@@ -534,7 +537,8 @@ protected:
      */
     void write_action_feedback_nts_(
             const Message& msg,
-            const fastdds::dds::DynamicType::_ref_type& dyn_type);
+            const fastdds::dds::DynamicType::_ref_type& dyn_type,
+            const std::string& action_name);
 
     /**
      * @brief Write the action goal reply to user's app.
@@ -546,7 +550,8 @@ protected:
     void write_action_goal_reply_nts_(
             const Message& msg,
             const fastdds::dds::DynamicType::_ref_type& dyn_type,
-            const UUID& action_id);
+            const UUID& action_id,
+            const std::string& action_name);
 
     /**
      * @brief Write the action cancel reply to user's app.
@@ -558,7 +563,8 @@ protected:
     void write_action_cancel_reply_nts_(
             const Message& msg,
             const fastdds::dds::DynamicType::_ref_type& dyn_type,
-            const uint64_t request_id);
+            const uint64_t request_id,
+            const std::string& action_name);
 
     /**
      * @brief Write the action status to user's app.
@@ -568,7 +574,8 @@ protected:
      */
     void write_action_status_nts_(
             const Message& msg,
-            const fastdds::dds::DynamicType::_ref_type& dyn_type);
+            const fastdds::dds::DynamicType::_ref_type& dyn_type,
+            const std::string& action_name);
 
     /**
      * @brief Write the action (goal or cancel) request to user's app.
@@ -580,7 +587,9 @@ protected:
     void write_action_request_nts_(
             const Message& msg,
             const fastdds::dds::DynamicType::_ref_type& dyn_type,
-            const uint64_t request_id);
+            const uint64_t request_id,
+            const std::string& action_name,
+            const RpcUtils::RpcType& rpc_type);
 
     /**
      * @brief Register a type using the given serialized type data.
