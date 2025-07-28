@@ -306,8 +306,7 @@ bool EnablerParticipant::create_service_request_writer_nts_(
         std::shared_ptr<ServiceDiscovered> service,
         std::unique_lock<std::mutex>& lck)
 {
-    std::string _;
-    auto reader = lookup_reader_nts_(service->topic_request.m_topic_name, _);
+    auto reader = lookup_reader_nts_(service->topic_request.m_topic_name);
 
     if (nullptr == reader)
     {
@@ -743,8 +742,7 @@ bool EnablerParticipant::query_action_nts_(
         return false;
     }
     {
-        std::string _;
-        auto feedback_reader = lookup_reader_nts_(feedback_topic_name, _);
+        auto feedback_reader = lookup_reader_nts_(feedback_topic_name);
         if (!feedback_reader)
         {
             ddspipe::core::types::Endpoint _;
@@ -770,9 +768,8 @@ bool EnablerParticipant::query_action_nts_(
                 "Failed to announce action " << action.action_name << " : status topic type not found.");
         return false;
     }
-    {
-        std::string _;
-        auto status_reader = lookup_reader_nts_(action.status.m_topic_name, _);
+        {
+        auto status_reader = lookup_reader_nts_(action.status.m_topic_name);
         if (!status_reader)
         {
             ddspipe::core::types::Endpoint _;
