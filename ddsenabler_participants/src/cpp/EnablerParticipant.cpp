@@ -189,6 +189,8 @@ bool EnablerParticipant::publish(
         DdsTopic topic;
         if(!query_topic_nts_(topic_name, topic))
         {
+            EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
+                "Failed to publish data in topic " << topic_name);
             return false;
         }
 
@@ -483,8 +485,8 @@ bool EnablerParticipant::query_topic_nts_(
     if (!topic_query_callback_)
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                "Failed to publish data in topic " << topic_name <<
-                            " : topic is unknown and topic request callback not set.");
+                "Failed to query data from topic " << topic_name <<
+                            " : topic is unknown and topic query callback not set.");
         return false;
     }
     std::string type_name;
@@ -492,7 +494,7 @@ bool EnablerParticipant::query_topic_nts_(
     if (!topic_query_callback_(topic_name.c_str(), type_name, serialized_qos))
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                "Failed to publish data in topic " << topic_name << " : topic query callback failed.");
+                "Failed to query data from topic " << topic_name << " : topic query callback failed.");
         return false;
     }
 
