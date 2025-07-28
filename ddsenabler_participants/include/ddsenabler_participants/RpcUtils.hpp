@@ -25,11 +25,10 @@
 #include <ddsenabler_participants/Constants.hpp>
 #include <ddsenabler_participants/Callbacks.hpp>
 
-
- namespace eprosima {
- namespace ddsenabler {
- namespace participants {
- namespace RpcUtils {
+namespace eprosima {
+namespace ddsenabler {
+namespace participants {
+namespace RpcUtils {
 
 struct RpcAction
 {
