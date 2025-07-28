@@ -25,7 +25,6 @@
 #include <ddsenabler_participants/Serialization.hpp>
 #include <ddsenabler_participants/RpcUtils.hpp>
 #include <ddsenabler_participants/types/dynamic_types_collection/DynamicTypesCollection.hpp>
-#include <ddsenabler_participants/Handler.hpp>
 
 #include <ddsenabler_participants/Writer.hpp>
 
@@ -211,20 +210,12 @@ void Writer::write_service_notification(
 void Writer::write_service_reply_notification(
         const Message& msg,
         const fastdds::dds::DynamicType::_ref_type& dyn_type,
-        const uint64_t request_id)
+        const uint64_t request_id,
+        const std::string& service_name)
 {
     nlohmann::json json_data;
     if (!prepare_json_data_(msg, dyn_type, json_data))
     {
-        return;
-    }
-
-    // Get the service name
-    std::string service_name;
-    if(RpcUtils::RpcType::RPC_REPLY != RpcUtils::get_rpc_name(msg.topic.topic_name(), service_name))
-    {
-        EPROSIMA_LOG_ERROR(DDSENABLER_WRITER,
-                "Wrong topic name for service reply: " << msg.topic.topic_name() << ".");
         return;
     }
 
@@ -243,20 +234,12 @@ void Writer::write_service_reply_notification(
 void Writer::write_service_request_notification(
         const Message& msg,
         const fastdds::dds::DynamicType::_ref_type& dyn_type,
-        const uint64_t request_id)
+        const uint64_t request_id,
+        const std::string& service_name)
 {
     nlohmann::json json_data;
     if (!prepare_json_data_(msg, dyn_type, json_data))
     {
-        return;
-    }
-
-    // Get the service name
-    std::string service_name;
-    if(RpcUtils::RpcType::RPC_REQUEST != RpcUtils::get_rpc_name(msg.topic.topic_name(), service_name))
-    {
-        EPROSIMA_LOG_ERROR(DDSENABLER_WRITER,
-                "Wrong topic name for service request: " << msg.topic.topic_name() << ".");
         return;
     }
 
@@ -314,20 +297,12 @@ void Writer::write_action_notification(
 void Writer::write_action_result_notification(
         const Message& msg,
         const fastdds::dds::DynamicType::_ref_type& dyn_type,
-        const UUID& action_id)
+        const UUID& action_id,
+        const std::string& action_name)
 {
     nlohmann::json json_data;
     if (!prepare_json_data_(msg, dyn_type, json_data))
     {
-        return;
-    }
-
-    // Get the action name
-    std::string action_name;
-    if(RpcUtils::RpcType::ACTION_RESULT_REPLY != RpcUtils::get_rpc_name(msg.topic.topic_name(), action_name))
-    {
-        EPROSIMA_LOG_ERROR(DDSENABLER_WRITER,
-                "Wrong topic name for action result: " << msg.topic.topic_name() << ".");
         return;
     }
 
@@ -345,17 +320,14 @@ void Writer::write_action_result_notification(
 
 void Writer::write_action_feedback_notification(
         const Message& msg,
-        const fastdds::dds::DynamicType::_ref_type& dyn_type)
+        const fastdds::dds::DynamicType::_ref_type& dyn_type,
+        const std::string& action_name)
 {
     nlohmann::json json_data;
     if (!prepare_json_data_(msg, dyn_type, json_data))
     {
         return;
     }
-
-    // Get the action name
-    std::string action_name;
-    RpcUtils::get_rpc_name(msg.topic.topic_name(), action_name);
 
     std::stringstream instanceHandle;
     instanceHandle << msg.instanceHandle;
@@ -371,13 +343,11 @@ void Writer::write_action_feedback_notification(
 }
 
 void Writer::write_action_goal_reply_notification(
-    const Message& msg,
-    const fastdds::dds::DynamicType::_ref_type& dyn_type,
-    const UUID& action_id)
+        const Message& msg,
+        const fastdds::dds::DynamicType::_ref_type& dyn_type,
+        const UUID& action_id,
+        const std::string& action_name)
 {
-    std::string action_name;
-    RpcUtils::get_rpc_name(msg.topic.topic_name(), action_name);
-
     nlohmann::json json_data;
     if (!prepare_json_data_(msg, dyn_type, json_data))
     {
@@ -439,11 +409,10 @@ void Writer::write_action_goal_reply_notification(
 void Writer::write_action_cancel_reply_notification(
         const Message& msg,
         const fastdds::dds::DynamicType::_ref_type& dyn_type,
-        const uint64_t request_id)
+        const uint64_t request_id,
+        const std::string& action_name)
 {
     ddsenabler::participants::STATUS_CODE status_code = ddsenabler::participants::STATUS_CODE::STATUS_CANCELED;
-    std::string action_name;
-    RpcUtils::get_rpc_name(msg.topic.topic_name(), action_name);
 
     nlohmann::json json_data;
     if (!prepare_json_data_(msg, dyn_type, json_data))
@@ -521,17 +490,14 @@ void Writer::write_action_cancel_reply_notification(
 
 void Writer::write_action_status_notification(
         const Message& msg,
-        const fastdds::dds::DynamicType::_ref_type& dyn_type)
+        const fastdds::dds::DynamicType::_ref_type& dyn_type,
+        const std::string& action_name)
 {
     nlohmann::json json_data;
     if (!prepare_json_data_(msg, dyn_type, json_data))
     {
         return;
     }
-
-    // Get the action name
-    std::string action_name;
-    RpcUtils::get_rpc_name(msg.topic.topic_name(), action_name);
 
     std::stringstream instanceHandle;
     instanceHandle << msg.instanceHandle;
@@ -613,19 +579,17 @@ void Writer::write_action_status_notification(
 }
 
 void Writer::write_action_request_notification(
-    const Message& msg,
-    const fastdds::dds::DynamicType::_ref_type& dyn_type,
-    const uint64_t request_id)
+        const Message& msg,
+        const fastdds::dds::DynamicType::_ref_type& dyn_type,
+        const uint64_t request_id,
+        const std::string& action_name,
+        const RpcUtils::RpcType& rpc_type)
 {
     nlohmann::json json_data;
     if (!prepare_json_data_(msg, dyn_type, json_data))
     {
         return;
     }
-
-    // Get the action name
-    std::string action_name;
-    RpcUtils::RpcType rpc_type = RpcUtils::get_rpc_name(msg.topic.topic_name(), action_name);
 
     std::stringstream instanceHandle;
     instanceHandle << msg.instanceHandle;
@@ -677,9 +641,9 @@ void Writer::write_action_request_notification(
 }
 
 bool Writer::uuid_from_request_json(
-    const Message& msg,
-    const fastdds::dds::DynamicType::_ref_type& dyn_type,
-    UUID& uuid)
+        const Message& msg,
+        const fastdds::dds::DynamicType::_ref_type& dyn_type,
+        UUID& uuid)
 {
     nlohmann::json json_data;
     if (!prepare_json_data_(msg, dyn_type, json_data))
