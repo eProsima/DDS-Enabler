@@ -65,7 +65,7 @@ Documentation Build Option
 **************************
 
 .. important::
-    The following option is only relevant for building the local documentation project (`ddsenabler_docs`):
+    The following option is only relevant for building the local documentation project (``ddsenabler_docs``):
 
 .. list-table::
     :header-rows: 1
