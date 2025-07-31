@@ -90,14 +90,14 @@
 ..    /developer_manual/installation/sources/linux
 
 
-.. .. _index_notes:
+.. _index_notes:
 
-.. .. toctree::
-..    :caption: Release Notes
-..    :maxdepth: 2
-..    :hidden:
+.. toctree::
+   :caption: Release Notes
+   :maxdepth: 2
+   :hidden:
 
-..    /notes/notes
+   /notes/notes
 
 
 .. .. _index_appendix:
