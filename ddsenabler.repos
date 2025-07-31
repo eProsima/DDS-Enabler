@@ -6,20 +6,20 @@ repositories:
     Fast-CDR:
         type: git
         url: https://github.com/eProsima/Fast-CDR.git
-        version: master
+        version: v2.3.0
     Fast-DDS:
         type: git
         url: https://github.com/eProsima/Fast-DDS.git
-        version: master
+        version: v3.3.0
     Dev-Utils:
         type: git
         url: https://github.com/eProsima/dev-utils.git
-        version: main
+        version: v1.3.0
     DDS-Pipe:
         type: git
         url: https://github.com/eProsima/DDS-Pipe.git
-        version: main
+        version: v1.3.0
     DDS-Enabler:
         type: git
         url: https://github.com/eProsima/DDS-Enabler.git
-        version: main
+        version: v1.0.0
