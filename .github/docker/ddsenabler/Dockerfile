@@ -55,12 +55,12 @@ RUN echo "fastcdr branch: <${fastcdr_branch}>" && \
 RUN mkdir src && \
     wget https://raw.githubusercontent.com/eProsima/FIWARE-DDS-Enabler/${ddsenabler_branch}/ddsenabler.repos && \
     vcs import src < ddsenabler.repos && \
-    cd src/fastcdr && git checkout ${fastcdr_branch} && cd ../.. && \
-    cd src/fastdds && git checkout ${fastdds_branch} && cd ../.. && \
-    cd src/dev-utils && git checkout ${devutils_branch} && cd ../.. && \
-    cd src/ddspipe && git checkout ${ddspipe_branch} && cd ../.. && \
-    cd src/ddsenabler && git checkout ${ddsenabler_branch} && cd ../.. && \
-    cp -r src/fastdds/examples/cpp/configuration src/. && \
+    cd src/Fast-CDR && git checkout ${fastcdr_branch} && cd ../.. && \
+    cd src/Fast-DDS && git checkout ${fastdds_branch} && cd ../.. && \
+    cd src/Dev-Utils && git checkout ${devutils_branch} && cd ../.. && \
+    cd src/DDS-Pipe && git checkout ${ddspipe_branch} && cd ../.. && \
+    cd src/DDS-Enabler && git checkout ${ddsenabler_branch} && cd ../.. && \
+    cp -r src/Fast-DDS/examples/cpp/configuration src/. && \
     colcon build --packages-skip ddsenabler ddsenabler_docs --event-handlers console_direct+ --cmake-args -DLOG_INFO=ON -DSECURITY=ON && \
     colcon build --packages-select ddsenabler --event-handlers console_direct+ --cmake-args -DLOG_INFO=ON -DCOMPILE_EXAMPLES=ON
 
