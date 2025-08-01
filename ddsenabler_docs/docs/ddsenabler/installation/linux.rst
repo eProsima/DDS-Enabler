@@ -284,7 +284,7 @@ To run this *eProsima DDS Enabler* example, source the installation path and exe
     # If built has been done using colcon, all projects could be sourced as follows
     cd <dds-enabler-workspace>
     source install/setup.bash
-    export TEST_PATH=$PWD/src/FIWARE-DDS-Enabler/ddsenabler_test/compose/test_cases/publish/discovered_type
+    export TEST_PATH=$PWD/src/DDS-Enabler/ddsenabler_test/compose/test_cases/publish/discovered_type
     ./build/ddsenabler/examples/ddsenabler_example --config $TEST_PATH/config.yml --timeout 5 --expected-types 1 --expected-topics 1 --publish-path $TEST_PATH/samples --publish-topic rt/chatter --publish-period 200 --publish-initial-wait 2000
 
 .. important::

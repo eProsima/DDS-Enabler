@@ -1,4 +1,4 @@
-[![DDS Enabler](resources/images/github_banner_ddsenabler.png)](https://eprosima.com/middleware/tools/fiware-dds-enabler)
+[![DDS Enabler](resources/images/github_banner_ddsenabler.png)](https://eprosima.com/middleware/tools/DDS-Enabler)
 
 <br>
 
@@ -19,15 +19,15 @@
 <br><br>
 
 <div class="badges" align="center">
-  <a href="https://opensource.org/licenses/Apache-2.0"><img alt="License" src="https://img.shields.io/github/license/eProsima/FIWARE-DDS-Enabler.svg"/></a>
-  <a href="https://github.com/eProsima/FIWARE-DDS-Enabler/releases"><img alt="Releases" src="https://img.shields.io/github/v/release/eProsima/FIWARE-DDS-Enabler?sort=semver"/></a>
-  <a href="https://github.com/eProsima/FIWARE-DDS-Enabler/issues"><img alt="Issues" src="https://img.shields.io/github/issues/eProsima/FIWARE-DDS-Enabler.svg"/></a>
-  <a href="https://github.com/eProsima/FIWARE-DDS-Enabler/network/members"><img alt="Forks" src="https://img.shields.io/github/forks/eProsima/FIWARE-DDS-Enabler.svg"/></a>
-  <a href="https://github.com/eProsima/FIWARE-DDS-Enabler/stargazers"><img alt="Stars" src="https://img.shields.io/github/stars/eProsima/FIWARE-DDS-Enabler.svg"/></a>
+  <a href="https://opensource.org/licenses/Apache-2.0"><img alt="License" src="https://img.shields.io/github/license/eProsima/DDS-Enabler.svg"/></a>
+  <a href="https://github.com/eProsima/DDS-Enabler/releases"><img alt="Releases" src="https://img.shields.io/github/v/release/eProsima/DDS-Enabler?sort=semver"/></a>
+  <a href="https://github.com/eProsima/DDS-Enabler/issues"><img alt="Issues" src="https://img.shields.io/github/issues/eProsima/DDS-Enabler.svg"/></a>
+  <a href="https://github.com/eProsima/DDS-Enabler/network/members"><img alt="Forks" src="https://img.shields.io/github/forks/eProsima/DDS-Enabler.svg"/></a>
+  <a href="https://github.com/eProsima/DDS-Enabler/stargazers"><img alt="Stars" src="https://img.shields.io/github/stars/eProsima/DDS-Enabler.svg"/></a>
   <br>
   <a href="https://dds-enabler.readthedocs.io"><img alt="Documentation badge" src="https://img.shields.io/readthedocs/dds-enabler.svg"/></a>
-  <a href="https://github.com/eProsima/FIWARE-DDS-Enabler/actions/workflows/nightly-windows-ci.yml"><img alt="Windows CI" src="https://img.shields.io/github/actions/workflow/status/eProsima/FIWARE-DDS-Enabler/nightly-windows-ci.yml?label=Windows%20CI"></a>
-  <a href="https://github.com/eProsima/FIWARE-DDS-Enabler/actions/workflows/nightly-ubuntu-ci.yml"><img alt="Ubuntu CI" src="https://img.shields.io/github/actions/workflow/status/eProsima/FIWARE-DDS-Enabler/nightly-ubuntu-ci.yml?label=Ubuntu%20CI"></a>
+  <a href="https://github.com/eProsima/DDS-Enabler/actions/workflows/nightly-windows-ci.yml"><img alt="Windows CI" src="https://img.shields.io/github/actions/workflow/status/eProsima/DDS-Enabler/nightly-windows-ci.yml?label=Windows%20CI"></a>
+  <a href="https://github.com/eProsima/DDS-Enabler/actions/workflows/nightly-ubuntu-ci.yml"><img alt="Ubuntu CI" src="https://img.shields.io/github/actions/workflow/status/eProsima/DDS-Enabler/nightly-ubuntu-ci.yml?label=Ubuntu%20CI"></a>
 </div>
 
 <br><br>
