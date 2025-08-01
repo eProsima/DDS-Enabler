@@ -160,8 +160,7 @@ void Writer::write_topic(
         std::string serialized_qos = serialize_qos(topic.topic_qos);
         topic_notification_callback_(
             topic.topic_name().c_str(),
-            topic.type_name.c_str(),
-            serialized_qos.c_str()
+            TopicInfo(topic.type_name, serialized_qos)
             );
     }
 }
@@ -199,11 +198,11 @@ void Writer::write_service_notification(
         std::string reply_serialized_qos = serialize_qos(service.reply_topic().topic_qos);
         service_notification_callback_(
             service.service_name().c_str(),
-            service.request_topic().type_name.c_str(),
-            service.reply_topic().type_name.c_str(),
-            request_serialized_qos.c_str(),
-            reply_serialized_qos.c_str()
-            );
+            ServiceInfo(
+                TopicInfo(service.request_topic().type_name, request_serialized_qos),
+                TopicInfo(service.reply_topic().type_name, reply_serialized_qos)
+            )
+        );
     }
 }
 
@@ -274,23 +273,22 @@ void Writer::write_action_notification(
 
         action_notification_callback_(
             action.action_name.c_str(),
-            action.goal.request_topic().type_name.c_str(),
-            action.goal.reply_topic().type_name.c_str(),
-            action.cancel.request_topic().type_name.c_str(),
-            action.cancel.reply_topic().type_name.c_str(),
-            action.result.request_topic().type_name.c_str(),
-            action.result.reply_topic().type_name.c_str(),
-            action.feedback.type_name.c_str(),
-            action.status.type_name.c_str(),
-            goal_request_serialized_qos.c_str(),
-            goal_reply_serialized_qos.c_str(),
-            cancel_request_serialized_qos.c_str(),
-            cancel_reply_serialized_qos.c_str(),
-            result_request_serialized_qos.c_str(),
-            result_reply_serialized_qos.c_str(),
-            feedback_serialized_qos.c_str(),
-            status_serialized_qos.c_str()
-            );
+            ActionInfo(
+                ServiceInfo(
+                    TopicInfo(action.goal.request_topic().type_name, goal_request_serialized_qos),
+                    TopicInfo(action.goal.reply_topic().type_name, goal_reply_serialized_qos)
+                ),
+                ServiceInfo(
+                    TopicInfo(action.cancel.request_topic().type_name, cancel_request_serialized_qos),
+                    TopicInfo(action.cancel.reply_topic().type_name, cancel_reply_serialized_qos)
+                ),
+                ServiceInfo(
+                    TopicInfo(action.result.request_topic().type_name, result_request_serialized_qos),
+                    TopicInfo(action.result.reply_topic().type_name, result_reply_serialized_qos)
+                ),
+                TopicInfo(action.feedback.type_name, feedback_serialized_qos),
+                TopicInfo(action.status.type_name, status_serialized_qos)
+            ));
     }
 }
 

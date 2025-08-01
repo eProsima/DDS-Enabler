@@ -488,32 +488,30 @@ bool EnablerParticipant::query_topic_nts_(
                             " : topic is unknown and topic query callback not set.");
         return false;
     }
-    std::string type_name;
-    std::string serialized_qos;
-    if (!topic_query_callback_(topic_name.c_str(), type_name, serialized_qos))
+    participants::TopicInfo topic_info;
+    if (!topic_query_callback_(topic_name.c_str(), topic_info))
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
                 "Failed to query data from topic " << topic_name << " : topic query callback failed.");
         return false;
     }
 
-    return fill_topic_struct_nts_(topic_name, type_name, serialized_qos, topic);
+    return fill_topic_struct_nts_(topic_name, topic_info, topic);
 }
 
 bool EnablerParticipant::fill_topic_struct_nts_(
     const std::string& topic_name,
-    const std::string type_name,
-    const std::string serialized_qos,
+    const TopicInfo& topic_info,
     DdsTopic& topic)
 
 {
     // Deserialize QoS if provided by the user (otherwise use default one)
     TopicQoS qos;
-    if (!serialized_qos.empty())
+    if (!topic_info.serialized_qos.empty())
     {
         try
         {
-            qos = serialization::deserialize_qos(serialized_qos);
+            qos = serialization::deserialize_qos(topic_info.serialized_qos);
         }
         catch (const std::exception& e)
         {
@@ -524,7 +522,7 @@ bool EnablerParticipant::fill_topic_struct_nts_(
     }
 
     fastdds::dds::xtypes::TypeIdentifier type_identifier;
-    if (!std::static_pointer_cast<Handler>(schema_handler_)->get_type_identifier(type_name, type_identifier))
+    if (!std::static_pointer_cast<Handler>(schema_handler_)->get_type_identifier(topic_info.type_name, type_identifier))
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
                 "Failed to create topic " << topic_name << " : type identifier not found.");
@@ -532,7 +530,7 @@ bool EnablerParticipant::fill_topic_struct_nts_(
     }
 
     topic.m_topic_name = topic_name;
-    topic.type_name = type_name;
+    topic.type_name = topic_info.type_name;
     topic.topic_qos = qos;
     topic.type_identifiers.type_identifier1(type_identifier);
 
@@ -540,22 +538,19 @@ bool EnablerParticipant::fill_topic_struct_nts_(
 }
 
 bool EnablerParticipant::fullfill_service_type_nts_(
-    const std::string _request_type_name,
-    const std::string serialized_request_qos_content,
-    const std::string _reply_type_name,
-    const std::string serialized_reply_qos_content,
+    const ServiceInfo& service_info,
     std::shared_ptr<ServiceDiscovered> service)
 {
 
     DdsTopic topic_request;
     std::string topic_request_name = std::string(REQUEST_PREFIX) + service->service_name + REQUEST_SUFFIX;
-    if(!fill_topic_struct_nts_(topic_request_name, _request_type_name, serialized_request_qos_content, topic_request))
+    if(!fill_topic_struct_nts_(topic_request_name, service_info.request, topic_request))
         return false;
     service->add_topic(topic_request, RpcUtils::RPC_REQUEST);
 
     DdsTopic topic_reply;
     std::string topic_reply_name = std::string(REPLY_PREFIX) + service->service_name + REPLY_SUFFIX;
-    if(!fill_topic_struct_nts_(topic_reply_name, _reply_type_name, serialized_reply_qos_content, topic_reply))
+    if(!fill_topic_struct_nts_(topic_reply_name, service_info.reply, topic_reply))
         return false;
     service->add_topic(topic_reply, RpcUtils::RPC_REPLY);
 
@@ -583,16 +578,15 @@ bool EnablerParticipant::query_service_nts_(
     std::string serialized_reply_qos_content;
 
 
-    if (!service_query_callback_(service->service_name.c_str(), request_type_name, serialized_request_qos_content,
-            reply_type_name, serialized_reply_qos_content))
+    ServiceInfo service_info;
+    if (!service_query_callback_(service->service_name.c_str(), service_info))
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
                 "Failed to announce service " << service->service_name << " : service type request failed.");
         return false;
     }
 
-    return fullfill_service_type_nts_(request_type_name, serialized_request_qos_content,
-            reply_type_name, serialized_reply_qos_content, service);
+    return fullfill_service_type_nts_(service_info, service);
 }
 
 bool EnablerParticipant::query_action_nts_(
@@ -607,40 +601,10 @@ bool EnablerParticipant::query_action_nts_(
         return false;
     }
 
-    std::string goal_request_action_type;
-    std::string goal_reply_action_type;
-    std::string cancel_request_action_type;
-    std::string cancel_reply_action_type;
-    std::string result_request_action_type;
-    std::string result_reply_action_type;
-    std::string feedback_action_type;
-    std::string status_action_type;
-    std::string goal_request_action_serialized_qos;
-    std::string goal_reply_action_serialized_qos;
-    std::string cancel_request_action_serialized_qos;
-    std::string cancel_reply_action_serialized_qos;
-    std::string result_request_action_serialized_qos;
-    std::string result_reply_action_serialized_qos;
-    std::string feedback_action_serialized_qos;
-    std::string status_action_serialized_qos;
+    ActionInfo action_info;
 
     if (!action_query_callback_(action.action_name.c_str(),
-            goal_request_action_type,
-            goal_reply_action_type,
-            cancel_request_action_type,
-            cancel_reply_action_type,
-            result_request_action_type,
-            result_reply_action_type,
-            feedback_action_type,
-            status_action_type,
-            goal_request_action_serialized_qos,
-            goal_reply_action_serialized_qos,
-            cancel_request_action_serialized_qos,
-            cancel_reply_action_serialized_qos,
-            result_request_action_serialized_qos,
-            result_reply_action_serialized_qos,
-            feedback_action_serialized_qos,
-            status_action_serialized_qos))
+            action_info))
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
                 "Failed to announce action " << action.action_name << " : action type request failed.");
@@ -668,10 +632,7 @@ bool EnablerParticipant::query_action_nts_(
 
     std::shared_ptr<ServiceDiscovered> goal_service = std::make_shared<ServiceDiscovered>(goal_service_name);
     if(!fullfill_service_type_nts_(
-            goal_request_action_type,
-            goal_request_action_serialized_qos,
-            goal_reply_action_type,
-            goal_reply_action_serialized_qos,
+            action_info.goal,
             goal_service))
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
@@ -689,10 +650,7 @@ bool EnablerParticipant::query_action_nts_(
 
     std::shared_ptr<ServiceDiscovered> cancel_service = std::make_shared<ServiceDiscovered>(cancel_service_name);
     if(!fullfill_service_type_nts_(
-            cancel_request_action_type,
-            cancel_request_action_serialized_qos,
-            cancel_reply_action_type,
-            cancel_reply_action_serialized_qos,
+            action_info.cancel,
             cancel_service))
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
@@ -710,10 +668,7 @@ bool EnablerParticipant::query_action_nts_(
 
     std::shared_ptr<ServiceDiscovered> result_service = std::make_shared<ServiceDiscovered>(result_service_name);
     if(!fullfill_service_type_nts_(
-            result_request_action_type,
-            result_request_action_serialized_qos,
-            result_reply_action_type,
-            result_reply_action_serialized_qos,
+            action_info.result,
             result_service))
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
@@ -733,8 +688,7 @@ bool EnablerParticipant::query_action_nts_(
     DdsTopic feedback_topic;
     if(!fill_topic_struct_nts_(
             feedback_topic_name,
-            feedback_action_type,
-            feedback_action_serialized_qos,
+            action_info.feedback,
             feedback_topic))
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
@@ -760,8 +714,7 @@ bool EnablerParticipant::query_action_nts_(
     DdsTopic status_topic;
     if(!fill_topic_struct_nts_(
             status_topic_name,
-            status_action_type,
-            status_action_serialized_qos,
+            action_info.status,
             status_topic))
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,

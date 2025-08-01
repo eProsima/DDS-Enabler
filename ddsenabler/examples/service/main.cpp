@@ -120,16 +120,14 @@ static void test_data_notification_callback(
 // Static topic notification callback
 static void test_topic_notification_callback(
         const char* topic_name,
-        const char* type_name,
-        const char* serialized_qos)
+        const eprosima::ddsenabler::participants::TopicInfo& topic_info)
 {
 }
 
 // Static type query callback
 static bool test_topic_query_callback(
         const char* topic_name,
-        std::string& type_name,
-        std::string& serialized_qos)
+        eprosima::ddsenabler::participants::TopicInfo& topic_info)
 {
     return false;
 }
@@ -137,10 +135,7 @@ static bool test_topic_query_callback(
 // Static service notification callback
 static void test_service_notification_callback(
         const char* service_name,
-        const char* request_type_name,
-        const char* reply_type_name,
-        const char* request_serialized_qos,
-        const char* reply_serialized_qos)
+        const eprosima::ddsenabler::participants::ServiceInfo& service_info)
 {
     std::lock_guard<std::mutex> lock(app_mutex_);
     if (config.service_name == std::string(service_name))
@@ -155,10 +150,10 @@ static void test_service_notification_callback(
             utils::save_service_to_file(
                 service_file,
                 service_name,
-                request_type_name,
-                reply_type_name,
-                request_serialized_qos,
-                reply_serialized_qos);
+                service_info.request.type_name.c_str(),
+                service_info.reply.type_name.c_str(),
+                service_info.request.serialized_qos.c_str(),
+                service_info.reply.serialized_qos.c_str());
 
             service_discovered_ = true;
             app_cv_.notify_all();
@@ -173,10 +168,7 @@ static void test_service_notification_callback(
 // Static service query callback
 static bool test_service_query_callback(
         const char* service_name,
-        std::string& request_type_name,
-        std::string& request_serialized_qos,
-        std::string& reply_type_name,
-        std::string& reply_serialized_qos)
+        eprosima::ddsenabler::participants::ServiceInfo& service_info)
 {
     std::lock_guard<std::mutex> lock(app_mutex_);
 
@@ -197,10 +189,10 @@ static bool test_service_query_callback(
         if (utils::load_service_from_file(
                     service_file,
                     service_name,
-                    request_type_name,
-                    reply_type_name,
-                    request_serialized_qos,
-                    reply_serialized_qos))
+                    service_info.request.type_name,
+                    service_info.reply.type_name,
+                    service_info.request.serialized_qos,
+                    service_info.reply.serialized_qos))
         {
             app_cv_.notify_all();
             return true;

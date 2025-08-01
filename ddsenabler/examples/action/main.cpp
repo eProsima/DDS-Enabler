@@ -120,16 +120,14 @@ static void test_data_notification_callback(
 // Static topic notification callback
 static void test_topic_notification_callback(
         const char* topic_name,
-        const char* type_name,
-        const char* serialized_qos)
+        const eprosima::ddsenabler::participants::TopicInfo& topic_info)
 {
 }
 
 // Static type query callback
 static bool test_topic_query_callback(
         const char* topic_name,
-        std::string& type_name,
-        std::string& serialized_qos)
+        eprosima::ddsenabler::participants::TopicInfo& topic_info)
 {
     return false;
 }
@@ -137,22 +135,7 @@ static bool test_topic_query_callback(
 // Static action notification callback
 static void test_action_notification_callback(
         const char* action_name,
-        const char* goal_request_action_type,
-        const char* goal_reply_action_type,
-        const char* cancel_request_action_type,
-        const char* cancel_reply_action_type,
-        const char* result_request_action_type,
-        const char* result_reply_action_type,
-        const char* feedback_action_type,
-        const char* status_action_type,
-        const char* goal_request_action_serialized_qos,
-        const char* goal_reply_action_serialized_qos,
-        const char* cancel_request_action_serialized_qos,
-        const char* cancel_reply_action_serialized_qos,
-        const char* result_request_action_serialized_qos,
-        const char* result_reply_action_serialized_qos,
-        const char* feedback_action_serialized_qos,
-        const char* status_action_serialized_qos)
+        const eprosima::ddsenabler::participants::ActionInfo& action_info)
 {
     std::lock_guard<std::mutex> lock(app_mutex_);
     if (config.action_name == std::string(action_name))
@@ -168,22 +151,22 @@ static void test_action_notification_callback(
             utils::save_action_to_file(
                 action_file,
                 action_name,
-                goal_request_action_type,
-                goal_reply_action_type,
-                cancel_request_action_type,
-                cancel_reply_action_type,
-                result_request_action_type,
-                result_reply_action_type,
-                feedback_action_type,
-                status_action_type,
-                goal_request_action_serialized_qos,
-                goal_reply_action_serialized_qos,
-                cancel_request_action_serialized_qos,
-                cancel_reply_action_serialized_qos,
-                result_request_action_serialized_qos,
-                result_reply_action_serialized_qos,
-                feedback_action_serialized_qos,
-                status_action_serialized_qos);
+                action_info.goal.request.type_name.c_str(),
+                action_info.goal.reply.type_name.c_str(),
+                action_info.cancel.request.type_name.c_str(),
+                action_info.cancel.reply.type_name.c_str(),
+                action_info.result.request.type_name.c_str(),
+                action_info.result.reply.type_name.c_str(),
+                action_info.feedback.type_name.c_str(),
+                action_info.status.type_name.c_str(),
+                action_info.goal.request.serialized_qos.c_str(),
+                action_info.goal.reply.serialized_qos.c_str(),
+                action_info.cancel.request.serialized_qos.c_str(),
+                action_info.cancel.reply.serialized_qos.c_str(),
+                action_info.result.request.serialized_qos.c_str(),
+                action_info.result.reply.serialized_qos.c_str(),
+                action_info.feedback.serialized_qos.c_str(),
+                action_info.status.serialized_qos.c_str());
 
             action_discovered_ = true;
             app_cv_.notify_all();
@@ -198,22 +181,7 @@ static void test_action_notification_callback(
 // Static action query callback
 static bool test_action_query_callback(
         const char* action_name,
-        std::string& goal_request_action_type,
-        std::string& goal_reply_action_type,
-        std::string& cancel_request_action_type,
-        std::string& cancel_reply_action_type,
-        std::string& result_request_action_type,
-        std::string& result_reply_action_type,
-        std::string& feedback_action_type,
-        std::string& status_action_type,
-        std::string& goal_request_action_serialized_qos,
-        std::string& goal_reply_action_serialized_qos,
-        std::string& cancel_request_action_serialized_qos,
-        std::string& cancel_reply_action_serialized_qos,
-        std::string& result_request_action_serialized_qos,
-        std::string& result_reply_action_serialized_qos,
-        std::string& feedback_action_serialized_qos,
-        std::string& status_action_serialized_qos)
+        eprosima::ddsenabler::participants::ActionInfo& action_info)
 {
     std::lock_guard<std::mutex> lock(app_mutex_);
     if (config.action_name == std::string(action_name))
@@ -229,22 +197,22 @@ static bool test_action_query_callback(
             if (!utils::load_action_from_file(
                     action_file,
                     action_name,
-                    goal_request_action_type,
-                    goal_reply_action_type,
-                    cancel_request_action_type,
-                    cancel_reply_action_type,
-                    result_request_action_type,
-                    result_reply_action_type,
-                    feedback_action_type,
-                    status_action_type,
-                    goal_request_action_serialized_qos,
-                    goal_reply_action_serialized_qos,
-                    cancel_request_action_serialized_qos,
-                    cancel_reply_action_serialized_qos,
-                    result_request_action_serialized_qos,
-                    result_reply_action_serialized_qos,
-                    feedback_action_serialized_qos,
-                    status_action_serialized_qos))
+                    action_info.goal.request.type_name,
+                    action_info.goal.reply.type_name,
+                    action_info.cancel.request.type_name,
+                    action_info.cancel.reply.type_name,
+                    action_info.result.request.type_name,
+                    action_info.result.reply.type_name,
+                    action_info.feedback.type_name,
+                    action_info.status.type_name,
+                    action_info.goal.request.serialized_qos,
+                    action_info.goal.reply.serialized_qos,
+                    action_info.cancel.request.serialized_qos,
+                    action_info.cancel.reply.serialized_qos,
+                    action_info.result.request.serialized_qos,
+                    action_info.result.reply.serialized_qos,
+                    action_info.feedback.serialized_qos,
+                    action_info.status.serialized_qos))
             {
                 std::cerr << "Failed to load action: " << action_name << std::endl;
                 return false;

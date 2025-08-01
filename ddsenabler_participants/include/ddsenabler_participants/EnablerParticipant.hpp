@@ -130,15 +130,11 @@ protected:
 
     bool fill_topic_struct_nts_(
         const std::string& topic_name,
-        const std::string _type_name,
-        const std::string serialized_qos_content,
+        const TopicInfo& topic_info,
         ddspipe::core::types::DdsTopic& topic);
 
     bool fullfill_service_type_nts_(
-            const std::string _request_type_name,
-            const std::string serialized_request_qos_content,
-            const std::string _reply_type_name,
-            const std::string serialized_reply_qos_content,
+            const ServiceInfo& service_info,
             std::shared_ptr<ServiceDiscovered> service);
 
     std::shared_ptr<ddspipe::core::IReader> lookup_reader_nts_(

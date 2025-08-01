@@ -125,19 +125,18 @@ static bool test_type_query_callback(
 // Static topic notification callback
 static void test_topic_notification_callback(
         const char* topic_name,
-        const char* type_name,
-        const char* serialized_qos)
+        const eprosima::ddsenabler::participants::TopicInfo& topic_info)
 {
     bool notify = false;
     {
         std::lock_guard<std::mutex> lock(app_mutex_);
         notify = ++received_topics_ >= config.expected_topics;
-        std::cout << "Topic callback received: " << topic_name << " of type " << type_name << ", Total topics: " <<
-            received_topics_ << std::endl << serialized_qos << std::endl << std::endl;
+        std::cout << "Topic callback received: " << topic_name << " of type " << topic_info.type_name << ", Total topics: " <<
+            received_topics_ << std::endl << topic_info.serialized_qos << std::endl << std::endl;
         if (!config.persistence_path.empty() &&
                 !utils::save_topic_to_file((std::filesystem::path(config.persistence_path) / TOPICS_SUBDIR).string(),
                 topic_name,
-                type_name, serialized_qos))
+                topic_info.type_name.c_str(), topic_info.serialized_qos.c_str()))
         {
             std::cerr << "Failed to save topic: " << topic_name << std::endl;
         }
@@ -151,8 +150,7 @@ static void test_topic_notification_callback(
 // Static type query callback
 static bool test_topic_query_callback(
         const char* topic_name,
-        std::string& type_name,
-        std::string& serialized_qos)
+        eprosima::ddsenabler::participants::TopicInfo& topic_info)
 {
     if (config.persistence_path.empty())
     {
@@ -162,8 +160,8 @@ static bool test_topic_query_callback(
 
     // Load the topic from file
     if (!utils::load_topic_from_file((std::filesystem::path(config.persistence_path) / TOPICS_SUBDIR).string(), topic_name,
-            type_name,
-            serialized_qos))
+            topic_info.type_name,
+            topic_info.serialized_qos))
     {
         std::cerr << "Failed to load topic: " << topic_name << std::endl;
         return false;
