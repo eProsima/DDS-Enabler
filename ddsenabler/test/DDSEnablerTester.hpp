@@ -299,8 +299,7 @@ public:
     // eprosima::ddsenabler::participants::DdsTopicNotification topic_notification
     static void test_topic_notification_callback(
             const char* topic_name,
-            const char* type_name,
-            const char* serialized_qos)
+            const eprosima::ddsenabler::participants::TopicInfo& topic_info)
     {
         if (current_test_instance_)
         {
@@ -315,8 +314,7 @@ public:
     // eprosima::ddsenabler::participants::DdsTopicQuery topic_query;
     static bool test_topic_query_callback(
             const char* topic_name,
-            std::string& type_name,
-            std::string& serialized_qos)
+            eprosima::ddsenabler::participants::TopicInfo& topic_info)
     {
         return false;
     }

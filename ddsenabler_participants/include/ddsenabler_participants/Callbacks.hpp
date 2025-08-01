@@ -29,6 +29,77 @@ namespace ddsenabler {
 namespace participants {
 
 /**
+ * @brief Struct that contains information about a DDS topic.
+ *
+ * This struct is used to encapsulate the type name and serialized QoS of a DDS topic.
+ */
+struct TopicInfo
+{
+        TopicInfo() = default;
+
+        TopicInfo (
+                const std::string& _type_name,
+                const std::string& _serialized_qos)
+            : type_name(_type_name)
+            , serialized_qos(_serialized_qos)
+        {
+        }
+
+        std::string type_name;
+        std::string serialized_qos;
+};
+
+/**
+ * @brief Struct that contains information about a DDS service.
+ *
+ * This struct is used to encapsulate the request and reply topics of a DDS service.
+ */
+struct ServiceInfo
+{
+        ServiceInfo() = default;
+
+        ServiceInfo(
+                const TopicInfo& _request,
+                const TopicInfo& _reply)
+            : request(_request)
+            , reply(_reply)
+        {
+        }
+        TopicInfo request;
+        TopicInfo reply;
+};
+
+/**
+ * @brief Struct that contains information about a DDS action.
+ *
+ * This struct is used to encapsulate the goal, result and cancel services as well as the feedback and status topics of a DDS action.
+ */
+struct ActionInfo
+{
+        ActionInfo() = default;
+
+        ActionInfo(
+                const ServiceInfo& _goal,
+                const ServiceInfo& _result,
+                const ServiceInfo& _cancel,
+                const TopicInfo& _feedback,
+                const TopicInfo& _status)
+            : goal(_goal)
+            , result(_result)
+            , cancel(_cancel)
+            , feedback(_feedback)
+            , status(_status)
+        {
+        }
+
+        ServiceInfo goal;
+        ServiceInfo result;
+        ServiceInfo cancel;
+        TopicInfo feedback;
+        TopicInfo status;
+};
+
+/**
  * DdsLogFunc - callback executed when consuming log messages
  *
  * @param [in] file_name Name of the file where the log was generated
@@ -64,13 +135,11 @@ typedef void (* DdsTypeNotification)(
  * DdsTopicNotification - callback for notifying the reception of DDS topics
  *
  * @param [in] topic_name Name of the received topic
- * @param [in] type_name Name of the type associated with the topic
- * @param [in] serialized_qos Serialized Quality of Service (QoS) of the topic
+ * @param [in] topic_info Information about the topic, including type name and serialized QoS
  */
 typedef void (* DdsTopicNotification)(
         const char* topic_name,
-        const char* type_name,
-        const char* serialized_qos);
+        const TopicInfo& topic_info);
 
 /**
  * DdsDataNotification - callback for notifying the reception of DDS data
@@ -101,14 +170,12 @@ typedef bool (* DdsTypeQuery)(
  * DdsTopicQuery - callback for requesting information (type and QoS) of a DDS topic
  *
  * @param [in] topic_name Name of the topic to query
- * @param [out] type_name Name of the type associated with the topic
- * @param [out] serialized_qos Serialized Quality of Service (QoS) of the topic
+ * @param [out] topic_info Information about the topic, including type name and serialized QoS
  * @return \c true if the topic was found and the information was retrieved successfully, \c false otherwise
  */
 typedef bool (* DdsTopicQuery)(
         const char* topic_name,
-        std::string& type_name,
-        std::string& serialized_qos);
+        TopicInfo& topic_info);
 
 /**********************/
 /*      SERVICES      */
@@ -121,17 +188,11 @@ typedef bool (* DdsTopicQuery)(
  * This callback is used to notify the discovery of a service and its associated request and reply types.
  *
  * @param [in] service_name The name of the service that was discovered.
- * @param [in] request_type_name The name of the request type associated with the service.
- * @param [in] reply_type_name The name of the reply type associated with the service.
- * @param [in] request_serialized_qos The serialized Quality of Service (QoS) settings for the request type.
- * @param [in] reply_serialized_qos The serialized Quality of Service (QoS) settings for the reply type.
+ * @param [in] service_info Information about the service, including request and reply types and their serialized QoS.
  */
 typedef void (* ServiceNotification)(
         const char* service_name,
-        const char* request_type_name,
-        const char* reply_type_name,
-        const char* request_serialized_qos,
-        const char* reply_serialized_qos);
+        const ServiceInfo& service_info);
 
 /**
  * @brief Callback for reception of service request data.
@@ -173,18 +234,12 @@ typedef void (* ServiceReplyNotification)(
  * This callback is used to request the type information for a service's request and reply.
  *
  * @param [in] service_name The name of the service for which the type information is requested.
- * @param [out] request_type_name The name of the request type associated with the service.
- * @param [out] request_serialized_qos The serialized Quality of Service (QoS) settings for the request type.
- * @param [out] reply_type_name The name of the reply type associated with the service.
- * @param [out] reply_serialized_qos The serialized Quality of Service (QoS) settings for the reply type.
+ * @param [out] service_info Information about the service, including request and reply types and their serialized QoS.
  * @return \c true if the service was found and the type information was retrieved successfully, \c false otherwise.
  */
  typedef bool (* ServiceQuery)(
         const char* service_name,
-        std::string& request_type_name,
-        std::string& request_serialized_qos,
-        std::string& reply_type_name,
-        std::string& reply_serialized_qos);
+        ServiceInfo& service_info);
 
 
 /**********************/
@@ -198,41 +253,11 @@ typedef void (* ServiceReplyNotification)(
  * This callback is used to notify the discovery of an action and its associated types.
  *
  * @param [in] action_name The name of the action that was discovered.
- * @param [in] goal_request_action_type The type of the goal request action.
- * @param [in] goal_reply_action_type The type of the goal reply action.
- * @param [in] cancel_request_action_type The type of the cancel request action.
- * @param [in] cancel_reply_action_type The type of the cancel reply action.
- * @param [in] result_request_action_type The type of the get result request action.
- * @param [in] result_reply_action_type The type of the get result reply action.
- * @param [in] feedback_action_type The type of the feedback action.
- * @param [in] status_action_type The type of the status action.
- * @param [in] goal_request_action_serialized_qos The serialized Quality of Service (QoS) settings for the goal request action.
- * @param [in] goal_reply_action_serialized_qos The serialized Quality of Service (QoS) settings for the goal reply action.
- * @param [in] cancel_request_action_serialized_qos The serialized Quality of Service (QoS) settings for the cancel request action.
- * @param [in] cancel_reply_action_serialized_qos The serialized Quality of Service (QoS) settings for the cancel reply action.
- * @param [in] result_request_action_serialized_qos The serialized Quality of Service (QoS) settings for the get result request action.
- * @param [in] result_reply_action_serialized_qos The serialized Quality of Service (QoS) settings for the get result reply action.
- * @param [in] feedback_action_serialized_qos The serialized Quality of Service (QoS) settings for the feedback action.
- * @param [in] status_action_serialized_qos The serialized Quality of Service (QoS) settings for the status action.
+ * @param [in] action_info Information about the action, including goal, result, cancel, feedback, and status types and their serialized QoS.
  */
 typedef void (* ActionNotification)(
         const char* action_name,
-        const char* goal_request_action_type,
-        const char* goal_reply_action_type,
-        const char* cancel_request_action_type,
-        const char* cancel_reply_action_type,
-        const char* result_request_action_type,
-        const char* result_reply_action_type,
-        const char* feedback_action_type,
-        const char* status_action_type,
-        const char* goal_request_action_serialized_qos,
-        const char* goal_reply_action_serialized_qos,
-        const char* cancel_request_action_serialized_qos,
-        const char* cancel_reply_action_serialized_qos,
-        const char* result_request_action_serialized_qos,
-        const char* result_reply_action_serialized_qos,
-        const char* feedback_action_serialized_qos,
-        const char* status_action_serialized_qos);
+        const ActionInfo& action_info);
 
 /**
  * @brief Callback for notification of an action goal request.
@@ -330,42 +355,12 @@ typedef void (* ActionResultNotification)(
  * This callback is used to request the action types for a specific action.
  *
  * @param [in] action_name The name of the action for which the types are being requested.
- * @param [out] goal_request_action_type The type of the goal request action.
- * @param [out] goal_reply_action_type The type of the goal reply action.
- * @param [out] cancel_request_action_type The type of the cancel request action.
- * @param [out] cancel_reply_action_type The type of the cancel reply action.
- * @param [out] result_request_action_type The type of the get result request action.
- * @param [out] result_reply_action_type The type of the get result reply action.
- * @param [out] feedback_action_type The type of the feedback action.
- * @param [out] status_action_type The type of the status action.
- * @param [out] goal_request_action_serialized_qos The serialized Quality of Service (QoS) settings for the goal request action.
- * @param [out] goal_reply_action_serialized_qos The serialized Quality of Service (QoS) settings for the goal reply action.
- * @param [out] cancel_request_action_serialized_qos The serialized Quality of Service (QoS) settings for the cancel request action.
- * @param [out] cancel_reply_action_serialized_qos The serialized Quality of Service (QoS) settings for the cancel reply action.
- * @param [out] result_request_action_serialized_qos The serialized Quality of Service (QoS) settings for the get result request action.
- * @param [out] result_reply_action_serialized_qos The serialized Quality of Service (QoS) settings for the get result reply action.
- * @param [out] feedback_action_serialized_qos The serialized Quality of Service (QoS) settings for the feedback action.
- * @param [out] status_action_serialized_qos The serialized Quality of Service (QoS) settings for the status action.
+ * @param [out] action_info Information about the action, including goal, result, cancel, feedback, and status types and their serialized QoS.
  * @return \c true if the action was found and the types were retrieved successfully, \c false otherwise.
  */
 typedef bool (* ActionQuery)(
     const char* action_name,
-    std::string& goal_request_action_type,
-    std::string& goal_reply_action_type,
-    std::string& cancel_request_action_type,
-    std::string& cancel_reply_action_type,
-    std::string& result_request_action_type,
-    std::string& result_reply_action_type,
-    std::string& feedback_action_type,
-    std::string& status_action_type,
-    std::string& goal_request_action_serialized_qos,
-    std::string& goal_reply_action_serialized_qos,
-    std::string& cancel_request_action_serialized_qos,
-    std::string& cancel_reply_action_serialized_qos,
-    std::string& result_request_action_serialized_qos,
-    std::string& result_reply_action_serialized_qos,
-    std::string& feedback_action_serialized_qos,
-    std::string& status_action_serialized_qos);
+    ActionInfo& action_info);
 
 } /* namespace participants */
 } /* namespace ddsenabler */
