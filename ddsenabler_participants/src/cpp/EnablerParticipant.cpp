@@ -331,9 +331,17 @@ bool EnablerParticipant::create_service_request_writer_nts_(
 }
 
 bool EnablerParticipant::announce_service(
-    const std::string& service_name)
+    const std::string& service_name,
+    bool is_ros2)
 {
     std::unique_lock<std::mutex> lck(mtx_);
+
+    if (!is_ros2)
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
+                "Failed to announce service " << service_name << " : only ROS2 services are currently supported.");
+        return false;
+    }
 
     auto it = services_.find(service_name);
     if (it != services_.end())
@@ -406,9 +414,17 @@ bool EnablerParticipant::revoke_service_nts_(
 }
 
 bool EnablerParticipant::announce_action(
-    const std::string& action_name)
+    const std::string& action_name,
+    bool is_ros2)
 {
     std::unique_lock<std::mutex> lck(mtx_);
+
+    if (!is_ros2)
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
+                "Failed to announce action " << action_name << " : only ROS2 actions are currently supported.");
+        return false;
+    }
 
     {
         auto it = actions_.find(action_name);

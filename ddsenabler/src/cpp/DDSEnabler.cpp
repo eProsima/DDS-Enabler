@@ -292,8 +292,16 @@ bool DDSEnabler::publish(
 bool DDSEnabler::send_service_request(
     const std::string& service_name,
     const std::string& json,
-    uint64_t& request_id)
+    uint64_t& request_id,
+    bool is_ros2)
 {
+    if (!is_ros2)
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
+                "Failed to send service request to service " << service_name << ": only ROS2 services are currently supported.");
+        return false;
+    }
+
     request_id = handler_->get_new_request_id();
     if (!enabler_participant_->publish_rpc(
             std::string(participants::REQUEST_PREFIX) + service_name + participants::REQUEST_SUFFIX,
@@ -305,9 +313,10 @@ bool DDSEnabler::send_service_request(
 }
 
 bool DDSEnabler::announce_service(
-    const std::string& service_name)
+    const std::string& service_name,
+    bool is_ros2)
 {
-    return enabler_participant_->announce_service(service_name);
+    return enabler_participant_->announce_service(service_name, is_ros2);
 }
 
 bool DDSEnabler::revoke_service(
@@ -327,8 +336,16 @@ bool DDSEnabler::send_service_reply(
 bool DDSEnabler::send_action_goal(
     const std::string& action_name,
     const std::string& json,
-    UUID& action_id)
+    UUID& action_id,
+    bool is_ros2)
 {
+    if (!is_ros2)
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
+                "Failed to send action goal to action " << action_name << ": only ROS2 actions are currently supported.");
+        return false;
+    }
+
     std::string goal_json = RpcUtils::create_goal_request_msg(json, action_id);
     std::string goal_request_topic = action_name + participants::ACTION_GOAL_SUFFIX;
     uint64_t goal_request_id = 0;
@@ -426,9 +443,10 @@ bool DDSEnabler::cancel_action_goal(
 }
 
 bool DDSEnabler::announce_action(
-    const std::string& action_name)
+    const std::string& action_name,
+    bool is_ros2)
 {
-    return enabler_participant_->announce_action(action_name);
+    return enabler_participant_->announce_action(action_name, is_ros2);
 }
 
 bool DDSEnabler::revoke_action(
