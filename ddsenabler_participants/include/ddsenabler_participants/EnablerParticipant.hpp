@@ -91,7 +91,8 @@ public:
 
     DDSENABLER_PARTICIPANTS_DllAPI
     bool announce_service(
-            const std::string& service_name);
+            const std::string& service_name,
+            bool is_ros2 = true);
 
     DDSENABLER_PARTICIPANTS_DllAPI
     bool revoke_service(
@@ -99,7 +100,8 @@ public:
 
     DDSENABLER_PARTICIPANTS_DllAPI
     bool announce_action(
-            const std::string& action_name);
+            const std::string& action_name,
+            bool is_ros2);
 
     DDSENABLER_PARTICIPANTS_DllAPI
     bool revoke_action(
