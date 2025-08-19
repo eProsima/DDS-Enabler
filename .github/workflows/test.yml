@@ -30,7 +30,7 @@ on:
         type: string
 
       ddsenabler_branch:
-        description: 'Branch or tag of DDS Enabler repository (https://github.com/eProsima/FIWARE-DDS-Enabler)'
+        description: 'Branch or tag of DDS Enabler repository (https://github.com/eProsima/DDS-Enabler)'
         required: true
         default: 'main'
         type: string

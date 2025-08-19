@@ -196,8 +196,8 @@ Colcon installation (recommended)
         mkdir <path\to\user\workspace>\DDS-Enabler
         cd <path\to\user\workspace>\DDS-Enabler
         mkdir src
-        wget https://raw.githubusercontent.com/eProsima/DDS-Enabler/main/ddsenabler.repos ddsenabler.repos
-        vcs import src < ddsenabler.repos
+        wget https://raw.githubusercontent.com/eProsima/DDS-Enabler/main/ddsenabler.repos -output ddsenabler.repos
+        vcs import src --input ddsenabler.repos
 
     .. note::
 
@@ -216,6 +216,7 @@ Colcon installation (recommended)
 
     Being based on CMake_, it is possible to pass the CMake configuration options to the :code:`colcon build` command.
     For more information on the specific syntax, please refer to the `CMake specific arguments <https://colcon.readthedocs.io/en/released/reference/verb/build.html#cmake-specific-arguments>`_ page of the colcon_ manual.
+    To see the specific option for the *eProsima DDS Enabler* packages, please refer to the :ref:`cmake_options` section.
 
 
 .. _windows_sources_cmake_installation:
@@ -381,6 +382,21 @@ There are two possibilities:
 
 * Add the sourcing of the colcon overlay permanently, by opening the *Edit the system environment variables* control panel, and adding the installation path to the :code:`PATH`.
 
+.. code-block:: bash
+
+    # TERMINAL ROS2 LISTENER
+    ROS_DOMAIN_ID=33 ros2 run demo_nodes_cpp listener
+
+    # TERMINAL DDS ENABLER
+    # If built has been done using colcon, all projects could be sourced as follows
+    cd <dds-enabler-workspace>
+    .\install\setup.bat
+    set TEST_PATH=%CD%\src\DDS-Enabler\ddsenabler_test\compose\test_cases\publish\discovered_type
+    .\install\ddsenabler\bin\ddsenabler_example.exe --config %TEST_PATH%\config.yml --timeout 10 --expected-types 1 --expected-topics 1 --publish-path %TEST_PATH%\samples --publish-topic rt/chatter --publish-period 200 --publish-initial-wait 5000
+
+.. important::
+
+    To run the *eProsima DDS Enabler* examples, it is necessary to have compiled the *eProsima DDS Enabler* project with the CMake option ``-DCOMPILE_EXAMPLES=ON``. For more details, please refer to the :ref:`cmake_options` section.
 
 .. External links
 
