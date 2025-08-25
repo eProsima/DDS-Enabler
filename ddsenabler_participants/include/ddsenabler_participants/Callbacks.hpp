@@ -65,6 +65,7 @@ struct ServiceInfo
             , reply(_reply)
         {
         }
+
         TopicInfo request;
         TopicInfo reply;
 };

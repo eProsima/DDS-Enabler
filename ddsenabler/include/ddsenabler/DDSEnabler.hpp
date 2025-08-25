@@ -38,6 +38,7 @@
 #include <ddsenabler_participants/HandlerConfiguration.hpp>
 #include <ddsenabler_participants/DdsParticipant.hpp>
 #include <ddsenabler_participants/EnablerParticipant.hpp>
+#include <ddsenabler_participants/RpcTypes.hpp>
 
 #include <ddsenabler_yaml/EnablerConfiguration.hpp>
 
@@ -96,6 +97,7 @@ public:
      *
      * @param topic_name: The name of the topic to publish to.
      * @param json: The JSON message to publish.
+     *
      * @return \c true if the message was published successfully, \c false otherwise.
      */
     DDSENABLER_DllAPI
@@ -116,12 +118,13 @@ public:
      * for the corresponding request and reply topics.
      *
      * @param service_name The name of the service to be announced.
-     * @param is_ros2 Indicates whether the service is a ROS2 service (default is true).
+     * @param rpc_protocol The RPC protocol to be used (default is ROS2).
+     *
      * @return true if the service was successfully announced, false otherwise.
      */
     bool announce_service(
             const std::string& service_name,
-            bool is_ros2 = true);
+            participants::RPC_PROTOCOL rpc_protocol = participants::RPC_PROTOCOL::ROS2);
 
     /**
      * @brief Stops the server for the given service.
@@ -149,14 +152,15 @@ public:
      * @param service_name The target service name.
      * @param json The JSON-formatted request data.
      * @param request_id Reference to store the unique request identifier.
-     * @param is_ros2 Indicates whether the service is a ROS2 service (default is true).
+     * @param rpc_protocol The RPC protocol to be used (default is ROS2).
+     *
      * @return true if the request was successfully sent, false otherwise.
      */
     bool send_service_request(
             const std::string& service_name,
             const std::string& json,
             uint64_t& request_id,
-            bool is_ros2 = true);
+            participants::RPC_PROTOCOL rpc_protocol = participants::RPC_PROTOCOL::ROS2);
 
     /**
      * @brief Sends a reply to the given service.
@@ -168,6 +172,7 @@ public:
      * @param service_name The name of the service to send the reply to.
      * @param json The JSON data to be sent with the reply.
      * @param request_id The unique identifier of the request to which this reply corresponds.
+     *
      * @return true if the reply was successfully sent, false otherwise.
      *
      * @note The request_id must coincide with the one received in the request.
@@ -189,13 +194,13 @@ public:
      * Failure may occur if there is an issue requesting the data types to user's app.
      *
      * @param action_name The name of the action to be announced.
-     * @param is_ros2 Indicates whether the action is a ROS2 action (default is true).
+     * @param rpc_protocol The RPC protocol to be used (default is ROS2).
      *
      * @return true if the action was successfully announced, false otherwise.
      */
     bool announce_action(
             const std::string& action_name,
-            bool is_ros2 = true);
+            participants::RPC_PROTOCOL rpc_protocol = participants::RPC_PROTOCOL::ROS2);
 
     /**
      * @brief Stops the server for the given action.
@@ -247,19 +252,19 @@ public:
         const participants::STATUS_CODE& status_code,
         const char* json);
 
-    /*
-    * @brief Sends a cancel goal reply for the specified action.
-    *
-    * This function sends a reply for a cancel goal request for the specified action.
-    * It returns a boolean indicating whether the operation was successful.
-    *
-    * @param action_name The name of the action for which the cancel goal reply is being sent.
-    * @param goal_ids The unique identifiers of the action goals for which the cancel goal reply is being sent.
-    * @param cancel_code The cancel code representing the result of the cancel goal request.
-    * @param request_id The unique identifier of the cancel goal request.
-    *
-    * @return true if the cancel goal reply was successfully sent, false otherwise.
-    */
+    /**
+     * @brief Sends a cancel goal reply for the specified action.
+     *
+     * This function sends a reply for a cancel goal request for the specified action.
+     * It returns a boolean indicating whether the operation was successful.
+     *
+     * @param action_name The name of the action for which the cancel goal reply is being sent.
+     * @param goal_ids The unique identifiers of the action goals for which the cancel goal reply is being sent.
+     * @param cancel_code The cancel code representing the result of the cancel goal request.
+     * @param request_id The unique identifier of the cancel goal request.
+     *
+     * @return true if the cancel goal reply was successfully sent, false otherwise.
+     */
     bool send_action_cancel_goal_reply(
         const char* action_name,
         const std::vector<participants::UUID>& goal_ids,
@@ -302,14 +307,15 @@ public:
      * @param action_name The name of the action to send the goal to.
      * @param json The JSON data to be sent with the action goal.
      * @param goal_id Reference to store the unique identifier of the action goal.
-     * @param is_ros2 Indicates whether the action is a ROS2 action (default is true).
+     * @param rpc_protocol The RPC protocol to be used (default is ROS2).
+     *
      * @return true if the action goal was successfully sent, false otherwise.
      */
     bool send_action_goal(
 	    const std::string& action_name,
 	    const std::string& json,
             participants::UUID& goal_id,
-            bool is_ros2 = true);
+            participants::RPC_PROTOCOL rpc_protocol = participants::RPC_PROTOCOL::ROS2);
 
     /**
      * @brief Cancels an action goal for the specified action.

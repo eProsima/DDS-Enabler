@@ -326,17 +326,17 @@ bool EnablerParticipant::create_service_request_writer_nts_(
     }
 
     EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-            "Failed to create server as it is already running in ROS2.");
+            "Failed to create server as there is already a server running for service " << service->service_name << ".");
     return false;
 }
 
 bool EnablerParticipant::announce_service(
     const std::string& service_name,
-    bool is_ros2)
+    RPC_PROTOCOL rpc_protocol)
 {
     std::unique_lock<std::mutex> lck(mtx_);
 
-    if (!is_ros2)
+    if (rpc_protocol != RPC_PROTOCOL::ROS2)
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
                 "Failed to announce service " << service_name << " : only ROS2 services are currently supported.");
@@ -415,11 +415,11 @@ bool EnablerParticipant::revoke_service_nts_(
 
 bool EnablerParticipant::announce_action(
     const std::string& action_name,
-    bool is_ros2)
+    RPC_PROTOCOL rpc_protocol)
 {
     std::unique_lock<std::mutex> lck(mtx_);
 
-    if (!is_ros2)
+    if (rpc_protocol != RPC_PROTOCOL::ROS2)
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
                 "Failed to announce action " << action_name << " : only ROS2 actions are currently supported.");

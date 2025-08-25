@@ -28,6 +28,12 @@ namespace participants {
 
 using UUID = std::array<uint8_t, 16>;
 
+enum RPC_PROTOCOL {
+        ROS2 = 0,
+        FASTDDS,
+        UNKNOWN
+};
+
 enum STATUS_CODE {
         STATUS_UNKNOWN = 0,
         STATUS_ACCEPTED,

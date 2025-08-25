@@ -293,9 +293,9 @@ bool DDSEnabler::send_service_request(
     const std::string& service_name,
     const std::string& json,
     uint64_t& request_id,
-    bool is_ros2)
+    participants::RPC_PROTOCOL rpc_protocol)
 {
-    if (!is_ros2)
+    if (rpc_protocol != participants::RPC_PROTOCOL::ROS2)
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
                 "Failed to send service request to service " << service_name << ": only ROS2 services are currently supported.");
@@ -314,9 +314,9 @@ bool DDSEnabler::send_service_request(
 
 bool DDSEnabler::announce_service(
     const std::string& service_name,
-    bool is_ros2)
+    participants::RPC_PROTOCOL rpc_protocol)
 {
-    return enabler_participant_->announce_service(service_name, is_ros2);
+    return enabler_participant_->announce_service(service_name, rpc_protocol);
 }
 
 bool DDSEnabler::revoke_service(
@@ -337,9 +337,9 @@ bool DDSEnabler::send_action_goal(
     const std::string& action_name,
     const std::string& json,
     UUID& action_id,
-    bool is_ros2)
+    participants::RPC_PROTOCOL rpc_protocol)
 {
-    if (!is_ros2)
+    if (rpc_protocol != participants::RPC_PROTOCOL::ROS2)
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
                 "Failed to send action goal to action " << action_name << ": only ROS2 actions are currently supported.");
@@ -444,9 +444,9 @@ bool DDSEnabler::cancel_action_goal(
 
 bool DDSEnabler::announce_action(
     const std::string& action_name,
-    bool is_ros2)
+    participants::RPC_PROTOCOL rpc_protocol)
 {
-    return enabler_participant_->announce_action(action_name, is_ros2);
+    return enabler_participant_->announce_action(action_name, rpc_protocol);
 }
 
 bool DDSEnabler::revoke_action(
