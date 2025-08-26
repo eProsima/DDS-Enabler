@@ -34,86 +34,108 @@ namespace RpcUtils {
  * @param [in] topic_name Topic name to extract the service name from
  * @return Extracted service name
  */
-RpcType get_rpc_name(const std::string& topic_name, std::string& rpc_name)
+RpcType get_rpc_name(const std::string& topic_name, std::string& rpc_name, RPC_PROTOCOL& rpc_protocol)
 {
+    rpc_protocol = detect_rpc_protocol(topic_name);
+
+    return remove_prefix_suffix(topic_name, rpc_name, rpc_protocol);
+}
+
+RPC_PROTOCOL detect_rpc_protocol(const std::string& topic_name)
+{
+    if (topic_name.rfind(ROS_TOPIC_PREFIX, 0) == 0 ||
+        topic_name.rfind(ROS_REQUEST_PREFIX, 0) == 0 ||
+        topic_name.rfind(ROS_REPLY_PREFIX, 0) == 0)
+    {
+        return RPC_PROTOCOL::ROS2;
+    }
+    else if (topic_name.rfind(FASTDDS_TOPIC_PREFIX, 0) == 0 ||
+             topic_name.rfind(FASTDDS_REQUEST_PREFIX, 0) == 0 ||
+             topic_name.rfind(FASTDDS_REPLY_PREFIX, 0) == 0)
+    {
+        return RPC_PROTOCOL::FASTDDS;
+    }
+    return RPC_PROTOCOL::UNKNOWN;
+}
+
+RpcType remove_prefix_suffix(
+        const std::string& topic_name,
+        std::string& rpc_name,
+        RPC_PROTOCOL rpc_protocol)
+{
+    std::string request_prefix, request_suffix, reply_prefix, reply_suffix, topic_prefix;
+    switch (rpc_protocol)
+    {
+        case RPC_PROTOCOL::ROS2:
+            request_prefix = ROS_REQUEST_PREFIX;
+            request_suffix = ROS_REQUEST_SUFFIX;
+            reply_prefix = ROS_REPLY_PREFIX;
+            reply_suffix = ROS_REPLY_SUFFIX;
+            topic_prefix = ROS_TOPIC_PREFIX;
+            break;
+        case RPC_PROTOCOL::FASTDDS:
+            request_prefix = FASTDDS_REQUEST_PREFIX;
+            request_suffix = FASTDDS_REQUEST_SUFFIX;
+            reply_prefix = FASTDDS_REPLY_PREFIX;
+            reply_suffix = FASTDDS_REPLY_SUFFIX;
+            topic_prefix = FASTDDS_TOPIC_PREFIX;
+            break;
+        default:
+            EPROSIMA_LOG_ERROR(DDSENABLER_RPC_UTILS,
+                    "Invalid RPC protocol");
+            return RPC_NONE;
+    }
+
     std::string original_topic_name = topic_name;
     rpc_name = topic_name;
+    RpcType rpc_type = RPC_NONE;
 
-    bool is_request = false;
+    if ((rpc_name.rfind(request_prefix, 0) == 0) &&
+        (rpc_name.size() >= request_suffix.length()) &&
+        (rpc_name.substr(rpc_name.size() - request_suffix.length()) == request_suffix))
+    {
+        std::string base = rpc_name.substr(request_prefix.length());
+        base = base.substr(0, base.size() - (request_suffix.length()));
 
-    // Detect and remove prefix
-    if (rpc_name.rfind(REQUEST_PREFIX, 0) == 0)
-    {
-        is_request = true;
-        rpc_name = rpc_name.substr(3);
-    }
-    else if (rpc_name.rfind(REPLY_PREFIX, 0) == 0)
-    {
-        rpc_name = rpc_name.substr(3);
-    }
-    else
-    {
-        // Check for action feedback/status topics
-        if (rpc_name.size() >= 9 && rpc_name.substr(rpc_name.size() - 9) == (std::string("/") + ACTION_FEEDBACK_SUFFIX))
+        if (base.size() >= (sizeof(ACTION_GOAL_SUFFIX) -1) && base.substr(base.size() - (sizeof(ACTION_GOAL_SUFFIX) -1)) == ACTION_GOAL_SUFFIX)
         {
-            rpc_name = rpc_name.substr(0, rpc_name.size() - 8);
-            rpc_name = rpc_name.substr(3);
-            return ACTION_FEEDBACK;
+            rpc_name = base.substr(0, base.size() - (sizeof(ACTION_GOAL_SUFFIX) -1));
+            return ACTION_GOAL_REQUEST;
         }
-        else if (rpc_name.size() >= 7 && rpc_name.substr(rpc_name.size() - 7) == (std::string("/") + ACTION_STATUS_SUFFIX))
+        else if (base.size() >= (sizeof(ACTION_RESULT_SUFFIX) - 1) && base.substr(base.size() - (sizeof(ACTION_RESULT_SUFFIX) - 1)) == ACTION_RESULT_SUFFIX)
         {
-            rpc_name = rpc_name.substr(0, rpc_name.size() - 6);
-            rpc_name = rpc_name.substr(3);
-            return ACTION_STATUS;
+            rpc_name = base.substr(0, base.size() - (sizeof(ACTION_RESULT_SUFFIX) - 1));
+            return ACTION_RESULT_REQUEST;
+        }
+        else if (base.size() >= (sizeof(ACTION_CANCEL_SUFFIX) - 1) && base.substr(base.size() - (sizeof(ACTION_CANCEL_SUFFIX) - 1)) == ACTION_CANCEL_SUFFIX)
+        {
+            rpc_name = base.substr(0, base.size() - (sizeof(ACTION_CANCEL_SUFFIX) - 1));
+            return ACTION_CANCEL_REQUEST;
         }
 
-        return RPC_NONE;
+        rpc_name = base;
+        return RPC_REQUEST;
     }
-
-    // Check for action-related services
-    if (is_request)
+    if ((rpc_name.rfind(reply_prefix, 0) == 0) &&
+        (rpc_name.size() >= reply_suffix.length()) &&
+        (rpc_name.substr(rpc_name.size() - reply_suffix.length()) == reply_suffix))
     {
-        if (rpc_name.size() >= 7 && rpc_name.substr(rpc_name.size() - 7) == REQUEST_SUFFIX)
+        std::string base = rpc_name.substr(reply_prefix.length());
+        base = base.substr(0, base.size() - (reply_suffix.length()));
+
+        if (base.size() >= (sizeof(ACTION_GOAL_SUFFIX) - 1) && base.substr(base.size() - (sizeof(ACTION_GOAL_SUFFIX) - 1)) == ACTION_GOAL_SUFFIX)
         {
-            std::string base = rpc_name.substr(0, rpc_name.size() - 7);
-
-            if (base.size() >= 9 && base.substr(base.size() - 9) == ACTION_GOAL_SUFFIX)
-            {
-                rpc_name = base.substr(0, base.size() - 9);
-                return ACTION_GOAL_REQUEST;
-            }
-            else if (base.size() >= 10 && base.substr(base.size() - 10) == ACTION_RESULT_SUFFIX)
-            {
-                rpc_name = base.substr(0, base.size() - 10);
-                return ACTION_RESULT_REQUEST;
-            }
-            else if (base.size() >= 11 && base.substr(base.size() - 11) == ACTION_CANCEL_SUFFIX)
-            {
-                rpc_name = base.substr(0, base.size() - 11);
-                return ACTION_CANCEL_REQUEST;
-            }
-
-            rpc_name = base;
-            return RPC_REQUEST;
-        }
-    }
-    else if (rpc_name.size() >= 5 && rpc_name.substr(rpc_name.size() - 5) == REPLY_SUFFIX)
-    {
-        std::string base = rpc_name.substr(0, rpc_name.size() - 5);
-
-        if (base.size() >= 9 && base.substr(base.size() - 9) == ACTION_GOAL_SUFFIX)
-        {
-            rpc_name = base.substr(0, base.size() - 9);
+            rpc_name = base.substr(0, base.size() - (sizeof(ACTION_GOAL_SUFFIX) - 1));
             return ACTION_GOAL_REPLY;
         }
-        else if (base.size() >= 10 && base.substr(base.size() - 10) == ACTION_RESULT_SUFFIX)
+        else if (base.size() >= (sizeof(ACTION_RESULT_SUFFIX) - 1) && base.substr(base.size() - (sizeof(ACTION_RESULT_SUFFIX) - 1)) == ACTION_RESULT_SUFFIX)
         {
-            rpc_name = base.substr(0, base.size() - 10);
+            rpc_name = base.substr(0, base.size() - (sizeof(ACTION_RESULT_SUFFIX) - 1));
             return ACTION_RESULT_REPLY;
         }
-        else if (base.size() >= 11 && base.substr(base.size() - 11) == ACTION_CANCEL_SUFFIX)
+        else if (base.size() >= (sizeof(ACTION_CANCEL_SUFFIX) - 1) && base.substr(base.size() - (sizeof(ACTION_CANCEL_SUFFIX) - 1)) == ACTION_CANCEL_SUFFIX)
         {
-            rpc_name = base.substr(0, base.size() - 11);
+            rpc_name = base.substr(0, base.size() - (sizeof(ACTION_CANCEL_SUFFIX) - 1));
             return ACTION_CANCEL_REPLY;
         }
 
@@ -121,30 +143,41 @@ RpcType get_rpc_name(const std::string& topic_name, std::string& rpc_name)
         return RPC_REPLY;
     }
 
-    rpc_name = original_topic_name; // Restore original topic name if no suffix matched
-    EPROSIMA_LOG_ERROR(DDSENABLER_RPC_UTILS,
-            "Invalid topic name for service: " << original_topic_name << ". Expected suffix 'Request' or 'Reply'.");
+    // Check for action feedback/status topics
+    rpc_name = rpc_name.substr(topic_prefix.length());
+    if (rpc_name.size() >= (sizeof(ACTION_FEEDBACK_SUFFIX)) && rpc_name.substr(rpc_name.size() - (sizeof(ACTION_FEEDBACK_SUFFIX))) == (std::string("/") + ACTION_FEEDBACK_SUFFIX))
+    {
+        rpc_name = rpc_name.substr(0, rpc_name.size() - sizeof(ACTION_FEEDBACK_SUFFIX));
+        return ACTION_FEEDBACK;
+    }
+    else if (rpc_name.size() >= (sizeof(ACTION_STATUS_SUFFIX)) && rpc_name.substr(rpc_name.size() - (sizeof(ACTION_STATUS_SUFFIX))) == (std::string("/") + ACTION_STATUS_SUFFIX))
+    {
+        rpc_name = rpc_name.substr(0, rpc_name.size() - (sizeof(ACTION_STATUS_SUFFIX)));
+        return ACTION_STATUS;
+    }
+
     return RPC_NONE;
 }
 
+// TODO
 RpcType get_service_name(const std::string& topic_name, std::string& service_name)
 {
     service_name = topic_name;
 
     // Detect and remove prefix
-    if (service_name.rfind(REQUEST_PREFIX, 0) == 0)
+    if (service_name.rfind(ROS_REQUEST_PREFIX, 0) == 0)
     {
         service_name = service_name.substr(3);
-        if (service_name.size() >= 7 && service_name.substr(service_name.size() - 7) == REQUEST_SUFFIX)
+        if (service_name.size() >= 7 && service_name.substr(service_name.size() - 7) == ROS_REQUEST_SUFFIX)
         {
             service_name = service_name.substr(0, service_name.size() - 7);
             return RPC_REQUEST;
         }
     }
-    else if (service_name.rfind(REPLY_PREFIX, 0) == 0)
+    else if (service_name.rfind(ROS_REPLY_PREFIX, 0) == 0)
     {
         service_name = service_name.substr(3);
-        if (service_name.size() >= 5 && service_name.substr(service_name.size() - 5) == REPLY_SUFFIX)
+        if (service_name.size() >= 5 && service_name.substr(service_name.size() - 5) == ROS_REPLY_SUFFIX)
         {
             service_name = service_name.substr(0, service_name.size() - 5);
             return RPC_REPLY;

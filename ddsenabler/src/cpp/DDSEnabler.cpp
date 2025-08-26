@@ -295,16 +295,26 @@ bool DDSEnabler::send_service_request(
     uint64_t& request_id,
     participants::RPC_PROTOCOL rpc_protocol)
 {
-    if (rpc_protocol != participants::RPC_PROTOCOL::ROS2)
+    std::string prefix, suffix;
+    switch (rpc_protocol)
     {
-        EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
-                "Failed to send service request to service " << service_name << ": only ROS2 services are currently supported.");
-        return false;
+        case participants::RPC_PROTOCOL::ROS2:
+            prefix = participants::ROS_REQUEST_PREFIX;
+            suffix = participants::ROS_REQUEST_SUFFIX;
+            break;
+        case participants::RPC_PROTOCOL::FASTDDS:
+            prefix = participants::FASTDDS_REQUEST_PREFIX;
+            suffix = participants::FASTDDS_REQUEST_SUFFIX;
+            break;
+        default:
+            EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
+                    "Failed to send service request to service " << service_name << ": unknown RPC protocol.");
+            return false;
     }
 
     request_id = handler_->get_new_request_id();
     if (!enabler_participant_->publish_rpc(
-            std::string(participants::REQUEST_PREFIX) + service_name + participants::REQUEST_SUFFIX,
+            prefix + service_name + suffix,
             json,
             request_id))
         return false;
@@ -330,7 +340,28 @@ bool DDSEnabler::send_service_reply(
     const std::string& json,
     const uint64_t request_id)
 {
-    return enabler_participant_->publish_rpc(std::string(participants::REPLY_PREFIX) + service_name + participants::REPLY_SUFFIX, json, request_id);
+    RPC_PROTOCOL rpc_protocol = enabler_participant_->get_service_rpc_protocol(service_name);
+    std::string prefix, suffix;
+    switch (rpc_protocol)
+    {
+        case participants::RPC_PROTOCOL::ROS2:
+            prefix = participants::ROS_REPLY_PREFIX;
+            suffix = participants::ROS_REPLY_SUFFIX;
+            break;
+        case participants::RPC_PROTOCOL::FASTDDS:
+            prefix = participants::FASTDDS_REPLY_PREFIX;
+            suffix = participants::FASTDDS_REPLY_SUFFIX;
+            break;
+        default:
+            EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
+                    "Failed to send service reply to unknown service " << service_name);
+            return false;
+    }
+
+    return enabler_participant_->publish_rpc(
+            prefix + service_name + suffix,
+            json,
+            request_id);
 }
 
 bool DDSEnabler::send_action_goal(
@@ -339,13 +370,6 @@ bool DDSEnabler::send_action_goal(
     UUID& action_id,
     participants::RPC_PROTOCOL rpc_protocol)
 {
-    if (rpc_protocol != participants::RPC_PROTOCOL::ROS2)
-    {
-        EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
-                "Failed to send action goal to action " << action_name << ": only ROS2 actions are currently supported.");
-        return false;
-    }
-
     std::string goal_json = RpcUtils::create_goal_request_msg(json, action_id);
     std::string goal_request_topic = action_name + participants::ACTION_GOAL_SUFFIX;
     uint64_t goal_request_id = 0;
@@ -353,7 +377,8 @@ bool DDSEnabler::send_action_goal(
     if (!send_service_request(
             goal_request_topic,
             goal_json,
-            goal_request_id))
+            goal_request_id,
+            rpc_protocol))
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
                 "Failed to send action goal request to action " << action_name);
@@ -364,7 +389,8 @@ bool DDSEnabler::send_action_goal(
             action_name,
             action_id,
             goal_request_id,
-            RpcUtils::ActionType::GOAL))
+            RpcUtils::ActionType::GOAL,
+            rpc_protocol))
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
                 "Failed to store action goal request to action " << action_name);
@@ -558,8 +584,26 @@ bool DDSEnabler::send_action_feedback(
         return false;
     }
 
+    RPC_PROTOCOL protocol = handler_->get_action_rpc_protocol(action_name, goal_id);
+
+    std::string prefix;
+    switch (protocol)
+    {
+        case RPC_PROTOCOL::ROS2:
+            prefix = participants::ROS_TOPIC_PREFIX;
+            break;
+        case RPC_PROTOCOL::FASTDDS:
+            prefix = participants::FASTDDS_TOPIC_PREFIX;
+            break;
+        default:
+            EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
+                    "Failed to send feedback to action " << action_name
+                    << ": unsupported RPC protocol.");
+            return false;
+    }
+
     std::string feedback_json = participants::RpcUtils::create_feedback_msg(json, goal_id);
-    std::string feedback_topic = participants::TOPIC_PREFIX + std::string(action_name) + participants::ACTION_FEEDBACK_SUFFIX;
+    std::string feedback_topic = prefix + std::string(action_name) + participants::ACTION_FEEDBACK_SUFFIX;
 
     return enabler_participant_->publish(feedback_topic, feedback_json);
 }
@@ -578,8 +622,26 @@ bool DDSEnabler::update_action_status(
         return false;
     }
 
+    RPC_PROTOCOL protocol = handler_->get_action_rpc_protocol(action_name, goal_id);
+
+    std::string prefix;
+    switch (protocol)
+    {
+        case RPC_PROTOCOL::ROS2:
+            prefix = participants::ROS_TOPIC_PREFIX;
+            break;
+        case RPC_PROTOCOL::FASTDDS:
+            prefix = participants::FASTDDS_TOPIC_PREFIX;
+            break;
+        default:
+            EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
+                    "Failed to send status to action " << action_name
+                    << ": unsupported RPC protocol.");
+            return false;
+    }
+
     std::string status_json = participants::RpcUtils::create_status_msg(goal_id, status_code, goal_accepted_stamp);
-    std::string status_topic = participants::TOPIC_PREFIX + action_name + participants::ACTION_STATUS_SUFFIX;
+    std::string status_topic = prefix + action_name + participants::ACTION_STATUS_SUFFIX;
     return enabler_participant_->publish(status_topic, status_json);
 }
 

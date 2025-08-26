@@ -88,7 +88,11 @@ enum ActionType
  * @param [in] topic_name Topic name to extract the service/action name from
  * @return Extracted service name
  */
-RpcType get_rpc_name(const std::string& topic_name, std::string& rpc_name);
+RpcType get_rpc_name(const std::string& topic_name, std::string& rpc_name, RPC_PROTOCOL& rpc_protocol);
+
+RPC_PROTOCOL detect_rpc_protocol(const std::string& topic_name);
+
+RpcType remove_prefix_suffix(const std::string& topic_name, std::string& rpc_name, RPC_PROTOCOL rpc_protocol);
 
 RpcType get_service_name(const std::string& topic_name, std::string& service_name);
 

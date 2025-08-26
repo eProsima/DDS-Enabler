@@ -99,6 +99,10 @@ public:
             const std::string& service_name);
 
     DDSENABLER_PARTICIPANTS_DllAPI
+    RPC_PROTOCOL get_service_rpc_protocol(
+            const std::string& service_name);
+
+    DDSENABLER_PARTICIPANTS_DllAPI
     bool announce_action(
             const std::string& action_name,
             RPC_PROTOCOL rpc_protocol = RPC_PROTOCOL::ROS2);
@@ -114,10 +118,12 @@ protected:
             ddspipe::core::types::DdsTopic& topic);
 
     bool query_service_nts_(
-            std::shared_ptr<ServiceDiscovered> service);
+            std::shared_ptr<ServiceDiscovered> service,
+            RPC_PROTOCOL rpc_protocol);
 
     bool query_action_nts_(
             ActionDiscovered& action,
+            RPC_PROTOCOL rpc_protocol,
             std::unique_lock<std::mutex>& lck);
 
     bool create_topic_writer_nts_(
@@ -137,7 +143,8 @@ protected:
 
     bool fullfill_service_type_nts_(
             const ServiceInfo& service_info,
-            std::shared_ptr<ServiceDiscovered> service);
+            std::shared_ptr<ServiceDiscovered> service,
+            RPC_PROTOCOL rpc_protocol);
 
     std::shared_ptr<ddspipe::core::IReader> lookup_reader_nts_(
             const std::string& topic_name,
@@ -149,12 +156,14 @@ protected:
     bool service_discovered_nts_(
             const std::string& service_name,
             const ddspipe::core::types::DdsTopic& topic,
-            RpcUtils::RpcType rpc_type);
+            RpcUtils::RpcType rpc_type,
+            RPC_PROTOCOL rpc_protocol);
 
     bool action_discovered_nts_(
             const std::string& action_name,
             const ddspipe::core::types::DdsTopic& topic,
-            RpcUtils::RpcType rpc_type);
+            RpcUtils::RpcType rpc_type,
+            RPC_PROTOCOL rpc_protocol);
 
     bool revoke_service_nts_(
             const std::string& service_name);

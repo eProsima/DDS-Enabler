@@ -29,13 +29,19 @@ constexpr const char* QOS_SERIALIZATION_OWNERSHIP("ownership");
 constexpr const char* QOS_SERIALIZATION_KEYED("keyed");
 
 // Topic mangling
-constexpr const char* TOPIC_PREFIX("rt/");
+constexpr const char* ROS_TOPIC_PREFIX("rt/");
+constexpr const char* FASTDDS_TOPIC_PREFIX("");
 
 // Service mangling
-constexpr const char* REQUEST_PREFIX("rq/");
-constexpr const char* REQUEST_SUFFIX("Request");
-constexpr const char* REPLY_PREFIX("rr/");
-constexpr const char* REPLY_SUFFIX("Reply");
+constexpr const char* ROS_REQUEST_PREFIX("rq/");
+constexpr const char* ROS_REQUEST_SUFFIX("Request");
+constexpr const char* ROS_REPLY_PREFIX("rr/");
+constexpr const char* ROS_REPLY_SUFFIX("Reply");
+
+constexpr const char* FASTDDS_REQUEST_PREFIX("");
+constexpr const char* FASTDDS_REQUEST_SUFFIX("_Request");
+constexpr const char* FASTDDS_REPLY_PREFIX("");
+constexpr const char* FASTDDS_REPLY_SUFFIX("_Reply");
 
 // Action mangling
 constexpr const char* ACTION_GOAL_SUFFIX("send_goal");

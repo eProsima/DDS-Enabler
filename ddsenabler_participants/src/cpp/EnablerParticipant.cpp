@@ -49,23 +49,25 @@ EnablerParticipant::EnablerParticipant(
 bool EnablerParticipant::service_discovered_nts_(
         const std::string& service_name,
         const DdsTopic& topic,
-        RpcUtils::RpcType rpc_type)
+        RpcUtils::RpcType rpc_type,
+        RPC_PROTOCOL rpc_protocol)
 {
-    auto [it, inserted] = services_.try_emplace(service_name, std::make_shared<ServiceDiscovered>(service_name));
+    auto [it, inserted] = services_.try_emplace(service_name, std::make_shared<ServiceDiscovered>(service_name, rpc_protocol));
     return it->second->add_topic(topic, rpc_type);
 }
 
 bool EnablerParticipant::action_discovered_nts_(
     const std::string& action_name,
     const DdsTopic& topic,
-    RpcUtils::RpcType rpc_type)
+    RpcUtils::RpcType rpc_type,
+    RPC_PROTOCOL rpc_protocol)
 {
-    auto [it, inserted] = actions_.try_emplace(action_name, ActionDiscovered(action_name));
+    auto [it, inserted] = actions_.try_emplace(action_name, ActionDiscovered(action_name, rpc_protocol));
     std::string service_name;
     RpcUtils::RpcType service_direction = RpcUtils::get_service_name(topic.m_topic_name, service_name);
     if (RpcUtils::RpcType::RPC_NONE != service_direction)
     {
-        service_discovered_nts_(service_name, topic, service_direction);
+        service_discovered_nts_(service_name, topic, service_direction, rpc_protocol);
         auto service_it = services_.find(service_name);
         if (services_.end() == service_it)
         {
@@ -97,7 +99,8 @@ std::shared_ptr<IReader> EnablerParticipant::create_reader(
         std::lock_guard<std::mutex> lck(mtx_);
         auto dds_topic = dynamic_cast<const DdsTopic&>(topic);
         std::string rpc_name;
-        RpcUtils::RpcType rpc_type = RpcUtils::get_rpc_name(dds_topic.m_topic_name, rpc_name);
+        RPC_PROTOCOL rpc_protocol;
+        RpcUtils::RpcType rpc_type = RpcUtils::get_rpc_name(dds_topic.m_topic_name, rpc_name, rpc_protocol);
         if (RpcUtils::RpcType::RPC_NONE != rpc_type)
         {
             RpcUtils::RpcType rpc_direction = RpcUtils::get_service_direction(rpc_type);
@@ -111,7 +114,7 @@ std::shared_ptr<IReader> EnablerParticipant::create_reader(
             {
                 if (RpcUtils::ActionType::NONE == RpcUtils::get_action_type(rpc_type))
                 {
-                    if (service_discovered_nts_(rpc_name, dds_topic, rpc_type))
+                    if (service_discovered_nts_(rpc_name, dds_topic, rpc_type, rpc_protocol))
                     {
                         RpcTopic service = services_.find(rpc_name)->second->get_service();
                         std::static_pointer_cast<Handler>(schema_handler_)->add_service(service);
@@ -119,7 +122,7 @@ std::shared_ptr<IReader> EnablerParticipant::create_reader(
                 }
                 else
                 {
-                    if (action_discovered_nts_(rpc_name, dds_topic, rpc_type))
+                    if (action_discovered_nts_(rpc_name, dds_topic, rpc_type, rpc_protocol))
                     {
                         auto action = actions_.find(rpc_name)->second.get_action(rpc_name);
                         std::static_pointer_cast<Handler>(schema_handler_)->add_action(action);
@@ -336,13 +339,6 @@ bool EnablerParticipant::announce_service(
 {
     std::unique_lock<std::mutex> lck(mtx_);
 
-    if (rpc_protocol != RPC_PROTOCOL::ROS2)
-    {
-        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                "Failed to announce service " << service_name << " : only ROS2 services are currently supported.");
-        return false;
-    }
-
     auto it = services_.find(service_name);
     if (it != services_.end())
     {
@@ -355,8 +351,8 @@ bool EnablerParticipant::announce_service(
         services_.erase(it);
     }
 
-    std::shared_ptr<ServiceDiscovered> service = std::make_shared<ServiceDiscovered>(service_name);
-    if(!query_service_nts_(service))
+    std::shared_ptr<ServiceDiscovered> service = std::make_shared<ServiceDiscovered>(service_name, rpc_protocol);
+    if(!query_service_nts_(service, rpc_protocol))
     {
         return false;
     }
@@ -398,11 +394,11 @@ bool EnablerParticipant::revoke_service_nts_(
         return false;
     }
 
+    std::string request_name = it->second->topic_request.m_topic_name;
+
     this->discovery_database_->erase_endpoint(it->second->endpoint_request.value());
     it->second->endpoint_request.reset();
     it->second->remove_topic(RpcUtils::RpcType::RPC_REQUEST);
-
-    std::string request_name = std::string(REQUEST_PREFIX) + service_name + REQUEST_SUFFIX;
 
     auto reader = lookup_reader_nts_(request_name);
     if (nullptr != reader)
@@ -411,6 +407,19 @@ bool EnablerParticipant::revoke_service_nts_(
     }
 
     return true;
+}
+
+RPC_PROTOCOL EnablerParticipant::get_service_rpc_protocol(
+    const std::string& service_name)
+{
+    std::unique_lock<std::mutex> lck(mtx_);
+    auto it = services_.find(service_name);
+    if (it != services_.end())
+    {
+        return it->second->get_rpc_protocol();
+    }
+
+    return RPC_PROTOCOL::UNKNOWN;
 }
 
 bool EnablerParticipant::announce_action(
@@ -441,8 +450,8 @@ bool EnablerParticipant::announce_action(
         }
     }
 
-    ActionDiscovered action(action_name);
-    if(!query_action_nts_(action, lck))
+    ActionDiscovered action(action_name, rpc_protocol);
+    if(!query_action_nts_(action, rpc_protocol, lck))
     {
         return false;
     }
@@ -555,17 +564,38 @@ bool EnablerParticipant::fill_topic_struct_nts_(
 
 bool EnablerParticipant::fullfill_service_type_nts_(
     const ServiceInfo& service_info,
-    std::shared_ptr<ServiceDiscovered> service)
+    std::shared_ptr<ServiceDiscovered> service,
+    RPC_PROTOCOL rpc_protocol)
 {
+    std::string rq_prefix, rq_suffix, rp_prefix, rp_suffix;
+    switch (rpc_protocol)
+    {
+        case RPC_PROTOCOL::ROS2:
+            rq_prefix = ROS_REQUEST_PREFIX;
+            rq_suffix = ROS_REQUEST_SUFFIX;
+            rp_prefix = ROS_REPLY_PREFIX;
+            rp_suffix = ROS_REPLY_SUFFIX;
+            break;
+        case RPC_PROTOCOL::FASTDDS:
+            rq_prefix = FASTDDS_REQUEST_PREFIX;
+            rq_suffix = FASTDDS_REQUEST_SUFFIX;
+            rp_prefix = FASTDDS_REPLY_PREFIX;
+            rp_suffix = FASTDDS_REPLY_SUFFIX;
+            break;
+        default:
+            EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
+                    "Failed to announce service " << service->service_name << ": unknown RPC protocol.");
+            return false;
+    }
 
     DdsTopic topic_request;
-    std::string topic_request_name = std::string(REQUEST_PREFIX) + service->service_name + REQUEST_SUFFIX;
+    std::string topic_request_name = rq_prefix + service->service_name + rq_suffix;
     if(!fill_topic_struct_nts_(topic_request_name, service_info.request, topic_request))
         return false;
     service->add_topic(topic_request, RpcUtils::RPC_REQUEST);
 
     DdsTopic topic_reply;
-    std::string topic_reply_name = std::string(REPLY_PREFIX) + service->service_name + REPLY_SUFFIX;
+    std::string topic_reply_name = rp_prefix + service->service_name + rp_suffix;
     if(!fill_topic_struct_nts_(topic_reply_name, service_info.reply, topic_reply))
         return false;
     service->add_topic(topic_reply, RpcUtils::RPC_REPLY);
@@ -578,7 +608,8 @@ bool EnablerParticipant::fullfill_service_type_nts_(
 }
 
 bool EnablerParticipant::query_service_nts_(
-        std::shared_ptr<ServiceDiscovered> service)
+        std::shared_ptr<ServiceDiscovered> service,
+        RPC_PROTOCOL rpc_protocol)
 {
     if(!service_query_callback_)
     {
@@ -602,11 +633,12 @@ bool EnablerParticipant::query_service_nts_(
         return false;
     }
 
-    return fullfill_service_type_nts_(service_info, service);
+    return fullfill_service_type_nts_(service_info, service, rpc_protocol);
 }
 
 bool EnablerParticipant::query_action_nts_(
     ActionDiscovered& action,
+    RPC_PROTOCOL rpc_protocol,
     std::unique_lock<std::mutex>& lck)
 {
     if(!action_query_callback_)
@@ -646,10 +678,11 @@ bool EnablerParticipant::query_action_nts_(
         }
     }
 
-    std::shared_ptr<ServiceDiscovered> goal_service = std::make_shared<ServiceDiscovered>(goal_service_name);
+    std::shared_ptr<ServiceDiscovered> goal_service = std::make_shared<ServiceDiscovered>(goal_service_name, rpc_protocol);
     if(!fullfill_service_type_nts_(
             action_info.goal,
-            goal_service))
+            goal_service,
+            rpc_protocol))
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
                 "Failed to announce action " << action.action_name << " : goal service type not found.");
@@ -664,10 +697,11 @@ bool EnablerParticipant::query_action_nts_(
     services_.insert_or_assign(goal_service_name, goal_service);
     action.goal = goal_service;
 
-    std::shared_ptr<ServiceDiscovered> cancel_service = std::make_shared<ServiceDiscovered>(cancel_service_name);
+    std::shared_ptr<ServiceDiscovered> cancel_service = std::make_shared<ServiceDiscovered>(cancel_service_name, rpc_protocol);
     if(!fullfill_service_type_nts_(
             action_info.cancel,
-            cancel_service))
+            cancel_service,
+            rpc_protocol))
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
                 "Failed to announce action " << action.action_name << " : cancel service type not found.");
@@ -682,10 +716,11 @@ bool EnablerParticipant::query_action_nts_(
     services_.insert_or_assign(cancel_service_name, cancel_service);
     action.cancel = cancel_service;
 
-    std::shared_ptr<ServiceDiscovered> result_service = std::make_shared<ServiceDiscovered>(result_service_name);
+    std::shared_ptr<ServiceDiscovered> result_service = std::make_shared<ServiceDiscovered>(result_service_name, rpc_protocol);
     if(!fullfill_service_type_nts_(
             action_info.result,
-            result_service))
+            result_service,
+            rpc_protocol))
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
                 "Failed to announce action " << action.action_name << " : result service type not found.");
@@ -700,7 +735,22 @@ bool EnablerParticipant::query_action_nts_(
     services_.insert_or_assign(result_service_name, result_service);
     action.result = result_service;
 
-    std::string feedback_topic_name = participants::TOPIC_PREFIX + action.action_name + participants::ACTION_FEEDBACK_SUFFIX;
+    std::string prefix;
+    switch (rpc_protocol)
+    {
+        case RPC_PROTOCOL::ROS2:
+            prefix = ROS_TOPIC_PREFIX;
+            break;
+        case RPC_PROTOCOL::FASTDDS:
+            prefix = FASTDDS_TOPIC_PREFIX;
+            break;
+        default:
+            EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
+                    "Failed to announce action " << action.action_name << " : unsupported RPC protocol.");
+            return false;
+    }
+
+    std::string feedback_topic_name = prefix + action.action_name + participants::ACTION_FEEDBACK_SUFFIX;
     DdsTopic feedback_topic;
     if(!fill_topic_struct_nts_(
             feedback_topic_name,
@@ -726,7 +776,7 @@ bool EnablerParticipant::query_action_nts_(
     action.feedback = feedback_topic;
     action.feedback_discovered = true;
 
-    std::string status_topic_name = participants::TOPIC_PREFIX + action.action_name + participants::ACTION_STATUS_SUFFIX;
+    std::string status_topic_name = prefix + action.action_name + participants::ACTION_STATUS_SUFFIX;
     DdsTopic status_topic;
     if(!fill_topic_struct_nts_(
             status_topic_name,

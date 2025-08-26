@@ -155,7 +155,8 @@ void Handler::add_data(
     }
 
     std::string rpc_name;
-    RpcUtils::RpcType rpc_type = RpcUtils::get_rpc_name(topic.m_topic_name, rpc_name);
+    RPC_PROTOCOL rpc_protocol;
+    RpcUtils::RpcType rpc_type = RpcUtils::get_rpc_name(topic.m_topic_name, rpc_name, rpc_protocol);
     switch (rpc_type)
     {
         case RpcUtils::RpcType::RPC_NONE:
@@ -629,7 +630,8 @@ bool Handler::store_action_request(
         const std::string& action_name,
         const UUID& action_id,
         const uint64_t request_id,
-        const RpcUtils::ActionType action_type)
+        const RpcUtils::ActionType action_type,
+        const RPC_PROTOCOL rpc_protocol)
 {
     std::lock_guard<std::recursive_mutex> lock(mtx_);
 
@@ -661,7 +663,7 @@ bool Handler::store_action_request(
                     "Cannot store action request, action does not exist and request type is not GOAL.");
             return false;
         }
-        action_request_id_to_uuid_[action_id] = ActionRequestInfo(action_name, action_type, request_id);
+        action_request_id_to_uuid_[action_id] = ActionRequestInfo(action_name, action_type, request_id, rpc_protocol);
     }
 
     return true;
@@ -741,6 +743,19 @@ bool Handler::is_UUID_active(
     return false;
 }
 
+RPC_PROTOCOL Handler::get_action_rpc_protocol(
+        const std::string& action_name,
+        const UUID& action_id)
+{
+    std::lock_guard<std::recursive_mutex> lock(mtx_);
+    auto it = action_request_id_to_uuid_.find(action_id);
+    if (it != action_request_id_to_uuid_.end() && action_name == it->second.action_name)
+    {
+        return it->second.rpc_protocol;
+    }
+
+    return RPC_PROTOCOL::UNKNOWN;
+}
 
 bool Handler::get_action_request_UUID(
         const uint64_t request_id,

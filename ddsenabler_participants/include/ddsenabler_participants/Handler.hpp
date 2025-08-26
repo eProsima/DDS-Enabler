@@ -191,6 +191,7 @@ public:
      * @param [in] action_id UUID of the action.
      * @param [in] request_id Request ID of the action request.
      * @param [in] action_type Type of the action (GOAL, RESULT, CANCEL).
+     * @param [in] rpc_protocol Protocol of the action, only used to create the ActionRequestInfo if action_type is GOAL.
      * @return \c true if the action request was successfully stored, \c false otherwise.
      */
     DDSENABLER_PARTICIPANTS_DllAPI
@@ -198,7 +199,8 @@ public:
             const std::string& action_name,
             const UUID& action_id,
             const uint64_t request_id,
-            const RpcUtils::ActionType action_type);
+            const RpcUtils::ActionType action_type,
+            const RPC_PROTOCOL rpc_protocol = RPC_PROTOCOL::ROS2);
 
     /**
      * @brief Send the reply containing the result of an action or store it for a later reply.
@@ -245,6 +247,18 @@ public:
             const std::string& action_name,
             const UUID& action_id,
             std::chrono::system_clock::time_point* goal_accepted_stamp = nullptr);
+
+    /**
+     * @brief Get the RPC protocol of an action represented by its UUID.
+     *
+     * @param [in] action_name Name of the action.
+     * @param [in] action_id UUID of the action to be checked.
+     * @return The RPC protocol of the action, or RPC_PROTOCOL::UNKNOWN if the action is not found.
+     */
+    DDSENABLER_PARTICIPANTS_DllAPI
+    RPC_PROTOCOL get_action_rpc_protocol(
+            const std::string& action_name,
+            const UUID& action_id);
 
     /**
      * @brief Set the data notification callback.

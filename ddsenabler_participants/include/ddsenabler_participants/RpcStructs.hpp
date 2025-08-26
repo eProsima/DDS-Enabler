@@ -41,9 +41,11 @@ struct ActionRequestInfo
     ActionRequestInfo(
             const std::string& _action_name,
             RpcUtils::ActionType action_type,
-            uint64_t request_id)
+            uint64_t request_id,
+            RPC_PROTOCOL rpc_protocol)
             : action_name(_action_name)
             , goal_accepted_stamp(std::chrono::system_clock::now())
+            , rpc_protocol(rpc_protocol)
     {
         set_request(request_id, action_type);
     }
@@ -108,7 +110,13 @@ struct ActionRequestInfo
         return final_status_received && result_received;
     }
 
+    RPC_PROTOCOL get_rpc_protocol() const
+    {
+        return rpc_protocol;
+    }
+
     std::string action_name;
+    RPC_PROTOCOL rpc_protocol;
     uint64_t goal_request_id = 0;
     uint64_t result_request_id = 0;
     std::chrono::system_clock::time_point goal_accepted_stamp;
@@ -120,12 +128,16 @@ struct ActionRequestInfo
 struct ServiceDiscovered
 {
 
-    ServiceDiscovered(const std::string& service_name)
+    ServiceDiscovered(
+            const std::string& service_name,
+            RPC_PROTOCOL rpc_protocol)
         : service_name(service_name)
+        , rpc_protocol(rpc_protocol)
     {
     }
 
     std::string service_name;
+    RPC_PROTOCOL rpc_protocol{RPC_PROTOCOL::UNKNOWN};
 
     ddspipe::core::types::DdsTopic topic_request;
     bool request_discovered{false};
@@ -221,16 +233,25 @@ struct ServiceDiscovered
         }
         return false;
     }
+
+    RPC_PROTOCOL get_rpc_protocol() const
+    {
+        return rpc_protocol;
+    }
 };
 
 struct ActionDiscovered
 {
-    ActionDiscovered(const std::string& action_name)
+    ActionDiscovered(
+            const std::string& action_name,
+            RPC_PROTOCOL rpc_protocol)
         : action_name(action_name)
+        , rpc_protocol(rpc_protocol)
     {
     }
 
     std::string action_name;
+    RPC_PROTOCOL rpc_protocol{RPC_PROTOCOL::UNKNOWN};
     std::weak_ptr<ServiceDiscovered> goal;
     std::weak_ptr<ServiceDiscovered> result;
     std::weak_ptr<ServiceDiscovered> cancel;
