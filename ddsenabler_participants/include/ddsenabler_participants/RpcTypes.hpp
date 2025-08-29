@@ -20,6 +20,9 @@
 #include <cstdint>
 #include <string>
 
+#include <ddspipe_core/types/topic/dds/DdsTopic.hpp>
+#include <ddspipe_core/types/topic/rpc/RpcTopic.hpp>
+
 #pragma once
 
 namespace eprosima {
@@ -31,7 +34,31 @@ using UUID = std::array<uint8_t, 16>;
 enum RPC_PROTOCOL {
         ROS2 = 0,
         FASTDDS,
-        UNKNOWN
+        PROTOCOL_UNKNOWN
+};
+
+enum RPC_TYPE
+{
+        RPC_NONE = 0,
+        RPC_SERVICE,
+        RPC_ACTION
+};
+
+enum SERVICE_TYPE
+{
+        SERVICE_NONE = 0,
+        SERVICE_REQUEST,
+        SERVICE_REPLY
+};
+
+enum ACTION_TYPE
+{
+        ACTION_NONE = 0,
+        ACTION_GOAL,
+        ACTION_RESULT,
+        ACTION_CANCEL,
+        ACTION_FEEDBACK,
+        ACTION_STATUS
 };
 
 enum STATUS_CODE {
@@ -46,7 +73,7 @@ enum STATUS_CODE {
         STATUS_TIMEOUT,
         STATUS_FAILED,
         STATUS_CANCEL_REQUEST_FAILED
-    };
+};
 
 enum CANCEL_CODE {
         ERROR_NONE = 0,

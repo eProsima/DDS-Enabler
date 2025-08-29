@@ -141,7 +141,7 @@ public:
      */
     DDSENABLER_PARTICIPANTS_DllAPI
     void add_action(
-            const RpcUtils::RpcAction& action);
+            const RpcAction& action);
 
     /**
      * @brief Add a data sample, associated to the given \c topic.
@@ -199,7 +199,7 @@ public:
             const std::string& action_name,
             const UUID& action_id,
             const uint64_t request_id,
-            const RpcUtils::ActionType action_type,
+            const ACTION_TYPE action_type,
             const RPC_PROTOCOL rpc_protocol = RPC_PROTOCOL::ROS2);
 
     /**
@@ -253,7 +253,7 @@ public:
      *
      * @param [in] action_name Name of the action.
      * @param [in] action_id UUID of the action to be checked.
-     * @return The RPC protocol of the action, or RPC_PROTOCOL::UNKNOWN if the action is not found.
+     * @return The RPC protocol of the action, or RPC_PROTOCOL::PROTOCOL_UNKNOWN if the action is not found.
      */
     DDSENABLER_PARTICIPANTS_DllAPI
     RPC_PROTOCOL get_action_rpc_protocol(
@@ -422,7 +422,7 @@ protected:
      */
     bool get_action_request_UUID(
                 const uint64_t request_id,
-                const RpcUtils::ActionType action_type,
+                const ACTION_TYPE action_type,
                 UUID& action_id);
 
     /**
@@ -493,7 +493,7 @@ protected:
      * @param [in] action RPC action associated to this action.
      */
     void write_action_nts_(
-            const RpcUtils::RpcAction& action);
+            const RpcAction& action);
     /**
      * @brief Write to user's app.
      *
@@ -603,7 +603,7 @@ protected:
             const fastdds::dds::DynamicType::_ref_type& dyn_type,
             const uint64_t request_id,
             const std::string& action_name,
-            const RpcUtils::RpcType& rpc_type);
+            const ACTION_TYPE action_type);
 
     /**
      * @brief Register a type using the given serialized type data.

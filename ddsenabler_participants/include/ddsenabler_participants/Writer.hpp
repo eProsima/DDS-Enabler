@@ -189,7 +189,7 @@ public:
 
     DDSENABLER_PARTICIPANTS_DllAPI
     void write_action_notification(
-            const RpcUtils::RpcAction& action);
+            const RpcAction& action);
 
     DDSENABLER_PARTICIPANTS_DllAPI
     void write_action_result_notification(
@@ -230,7 +230,7 @@ public:
             const fastdds::dds::DynamicType::_ref_type& dyn_type,
             const uint64_t request_id,
             const std::string& action_name,
-            const RpcUtils::RpcType& rpc_type);
+            const ACTION_TYPE action_type);
 
     DDSENABLER_PARTICIPANTS_DllAPI
     void set_is_UUID_active_callback(

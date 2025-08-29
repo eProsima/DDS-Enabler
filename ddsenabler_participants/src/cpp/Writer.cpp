@@ -255,7 +255,7 @@ void Writer::write_service_request_notification(
 }
 
 void Writer::write_action_notification(
-        const RpcUtils::RpcAction& action)
+        const RpcAction& action)
 {
     EPROSIMA_LOG_INFO(DDSENABLER_WRITER,
             "Writting action: " << action.action_name << ".");
@@ -581,7 +581,7 @@ void Writer::write_action_request_notification(
         const fastdds::dds::DynamicType::_ref_type& dyn_type,
         const uint64_t request_id,
         const std::string& action_name,
-        const RpcUtils::RpcType& rpc_type)
+        const ACTION_TYPE action_type)
 {
     nlohmann::json json_data;
     if (!prepare_json_data_(msg, dyn_type, json_data))
@@ -593,7 +593,7 @@ void Writer::write_action_request_notification(
     instanceHandle << msg.instanceHandle;
     try
     {
-        if (RpcUtils::RpcType::ACTION_GOAL_REQUEST == rpc_type)
+        if (ACTION_TYPE::ACTION_GOAL == action_type)
         {
             bool accepted;
             if (action_goal_request_notification_callback_)
@@ -611,7 +611,7 @@ void Writer::write_action_request_notification(
 
             return;
         }
-        if (RpcUtils::RpcType::ACTION_CANCEL_REQUEST == rpc_type)
+        if (ACTION_TYPE::ACTION_CANCEL == action_type)
         {
             if (action_cancel_request_notification_callback_)
             {

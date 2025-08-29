@@ -154,16 +154,12 @@ protected:
             const std::string& topic_name) const;
 
     bool service_discovered_nts_(
-            const std::string& service_name,
-            const ddspipe::core::types::DdsTopic& topic,
-            RpcUtils::RpcType rpc_type,
-            RPC_PROTOCOL rpc_protocol);
+            const RpcInfo& rpc_info,
+            const ddspipe::core::types::DdsTopic& topic);
 
     bool action_discovered_nts_(
-            const std::string& action_name,
-            const ddspipe::core::types::DdsTopic& topic,
-            RpcUtils::RpcType rpc_type,
-            RPC_PROTOCOL rpc_protocol);
+            const RpcInfo& rpc_info,
+            const ddspipe::core::types::DdsTopic& topic);
 
     bool revoke_service_nts_(
             const std::string& service_name);

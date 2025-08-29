@@ -389,7 +389,7 @@ bool DDSEnabler::send_action_goal(
             action_name,
             action_id,
             goal_request_id,
-            RpcUtils::ActionType::GOAL,
+            ACTION_TYPE::ACTION_GOAL,
             rpc_protocol))
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
@@ -424,7 +424,7 @@ bool DDSEnabler::send_action_get_result_request(
             action_name,
             action_id,
             get_result_request_id,
-            RpcUtils::ActionType::RESULT))
+            ACTION_TYPE::ACTION_RESULT))
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
                 "Failed to store action get result request to action " << action_name

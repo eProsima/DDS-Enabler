@@ -98,7 +98,7 @@ void Handler::add_service(
 }
 
 void Handler::add_action(
-        const RpcUtils::RpcAction& action)
+        const RpcAction& action)
 {
     std::lock_guard<std::recursive_mutex> lock(mtx_);
 
@@ -154,147 +154,188 @@ void Handler::add_data(
         throw utils::InconsistencyException(STR_ENTRY << "Received sample with no payload.");
     }
 
-    std::string rpc_name;
-    RPC_PROTOCOL rpc_protocol;
-    RpcUtils::RpcType rpc_type = RpcUtils::get_rpc_name(topic.m_topic_name, rpc_name, rpc_protocol);
-    switch (rpc_type)
+    RpcInfo rpc_info = RpcUtils::get_rpc_info(topic.m_topic_name);
+    switch (rpc_info.rpc_type)
     {
-        case RpcUtils::RpcType::RPC_NONE:
-            write_sample_nts_(msg, dyn_type);
-            break;
-
-        // SERVICES
-        case RpcUtils::RpcType::RPC_REQUEST:
+        case RPC_TYPE::RPC_NONE:
         {
-            requests_id_++;
-            RpcPayloadData& rpc_data = dynamic_cast<RpcPayloadData&>(data);
-            rpc_data.sent_sequence_number = eprosima::fastdds::rtps::SequenceNumber_t(requests_id_);
-            write_service_request_nts_(msg, dyn_type, requests_id_, rpc_name);
+            write_sample_nts_(msg, dyn_type);
             break;
         }
 
-        case RpcUtils::RpcType::RPC_REPLY:
+        // SERVICE
+        case RPC_TYPE::RPC_SERVICE:
         {
-            auto request_id = dynamic_cast<ddspipe::core::types::RpcPayloadData&>(data).write_params.get_reference().related_sample_identity().sequence_number().to64long();
-            write_service_reply_nts_(msg, dyn_type, request_id, rpc_name);
+            if (rpc_info.service_type == SERVICE_TYPE::SERVICE_REQUEST)
+            {
+                requests_id_++;
+                RpcPayloadData& rpc_data = dynamic_cast<RpcPayloadData&>(data);
+                rpc_data.sent_sequence_number = eprosima::fastdds::rtps::SequenceNumber_t(requests_id_);
+                write_service_request_nts_(msg, dyn_type, requests_id_, rpc_info.service_name);
+            }
+            else
+            {
+                auto request_id = dynamic_cast<ddspipe::core::types::RpcPayloadData&>(data).write_params.get_reference().related_sample_identity().sequence_number().to64long();
+                write_service_reply_nts_(msg, dyn_type, request_id, rpc_info.service_name);
+            }
             break;
         }
 
         // ACTIONS CLIENT
-        case RpcUtils::RpcType::ACTION_RESULT_REPLY:
+        case RPC_TYPE::RPC_ACTION:
         {
-            auto action_id = dynamic_cast<ddspipe::core::types::RpcPayloadData&>(data).write_params.get_reference().related_sample_identity().sequence_number().to64long();
-            UUID action_id_uuid;
-            if (get_action_request_UUID(action_id, RpcUtils::ActionType::RESULT, action_id_uuid))
-                write_action_result_nts_(msg, dyn_type, action_id_uuid, rpc_name);
-            erase_action_UUID(action_id_uuid, ActionEraseReason::RESULT);
-            break;
-        }
-
-        case RpcUtils::RpcType::ACTION_GOAL_REPLY:
-        {
-            auto action_id = dynamic_cast<ddspipe::core::types::RpcPayloadData&>(data).write_params.get_reference().related_sample_identity().sequence_number().to64long();
-            UUID action_id_uuid;
-            if (get_action_request_UUID(action_id, RpcUtils::ActionType::GOAL, action_id_uuid))
-                write_action_goal_reply_nts_(msg, dyn_type, action_id_uuid, rpc_name);
-            break;
-        }
-
-        case RpcUtils::RpcType::ACTION_CANCEL_REPLY:
-        {
-            auto request_id = dynamic_cast<ddspipe::core::types::RpcPayloadData&>(data).write_params.get_reference().related_sample_identity().sequence_number().to64long();
-            write_action_cancel_reply_nts_(msg, dyn_type, request_id, rpc_name);
-            break;
-        }
-
-        case RpcUtils::RpcType::ACTION_FEEDBACK:
-        {
-            write_action_feedback_nts_(msg, dyn_type, rpc_name);
-            break;
-        }
-
-        case RpcUtils::RpcType::ACTION_STATUS:
-        {
-            write_action_status_nts_(msg, dyn_type, rpc_name);
-            break;
-        }
-
-        // ACTIONS SERVER
-        case RpcUtils::RpcType::ACTION_GOAL_REQUEST:
-        case RpcUtils::RpcType::ACTION_CANCEL_REQUEST:
-        {
-            requests_id_++;
-            RpcPayloadData& rpc_data = dynamic_cast<RpcPayloadData&>(data);
-            rpc_data.sent_sequence_number = eprosima::fastdds::rtps::SequenceNumber_t(requests_id_);
-            UUID uuid;
-            if (!writer_->uuid_from_request_json(
-                    msg,
-                    dyn_type,
-                    uuid))
+            switch (rpc_info.service_type)
             {
-                EPROSIMA_LOG_ERROR(DDSENABLER_HANDLER,
-                        "Failed to extract UUID from send_goal_request JSON.");
-                return;
-            }
-
-            if (store_action_request(
-                rpc_name,
-                uuid,
-                requests_id_,
-                RpcUtils::get_action_type(rpc_type)))
-            {
-                write_action_request_nts_(msg, dyn_type, requests_id_, rpc_name, rpc_type);
-            }
-
-            break;
-        }
-
-        case RpcUtils::RpcType::ACTION_RESULT_REQUEST:
-        {
-            UUID uuid;
-            if (!writer_->uuid_from_request_json(
-                    msg,
-                    dyn_type,
-                    uuid))
-            {
-                EPROSIMA_LOG_ERROR(DDSENABLER_HANDLER,
-                        "Failed to extract UUID from get_result_request JSON.");
-                return;
-            }
-
-            requests_id_++;
-            RpcPayloadData& rpc_data = dynamic_cast<RpcPayloadData&>(data);
-            rpc_data.sent_sequence_number = eprosima::fastdds::rtps::SequenceNumber_t(requests_id_);
-            if (!store_action_request(
-                rpc_name,
-                uuid,
-                requests_id_,
-                RpcUtils::ActionType::RESULT))
-            {
-                EPROSIMA_LOG_ERROR(DDSENABLER_HANDLER,
-                        "Failed to store action request for get_result_request.");
-                return;
-            }
-
-            std::string result;
-            if (get_action_result(uuid, result))
-            {
-                if (send_action_get_result_reply_callback_)
+                case SERVICE_TYPE::SERVICE_REPLY:
                 {
-                    send_action_get_result_reply_callback_(
-                        rpc_name,
-                        uuid,
-                        result,
-                        requests_id_);
+                    switch (rpc_info.action_type)
+                    {
+                        case ACTION_TYPE::ACTION_RESULT:
+                        {
+                            auto action_id = dynamic_cast<ddspipe::core::types::RpcPayloadData&>(data).write_params.get_reference().related_sample_identity().sequence_number().to64long();
+                            UUID action_id_uuid;
+                            if (get_action_request_UUID(action_id, ACTION_TYPE::ACTION_RESULT, action_id_uuid))
+                                write_action_result_nts_(msg, dyn_type, action_id_uuid, rpc_info.action_name);
+                            erase_action_UUID(action_id_uuid, ActionEraseReason::RESULT);
+                            break;
+                        }
+
+                        case ACTION_TYPE::ACTION_GOAL:
+                        {
+                            auto action_id = dynamic_cast<ddspipe::core::types::RpcPayloadData&>(data).write_params.get_reference().related_sample_identity().sequence_number().to64long();
+                            UUID action_id_uuid;
+                            if (get_action_request_UUID(action_id, ACTION_TYPE::ACTION_GOAL, action_id_uuid))
+                                write_action_goal_reply_nts_(msg, dyn_type, action_id_uuid, rpc_info.action_name);
+                            break;
+                        }
+
+                        case ACTION_TYPE::ACTION_CANCEL:
+                        {
+                            auto request_id = dynamic_cast<ddspipe::core::types::RpcPayloadData&>(data).write_params.get_reference().related_sample_identity().sequence_number().to64long();
+                            write_action_cancel_reply_nts_(msg, dyn_type, request_id, rpc_info.action_name);
+                            break;
+                        }
+
+                        default:
+                        {
+                            EPROSIMA_LOG_ERROR(DDSENABLER_HANDLER,
+                                    "Unknown action type for topic " << topic.m_topic_name << ".");
+                            break;
+                        }
+                    }
+                    break;
+                }
+
+                case SERVICE_TYPE::SERVICE_REQUEST:
+                {
+                    switch (rpc_info.action_type)
+                    {
+                        case ACTION_TYPE::ACTION_GOAL:
+                        case ACTION_TYPE::ACTION_CANCEL:
+                        {
+                            requests_id_++;
+                            RpcPayloadData& rpc_data = dynamic_cast<RpcPayloadData&>(data);
+                            rpc_data.sent_sequence_number = eprosima::fastdds::rtps::SequenceNumber_t(requests_id_);
+                            UUID uuid;
+                            if (!writer_->uuid_from_request_json(
+                                    msg,
+                                    dyn_type,
+                                    uuid))
+                            {
+                                EPROSIMA_LOG_ERROR(DDSENABLER_HANDLER,
+                                        "Failed to extract UUID from send_goal_request JSON.");
+                                return;
+                            }
+
+                            if (store_action_request(
+                                rpc_info.action_name,
+                                uuid,
+                                requests_id_,
+                                rpc_info.action_type))
+                            {
+                                write_action_request_nts_(msg, dyn_type, requests_id_, rpc_info.action_name, rpc_info.action_type);
+                            }
+
+                            break;
+                        }
+
+                        case ACTION_TYPE::ACTION_RESULT:
+                        {
+                            UUID uuid;
+                            if (!writer_->uuid_from_request_json(
+                                    msg,
+                                    dyn_type,
+                                    uuid))
+                            {
+                                EPROSIMA_LOG_ERROR(DDSENABLER_HANDLER,
+                                        "Failed to extract UUID from get_result_request JSON.");
+                                return;
+                            }
+
+                            requests_id_++;
+                            RpcPayloadData& rpc_data = dynamic_cast<RpcPayloadData&>(data);
+                            rpc_data.sent_sequence_number = eprosima::fastdds::rtps::SequenceNumber_t(requests_id_);
+                            if (!store_action_request(
+                                rpc_info.action_name,
+                                uuid,
+                                requests_id_,
+                                ACTION_TYPE::ACTION_RESULT))
+                            {
+                                EPROSIMA_LOG_ERROR(DDSENABLER_HANDLER,
+                                        "Failed to store action request for get_result_request.");
+                                return;
+                            }
+
+                            std::string result;
+                            if (get_action_result(uuid, result))
+                            {
+                                if (send_action_get_result_reply_callback_)
+                                {
+                                    send_action_get_result_reply_callback_(
+                                        rpc_info.action_name,
+                                        uuid,
+                                        result,
+                                        requests_id_);
+                                }
+                            }
+                            break;
+                        }
+
+                        default:
+                            EPROSIMA_LOG_ERROR(DDSENABLER_HANDLER,
+                                    "Unknown action type for topic " << topic.m_topic_name << ".");
+                            break;
+                    }
+                    break;
+                }
+
+                case SERVICE_TYPE::SERVICE_NONE:
+                {
+                    switch (rpc_info.action_type)
+                    {
+                        case ACTION_TYPE::ACTION_FEEDBACK:
+                        {
+                            write_action_feedback_nts_(msg, dyn_type, rpc_info.action_name);
+                            break;
+                        }
+
+                        case ACTION_TYPE::ACTION_STATUS:
+                        {
+                            write_action_status_nts_(msg, dyn_type, rpc_info.action_name);
+                            break;
+                        }
+
+                        default:
+                        {
+                            EPROSIMA_LOG_ERROR(DDSENABLER_HANDLER,
+                                    "Unknown RPC type for topic " << topic.m_topic_name << ".");
+                            break;
+                        }
+                    }
+                    break;
                 }
             }
-            break;
         }
-
-        default:
-            EPROSIMA_LOG_ERROR(DDSENABLER_HANDLER,
-                    "Unknown RPC type for topic " << topic.m_topic_name << ".");
-            break;
     }
 }
 
@@ -509,7 +550,7 @@ void Handler::write_service_request_nts_(
 }
 
 void Handler::write_action_nts_(
-        const RpcUtils::RpcAction& action)
+        const RpcAction& action)
 {
     writer_->write_action_notification(action);
 }
@@ -562,9 +603,9 @@ void Handler::write_action_request_nts_(
         const fastdds::dds::DynamicType::_ref_type& dyn_type,
         const uint64_t request_id,
         const std::string& action_name,
-        const RpcUtils::RpcType& rpc_type)
+        const ACTION_TYPE action_type)
 {
-    writer_->write_action_request_notification(msg, dyn_type, request_id, action_name, rpc_type);
+    writer_->write_action_request_notification(msg, dyn_type, request_id, action_name, action_type);
 }
 
 bool Handler::register_type_nts_(
@@ -630,7 +671,7 @@ bool Handler::store_action_request(
         const std::string& action_name,
         const UUID& action_id,
         const uint64_t request_id,
-        const RpcUtils::ActionType action_type,
+        const ACTION_TYPE action_type,
         const RPC_PROTOCOL rpc_protocol)
 {
     std::lock_guard<std::recursive_mutex> lock(mtx_);
@@ -645,7 +686,7 @@ bool Handler::store_action_request(
                     << it->second.action_name << ", got " << action_name);
             return false;
         }
-        if (RpcUtils::ActionType::GOAL == action_type)
+        if (ACTION_TYPE::ACTION_GOAL == action_type)
         {
             EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
                     "Cannot store action goal request as action id already exists.");
@@ -657,7 +698,7 @@ bool Handler::store_action_request(
     else
     {
         // If it does not exist, create a new entry only if the action type is goal request
-        if (RpcUtils::ActionType::GOAL != action_type)
+        if (ACTION_TYPE::ACTION_GOAL != action_type)
         {
             EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
                     "Cannot store action request, action does not exist and request type is not GOAL.");
@@ -754,12 +795,12 @@ RPC_PROTOCOL Handler::get_action_rpc_protocol(
         return it->second.rpc_protocol;
     }
 
-    return RPC_PROTOCOL::UNKNOWN;
+    return RPC_PROTOCOL::PROTOCOL_UNKNOWN;
 }
 
 bool Handler::get_action_request_UUID(
         const uint64_t request_id,
-        const RpcUtils::ActionType action_type,
+        const ACTION_TYPE action_type,
         UUID& action_id)
 {
     std::lock_guard<std::recursive_mutex> lock(mtx_);
