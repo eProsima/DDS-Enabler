@@ -93,7 +93,9 @@ struct CallbackSet
 
     //! DDS related callbacks
     DdsCallbacks dds;
+    //! Service related callbacks
     ServiceCallbacks service;
+    //! Action related callbacks
     ActionCallbacks action;
 };
 
