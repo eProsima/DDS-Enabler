@@ -122,6 +122,7 @@ public:
      *
      * @return true if the service was successfully announced, false otherwise.
      */
+    DDSENABLER_DllAPI
     bool announce_service(
             const std::string& service_name,
             participants::RPC_PROTOCOL rpc_protocol = participants::RPC_PROTOCOL::ROS2);
@@ -136,6 +137,7 @@ public:
      * @param service_name The name of the service to be stopped.
      * @return true if the service was successfully stopped, false otherwise.
      */
+    DDSENABLER_DllAPI
     bool revoke_service(
             const std::string& service_name);
 
@@ -156,6 +158,7 @@ public:
      *
      * @return true if the request was successfully sent, false otherwise.
      */
+    DDSENABLER_DllAPI
     bool send_service_request(
             const std::string& service_name,
             const std::string& json,
@@ -177,6 +180,7 @@ public:
      *
      * @note The request_id must coincide with the one received in the request.
      */
+    DDSENABLER_DllAPI
     bool send_service_reply(
             const std::string& service_name,
             const std::string& json,
@@ -198,6 +202,7 @@ public:
      *
      * @return true if the action was successfully announced, false otherwise.
      */
+    DDSENABLER_DllAPI
     bool announce_action(
             const std::string& action_name,
             participants::RPC_PROTOCOL rpc_protocol = participants::RPC_PROTOCOL::ROS2);
@@ -213,6 +218,7 @@ public:
      *
      * @return true if the action was successfully stopped, false otherwise.
      */
+    DDSENABLER_DllAPI
     bool revoke_action(
             const std::string& action_name);
 
@@ -228,6 +234,7 @@ public:
      *
      * @return true if the feedback was successfully sent, false otherwise.
      */
+    DDSENABLER_DllAPI
     bool send_action_feedback(
             const char* action_name,
             const char* json,
@@ -246,6 +253,7 @@ public:
      *
      * @return true if the result was successfully sent, false otherwise.
      */
+    DDSENABLER_DllAPI
     bool send_action_result(
             const char* action_name,
             const participants::UUID& goal_id,
@@ -265,6 +273,7 @@ public:
      *
      * @return true if the cancel goal reply was successfully sent, false otherwise.
      */
+    DDSENABLER_DllAPI
     bool send_action_cancel_goal_reply(
             const char* action_name,
             const std::vector<participants::UUID>& goal_ids,
@@ -285,6 +294,7 @@ public:
      * @return true if the status update was successfully sent, false otherwise.
      *
      */
+    DDSENABLER_DllAPI
     bool update_action_status(
             const std::string& action_name,
             const participants::UUID& goal_id,
@@ -311,6 +321,7 @@ public:
      *
      * @return true if the action goal was successfully sent, false otherwise.
      */
+    DDSENABLER_DllAPI
     bool send_action_goal(
             const std::string& action_name,
             const std::string& json,
@@ -334,6 +345,7 @@ public:
      *
      * @return true if the cancel action request was successfully sent, false otherwise.
      */
+    DDSENABLER_DllAPI
     bool cancel_action_goal(
             const std::string& action_name,
             const participants::UUID& goal_id,

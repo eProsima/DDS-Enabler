@@ -25,6 +25,8 @@
 #include <ddsenabler_participants/RpcTypes.hpp>
 #include <ddsenabler_participants/RpcStructs.hpp>
 
+#include <ddsenabler_participants/library/library_dll.h>
+
 namespace eprosima {
 namespace ddsenabler {
 namespace participants {
@@ -36,12 +38,15 @@ namespace RpcUtils {
  * @param [in] topic_name Topic name to extract the service/action name from
  * @return Extracted service name
  */
+DDSENABLER_PARTICIPANTS_DllAPI
 RpcInfo get_rpc_info(
         const std::string& topic_name);
 
+DDSENABLER_PARTICIPANTS_DllAPI
 RPC_PROTOCOL detect_rpc_protocol(
         const std::string& topic_name);
 
+DDSENABLER_PARTICIPANTS_DllAPI
 RpcInfo remove_prefix_suffix(
         const std::string& topic_name,
         RPC_PROTOCOL rpc_protocol);
@@ -51,6 +56,7 @@ RpcInfo remove_prefix_suffix(
  *
  * @return A new UUID.
  */
+DDSENABLER_PARTICIPANTS_DllAPI
 UUID generate_UUID();
 
 // ROS 2 ACTION MSGS
@@ -60,6 +66,7 @@ UUID generate_UUID();
  * @param goal_json The JSON string representing the goal (without the UUID part).
  * @return The JSON string for sending the goal request.
  */
+DDSENABLER_PARTICIPANTS_DllAPI
 std::string create_goal_request_msg(
         const std::string& goal_json,
         UUID& goal_id);
@@ -70,6 +77,7 @@ std::string create_goal_request_msg(
  * @param accepted Indicates whether the goal was accepted or not.
  * @return A JSON string representing the goal reply.
  */
+DDSENABLER_PARTICIPANTS_DllAPI
 std::string create_goal_reply_msg(
         bool accepted);
 
@@ -80,6 +88,7 @@ std::string create_goal_reply_msg(
  * @param timestamp The timestamp for canceling logic.
  * @return A JSON string representing the cancel message.
  */
+DDSENABLER_PARTICIPANTS_DllAPI
 std::string create_cancel_request_msg(
         const UUID& goal_id,
         const int64_t timestamp);
@@ -91,6 +100,7 @@ std::string create_cancel_request_msg(
  * @param cancel_code The cancel code indicating the result of the cancellation.
  * @return A JSON string representing the cancel reply message.
  */
+DDSENABLER_PARTICIPANTS_DllAPI
 std::string create_cancel_reply_msg(
         std::vector<std::pair<UUID, std::chrono::system_clock::time_point>> cancelling_goals,
         const CANCEL_CODE& cancel_code);
@@ -101,6 +111,7 @@ std::string create_cancel_reply_msg(
  * @param goal_id The UUID of the goal for which the result is being requested.
  * @return A JSON string representing the result request message.
  */
+DDSENABLER_PARTICIPANTS_DllAPI
 std::string create_result_request_msg(
         const UUID& goal_id);
 
@@ -111,6 +122,7 @@ std::string create_result_request_msg(
  * @param json The JSON string representing the result.
  * @return A JSON string representing the result reply message.
  */
+DDSENABLER_PARTICIPANTS_DllAPI
 std::string create_result_reply_msg(
         const STATUS_CODE& status_code,
         const char* json);
@@ -122,6 +134,7 @@ std::string create_result_reply_msg(
  * @param goal_id The UUID of the goal for which the feedback is being sent.
  * @return A JSON string representing the feedback message.
  */
+DDSENABLER_PARTICIPANTS_DllAPI
 std::string create_feedback_msg(
         const char* json,
         const UUID& goal_id);
@@ -134,6 +147,7 @@ std::string create_feedback_msg(
  * @param goal_accepted_stamp The timestamp when the goal was accepted.
  * @return A JSON string representing the status message.
  */
+DDSENABLER_PARTICIPANTS_DllAPI
 std::string create_status_msg(
         const UUID& goal_id,
         const STATUS_CODE& status_code,
@@ -144,6 +158,7 @@ std::string create_status_msg(
 } // namespace ddsenabler
 } // namespace eprosima
 
+DDSENABLER_PARTICIPANTS_DllAPI
 std::ostream& operator <<(
         std::ostream& os,
         const eprosima::ddsenabler::participants::UUID& uuid);

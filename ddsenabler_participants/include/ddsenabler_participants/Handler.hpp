@@ -413,6 +413,7 @@ public:
      *
      * @return A new request ID.
      */
+    DDSENABLER_PARTICIPANTS_DllAPI
     uint64_t get_new_request_id();
 
 protected:
