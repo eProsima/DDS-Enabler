@@ -48,25 +48,44 @@ public:
     static void print_help(
             uint8_t return_code)
     {
-        std::cout << "Usage: ddsenabler_example_service [options]"                                                 << std::endl;
-        std::cout << ""                                                                                            << std::endl;
-        std::cout << "--config <str>                        Path to the configuration file"                        << std::endl;
-        std::cout << "                                      (Default: '')"                                         << std::endl;
-        std::cout << "--service-name <str>                  Name of the service to be registered"                  << std::endl;
-        std::cout << "                                      (Default: 'add_two_ints')"                             << std::endl;
-        std::cout << "-client                               Run as a client (mutually exclusive with -server)"    << std::endl;
-        std::cout << "-server                               Run as a server (mutually exclusive with -client)"    << std::endl;
-        std::cout << "--timeout <num>                       Time (seconds) to wait before stopping the"            << std::endl;
-        std::cout << "                                      program if expectations are not met"                   << std::endl;
-        std::cout << "                                      (Default: 30)"                                         << std::endl;
-        std::cout << "--persistence-path <str>              Path to the persistence directory"                     << std::endl;
-        std::cout << "                                      (Default: '')"                                         << std::endl;
-        std::cout << "\n-------------------------------------SERVER OPTIONS------------------------------------\n" << std::endl;
-        std::cout << "--expected-requests <num>              Number of requests expected to be received"           << std::endl;
-        std::cout << "\n-------------------------------------CLIENT OPTIONS------------------------------------\n" << std::endl;
-        std::cout << "--request-initial-wait <num>          Time (seconds) to wait before starting"                << std::endl;
-        std::cout << "                                      requests publication since server matching"            << std::endl;
-        std::cout << "                                      (Default: 0)"                                          << std::endl;
+        std::cout << "Usage: ddsenabler_example_service [options]"                                                 <<
+            std::endl;
+        std::cout << ""                                                                                            <<
+            std::endl;
+        std::cout << "--config <str>                        Path to the configuration file"                        <<
+            std::endl;
+        std::cout << "                                      (Default: '')"                                         <<
+            std::endl;
+        std::cout << "--service-name <str>                  Name of the service to be registered"                  <<
+            std::endl;
+        std::cout << "                                      (Default: 'add_two_ints')"                             <<
+            std::endl;
+        std::cout << "-client                               Run as a client (mutually exclusive with -server)"    <<
+            std::endl;
+        std::cout << "-server                               Run as a server (mutually exclusive with -client)"    <<
+            std::endl;
+        std::cout << "--timeout <num>                       Time (seconds) to wait before stopping the"            <<
+            std::endl;
+        std::cout << "                                      program if expectations are not met"                   <<
+            std::endl;
+        std::cout << "                                      (Default: 30)"                                         <<
+            std::endl;
+        std::cout << "--persistence-path <str>              Path to the persistence directory"                     <<
+            std::endl;
+        std::cout << "                                      (Default: '')"                                         <<
+            std::endl;
+        std::cout << "\n-------------------------------------SERVER OPTIONS------------------------------------\n" <<
+            std::endl;
+        std::cout << "--expected-requests <num>              Number of requests expected to be received"           <<
+            std::endl;
+        std::cout << "\n-------------------------------------CLIENT OPTIONS------------------------------------\n" <<
+            std::endl;
+        std::cout << "--request-initial-wait <num>          Time (seconds) to wait before starting"                <<
+            std::endl;
+        std::cout << "                                      requests publication since server matching"            <<
+            std::endl;
+        std::cout << "                                      (Default: 0)"                                          <<
+            std::endl;
         std::exit(return_code);
     }
 
@@ -193,7 +212,8 @@ public:
                     }
                     catch (const std::exception& e)
                     {
-                        std::cerr << "Invalid --expected-requests argument " << argv[i] << ": " << e.what() << std::endl;
+                        std::cerr << "Invalid --expected-requests argument " << argv[i] << ": " << e.what() <<
+                            std::endl;
                         print_help(EXIT_FAILURE);
                     }
                 }
@@ -213,7 +233,8 @@ public:
                     }
                     catch (const std::exception& e)
                     {
-                        std::cerr << "Invalid --request-initial-wait argument " << argv[i] << ": " << e.what() << std::endl;
+                        std::cerr << "Invalid --request-initial-wait argument " << argv[i] << ": " << e.what() <<
+                            std::endl;
                         print_help(EXIT_FAILURE);
                     }
                 }

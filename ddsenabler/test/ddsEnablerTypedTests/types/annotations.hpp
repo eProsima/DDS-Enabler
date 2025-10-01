@@ -53,20 +53,20 @@
 #endif // _WIN32
 
 namespace AnnotationTest {
-    /*!
-     * @brief This class represents the enumeration InnerEnumHelper defined by the user in the IDL file.
-     * @ingroup annotations
-     */
-    enum class InnerEnumHelper : int32_t
-    {
-        ONE,
-        TWO
-    };
+/*!
+ * @brief This class represents the enumeration InnerEnumHelper defined by the user in the IDL file.
+ * @ingroup annotations
+ */
+enum class InnerEnumHelper : int32_t
+{
+    ONE,
+    TWO
+};
 
-    typedef eprosima::fastcdr::fixed_string<inner_const_helper> Inner_alias_bounded_string_helper;
+typedef eprosima::fastcdr::fixed_string<inner_const_helper> Inner_alias_bounded_string_helper;
 
 
-    const int16_t inner_const_helper = 10;
+const int16_t inner_const_helper = 10;
 
 } // namespace AnnotationTest
 
@@ -159,8 +159,6 @@ public:
     {
         return !(*this == x);
     }
-
-
 
 private:
 
@@ -255,8 +253,6 @@ public:
         return !(*this == x);
     }
 
-
-
 private:
 
 
@@ -291,7 +287,7 @@ public:
     eProsima_user_DllExport BasicAnnotationsStruct(
             const BasicAnnotationsStruct& x)
     {
-                    m_basic_annotations_member = x.m_basic_annotations_member;
+        m_basic_annotations_member = x.m_basic_annotations_member;
 
     }
 
@@ -313,7 +309,7 @@ public:
             const BasicAnnotationsStruct& x)
     {
 
-                    m_basic_annotations_member = x.m_basic_annotations_member;
+        m_basic_annotations_member = x.m_basic_annotations_member;
 
         return *this;
     }
@@ -377,8 +373,6 @@ public:
     {
         return m_basic_annotations_member;
     }
-
-
 
 private:
 

@@ -83,7 +83,7 @@ public:
     eProsima_user_DllExport SequenceShort(
             const SequenceShort& x)
     {
-                    m_var_sequence_short = x.m_var_sequence_short;
+        m_var_sequence_short = x.m_var_sequence_short;
 
     }
 
@@ -105,7 +105,7 @@ public:
             const SequenceShort& x)
     {
 
-                    m_var_sequence_short = x.m_var_sequence_short;
+        m_var_sequence_short = x.m_var_sequence_short;
 
         return *this;
     }
@@ -180,8 +180,6 @@ public:
         return m_var_sequence_short;
     }
 
-
-
 private:
 
     std::vector<int16_t> m_var_sequence_short;
@@ -216,7 +214,7 @@ public:
     eProsima_user_DllExport SequenceUShort(
             const SequenceUShort& x)
     {
-                    m_var_sequence_ushort = x.m_var_sequence_ushort;
+        m_var_sequence_ushort = x.m_var_sequence_ushort;
 
     }
 
@@ -238,7 +236,7 @@ public:
             const SequenceUShort& x)
     {
 
-                    m_var_sequence_ushort = x.m_var_sequence_ushort;
+        m_var_sequence_ushort = x.m_var_sequence_ushort;
 
         return *this;
     }
@@ -313,8 +311,6 @@ public:
         return m_var_sequence_ushort;
     }
 
-
-
 private:
 
     std::vector<uint16_t> m_var_sequence_ushort;
@@ -349,7 +345,7 @@ public:
     eProsima_user_DllExport SequenceLong(
             const SequenceLong& x)
     {
-                    m_var_sequence_long = x.m_var_sequence_long;
+        m_var_sequence_long = x.m_var_sequence_long;
 
     }
 
@@ -371,7 +367,7 @@ public:
             const SequenceLong& x)
     {
 
-                    m_var_sequence_long = x.m_var_sequence_long;
+        m_var_sequence_long = x.m_var_sequence_long;
 
         return *this;
     }
@@ -446,8 +442,6 @@ public:
         return m_var_sequence_long;
     }
 
-
-
 private:
 
     std::vector<int32_t> m_var_sequence_long;
@@ -482,7 +476,7 @@ public:
     eProsima_user_DllExport SequenceULong(
             const SequenceULong& x)
     {
-                    m_var_sequence_ulong = x.m_var_sequence_ulong;
+        m_var_sequence_ulong = x.m_var_sequence_ulong;
 
     }
 
@@ -504,7 +498,7 @@ public:
             const SequenceULong& x)
     {
 
-                    m_var_sequence_ulong = x.m_var_sequence_ulong;
+        m_var_sequence_ulong = x.m_var_sequence_ulong;
 
         return *this;
     }
@@ -579,8 +573,6 @@ public:
         return m_var_sequence_ulong;
     }
 
-
-
 private:
 
     std::vector<uint32_t> m_var_sequence_ulong;
@@ -615,7 +607,7 @@ public:
     eProsima_user_DllExport SequenceLongLong(
             const SequenceLongLong& x)
     {
-                    m_var_sequence_longlong = x.m_var_sequence_longlong;
+        m_var_sequence_longlong = x.m_var_sequence_longlong;
 
     }
 
@@ -637,7 +629,7 @@ public:
             const SequenceLongLong& x)
     {
 
-                    m_var_sequence_longlong = x.m_var_sequence_longlong;
+        m_var_sequence_longlong = x.m_var_sequence_longlong;
 
         return *this;
     }
@@ -712,8 +704,6 @@ public:
         return m_var_sequence_longlong;
     }
 
-
-
 private:
 
     std::vector<int64_t> m_var_sequence_longlong;
@@ -748,7 +738,7 @@ public:
     eProsima_user_DllExport SequenceULongLong(
             const SequenceULongLong& x)
     {
-                    m_var_sequence_ulonglong = x.m_var_sequence_ulonglong;
+        m_var_sequence_ulonglong = x.m_var_sequence_ulonglong;
 
     }
 
@@ -770,7 +760,7 @@ public:
             const SequenceULongLong& x)
     {
 
-                    m_var_sequence_ulonglong = x.m_var_sequence_ulonglong;
+        m_var_sequence_ulonglong = x.m_var_sequence_ulonglong;
 
         return *this;
     }
@@ -845,8 +835,6 @@ public:
         return m_var_sequence_ulonglong;
     }
 
-
-
 private:
 
     std::vector<uint64_t> m_var_sequence_ulonglong;
@@ -881,7 +869,7 @@ public:
     eProsima_user_DllExport SequenceFloat(
             const SequenceFloat& x)
     {
-                    m_var_sequence_float = x.m_var_sequence_float;
+        m_var_sequence_float = x.m_var_sequence_float;
 
     }
 
@@ -903,7 +891,7 @@ public:
             const SequenceFloat& x)
     {
 
-                    m_var_sequence_float = x.m_var_sequence_float;
+        m_var_sequence_float = x.m_var_sequence_float;
 
         return *this;
     }
@@ -978,8 +966,6 @@ public:
         return m_var_sequence_float;
     }
 
-
-
 private:
 
     std::vector<float> m_var_sequence_float;
@@ -1014,7 +1000,7 @@ public:
     eProsima_user_DllExport SequenceDouble(
             const SequenceDouble& x)
     {
-                    m_var_sequence_double = x.m_var_sequence_double;
+        m_var_sequence_double = x.m_var_sequence_double;
 
     }
 
@@ -1036,7 +1022,7 @@ public:
             const SequenceDouble& x)
     {
 
-                    m_var_sequence_double = x.m_var_sequence_double;
+        m_var_sequence_double = x.m_var_sequence_double;
 
         return *this;
     }
@@ -1111,8 +1097,6 @@ public:
         return m_var_sequence_double;
     }
 
-
-
 private:
 
     std::vector<double> m_var_sequence_double;
@@ -1147,7 +1131,7 @@ public:
     eProsima_user_DllExport SequenceLongDouble(
             const SequenceLongDouble& x)
     {
-                    m_var_sequence_longdouble = x.m_var_sequence_longdouble;
+        m_var_sequence_longdouble = x.m_var_sequence_longdouble;
 
     }
 
@@ -1169,7 +1153,7 @@ public:
             const SequenceLongDouble& x)
     {
 
-                    m_var_sequence_longdouble = x.m_var_sequence_longdouble;
+        m_var_sequence_longdouble = x.m_var_sequence_longdouble;
 
         return *this;
     }
@@ -1244,8 +1228,6 @@ public:
         return m_var_sequence_longdouble;
     }
 
-
-
 private:
 
     std::vector<long double> m_var_sequence_longdouble;
@@ -1280,7 +1262,7 @@ public:
     eProsima_user_DllExport SequenceBoolean(
             const SequenceBoolean& x)
     {
-                    m_var_sequence_boolean = x.m_var_sequence_boolean;
+        m_var_sequence_boolean = x.m_var_sequence_boolean;
 
     }
 
@@ -1302,7 +1284,7 @@ public:
             const SequenceBoolean& x)
     {
 
-                    m_var_sequence_boolean = x.m_var_sequence_boolean;
+        m_var_sequence_boolean = x.m_var_sequence_boolean;
 
         return *this;
     }
@@ -1377,8 +1359,6 @@ public:
         return m_var_sequence_boolean;
     }
 
-
-
 private:
 
     std::vector<bool> m_var_sequence_boolean;
@@ -1413,7 +1393,7 @@ public:
     eProsima_user_DllExport SequenceOctet(
             const SequenceOctet& x)
     {
-                    m_var_sequence_octet = x.m_var_sequence_octet;
+        m_var_sequence_octet = x.m_var_sequence_octet;
 
     }
 
@@ -1435,7 +1415,7 @@ public:
             const SequenceOctet& x)
     {
 
-                    m_var_sequence_octet = x.m_var_sequence_octet;
+        m_var_sequence_octet = x.m_var_sequence_octet;
 
         return *this;
     }
@@ -1510,8 +1490,6 @@ public:
         return m_var_sequence_octet;
     }
 
-
-
 private:
 
     std::vector<uint8_t> m_var_sequence_octet;
@@ -1546,7 +1524,7 @@ public:
     eProsima_user_DllExport SequenceChar(
             const SequenceChar& x)
     {
-                    m_var_sequence_char = x.m_var_sequence_char;
+        m_var_sequence_char = x.m_var_sequence_char;
 
     }
 
@@ -1568,7 +1546,7 @@ public:
             const SequenceChar& x)
     {
 
-                    m_var_sequence_char = x.m_var_sequence_char;
+        m_var_sequence_char = x.m_var_sequence_char;
 
         return *this;
     }
@@ -1643,8 +1621,6 @@ public:
         return m_var_sequence_char;
     }
 
-
-
 private:
 
     std::vector<char> m_var_sequence_char;
@@ -1679,7 +1655,7 @@ public:
     eProsima_user_DllExport SequenceWChar(
             const SequenceWChar& x)
     {
-                    m_var_sequence_wchar = x.m_var_sequence_wchar;
+        m_var_sequence_wchar = x.m_var_sequence_wchar;
 
     }
 
@@ -1701,7 +1677,7 @@ public:
             const SequenceWChar& x)
     {
 
-                    m_var_sequence_wchar = x.m_var_sequence_wchar;
+        m_var_sequence_wchar = x.m_var_sequence_wchar;
 
         return *this;
     }
@@ -1776,8 +1752,6 @@ public:
         return m_var_sequence_wchar;
     }
 
-
-
 private:
 
     std::vector<wchar_t> m_var_sequence_wchar;
@@ -1812,7 +1786,7 @@ public:
     eProsima_user_DllExport SequenceString(
             const SequenceString& x)
     {
-                    m_var_sequence_string = x.m_var_sequence_string;
+        m_var_sequence_string = x.m_var_sequence_string;
 
     }
 
@@ -1834,7 +1808,7 @@ public:
             const SequenceString& x)
     {
 
-                    m_var_sequence_string = x.m_var_sequence_string;
+        m_var_sequence_string = x.m_var_sequence_string;
 
         return *this;
     }
@@ -1909,8 +1883,6 @@ public:
         return m_var_sequence_string;
     }
 
-
-
 private:
 
     std::vector<std::string> m_var_sequence_string;
@@ -1945,7 +1917,7 @@ public:
     eProsima_user_DllExport SequenceWString(
             const SequenceWString& x)
     {
-                    m_var_sequence_wstring = x.m_var_sequence_wstring;
+        m_var_sequence_wstring = x.m_var_sequence_wstring;
 
     }
 
@@ -1967,7 +1939,7 @@ public:
             const SequenceWString& x)
     {
 
-                    m_var_sequence_wstring = x.m_var_sequence_wstring;
+        m_var_sequence_wstring = x.m_var_sequence_wstring;
 
         return *this;
     }
@@ -2042,8 +2014,6 @@ public:
         return m_var_sequence_wstring;
     }
 
-
-
 private:
 
     std::vector<std::wstring> m_var_sequence_wstring;
@@ -2078,7 +2048,7 @@ public:
     eProsima_user_DllExport SequenceStringBounded(
             const SequenceStringBounded& x)
     {
-                    m_var_sequence_bounded_string = x.m_var_sequence_bounded_string;
+        m_var_sequence_bounded_string = x.m_var_sequence_bounded_string;
 
     }
 
@@ -2100,7 +2070,7 @@ public:
             const SequenceStringBounded& x)
     {
 
-                    m_var_sequence_bounded_string = x.m_var_sequence_bounded_string;
+        m_var_sequence_bounded_string = x.m_var_sequence_bounded_string;
 
         return *this;
     }
@@ -2175,8 +2145,6 @@ public:
         return m_var_sequence_bounded_string;
     }
 
-
-
 private:
 
     std::vector<Inner_alias_bounded_string_helper> m_var_sequence_bounded_string;
@@ -2211,7 +2179,7 @@ public:
     eProsima_user_DllExport SequenceWStringBounded(
             const SequenceWStringBounded& x)
     {
-                    m_var_sequence_bounded_wstring = x.m_var_sequence_bounded_wstring;
+        m_var_sequence_bounded_wstring = x.m_var_sequence_bounded_wstring;
 
     }
 
@@ -2233,7 +2201,7 @@ public:
             const SequenceWStringBounded& x)
     {
 
-                    m_var_sequence_bounded_wstring = x.m_var_sequence_bounded_wstring;
+        m_var_sequence_bounded_wstring = x.m_var_sequence_bounded_wstring;
 
         return *this;
     }
@@ -2308,8 +2276,6 @@ public:
         return m_var_sequence_bounded_wstring;
     }
 
-
-
 private:
 
     std::vector<Inner_alias_bounded_wstring_helper> m_var_sequence_bounded_wstring;
@@ -2344,7 +2310,7 @@ public:
     eProsima_user_DllExport SequenceEnum(
             const SequenceEnum& x)
     {
-                    m_var_sequence_enum = x.m_var_sequence_enum;
+        m_var_sequence_enum = x.m_var_sequence_enum;
 
     }
 
@@ -2366,7 +2332,7 @@ public:
             const SequenceEnum& x)
     {
 
-                    m_var_sequence_enum = x.m_var_sequence_enum;
+        m_var_sequence_enum = x.m_var_sequence_enum;
 
         return *this;
     }
@@ -2441,8 +2407,6 @@ public:
         return m_var_sequence_enum;
     }
 
-
-
 private:
 
     std::vector<InnerEnumHelper> m_var_sequence_enum;
@@ -2477,7 +2441,7 @@ public:
     eProsima_user_DllExport SequenceBitMask(
             const SequenceBitMask& x)
     {
-                    m_var_sequence_bitmask = x.m_var_sequence_bitmask;
+        m_var_sequence_bitmask = x.m_var_sequence_bitmask;
 
     }
 
@@ -2499,7 +2463,7 @@ public:
             const SequenceBitMask& x)
     {
 
-                    m_var_sequence_bitmask = x.m_var_sequence_bitmask;
+        m_var_sequence_bitmask = x.m_var_sequence_bitmask;
 
         return *this;
     }
@@ -2574,8 +2538,6 @@ public:
         return m_var_sequence_bitmask;
     }
 
-
-
 private:
 
     std::vector<InnerBitMaskHelper> m_var_sequence_bitmask;
@@ -2610,7 +2572,7 @@ public:
     eProsima_user_DllExport SequenceAlias(
             const SequenceAlias& x)
     {
-                    m_var_sequence_alias = x.m_var_sequence_alias;
+        m_var_sequence_alias = x.m_var_sequence_alias;
 
     }
 
@@ -2632,7 +2594,7 @@ public:
             const SequenceAlias& x)
     {
 
-                    m_var_sequence_alias = x.m_var_sequence_alias;
+        m_var_sequence_alias = x.m_var_sequence_alias;
 
         return *this;
     }
@@ -2707,8 +2669,6 @@ public:
         return m_var_sequence_alias;
     }
 
-
-
 private:
 
     std::vector<InnerAliasHelper> m_var_sequence_alias;
@@ -2743,7 +2703,7 @@ public:
     eProsima_user_DllExport SequenceShortArray(
             const SequenceShortArray& x)
     {
-                    m_var_sequence_short_array = x.m_var_sequence_short_array;
+        m_var_sequence_short_array = x.m_var_sequence_short_array;
 
     }
 
@@ -2765,7 +2725,7 @@ public:
             const SequenceShortArray& x)
     {
 
-                    m_var_sequence_short_array = x.m_var_sequence_short_array;
+        m_var_sequence_short_array = x.m_var_sequence_short_array;
 
         return *this;
     }
@@ -2840,8 +2800,6 @@ public:
         return m_var_sequence_short_array;
     }
 
-
-
 private:
 
     std::vector<Inner_alias_array_helper> m_var_sequence_short_array;
@@ -2876,7 +2834,7 @@ public:
     eProsima_user_DllExport SequenceSequence(
             const SequenceSequence& x)
     {
-                    m_var_sequence_sequence = x.m_var_sequence_sequence;
+        m_var_sequence_sequence = x.m_var_sequence_sequence;
 
     }
 
@@ -2898,7 +2856,7 @@ public:
             const SequenceSequence& x)
     {
 
-                    m_var_sequence_sequence = x.m_var_sequence_sequence;
+        m_var_sequence_sequence = x.m_var_sequence_sequence;
 
         return *this;
     }
@@ -2973,8 +2931,6 @@ public:
         return m_var_sequence_sequence;
     }
 
-
-
 private:
 
     std::vector<Inner_alias_sequence_helper> m_var_sequence_sequence;
@@ -3009,7 +2965,7 @@ public:
     eProsima_user_DllExport SequenceMap(
             const SequenceMap& x)
     {
-                    m_var_sequence_map = x.m_var_sequence_map;
+        m_var_sequence_map = x.m_var_sequence_map;
 
     }
 
@@ -3031,7 +2987,7 @@ public:
             const SequenceMap& x)
     {
 
-                    m_var_sequence_map = x.m_var_sequence_map;
+        m_var_sequence_map = x.m_var_sequence_map;
 
         return *this;
     }
@@ -3106,8 +3062,6 @@ public:
         return m_var_sequence_map;
     }
 
-
-
 private:
 
     std::vector<Inner_alias_map_helper> m_var_sequence_map;
@@ -3142,7 +3096,7 @@ public:
     eProsima_user_DllExport SequenceUnion(
             const SequenceUnion& x)
     {
-                    m_var_sequence_union = x.m_var_sequence_union;
+        m_var_sequence_union = x.m_var_sequence_union;
 
     }
 
@@ -3164,7 +3118,7 @@ public:
             const SequenceUnion& x)
     {
 
-                    m_var_sequence_union = x.m_var_sequence_union;
+        m_var_sequence_union = x.m_var_sequence_union;
 
         return *this;
     }
@@ -3239,8 +3193,6 @@ public:
         return m_var_sequence_union;
     }
 
-
-
 private:
 
     std::vector<InnerUnionHelper> m_var_sequence_union;
@@ -3275,7 +3227,7 @@ public:
     eProsima_user_DllExport SequenceStructure(
             const SequenceStructure& x)
     {
-                    m_var_sequence_structure = x.m_var_sequence_structure;
+        m_var_sequence_structure = x.m_var_sequence_structure;
 
     }
 
@@ -3297,7 +3249,7 @@ public:
             const SequenceStructure& x)
     {
 
-                    m_var_sequence_structure = x.m_var_sequence_structure;
+        m_var_sequence_structure = x.m_var_sequence_structure;
 
         return *this;
     }
@@ -3372,8 +3324,6 @@ public:
         return m_var_sequence_structure;
     }
 
-
-
 private:
 
     std::vector<InnerStructureHelper> m_var_sequence_structure;
@@ -3408,7 +3358,7 @@ public:
     eProsima_user_DllExport SequenceBitset(
             const SequenceBitset& x)
     {
-                    m_var_sequence_bitset = x.m_var_sequence_bitset;
+        m_var_sequence_bitset = x.m_var_sequence_bitset;
 
     }
 
@@ -3430,7 +3380,7 @@ public:
             const SequenceBitset& x)
     {
 
-                    m_var_sequence_bitset = x.m_var_sequence_bitset;
+        m_var_sequence_bitset = x.m_var_sequence_bitset;
 
         return *this;
     }
@@ -3505,8 +3455,6 @@ public:
         return m_var_sequence_bitset;
     }
 
-
-
 private:
 
     std::vector<InnerBitsetHelper> m_var_sequence_bitset;
@@ -3541,9 +3489,9 @@ public:
     eProsima_user_DllExport BoundedSmallSequences(
             const BoundedSmallSequences& x)
     {
-                    m_var_sequence_small = x.m_var_sequence_small;
+        m_var_sequence_small = x.m_var_sequence_small;
 
-                    m_var_unbounded_string_small_bounded_sequence = x.m_var_unbounded_string_small_bounded_sequence;
+        m_var_unbounded_string_small_bounded_sequence = x.m_var_unbounded_string_small_bounded_sequence;
 
     }
 
@@ -3566,9 +3514,9 @@ public:
             const BoundedSmallSequences& x)
     {
 
-                    m_var_sequence_small = x.m_var_sequence_small;
+        m_var_sequence_small = x.m_var_sequence_small;
 
-                    m_var_unbounded_string_small_bounded_sequence = x.m_var_unbounded_string_small_bounded_sequence;
+        m_var_unbounded_string_small_bounded_sequence = x.m_var_unbounded_string_small_bounded_sequence;
 
         return *this;
     }
@@ -3594,7 +3542,7 @@ public:
             const BoundedSmallSequences& x) const
     {
         return (m_var_sequence_small == x.m_var_sequence_small &&
-           m_var_unbounded_string_small_bounded_sequence == x.m_var_unbounded_string_small_bounded_sequence);
+               m_var_unbounded_string_small_bounded_sequence == x.m_var_unbounded_string_small_bounded_sequence);
     }
 
     /*!
@@ -3645,7 +3593,6 @@ public:
         return m_var_sequence_small;
     }
 
-
     /*!
      * @brief This function copies the value in member var_unbounded_string_small_bounded_sequence
      * @param _var_unbounded_string_small_bounded_sequence New value to be copied in member var_unbounded_string_small_bounded_sequence
@@ -3684,8 +3631,6 @@ public:
         return m_var_unbounded_string_small_bounded_sequence;
     }
 
-
-
 private:
 
     std::vector<int16_t> m_var_sequence_small;
@@ -3721,9 +3666,9 @@ public:
     eProsima_user_DllExport BoundedBigSequences(
             const BoundedBigSequences& x)
     {
-                    m_var_sequence_big = x.m_var_sequence_big;
+        m_var_sequence_big = x.m_var_sequence_big;
 
-                    m_var_unbounded_string_large_bounded_sequence = x.m_var_unbounded_string_large_bounded_sequence;
+        m_var_unbounded_string_large_bounded_sequence = x.m_var_unbounded_string_large_bounded_sequence;
 
     }
 
@@ -3746,9 +3691,9 @@ public:
             const BoundedBigSequences& x)
     {
 
-                    m_var_sequence_big = x.m_var_sequence_big;
+        m_var_sequence_big = x.m_var_sequence_big;
 
-                    m_var_unbounded_string_large_bounded_sequence = x.m_var_unbounded_string_large_bounded_sequence;
+        m_var_unbounded_string_large_bounded_sequence = x.m_var_unbounded_string_large_bounded_sequence;
 
         return *this;
     }
@@ -3774,7 +3719,7 @@ public:
             const BoundedBigSequences& x) const
     {
         return (m_var_sequence_big == x.m_var_sequence_big &&
-           m_var_unbounded_string_large_bounded_sequence == x.m_var_unbounded_string_large_bounded_sequence);
+               m_var_unbounded_string_large_bounded_sequence == x.m_var_unbounded_string_large_bounded_sequence);
     }
 
     /*!
@@ -3825,7 +3770,6 @@ public:
         return m_var_sequence_big;
     }
 
-
     /*!
      * @brief This function copies the value in member var_unbounded_string_large_bounded_sequence
      * @param _var_unbounded_string_large_bounded_sequence New value to be copied in member var_unbounded_string_large_bounded_sequence
@@ -3863,8 +3807,6 @@ public:
     {
         return m_var_unbounded_string_large_bounded_sequence;
     }
-
-
 
 private:
 

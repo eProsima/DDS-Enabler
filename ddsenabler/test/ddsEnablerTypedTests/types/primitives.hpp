@@ -78,7 +78,7 @@ public:
     eProsima_user_DllExport ShortStruct(
             const ShortStruct& x)
     {
-                    m_var_short = x.m_var_short;
+        m_var_short = x.m_var_short;
 
     }
 
@@ -100,7 +100,7 @@ public:
             const ShortStruct& x)
     {
 
-                    m_var_short = x.m_var_short;
+        m_var_short = x.m_var_short;
 
         return *this;
     }
@@ -165,8 +165,6 @@ public:
         return m_var_short;
     }
 
-
-
 private:
 
     int16_t m_var_short{0};
@@ -201,7 +199,7 @@ public:
     eProsima_user_DllExport UShortStruct(
             const UShortStruct& x)
     {
-                    m_var_ushort = x.m_var_ushort;
+        m_var_ushort = x.m_var_ushort;
 
     }
 
@@ -223,7 +221,7 @@ public:
             const UShortStruct& x)
     {
 
-                    m_var_ushort = x.m_var_ushort;
+        m_var_ushort = x.m_var_ushort;
 
         return *this;
     }
@@ -288,8 +286,6 @@ public:
         return m_var_ushort;
     }
 
-
-
 private:
 
     uint16_t m_var_ushort{0};
@@ -324,7 +320,7 @@ public:
     eProsima_user_DllExport LongStruct(
             const LongStruct& x)
     {
-                    m_var_long = x.m_var_long;
+        m_var_long = x.m_var_long;
 
     }
 
@@ -346,7 +342,7 @@ public:
             const LongStruct& x)
     {
 
-                    m_var_long = x.m_var_long;
+        m_var_long = x.m_var_long;
 
         return *this;
     }
@@ -411,8 +407,6 @@ public:
         return m_var_long;
     }
 
-
-
 private:
 
     int32_t m_var_long{0};
@@ -447,7 +441,7 @@ public:
     eProsima_user_DllExport ULongStruct(
             const ULongStruct& x)
     {
-                    m_var_ulong = x.m_var_ulong;
+        m_var_ulong = x.m_var_ulong;
 
     }
 
@@ -469,7 +463,7 @@ public:
             const ULongStruct& x)
     {
 
-                    m_var_ulong = x.m_var_ulong;
+        m_var_ulong = x.m_var_ulong;
 
         return *this;
     }
@@ -534,8 +528,6 @@ public:
         return m_var_ulong;
     }
 
-
-
 private:
 
     uint32_t m_var_ulong{0};
@@ -570,7 +562,7 @@ public:
     eProsima_user_DllExport LongLongStruct(
             const LongLongStruct& x)
     {
-                    m_var_longlong = x.m_var_longlong;
+        m_var_longlong = x.m_var_longlong;
 
     }
 
@@ -592,7 +584,7 @@ public:
             const LongLongStruct& x)
     {
 
-                    m_var_longlong = x.m_var_longlong;
+        m_var_longlong = x.m_var_longlong;
 
         return *this;
     }
@@ -657,8 +649,6 @@ public:
         return m_var_longlong;
     }
 
-
-
 private:
 
     int64_t m_var_longlong{0};
@@ -693,7 +683,7 @@ public:
     eProsima_user_DllExport ULongLongStruct(
             const ULongLongStruct& x)
     {
-                    m_var_ulonglong = x.m_var_ulonglong;
+        m_var_ulonglong = x.m_var_ulonglong;
 
     }
 
@@ -715,7 +705,7 @@ public:
             const ULongLongStruct& x)
     {
 
-                    m_var_ulonglong = x.m_var_ulonglong;
+        m_var_ulonglong = x.m_var_ulonglong;
 
         return *this;
     }
@@ -780,8 +770,6 @@ public:
         return m_var_ulonglong;
     }
 
-
-
 private:
 
     uint64_t m_var_ulonglong{0};
@@ -816,7 +804,7 @@ public:
     eProsima_user_DllExport FloatStruct(
             const FloatStruct& x)
     {
-                    m_var_float = x.m_var_float;
+        m_var_float = x.m_var_float;
 
     }
 
@@ -838,7 +826,7 @@ public:
             const FloatStruct& x)
     {
 
-                    m_var_float = x.m_var_float;
+        m_var_float = x.m_var_float;
 
         return *this;
     }
@@ -903,8 +891,6 @@ public:
         return m_var_float;
     }
 
-
-
 private:
 
     float m_var_float{0.0};
@@ -939,7 +925,7 @@ public:
     eProsima_user_DllExport DoubleStruct(
             const DoubleStruct& x)
     {
-                    m_var_double = x.m_var_double;
+        m_var_double = x.m_var_double;
 
     }
 
@@ -961,7 +947,7 @@ public:
             const DoubleStruct& x)
     {
 
-                    m_var_double = x.m_var_double;
+        m_var_double = x.m_var_double;
 
         return *this;
     }
@@ -1026,8 +1012,6 @@ public:
         return m_var_double;
     }
 
-
-
 private:
 
     double m_var_double{0.0};
@@ -1062,7 +1046,7 @@ public:
     eProsima_user_DllExport LongDoubleStruct(
             const LongDoubleStruct& x)
     {
-                    m_var_longdouble = x.m_var_longdouble;
+        m_var_longdouble = x.m_var_longdouble;
 
     }
 
@@ -1084,7 +1068,7 @@ public:
             const LongDoubleStruct& x)
     {
 
-                    m_var_longdouble = x.m_var_longdouble;
+        m_var_longdouble = x.m_var_longdouble;
 
         return *this;
     }
@@ -1149,8 +1133,6 @@ public:
         return m_var_longdouble;
     }
 
-
-
 private:
 
     long double m_var_longdouble{0.0};
@@ -1185,7 +1167,7 @@ public:
     eProsima_user_DllExport BooleanStruct(
             const BooleanStruct& x)
     {
-                    m_var_boolean = x.m_var_boolean;
+        m_var_boolean = x.m_var_boolean;
 
     }
 
@@ -1207,7 +1189,7 @@ public:
             const BooleanStruct& x)
     {
 
-                    m_var_boolean = x.m_var_boolean;
+        m_var_boolean = x.m_var_boolean;
 
         return *this;
     }
@@ -1272,8 +1254,6 @@ public:
         return m_var_boolean;
     }
 
-
-
 private:
 
     bool m_var_boolean{false};
@@ -1308,7 +1288,7 @@ public:
     eProsima_user_DllExport OctetStruct(
             const OctetStruct& x)
     {
-                    m_var_octet = x.m_var_octet;
+        m_var_octet = x.m_var_octet;
 
     }
 
@@ -1330,7 +1310,7 @@ public:
             const OctetStruct& x)
     {
 
-                    m_var_octet = x.m_var_octet;
+        m_var_octet = x.m_var_octet;
 
         return *this;
     }
@@ -1395,8 +1375,6 @@ public:
         return m_var_octet;
     }
 
-
-
 private:
 
     uint8_t m_var_octet{0};
@@ -1431,7 +1409,7 @@ public:
     eProsima_user_DllExport CharStruct(
             const CharStruct& x)
     {
-                    m_var_char8 = x.m_var_char8;
+        m_var_char8 = x.m_var_char8;
 
     }
 
@@ -1453,7 +1431,7 @@ public:
             const CharStruct& x)
     {
 
-                    m_var_char8 = x.m_var_char8;
+        m_var_char8 = x.m_var_char8;
 
         return *this;
     }
@@ -1518,8 +1496,6 @@ public:
         return m_var_char8;
     }
 
-
-
 private:
 
     char m_var_char8{0};
@@ -1554,7 +1530,7 @@ public:
     eProsima_user_DllExport WCharStruct(
             const WCharStruct& x)
     {
-                    m_var_char16 = x.m_var_char16;
+        m_var_char16 = x.m_var_char16;
 
     }
 
@@ -1576,7 +1552,7 @@ public:
             const WCharStruct& x)
     {
 
-                    m_var_char16 = x.m_var_char16;
+        m_var_char16 = x.m_var_char16;
 
         return *this;
     }
@@ -1641,8 +1617,6 @@ public:
         return m_var_char16;
     }
 
-
-
 private:
 
     wchar_t m_var_char16{0};
@@ -1677,7 +1651,7 @@ public:
     eProsima_user_DllExport Int8Struct(
             const Int8Struct& x)
     {
-                    m_var_int8 = x.m_var_int8;
+        m_var_int8 = x.m_var_int8;
 
     }
 
@@ -1699,7 +1673,7 @@ public:
             const Int8Struct& x)
     {
 
-                    m_var_int8 = x.m_var_int8;
+        m_var_int8 = x.m_var_int8;
 
         return *this;
     }
@@ -1764,8 +1738,6 @@ public:
         return m_var_int8;
     }
 
-
-
 private:
 
     int8_t m_var_int8{0};
@@ -1800,7 +1772,7 @@ public:
     eProsima_user_DllExport Uint8Struct(
             const Uint8Struct& x)
     {
-                    m_var_uint8 = x.m_var_uint8;
+        m_var_uint8 = x.m_var_uint8;
 
     }
 
@@ -1822,7 +1794,7 @@ public:
             const Uint8Struct& x)
     {
 
-                    m_var_uint8 = x.m_var_uint8;
+        m_var_uint8 = x.m_var_uint8;
 
         return *this;
     }
@@ -1887,8 +1859,6 @@ public:
         return m_var_uint8;
     }
 
-
-
 private:
 
     uint8_t m_var_uint8{0};
@@ -1923,7 +1893,7 @@ public:
     eProsima_user_DllExport Int16Struct(
             const Int16Struct& x)
     {
-                    m_var_int16 = x.m_var_int16;
+        m_var_int16 = x.m_var_int16;
 
     }
 
@@ -1945,7 +1915,7 @@ public:
             const Int16Struct& x)
     {
 
-                    m_var_int16 = x.m_var_int16;
+        m_var_int16 = x.m_var_int16;
 
         return *this;
     }
@@ -2010,8 +1980,6 @@ public:
         return m_var_int16;
     }
 
-
-
 private:
 
     int16_t m_var_int16{0};
@@ -2046,7 +2014,7 @@ public:
     eProsima_user_DllExport Uint16Struct(
             const Uint16Struct& x)
     {
-                    m_var_uint16 = x.m_var_uint16;
+        m_var_uint16 = x.m_var_uint16;
 
     }
 
@@ -2068,7 +2036,7 @@ public:
             const Uint16Struct& x)
     {
 
-                    m_var_uint16 = x.m_var_uint16;
+        m_var_uint16 = x.m_var_uint16;
 
         return *this;
     }
@@ -2133,8 +2101,6 @@ public:
         return m_var_uint16;
     }
 
-
-
 private:
 
     uint16_t m_var_uint16{0};
@@ -2169,7 +2135,7 @@ public:
     eProsima_user_DllExport Int32Struct(
             const Int32Struct& x)
     {
-                    m_var_int32 = x.m_var_int32;
+        m_var_int32 = x.m_var_int32;
 
     }
 
@@ -2191,7 +2157,7 @@ public:
             const Int32Struct& x)
     {
 
-                    m_var_int32 = x.m_var_int32;
+        m_var_int32 = x.m_var_int32;
 
         return *this;
     }
@@ -2256,8 +2222,6 @@ public:
         return m_var_int32;
     }
 
-
-
 private:
 
     int32_t m_var_int32{0};
@@ -2292,7 +2256,7 @@ public:
     eProsima_user_DllExport Uint32Struct(
             const Uint32Struct& x)
     {
-                    m_var_uint32 = x.m_var_uint32;
+        m_var_uint32 = x.m_var_uint32;
 
     }
 
@@ -2314,7 +2278,7 @@ public:
             const Uint32Struct& x)
     {
 
-                    m_var_uint32 = x.m_var_uint32;
+        m_var_uint32 = x.m_var_uint32;
 
         return *this;
     }
@@ -2379,8 +2343,6 @@ public:
         return m_var_uint32;
     }
 
-
-
 private:
 
     uint32_t m_var_uint32{0};
@@ -2415,7 +2377,7 @@ public:
     eProsima_user_DllExport Int64Struct(
             const Int64Struct& x)
     {
-                    m_var_int64 = x.m_var_int64;
+        m_var_int64 = x.m_var_int64;
 
     }
 
@@ -2437,7 +2399,7 @@ public:
             const Int64Struct& x)
     {
 
-                    m_var_int64 = x.m_var_int64;
+        m_var_int64 = x.m_var_int64;
 
         return *this;
     }
@@ -2502,8 +2464,6 @@ public:
         return m_var_int64;
     }
 
-
-
 private:
 
     int64_t m_var_int64{0};
@@ -2538,7 +2498,7 @@ public:
     eProsima_user_DllExport Uint64Struct(
             const Uint64Struct& x)
     {
-                    m_var_uint64 = x.m_var_uint64;
+        m_var_uint64 = x.m_var_uint64;
 
     }
 
@@ -2560,7 +2520,7 @@ public:
             const Uint64Struct& x)
     {
 
-                    m_var_uint64 = x.m_var_uint64;
+        m_var_uint64 = x.m_var_uint64;
 
         return *this;
     }
@@ -2624,8 +2584,6 @@ public:
     {
         return m_var_uint64;
     }
-
-
 
 private:
 

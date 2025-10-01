@@ -111,13 +111,13 @@ public:
     eProsima_user_DllExport ModuleConstsLiteralsStruct(
             const ModuleConstsLiteralsStruct& x)
     {
-                    m_module1_array_literal_const_moduled = x.m_module1_array_literal_const_moduled;
+        m_module1_array_literal_const_moduled = x.m_module1_array_literal_const_moduled;
 
-                    m_module1_array_literal_const_alias_const_moduled = x.m_module1_array_literal_const_alias_const_moduled;
+        m_module1_array_literal_const_alias_const_moduled = x.m_module1_array_literal_const_alias_const_moduled;
 
-                    m_var1 = x.m_var1;
+        m_var1 = x.m_var1;
 
-                    m_var2 = x.m_var2;
+        m_var2 = x.m_var2;
 
     }
 
@@ -129,7 +129,8 @@ public:
             ModuleConstsLiteralsStruct&& x) noexcept
     {
         m_module1_array_literal_const_moduled = std::move(x.m_module1_array_literal_const_moduled);
-        m_module1_array_literal_const_alias_const_moduled = std::move(x.m_module1_array_literal_const_alias_const_moduled);
+        m_module1_array_literal_const_alias_const_moduled =
+                std::move(x.m_module1_array_literal_const_alias_const_moduled);
         m_var1 = x.m_var1;
         m_var2 = x.m_var2;
     }
@@ -142,13 +143,13 @@ public:
             const ModuleConstsLiteralsStruct& x)
     {
 
-                    m_module1_array_literal_const_moduled = x.m_module1_array_literal_const_moduled;
+        m_module1_array_literal_const_moduled = x.m_module1_array_literal_const_moduled;
 
-                    m_module1_array_literal_const_alias_const_moduled = x.m_module1_array_literal_const_alias_const_moduled;
+        m_module1_array_literal_const_alias_const_moduled = x.m_module1_array_literal_const_alias_const_moduled;
 
-                    m_var1 = x.m_var1;
+        m_var1 = x.m_var1;
 
-                    m_var2 = x.m_var2;
+        m_var2 = x.m_var2;
 
         return *this;
     }
@@ -162,7 +163,8 @@ public:
     {
 
         m_module1_array_literal_const_moduled = std::move(x.m_module1_array_literal_const_moduled);
-        m_module1_array_literal_const_alias_const_moduled = std::move(x.m_module1_array_literal_const_alias_const_moduled);
+        m_module1_array_literal_const_alias_const_moduled =
+                std::move(x.m_module1_array_literal_const_alias_const_moduled);
         m_var1 = x.m_var1;
         m_var2 = x.m_var2;
         return *this;
@@ -176,9 +178,10 @@ public:
             const ModuleConstsLiteralsStruct& x) const
     {
         return (m_module1_array_literal_const_moduled == x.m_module1_array_literal_const_moduled &&
-           m_module1_array_literal_const_alias_const_moduled == x.m_module1_array_literal_const_alias_const_moduled &&
-           m_var1 == x.m_var1 &&
-           m_var2 == x.m_var2);
+               m_module1_array_literal_const_alias_const_moduled ==
+               x.m_module1_array_literal_const_alias_const_moduled &&
+               m_var1 == x.m_var1 &&
+               m_var2 == x.m_var2);
     }
 
     /*!
@@ -229,7 +232,6 @@ public:
         return m_module1_array_literal_const_moduled;
     }
 
-
     /*!
      * @brief This function copies the value in member module1_array_literal_const_alias_const_moduled
      * @param _module1_array_literal_const_alias_const_moduled New value to be copied in member module1_array_literal_const_alias_const_moduled
@@ -254,7 +256,8 @@ public:
      * @brief This function returns a constant reference to member module1_array_literal_const_alias_const_moduled
      * @return Constant reference to member module1_array_literal_const_alias_const_moduled
      */
-    eProsima_user_DllExport const std::array<int16_t, alias_const_moduled>& module1_array_literal_const_alias_const_moduled() const
+    eProsima_user_DllExport const std::array<int16_t,
+            alias_const_moduled>& module1_array_literal_const_alias_const_moduled() const
     {
         return m_module1_array_literal_const_alias_const_moduled;
     }
@@ -267,7 +270,6 @@ public:
     {
         return m_module1_array_literal_const_alias_const_moduled;
     }
-
 
     /*!
      * @brief This function sets a value in member var1
@@ -297,7 +299,6 @@ public:
         return m_var1;
     }
 
-
     /*!
      * @brief This function sets a value in member var2
      * @param _var2 New value for member var2
@@ -325,8 +326,6 @@ public:
     {
         return m_var2;
     }
-
-
 
 private:
 
@@ -372,15 +371,15 @@ public:
     eProsima_user_DllExport Module2ConstsLiteralsStruct(
             const Module2ConstsLiteralsStruct& x)
     {
-                    m_module2_array_literal_const_moduled = x.m_module2_array_literal_const_moduled;
+        m_module2_array_literal_const_moduled = x.m_module2_array_literal_const_moduled;
 
-                    m_module2_array_literal_const_alias_const_moduled = x.m_module2_array_literal_const_alias_const_moduled;
+        m_module2_array_literal_const_alias_const_moduled = x.m_module2_array_literal_const_alias_const_moduled;
 
-                    m_module2_array_literal_const_scoped_moduled = x.m_module2_array_literal_const_scoped_moduled;
+        m_module2_array_literal_const_scoped_moduled = x.m_module2_array_literal_const_scoped_moduled;
 
-                    m_module2_array_literal_module1_const_moduled = x.m_module2_array_literal_module1_const_moduled;
+        m_module2_array_literal_module1_const_moduled = x.m_module2_array_literal_module1_const_moduled;
 
-                    m_module2_array_literal_const_moduled_module1 = x.m_module2_array_literal_const_moduled_module1;
+        m_module2_array_literal_const_moduled_module1 = x.m_module2_array_literal_const_moduled_module1;
 
     }
 
@@ -392,7 +391,8 @@ public:
             Module2ConstsLiteralsStruct&& x) noexcept
     {
         m_module2_array_literal_const_moduled = std::move(x.m_module2_array_literal_const_moduled);
-        m_module2_array_literal_const_alias_const_moduled = std::move(x.m_module2_array_literal_const_alias_const_moduled);
+        m_module2_array_literal_const_alias_const_moduled =
+                std::move(x.m_module2_array_literal_const_alias_const_moduled);
         m_module2_array_literal_const_scoped_moduled = std::move(x.m_module2_array_literal_const_scoped_moduled);
         m_module2_array_literal_module1_const_moduled = std::move(x.m_module2_array_literal_module1_const_moduled);
         m_module2_array_literal_const_moduled_module1 = std::move(x.m_module2_array_literal_const_moduled_module1);
@@ -406,15 +406,15 @@ public:
             const Module2ConstsLiteralsStruct& x)
     {
 
-                    m_module2_array_literal_const_moduled = x.m_module2_array_literal_const_moduled;
+        m_module2_array_literal_const_moduled = x.m_module2_array_literal_const_moduled;
 
-                    m_module2_array_literal_const_alias_const_moduled = x.m_module2_array_literal_const_alias_const_moduled;
+        m_module2_array_literal_const_alias_const_moduled = x.m_module2_array_literal_const_alias_const_moduled;
 
-                    m_module2_array_literal_const_scoped_moduled = x.m_module2_array_literal_const_scoped_moduled;
+        m_module2_array_literal_const_scoped_moduled = x.m_module2_array_literal_const_scoped_moduled;
 
-                    m_module2_array_literal_module1_const_moduled = x.m_module2_array_literal_module1_const_moduled;
+        m_module2_array_literal_module1_const_moduled = x.m_module2_array_literal_module1_const_moduled;
 
-                    m_module2_array_literal_const_moduled_module1 = x.m_module2_array_literal_const_moduled_module1;
+        m_module2_array_literal_const_moduled_module1 = x.m_module2_array_literal_const_moduled_module1;
 
         return *this;
     }
@@ -428,7 +428,8 @@ public:
     {
 
         m_module2_array_literal_const_moduled = std::move(x.m_module2_array_literal_const_moduled);
-        m_module2_array_literal_const_alias_const_moduled = std::move(x.m_module2_array_literal_const_alias_const_moduled);
+        m_module2_array_literal_const_alias_const_moduled =
+                std::move(x.m_module2_array_literal_const_alias_const_moduled);
         m_module2_array_literal_const_scoped_moduled = std::move(x.m_module2_array_literal_const_scoped_moduled);
         m_module2_array_literal_module1_const_moduled = std::move(x.m_module2_array_literal_module1_const_moduled);
         m_module2_array_literal_const_moduled_module1 = std::move(x.m_module2_array_literal_const_moduled_module1);
@@ -443,10 +444,11 @@ public:
             const Module2ConstsLiteralsStruct& x) const
     {
         return (m_module2_array_literal_const_moduled == x.m_module2_array_literal_const_moduled &&
-           m_module2_array_literal_const_alias_const_moduled == x.m_module2_array_literal_const_alias_const_moduled &&
-           m_module2_array_literal_const_scoped_moduled == x.m_module2_array_literal_const_scoped_moduled &&
-           m_module2_array_literal_module1_const_moduled == x.m_module2_array_literal_module1_const_moduled &&
-           m_module2_array_literal_const_moduled_module1 == x.m_module2_array_literal_const_moduled_module1);
+               m_module2_array_literal_const_alias_const_moduled ==
+               x.m_module2_array_literal_const_alias_const_moduled &&
+               m_module2_array_literal_const_scoped_moduled == x.m_module2_array_literal_const_scoped_moduled &&
+               m_module2_array_literal_module1_const_moduled == x.m_module2_array_literal_module1_const_moduled &&
+               m_module2_array_literal_const_moduled_module1 == x.m_module2_array_literal_const_moduled_module1);
     }
 
     /*!
@@ -497,7 +499,6 @@ public:
         return m_module2_array_literal_const_moduled;
     }
 
-
     /*!
      * @brief This function copies the value in member module2_array_literal_const_alias_const_moduled
      * @param _module2_array_literal_const_alias_const_moduled New value to be copied in member module2_array_literal_const_alias_const_moduled
@@ -522,7 +523,8 @@ public:
      * @brief This function returns a constant reference to member module2_array_literal_const_alias_const_moduled
      * @return Constant reference to member module2_array_literal_const_alias_const_moduled
      */
-    eProsima_user_DllExport const std::array<int16_t, alias_const_moduled>& module2_array_literal_const_alias_const_moduled() const
+    eProsima_user_DllExport const std::array<int16_t,
+            alias_const_moduled>& module2_array_literal_const_alias_const_moduled() const
     {
         return m_module2_array_literal_const_alias_const_moduled;
     }
@@ -535,7 +537,6 @@ public:
     {
         return m_module2_array_literal_const_alias_const_moduled;
     }
-
 
     /*!
      * @brief This function copies the value in member module2_array_literal_const_scoped_moduled
@@ -561,7 +562,8 @@ public:
      * @brief This function returns a constant reference to member module2_array_literal_const_scoped_moduled
      * @return Constant reference to member module2_array_literal_const_scoped_moduled
      */
-    eProsima_user_DllExport const std::array<int16_t, const_module2::const_moduled>& module2_array_literal_const_scoped_moduled() const
+    eProsima_user_DllExport const std::array<int16_t,
+            const_module2::const_moduled>& module2_array_literal_const_scoped_moduled() const
     {
         return m_module2_array_literal_const_scoped_moduled;
     }
@@ -570,11 +572,11 @@ public:
      * @brief This function returns a reference to member module2_array_literal_const_scoped_moduled
      * @return Reference to member module2_array_literal_const_scoped_moduled
      */
-    eProsima_user_DllExport std::array<int16_t, const_module2::const_moduled>& module2_array_literal_const_scoped_moduled()
+    eProsima_user_DllExport std::array<int16_t,
+            const_module2::const_moduled>& module2_array_literal_const_scoped_moduled()
     {
         return m_module2_array_literal_const_scoped_moduled;
     }
-
 
     /*!
      * @brief This function copies the value in member module2_array_literal_module1_const_moduled
@@ -600,7 +602,8 @@ public:
      * @brief This function returns a constant reference to member module2_array_literal_module1_const_moduled
      * @return Constant reference to member module2_array_literal_module1_const_moduled
      */
-    eProsima_user_DllExport const std::array<int16_t, const_module1::const_moduled>& module2_array_literal_module1_const_moduled() const
+    eProsima_user_DllExport const std::array<int16_t,
+            const_module1::const_moduled>& module2_array_literal_module1_const_moduled() const
     {
         return m_module2_array_literal_module1_const_moduled;
     }
@@ -609,11 +612,11 @@ public:
      * @brief This function returns a reference to member module2_array_literal_module1_const_moduled
      * @return Reference to member module2_array_literal_module1_const_moduled
      */
-    eProsima_user_DllExport std::array<int16_t, const_module1::const_moduled>& module2_array_literal_module1_const_moduled()
+    eProsima_user_DllExport std::array<int16_t,
+            const_module1::const_moduled>& module2_array_literal_module1_const_moduled()
     {
         return m_module2_array_literal_module1_const_moduled;
     }
-
 
     /*!
      * @brief This function copies the value in member module2_array_literal_const_moduled_module1
@@ -639,7 +642,8 @@ public:
      * @brief This function returns a constant reference to member module2_array_literal_const_moduled_module1
      * @return Constant reference to member module2_array_literal_const_moduled_module1
      */
-    eProsima_user_DllExport const std::array<int16_t, const_moduled_module1>& module2_array_literal_const_moduled_module1() const
+    eProsima_user_DllExport const std::array<int16_t,
+            const_moduled_module1>& module2_array_literal_const_moduled_module1() const
     {
         return m_module2_array_literal_const_moduled_module1;
     }
@@ -652,8 +656,6 @@ public:
     {
         return m_module2_array_literal_const_moduled_module1;
     }
-
-
 
 private:
 
@@ -695,61 +697,61 @@ public:
     eProsima_user_DllExport ConstsLiteralsStruct(
             const ConstsLiteralsStruct& x)
     {
-                    m_array_literal_const_short = x.m_array_literal_const_short;
+        m_array_literal_const_short = x.m_array_literal_const_short;
 
-                    m_array_literal_const_ushort = x.m_array_literal_const_ushort;
+        m_array_literal_const_ushort = x.m_array_literal_const_ushort;
 
-                    m_array_literal_const_long = x.m_array_literal_const_long;
+        m_array_literal_const_long = x.m_array_literal_const_long;
 
-                    m_array_literal_const_ulong = x.m_array_literal_const_ulong;
+        m_array_literal_const_ulong = x.m_array_literal_const_ulong;
 
-                    m_array_literal_const_longlong = x.m_array_literal_const_longlong;
+        m_array_literal_const_longlong = x.m_array_literal_const_longlong;
 
-                    m_array_literal_const_ulonglong = x.m_array_literal_const_ulonglong;
+        m_array_literal_const_ulonglong = x.m_array_literal_const_ulonglong;
 
-                    m_array_literal_const_int8 = x.m_array_literal_const_int8;
+        m_array_literal_const_int8 = x.m_array_literal_const_int8;
 
-                    m_array_literal_const_uint8 = x.m_array_literal_const_uint8;
+        m_array_literal_const_uint8 = x.m_array_literal_const_uint8;
 
-                    m_array_literal_const_int16 = x.m_array_literal_const_int16;
+        m_array_literal_const_int16 = x.m_array_literal_const_int16;
 
-                    m_array_literal_const_uint16 = x.m_array_literal_const_uint16;
+        m_array_literal_const_uint16 = x.m_array_literal_const_uint16;
 
-                    m_array_literal_const_int32 = x.m_array_literal_const_int32;
+        m_array_literal_const_int32 = x.m_array_literal_const_int32;
 
-                    m_array_literal_const_uint32 = x.m_array_literal_const_uint32;
+        m_array_literal_const_uint32 = x.m_array_literal_const_uint32;
 
-                    m_array_literal_const_int64 = x.m_array_literal_const_int64;
+        m_array_literal_const_int64 = x.m_array_literal_const_int64;
 
-                    m_array_literal_const_uint64 = x.m_array_literal_const_uint64;
+        m_array_literal_const_uint64 = x.m_array_literal_const_uint64;
 
-                    m_array_literals_operations1_const = x.m_array_literals_operations1_const;
+        m_array_literals_operations1_const = x.m_array_literals_operations1_const;
 
-                    m_array_literals_operations2_const = x.m_array_literals_operations2_const;
+        m_array_literals_operations2_const = x.m_array_literals_operations2_const;
 
-                    m_array_literals_operations3_const = x.m_array_literals_operations3_const;
+        m_array_literals_operations3_const = x.m_array_literals_operations3_const;
 
-                    m_array_literals_operations4_const = x.m_array_literals_operations4_const;
+        m_array_literals_operations4_const = x.m_array_literals_operations4_const;
 
-                    m_array_literals_operations5_const = x.m_array_literals_operations5_const;
+        m_array_literals_operations5_const = x.m_array_literals_operations5_const;
 
-                    m_array_literals_operations6_const = x.m_array_literals_operations6_const;
+        m_array_literals_operations6_const = x.m_array_literals_operations6_const;
 
-                    m_array_literals_operations7_const = x.m_array_literals_operations7_const;
+        m_array_literals_operations7_const = x.m_array_literals_operations7_const;
 
-                    m_array_literals_operations8_const = x.m_array_literals_operations8_const;
+        m_array_literals_operations8_const = x.m_array_literals_operations8_const;
 
-                    m_array_literal_const_inner_const_helper = x.m_array_literal_const_inner_const_helper;
+        m_array_literal_const_inner_const_helper = x.m_array_literal_const_inner_const_helper;
 
-                    m_array_moduled1_literal_const = x.m_array_moduled1_literal_const;
+        m_array_moduled1_literal_const = x.m_array_moduled1_literal_const;
 
-                    m_array_moduled2_literal_const = x.m_array_moduled2_literal_const;
+        m_array_moduled2_literal_const = x.m_array_moduled2_literal_const;
 
-                    m_array_literal_const_alias_const = x.m_array_literal_const_alias_const;
+        m_array_literal_const_alias_const = x.m_array_literal_const_alias_const;
 
-                    m_array_moduled1_literal_alias_const_moduled = x.m_array_moduled1_literal_alias_const_moduled;
+        m_array_moduled1_literal_alias_const_moduled = x.m_array_moduled1_literal_alias_const_moduled;
 
-                    m_array_moduled2_literal_alias_const_moduled = x.m_array_moduled2_literal_alias_const_moduled;
+        m_array_moduled2_literal_alias_const_moduled = x.m_array_moduled2_literal_alias_const_moduled;
 
     }
 
@@ -798,61 +800,61 @@ public:
             const ConstsLiteralsStruct& x)
     {
 
-                    m_array_literal_const_short = x.m_array_literal_const_short;
+        m_array_literal_const_short = x.m_array_literal_const_short;
 
-                    m_array_literal_const_ushort = x.m_array_literal_const_ushort;
+        m_array_literal_const_ushort = x.m_array_literal_const_ushort;
 
-                    m_array_literal_const_long = x.m_array_literal_const_long;
+        m_array_literal_const_long = x.m_array_literal_const_long;
 
-                    m_array_literal_const_ulong = x.m_array_literal_const_ulong;
+        m_array_literal_const_ulong = x.m_array_literal_const_ulong;
 
-                    m_array_literal_const_longlong = x.m_array_literal_const_longlong;
+        m_array_literal_const_longlong = x.m_array_literal_const_longlong;
 
-                    m_array_literal_const_ulonglong = x.m_array_literal_const_ulonglong;
+        m_array_literal_const_ulonglong = x.m_array_literal_const_ulonglong;
 
-                    m_array_literal_const_int8 = x.m_array_literal_const_int8;
+        m_array_literal_const_int8 = x.m_array_literal_const_int8;
 
-                    m_array_literal_const_uint8 = x.m_array_literal_const_uint8;
+        m_array_literal_const_uint8 = x.m_array_literal_const_uint8;
 
-                    m_array_literal_const_int16 = x.m_array_literal_const_int16;
+        m_array_literal_const_int16 = x.m_array_literal_const_int16;
 
-                    m_array_literal_const_uint16 = x.m_array_literal_const_uint16;
+        m_array_literal_const_uint16 = x.m_array_literal_const_uint16;
 
-                    m_array_literal_const_int32 = x.m_array_literal_const_int32;
+        m_array_literal_const_int32 = x.m_array_literal_const_int32;
 
-                    m_array_literal_const_uint32 = x.m_array_literal_const_uint32;
+        m_array_literal_const_uint32 = x.m_array_literal_const_uint32;
 
-                    m_array_literal_const_int64 = x.m_array_literal_const_int64;
+        m_array_literal_const_int64 = x.m_array_literal_const_int64;
 
-                    m_array_literal_const_uint64 = x.m_array_literal_const_uint64;
+        m_array_literal_const_uint64 = x.m_array_literal_const_uint64;
 
-                    m_array_literals_operations1_const = x.m_array_literals_operations1_const;
+        m_array_literals_operations1_const = x.m_array_literals_operations1_const;
 
-                    m_array_literals_operations2_const = x.m_array_literals_operations2_const;
+        m_array_literals_operations2_const = x.m_array_literals_operations2_const;
 
-                    m_array_literals_operations3_const = x.m_array_literals_operations3_const;
+        m_array_literals_operations3_const = x.m_array_literals_operations3_const;
 
-                    m_array_literals_operations4_const = x.m_array_literals_operations4_const;
+        m_array_literals_operations4_const = x.m_array_literals_operations4_const;
 
-                    m_array_literals_operations5_const = x.m_array_literals_operations5_const;
+        m_array_literals_operations5_const = x.m_array_literals_operations5_const;
 
-                    m_array_literals_operations6_const = x.m_array_literals_operations6_const;
+        m_array_literals_operations6_const = x.m_array_literals_operations6_const;
 
-                    m_array_literals_operations7_const = x.m_array_literals_operations7_const;
+        m_array_literals_operations7_const = x.m_array_literals_operations7_const;
 
-                    m_array_literals_operations8_const = x.m_array_literals_operations8_const;
+        m_array_literals_operations8_const = x.m_array_literals_operations8_const;
 
-                    m_array_literal_const_inner_const_helper = x.m_array_literal_const_inner_const_helper;
+        m_array_literal_const_inner_const_helper = x.m_array_literal_const_inner_const_helper;
 
-                    m_array_moduled1_literal_const = x.m_array_moduled1_literal_const;
+        m_array_moduled1_literal_const = x.m_array_moduled1_literal_const;
 
-                    m_array_moduled2_literal_const = x.m_array_moduled2_literal_const;
+        m_array_moduled2_literal_const = x.m_array_moduled2_literal_const;
 
-                    m_array_literal_const_alias_const = x.m_array_literal_const_alias_const;
+        m_array_literal_const_alias_const = x.m_array_literal_const_alias_const;
 
-                    m_array_moduled1_literal_alias_const_moduled = x.m_array_moduled1_literal_alias_const_moduled;
+        m_array_moduled1_literal_alias_const_moduled = x.m_array_moduled1_literal_alias_const_moduled;
 
-                    m_array_moduled2_literal_alias_const_moduled = x.m_array_moduled2_literal_alias_const_moduled;
+        m_array_moduled2_literal_alias_const_moduled = x.m_array_moduled2_literal_alias_const_moduled;
 
         return *this;
     }
@@ -904,33 +906,33 @@ public:
             const ConstsLiteralsStruct& x) const
     {
         return (m_array_literal_const_short == x.m_array_literal_const_short &&
-           m_array_literal_const_ushort == x.m_array_literal_const_ushort &&
-           m_array_literal_const_long == x.m_array_literal_const_long &&
-           m_array_literal_const_ulong == x.m_array_literal_const_ulong &&
-           m_array_literal_const_longlong == x.m_array_literal_const_longlong &&
-           m_array_literal_const_ulonglong == x.m_array_literal_const_ulonglong &&
-           m_array_literal_const_int8 == x.m_array_literal_const_int8 &&
-           m_array_literal_const_uint8 == x.m_array_literal_const_uint8 &&
-           m_array_literal_const_int16 == x.m_array_literal_const_int16 &&
-           m_array_literal_const_uint16 == x.m_array_literal_const_uint16 &&
-           m_array_literal_const_int32 == x.m_array_literal_const_int32 &&
-           m_array_literal_const_uint32 == x.m_array_literal_const_uint32 &&
-           m_array_literal_const_int64 == x.m_array_literal_const_int64 &&
-           m_array_literal_const_uint64 == x.m_array_literal_const_uint64 &&
-           m_array_literals_operations1_const == x.m_array_literals_operations1_const &&
-           m_array_literals_operations2_const == x.m_array_literals_operations2_const &&
-           m_array_literals_operations3_const == x.m_array_literals_operations3_const &&
-           m_array_literals_operations4_const == x.m_array_literals_operations4_const &&
-           m_array_literals_operations5_const == x.m_array_literals_operations5_const &&
-           m_array_literals_operations6_const == x.m_array_literals_operations6_const &&
-           m_array_literals_operations7_const == x.m_array_literals_operations7_const &&
-           m_array_literals_operations8_const == x.m_array_literals_operations8_const &&
-           m_array_literal_const_inner_const_helper == x.m_array_literal_const_inner_const_helper &&
-           m_array_moduled1_literal_const == x.m_array_moduled1_literal_const &&
-           m_array_moduled2_literal_const == x.m_array_moduled2_literal_const &&
-           m_array_literal_const_alias_const == x.m_array_literal_const_alias_const &&
-           m_array_moduled1_literal_alias_const_moduled == x.m_array_moduled1_literal_alias_const_moduled &&
-           m_array_moduled2_literal_alias_const_moduled == x.m_array_moduled2_literal_alias_const_moduled);
+               m_array_literal_const_ushort == x.m_array_literal_const_ushort &&
+               m_array_literal_const_long == x.m_array_literal_const_long &&
+               m_array_literal_const_ulong == x.m_array_literal_const_ulong &&
+               m_array_literal_const_longlong == x.m_array_literal_const_longlong &&
+               m_array_literal_const_ulonglong == x.m_array_literal_const_ulonglong &&
+               m_array_literal_const_int8 == x.m_array_literal_const_int8 &&
+               m_array_literal_const_uint8 == x.m_array_literal_const_uint8 &&
+               m_array_literal_const_int16 == x.m_array_literal_const_int16 &&
+               m_array_literal_const_uint16 == x.m_array_literal_const_uint16 &&
+               m_array_literal_const_int32 == x.m_array_literal_const_int32 &&
+               m_array_literal_const_uint32 == x.m_array_literal_const_uint32 &&
+               m_array_literal_const_int64 == x.m_array_literal_const_int64 &&
+               m_array_literal_const_uint64 == x.m_array_literal_const_uint64 &&
+               m_array_literals_operations1_const == x.m_array_literals_operations1_const &&
+               m_array_literals_operations2_const == x.m_array_literals_operations2_const &&
+               m_array_literals_operations3_const == x.m_array_literals_operations3_const &&
+               m_array_literals_operations4_const == x.m_array_literals_operations4_const &&
+               m_array_literals_operations5_const == x.m_array_literals_operations5_const &&
+               m_array_literals_operations6_const == x.m_array_literals_operations6_const &&
+               m_array_literals_operations7_const == x.m_array_literals_operations7_const &&
+               m_array_literals_operations8_const == x.m_array_literals_operations8_const &&
+               m_array_literal_const_inner_const_helper == x.m_array_literal_const_inner_const_helper &&
+               m_array_moduled1_literal_const == x.m_array_moduled1_literal_const &&
+               m_array_moduled2_literal_const == x.m_array_moduled2_literal_const &&
+               m_array_literal_const_alias_const == x.m_array_literal_const_alias_const &&
+               m_array_moduled1_literal_alias_const_moduled == x.m_array_moduled1_literal_alias_const_moduled &&
+               m_array_moduled2_literal_alias_const_moduled == x.m_array_moduled2_literal_alias_const_moduled);
     }
 
     /*!
@@ -981,7 +983,6 @@ public:
         return m_array_literal_const_short;
     }
 
-
     /*!
      * @brief This function copies the value in member array_literal_const_ushort
      * @param _array_literal_const_ushort New value to be copied in member array_literal_const_ushort
@@ -1019,7 +1020,6 @@ public:
     {
         return m_array_literal_const_ushort;
     }
-
 
     /*!
      * @brief This function copies the value in member array_literal_const_long
@@ -1059,7 +1059,6 @@ public:
         return m_array_literal_const_long;
     }
 
-
     /*!
      * @brief This function copies the value in member array_literal_const_ulong
      * @param _array_literal_const_ulong New value to be copied in member array_literal_const_ulong
@@ -1097,7 +1096,6 @@ public:
     {
         return m_array_literal_const_ulong;
     }
-
 
     /*!
      * @brief This function copies the value in member array_literal_const_longlong
@@ -1137,7 +1135,6 @@ public:
         return m_array_literal_const_longlong;
     }
 
-
     /*!
      * @brief This function copies the value in member array_literal_const_ulonglong
      * @param _array_literal_const_ulonglong New value to be copied in member array_literal_const_ulonglong
@@ -1175,7 +1172,6 @@ public:
     {
         return m_array_literal_const_ulonglong;
     }
-
 
     /*!
      * @brief This function copies the value in member array_literal_const_int8
@@ -1215,7 +1211,6 @@ public:
         return m_array_literal_const_int8;
     }
 
-
     /*!
      * @brief This function copies the value in member array_literal_const_uint8
      * @param _array_literal_const_uint8 New value to be copied in member array_literal_const_uint8
@@ -1253,7 +1248,6 @@ public:
     {
         return m_array_literal_const_uint8;
     }
-
 
     /*!
      * @brief This function copies the value in member array_literal_const_int16
@@ -1293,7 +1287,6 @@ public:
         return m_array_literal_const_int16;
     }
 
-
     /*!
      * @brief This function copies the value in member array_literal_const_uint16
      * @param _array_literal_const_uint16 New value to be copied in member array_literal_const_uint16
@@ -1331,7 +1324,6 @@ public:
     {
         return m_array_literal_const_uint16;
     }
-
 
     /*!
      * @brief This function copies the value in member array_literal_const_int32
@@ -1371,7 +1363,6 @@ public:
         return m_array_literal_const_int32;
     }
 
-
     /*!
      * @brief This function copies the value in member array_literal_const_uint32
      * @param _array_literal_const_uint32 New value to be copied in member array_literal_const_uint32
@@ -1409,7 +1400,6 @@ public:
     {
         return m_array_literal_const_uint32;
     }
-
 
     /*!
      * @brief This function copies the value in member array_literal_const_int64
@@ -1449,7 +1439,6 @@ public:
         return m_array_literal_const_int64;
     }
 
-
     /*!
      * @brief This function copies the value in member array_literal_const_uint64
      * @param _array_literal_const_uint64 New value to be copied in member array_literal_const_uint64
@@ -1488,13 +1477,12 @@ public:
         return m_array_literal_const_uint64;
     }
 
-
     /*!
      * @brief This function copies the value in member array_literals_operations1_const
      * @param _array_literals_operations1_const New value to be copied in member array_literals_operations1_const
      */
     eProsima_user_DllExport void array_literals_operations1_const(
-            const std::array<int16_t, const_short+const_long>& _array_literals_operations1_const)
+            const std::array<int16_t, const_short + const_long>& _array_literals_operations1_const)
     {
         m_array_literals_operations1_const = _array_literals_operations1_const;
     }
@@ -1504,7 +1492,7 @@ public:
      * @param _array_literals_operations1_const New value to be moved in member array_literals_operations1_const
      */
     eProsima_user_DllExport void array_literals_operations1_const(
-            std::array<int16_t, const_short+const_long>&& _array_literals_operations1_const)
+            std::array<int16_t, const_short + const_long>&& _array_literals_operations1_const)
     {
         m_array_literals_operations1_const = std::move(_array_literals_operations1_const);
     }
@@ -1513,7 +1501,8 @@ public:
      * @brief This function returns a constant reference to member array_literals_operations1_const
      * @return Constant reference to member array_literals_operations1_const
      */
-    eProsima_user_DllExport const std::array<int16_t, const_short+const_long>& array_literals_operations1_const() const
+    eProsima_user_DllExport const std::array<int16_t,
+            const_short + const_long>& array_literals_operations1_const() const
     {
         return m_array_literals_operations1_const;
     }
@@ -1522,18 +1511,17 @@ public:
      * @brief This function returns a reference to member array_literals_operations1_const
      * @return Reference to member array_literals_operations1_const
      */
-    eProsima_user_DllExport std::array<int16_t, const_short+const_long>& array_literals_operations1_const()
+    eProsima_user_DllExport std::array<int16_t, const_short + const_long>& array_literals_operations1_const()
     {
         return m_array_literals_operations1_const;
     }
-
 
     /*!
      * @brief This function copies the value in member array_literals_operations2_const
      * @param _array_literals_operations2_const New value to be copied in member array_literals_operations2_const
      */
     eProsima_user_DllExport void array_literals_operations2_const(
-            const std::array<int16_t, const_short-const_long>& _array_literals_operations2_const)
+            const std::array<int16_t, const_short - const_long>& _array_literals_operations2_const)
     {
         m_array_literals_operations2_const = _array_literals_operations2_const;
     }
@@ -1543,7 +1531,7 @@ public:
      * @param _array_literals_operations2_const New value to be moved in member array_literals_operations2_const
      */
     eProsima_user_DllExport void array_literals_operations2_const(
-            std::array<int16_t, const_short-const_long>&& _array_literals_operations2_const)
+            std::array<int16_t, const_short - const_long>&& _array_literals_operations2_const)
     {
         m_array_literals_operations2_const = std::move(_array_literals_operations2_const);
     }
@@ -1552,7 +1540,8 @@ public:
      * @brief This function returns a constant reference to member array_literals_operations2_const
      * @return Constant reference to member array_literals_operations2_const
      */
-    eProsima_user_DllExport const std::array<int16_t, const_short-const_long>& array_literals_operations2_const() const
+    eProsima_user_DllExport const std::array<int16_t,
+            const_short - const_long>& array_literals_operations2_const() const
     {
         return m_array_literals_operations2_const;
     }
@@ -1561,18 +1550,17 @@ public:
      * @brief This function returns a reference to member array_literals_operations2_const
      * @return Reference to member array_literals_operations2_const
      */
-    eProsima_user_DllExport std::array<int16_t, const_short-const_long>& array_literals_operations2_const()
+    eProsima_user_DllExport std::array<int16_t, const_short - const_long>& array_literals_operations2_const()
     {
         return m_array_literals_operations2_const;
     }
-
 
     /*!
      * @brief This function copies the value in member array_literals_operations3_const
      * @param _array_literals_operations3_const New value to be copied in member array_literals_operations3_const
      */
     eProsima_user_DllExport void array_literals_operations3_const(
-            const std::array<int16_t, const_short+const_module2::const_moduled>& _array_literals_operations3_const)
+            const std::array<int16_t, const_short + const_module2::const_moduled>& _array_literals_operations3_const)
     {
         m_array_literals_operations3_const = _array_literals_operations3_const;
     }
@@ -1582,7 +1570,7 @@ public:
      * @param _array_literals_operations3_const New value to be moved in member array_literals_operations3_const
      */
     eProsima_user_DllExport void array_literals_operations3_const(
-            std::array<int16_t, const_short+const_module2::const_moduled>&& _array_literals_operations3_const)
+            std::array<int16_t, const_short + const_module2::const_moduled>&& _array_literals_operations3_const)
     {
         m_array_literals_operations3_const = std::move(_array_literals_operations3_const);
     }
@@ -1591,7 +1579,8 @@ public:
      * @brief This function returns a constant reference to member array_literals_operations3_const
      * @return Constant reference to member array_literals_operations3_const
      */
-    eProsima_user_DllExport const std::array<int16_t, const_short+const_module2::const_moduled>& array_literals_operations3_const() const
+    eProsima_user_DllExport const std::array<int16_t,
+            const_short + const_module2::const_moduled>& array_literals_operations3_const() const
     {
         return m_array_literals_operations3_const;
     }
@@ -1600,18 +1589,19 @@ public:
      * @brief This function returns a reference to member array_literals_operations3_const
      * @return Reference to member array_literals_operations3_const
      */
-    eProsima_user_DllExport std::array<int16_t, const_short+const_module2::const_moduled>& array_literals_operations3_const()
+    eProsima_user_DllExport std::array<int16_t,
+            const_short + const_module2::const_moduled>& array_literals_operations3_const()
     {
         return m_array_literals_operations3_const;
     }
-
 
     /*!
      * @brief This function copies the value in member array_literals_operations4_const
      * @param _array_literals_operations4_const New value to be copied in member array_literals_operations4_const
      */
     eProsima_user_DllExport void array_literals_operations4_const(
-            const std::array<int16_t, const_module2::const_moduled-const_module1::const_moduled>& _array_literals_operations4_const)
+            const std::array<int16_t,
+            const_module2::const_moduled - const_module1::const_moduled>& _array_literals_operations4_const)
     {
         m_array_literals_operations4_const = _array_literals_operations4_const;
     }
@@ -1621,7 +1611,8 @@ public:
      * @param _array_literals_operations4_const New value to be moved in member array_literals_operations4_const
      */
     eProsima_user_DllExport void array_literals_operations4_const(
-            std::array<int16_t, const_module2::const_moduled-const_module1::const_moduled>&& _array_literals_operations4_const)
+            std::array<int16_t,
+            const_module2::const_moduled - const_module1::const_moduled>&& _array_literals_operations4_const)
     {
         m_array_literals_operations4_const = std::move(_array_literals_operations4_const);
     }
@@ -1630,7 +1621,8 @@ public:
      * @brief This function returns a constant reference to member array_literals_operations4_const
      * @return Constant reference to member array_literals_operations4_const
      */
-    eProsima_user_DllExport const std::array<int16_t, const_module2::const_moduled-const_module1::const_moduled>& array_literals_operations4_const() const
+    eProsima_user_DllExport const std::array<int16_t,
+            const_module2::const_moduled - const_module1::const_moduled>& array_literals_operations4_const() const
     {
         return m_array_literals_operations4_const;
     }
@@ -1639,18 +1631,18 @@ public:
      * @brief This function returns a reference to member array_literals_operations4_const
      * @return Reference to member array_literals_operations4_const
      */
-    eProsima_user_DllExport std::array<int16_t, const_module2::const_moduled-const_module1::const_moduled>& array_literals_operations4_const()
+    eProsima_user_DllExport std::array<int16_t,
+            const_module2::const_moduled - const_module1::const_moduled>& array_literals_operations4_const()
     {
         return m_array_literals_operations4_const;
     }
-
 
     /*!
      * @brief This function copies the value in member array_literals_operations5_const
      * @param _array_literals_operations5_const New value to be copied in member array_literals_operations5_const
      */
     eProsima_user_DllExport void array_literals_operations5_const(
-            const std::array<int16_t, const_short*const_long>& _array_literals_operations5_const)
+            const std::array<int16_t, const_short* const_long>& _array_literals_operations5_const)
     {
         m_array_literals_operations5_const = _array_literals_operations5_const;
     }
@@ -1660,7 +1652,7 @@ public:
      * @param _array_literals_operations5_const New value to be moved in member array_literals_operations5_const
      */
     eProsima_user_DllExport void array_literals_operations5_const(
-            std::array<int16_t, const_short*const_long>&& _array_literals_operations5_const)
+            std::array<int16_t, const_short* const_long>&& _array_literals_operations5_const)
     {
         m_array_literals_operations5_const = std::move(_array_literals_operations5_const);
     }
@@ -1683,13 +1675,12 @@ public:
         return m_array_literals_operations5_const;
     }
 
-
     /*!
      * @brief This function copies the value in member array_literals_operations6_const
      * @param _array_literals_operations6_const New value to be copied in member array_literals_operations6_const
      */
     eProsima_user_DllExport void array_literals_operations6_const(
-            const std::array<int16_t, const_short/const_long>& _array_literals_operations6_const)
+            const std::array<int16_t, const_short / const_long>& _array_literals_operations6_const)
     {
         m_array_literals_operations6_const = _array_literals_operations6_const;
     }
@@ -1699,7 +1690,7 @@ public:
      * @param _array_literals_operations6_const New value to be moved in member array_literals_operations6_const
      */
     eProsima_user_DllExport void array_literals_operations6_const(
-            std::array<int16_t, const_short/const_long>&& _array_literals_operations6_const)
+            std::array<int16_t, const_short / const_long>&& _array_literals_operations6_const)
     {
         m_array_literals_operations6_const = std::move(_array_literals_operations6_const);
     }
@@ -1708,7 +1699,8 @@ public:
      * @brief This function returns a constant reference to member array_literals_operations6_const
      * @return Constant reference to member array_literals_operations6_const
      */
-    eProsima_user_DllExport const std::array<int16_t, const_short/const_long>& array_literals_operations6_const() const
+    eProsima_user_DllExport const std::array<int16_t,
+            const_short / const_long>& array_literals_operations6_const() const
     {
         return m_array_literals_operations6_const;
     }
@@ -1717,18 +1709,17 @@ public:
      * @brief This function returns a reference to member array_literals_operations6_const
      * @return Reference to member array_literals_operations6_const
      */
-    eProsima_user_DllExport std::array<int16_t, const_short/const_long>& array_literals_operations6_const()
+    eProsima_user_DllExport std::array<int16_t, const_short / const_long>& array_literals_operations6_const()
     {
         return m_array_literals_operations6_const;
     }
-
 
     /*!
      * @brief This function copies the value in member array_literals_operations7_const
      * @param _array_literals_operations7_const New value to be copied in member array_literals_operations7_const
      */
     eProsima_user_DllExport void array_literals_operations7_const(
-            const std::array<int16_t, const_short*const_module2::const_moduled>& _array_literals_operations7_const)
+            const std::array<int16_t, const_short* const_module2::const_moduled>& _array_literals_operations7_const)
     {
         m_array_literals_operations7_const = _array_literals_operations7_const;
     }
@@ -1738,7 +1729,7 @@ public:
      * @param _array_literals_operations7_const New value to be moved in member array_literals_operations7_const
      */
     eProsima_user_DllExport void array_literals_operations7_const(
-            std::array<int16_t, const_short*const_module2::const_moduled>&& _array_literals_operations7_const)
+            std::array<int16_t, const_short* const_module2::const_moduled>&& _array_literals_operations7_const)
     {
         m_array_literals_operations7_const = std::move(_array_literals_operations7_const);
     }
@@ -1747,7 +1738,8 @@ public:
      * @brief This function returns a constant reference to member array_literals_operations7_const
      * @return Constant reference to member array_literals_operations7_const
      */
-    eProsima_user_DllExport const std::array<int16_t, const_short*const_module2::const_moduled>& array_literals_operations7_const() const
+    eProsima_user_DllExport const std::array<int16_t,
+            const_short*const_module2::const_moduled>& array_literals_operations7_const() const
     {
         return m_array_literals_operations7_const;
     }
@@ -1756,18 +1748,19 @@ public:
      * @brief This function returns a reference to member array_literals_operations7_const
      * @return Reference to member array_literals_operations7_const
      */
-    eProsima_user_DllExport std::array<int16_t, const_short*const_module2::const_moduled>& array_literals_operations7_const()
+    eProsima_user_DllExport std::array<int16_t,
+            const_short*const_module2::const_moduled>& array_literals_operations7_const()
     {
         return m_array_literals_operations7_const;
     }
-
 
     /*!
      * @brief This function copies the value in member array_literals_operations8_const
      * @param _array_literals_operations8_const New value to be copied in member array_literals_operations8_const
      */
     eProsima_user_DllExport void array_literals_operations8_const(
-            const std::array<int16_t, const_module1::const_moduled%const_module2::const_moduled>& _array_literals_operations8_const)
+            const std::array<int16_t,
+            const_module1::const_moduled % const_module2::const_moduled>& _array_literals_operations8_const)
     {
         m_array_literals_operations8_const = _array_literals_operations8_const;
     }
@@ -1777,7 +1770,8 @@ public:
      * @param _array_literals_operations8_const New value to be moved in member array_literals_operations8_const
      */
     eProsima_user_DllExport void array_literals_operations8_const(
-            std::array<int16_t, const_module1::const_moduled%const_module2::const_moduled>&& _array_literals_operations8_const)
+            std::array<int16_t,
+            const_module1::const_moduled % const_module2::const_moduled>&& _array_literals_operations8_const)
     {
         m_array_literals_operations8_const = std::move(_array_literals_operations8_const);
     }
@@ -1786,7 +1780,8 @@ public:
      * @brief This function returns a constant reference to member array_literals_operations8_const
      * @return Constant reference to member array_literals_operations8_const
      */
-    eProsima_user_DllExport const std::array<int16_t, const_module1::const_moduled%const_module2::const_moduled>& array_literals_operations8_const() const
+    eProsima_user_DllExport const std::array<int16_t,
+            const_module1::const_moduled % const_module2::const_moduled>& array_literals_operations8_const() const
     {
         return m_array_literals_operations8_const;
     }
@@ -1795,11 +1790,11 @@ public:
      * @brief This function returns a reference to member array_literals_operations8_const
      * @return Reference to member array_literals_operations8_const
      */
-    eProsima_user_DllExport std::array<int16_t, const_module1::const_moduled%const_module2::const_moduled>& array_literals_operations8_const()
+    eProsima_user_DllExport std::array<int16_t,
+            const_module1::const_moduled % const_module2::const_moduled>& array_literals_operations8_const()
     {
         return m_array_literals_operations8_const;
     }
-
 
     /*!
      * @brief This function copies the value in member array_literal_const_inner_const_helper
@@ -1825,7 +1820,8 @@ public:
      * @brief This function returns a constant reference to member array_literal_const_inner_const_helper
      * @return Constant reference to member array_literal_const_inner_const_helper
      */
-    eProsima_user_DllExport const std::array<int16_t, inner_const_helper>& array_literal_const_inner_const_helper() const
+    eProsima_user_DllExport const std::array<int16_t,
+            inner_const_helper>& array_literal_const_inner_const_helper() const
     {
         return m_array_literal_const_inner_const_helper;
     }
@@ -1838,7 +1834,6 @@ public:
     {
         return m_array_literal_const_inner_const_helper;
     }
-
 
     /*!
      * @brief This function copies the value in member array_moduled1_literal_const
@@ -1864,7 +1859,8 @@ public:
      * @brief This function returns a constant reference to member array_moduled1_literal_const
      * @return Constant reference to member array_moduled1_literal_const
      */
-    eProsima_user_DllExport const std::array<int16_t, const_module1::const_moduled>& array_moduled1_literal_const() const
+    eProsima_user_DllExport const std::array<int16_t,
+            const_module1::const_moduled>& array_moduled1_literal_const() const
     {
         return m_array_moduled1_literal_const;
     }
@@ -1877,7 +1873,6 @@ public:
     {
         return m_array_moduled1_literal_const;
     }
-
 
     /*!
      * @brief This function copies the value in member array_moduled2_literal_const
@@ -1903,7 +1898,8 @@ public:
      * @brief This function returns a constant reference to member array_moduled2_literal_const
      * @return Constant reference to member array_moduled2_literal_const
      */
-    eProsima_user_DllExport const std::array<int16_t, const_module2::const_moduled>& array_moduled2_literal_const() const
+    eProsima_user_DllExport const std::array<int16_t,
+            const_module2::const_moduled>& array_moduled2_literal_const() const
     {
         return m_array_moduled2_literal_const;
     }
@@ -1916,7 +1912,6 @@ public:
     {
         return m_array_moduled2_literal_const;
     }
-
 
     /*!
      * @brief This function copies the value in member array_literal_const_alias_const
@@ -1956,7 +1951,6 @@ public:
         return m_array_literal_const_alias_const;
     }
 
-
     /*!
      * @brief This function copies the value in member array_moduled1_literal_alias_const_moduled
      * @param _array_moduled1_literal_alias_const_moduled New value to be copied in member array_moduled1_literal_alias_const_moduled
@@ -1981,7 +1975,8 @@ public:
      * @brief This function returns a constant reference to member array_moduled1_literal_alias_const_moduled
      * @return Constant reference to member array_moduled1_literal_alias_const_moduled
      */
-    eProsima_user_DllExport const std::array<int16_t, const_module1::alias_const_moduled>& array_moduled1_literal_alias_const_moduled() const
+    eProsima_user_DllExport const std::array<int16_t,
+            const_module1::alias_const_moduled>& array_moduled1_literal_alias_const_moduled() const
     {
         return m_array_moduled1_literal_alias_const_moduled;
     }
@@ -1990,11 +1985,11 @@ public:
      * @brief This function returns a reference to member array_moduled1_literal_alias_const_moduled
      * @return Reference to member array_moduled1_literal_alias_const_moduled
      */
-    eProsima_user_DllExport std::array<int16_t, const_module1::alias_const_moduled>& array_moduled1_literal_alias_const_moduled()
+    eProsima_user_DllExport std::array<int16_t,
+            const_module1::alias_const_moduled>& array_moduled1_literal_alias_const_moduled()
     {
         return m_array_moduled1_literal_alias_const_moduled;
     }
-
 
     /*!
      * @brief This function copies the value in member array_moduled2_literal_alias_const_moduled
@@ -2020,7 +2015,8 @@ public:
      * @brief This function returns a constant reference to member array_moduled2_literal_alias_const_moduled
      * @return Constant reference to member array_moduled2_literal_alias_const_moduled
      */
-    eProsima_user_DllExport const std::array<int16_t, const_module2::alias_const_moduled>& array_moduled2_literal_alias_const_moduled() const
+    eProsima_user_DllExport const std::array<int16_t,
+            const_module2::alias_const_moduled>& array_moduled2_literal_alias_const_moduled() const
     {
         return m_array_moduled2_literal_alias_const_moduled;
     }
@@ -2029,12 +2025,11 @@ public:
      * @brief This function returns a reference to member array_moduled2_literal_alias_const_moduled
      * @return Reference to member array_moduled2_literal_alias_const_moduled
      */
-    eProsima_user_DllExport std::array<int16_t, const_module2::alias_const_moduled>& array_moduled2_literal_alias_const_moduled()
+    eProsima_user_DllExport std::array<int16_t,
+            const_module2::alias_const_moduled>& array_moduled2_literal_alias_const_moduled()
     {
         return m_array_moduled2_literal_alias_const_moduled;
     }
-
-
 
 private:
 
@@ -2052,14 +2047,16 @@ private:
     std::array<uint32_t, const_uint32> m_array_literal_const_uint32{0};
     std::array<int64_t, const_int64> m_array_literal_const_int64{0};
     std::array<uint64_t, const_uint64> m_array_literal_const_uint64{0};
-    std::array<int16_t, const_short+const_long> m_array_literals_operations1_const{0};
-    std::array<int16_t, const_short-const_long> m_array_literals_operations2_const{0};
-    std::array<int16_t, const_short+const_module2::const_moduled> m_array_literals_operations3_const{0};
-    std::array<int16_t, const_module2::const_moduled-const_module1::const_moduled> m_array_literals_operations4_const{0};
-    std::array<int16_t, const_short*const_long> m_array_literals_operations5_const{0};
-    std::array<int16_t, const_short/const_long> m_array_literals_operations6_const{0};
-    std::array<int16_t, const_short*const_module2::const_moduled> m_array_literals_operations7_const{0};
-    std::array<int16_t, const_module1::const_moduled%const_module2::const_moduled> m_array_literals_operations8_const{0};
+    std::array<int16_t, const_short + const_long> m_array_literals_operations1_const{0};
+    std::array<int16_t, const_short - const_long> m_array_literals_operations2_const{0};
+    std::array<int16_t, const_short + const_module2::const_moduled> m_array_literals_operations3_const{0};
+    std::array<int16_t,
+            const_module2::const_moduled - const_module1::const_moduled> m_array_literals_operations4_const{0};
+    std::array<int16_t, const_short* const_long> m_array_literals_operations5_const{0};
+    std::array<int16_t, const_short / const_long> m_array_literals_operations6_const{0};
+    std::array<int16_t, const_short* const_module2::const_moduled> m_array_literals_operations7_const{0};
+    std::array<int16_t,
+            const_module1::const_moduled % const_module2::const_moduled> m_array_literals_operations8_const{0};
     std::array<int16_t, inner_const_helper> m_array_literal_const_inner_const_helper{0};
     std::array<int16_t, const_module1::const_moduled> m_array_moduled1_literal_const{0};
     std::array<int16_t, const_module2::const_moduled> m_array_moduled2_literal_const{0};

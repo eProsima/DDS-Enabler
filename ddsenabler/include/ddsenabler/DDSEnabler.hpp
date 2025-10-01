@@ -229,9 +229,9 @@ public:
      * @return true if the feedback was successfully sent, false otherwise.
      */
     bool send_action_feedback(
-        const char* action_name,
-        const char* json,
-        const participants::UUID& goal_id);
+            const char* action_name,
+            const char* json,
+            const participants::UUID& goal_id);
 
     /**
      * @brief Send result for the specified goal_id action.
@@ -247,10 +247,10 @@ public:
      * @return true if the result was successfully sent, false otherwise.
      */
     bool send_action_result(
-        const char* action_name,
-        const participants::UUID& goal_id,
-        const participants::STATUS_CODE& status_code,
-        const char* json);
+            const char* action_name,
+            const participants::UUID& goal_id,
+            const participants::STATUS_CODE& status_code,
+            const char* json);
 
     /**
      * @brief Sends a cancel goal reply for the specified action.
@@ -266,29 +266,29 @@ public:
      * @return true if the cancel goal reply was successfully sent, false otherwise.
      */
     bool send_action_cancel_goal_reply(
-        const char* action_name,
-        const std::vector<participants::UUID>& goal_ids,
-        const participants::CANCEL_CODE& cancel_code,
-        const uint64_t request_id);
+            const char* action_name,
+            const std::vector<participants::UUID>& goal_ids,
+            const participants::CANCEL_CODE& cancel_code,
+            const uint64_t request_id);
 
-     /**
-      * @brief Publishes an update for the status of an action.
-      *
-      * This function publishes a msg update for the status of an action.
-      * It returns a boolean indicating whether the operation was successful.
-      * Failure may occur if the action was not previously announced or if the goal ID is not currently active.
-      *
-      * @param action_name The name of the action for which the status is being updated.
-      * @param goal_id The unique identifier of the action goal for which the status is being updated.
-      * @param status_code The status code representing the current state of the action.
-      *
-      * @return true if the status update was successfully sent, false otherwise.
-      *
+    /**
+     * @brief Publishes an update for the status of an action.
+     *
+     * This function publishes a msg update for the status of an action.
+     * It returns a boolean indicating whether the operation was successful.
+     * Failure may occur if the action was not previously announced or if the goal ID is not currently active.
+     *
+     * @param action_name The name of the action for which the status is being updated.
+     * @param goal_id The unique identifier of the action goal for which the status is being updated.
+     * @param status_code The status code representing the current state of the action.
+     *
+     * @return true if the status update was successfully sent, false otherwise.
+     *
      */
     bool update_action_status(
-        const std::string& action_name,
-        const participants::UUID& goal_id,
-        const participants::STATUS_CODE& status_code);
+            const std::string& action_name,
+            const participants::UUID& goal_id,
+            const participants::STATUS_CODE& status_code);
 
     /*****************************************/
     /*            ACTION CLIENT              */
@@ -312,8 +312,8 @@ public:
      * @return true if the action goal was successfully sent, false otherwise.
      */
     bool send_action_goal(
-	    const std::string& action_name,
-	    const std::string& json,
+            const std::string& action_name,
+            const std::string& json,
             participants::UUID& goal_id,
             participants::RPC_PROTOCOL rpc_protocol = participants::RPC_PROTOCOL::ROS2);
 
@@ -355,8 +355,8 @@ protected:
      * @return true if the request to get the result was successfully sent, false otherwise.
      */
     bool send_action_get_result_request(
-        const std::string& action_name,
-        const participants::UUID& goal_id);
+            const std::string& action_name,
+            const participants::UUID& goal_id);
 
     /**
      * @brief Sends a reply to an action goal request.
@@ -370,9 +370,9 @@ protected:
      * @param accepted A boolean indicating whether the goal was accepted (true) or rejected (false).
      */
     void send_action_send_goal_reply(
-        const std::string& action_name,
-        const uint64_t goal_id,
-        bool accepted);
+            const std::string& action_name,
+            const uint64_t goal_id,
+            bool accepted);
 
     /**
      * @brief Actually sends the result reply for an action.
@@ -385,10 +385,10 @@ protected:
      * @param request_id The unique identifier of the request to which this reply corresponds.
      */
     bool send_action_get_result_reply(
-        const std::string& action_name,
-        const participants::UUID& goal_id,
-        const std::string& reply_json,
-        const uint64_t request_id);
+            const std::string& action_name,
+            const participants::UUID& goal_id,
+            const std::string& reply_json,
+            const uint64_t request_id);
 
     /**
      * Load the Enabler's internal topics into a configuration object.

@@ -36,11 +36,15 @@ namespace RpcUtils {
  * @param [in] topic_name Topic name to extract the service/action name from
  * @return Extracted service name
  */
-RpcInfo get_rpc_info(const std::string& topic_name);
+RpcInfo get_rpc_info(
+        const std::string& topic_name);
 
-RPC_PROTOCOL detect_rpc_protocol(const std::string& topic_name);
+RPC_PROTOCOL detect_rpc_protocol(
+        const std::string& topic_name);
 
-RpcInfo remove_prefix_suffix(const std::string& topic_name, RPC_PROTOCOL rpc_protocol);
+RpcInfo remove_prefix_suffix(
+        const std::string& topic_name,
+        RPC_PROTOCOL rpc_protocol);
 
 /**
  * @brief Generates a UUID.
@@ -56,7 +60,9 @@ UUID generate_UUID();
  * @param goal_json The JSON string representing the goal (without the UUID part).
  * @return The JSON string for sending the goal request.
  */
-std::string create_goal_request_msg(const std::string& goal_json, UUID& goal_id);
+std::string create_goal_request_msg(
+        const std::string& goal_json,
+        UUID& goal_id);
 
 /**
  * @brief Creates a JSON string for sending a goal reply.
@@ -138,4 +144,6 @@ std::string create_status_msg(
 } // namespace ddsenabler
 } // namespace eprosima
 
-std::ostream& operator<<(std::ostream& os, const eprosima::ddsenabler::participants::UUID& uuid);
+std::ostream& operator <<(
+        std::ostream& os,
+        const eprosima::ddsenabler::participants::UUID& uuid);

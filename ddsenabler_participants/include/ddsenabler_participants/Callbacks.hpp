@@ -35,18 +35,18 @@ namespace participants {
  */
 struct TopicInfo
 {
-        TopicInfo() = default;
+    TopicInfo() = default;
 
-        TopicInfo (
-                const std::string& _type_name,
-                const std::string& _serialized_qos)
-            : type_name(_type_name)
-            , serialized_qos(_serialized_qos)
-        {
-        }
+    TopicInfo (
+            const std::string& _type_name,
+            const std::string& _serialized_qos)
+        : type_name(_type_name)
+        , serialized_qos(_serialized_qos)
+    {
+    }
 
-        std::string type_name;
-        std::string serialized_qos;
+    std::string type_name;
+    std::string serialized_qos;
 };
 
 /**
@@ -56,18 +56,18 @@ struct TopicInfo
  */
 struct ServiceInfo
 {
-        ServiceInfo() = default;
+    ServiceInfo() = default;
 
-        ServiceInfo(
-                const TopicInfo& _request,
-                const TopicInfo& _reply)
-            : request(_request)
-            , reply(_reply)
-        {
-        }
+    ServiceInfo(
+            const TopicInfo& _request,
+            const TopicInfo& _reply)
+        : request(_request)
+        , reply(_reply)
+    {
+    }
 
-        TopicInfo request;
-        TopicInfo reply;
+    TopicInfo request;
+    TopicInfo reply;
 };
 
 /**
@@ -77,27 +77,27 @@ struct ServiceInfo
  */
 struct ActionInfo
 {
-        ActionInfo() = default;
+    ActionInfo() = default;
 
-        ActionInfo(
-                const ServiceInfo& _goal,
-                const ServiceInfo& _result,
-                const ServiceInfo& _cancel,
-                const TopicInfo& _feedback,
-                const TopicInfo& _status)
-            : goal(_goal)
-            , result(_result)
-            , cancel(_cancel)
-            , feedback(_feedback)
-            , status(_status)
-        {
-        }
+    ActionInfo(
+            const ServiceInfo& _goal,
+            const ServiceInfo& _result,
+            const ServiceInfo& _cancel,
+            const TopicInfo& _feedback,
+            const TopicInfo& _status)
+        : goal(_goal)
+        , result(_result)
+        , cancel(_cancel)
+        , feedback(_feedback)
+        , status(_status)
+    {
+    }
 
-        ServiceInfo goal;
-        ServiceInfo result;
-        ServiceInfo cancel;
-        TopicInfo feedback;
-        TopicInfo status;
+    ServiceInfo goal;
+    ServiceInfo result;
+    ServiceInfo cancel;
+    TopicInfo feedback;
+    TopicInfo status;
 };
 
 /**
@@ -238,7 +238,7 @@ typedef void (* ServiceReplyNotification)(
  * @param [out] service_info Information about the service, including request and reply types and their serialized QoS.
  * @return \c true if the service was found and the type information was retrieved successfully, \c false otherwise.
  */
- typedef bool (* ServiceQuery)(
+typedef bool (* ServiceQuery)(
         const char* service_name,
         ServiceInfo& service_info);
 
@@ -272,10 +272,10 @@ typedef void (* ActionNotification)(
  * @return \c true if the goal request has been accepted, \c false otherwise.
  */
 typedef bool (* ActionGoalRequestNotification)(
-    const char* action_name,
-    const char* json,
-    const UUID& goal_id,
-    int64_t publish_time);
+        const char* action_name,
+        const char* json,
+        const UUID& goal_id,
+        int64_t publish_time);
 
 /**
  * @brief Callback for notification of an action cancel request.
@@ -294,11 +294,11 @@ typedef bool (* ActionGoalRequestNotification)(
  * @param [in] publish_time The time at which the cancel request was published.
  */
 typedef void (* ActionCancelRequestNotification)(
-    const char* action_name,
-    const UUID& goal_id,
-    int64_t timestamp,
-    uint64_t request_id,
-    int64_t publish_time);
+        const char* action_name,
+        const UUID& goal_id,
+        int64_t timestamp,
+        uint64_t request_id,
+        int64_t publish_time);
 
 /**
  * @brief Callback for notification of action feedback.
@@ -328,11 +328,11 @@ typedef void (* ActionFeedbackNotification)(
  * @param [in] publish_time The time at which the status was published.
  */
 typedef void (* ActionStatusNotification)(
-    const char* action_name,
-    const UUID& goal_id,
-    STATUS_CODE status_code,
-    const char* status_message,
-    int64_t publish_time);
+        const char* action_name,
+        const UUID& goal_id,
+        STATUS_CODE status_code,
+        const char* status_message,
+        int64_t publish_time);
 
 /**
  * @brief Callback for notification of action result.
@@ -360,8 +360,8 @@ typedef void (* ActionResultNotification)(
  * @return \c true if the action was found and the types were retrieved successfully, \c false otherwise.
  */
 typedef bool (* ActionQuery)(
-    const char* action_name,
-    ActionInfo& action_info);
+        const char* action_name,
+        ActionInfo& action_info);
 
 } /* namespace participants */
 } /* namespace ddsenabler */

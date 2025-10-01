@@ -402,8 +402,9 @@ void save_service_to_file(
     j["reply_serialized_qos"] = reply_serialized_qos;
 
     std::ofstream ofs(file_path);
-    if (ofs.is_open()) {
-    ofs << j.dump(4);
+    if (ofs.is_open())
+    {
+        ofs << j.dump(4);
     }
 }
 
@@ -436,7 +437,8 @@ bool load_service_from_file(
     }
 
     std::ifstream ifs(file_path);
-    if (!ifs.is_open()) {
+    if (!ifs.is_open())
+    {
         return false;
     }
 
@@ -444,7 +446,8 @@ bool load_service_from_file(
     ifs >> j;
 
     std::string file_service_name = j["service_name"].get<std::string>();
-    if (file_service_name != std::string(service_name)) {
+    if (file_service_name != std::string(service_name))
+    {
         return false;  // Service name does not match
     }
 
@@ -458,24 +461,24 @@ bool load_service_from_file(
 }
 
 void save_action_to_file(
-    const std::string& directory,
-    const char* action_name,
-    const char* goal_request_action_type,
-    const char* goal_reply_action_type,
-    const char* cancel_request_action_type,
-    const char* cancel_reply_action_type,
-    const char* result_request_action_type,
-    const char* result_reply_action_type,
-    const char* feedback_action_type,
-    const char* status_action_type,
-    const char* goal_request_action_serialized_qos,
-    const char* goal_reply_action_serialized_qos,
-    const char* cancel_request_action_serialized_qos,
-    const char* cancel_reply_action_serialized_qos,
-    const char* result_request_action_serialized_qos,
-    const char* result_reply_action_serialized_qos,
-    const char* feedback_action_serialized_qos,
-    const char* status_action_serialized_qos)
+        const std::string& directory,
+        const char* action_name,
+        const char* goal_request_action_type,
+        const char* goal_reply_action_type,
+        const char* cancel_request_action_type,
+        const char* cancel_reply_action_type,
+        const char* result_request_action_type,
+        const char* result_reply_action_type,
+        const char* feedback_action_type,
+        const char* status_action_type,
+        const char* goal_request_action_serialized_qos,
+        const char* goal_reply_action_serialized_qos,
+        const char* cancel_request_action_serialized_qos,
+        const char* cancel_reply_action_serialized_qos,
+        const char* result_request_action_serialized_qos,
+        const char* result_reply_action_serialized_qos,
+        const char* feedback_action_serialized_qos,
+        const char* status_action_serialized_qos)
 {
     // Check if directory exists
     if (!std::filesystem::exists(directory))
@@ -517,31 +520,32 @@ void save_action_to_file(
     j["status_action_serialized_qos"] = status_action_serialized_qos;
 
     std::ofstream ofs(file_path);
-    if (ofs.is_open()) {
+    if (ofs.is_open())
+    {
         ofs << j.dump(4);
         ofs.close();
     }
 }
 
 bool load_action_from_file(
-    const std::string& directory,
-    const char* action_name,
-    std::string& goal_request_action_type,
-    std::string& goal_reply_action_type,
-    std::string& cancel_request_action_type,
-    std::string& cancel_reply_action_type,
-    std::string& result_request_action_type,
-    std::string& result_reply_action_type,
-    std::string& feedback_action_type,
-    std::string& status_action_type,
-    std::string& goal_request_action_serialized_qos,
-    std::string& goal_reply_action_serialized_qos,
-    std::string& cancel_request_action_serialized_qos,
-    std::string& cancel_reply_action_serialized_qos,
-    std::string& result_request_action_serialized_qos,
-    std::string& result_reply_action_serialized_qos,
-    std::string& feedback_action_serialized_qos,
-    std::string& status_action_serialized_qos)
+        const std::string& directory,
+        const char* action_name,
+        std::string& goal_request_action_type,
+        std::string& goal_reply_action_type,
+        std::string& cancel_request_action_type,
+        std::string& cancel_reply_action_type,
+        std::string& result_request_action_type,
+        std::string& result_reply_action_type,
+        std::string& feedback_action_type,
+        std::string& status_action_type,
+        std::string& goal_request_action_serialized_qos,
+        std::string& goal_reply_action_serialized_qos,
+        std::string& cancel_request_action_serialized_qos,
+        std::string& cancel_reply_action_serialized_qos,
+        std::string& result_request_action_serialized_qos,
+        std::string& result_reply_action_serialized_qos,
+        std::string& feedback_action_serialized_qos,
+        std::string& status_action_serialized_qos)
 {
     // Check if directory exists
     if (!std::filesystem::exists(directory))
@@ -564,7 +568,8 @@ bool load_action_from_file(
     }
 
     std::ifstream ifs(file_path);
-    if (!ifs.is_open()) {
+    if (!ifs.is_open())
+    {
         return false;
     }
 
@@ -572,7 +577,8 @@ bool load_action_from_file(
     ifs >> j;
 
     std::string file_action_name = j["action_name"].get<std::string>();
-    if (file_action_name != std::string(action_name)) {
+    if (file_action_name != std::string(action_name))
+    {
         return false;  // Action name does not match
     }
     goal_request_action_type = j["goal_request_action_type"].get<std::string>();
@@ -646,6 +652,5 @@ void get_sorted_files(
                 return a.second < b.second;
             });
 }
-
 
 } // namespace utils

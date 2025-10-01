@@ -63,7 +63,8 @@ struct RpcAction
 
 struct RpcInfo
 {
-    RpcInfo(const std::string& dds_topic_name)
+    RpcInfo(
+            const std::string& dds_topic_name)
         : topic_name(dds_topic_name)
         , rpc_protocol(RPC_PROTOCOL::PROTOCOL_UNKNOWN)
         , rpc_type(RPC_TYPE::RPC_NONE)
@@ -90,9 +91,9 @@ struct ActionRequestInfo
             ACTION_TYPE action_type,
             uint64_t request_id,
             RPC_PROTOCOL rpc_protocol)
-            : action_name(_action_name)
-            , goal_accepted_stamp(std::chrono::system_clock::now())
-            , rpc_protocol(rpc_protocol)
+        : action_name(_action_name)
+        , goal_accepted_stamp(std::chrono::system_clock::now())
+        , rpc_protocol(rpc_protocol)
     {
         set_request(request_id, action_type);
     }
@@ -129,7 +130,8 @@ struct ActionRequestInfo
         }
     }
 
-    bool set_result(const std::string&& str)
+    bool set_result(
+            const std::string&& str)
     {
         if (str.empty() || !result.empty())
         {
@@ -139,7 +141,8 @@ struct ActionRequestInfo
         return true;
     }
 
-    bool erase(ActionEraseReason erase_reason)
+    bool erase(
+            ActionEraseReason erase_reason)
     {
         switch (erase_reason)
         {
@@ -202,41 +205,46 @@ struct ServiceDiscovered
             const ddspipe::core::types::DdsTopic& topic,
             SERVICE_TYPE service_type)
     {
-        if(service_type == SERVICE_TYPE::SERVICE_REQUEST)
+        if (service_type == SERVICE_TYPE::SERVICE_REQUEST)
         {
-                if(request_discovered)
-                        return false;
-                topic_request = topic;
-                request_discovered = true;
+            if (request_discovered)
+            {
+                return false;
+            }
+            topic_request = topic;
+            request_discovered = true;
         }
         else
         {
-                if(reply_discovered)
-                        return false;
-                topic_reply = topic;
-                reply_discovered = true;
+            if (reply_discovered)
+            {
+                return false;
+            }
+            topic_reply = topic;
+            reply_discovered = true;
         }
 
-        if(request_discovered && reply_discovered)
+        if (request_discovered && reply_discovered)
         {
-                if (service_name.empty())
-                {
-                        return false;
-                }
-                fully_discovered = true;
-                rpc_topic = std::make_optional<ddspipe::core::types::RpcTopic>(
-                    service_name,
-                    topic_request,
-                    topic_reply);
-                return true;
+            if (service_name.empty())
+            {
+                return false;
+            }
+            fully_discovered = true;
+            rpc_topic = std::make_optional<ddspipe::core::types::RpcTopic>(
+                service_name,
+                topic_request,
+                topic_reply);
+            return true;
         }
 
         return false;
     }
 
-    bool remove_topic(SERVICE_TYPE service_type)
+    bool remove_topic(
+            SERVICE_TYPE service_type)
     {
-        if(service_type == SERVICE_TYPE::SERVICE_REQUEST)
+        if (service_type == SERVICE_TYPE::SERVICE_REQUEST)
         {
             request_discovered = false;
             topic_request = ddspipe::core::types::DdsTopic();
@@ -255,8 +263,10 @@ struct ServiceDiscovered
 
     ddspipe::core::types::RpcTopic get_service()
     {
-        if(!fully_discovered || rpc_topic == std::nullopt)
+        if (!fully_discovered || rpc_topic == std::nullopt)
+        {
             throw std::runtime_error("Service not fully discovered");
+        }
         return rpc_topic.value();
     }
 
@@ -264,17 +274,21 @@ struct ServiceDiscovered
             SERVICE_TYPE service_type,
             ddspipe::core::types::DdsTopic& topic)
     {
-        if(service_type == SERVICE_TYPE::SERVICE_REQUEST)
+        if (service_type == SERVICE_TYPE::SERVICE_REQUEST)
         {
-            if(!request_discovered)
+            if (!request_discovered)
+            {
                 return false;
+            }
             topic = topic_request;
             return true;
         }
         if (service_type == SERVICE_TYPE::SERVICE_REPLY)
         {
-            if(!reply_discovered)
+            if (!reply_discovered)
+            {
                 return false;
+            }
             topic = topic_reply;
             return true;
         }
@@ -285,6 +299,7 @@ struct ServiceDiscovered
     {
         return rpc_protocol;
     }
+
 };
 
 struct ActionDiscovered
@@ -316,8 +331,8 @@ struct ActionDiscovered
         auto c = cancel.lock();
 
         if (g && r && c &&
-            g->fully_discovered && r->fully_discovered && c->fully_discovered &&
-            feedback_discovered && status_discovered)
+                g->fully_discovered && r->fully_discovered && c->fully_discovered &&
+                feedback_discovered && status_discovered)
         {
             fully_discovered = true;
             return true;
@@ -347,7 +362,6 @@ struct ActionDiscovered
         return true;
     }
 
-
     bool add_topic(
             const ddspipe::core::types::DdsTopic& topic,
             ACTION_TYPE action_type)
@@ -376,7 +390,9 @@ struct ActionDiscovered
         auto c = cancel.lock();
 
         if (!fully_discovered || !g || !r || !c)
+        {
             throw std::runtime_error("Action not fully discovered or ServiceDiscovered expired");
+        }
 
         return RpcAction(
             action_name,
@@ -386,6 +402,7 @@ struct ActionDiscovered
             feedback,
             status);
     }
+
 };
 
 } // namespace participants

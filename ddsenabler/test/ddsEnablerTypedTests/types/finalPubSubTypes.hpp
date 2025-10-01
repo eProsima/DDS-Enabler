@@ -2258,7 +2258,8 @@ struct FinalExtensibilityInheritance_f
             FinalExtensibilityInheritance_f);
 };
 
-template struct FinalExtensibilityInheritance_rob<FinalExtensibilityInheritance_f, &FinalExtensibilityInheritance::m_var_long>;
+template struct FinalExtensibilityInheritance_rob<FinalExtensibilityInheritance_f,
+        &FinalExtensibilityInheritance::m_var_long>;
 
 template <typename T, typename Tag>
 inline size_t constexpr FinalExtensibilityInheritance_offset_of()
@@ -2359,14 +2360,16 @@ private:
     static constexpr bool is_plain_xcdrv1_impl()
     {
         return 8ULL ==
-               (detail::FinalExtensibilityInheritance_offset_of<FinalExtensibilityInheritance, detail::FinalExtensibilityInheritance_f>() +
+               (detail::FinalExtensibilityInheritance_offset_of<FinalExtensibilityInheritance,
+               detail::FinalExtensibilityInheritance_f>() +
                sizeof(int32_t));
     }
 
     static constexpr bool is_plain_xcdrv2_impl()
     {
         return 8ULL ==
-               (detail::FinalExtensibilityInheritance_offset_of<FinalExtensibilityInheritance, detail::FinalExtensibilityInheritance_f>() +
+               (detail::FinalExtensibilityInheritance_offset_of<FinalExtensibilityInheritance,
+               detail::FinalExtensibilityInheritance_f>() +
                sizeof(int32_t));
     }
 

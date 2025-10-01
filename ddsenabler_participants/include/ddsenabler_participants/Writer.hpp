@@ -261,9 +261,9 @@ public:
     }
 
     bool uuid_from_request_json(
-        const Message& msg,
-        const fastdds::dds::DynamicType::_ref_type& dyn_type,
-        UUID& uuid);
+            const Message& msg,
+            const fastdds::dds::DynamicType::_ref_type& dyn_type,
+            UUID& uuid);
 
 protected:
 

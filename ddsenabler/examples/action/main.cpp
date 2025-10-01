@@ -80,7 +80,8 @@ static void test_type_notification_callback(
     std::lock_guard<std::mutex> lock(app_mutex_);
     std::cout << "Type callback received: " << type_name << std::endl;
     if (!config.persistence_path.empty() &&
-            !utils::save_type_to_file((std::filesystem::path(config.persistence_path) / TYPES_SUBDIR).string(), type_name,
+            !utils::save_type_to_file((std::filesystem::path(config.persistence_path) / TYPES_SUBDIR).string(),
+            type_name,
             serialized_type_internal, serialized_type_internal_size))
     {
         std::cerr << "Failed to save type: " << type_name << std::endl;
@@ -143,7 +144,7 @@ static void test_action_notification_callback(
         std::cout << "Action callback received: " << action_name << std::endl;
 
         std::string action_file = (std::filesystem::path(
-                config.persistence_path) /
+                    config.persistence_path) /
                 ACTION_SUBDIR
                 ).string();
         if (!config.persistence_path.empty())
@@ -191,28 +192,28 @@ static bool test_action_query_callback(
         if (!config.persistence_path.empty())
         {
             std::string action_file = (std::filesystem::path(
-                    config.persistence_path) /
+                        config.persistence_path) /
                     ACTION_SUBDIR
                     ).string();
             if (!utils::load_action_from_file(
-                    action_file,
-                    action_name,
-                    action_info.goal.request.type_name,
-                    action_info.goal.reply.type_name,
-                    action_info.cancel.request.type_name,
-                    action_info.cancel.reply.type_name,
-                    action_info.result.request.type_name,
-                    action_info.result.reply.type_name,
-                    action_info.feedback.type_name,
-                    action_info.status.type_name,
-                    action_info.goal.request.serialized_qos,
-                    action_info.goal.reply.serialized_qos,
-                    action_info.cancel.request.serialized_qos,
-                    action_info.cancel.reply.serialized_qos,
-                    action_info.result.request.serialized_qos,
-                    action_info.result.reply.serialized_qos,
-                    action_info.feedback.serialized_qos,
-                    action_info.status.serialized_qos))
+                        action_file,
+                        action_name,
+                        action_info.goal.request.type_name,
+                        action_info.goal.reply.type_name,
+                        action_info.cancel.request.type_name,
+                        action_info.cancel.reply.type_name,
+                        action_info.result.request.type_name,
+                        action_info.result.reply.type_name,
+                        action_info.feedback.type_name,
+                        action_info.status.type_name,
+                        action_info.goal.request.serialized_qos,
+                        action_info.goal.reply.serialized_qos,
+                        action_info.cancel.request.serialized_qos,
+                        action_info.cancel.reply.serialized_qos,
+                        action_info.result.request.serialized_qos,
+                        action_info.result.reply.serialized_qos,
+                        action_info.feedback.serialized_qos,
+                        action_info.status.serialized_qos))
             {
                 std::cerr << "Failed to load action: " << action_name << std::endl;
                 return false;
@@ -354,7 +355,6 @@ bool wait_for_action_result(
     return true;
 }
 
-
 bool client_routine(
         std::shared_ptr<eprosima::ddsenabler::DDSEnabler> enabler,
         const std::string& action_name,
@@ -440,9 +440,9 @@ bool server_specific_logic(
         std::string feedback_tmp = feedback_json;
         feedback_tmp += "]}";
         if (!enabler->send_action_feedback(
-                action_name.c_str(),
-                feedback_tmp.c_str(),
-                request_id))
+                    action_name.c_str(),
+                    feedback_tmp.c_str(),
+                    request_id))
         {
             std::cerr << "Failed to send action feedback" << std::endl;
             return false;
@@ -457,10 +457,10 @@ bool server_specific_logic(
     json += "]}";
 
     if (!enabler->send_action_result(
-            action_name.c_str(),
-            request_id,
-            eprosima::ddsenabler::participants::STATUS_CODE::STATUS_SUCCEEDED,
-            json.c_str()))
+                action_name.c_str(),
+                request_id,
+                eprosima::ddsenabler::participants::STATUS_CODE::STATUS_SUCCEEDED,
+                json.c_str()))
     {
         std::cerr << "Failed to send action result" << std::endl;
         return false;
@@ -499,11 +499,11 @@ bool server_routine(
         std::this_thread::sleep_for(std::chrono::milliseconds(500)); // Simulate processing time
 
         // Send Feedback & Result
-        if(!server_specific_logic(
-            enabler,
-            action_name,
-            fibonacci_number,
-            request_id))
+        if (!server_specific_logic(
+                    enabler,
+                    action_name,
+                    fibonacci_number,
+                    request_id))
         {
             std::cerr << "Failed to process action: " << action_name << " with request ID: " << request_id << std::endl;
             return false;
@@ -595,8 +595,11 @@ int main(
     }
     else
     {
-        auto goal_path = config.persistence_path.empty() ? std::string() : (std::filesystem::path(config.persistence_path) / REQUESTS_SUBDIR).string();
-        ret = client_routine(enabler, config.action_name, goal_path, config.timeout, config.request_initial_wait, config.cancel_requests);
+        auto goal_path =
+                config.persistence_path.empty() ? std::string() : (std::filesystem::path(config.persistence_path) /
+                REQUESTS_SUBDIR).string();
+        ret = client_routine(enabler, config.action_name, goal_path, config.timeout, config.request_initial_wait,
+                        config.cancel_requests);
     }
 
     return ret ? EXIT_SUCCESS : EXIT_FAILURE;

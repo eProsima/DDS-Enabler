@@ -48,16 +48,18 @@ Handler::Handler(
     writer_ = std::make_unique<Writer>();
 
     writer_->set_is_UUID_active_callback(
-        [this](const std::string& action_name, const UUID& uuid) {
+        [this](const std::string& action_name, const UUID& uuid)
+        {
             return this->is_UUID_active(action_name, uuid, nullptr);
         }
-    );
+        );
 
     writer_->set_erase_action_UUID_callback(
-        [this](const UUID& uuid, ActionEraseReason reason) {
+        [this](const UUID& uuid, ActionEraseReason reason)
+        {
             return this->erase_action_UUID(uuid, reason);
         }
-    );
+        );
 }
 
 Handler::~Handler()
@@ -175,7 +177,9 @@ void Handler::add_data(
             }
             else
             {
-                auto request_id = dynamic_cast<ddspipe::core::types::RpcPayloadData&>(data).write_params.get_reference().related_sample_identity().sequence_number().to64long();
+                auto request_id =
+                        dynamic_cast<ddspipe::core::types::RpcPayloadData&>(data).write_params.get_reference().
+                                related_sample_identity().sequence_number().to64long();
                 write_service_reply_nts_(msg, dyn_type, request_id, rpc_info.service_name);
             }
             break;
@@ -192,26 +196,36 @@ void Handler::add_data(
                     {
                         case ACTION_TYPE::ACTION_RESULT:
                         {
-                            auto action_id = dynamic_cast<ddspipe::core::types::RpcPayloadData&>(data).write_params.get_reference().related_sample_identity().sequence_number().to64long();
+                            auto action_id =
+                                    dynamic_cast<ddspipe::core::types::RpcPayloadData&>(data).write_params.get_reference()
+                                            .related_sample_identity().sequence_number().to64long();
                             UUID action_id_uuid;
                             if (get_action_request_UUID(action_id, ACTION_TYPE::ACTION_RESULT, action_id_uuid))
+                            {
                                 write_action_result_nts_(msg, dyn_type, action_id_uuid, rpc_info.action_name);
+                            }
                             erase_action_UUID(action_id_uuid, ActionEraseReason::RESULT);
                             break;
                         }
 
                         case ACTION_TYPE::ACTION_GOAL:
                         {
-                            auto action_id = dynamic_cast<ddspipe::core::types::RpcPayloadData&>(data).write_params.get_reference().related_sample_identity().sequence_number().to64long();
+                            auto action_id =
+                                    dynamic_cast<ddspipe::core::types::RpcPayloadData&>(data).write_params.get_reference()
+                                            .related_sample_identity().sequence_number().to64long();
                             UUID action_id_uuid;
                             if (get_action_request_UUID(action_id, ACTION_TYPE::ACTION_GOAL, action_id_uuid))
+                            {
                                 write_action_goal_reply_nts_(msg, dyn_type, action_id_uuid, rpc_info.action_name);
+                            }
                             break;
                         }
 
                         case ACTION_TYPE::ACTION_CANCEL:
                         {
-                            auto request_id = dynamic_cast<ddspipe::core::types::RpcPayloadData&>(data).write_params.get_reference().related_sample_identity().sequence_number().to64long();
+                            auto request_id =
+                                    dynamic_cast<ddspipe::core::types::RpcPayloadData&>(data).write_params.get_reference()
+                                            .related_sample_identity().sequence_number().to64long();
                             write_action_cancel_reply_nts_(msg, dyn_type, request_id, rpc_info.action_name);
                             break;
                         }
@@ -238,9 +252,9 @@ void Handler::add_data(
                             rpc_data.sent_sequence_number = eprosima::fastdds::rtps::SequenceNumber_t(requests_id_);
                             UUID uuid;
                             if (!writer_->uuid_from_request_json(
-                                    msg,
-                                    dyn_type,
-                                    uuid))
+                                        msg,
+                                        dyn_type,
+                                        uuid))
                             {
                                 EPROSIMA_LOG_ERROR(DDSENABLER_HANDLER,
                                         "Failed to extract UUID from send_goal_request JSON.");
@@ -248,12 +262,13 @@ void Handler::add_data(
                             }
 
                             if (store_action_request(
-                                rpc_info.action_name,
-                                uuid,
-                                requests_id_,
-                                rpc_info.action_type))
+                                        rpc_info.action_name,
+                                        uuid,
+                                        requests_id_,
+                                        rpc_info.action_type))
                             {
-                                write_action_request_nts_(msg, dyn_type, requests_id_, rpc_info.action_name, rpc_info.action_type);
+                                write_action_request_nts_(msg, dyn_type, requests_id_, rpc_info.action_name,
+                                        rpc_info.action_type);
                             }
 
                             break;
@@ -263,9 +278,9 @@ void Handler::add_data(
                         {
                             UUID uuid;
                             if (!writer_->uuid_from_request_json(
-                                    msg,
-                                    dyn_type,
-                                    uuid))
+                                        msg,
+                                        dyn_type,
+                                        uuid))
                             {
                                 EPROSIMA_LOG_ERROR(DDSENABLER_HANDLER,
                                         "Failed to extract UUID from get_result_request JSON.");
@@ -276,10 +291,10 @@ void Handler::add_data(
                             RpcPayloadData& rpc_data = dynamic_cast<RpcPayloadData&>(data);
                             rpc_data.sent_sequence_number = eprosima::fastdds::rtps::SequenceNumber_t(requests_id_);
                             if (!store_action_request(
-                                rpc_info.action_name,
-                                uuid,
-                                requests_id_,
-                                ACTION_TYPE::ACTION_RESULT))
+                                        rpc_info.action_name,
+                                        uuid,
+                                        requests_id_,
+                                        ACTION_TYPE::ACTION_RESULT))
                             {
                                 EPROSIMA_LOG_ERROR(DDSENABLER_HANDLER,
                                         "Failed to store action request for get_result_request.");
@@ -655,7 +670,8 @@ bool Handler::register_type_nts_(
     if (_type_name != type_name)
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_HANDLER,
-                "Unexpected dynamic types collection format: " << type_name << " expected to be last item, found " << _type_name <<
+                "Unexpected dynamic types collection format: " << type_name << " expected to be last item, found " <<
+                _type_name <<
                 " instead.");
         return false;
     }
@@ -723,16 +739,16 @@ bool Handler::handle_action_result(
         {
             EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
                     "Action name mismatch for action, expected " << it->second.action_name
-                    << ", got " << action_name);
+                                                                 << ", got " << action_name);
             return false;
         }
         if (it->second.result_request_id != 0)
         {
             return send_action_get_result_reply_callback_(
-                    action_name,
-                    action_id,
-                    result,
-                    it->second.result_request_id);
+                action_name,
+                action_id,
+                result,
+                it->second.result_request_id);
         }
         if (it->second.set_result(std::move(result)))
         {
@@ -751,8 +767,8 @@ bool Handler::handle_action_result(
 }
 
 void Handler::erase_action_UUID(
-            const UUID& action_id,
-            ActionEraseReason erase_reason)
+        const UUID& action_id,
+        ActionEraseReason erase_reason)
 {
     std::lock_guard<std::recursive_mutex> lock(mtx_);
     auto it = action_request_id_to_uuid_.find(action_id);

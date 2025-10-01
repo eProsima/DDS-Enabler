@@ -86,7 +86,7 @@ public:
     eProsima_user_DllExport short_optional(
             const short_optional& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -108,7 +108,7 @@ public:
             const short_optional& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -183,8 +183,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     eprosima::fastcdr::optional<int16_t> m_value;
@@ -219,7 +217,7 @@ public:
     eProsima_user_DllExport ushort_optional(
             const ushort_optional& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -241,7 +239,7 @@ public:
             const ushort_optional& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -316,8 +314,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     eprosima::fastcdr::optional<uint16_t> m_value;
@@ -352,7 +348,7 @@ public:
     eProsima_user_DllExport long_optional(
             const long_optional& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -374,7 +370,7 @@ public:
             const long_optional& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -449,8 +445,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     eprosima::fastcdr::optional<int32_t> m_value;
@@ -485,7 +479,7 @@ public:
     eProsima_user_DllExport ulong_optional(
             const ulong_optional& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -507,7 +501,7 @@ public:
             const ulong_optional& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -582,8 +576,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     eprosima::fastcdr::optional<uint32_t> m_value;
@@ -618,7 +610,7 @@ public:
     eProsima_user_DllExport longlong_optional(
             const longlong_optional& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -640,7 +632,7 @@ public:
             const longlong_optional& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -715,8 +707,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     eprosima::fastcdr::optional<int64_t> m_value;
@@ -751,7 +741,7 @@ public:
     eProsima_user_DllExport ulonglong_optional(
             const ulonglong_optional& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -773,7 +763,7 @@ public:
             const ulonglong_optional& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -848,8 +838,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     eprosima::fastcdr::optional<uint64_t> m_value;
@@ -884,7 +872,7 @@ public:
     eProsima_user_DllExport float_optional(
             const float_optional& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -906,7 +894,7 @@ public:
             const float_optional& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -981,8 +969,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     eprosima::fastcdr::optional<float> m_value;
@@ -1017,7 +1003,7 @@ public:
     eProsima_user_DllExport double_optional(
             const double_optional& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -1039,7 +1025,7 @@ public:
             const double_optional& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -1114,8 +1100,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     eprosima::fastcdr::optional<double> m_value;
@@ -1150,7 +1134,7 @@ public:
     eProsima_user_DllExport longdouble_optional(
             const longdouble_optional& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -1172,7 +1156,7 @@ public:
             const longdouble_optional& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -1247,8 +1231,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     eprosima::fastcdr::optional<long double> m_value;
@@ -1283,7 +1265,7 @@ public:
     eProsima_user_DllExport boolean_optional(
             const boolean_optional& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -1305,7 +1287,7 @@ public:
             const boolean_optional& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -1380,8 +1362,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     eprosima::fastcdr::optional<bool> m_value;
@@ -1416,7 +1396,7 @@ public:
     eProsima_user_DllExport octet_optional(
             const octet_optional& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -1438,7 +1418,7 @@ public:
             const octet_optional& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -1513,8 +1493,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     eprosima::fastcdr::optional<uint8_t> m_value;
@@ -1549,7 +1527,7 @@ public:
     eProsima_user_DllExport char_optional(
             const char_optional& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -1571,7 +1549,7 @@ public:
             const char_optional& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -1646,8 +1624,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     eprosima::fastcdr::optional<char> m_value;
@@ -1682,7 +1658,7 @@ public:
     eProsima_user_DllExport wchar_optional(
             const wchar_optional& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -1704,7 +1680,7 @@ public:
             const wchar_optional& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -1779,8 +1755,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     eprosima::fastcdr::optional<wchar_t> m_value;
@@ -1815,9 +1789,9 @@ public:
     eProsima_user_DllExport short_align_1_optional(
             const short_align_1_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -1840,9 +1814,9 @@ public:
             const short_align_1_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -1868,7 +1842,7 @@ public:
             const short_align_1_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -1909,7 +1883,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -1947,8 +1920,6 @@ public:
     {
         return m_value;
     }
-
-
 
 private:
 
@@ -1985,9 +1956,9 @@ public:
     eProsima_user_DllExport short_align_2_optional(
             const short_align_2_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -2010,9 +1981,9 @@ public:
             const short_align_2_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -2038,7 +2009,7 @@ public:
             const short_align_2_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -2079,7 +2050,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -2117,8 +2087,6 @@ public:
     {
         return m_value;
     }
-
-
 
 private:
 
@@ -2155,9 +2123,9 @@ public:
     eProsima_user_DllExport short_align_4_optional(
             const short_align_4_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -2180,9 +2148,9 @@ public:
             const short_align_4_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -2208,7 +2176,7 @@ public:
             const short_align_4_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -2248,7 +2216,6 @@ public:
     {
         return m_align;
     }
-
 
     /*!
      * @brief This function copies the value in member value
@@ -2288,8 +2255,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     uint32_t m_align{0};
@@ -2325,9 +2290,9 @@ public:
     eProsima_user_DllExport ushort_align_1_optional(
             const ushort_align_1_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -2350,9 +2315,9 @@ public:
             const ushort_align_1_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -2378,7 +2343,7 @@ public:
             const ushort_align_1_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -2419,7 +2384,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -2457,8 +2421,6 @@ public:
     {
         return m_value;
     }
-
-
 
 private:
 
@@ -2495,9 +2457,9 @@ public:
     eProsima_user_DllExport ushort_align_2_optional(
             const ushort_align_2_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -2520,9 +2482,9 @@ public:
             const ushort_align_2_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -2548,7 +2510,7 @@ public:
             const ushort_align_2_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -2589,7 +2551,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -2627,8 +2588,6 @@ public:
     {
         return m_value;
     }
-
-
 
 private:
 
@@ -2665,9 +2624,9 @@ public:
     eProsima_user_DllExport ushort_align_4_optional(
             const ushort_align_4_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -2690,9 +2649,9 @@ public:
             const ushort_align_4_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -2718,7 +2677,7 @@ public:
             const ushort_align_4_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -2758,7 +2717,6 @@ public:
     {
         return m_align;
     }
-
 
     /*!
      * @brief This function copies the value in member value
@@ -2798,8 +2756,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     uint32_t m_align{0};
@@ -2835,9 +2791,9 @@ public:
     eProsima_user_DllExport long_align_1_optional(
             const long_align_1_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -2860,9 +2816,9 @@ public:
             const long_align_1_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -2888,7 +2844,7 @@ public:
             const long_align_1_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -2929,7 +2885,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -2967,8 +2922,6 @@ public:
     {
         return m_value;
     }
-
-
 
 private:
 
@@ -3005,9 +2958,9 @@ public:
     eProsima_user_DllExport long_align_2_optional(
             const long_align_2_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -3030,9 +2983,9 @@ public:
             const long_align_2_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -3058,7 +3011,7 @@ public:
             const long_align_2_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -3099,7 +3052,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -3137,8 +3089,6 @@ public:
     {
         return m_value;
     }
-
-
 
 private:
 
@@ -3175,9 +3125,9 @@ public:
     eProsima_user_DllExport long_align_4_optional(
             const long_align_4_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -3200,9 +3150,9 @@ public:
             const long_align_4_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -3228,7 +3178,7 @@ public:
             const long_align_4_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -3268,7 +3218,6 @@ public:
     {
         return m_align;
     }
-
 
     /*!
      * @brief This function copies the value in member value
@@ -3308,8 +3257,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     uint32_t m_align{0};
@@ -3345,9 +3292,9 @@ public:
     eProsima_user_DllExport ulong_align_1_optional(
             const ulong_align_1_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -3370,9 +3317,9 @@ public:
             const ulong_align_1_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -3398,7 +3345,7 @@ public:
             const ulong_align_1_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -3439,7 +3386,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -3477,8 +3423,6 @@ public:
     {
         return m_value;
     }
-
-
 
 private:
 
@@ -3515,9 +3459,9 @@ public:
     eProsima_user_DllExport ulong_align_2_optional(
             const ulong_align_2_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -3540,9 +3484,9 @@ public:
             const ulong_align_2_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -3568,7 +3512,7 @@ public:
             const ulong_align_2_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -3609,7 +3553,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -3647,8 +3590,6 @@ public:
     {
         return m_value;
     }
-
-
 
 private:
 
@@ -3685,9 +3626,9 @@ public:
     eProsima_user_DllExport ulong_align_4_optional(
             const ulong_align_4_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -3710,9 +3651,9 @@ public:
             const ulong_align_4_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -3738,7 +3679,7 @@ public:
             const ulong_align_4_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -3778,7 +3719,6 @@ public:
     {
         return m_align;
     }
-
 
     /*!
      * @brief This function copies the value in member value
@@ -3818,8 +3758,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     uint32_t m_align{0};
@@ -3855,9 +3793,9 @@ public:
     eProsima_user_DllExport longlong_align_1_optional(
             const longlong_align_1_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -3880,9 +3818,9 @@ public:
             const longlong_align_1_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -3908,7 +3846,7 @@ public:
             const longlong_align_1_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -3949,7 +3887,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -3987,8 +3924,6 @@ public:
     {
         return m_value;
     }
-
-
 
 private:
 
@@ -4025,9 +3960,9 @@ public:
     eProsima_user_DllExport longlong_align_2_optional(
             const longlong_align_2_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -4050,9 +3985,9 @@ public:
             const longlong_align_2_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -4078,7 +4013,7 @@ public:
             const longlong_align_2_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -4119,7 +4054,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -4157,8 +4091,6 @@ public:
     {
         return m_value;
     }
-
-
 
 private:
 
@@ -4195,9 +4127,9 @@ public:
     eProsima_user_DllExport longlong_align_4_optional(
             const longlong_align_4_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -4220,9 +4152,9 @@ public:
             const longlong_align_4_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -4248,7 +4180,7 @@ public:
             const longlong_align_4_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -4288,7 +4220,6 @@ public:
     {
         return m_align;
     }
-
 
     /*!
      * @brief This function copies the value in member value
@@ -4328,8 +4259,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     uint32_t m_align{0};
@@ -4365,9 +4294,9 @@ public:
     eProsima_user_DllExport ulonglong_align_1_optional(
             const ulonglong_align_1_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -4390,9 +4319,9 @@ public:
             const ulonglong_align_1_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -4418,7 +4347,7 @@ public:
             const ulonglong_align_1_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -4459,7 +4388,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -4497,8 +4425,6 @@ public:
     {
         return m_value;
     }
-
-
 
 private:
 
@@ -4535,9 +4461,9 @@ public:
     eProsima_user_DllExport ulonglong_align_2_optional(
             const ulonglong_align_2_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -4560,9 +4486,9 @@ public:
             const ulonglong_align_2_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -4588,7 +4514,7 @@ public:
             const ulonglong_align_2_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -4629,7 +4555,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -4667,8 +4592,6 @@ public:
     {
         return m_value;
     }
-
-
 
 private:
 
@@ -4705,9 +4628,9 @@ public:
     eProsima_user_DllExport ulonglong_align_4_optional(
             const ulonglong_align_4_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -4730,9 +4653,9 @@ public:
             const ulonglong_align_4_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -4758,7 +4681,7 @@ public:
             const ulonglong_align_4_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -4798,7 +4721,6 @@ public:
     {
         return m_align;
     }
-
 
     /*!
      * @brief This function copies the value in member value
@@ -4838,8 +4760,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     uint32_t m_align{0};
@@ -4875,9 +4795,9 @@ public:
     eProsima_user_DllExport float_align_1_optional(
             const float_align_1_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -4900,9 +4820,9 @@ public:
             const float_align_1_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -4928,7 +4848,7 @@ public:
             const float_align_1_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -4969,7 +4889,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -5007,8 +4926,6 @@ public:
     {
         return m_value;
     }
-
-
 
 private:
 
@@ -5045,9 +4962,9 @@ public:
     eProsima_user_DllExport float_align_2_optional(
             const float_align_2_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -5070,9 +4987,9 @@ public:
             const float_align_2_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -5098,7 +5015,7 @@ public:
             const float_align_2_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -5139,7 +5056,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -5177,8 +5093,6 @@ public:
     {
         return m_value;
     }
-
-
 
 private:
 
@@ -5215,9 +5129,9 @@ public:
     eProsima_user_DllExport float_align_4_optional(
             const float_align_4_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -5240,9 +5154,9 @@ public:
             const float_align_4_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -5268,7 +5182,7 @@ public:
             const float_align_4_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -5308,7 +5222,6 @@ public:
     {
         return m_align;
     }
-
 
     /*!
      * @brief This function copies the value in member value
@@ -5348,8 +5261,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     uint32_t m_align{0};
@@ -5385,9 +5296,9 @@ public:
     eProsima_user_DllExport double_align_1_optional(
             const double_align_1_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -5410,9 +5321,9 @@ public:
             const double_align_1_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -5438,7 +5349,7 @@ public:
             const double_align_1_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -5479,7 +5390,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -5517,8 +5427,6 @@ public:
     {
         return m_value;
     }
-
-
 
 private:
 
@@ -5555,9 +5463,9 @@ public:
     eProsima_user_DllExport double_align_2_optional(
             const double_align_2_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -5580,9 +5488,9 @@ public:
             const double_align_2_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -5608,7 +5516,7 @@ public:
             const double_align_2_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -5649,7 +5557,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -5687,8 +5594,6 @@ public:
     {
         return m_value;
     }
-
-
 
 private:
 
@@ -5725,9 +5630,9 @@ public:
     eProsima_user_DllExport double_align_4_optional(
             const double_align_4_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -5750,9 +5655,9 @@ public:
             const double_align_4_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -5778,7 +5683,7 @@ public:
             const double_align_4_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -5818,7 +5723,6 @@ public:
     {
         return m_align;
     }
-
 
     /*!
      * @brief This function copies the value in member value
@@ -5858,8 +5762,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     uint32_t m_align{0};
@@ -5895,9 +5797,9 @@ public:
     eProsima_user_DllExport longdouble_align_1_optional(
             const longdouble_align_1_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -5920,9 +5822,9 @@ public:
             const longdouble_align_1_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -5948,7 +5850,7 @@ public:
             const longdouble_align_1_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -5989,7 +5891,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -6027,8 +5928,6 @@ public:
     {
         return m_value;
     }
-
-
 
 private:
 
@@ -6065,9 +5964,9 @@ public:
     eProsima_user_DllExport longdouble_align_2_optional(
             const longdouble_align_2_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -6090,9 +5989,9 @@ public:
             const longdouble_align_2_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -6118,7 +6017,7 @@ public:
             const longdouble_align_2_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -6159,7 +6058,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -6197,8 +6095,6 @@ public:
     {
         return m_value;
     }
-
-
 
 private:
 
@@ -6235,9 +6131,9 @@ public:
     eProsima_user_DllExport longdouble_align_4_optional(
             const longdouble_align_4_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -6260,9 +6156,9 @@ public:
             const longdouble_align_4_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -6288,7 +6184,7 @@ public:
             const longdouble_align_4_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -6328,7 +6224,6 @@ public:
     {
         return m_align;
     }
-
 
     /*!
      * @brief This function copies the value in member value
@@ -6368,8 +6263,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     uint32_t m_align{0};
@@ -6405,9 +6298,9 @@ public:
     eProsima_user_DllExport boolean_align_1_optional(
             const boolean_align_1_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -6430,9 +6323,9 @@ public:
             const boolean_align_1_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -6458,7 +6351,7 @@ public:
             const boolean_align_1_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -6499,7 +6392,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -6537,8 +6429,6 @@ public:
     {
         return m_value;
     }
-
-
 
 private:
 
@@ -6575,9 +6465,9 @@ public:
     eProsima_user_DllExport boolean_align_2_optional(
             const boolean_align_2_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -6600,9 +6490,9 @@ public:
             const boolean_align_2_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -6628,7 +6518,7 @@ public:
             const boolean_align_2_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -6669,7 +6559,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -6707,8 +6596,6 @@ public:
     {
         return m_value;
     }
-
-
 
 private:
 
@@ -6745,9 +6632,9 @@ public:
     eProsima_user_DllExport boolean_align_4_optional(
             const boolean_align_4_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -6770,9 +6657,9 @@ public:
             const boolean_align_4_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -6798,7 +6685,7 @@ public:
             const boolean_align_4_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -6838,7 +6725,6 @@ public:
     {
         return m_align;
     }
-
 
     /*!
      * @brief This function copies the value in member value
@@ -6878,8 +6764,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     uint32_t m_align{0};
@@ -6915,9 +6799,9 @@ public:
     eProsima_user_DllExport octet_align_1_optional(
             const octet_align_1_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -6940,9 +6824,9 @@ public:
             const octet_align_1_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -6968,7 +6852,7 @@ public:
             const octet_align_1_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -7009,7 +6893,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -7047,8 +6930,6 @@ public:
     {
         return m_value;
     }
-
-
 
 private:
 
@@ -7085,9 +6966,9 @@ public:
     eProsima_user_DllExport octet_align_2_optional(
             const octet_align_2_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -7110,9 +6991,9 @@ public:
             const octet_align_2_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -7138,7 +7019,7 @@ public:
             const octet_align_2_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -7179,7 +7060,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -7217,8 +7097,6 @@ public:
     {
         return m_value;
     }
-
-
 
 private:
 
@@ -7255,9 +7133,9 @@ public:
     eProsima_user_DllExport octet_align_4_optional(
             const octet_align_4_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -7280,9 +7158,9 @@ public:
             const octet_align_4_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -7308,7 +7186,7 @@ public:
             const octet_align_4_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -7348,7 +7226,6 @@ public:
     {
         return m_align;
     }
-
 
     /*!
      * @brief This function copies the value in member value
@@ -7388,8 +7265,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     uint32_t m_align{0};
@@ -7425,9 +7300,9 @@ public:
     eProsima_user_DllExport char_align_1_optional(
             const char_align_1_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -7450,9 +7325,9 @@ public:
             const char_align_1_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -7478,7 +7353,7 @@ public:
             const char_align_1_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -7519,7 +7394,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -7557,8 +7431,6 @@ public:
     {
         return m_value;
     }
-
-
 
 private:
 
@@ -7595,9 +7467,9 @@ public:
     eProsima_user_DllExport char_align_2_optional(
             const char_align_2_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -7620,9 +7492,9 @@ public:
             const char_align_2_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -7648,7 +7520,7 @@ public:
             const char_align_2_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -7689,7 +7561,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -7727,8 +7598,6 @@ public:
     {
         return m_value;
     }
-
-
 
 private:
 
@@ -7765,9 +7634,9 @@ public:
     eProsima_user_DllExport char_align_4_optional(
             const char_align_4_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -7790,9 +7659,9 @@ public:
             const char_align_4_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -7818,7 +7687,7 @@ public:
             const char_align_4_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -7858,7 +7727,6 @@ public:
     {
         return m_align;
     }
-
 
     /*!
      * @brief This function copies the value in member value
@@ -7898,8 +7766,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     uint32_t m_align{0};
@@ -7935,9 +7801,9 @@ public:
     eProsima_user_DllExport wchar_align_1_optional(
             const wchar_align_1_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -7960,9 +7826,9 @@ public:
             const wchar_align_1_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -7988,7 +7854,7 @@ public:
             const wchar_align_1_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -8029,7 +7895,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -8067,8 +7932,6 @@ public:
     {
         return m_value;
     }
-
-
 
 private:
 
@@ -8105,9 +7968,9 @@ public:
     eProsima_user_DllExport wchar_align_2_optional(
             const wchar_align_2_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -8130,9 +7993,9 @@ public:
             const wchar_align_2_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -8158,7 +8021,7 @@ public:
             const wchar_align_2_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -8199,7 +8062,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -8237,8 +8099,6 @@ public:
     {
         return m_value;
     }
-
-
 
 private:
 
@@ -8275,9 +8135,9 @@ public:
     eProsima_user_DllExport wchar_align_4_optional(
             const wchar_align_4_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -8300,9 +8160,9 @@ public:
             const wchar_align_4_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -8328,7 +8188,7 @@ public:
             const wchar_align_4_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -8368,7 +8228,6 @@ public:
     {
         return m_align;
     }
-
 
     /*!
      * @brief This function copies the value in member value
@@ -8408,8 +8267,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     uint32_t m_align{0};
@@ -8445,7 +8302,7 @@ public:
     eProsima_user_DllExport sequence_short_optional(
             const sequence_short_optional& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -8467,7 +8324,7 @@ public:
             const sequence_short_optional& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -8542,8 +8399,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     eprosima::fastcdr::optional<std::vector<int16_t>> m_value;
@@ -8578,9 +8433,9 @@ public:
     eProsima_user_DllExport sequence_short_align_1_optional(
             const sequence_short_align_1_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -8603,9 +8458,9 @@ public:
             const sequence_short_align_1_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -8631,7 +8486,7 @@ public:
             const sequence_short_align_1_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -8672,7 +8527,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -8710,8 +8564,6 @@ public:
     {
         return m_value;
     }
-
-
 
 private:
 
@@ -8748,9 +8600,9 @@ public:
     eProsima_user_DllExport sequence_short_align_2_optional(
             const sequence_short_align_2_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -8773,9 +8625,9 @@ public:
             const sequence_short_align_2_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -8801,7 +8653,7 @@ public:
             const sequence_short_align_2_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -8842,7 +8694,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -8880,8 +8731,6 @@ public:
     {
         return m_value;
     }
-
-
 
 private:
 
@@ -8918,9 +8767,9 @@ public:
     eProsima_user_DllExport sequence_short_align_4_optional(
             const sequence_short_align_4_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -8943,9 +8792,9 @@ public:
             const sequence_short_align_4_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -8971,7 +8820,7 @@ public:
             const sequence_short_align_4_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -9011,7 +8860,6 @@ public:
     {
         return m_align;
     }
-
 
     /*!
      * @brief This function copies the value in member value
@@ -9051,8 +8899,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     uint32_t m_align{0};
@@ -9088,7 +8934,7 @@ public:
     eProsima_user_DllExport string_unbounded_optional(
             const string_unbounded_optional& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -9110,7 +8956,7 @@ public:
             const string_unbounded_optional& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -9185,8 +9031,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     eprosima::fastcdr::optional<std::string> m_value;
@@ -9221,9 +9065,9 @@ public:
     eProsima_user_DllExport string_unbounded_align_1_optional(
             const string_unbounded_align_1_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -9246,9 +9090,9 @@ public:
             const string_unbounded_align_1_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -9274,7 +9118,7 @@ public:
             const string_unbounded_align_1_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -9315,7 +9159,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -9353,8 +9196,6 @@ public:
     {
         return m_value;
     }
-
-
 
 private:
 
@@ -9391,9 +9232,9 @@ public:
     eProsima_user_DllExport string_unbounded_align_2_optional(
             const string_unbounded_align_2_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -9416,9 +9257,9 @@ public:
             const string_unbounded_align_2_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -9444,7 +9285,7 @@ public:
             const string_unbounded_align_2_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -9485,7 +9326,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -9523,8 +9363,6 @@ public:
     {
         return m_value;
     }
-
-
 
 private:
 
@@ -9561,9 +9399,9 @@ public:
     eProsima_user_DllExport string_unbounded_align_4_optional(
             const string_unbounded_align_4_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -9586,9 +9424,9 @@ public:
             const string_unbounded_align_4_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -9614,7 +9452,7 @@ public:
             const string_unbounded_align_4_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -9654,7 +9492,6 @@ public:
     {
         return m_align;
     }
-
 
     /*!
      * @brief This function copies the value in member value
@@ -9694,8 +9531,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     uint32_t m_align{0};
@@ -9731,7 +9566,7 @@ public:
     eProsima_user_DllExport string_bounded_optional(
             const string_bounded_optional& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -9753,7 +9588,7 @@ public:
             const string_bounded_optional& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -9828,8 +9663,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     eprosima::fastcdr::optional<eprosima::fastcdr::fixed_string<8>> m_value;
@@ -9864,9 +9697,9 @@ public:
     eProsima_user_DllExport string_bounded_align_1_optional(
             const string_bounded_align_1_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -9889,9 +9722,9 @@ public:
             const string_bounded_align_1_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -9917,7 +9750,7 @@ public:
             const string_bounded_align_1_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -9958,7 +9791,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -9996,8 +9828,6 @@ public:
     {
         return m_value;
     }
-
-
 
 private:
 
@@ -10034,9 +9864,9 @@ public:
     eProsima_user_DllExport string_bounded_align_2_optional(
             const string_bounded_align_2_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -10059,9 +9889,9 @@ public:
             const string_bounded_align_2_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -10087,7 +9917,7 @@ public:
             const string_bounded_align_2_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -10128,7 +9958,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -10166,8 +9995,6 @@ public:
     {
         return m_value;
     }
-
-
 
 private:
 
@@ -10204,9 +10031,9 @@ public:
     eProsima_user_DllExport string_bounded_align_4_optional(
             const string_bounded_align_4_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -10229,9 +10056,9 @@ public:
             const string_bounded_align_4_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -10257,7 +10084,7 @@ public:
             const string_bounded_align_4_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -10297,7 +10124,6 @@ public:
     {
         return m_align;
     }
-
 
     /*!
      * @brief This function copies the value in member value
@@ -10337,8 +10163,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     uint32_t m_align{0};
@@ -10374,7 +10198,7 @@ public:
     eProsima_user_DllExport map_short_optional(
             const map_short_optional& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -10396,7 +10220,7 @@ public:
             const map_short_optional& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -10471,8 +10295,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     eprosima::fastcdr::optional<std::map<int32_t, int16_t>> m_value;
@@ -10507,9 +10329,9 @@ public:
     eProsima_user_DllExport map_short_align_1_optional(
             const map_short_align_1_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -10532,9 +10354,9 @@ public:
             const map_short_align_1_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -10560,7 +10382,7 @@ public:
             const map_short_align_1_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -10601,7 +10423,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -10639,8 +10460,6 @@ public:
     {
         return m_value;
     }
-
-
 
 private:
 
@@ -10677,9 +10496,9 @@ public:
     eProsima_user_DllExport map_short_align_2_optional(
             const map_short_align_2_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -10702,9 +10521,9 @@ public:
             const map_short_align_2_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -10730,7 +10549,7 @@ public:
             const map_short_align_2_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -10771,7 +10590,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -10809,8 +10627,6 @@ public:
     {
         return m_value;
     }
-
-
 
 private:
 
@@ -10847,9 +10663,9 @@ public:
     eProsima_user_DllExport map_short_align_4_optional(
             const map_short_align_4_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -10872,9 +10688,9 @@ public:
             const map_short_align_4_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -10900,7 +10716,7 @@ public:
             const map_short_align_4_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -10940,7 +10756,6 @@ public:
     {
         return m_align;
     }
-
 
     /*!
      * @brief This function copies the value in member value
@@ -10980,8 +10795,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     uint32_t m_align{0};
@@ -11017,7 +10830,7 @@ public:
     eProsima_user_DllExport array_short_optional(
             const array_short_optional& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -11039,7 +10852,7 @@ public:
             const array_short_optional& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -11114,8 +10927,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     eprosima::fastcdr::optional<std::array<int16_t, 10>> m_value;
@@ -11150,9 +10961,9 @@ public:
     eProsima_user_DllExport array_short_align_1_optional(
             const array_short_align_1_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -11175,9 +10986,9 @@ public:
             const array_short_align_1_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -11203,7 +11014,7 @@ public:
             const array_short_align_1_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -11244,7 +11055,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -11282,8 +11092,6 @@ public:
     {
         return m_value;
     }
-
-
 
 private:
 
@@ -11320,9 +11128,9 @@ public:
     eProsima_user_DllExport array_short_align_2_optional(
             const array_short_align_2_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -11345,9 +11153,9 @@ public:
             const array_short_align_2_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -11373,7 +11181,7 @@ public:
             const array_short_align_2_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -11414,7 +11222,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -11453,8 +11260,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     uint16_t m_align{0};
@@ -11490,9 +11295,9 @@ public:
     eProsima_user_DllExport array_short_align_4_optional(
             const array_short_align_4_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -11515,9 +11320,9 @@ public:
             const array_short_align_4_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -11543,7 +11348,7 @@ public:
             const array_short_align_4_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -11584,7 +11389,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -11623,8 +11427,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     uint32_t m_align{0};
@@ -11660,7 +11462,7 @@ public:
     eProsima_user_DllExport struct_optional(
             const struct_optional& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -11682,7 +11484,7 @@ public:
             const struct_optional& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -11757,8 +11559,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     eprosima::fastcdr::optional<InnerStructureHelper> m_value;
@@ -11793,9 +11593,9 @@ public:
     eProsima_user_DllExport struct_align_1_optional(
             const struct_align_1_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -11818,9 +11618,9 @@ public:
             const struct_align_1_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -11846,7 +11646,7 @@ public:
             const struct_align_1_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -11887,7 +11687,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -11926,8 +11725,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     uint8_t m_align{0};
@@ -11963,9 +11760,9 @@ public:
     eProsima_user_DllExport struct_align_2_optional(
             const struct_align_2_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -11988,9 +11785,9 @@ public:
             const struct_align_2_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -12016,7 +11813,7 @@ public:
             const struct_align_2_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -12057,7 +11854,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -12096,8 +11892,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     uint16_t m_align{0};
@@ -12133,9 +11927,9 @@ public:
     eProsima_user_DllExport struct_align_4_optional(
             const struct_align_4_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -12158,9 +11952,9 @@ public:
             const struct_align_4_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -12186,7 +11980,7 @@ public:
             const struct_align_4_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -12227,7 +12021,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -12266,8 +12059,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     uint32_t m_align{0};
@@ -12303,9 +12094,9 @@ public:
     eProsima_user_DllExport InnerStructOptional(
             const InnerStructOptional& x)
     {
-                    m_s = x.m_s;
+        m_s = x.m_s;
 
-                    m_l = x.m_l;
+        m_l = x.m_l;
 
     }
 
@@ -12328,9 +12119,9 @@ public:
             const InnerStructOptional& x)
     {
 
-                    m_s = x.m_s;
+        m_s = x.m_s;
 
-                    m_l = x.m_l;
+        m_l = x.m_l;
 
         return *this;
     }
@@ -12356,7 +12147,7 @@ public:
             const InnerStructOptional& x) const
     {
         return (m_s == x.m_s &&
-           m_l == x.m_l);
+               m_l == x.m_l);
     }
 
     /*!
@@ -12397,7 +12188,6 @@ public:
         return m_s;
     }
 
-
     /*!
      * @brief This function copies the value in member l
      * @param _l New value to be copied in member l
@@ -12436,8 +12226,6 @@ public:
         return m_l;
     }
 
-
-
 private:
 
     int16_t m_s{0};
@@ -12473,7 +12261,7 @@ public:
     eProsima_user_DllExport opt_struct_optional(
             const opt_struct_optional& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -12495,7 +12283,7 @@ public:
             const opt_struct_optional& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -12570,8 +12358,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     eprosima::fastcdr::optional<InnerStructOptional> m_value;
@@ -12606,9 +12392,9 @@ public:
     eProsima_user_DllExport opt_struct_align_1_optional(
             const opt_struct_align_1_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -12631,9 +12417,9 @@ public:
             const opt_struct_align_1_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -12659,7 +12445,7 @@ public:
             const opt_struct_align_1_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -12700,7 +12486,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -12739,8 +12524,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     uint8_t m_align{0};
@@ -12776,9 +12559,9 @@ public:
     eProsima_user_DllExport opt_struct_align_2_optional(
             const opt_struct_align_2_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -12801,9 +12584,9 @@ public:
             const opt_struct_align_2_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -12829,7 +12612,7 @@ public:
             const opt_struct_align_2_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -12870,7 +12653,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -12909,8 +12691,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     uint16_t m_align{0};
@@ -12946,9 +12726,9 @@ public:
     eProsima_user_DllExport opt_struct_align_4_optional(
             const opt_struct_align_4_optional& x)
     {
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -12971,9 +12751,9 @@ public:
             const opt_struct_align_4_optional& x)
     {
 
-                    m_align = x.m_align;
+        m_align = x.m_align;
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -12999,7 +12779,7 @@ public:
             const opt_struct_align_4_optional& x) const
     {
         return (m_align == x.m_align &&
-           m_value == x.m_value);
+               m_value == x.m_value);
     }
 
     /*!
@@ -13040,7 +12820,6 @@ public:
         return m_align;
     }
 
-
     /*!
      * @brief This function copies the value in member value
      * @param _value New value to be copied in member value
@@ -13078,8 +12857,6 @@ public:
     {
         return m_value;
     }
-
-
 
 private:
 

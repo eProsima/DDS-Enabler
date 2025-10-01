@@ -40,62 +40,63 @@ class InternalRpcReader : public ddspipe::participants::InternalReader
 {
 public:
 
-        DDSENABLER_PARTICIPANTS_DllAPI
-        InternalRpcReader(
-                const ddspipe::core::types::ParticipantId& participant_id,
-                const ddspipe::core::types::DdsTopic& topic)
-                : topic_(topic),
-                  ddspipe::participants::InternalReader(participant_id)
-        {
+    DDSENABLER_PARTICIPANTS_DllAPI
+    InternalRpcReader(
+            const ddspipe::core::types::ParticipantId& participant_id,
+            const ddspipe::core::types::DdsTopic& topic)
+        : topic_(topic)
+        , ddspipe::participants::InternalReader(participant_id)
+    {
 
-            guid_ = ddspipe::core::types::Guid::new_unique_guid();
+        guid_ = ddspipe::core::types::Guid::new_unique_guid();
+    }
+
+    ~InternalRpcReader() = default;
+
+    DDSENABLER_PARTICIPANTS_DllAPI
+    ddspipe::core::types::Guid guid() const override
+    {
+        return guid_;
+    }
+
+    DDSENABLER_PARTICIPANTS_DllAPI
+    fastdds::RecursiveTimedMutex& get_rtps_mutex() const override
+    {
+        return rtps_mutex_;
+    }
+
+    DDSENABLER_PARTICIPANTS_DllAPI
+    uint64_t get_unread_count() const override
+    {
+        if (unread_count_ == 0)
+        {
+            return 0;
         }
 
-        ~InternalRpcReader() = default;
+        return unread_count_--;
+    }
 
-        DDSENABLER_PARTICIPANTS_DllAPI
-        ddspipe::core::types::Guid guid() const override
-        {
-            return guid_;
-        }
+    DDSENABLER_PARTICIPANTS_DllAPI
+    void simulate_data_reception(
+            std::unique_ptr<ddspipe::core::IRoutingData>&& data) noexcept
+    {
+        std::lock_guard<fastdds::RecursiveTimedMutex> lock(rtps_mutex_);
+        unread_count_++;
+        ddspipe::participants::InternalReader::simulate_data_reception(std::move(data));
+    }
 
-        DDSENABLER_PARTICIPANTS_DllAPI
-        fastdds::RecursiveTimedMutex& get_rtps_mutex() const override
-        {
-            return rtps_mutex_;
-        }
-
-        DDSENABLER_PARTICIPANTS_DllAPI
-        uint64_t get_unread_count() const override
-        {
-            if(unread_count_ == 0)
-            {
-                return 0;
-            }
-
-            return unread_count_--;
-        }
-
-        DDSENABLER_PARTICIPANTS_DllAPI
-        void simulate_data_reception(
-                std::unique_ptr<ddspipe::core::IRoutingData>&& data) noexcept
-        {
-                std::lock_guard<fastdds::RecursiveTimedMutex> lock(rtps_mutex_);
-                unread_count_++;
-                ddspipe::participants::InternalReader::simulate_data_reception(std::move(data));
-        }
-
-        DDSENABLER_PARTICIPANTS_DllAPI
-        ddspipe::core::types::DdsTopic topic() const override
-        {
-            return topic_;
-        }
+    DDSENABLER_PARTICIPANTS_DllAPI
+    ddspipe::core::types::DdsTopic topic() const override
+    {
+        return topic_;
+    }
 
 private:
-        ddspipe::core::types::Guid guid_;
-        mutable fastdds::RecursiveTimedMutex rtps_mutex_;
-        mutable uint64_t unread_count_ = 0;
-        ddspipe::core::types::DdsTopic topic_;
+
+    ddspipe::core::types::Guid guid_;
+    mutable fastdds::RecursiveTimedMutex rtps_mutex_;
+    mutable uint64_t unread_count_ = 0;
+    ddspipe::core::types::DdsTopic topic_;
 };
 
 } /* namespace participants */

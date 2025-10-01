@@ -80,7 +80,8 @@ static void test_type_notification_callback(
     std::lock_guard<std::mutex> lock(app_mutex_);
     std::cout << "Type callback received: " << type_name << std::endl;
     if (!config.persistence_path.empty() &&
-            !utils::save_type_to_file((std::filesystem::path(config.persistence_path) / TYPES_SUBDIR).string(), type_name,
+            !utils::save_type_to_file((std::filesystem::path(config.persistence_path) / TYPES_SUBDIR).string(),
+            type_name,
             serialized_type_internal, serialized_type_internal_size))
     {
         std::cerr << "Failed to save type: " << type_name << std::endl;
@@ -143,7 +144,7 @@ static void test_service_notification_callback(
         std::cout << "Service callback received: " << service_name << std::endl;
 
         std::string service_file = (std::filesystem::path(
-                config.persistence_path) / SERVICES_SUBDIR
+                    config.persistence_path) / SERVICES_SUBDIR
                 ).string();
         if (!config.persistence_path.empty())
         {
@@ -183,7 +184,7 @@ static bool test_service_query_callback(
         std::cout << "Service type request callback received: " << service_name << std::endl;
 
         std::string service_file = (std::filesystem::path(
-                config.persistence_path) /
+                    config.persistence_path) /
                 SERVICES_SUBDIR
                 ).string();
         if (utils::load_service_from_file(
@@ -298,7 +299,6 @@ bool wait_for_service_reply(
     return true;
 }
 
-
 bool client_routine(
         std::shared_ptr<eprosima::ddsenabler::DDSEnabler> enabler,
         const std::string& service_name,
@@ -388,7 +388,7 @@ bool server_routine(
 
     while (true)
     {
-         uint64_t request_id = 0;
+        uint64_t request_id = 0;
         std::string request;
         if (!wait_for_service_request(timeout, app_mutex_, app_cv_, request_id, request))
         {
@@ -396,7 +396,8 @@ bool server_routine(
             return false;
         }
 
-        std::cout << "Received request for service: " << service_name << " with request ID: " << request_id << std::endl;
+        std::cout << "Received request for service: " << service_name << " with request ID: " << request_id <<
+            std::endl;
 
         // Example response
         server_specific_logic(
@@ -482,7 +483,9 @@ int main(
     }
     else
     {
-        auto request_path = config.persistence_path.empty() ? std::string() : (std::filesystem::path(config.persistence_path) / REQUESTS_SUBDIR).string();
+        auto request_path =
+                config.persistence_path.empty() ? std::string() : (std::filesystem::path(config.persistence_path) /
+                REQUESTS_SUBDIR).string();
         ret = client_routine(enabler, config.service_name, request_path, config.timeout, config.request_initial_wait);
     }
 

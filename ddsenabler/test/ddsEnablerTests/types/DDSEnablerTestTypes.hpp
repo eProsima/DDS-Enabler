@@ -81,7 +81,7 @@ public:
     eProsima_user_DllExport DDSEnablerTestType1(
             const DDSEnablerTestType1& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -103,7 +103,7 @@ public:
             const DDSEnablerTestType1& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -168,8 +168,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     int16_t m_value{0};
@@ -204,7 +202,7 @@ public:
     eProsima_user_DllExport DDSEnablerTestType2(
             const DDSEnablerTestType2& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -226,7 +224,7 @@ public:
             const DDSEnablerTestType2& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -301,8 +299,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     std::string m_value;
@@ -337,7 +333,7 @@ public:
     eProsima_user_DllExport DDSEnablerTestType3(
             const DDSEnablerTestType3& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -359,7 +355,7 @@ public:
             const DDSEnablerTestType3& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -434,8 +430,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     std::array<int32_t, 10> m_value{0};
@@ -470,7 +464,7 @@ public:
     eProsima_user_DllExport DDSEnablerTestType4(
             const DDSEnablerTestType4& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -492,7 +486,7 @@ public:
             const DDSEnablerTestType4& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -566,8 +560,6 @@ public:
     {
         return m_value;
     }
-
-
 
 private:
 

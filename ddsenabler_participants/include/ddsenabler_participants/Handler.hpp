@@ -57,14 +57,19 @@ struct hash<eprosima::fastdds::dds::xtypes::TypeIdentifier>
 };
 
 template<>
-struct hash<eprosima::ddsenabler::participants::UUID> {
-    std::size_t operator()(const eprosima::ddsenabler::participants::UUID& uuid) const noexcept {
+struct hash<eprosima::ddsenabler::participants::UUID>
+{
+    std::size_t operator ()(
+            const eprosima::ddsenabler::participants::UUID& uuid) const noexcept
+    {
         std::size_t hash = 0;
-        for (uint8_t byte : uuid) {
+        for (uint8_t byte : uuid)
+        {
             hash ^= std::hash<uint8_t>{}(byte) + 0x9e3779b9 + (hash << 6) + (hash >> 2);
         }
         return hash;
     }
+
 };
 
 } // std
@@ -421,9 +426,9 @@ protected:
      * @return \c true if the action request was successfully popped, \c false otherwise.
      */
     bool get_action_request_UUID(
-                const uint64_t request_id,
-                const ACTION_TYPE action_type,
-                UUID& action_id);
+            const uint64_t request_id,
+            const ACTION_TYPE action_type,
+            UUID& action_id);
 
     /**
      * @brief Get the result (if it has been previouly stored) of an action associated to the given \c action_id.
@@ -651,7 +656,8 @@ protected:
     std::unordered_map<participants::UUID, ActionRequestInfo> action_request_id_to_uuid_;
 
     //! Lambda to send action get result reply
-    std::function<bool(const std::string&, const UUID&, const std::string&, const uint64_t)> send_action_get_result_reply_callback_;
+    std::function<bool(const std::string&, const UUID&, const std::string&,
+            const uint64_t)> send_action_get_result_reply_callback_;
 };
 
 } /* namespace participants */

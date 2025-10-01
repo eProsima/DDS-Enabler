@@ -137,9 +137,9 @@ protected:
             std::unique_lock<std::mutex>& lck);
 
     bool fill_topic_struct_nts_(
-        const std::string& topic_name,
-        const TopicInfo& topic_info,
-        ddspipe::core::types::DdsTopic& topic);
+            const std::string& topic_name,
+            const TopicInfo& topic_info,
+            ddspipe::core::types::DdsTopic& topic);
 
     bool fullfill_service_type_nts_(
             const ServiceInfo& service_info,

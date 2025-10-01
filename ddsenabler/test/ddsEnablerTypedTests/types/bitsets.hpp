@@ -56,17 +56,17 @@
  */
 struct InnerTypedBitsetHelper
 {
-        bool boolean_bitfield : 1;
+    bool boolean_bitfield : 1;
 
-        uint8_t byte_bitfield : 8;
+    uint8_t byte_bitfield : 8;
 
-        int8_t int8_bitfield : 8;
+    int8_t int8_bitfield : 8;
 
-        uint8_t uint8_bitfield : 8;
+    uint8_t uint8_bitfield : 8;
 
-        int16_t short_bitfield : 16;
+    int16_t short_bitfield : 16;
 
-        uint16_t ushort_bitfield : 16;
+    uint16_t ushort_bitfield : 16;
 
 
     /*!
@@ -77,11 +77,11 @@ struct InnerTypedBitsetHelper
             const InnerTypedBitsetHelper& x) const
     {
         return (boolean_bitfield == x.boolean_bitfield &&
-           byte_bitfield == x.byte_bitfield &&
-           int8_bitfield == x.int8_bitfield &&
-           uint8_bitfield == x.uint8_bitfield &&
-           short_bitfield == x.short_bitfield &&
-           ushort_bitfield == x.ushort_bitfield);
+               byte_bitfield == x.byte_bitfield &&
+               int8_bitfield == x.int8_bitfield &&
+               uint8_bitfield == x.uint8_bitfield &&
+               short_bitfield == x.short_bitfield &&
+               ushort_bitfield == x.ushort_bitfield);
     }
 
     /*!
@@ -93,6 +93,7 @@ struct InnerTypedBitsetHelper
     {
         return !(*this == x);
     }
+
 };
 /*!
  * @brief This structure represents the bitset InnerTypedBitsetHelper2 defined by the user in the IDL file.
@@ -100,9 +101,9 @@ struct InnerTypedBitsetHelper
  */
 struct InnerTypedBitsetHelper2
 {
-        int32_t long_bitfield : 32;
+    int32_t long_bitfield : 32;
 
-        uint32_t ulong_bitfield : 32;
+    uint32_t ulong_bitfield : 32;
 
 
     /*!
@@ -113,7 +114,7 @@ struct InnerTypedBitsetHelper2
             const InnerTypedBitsetHelper2& x) const
     {
         return (long_bitfield == x.long_bitfield &&
-           ulong_bitfield == x.ulong_bitfield);
+               ulong_bitfield == x.ulong_bitfield);
     }
 
     /*!
@@ -125,6 +126,7 @@ struct InnerTypedBitsetHelper2
     {
         return !(*this == x);
     }
+
 };
 /*!
  * @brief This structure represents the bitset InnerTypedBitsetHelper3 defined by the user in the IDL file.
@@ -132,7 +134,7 @@ struct InnerTypedBitsetHelper2
  */
 struct InnerTypedBitsetHelper3
 {
-        int64_t long_long_bitfield : 64;
+    int64_t long_long_bitfield : 64;
 
 
     /*!
@@ -154,6 +156,7 @@ struct InnerTypedBitsetHelper3
     {
         return !(*this == x);
     }
+
 };
 /*!
  * @brief This structure represents the bitset InnerTypedBitsetHelper4 defined by the user in the IDL file.
@@ -161,7 +164,7 @@ struct InnerTypedBitsetHelper3
  */
 struct InnerTypedBitsetHelper4
 {
-        uint64_t ulong_long_bitfield : 64;
+    uint64_t ulong_long_bitfield : 64;
 
 
     /*!
@@ -183,6 +186,7 @@ struct InnerTypedBitsetHelper4
     {
         return !(*this == x);
     }
+
 };
 /*!
  * @brief This class represents the structure BitsetStruct defined by the user in the IDL file.
@@ -213,15 +217,15 @@ public:
     eProsima_user_DllExport BitsetStruct(
             const BitsetStruct& x)
     {
-                    m_var_InnerBitsetHelper = x.m_var_InnerBitsetHelper;
+        m_var_InnerBitsetHelper = x.m_var_InnerBitsetHelper;
 
-                    m_var_InnerTypedBitsetHelper = x.m_var_InnerTypedBitsetHelper;
+        m_var_InnerTypedBitsetHelper = x.m_var_InnerTypedBitsetHelper;
 
-                    m_var_InnerTypedBitsetHelper2 = x.m_var_InnerTypedBitsetHelper2;
+        m_var_InnerTypedBitsetHelper2 = x.m_var_InnerTypedBitsetHelper2;
 
-                    m_var_InnerTypedBitsetHelper3 = x.m_var_InnerTypedBitsetHelper3;
+        m_var_InnerTypedBitsetHelper3 = x.m_var_InnerTypedBitsetHelper3;
 
-                    m_var_InnerTypedBitsetHelper4 = x.m_var_InnerTypedBitsetHelper4;
+        m_var_InnerTypedBitsetHelper4 = x.m_var_InnerTypedBitsetHelper4;
 
     }
 
@@ -247,15 +251,15 @@ public:
             const BitsetStruct& x)
     {
 
-                    m_var_InnerBitsetHelper = x.m_var_InnerBitsetHelper;
+        m_var_InnerBitsetHelper = x.m_var_InnerBitsetHelper;
 
-                    m_var_InnerTypedBitsetHelper = x.m_var_InnerTypedBitsetHelper;
+        m_var_InnerTypedBitsetHelper = x.m_var_InnerTypedBitsetHelper;
 
-                    m_var_InnerTypedBitsetHelper2 = x.m_var_InnerTypedBitsetHelper2;
+        m_var_InnerTypedBitsetHelper2 = x.m_var_InnerTypedBitsetHelper2;
 
-                    m_var_InnerTypedBitsetHelper3 = x.m_var_InnerTypedBitsetHelper3;
+        m_var_InnerTypedBitsetHelper3 = x.m_var_InnerTypedBitsetHelper3;
 
-                    m_var_InnerTypedBitsetHelper4 = x.m_var_InnerTypedBitsetHelper4;
+        m_var_InnerTypedBitsetHelper4 = x.m_var_InnerTypedBitsetHelper4;
 
         return *this;
     }
@@ -284,10 +288,10 @@ public:
             const BitsetStruct& x) const
     {
         return (m_var_InnerBitsetHelper == x.m_var_InnerBitsetHelper &&
-           m_var_InnerTypedBitsetHelper == x.m_var_InnerTypedBitsetHelper &&
-           m_var_InnerTypedBitsetHelper2 == x.m_var_InnerTypedBitsetHelper2 &&
-           m_var_InnerTypedBitsetHelper3 == x.m_var_InnerTypedBitsetHelper3 &&
-           m_var_InnerTypedBitsetHelper4 == x.m_var_InnerTypedBitsetHelper4);
+               m_var_InnerTypedBitsetHelper == x.m_var_InnerTypedBitsetHelper &&
+               m_var_InnerTypedBitsetHelper2 == x.m_var_InnerTypedBitsetHelper2 &&
+               m_var_InnerTypedBitsetHelper3 == x.m_var_InnerTypedBitsetHelper3 &&
+               m_var_InnerTypedBitsetHelper4 == x.m_var_InnerTypedBitsetHelper4);
     }
 
     /*!
@@ -338,7 +342,6 @@ public:
         return m_var_InnerBitsetHelper;
     }
 
-
     /*!
      * @brief This function copies the value in member var_InnerTypedBitsetHelper
      * @param _var_InnerTypedBitsetHelper New value to be copied in member var_InnerTypedBitsetHelper
@@ -376,7 +379,6 @@ public:
     {
         return m_var_InnerTypedBitsetHelper;
     }
-
 
     /*!
      * @brief This function copies the value in member var_InnerTypedBitsetHelper2
@@ -416,7 +418,6 @@ public:
         return m_var_InnerTypedBitsetHelper2;
     }
 
-
     /*!
      * @brief This function copies the value in member var_InnerTypedBitsetHelper3
      * @param _var_InnerTypedBitsetHelper3 New value to be copied in member var_InnerTypedBitsetHelper3
@@ -455,7 +456,6 @@ public:
         return m_var_InnerTypedBitsetHelper3;
     }
 
-
     /*!
      * @brief This function copies the value in member var_InnerTypedBitsetHelper4
      * @param _var_InnerTypedBitsetHelper4 New value to be copied in member var_InnerTypedBitsetHelper4
@@ -493,8 +493,6 @@ public:
     {
         return m_var_InnerTypedBitsetHelper4;
     }
-
-
 
 private:
 

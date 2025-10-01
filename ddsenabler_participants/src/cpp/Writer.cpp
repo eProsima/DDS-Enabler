@@ -36,7 +36,8 @@ using namespace eprosima::ddsenabler::participants::serialization;
 using namespace eprosima::ddspipe::core::types;
 
 
-UUID json_to_uuid(const nlohmann::json& json)
+UUID json_to_uuid(
+        const nlohmann::json& json)
 {
     UUID uuid;
     if (!json.contains("uuid") || !json["uuid"].is_array() || json["uuid"].size() != sizeof(UUID))
@@ -104,35 +105,40 @@ void Writer::write_schema(
 
     // Filter placeholder based on action/service type suffix
     std::string data_placeholder = ss_data_holder.str();
-    try {
+    try
+    {
         using json = nlohmann::json;
         auto j = json::parse(data_placeholder);
 
-        if (type_name.find("SendGoal_Request_") != std::string::npos) {
+        if (type_name.find("SendGoal_Request_") != std::string::npos)
+        {
             // only the 'goal' sub-object
             data_placeholder = j.at("goal").dump();
         }
-        else if (type_name.find("GetResult_Response_") != std::string::npos) {
+        else if (type_name.find("GetResult_Response_") != std::string::npos)
+        {
             // only the 'result' sub-object
             data_placeholder = j.at("result").dump();
         }
-        else if (type_name.find("FeedbackMessage_") != std::string::npos) {
+        else if (type_name.find("FeedbackMessage_") != std::string::npos)
+        {
             // only the 'feedback' sub-object
             data_placeholder = j.at("feedback").dump();
         }
         // all other types (SendGoal_Response, CancelGoal_*, GetResult_Request,
         // GoalStatusArray_ get an empty placeholder
         else if (type_name.find("SendGoal_Response_") != std::string::npos ||
-                 type_name.find("CancelGoal_Request_") != std::string::npos ||
-                 type_name.find("GetResult_Request_") != std::string::npos ||
-                 type_name.find("GoalStatusArray_") != std::string::npos)
+                type_name.find("CancelGoal_Request_") != std::string::npos ||
+                type_name.find("GetResult_Request_") != std::string::npos ||
+                type_name.find("GoalStatusArray_") != std::string::npos)
         {
             data_placeholder = "{}";
         }
     }
-    catch (const std::exception& e) {
+    catch (const std::exception& e)
+    {
         EPROSIMA_LOG_ERROR(DDSENABLER_WRITER,
-            "JSON filter failed for " << type_name << ": " << e.what());
+                "JSON filter failed for " << type_name << ": " << e.what());
     }
 
     // Notify type reception
@@ -187,7 +193,7 @@ void Writer::write_data(
 }
 
 void Writer::write_service_notification(
-    const ddspipe::core::types::RpcTopic& service)
+        const ddspipe::core::types::RpcTopic& service)
 {
     EPROSIMA_LOG_INFO(DDSENABLER_WRITER,
             "Writting service: " << service.service_name() << ".");
@@ -201,8 +207,8 @@ void Writer::write_service_notification(
             ServiceInfo(
                 TopicInfo(service.request_topic().type_name, request_serialized_qos),
                 TopicInfo(service.reply_topic().type_name, reply_serialized_qos)
-            )
-        );
+                )
+            );
     }
 }
 
@@ -277,18 +283,18 @@ void Writer::write_action_notification(
                 ServiceInfo(
                     TopicInfo(action.goal.request_topic().type_name, goal_request_serialized_qos),
                     TopicInfo(action.goal.reply_topic().type_name, goal_reply_serialized_qos)
-                ),
+                    ),
                 ServiceInfo(
                     TopicInfo(action.cancel.request_topic().type_name, cancel_request_serialized_qos),
                     TopicInfo(action.cancel.reply_topic().type_name, cancel_reply_serialized_qos)
-                ),
+                    ),
                 ServiceInfo(
                     TopicInfo(action.result.request_topic().type_name, result_request_serialized_qos),
                     TopicInfo(action.result.reply_topic().type_name, result_reply_serialized_qos)
-                ),
+                    ),
                 TopicInfo(action.feedback.type_name, feedback_serialized_qos),
                 TopicInfo(action.status.type_name, status_serialized_qos)
-            ));
+                ));
     }
 }
 
@@ -464,8 +470,10 @@ void Writer::write_action_cancel_reply_notification(
         for (const auto& goal : goals)
         {
             UUID msg_action_id = json_to_uuid(goal["goal_id"]);
-            if(is_UUID_active_callback_ && !is_UUID_active_callback_(action_name, msg_action_id))
+            if (is_UUID_active_callback_ && !is_UUID_active_callback_(action_name, msg_action_id))
+            {
                 continue;
+            }
 
             if (action_status_notification_callback_)
             {
@@ -506,8 +514,10 @@ void Writer::write_action_status_notification(
         for (const auto& status : list)
         {
             UUID uuid = json_to_uuid(status["goal_info"]["goal_id"]);
-            if(is_UUID_active_callback_ && !is_UUID_active_callback_(action_name, uuid))
+            if (is_UUID_active_callback_ && !is_UUID_active_callback_(action_name, uuid))
+            {
                 continue;
+            }
 
             ddsenabler::participants::STATUS_CODE status_code(status["status"]);
             std::string status_message;
@@ -526,29 +536,38 @@ void Writer::write_action_status_notification(
                     break;
 
                 case ddsenabler::participants::STATUS_CODE::STATUS_CANCELING:
-                    status_message = "The client has requested that the goal be canceled and the action server has accepted the cancel request";
+                    status_message =
+                            "The client has requested that the goal be canceled and the action server has accepted the cancel request";
                     break;
 
                 case ddsenabler::participants::STATUS_CODE::STATUS_SUCCEEDED:
                     if (erase_action_UUID_callback_)
+                    {
                         erase_action_UUID_callback_(uuid, ActionEraseReason::FINAL_STATUS);
+                    }
                     status_message = "The goal was achieved successfully by the action server";
                     break;
 
                 case ddsenabler::participants::STATUS_CODE::STATUS_CANCELED:
                     if (erase_action_UUID_callback_)
+                    {
                         erase_action_UUID_callback_(uuid, ActionEraseReason::FINAL_STATUS);
+                    }
                     status_message = "The goal was canceled after an external request from an action client";
                     break;
 
                 case ddsenabler::participants::STATUS_CODE::STATUS_ABORTED:
                     if (erase_action_UUID_callback_)
+                    {
                         erase_action_UUID_callback_(uuid, ActionEraseReason::FINAL_STATUS);
+                    }
                     status_message = "The goal was terminated by the action server without an external request";
                     break;
                 case ddsenabler::participants::STATUS_CODE::STATUS_REJECTED:
                     if (erase_action_UUID_callback_)
+                    {
                         erase_action_UUID_callback_(uuid, ActionEraseReason::FINAL_STATUS);
+                    }
                     status_message = "The goal was rejected by the action server, it will not be executed";
                     break;
                 default:
@@ -597,12 +616,14 @@ void Writer::write_action_request_notification(
         {
             bool accepted;
             if (action_goal_request_notification_callback_)
+            {
                 accepted = action_goal_request_notification_callback_(
-                        action_name.c_str(),
-                        json_data.dump(4).c_str(),
-                        json_to_uuid(json_data[msg.topic.topic_name()]["data"][instanceHandle.str()]["goal_id"]),
-                        msg.publish_time.to_ns()
-                        );
+                    action_name.c_str(),
+                    json_data.dump(4).c_str(),
+                    json_to_uuid(json_data[msg.topic.topic_name()]["data"][instanceHandle.str()]["goal_id"]),
+                    msg.publish_time.to_ns()
+                    );
+            }
 
             send_action_send_goal_reply_callback_(
                 action_name.c_str(),
@@ -618,7 +639,7 @@ void Writer::write_action_request_notification(
                 auto sec = json_data[msg.topic.topic_name()]["data"][instanceHandle.str()]["goal_info"]["sec"];
                 auto nanosec = json_data[msg.topic.topic_name()]["data"][instanceHandle.str()]["goal_info"]["nanosec"];
                 int64_t timestamp = static_cast<int64_t>(sec.get<int64_t>()) * 1000000000 +
-                    static_cast<int64_t>(nanosec.get<uint32_t>());
+                        static_cast<int64_t>(nanosec.get<uint32_t>());
                 action_cancel_request_notification_callback_(
                     action_name.c_str(),
                     json_to_uuid(json_data[msg.topic.topic_name()]["data"][instanceHandle.str()]["goal_id"]),

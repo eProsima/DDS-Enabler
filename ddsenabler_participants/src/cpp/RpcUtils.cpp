@@ -34,24 +34,26 @@ namespace RpcUtils {
  * @param [in] topic_name Topic name to extract the service name from
  * @return Extracted service name
  */
-RpcInfo get_rpc_info(const std::string& topic_name)
+RpcInfo get_rpc_info(
+        const std::string& topic_name)
 {
     RPC_PROTOCOL rpc_protocol = detect_rpc_protocol(topic_name);
 
     return remove_prefix_suffix(topic_name, rpc_protocol);
 }
 
-RPC_PROTOCOL detect_rpc_protocol(const std::string& topic_name)
+RPC_PROTOCOL detect_rpc_protocol(
+        const std::string& topic_name)
 {
     if (topic_name.rfind(ROS_TOPIC_PREFIX, 0) == 0 ||
-        topic_name.rfind(ROS_REQUEST_PREFIX, 0) == 0 ||
-        topic_name.rfind(ROS_REPLY_PREFIX, 0) == 0)
+            topic_name.rfind(ROS_REQUEST_PREFIX, 0) == 0 ||
+            topic_name.rfind(ROS_REPLY_PREFIX, 0) == 0)
     {
         return RPC_PROTOCOL::ROS2;
     }
     else if (topic_name.rfind(FASTDDS_TOPIC_PREFIX, 0) == 0 ||
-             topic_name.rfind(FASTDDS_REQUEST_PREFIX, 0) == 0 ||
-             topic_name.rfind(FASTDDS_REPLY_PREFIX, 0) == 0)
+            topic_name.rfind(FASTDDS_REQUEST_PREFIX, 0) == 0 ||
+            topic_name.rfind(FASTDDS_REPLY_PREFIX, 0) == 0)
     {
         return RPC_PROTOCOL::FASTDDS;
     }
@@ -90,29 +92,32 @@ RpcInfo remove_prefix_suffix(
 
     std::string base = topic_name;
     if ((base.rfind(request_prefix, 0) == 0) &&
-        (base.size() >= request_suffix.length()) &&
-        (base.substr(base.size() - request_suffix.length()) == request_suffix))
+            (base.size() >= request_suffix.length()) &&
+            (base.substr(base.size() - request_suffix.length()) == request_suffix))
     {
         base = base.substr(request_prefix.length());
         base = base.substr(0, base.size() - (request_suffix.length()));
         rpc_info.service_type = SERVICE_REQUEST;
         rpc_info.service_name = base;
 
-        if (base.size() >= (std::strlen(ACTION_GOAL_SUFFIX)) && base.substr(base.size() - (std::strlen(ACTION_GOAL_SUFFIX))) == ACTION_GOAL_SUFFIX)
+        if (base.size() >= (std::strlen(ACTION_GOAL_SUFFIX)) &&
+                base.substr(base.size() - (std::strlen(ACTION_GOAL_SUFFIX))) == ACTION_GOAL_SUFFIX)
         {
             rpc_info.action_name = base.substr(0, base.size() - (std::strlen(ACTION_GOAL_SUFFIX)));
             rpc_info.rpc_type = RPC_ACTION;
             rpc_info.action_type = ACTION_GOAL;
             return rpc_info;
         }
-        else if (base.size() >= (std::strlen(ACTION_RESULT_SUFFIX)) && base.substr(base.size() - (std::strlen(ACTION_RESULT_SUFFIX))) == ACTION_RESULT_SUFFIX)
+        else if (base.size() >= (std::strlen(ACTION_RESULT_SUFFIX)) &&
+                base.substr(base.size() - (std::strlen(ACTION_RESULT_SUFFIX))) == ACTION_RESULT_SUFFIX)
         {
             rpc_info.action_name = base.substr(0, base.size() - (std::strlen(ACTION_RESULT_SUFFIX)));
             rpc_info.rpc_type = RPC_ACTION;
             rpc_info.action_type = ACTION_RESULT;
             return rpc_info;
         }
-        else if (base.size() >= (std::strlen(ACTION_CANCEL_SUFFIX)) && base.substr(base.size() - (std::strlen(ACTION_CANCEL_SUFFIX))) == ACTION_CANCEL_SUFFIX)
+        else if (base.size() >= (std::strlen(ACTION_CANCEL_SUFFIX)) &&
+                base.substr(base.size() - (std::strlen(ACTION_CANCEL_SUFFIX))) == ACTION_CANCEL_SUFFIX)
         {
             rpc_info.action_name = base.substr(0, base.size() - (std::strlen(ACTION_CANCEL_SUFFIX)));
             rpc_info.rpc_type = RPC_ACTION;
@@ -124,29 +129,32 @@ RpcInfo remove_prefix_suffix(
         return rpc_info;
     }
     if ((base.rfind(reply_prefix, 0) == 0) &&
-        (base.size() >= reply_suffix.length()) &&
-        (base.substr(base.size() - reply_suffix.length()) == reply_suffix))
+            (base.size() >= reply_suffix.length()) &&
+            (base.substr(base.size() - reply_suffix.length()) == reply_suffix))
     {
         base = base.substr(reply_prefix.length());
         base = base.substr(0, base.size() - (reply_suffix.length()));
         rpc_info.service_type = SERVICE_REPLY;
         rpc_info.service_name = base;
 
-        if (base.size() >= (std::strlen(ACTION_GOAL_SUFFIX)) && base.substr(base.size() - (std::strlen(ACTION_GOAL_SUFFIX))) == ACTION_GOAL_SUFFIX)
+        if (base.size() >= (std::strlen(ACTION_GOAL_SUFFIX)) &&
+                base.substr(base.size() - (std::strlen(ACTION_GOAL_SUFFIX))) == ACTION_GOAL_SUFFIX)
         {
             rpc_info.action_name = base.substr(0, base.size() - (std::strlen(ACTION_GOAL_SUFFIX)));
             rpc_info.rpc_type = RPC_ACTION;
             rpc_info.action_type = ACTION_GOAL;
             return rpc_info;
         }
-        else if (base.size() >= (std::strlen(ACTION_RESULT_SUFFIX)) && base.substr(base.size() - (std::strlen(ACTION_RESULT_SUFFIX))) == ACTION_RESULT_SUFFIX)
+        else if (base.size() >= (std::strlen(ACTION_RESULT_SUFFIX)) &&
+                base.substr(base.size() - (std::strlen(ACTION_RESULT_SUFFIX))) == ACTION_RESULT_SUFFIX)
         {
             rpc_info.action_name = base.substr(0, base.size() - (std::strlen(ACTION_RESULT_SUFFIX)));
             rpc_info.rpc_type = RPC_ACTION;
             rpc_info.action_type = ACTION_RESULT;
             return rpc_info;
         }
-        else if (base.size() >= (std::strlen(ACTION_CANCEL_SUFFIX)) && base.substr(base.size() - (std::strlen(ACTION_CANCEL_SUFFIX))) == ACTION_CANCEL_SUFFIX)
+        else if (base.size() >= (std::strlen(ACTION_CANCEL_SUFFIX)) &&
+                base.substr(base.size() - (std::strlen(ACTION_CANCEL_SUFFIX))) == ACTION_CANCEL_SUFFIX)
         {
             rpc_info.action_name = base.substr(0, base.size() - (std::strlen(ACTION_CANCEL_SUFFIX)));
             rpc_info.rpc_type = RPC_ACTION;
@@ -160,14 +168,18 @@ RpcInfo remove_prefix_suffix(
 
     // Check for action feedback/status topics
     base = base.substr(topic_prefix.length());
-    if (base.size() >= (std::strlen(ACTION_FEEDBACK_SUFFIX) + 1) && base.substr(base.size() - (std::strlen(ACTION_FEEDBACK_SUFFIX) + 1)) == (std::string("/") + ACTION_FEEDBACK_SUFFIX))
+    if (base.size() >= (std::strlen(ACTION_FEEDBACK_SUFFIX) + 1) &&
+            base.substr(base.size() - (std::strlen(ACTION_FEEDBACK_SUFFIX) + 1)) ==
+            (std::string("/") + ACTION_FEEDBACK_SUFFIX))
     {
         rpc_info.action_name = base.substr(0, base.size() - std::strlen(ACTION_FEEDBACK_SUFFIX));
         rpc_info.rpc_type = RPC_ACTION;
         rpc_info.action_type = ACTION_FEEDBACK;
         return rpc_info;
     }
-    if (base.size() >= (std::strlen(ACTION_STATUS_SUFFIX) + 1) && base.substr(base.size() - (std::strlen(ACTION_STATUS_SUFFIX) + 1)) == (std::string("/") + ACTION_STATUS_SUFFIX))
+    if (base.size() >= (std::strlen(ACTION_STATUS_SUFFIX) + 1) &&
+            base.substr(base.size() - (std::strlen(ACTION_STATUS_SUFFIX) + 1)) ==
+            (std::string("/") + ACTION_STATUS_SUFFIX))
     {
         rpc_info.action_name = base.substr(0, base.size() - (std::strlen(ACTION_STATUS_SUFFIX)));
         rpc_info.rpc_type = RPC_ACTION;
@@ -192,7 +204,9 @@ UUID generate_UUID()
     return uuid;
 }
 
-std::string create_goal_request_msg(const std::string& goal_json, UUID& goal_id)
+std::string create_goal_request_msg(
+        const std::string& goal_json,
+        UUID& goal_id)
 {
     goal_id = generate_UUID();
 
@@ -243,7 +257,8 @@ std::string create_cancel_reply_msg(
         goal_json["goal_id"]["uuid"] = goal_id;
         auto duration_since_epoch = timestamp.time_since_epoch();
         auto sec = std::chrono::duration_cast<std::chrono::seconds>(duration_since_epoch).count();
-        auto nanosec = std::chrono::duration_cast<std::chrono::nanoseconds>(duration_since_epoch).count() % 1'000'000'000;
+        auto nanosec = std::chrono::duration_cast<std::chrono::nanoseconds>(duration_since_epoch).count() %
+                1'000'000'000;
         goal_json["stamp"]["sec"] = static_cast<int64_t>(sec);
         goal_json["stamp"]["nanosec"] = static_cast<uint32_t>(nanosec);
         j["goals_canceling"].push_back(goal_json);
@@ -309,12 +324,16 @@ std::string create_feedback_msg(
 } // namespace ddsenabler
 } // namespace eprosima
 
-std::ostream& operator<<(std::ostream& os, const eprosima::ddsenabler::participants::UUID& uuid)
+std::ostream& operator <<(
+        std::ostream& os,
+        const eprosima::ddsenabler::participants::UUID& uuid)
 {
     for (size_t i = 0; i < uuid.size(); ++i)
     {
         if (i != 0)
+        {
             os << "-";
+        }
         os << std::to_string(uuid[i]);
     }
     return os;

@@ -90,7 +90,7 @@ public:
     eProsima_user_DllExport short_external(
             const short_external& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -112,7 +112,7 @@ public:
             const short_external& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -187,8 +187,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     eprosima::fastcdr::external<int16_t> m_value;
@@ -223,7 +221,7 @@ public:
     eProsima_user_DllExport ushort_external(
             const ushort_external& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -245,7 +243,7 @@ public:
             const ushort_external& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -320,8 +318,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     eprosima::fastcdr::external<uint16_t> m_value;
@@ -356,7 +352,7 @@ public:
     eProsima_user_DllExport long_external(
             const long_external& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -378,7 +374,7 @@ public:
             const long_external& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -453,8 +449,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     eprosima::fastcdr::external<int32_t> m_value;
@@ -489,7 +483,7 @@ public:
     eProsima_user_DllExport ulong_external(
             const ulong_external& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -511,7 +505,7 @@ public:
             const ulong_external& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -586,8 +580,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     eprosima::fastcdr::external<uint32_t> m_value;
@@ -622,7 +614,7 @@ public:
     eProsima_user_DllExport longlong_external(
             const longlong_external& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -644,7 +636,7 @@ public:
             const longlong_external& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -719,8 +711,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     eprosima::fastcdr::external<int64_t> m_value;
@@ -755,7 +745,7 @@ public:
     eProsima_user_DllExport ulonglong_external(
             const ulonglong_external& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -777,7 +767,7 @@ public:
             const ulonglong_external& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -852,8 +842,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     eprosima::fastcdr::external<uint64_t> m_value;
@@ -888,7 +876,7 @@ public:
     eProsima_user_DllExport float_external(
             const float_external& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -910,7 +898,7 @@ public:
             const float_external& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -985,8 +973,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     eprosima::fastcdr::external<float> m_value;
@@ -1021,7 +1007,7 @@ public:
     eProsima_user_DllExport double_external(
             const double_external& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -1043,7 +1029,7 @@ public:
             const double_external& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -1118,8 +1104,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     eprosima::fastcdr::external<double> m_value;
@@ -1154,7 +1138,7 @@ public:
     eProsima_user_DllExport longdouble_external(
             const longdouble_external& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -1176,7 +1160,7 @@ public:
             const longdouble_external& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -1251,8 +1235,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     eprosima::fastcdr::external<long double> m_value;
@@ -1287,7 +1269,7 @@ public:
     eProsima_user_DllExport boolean_external(
             const boolean_external& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -1309,7 +1291,7 @@ public:
             const boolean_external& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -1384,8 +1366,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     eprosima::fastcdr::external<bool> m_value;
@@ -1420,7 +1400,7 @@ public:
     eProsima_user_DllExport octet_external(
             const octet_external& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -1442,7 +1422,7 @@ public:
             const octet_external& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -1517,8 +1497,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     eprosima::fastcdr::external<uint8_t> m_value;
@@ -1553,7 +1531,7 @@ public:
     eProsima_user_DllExport char_external(
             const char_external& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -1575,7 +1553,7 @@ public:
             const char_external& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -1650,8 +1628,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     eprosima::fastcdr::external<char> m_value;
@@ -1686,7 +1662,7 @@ public:
     eProsima_user_DllExport wchar_external(
             const wchar_external& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -1708,7 +1684,7 @@ public:
             const wchar_external& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -1783,8 +1759,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     eprosima::fastcdr::external<wchar_t> m_value;
@@ -1819,7 +1793,7 @@ public:
     eProsima_user_DllExport sequence_short_external(
             const sequence_short_external& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -1841,7 +1815,7 @@ public:
             const sequence_short_external& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -1916,8 +1890,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     eprosima::fastcdr::external<std::vector<int16_t>> m_value;
@@ -1952,7 +1924,7 @@ public:
     eProsima_user_DllExport string_unbounded_external(
             const string_unbounded_external& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -1974,7 +1946,7 @@ public:
             const string_unbounded_external& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -2049,8 +2021,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     eprosima::fastcdr::external<std::string> m_value;
@@ -2085,7 +2055,7 @@ public:
     eProsima_user_DllExport string_bounded_external(
             const string_bounded_external& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -2107,7 +2077,7 @@ public:
             const string_bounded_external& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -2182,8 +2152,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     eprosima::fastcdr::external<eprosima::fastcdr::fixed_string<8>> m_value;
@@ -2218,7 +2186,7 @@ public:
     eProsima_user_DllExport map_short_external(
             const map_short_external& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -2240,7 +2208,7 @@ public:
             const map_short_external& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -2315,8 +2283,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     eprosima::fastcdr::external<std::map<int32_t, int16_t>> m_value;
@@ -2351,7 +2317,7 @@ public:
     eProsima_user_DllExport array_short_external(
             const array_short_external& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -2373,7 +2339,7 @@ public:
             const array_short_external& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -2448,8 +2414,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     eprosima::fastcdr::external<std::array<int16_t, 10>> m_value;
@@ -2484,7 +2448,7 @@ public:
     eProsima_user_DllExport struct_external(
             const struct_external& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -2506,7 +2470,7 @@ public:
             const struct_external& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -2581,8 +2545,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     eprosima::fastcdr::external<InnerStructureHelper> m_value;
@@ -2617,9 +2579,9 @@ public:
     eProsima_user_DllExport InnerStructExternal(
             const InnerStructExternal& x)
     {
-                    m_s = x.m_s;
+        m_s = x.m_s;
 
-                    m_l = x.m_l;
+        m_l = x.m_l;
 
     }
 
@@ -2642,9 +2604,9 @@ public:
             const InnerStructExternal& x)
     {
 
-                    m_s = x.m_s;
+        m_s = x.m_s;
 
-                    m_l = x.m_l;
+        m_l = x.m_l;
 
         return *this;
     }
@@ -2670,7 +2632,7 @@ public:
             const InnerStructExternal& x) const
     {
         return (m_s == x.m_s &&
-           m_l == x.m_l);
+               m_l == x.m_l);
     }
 
     /*!
@@ -2711,7 +2673,6 @@ public:
         return m_s;
     }
 
-
     /*!
      * @brief This function copies the value in member l
      * @param _l New value to be copied in member l
@@ -2750,8 +2711,6 @@ public:
         return m_l;
     }
 
-
-
 private:
 
     int16_t m_s{0};
@@ -2787,7 +2746,7 @@ public:
     eProsima_user_DllExport ext_struct_external(
             const ext_struct_external& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -2809,7 +2768,7 @@ public:
             const ext_struct_external& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -2884,8 +2843,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     InnerStructExternal m_value;
@@ -2920,7 +2877,7 @@ public:
     eProsima_user_DllExport ext_and_inner_struct_external(
             const ext_and_inner_struct_external& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -2942,7 +2899,7 @@ public:
             const ext_and_inner_struct_external& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -3017,8 +2974,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     eprosima::fastcdr::external<InnerStructExternal> m_value;
@@ -3053,7 +3008,7 @@ public:
     eProsima_user_DllExport struct_external_optional(
             const struct_external_optional& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -3075,7 +3030,7 @@ public:
             const struct_external_optional& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -3136,7 +3091,8 @@ public:
      * @brief This function returns a constant reference to member value
      * @return Constant reference to member value
      */
-    eProsima_user_DllExport const eprosima::fastcdr::optional<eprosima::fastcdr::external<InnerStructureHelper>>& value() const
+    eProsima_user_DllExport const eprosima::fastcdr::optional<eprosima::fastcdr::external<InnerStructureHelper>>& value()
+    const
     {
         return m_value;
     }
@@ -3149,8 +3105,6 @@ public:
     {
         return m_value;
     }
-
-
 
 private:
 
@@ -3188,9 +3142,9 @@ public:
     eProsima_user_DllExport recursive_union_container(
             const recursive_union_container& x)
     {
-                    m_l = x.m_l;
+        m_l = x.m_l;
 
-                    m_ext = x.m_ext;
+        m_ext = x.m_ext;
 
     }
 
@@ -3213,9 +3167,9 @@ public:
             const recursive_union_container& x)
     {
 
-                    m_l = x.m_l;
+        m_l = x.m_l;
 
-                    m_ext = x.m_ext;
+        m_ext = x.m_ext;
 
         return *this;
     }
@@ -3241,7 +3195,7 @@ public:
             const recursive_union_container& x) const
     {
         return (m_l == x.m_l &&
-           m_ext == x.m_ext);
+               m_ext == x.m_ext);
     }
 
     /*!
@@ -3282,7 +3236,6 @@ public:
         return m_l;
     }
 
-
     /*!
      * @brief This function copies the value in member ext
      * @param _ext New value to be copied in member ext
@@ -3320,8 +3273,6 @@ public:
     {
         return m_ext;
     }
-
-
 
 private:
 
@@ -3366,17 +3317,17 @@ public:
 
         switch (x.selected_member_)
         {
-                        case 0x00000001:
-                            l_() = x.m_l;
-                            break;
+            case 0x00000001:
+                l_() = x.m_l;
+                break;
 
-                        case 0x00000002:
-                            c_() = x.m_c;
-                            break;
+            case 0x00000002:
+                c_() = x.m_c;
+                break;
 
-                        case 0x00000003:
-                            s_() = x.m_s;
-                            break;
+            case 0x00000003:
+                s_() = x.m_s;
+                break;
 
         }
     }
@@ -3392,17 +3343,17 @@ public:
 
         switch (x.selected_member_)
         {
-                        case 0x00000001:
-                            l_() = std::move(x.m_l);
-                            break;
+            case 0x00000001:
+                l_() = std::move(x.m_l);
+                break;
 
-                        case 0x00000002:
-                            c_() = std::move(x.m_c);
-                            break;
+            case 0x00000002:
+                c_() = std::move(x.m_c);
+                break;
 
-                        case 0x00000003:
-                            s_() = std::move(x.m_s);
-                            break;
+            case 0x00000003:
+                s_() = std::move(x.m_s);
+                break;
 
         }
     }
@@ -3418,17 +3369,17 @@ public:
 
         switch (x.selected_member_)
         {
-                        case 0x00000001:
-                            l_() = x.m_l;
-                            break;
+            case 0x00000001:
+                l_() = x.m_l;
+                break;
 
-                        case 0x00000002:
-                            c_() = x.m_c;
-                            break;
+            case 0x00000002:
+                c_() = x.m_c;
+                break;
 
-                        case 0x00000003:
-                            s_() = x.m_s;
-                            break;
+            case 0x00000003:
+                s_() = x.m_s;
+                break;
 
         }
 
@@ -3446,17 +3397,17 @@ public:
 
         switch (x.selected_member_)
         {
-                        case 0x00000001:
-                            l_() = std::move(x.m_l);
-                            break;
+            case 0x00000001:
+                l_() = std::move(x.m_l);
+                break;
 
-                        case 0x00000002:
-                            c_() = std::move(x.m_c);
-                            break;
+            case 0x00000002:
+                c_() = std::move(x.m_c);
+                break;
 
-                        case 0x00000003:
-                            s_() = std::move(x.m_s);
-                            break;
+            case 0x00000003:
+                s_() = std::move(x.m_s);
+                break;
 
         }
 
@@ -3477,17 +3428,17 @@ public:
         {
             switch (selected_member_)
             {
-                                case 0x00000001:
-                                    ret_value = (m_l == x.m_l);
-                                    break;
+                case 0x00000001:
+                    ret_value = (m_l == x.m_l);
+                    break;
 
-                                case 0x00000002:
-                                    ret_value = (m_c == x.m_c);
-                                    break;
+                case 0x00000002:
+                    ret_value = (m_c == x.m_c);
+                    break;
 
-                                case 0x00000003:
-                                    ret_value = (m_s == x.m_s);
-                                    break;
+                case 0x00000003:
+                    ret_value = (m_s == x.m_s);
+                    break;
 
             }
         }
@@ -3517,32 +3468,33 @@ public:
 
         switch (__d)
         {
-                        case 1:
-                            if (0x00000001 == selected_member_)
-                            {
-                                valid_discriminator = true;
-                            }
-                            break;
+            case 1:
+                if (0x00000001 == selected_member_)
+                {
+                    valid_discriminator = true;
+                }
+                break;
 
-                        case 2:
-                            if (0x00000002 == selected_member_)
-                            {
-                                valid_discriminator = true;
-                            }
-                            break;
+            case 2:
+                if (0x00000002 == selected_member_)
+                {
+                    valid_discriminator = true;
+                }
+                break;
 
-                        case 3:
-                            if (0x00000003 == selected_member_)
-                            {
-                                valid_discriminator = true;
-                            }
-                            break;
+            case 3:
+                if (0x00000003 == selected_member_)
+                {
+                    valid_discriminator = true;
+                }
+                break;
 
         }
 
         if (!valid_discriminator)
         {
-            throw eprosima::fastcdr::exception::BadParamException("Discriminator doesn't correspond with the selected union member");
+            throw eprosima::fastcdr::exception::BadParamException(
+                      "Discriminator doesn't correspond with the selected union member");
         }
 
         m__d = __d;
@@ -3597,7 +3549,6 @@ public:
 
         return m_l;
     }
-
 
     /*!
      * @brief This function copies the value in member c
@@ -3651,7 +3602,6 @@ public:
         return m_c;
     }
 
-
     /*!
      * @brief This function sets a value in member s
      * @param _s New value for member s
@@ -3693,7 +3643,6 @@ public:
         return m_s;
     }
 
-
     void _default()
     {
         if (member_destructor_)
@@ -3704,63 +3653,64 @@ public:
         selected_member_ = 0x0FFFFFFFu;
     }
 
-
 private:
 
-            int32_t& l_()
+    int32_t& l_()
+    {
+        if (0x00000001 != selected_member_)
+        {
+            if (member_destructor_)
             {
-                if (0x00000001 != selected_member_)
-                {
-                    if (member_destructor_)
-                    {
-                        member_destructor_();
-                    }
-
-                    selected_member_ = 0x00000001;
-                    member_destructor_ = nullptr;
-                    m_l = {0};
-
-                }
-
-                return m_l;
+                member_destructor_();
             }
 
-            recursive_union_container& c_()
+            selected_member_ = 0x00000001;
+            member_destructor_ = nullptr;
+            m_l = {0};
+
+        }
+
+        return m_l;
+    }
+
+    recursive_union_container& c_()
+    {
+        if (0x00000002 != selected_member_)
+        {
+            if (member_destructor_)
             {
-                if (0x00000002 != selected_member_)
-                {
-                    if (member_destructor_)
-                    {
-                        member_destructor_();
-                    }
-
-                    selected_member_ = 0x00000002;
-                    member_destructor_ = [&]() {m_c.~recursive_union_container();};
-                    new(&m_c) recursive_union_container();
-
-                }
-
-                return m_c;
+                member_destructor_();
             }
 
-            int16_t& s_()
-            {
-                if (0x00000003 != selected_member_)
-                {
-                    if (member_destructor_)
+            selected_member_ = 0x00000002;
+            member_destructor_ = [&]()
                     {
-                        member_destructor_();
-                    }
+                        m_c.~recursive_union_container();
+                    };
+            new(&m_c) recursive_union_container();
 
-                    selected_member_ = 0x00000003;
-                    member_destructor_ = nullptr;
-                    m_s = {0};
+        }
 
-                }
+        return m_c;
+    }
 
-                return m_s;
+    int16_t& s_()
+    {
+        if (0x00000003 != selected_member_)
+        {
+            if (member_destructor_)
+            {
+                member_destructor_();
             }
 
+            selected_member_ = 0x00000003;
+            member_destructor_ = nullptr;
+            m_s = {0};
+
+        }
+
+        return m_s;
+    }
 
     uint8_t m__d {127};
 
@@ -3804,9 +3754,9 @@ public:
     eProsima_user_DllExport recursive_test_1(
             const recursive_test_1& x)
     {
-                    m_s = x.m_s;
+        m_s = x.m_s;
 
-                    m_u = x.m_u;
+        m_u = x.m_u;
 
     }
 
@@ -3829,9 +3779,9 @@ public:
             const recursive_test_1& x)
     {
 
-                    m_s = x.m_s;
+        m_s = x.m_s;
 
-                    m_u = x.m_u;
+        m_u = x.m_u;
 
         return *this;
     }
@@ -3857,7 +3807,7 @@ public:
             const recursive_test_1& x) const
     {
         return (m_s == x.m_s &&
-           m_u == x.m_u);
+               m_u == x.m_u);
     }
 
     /*!
@@ -3898,7 +3848,6 @@ public:
         return m_s;
     }
 
-
     /*!
      * @brief This function copies the value in member u
      * @param _u New value to be copied in member u
@@ -3936,8 +3885,6 @@ public:
     {
         return m_u;
     }
-
-
 
 private:
 
@@ -3984,17 +3931,17 @@ public:
 
         switch (x.selected_member_)
         {
-                        case 0x00000001:
-                            l_() = x.m_l;
-                            break;
+            case 0x00000001:
+                l_() = x.m_l;
+                break;
 
-                        case 0x00000002:
-                            ext_() = x.m_ext;
-                            break;
+            case 0x00000002:
+                ext_() = x.m_ext;
+                break;
 
-                        case 0x00000003:
-                            s_() = x.m_s;
-                            break;
+            case 0x00000003:
+                s_() = x.m_s;
+                break;
 
         }
     }
@@ -4010,17 +3957,17 @@ public:
 
         switch (x.selected_member_)
         {
-                        case 0x00000001:
-                            l_() = std::move(x.m_l);
-                            break;
+            case 0x00000001:
+                l_() = std::move(x.m_l);
+                break;
 
-                        case 0x00000002:
-                            ext_() = std::move(x.m_ext);
-                            break;
+            case 0x00000002:
+                ext_() = std::move(x.m_ext);
+                break;
 
-                        case 0x00000003:
-                            s_() = std::move(x.m_s);
-                            break;
+            case 0x00000003:
+                s_() = std::move(x.m_s);
+                break;
 
         }
     }
@@ -4036,17 +3983,17 @@ public:
 
         switch (x.selected_member_)
         {
-                        case 0x00000001:
-                            l_() = x.m_l;
-                            break;
+            case 0x00000001:
+                l_() = x.m_l;
+                break;
 
-                        case 0x00000002:
-                            ext_() = x.m_ext;
-                            break;
+            case 0x00000002:
+                ext_() = x.m_ext;
+                break;
 
-                        case 0x00000003:
-                            s_() = x.m_s;
-                            break;
+            case 0x00000003:
+                s_() = x.m_s;
+                break;
 
         }
 
@@ -4064,17 +4011,17 @@ public:
 
         switch (x.selected_member_)
         {
-                        case 0x00000001:
-                            l_() = std::move(x.m_l);
-                            break;
+            case 0x00000001:
+                l_() = std::move(x.m_l);
+                break;
 
-                        case 0x00000002:
-                            ext_() = std::move(x.m_ext);
-                            break;
+            case 0x00000002:
+                ext_() = std::move(x.m_ext);
+                break;
 
-                        case 0x00000003:
-                            s_() = std::move(x.m_s);
-                            break;
+            case 0x00000003:
+                s_() = std::move(x.m_s);
+                break;
 
         }
 
@@ -4095,17 +4042,17 @@ public:
         {
             switch (selected_member_)
             {
-                                case 0x00000001:
-                                    ret_value = (m_l == x.m_l);
-                                    break;
+                case 0x00000001:
+                    ret_value = (m_l == x.m_l);
+                    break;
 
-                                case 0x00000002:
-                                    ret_value = (m_ext == x.m_ext);
-                                    break;
+                case 0x00000002:
+                    ret_value = (m_ext == x.m_ext);
+                    break;
 
-                                case 0x00000003:
-                                    ret_value = (m_s == x.m_s);
-                                    break;
+                case 0x00000003:
+                    ret_value = (m_s == x.m_s);
+                    break;
 
             }
         }
@@ -4135,32 +4082,33 @@ public:
 
         switch (__d)
         {
-                        case 1:
-                            if (0x00000001 == selected_member_)
-                            {
-                                valid_discriminator = true;
-                            }
-                            break;
+            case 1:
+                if (0x00000001 == selected_member_)
+                {
+                    valid_discriminator = true;
+                }
+                break;
 
-                        case 2:
-                            if (0x00000002 == selected_member_)
-                            {
-                                valid_discriminator = true;
-                            }
-                            break;
+            case 2:
+                if (0x00000002 == selected_member_)
+                {
+                    valid_discriminator = true;
+                }
+                break;
 
-                        case 3:
-                            if (0x00000003 == selected_member_)
-                            {
-                                valid_discriminator = true;
-                            }
-                            break;
+            case 3:
+                if (0x00000003 == selected_member_)
+                {
+                    valid_discriminator = true;
+                }
+                break;
 
         }
 
         if (!valid_discriminator)
         {
-            throw eprosima::fastcdr::exception::BadParamException("Discriminator doesn't correspond with the selected union member");
+            throw eprosima::fastcdr::exception::BadParamException(
+                      "Discriminator doesn't correspond with the selected union member");
         }
 
         m__d = __d;
@@ -4216,7 +4164,6 @@ public:
         return m_l;
     }
 
-
     /*!
      * @brief This function copies the value in member ext
      * @param _ext New value to be copied in member ext
@@ -4269,7 +4216,6 @@ public:
         return m_ext;
     }
 
-
     /*!
      * @brief This function sets a value in member s
      * @param _s New value for member s
@@ -4311,7 +4257,6 @@ public:
         return m_s;
     }
 
-
     void _default()
     {
         if (member_destructor_)
@@ -4322,63 +4267,64 @@ public:
         selected_member_ = 0x0FFFFFFFu;
     }
 
-
 private:
 
-            int32_t& l_()
+    int32_t& l_()
+    {
+        if (0x00000001 != selected_member_)
+        {
+            if (member_destructor_)
             {
-                if (0x00000001 != selected_member_)
-                {
-                    if (member_destructor_)
-                    {
-                        member_destructor_();
-                    }
-
-                    selected_member_ = 0x00000001;
-                    member_destructor_ = nullptr;
-                    m_l = {0};
-
-                }
-
-                return m_l;
+                member_destructor_();
             }
 
-            eprosima::fastcdr::external<recursive_structure>& ext_()
+            selected_member_ = 0x00000001;
+            member_destructor_ = nullptr;
+            m_l = {0};
+
+        }
+
+        return m_l;
+    }
+
+    eprosima::fastcdr::external<recursive_structure>& ext_()
+    {
+        if (0x00000002 != selected_member_)
+        {
+            if (member_destructor_)
             {
-                if (0x00000002 != selected_member_)
-                {
-                    if (member_destructor_)
-                    {
-                        member_destructor_();
-                    }
-
-                    selected_member_ = 0x00000002;
-                    member_destructor_ = [&]() {m_ext.~external();};
-                    new(&m_ext) eprosima::fastcdr::external<recursive_structure>();
-
-                }
-
-                return m_ext;
+                member_destructor_();
             }
 
-            int16_t& s_()
-            {
-                if (0x00000003 != selected_member_)
-                {
-                    if (member_destructor_)
+            selected_member_ = 0x00000002;
+            member_destructor_ = [&]()
                     {
-                        member_destructor_();
-                    }
+                        m_ext.~external();
+                    };
+            new(&m_ext) eprosima::fastcdr::external<recursive_structure>();
 
-                    selected_member_ = 0x00000003;
-                    member_destructor_ = nullptr;
-                    m_s = {0};
+        }
 
-                }
+        return m_ext;
+    }
 
-                return m_s;
+    int16_t& s_()
+    {
+        if (0x00000003 != selected_member_)
+        {
+            if (member_destructor_)
+            {
+                member_destructor_();
             }
 
+            selected_member_ = 0x00000003;
+            member_destructor_ = nullptr;
+            m_s = {0};
+
+        }
+
+        return m_s;
+    }
 
     uint8_t m__d {127};
 
@@ -4422,9 +4368,9 @@ public:
     eProsima_user_DllExport recursive_structure(
             const recursive_structure& x)
     {
-                    m_s = x.m_s;
+        m_s = x.m_s;
 
-                    m_c = x.m_c;
+        m_c = x.m_c;
 
     }
 
@@ -4447,9 +4393,9 @@ public:
             const recursive_structure& x)
     {
 
-                    m_s = x.m_s;
+        m_s = x.m_s;
 
-                    m_c = x.m_c;
+        m_c = x.m_c;
 
         return *this;
     }
@@ -4475,7 +4421,7 @@ public:
             const recursive_structure& x) const
     {
         return (m_s == x.m_s &&
-           m_c == x.m_c);
+               m_c == x.m_c);
     }
 
     /*!
@@ -4516,7 +4462,6 @@ public:
         return m_s;
     }
 
-
     /*!
      * @brief This function copies the value in member c
      * @param _c New value to be copied in member c
@@ -4555,8 +4500,6 @@ public:
         return m_c;
     }
 
-
-
 private:
 
     int16_t m_s{0};
@@ -4592,9 +4535,9 @@ public:
     eProsima_user_DllExport recursive_test_2(
             const recursive_test_2& x)
     {
-                    m_o = x.m_o;
+        m_o = x.m_o;
 
-                    m_s = x.m_s;
+        m_s = x.m_s;
 
     }
 
@@ -4617,9 +4560,9 @@ public:
             const recursive_test_2& x)
     {
 
-                    m_o = x.m_o;
+        m_o = x.m_o;
 
-                    m_s = x.m_s;
+        m_s = x.m_s;
 
         return *this;
     }
@@ -4645,7 +4588,7 @@ public:
             const recursive_test_2& x) const
     {
         return (m_o == x.m_o &&
-           m_s == x.m_s);
+               m_s == x.m_s);
     }
 
     /*!
@@ -4686,7 +4629,6 @@ public:
         return m_o;
     }
 
-
     /*!
      * @brief This function copies the value in member s
      * @param _s New value to be copied in member s
@@ -4724,8 +4666,6 @@ public:
     {
         return m_s;
     }
-
-
 
 private:
 

@@ -82,7 +82,7 @@ public:
     eProsima_user_DllExport MapShortShort(
             const MapShortShort& x)
     {
-                    m_var_map_short_short = x.m_var_map_short_short;
+        m_var_map_short_short = x.m_var_map_short_short;
 
     }
 
@@ -104,7 +104,7 @@ public:
             const MapShortShort& x)
     {
 
-                    m_var_map_short_short = x.m_var_map_short_short;
+        m_var_map_short_short = x.m_var_map_short_short;
 
         return *this;
     }
@@ -179,8 +179,6 @@ public:
         return m_var_map_short_short;
     }
 
-
-
 private:
 
     std::map<int16_t, int16_t> m_var_map_short_short;
@@ -215,7 +213,7 @@ public:
     eProsima_user_DllExport MapShortUShort(
             const MapShortUShort& x)
     {
-                    m_var_map_short_ushort = x.m_var_map_short_ushort;
+        m_var_map_short_ushort = x.m_var_map_short_ushort;
 
     }
 
@@ -237,7 +235,7 @@ public:
             const MapShortUShort& x)
     {
 
-                    m_var_map_short_ushort = x.m_var_map_short_ushort;
+        m_var_map_short_ushort = x.m_var_map_short_ushort;
 
         return *this;
     }
@@ -312,8 +310,6 @@ public:
         return m_var_map_short_ushort;
     }
 
-
-
 private:
 
     std::map<int16_t, uint16_t> m_var_map_short_ushort;
@@ -348,7 +344,7 @@ public:
     eProsima_user_DllExport MapShortLong(
             const MapShortLong& x)
     {
-                    m_var_map_short_long = x.m_var_map_short_long;
+        m_var_map_short_long = x.m_var_map_short_long;
 
     }
 
@@ -370,7 +366,7 @@ public:
             const MapShortLong& x)
     {
 
-                    m_var_map_short_long = x.m_var_map_short_long;
+        m_var_map_short_long = x.m_var_map_short_long;
 
         return *this;
     }
@@ -445,8 +441,6 @@ public:
         return m_var_map_short_long;
     }
 
-
-
 private:
 
     std::map<int16_t, int32_t> m_var_map_short_long;
@@ -481,7 +475,7 @@ public:
     eProsima_user_DllExport MapShortULong(
             const MapShortULong& x)
     {
-                    m_var_map_short_ulong = x.m_var_map_short_ulong;
+        m_var_map_short_ulong = x.m_var_map_short_ulong;
 
     }
 
@@ -503,7 +497,7 @@ public:
             const MapShortULong& x)
     {
 
-                    m_var_map_short_ulong = x.m_var_map_short_ulong;
+        m_var_map_short_ulong = x.m_var_map_short_ulong;
 
         return *this;
     }
@@ -578,8 +572,6 @@ public:
         return m_var_map_short_ulong;
     }
 
-
-
 private:
 
     std::map<int16_t, uint32_t> m_var_map_short_ulong;
@@ -614,7 +606,7 @@ public:
     eProsima_user_DllExport MapShortLongLong(
             const MapShortLongLong& x)
     {
-                    m_var_map_short_longlong = x.m_var_map_short_longlong;
+        m_var_map_short_longlong = x.m_var_map_short_longlong;
 
     }
 
@@ -636,7 +628,7 @@ public:
             const MapShortLongLong& x)
     {
 
-                    m_var_map_short_longlong = x.m_var_map_short_longlong;
+        m_var_map_short_longlong = x.m_var_map_short_longlong;
 
         return *this;
     }
@@ -711,8 +703,6 @@ public:
         return m_var_map_short_longlong;
     }
 
-
-
 private:
 
     std::map<int16_t, int64_t> m_var_map_short_longlong;
@@ -747,7 +737,7 @@ public:
     eProsima_user_DllExport MapShortULongLong(
             const MapShortULongLong& x)
     {
-                    m_var_map_short_ulonglong = x.m_var_map_short_ulonglong;
+        m_var_map_short_ulonglong = x.m_var_map_short_ulonglong;
 
     }
 
@@ -769,7 +759,7 @@ public:
             const MapShortULongLong& x)
     {
 
-                    m_var_map_short_ulonglong = x.m_var_map_short_ulonglong;
+        m_var_map_short_ulonglong = x.m_var_map_short_ulonglong;
 
         return *this;
     }
@@ -844,8 +834,6 @@ public:
         return m_var_map_short_ulonglong;
     }
 
-
-
 private:
 
     std::map<int16_t, uint64_t> m_var_map_short_ulonglong;
@@ -880,7 +868,7 @@ public:
     eProsima_user_DllExport MapShortFloat(
             const MapShortFloat& x)
     {
-                    m_var_map_short_float = x.m_var_map_short_float;
+        m_var_map_short_float = x.m_var_map_short_float;
 
     }
 
@@ -902,7 +890,7 @@ public:
             const MapShortFloat& x)
     {
 
-                    m_var_map_short_float = x.m_var_map_short_float;
+        m_var_map_short_float = x.m_var_map_short_float;
 
         return *this;
     }
@@ -977,8 +965,6 @@ public:
         return m_var_map_short_float;
     }
 
-
-
 private:
 
     std::map<int16_t, float> m_var_map_short_float;
@@ -1013,7 +999,7 @@ public:
     eProsima_user_DllExport MapShortDouble(
             const MapShortDouble& x)
     {
-                    m_var_map_short_double = x.m_var_map_short_double;
+        m_var_map_short_double = x.m_var_map_short_double;
 
     }
 
@@ -1035,7 +1021,7 @@ public:
             const MapShortDouble& x)
     {
 
-                    m_var_map_short_double = x.m_var_map_short_double;
+        m_var_map_short_double = x.m_var_map_short_double;
 
         return *this;
     }
@@ -1110,8 +1096,6 @@ public:
         return m_var_map_short_double;
     }
 
-
-
 private:
 
     std::map<int16_t, double> m_var_map_short_double;
@@ -1146,7 +1130,7 @@ public:
     eProsima_user_DllExport MapShortLongDouble(
             const MapShortLongDouble& x)
     {
-                    m_var_map_short_longdouble = x.m_var_map_short_longdouble;
+        m_var_map_short_longdouble = x.m_var_map_short_longdouble;
 
     }
 
@@ -1168,7 +1152,7 @@ public:
             const MapShortLongDouble& x)
     {
 
-                    m_var_map_short_longdouble = x.m_var_map_short_longdouble;
+        m_var_map_short_longdouble = x.m_var_map_short_longdouble;
 
         return *this;
     }
@@ -1243,8 +1227,6 @@ public:
         return m_var_map_short_longdouble;
     }
 
-
-
 private:
 
     std::map<int16_t, long double> m_var_map_short_longdouble;
@@ -1279,7 +1261,7 @@ public:
     eProsima_user_DllExport MapShortBoolean(
             const MapShortBoolean& x)
     {
-                    m_var_map_short_boolean = x.m_var_map_short_boolean;
+        m_var_map_short_boolean = x.m_var_map_short_boolean;
 
     }
 
@@ -1301,7 +1283,7 @@ public:
             const MapShortBoolean& x)
     {
 
-                    m_var_map_short_boolean = x.m_var_map_short_boolean;
+        m_var_map_short_boolean = x.m_var_map_short_boolean;
 
         return *this;
     }
@@ -1376,8 +1358,6 @@ public:
         return m_var_map_short_boolean;
     }
 
-
-
 private:
 
     std::map<int16_t, bool> m_var_map_short_boolean;
@@ -1412,7 +1392,7 @@ public:
     eProsima_user_DllExport MapShortOctet(
             const MapShortOctet& x)
     {
-                    m_var_map_short_octet = x.m_var_map_short_octet;
+        m_var_map_short_octet = x.m_var_map_short_octet;
 
     }
 
@@ -1434,7 +1414,7 @@ public:
             const MapShortOctet& x)
     {
 
-                    m_var_map_short_octet = x.m_var_map_short_octet;
+        m_var_map_short_octet = x.m_var_map_short_octet;
 
         return *this;
     }
@@ -1509,8 +1489,6 @@ public:
         return m_var_map_short_octet;
     }
 
-
-
 private:
 
     std::map<int16_t, uint8_t> m_var_map_short_octet;
@@ -1545,7 +1523,7 @@ public:
     eProsima_user_DllExport MapShortChar(
             const MapShortChar& x)
     {
-                    m_var_map_short_char = x.m_var_map_short_char;
+        m_var_map_short_char = x.m_var_map_short_char;
 
     }
 
@@ -1567,7 +1545,7 @@ public:
             const MapShortChar& x)
     {
 
-                    m_var_map_short_char = x.m_var_map_short_char;
+        m_var_map_short_char = x.m_var_map_short_char;
 
         return *this;
     }
@@ -1642,8 +1620,6 @@ public:
         return m_var_map_short_char;
     }
 
-
-
 private:
 
     std::map<int16_t, char> m_var_map_short_char;
@@ -1678,7 +1654,7 @@ public:
     eProsima_user_DllExport MapShortWChar(
             const MapShortWChar& x)
     {
-                    m_var_map_short_wchar = x.m_var_map_short_wchar;
+        m_var_map_short_wchar = x.m_var_map_short_wchar;
 
     }
 
@@ -1700,7 +1676,7 @@ public:
             const MapShortWChar& x)
     {
 
-                    m_var_map_short_wchar = x.m_var_map_short_wchar;
+        m_var_map_short_wchar = x.m_var_map_short_wchar;
 
         return *this;
     }
@@ -1775,8 +1751,6 @@ public:
         return m_var_map_short_wchar;
     }
 
-
-
 private:
 
     std::map<int16_t, wchar_t> m_var_map_short_wchar;
@@ -1811,7 +1785,7 @@ public:
     eProsima_user_DllExport MapShortString(
             const MapShortString& x)
     {
-                    m_var_map_short_string = x.m_var_map_short_string;
+        m_var_map_short_string = x.m_var_map_short_string;
 
     }
 
@@ -1833,7 +1807,7 @@ public:
             const MapShortString& x)
     {
 
-                    m_var_map_short_string = x.m_var_map_short_string;
+        m_var_map_short_string = x.m_var_map_short_string;
 
         return *this;
     }
@@ -1908,8 +1882,6 @@ public:
         return m_var_map_short_string;
     }
 
-
-
 private:
 
     std::map<int16_t, std::string> m_var_map_short_string;
@@ -1944,7 +1916,7 @@ public:
     eProsima_user_DllExport MapShortWString(
             const MapShortWString& x)
     {
-                    m_var_map_short_wstring = x.m_var_map_short_wstring;
+        m_var_map_short_wstring = x.m_var_map_short_wstring;
 
     }
 
@@ -1966,7 +1938,7 @@ public:
             const MapShortWString& x)
     {
 
-                    m_var_map_short_wstring = x.m_var_map_short_wstring;
+        m_var_map_short_wstring = x.m_var_map_short_wstring;
 
         return *this;
     }
@@ -2041,8 +2013,6 @@ public:
         return m_var_map_short_wstring;
     }
 
-
-
 private:
 
     std::map<int16_t, std::wstring> m_var_map_short_wstring;
@@ -2077,7 +2047,7 @@ public:
     eProsima_user_DllExport MapShortInnerAliasBoundedStringHelper(
             const MapShortInnerAliasBoundedStringHelper& x)
     {
-                    m_var_map_short_inneraliasboundedstringhelper = x.m_var_map_short_inneraliasboundedstringhelper;
+        m_var_map_short_inneraliasboundedstringhelper = x.m_var_map_short_inneraliasboundedstringhelper;
 
     }
 
@@ -2099,7 +2069,7 @@ public:
             const MapShortInnerAliasBoundedStringHelper& x)
     {
 
-                    m_var_map_short_inneraliasboundedstringhelper = x.m_var_map_short_inneraliasboundedstringhelper;
+        m_var_map_short_inneraliasboundedstringhelper = x.m_var_map_short_inneraliasboundedstringhelper;
 
         return *this;
     }
@@ -2160,7 +2130,8 @@ public:
      * @brief This function returns a constant reference to member var_map_short_inneraliasboundedstringhelper
      * @return Constant reference to member var_map_short_inneraliasboundedstringhelper
      */
-    eProsima_user_DllExport const std::map<int16_t, Inner_alias_bounded_string_helper>& var_map_short_inneraliasboundedstringhelper() const
+    eProsima_user_DllExport const std::map<int16_t,
+            Inner_alias_bounded_string_helper>& var_map_short_inneraliasboundedstringhelper() const
     {
         return m_var_map_short_inneraliasboundedstringhelper;
     }
@@ -2169,12 +2140,11 @@ public:
      * @brief This function returns a reference to member var_map_short_inneraliasboundedstringhelper
      * @return Reference to member var_map_short_inneraliasboundedstringhelper
      */
-    eProsima_user_DllExport std::map<int16_t, Inner_alias_bounded_string_helper>& var_map_short_inneraliasboundedstringhelper()
+    eProsima_user_DllExport std::map<int16_t,
+            Inner_alias_bounded_string_helper>& var_map_short_inneraliasboundedstringhelper()
     {
         return m_var_map_short_inneraliasboundedstringhelper;
     }
-
-
 
 private:
 
@@ -2210,7 +2180,7 @@ public:
     eProsima_user_DllExport MapShortInnerAliasBoundedWStringHelper(
             const MapShortInnerAliasBoundedWStringHelper& x)
     {
-                    m_var_map_short_inneraliasboundedwstringhelper = x.m_var_map_short_inneraliasboundedwstringhelper;
+        m_var_map_short_inneraliasboundedwstringhelper = x.m_var_map_short_inneraliasboundedwstringhelper;
 
     }
 
@@ -2232,7 +2202,7 @@ public:
             const MapShortInnerAliasBoundedWStringHelper& x)
     {
 
-                    m_var_map_short_inneraliasboundedwstringhelper = x.m_var_map_short_inneraliasboundedwstringhelper;
+        m_var_map_short_inneraliasboundedwstringhelper = x.m_var_map_short_inneraliasboundedwstringhelper;
 
         return *this;
     }
@@ -2293,7 +2263,8 @@ public:
      * @brief This function returns a constant reference to member var_map_short_inneraliasboundedwstringhelper
      * @return Constant reference to member var_map_short_inneraliasboundedwstringhelper
      */
-    eProsima_user_DllExport const std::map<int16_t, Inner_alias_bounded_wstring_helper>& var_map_short_inneraliasboundedwstringhelper() const
+    eProsima_user_DllExport const std::map<int16_t,
+            Inner_alias_bounded_wstring_helper>& var_map_short_inneraliasboundedwstringhelper() const
     {
         return m_var_map_short_inneraliasboundedwstringhelper;
     }
@@ -2302,12 +2273,11 @@ public:
      * @brief This function returns a reference to member var_map_short_inneraliasboundedwstringhelper
      * @return Reference to member var_map_short_inneraliasboundedwstringhelper
      */
-    eProsima_user_DllExport std::map<int16_t, Inner_alias_bounded_wstring_helper>& var_map_short_inneraliasboundedwstringhelper()
+    eProsima_user_DllExport std::map<int16_t,
+            Inner_alias_bounded_wstring_helper>& var_map_short_inneraliasboundedwstringhelper()
     {
         return m_var_map_short_inneraliasboundedwstringhelper;
     }
-
-
 
 private:
 
@@ -2343,7 +2313,7 @@ public:
     eProsima_user_DllExport MapShortInnerEnumHelper(
             const MapShortInnerEnumHelper& x)
     {
-                    m_var_map_short_innerenumhelper = x.m_var_map_short_innerenumhelper;
+        m_var_map_short_innerenumhelper = x.m_var_map_short_innerenumhelper;
 
     }
 
@@ -2365,7 +2335,7 @@ public:
             const MapShortInnerEnumHelper& x)
     {
 
-                    m_var_map_short_innerenumhelper = x.m_var_map_short_innerenumhelper;
+        m_var_map_short_innerenumhelper = x.m_var_map_short_innerenumhelper;
 
         return *this;
     }
@@ -2440,8 +2410,6 @@ public:
         return m_var_map_short_innerenumhelper;
     }
 
-
-
 private:
 
     std::map<int16_t, InnerEnumHelper> m_var_map_short_innerenumhelper;
@@ -2476,7 +2444,7 @@ public:
     eProsima_user_DllExport MapShortInnerBitMaskHelper(
             const MapShortInnerBitMaskHelper& x)
     {
-                    m_var_map_short_innerbitmaskhelper = x.m_var_map_short_innerbitmaskhelper;
+        m_var_map_short_innerbitmaskhelper = x.m_var_map_short_innerbitmaskhelper;
 
     }
 
@@ -2498,7 +2466,7 @@ public:
             const MapShortInnerBitMaskHelper& x)
     {
 
-                    m_var_map_short_innerbitmaskhelper = x.m_var_map_short_innerbitmaskhelper;
+        m_var_map_short_innerbitmaskhelper = x.m_var_map_short_innerbitmaskhelper;
 
         return *this;
     }
@@ -2573,8 +2541,6 @@ public:
         return m_var_map_short_innerbitmaskhelper;
     }
 
-
-
 private:
 
     std::map<int16_t, InnerBitMaskHelper> m_var_map_short_innerbitmaskhelper;
@@ -2609,7 +2575,7 @@ public:
     eProsima_user_DllExport MapShortInnerAliasHelper(
             const MapShortInnerAliasHelper& x)
     {
-                    m_var_map_short_inneraliashelper = x.m_var_map_short_inneraliashelper;
+        m_var_map_short_inneraliashelper = x.m_var_map_short_inneraliashelper;
 
     }
 
@@ -2631,7 +2597,7 @@ public:
             const MapShortInnerAliasHelper& x)
     {
 
-                    m_var_map_short_inneraliashelper = x.m_var_map_short_inneraliashelper;
+        m_var_map_short_inneraliashelper = x.m_var_map_short_inneraliashelper;
 
         return *this;
     }
@@ -2706,8 +2672,6 @@ public:
         return m_var_map_short_inneraliashelper;
     }
 
-
-
 private:
 
     std::map<int16_t, InnerAliasHelper> m_var_map_short_inneraliashelper;
@@ -2742,7 +2706,7 @@ public:
     eProsima_user_DllExport MapShortInnerAliasArrayHelper(
             const MapShortInnerAliasArrayHelper& x)
     {
-                    m_var_map_short_inneraliasarrayhelper = x.m_var_map_short_inneraliasarrayhelper;
+        m_var_map_short_inneraliasarrayhelper = x.m_var_map_short_inneraliasarrayhelper;
 
     }
 
@@ -2764,7 +2728,7 @@ public:
             const MapShortInnerAliasArrayHelper& x)
     {
 
-                    m_var_map_short_inneraliasarrayhelper = x.m_var_map_short_inneraliasarrayhelper;
+        m_var_map_short_inneraliasarrayhelper = x.m_var_map_short_inneraliasarrayhelper;
 
         return *this;
     }
@@ -2825,7 +2789,8 @@ public:
      * @brief This function returns a constant reference to member var_map_short_inneraliasarrayhelper
      * @return Constant reference to member var_map_short_inneraliasarrayhelper
      */
-    eProsima_user_DllExport const std::map<int16_t, Inner_alias_array_helper>& var_map_short_inneraliasarrayhelper() const
+    eProsima_user_DllExport const std::map<int16_t,
+            Inner_alias_array_helper>& var_map_short_inneraliasarrayhelper() const
     {
         return m_var_map_short_inneraliasarrayhelper;
     }
@@ -2838,8 +2803,6 @@ public:
     {
         return m_var_map_short_inneraliasarrayhelper;
     }
-
-
 
 private:
 
@@ -2875,7 +2838,7 @@ public:
     eProsima_user_DllExport MapShortInnerAliasSequenceHelper(
             const MapShortInnerAliasSequenceHelper& x)
     {
-                    m_var_map_short_inneraliassequencehelper = x.m_var_map_short_inneraliassequencehelper;
+        m_var_map_short_inneraliassequencehelper = x.m_var_map_short_inneraliassequencehelper;
 
     }
 
@@ -2897,7 +2860,7 @@ public:
             const MapShortInnerAliasSequenceHelper& x)
     {
 
-                    m_var_map_short_inneraliassequencehelper = x.m_var_map_short_inneraliassequencehelper;
+        m_var_map_short_inneraliassequencehelper = x.m_var_map_short_inneraliassequencehelper;
 
         return *this;
     }
@@ -2958,7 +2921,8 @@ public:
      * @brief This function returns a constant reference to member var_map_short_inneraliassequencehelper
      * @return Constant reference to member var_map_short_inneraliassequencehelper
      */
-    eProsima_user_DllExport const std::map<int16_t, Inner_alias_sequence_helper>& var_map_short_inneraliassequencehelper() const
+    eProsima_user_DllExport const std::map<int16_t,
+            Inner_alias_sequence_helper>& var_map_short_inneraliassequencehelper() const
     {
         return m_var_map_short_inneraliassequencehelper;
     }
@@ -2971,8 +2935,6 @@ public:
     {
         return m_var_map_short_inneraliassequencehelper;
     }
-
-
 
 private:
 
@@ -3008,7 +2970,7 @@ public:
     eProsima_user_DllExport MapShortInnerAliasMapHelper(
             const MapShortInnerAliasMapHelper& x)
     {
-                    m_var_map_short_inneraliasmaphelper = x.m_var_map_short_inneraliasmaphelper;
+        m_var_map_short_inneraliasmaphelper = x.m_var_map_short_inneraliasmaphelper;
 
     }
 
@@ -3030,7 +2992,7 @@ public:
             const MapShortInnerAliasMapHelper& x)
     {
 
-                    m_var_map_short_inneraliasmaphelper = x.m_var_map_short_inneraliasmaphelper;
+        m_var_map_short_inneraliasmaphelper = x.m_var_map_short_inneraliasmaphelper;
 
         return *this;
     }
@@ -3105,8 +3067,6 @@ public:
         return m_var_map_short_inneraliasmaphelper;
     }
 
-
-
 private:
 
     std::map<int16_t, Inner_alias_map_helper> m_var_map_short_inneraliasmaphelper;
@@ -3141,7 +3101,7 @@ public:
     eProsima_user_DllExport MapShortInnerUnionHelper(
             const MapShortInnerUnionHelper& x)
     {
-                    m_var_map_short_innerunionhelper = x.m_var_map_short_innerunionhelper;
+        m_var_map_short_innerunionhelper = x.m_var_map_short_innerunionhelper;
 
     }
 
@@ -3163,7 +3123,7 @@ public:
             const MapShortInnerUnionHelper& x)
     {
 
-                    m_var_map_short_innerunionhelper = x.m_var_map_short_innerunionhelper;
+        m_var_map_short_innerunionhelper = x.m_var_map_short_innerunionhelper;
 
         return *this;
     }
@@ -3238,8 +3198,6 @@ public:
         return m_var_map_short_innerunionhelper;
     }
 
-
-
 private:
 
     std::map<int16_t, InnerUnionHelper> m_var_map_short_innerunionhelper;
@@ -3274,7 +3232,7 @@ public:
     eProsima_user_DllExport MapShortInnerStructureHelper(
             const MapShortInnerStructureHelper& x)
     {
-                    m_var_map_short_innerstructurehelper = x.m_var_map_short_innerstructurehelper;
+        m_var_map_short_innerstructurehelper = x.m_var_map_short_innerstructurehelper;
 
     }
 
@@ -3296,7 +3254,7 @@ public:
             const MapShortInnerStructureHelper& x)
     {
 
-                    m_var_map_short_innerstructurehelper = x.m_var_map_short_innerstructurehelper;
+        m_var_map_short_innerstructurehelper = x.m_var_map_short_innerstructurehelper;
 
         return *this;
     }
@@ -3371,8 +3329,6 @@ public:
         return m_var_map_short_innerstructurehelper;
     }
 
-
-
 private:
 
     std::map<int16_t, InnerStructureHelper> m_var_map_short_innerstructurehelper;
@@ -3407,7 +3363,7 @@ public:
     eProsima_user_DllExport MapShortInnerBitsetHelper(
             const MapShortInnerBitsetHelper& x)
     {
-                    m_var_map_short_innerbitsethelper = x.m_var_map_short_innerbitsethelper;
+        m_var_map_short_innerbitsethelper = x.m_var_map_short_innerbitsethelper;
 
     }
 
@@ -3429,7 +3385,7 @@ public:
             const MapShortInnerBitsetHelper& x)
     {
 
-                    m_var_map_short_innerbitsethelper = x.m_var_map_short_innerbitsethelper;
+        m_var_map_short_innerbitsethelper = x.m_var_map_short_innerbitsethelper;
 
         return *this;
     }
@@ -3504,8 +3460,6 @@ public:
         return m_var_map_short_innerbitsethelper;
     }
 
-
-
 private:
 
     std::map<int16_t, InnerBitsetHelper> m_var_map_short_innerbitsethelper;
@@ -3540,7 +3494,7 @@ public:
     eProsima_user_DllExport MapUShortShort(
             const MapUShortShort& x)
     {
-                    m_var_map_ushort_short = x.m_var_map_ushort_short;
+        m_var_map_ushort_short = x.m_var_map_ushort_short;
 
     }
 
@@ -3562,7 +3516,7 @@ public:
             const MapUShortShort& x)
     {
 
-                    m_var_map_ushort_short = x.m_var_map_ushort_short;
+        m_var_map_ushort_short = x.m_var_map_ushort_short;
 
         return *this;
     }
@@ -3637,8 +3591,6 @@ public:
         return m_var_map_ushort_short;
     }
 
-
-
 private:
 
     std::map<uint16_t, int16_t> m_var_map_ushort_short;
@@ -3673,7 +3625,7 @@ public:
     eProsima_user_DllExport MapUShortUShort(
             const MapUShortUShort& x)
     {
-                    m_var_map_ushort_ushort = x.m_var_map_ushort_ushort;
+        m_var_map_ushort_ushort = x.m_var_map_ushort_ushort;
 
     }
 
@@ -3695,7 +3647,7 @@ public:
             const MapUShortUShort& x)
     {
 
-                    m_var_map_ushort_ushort = x.m_var_map_ushort_ushort;
+        m_var_map_ushort_ushort = x.m_var_map_ushort_ushort;
 
         return *this;
     }
@@ -3770,8 +3722,6 @@ public:
         return m_var_map_ushort_ushort;
     }
 
-
-
 private:
 
     std::map<uint16_t, uint16_t> m_var_map_ushort_ushort;
@@ -3806,7 +3756,7 @@ public:
     eProsima_user_DllExport MapUShortLong(
             const MapUShortLong& x)
     {
-                    m_var_map_ushort_long = x.m_var_map_ushort_long;
+        m_var_map_ushort_long = x.m_var_map_ushort_long;
 
     }
 
@@ -3828,7 +3778,7 @@ public:
             const MapUShortLong& x)
     {
 
-                    m_var_map_ushort_long = x.m_var_map_ushort_long;
+        m_var_map_ushort_long = x.m_var_map_ushort_long;
 
         return *this;
     }
@@ -3903,8 +3853,6 @@ public:
         return m_var_map_ushort_long;
     }
 
-
-
 private:
 
     std::map<uint16_t, int32_t> m_var_map_ushort_long;
@@ -3939,7 +3887,7 @@ public:
     eProsima_user_DllExport MapUShortULong(
             const MapUShortULong& x)
     {
-                    m_var_map_ushort_ulong = x.m_var_map_ushort_ulong;
+        m_var_map_ushort_ulong = x.m_var_map_ushort_ulong;
 
     }
 
@@ -3961,7 +3909,7 @@ public:
             const MapUShortULong& x)
     {
 
-                    m_var_map_ushort_ulong = x.m_var_map_ushort_ulong;
+        m_var_map_ushort_ulong = x.m_var_map_ushort_ulong;
 
         return *this;
     }
@@ -4036,8 +3984,6 @@ public:
         return m_var_map_ushort_ulong;
     }
 
-
-
 private:
 
     std::map<uint16_t, uint32_t> m_var_map_ushort_ulong;
@@ -4072,7 +4018,7 @@ public:
     eProsima_user_DllExport MapUShortLongLong(
             const MapUShortLongLong& x)
     {
-                    m_var_map_ushort_longlong = x.m_var_map_ushort_longlong;
+        m_var_map_ushort_longlong = x.m_var_map_ushort_longlong;
 
     }
 
@@ -4094,7 +4040,7 @@ public:
             const MapUShortLongLong& x)
     {
 
-                    m_var_map_ushort_longlong = x.m_var_map_ushort_longlong;
+        m_var_map_ushort_longlong = x.m_var_map_ushort_longlong;
 
         return *this;
     }
@@ -4169,8 +4115,6 @@ public:
         return m_var_map_ushort_longlong;
     }
 
-
-
 private:
 
     std::map<uint16_t, int64_t> m_var_map_ushort_longlong;
@@ -4205,7 +4149,7 @@ public:
     eProsima_user_DllExport MapUShortULongLong(
             const MapUShortULongLong& x)
     {
-                    m_var_map_ushort_ulonglong = x.m_var_map_ushort_ulonglong;
+        m_var_map_ushort_ulonglong = x.m_var_map_ushort_ulonglong;
 
     }
 
@@ -4227,7 +4171,7 @@ public:
             const MapUShortULongLong& x)
     {
 
-                    m_var_map_ushort_ulonglong = x.m_var_map_ushort_ulonglong;
+        m_var_map_ushort_ulonglong = x.m_var_map_ushort_ulonglong;
 
         return *this;
     }
@@ -4302,8 +4246,6 @@ public:
         return m_var_map_ushort_ulonglong;
     }
 
-
-
 private:
 
     std::map<uint16_t, uint64_t> m_var_map_ushort_ulonglong;
@@ -4338,7 +4280,7 @@ public:
     eProsima_user_DllExport MapUShortFloat(
             const MapUShortFloat& x)
     {
-                    m_var_map_ushort_float = x.m_var_map_ushort_float;
+        m_var_map_ushort_float = x.m_var_map_ushort_float;
 
     }
 
@@ -4360,7 +4302,7 @@ public:
             const MapUShortFloat& x)
     {
 
-                    m_var_map_ushort_float = x.m_var_map_ushort_float;
+        m_var_map_ushort_float = x.m_var_map_ushort_float;
 
         return *this;
     }
@@ -4435,8 +4377,6 @@ public:
         return m_var_map_ushort_float;
     }
 
-
-
 private:
 
     std::map<uint16_t, float> m_var_map_ushort_float;
@@ -4471,7 +4411,7 @@ public:
     eProsima_user_DllExport MapUShortDouble(
             const MapUShortDouble& x)
     {
-                    m_var_map_ushort_double = x.m_var_map_ushort_double;
+        m_var_map_ushort_double = x.m_var_map_ushort_double;
 
     }
 
@@ -4493,7 +4433,7 @@ public:
             const MapUShortDouble& x)
     {
 
-                    m_var_map_ushort_double = x.m_var_map_ushort_double;
+        m_var_map_ushort_double = x.m_var_map_ushort_double;
 
         return *this;
     }
@@ -4568,8 +4508,6 @@ public:
         return m_var_map_ushort_double;
     }
 
-
-
 private:
 
     std::map<uint16_t, double> m_var_map_ushort_double;
@@ -4604,7 +4542,7 @@ public:
     eProsima_user_DllExport MapUShortLongDouble(
             const MapUShortLongDouble& x)
     {
-                    m_var_map_ushort_longdouble = x.m_var_map_ushort_longdouble;
+        m_var_map_ushort_longdouble = x.m_var_map_ushort_longdouble;
 
     }
 
@@ -4626,7 +4564,7 @@ public:
             const MapUShortLongDouble& x)
     {
 
-                    m_var_map_ushort_longdouble = x.m_var_map_ushort_longdouble;
+        m_var_map_ushort_longdouble = x.m_var_map_ushort_longdouble;
 
         return *this;
     }
@@ -4701,8 +4639,6 @@ public:
         return m_var_map_ushort_longdouble;
     }
 
-
-
 private:
 
     std::map<uint16_t, long double> m_var_map_ushort_longdouble;
@@ -4737,7 +4673,7 @@ public:
     eProsima_user_DllExport MapUShortBoolean(
             const MapUShortBoolean& x)
     {
-                    m_var_map_ushort_boolean = x.m_var_map_ushort_boolean;
+        m_var_map_ushort_boolean = x.m_var_map_ushort_boolean;
 
     }
 
@@ -4759,7 +4695,7 @@ public:
             const MapUShortBoolean& x)
     {
 
-                    m_var_map_ushort_boolean = x.m_var_map_ushort_boolean;
+        m_var_map_ushort_boolean = x.m_var_map_ushort_boolean;
 
         return *this;
     }
@@ -4834,8 +4770,6 @@ public:
         return m_var_map_ushort_boolean;
     }
 
-
-
 private:
 
     std::map<uint16_t, bool> m_var_map_ushort_boolean;
@@ -4870,7 +4804,7 @@ public:
     eProsima_user_DllExport MapUShortOctet(
             const MapUShortOctet& x)
     {
-                    m_var_map_ushort_octet = x.m_var_map_ushort_octet;
+        m_var_map_ushort_octet = x.m_var_map_ushort_octet;
 
     }
 
@@ -4892,7 +4826,7 @@ public:
             const MapUShortOctet& x)
     {
 
-                    m_var_map_ushort_octet = x.m_var_map_ushort_octet;
+        m_var_map_ushort_octet = x.m_var_map_ushort_octet;
 
         return *this;
     }
@@ -4967,8 +4901,6 @@ public:
         return m_var_map_ushort_octet;
     }
 
-
-
 private:
 
     std::map<uint16_t, uint8_t> m_var_map_ushort_octet;
@@ -5003,7 +4935,7 @@ public:
     eProsima_user_DllExport MapUShortChar(
             const MapUShortChar& x)
     {
-                    m_var_map_ushort_char = x.m_var_map_ushort_char;
+        m_var_map_ushort_char = x.m_var_map_ushort_char;
 
     }
 
@@ -5025,7 +4957,7 @@ public:
             const MapUShortChar& x)
     {
 
-                    m_var_map_ushort_char = x.m_var_map_ushort_char;
+        m_var_map_ushort_char = x.m_var_map_ushort_char;
 
         return *this;
     }
@@ -5100,8 +5032,6 @@ public:
         return m_var_map_ushort_char;
     }
 
-
-
 private:
 
     std::map<uint16_t, char> m_var_map_ushort_char;
@@ -5136,7 +5066,7 @@ public:
     eProsima_user_DllExport MapUShortWChar(
             const MapUShortWChar& x)
     {
-                    m_var_map_ushort_wchar = x.m_var_map_ushort_wchar;
+        m_var_map_ushort_wchar = x.m_var_map_ushort_wchar;
 
     }
 
@@ -5158,7 +5088,7 @@ public:
             const MapUShortWChar& x)
     {
 
-                    m_var_map_ushort_wchar = x.m_var_map_ushort_wchar;
+        m_var_map_ushort_wchar = x.m_var_map_ushort_wchar;
 
         return *this;
     }
@@ -5233,8 +5163,6 @@ public:
         return m_var_map_ushort_wchar;
     }
 
-
-
 private:
 
     std::map<uint16_t, wchar_t> m_var_map_ushort_wchar;
@@ -5269,7 +5197,7 @@ public:
     eProsima_user_DllExport MapUShortString(
             const MapUShortString& x)
     {
-                    m_var_map_ushort_string = x.m_var_map_ushort_string;
+        m_var_map_ushort_string = x.m_var_map_ushort_string;
 
     }
 
@@ -5291,7 +5219,7 @@ public:
             const MapUShortString& x)
     {
 
-                    m_var_map_ushort_string = x.m_var_map_ushort_string;
+        m_var_map_ushort_string = x.m_var_map_ushort_string;
 
         return *this;
     }
@@ -5366,8 +5294,6 @@ public:
         return m_var_map_ushort_string;
     }
 
-
-
 private:
 
     std::map<uint16_t, std::string> m_var_map_ushort_string;
@@ -5402,7 +5328,7 @@ public:
     eProsima_user_DllExport MapUShortWString(
             const MapUShortWString& x)
     {
-                    m_var_map_ushort_wstring = x.m_var_map_ushort_wstring;
+        m_var_map_ushort_wstring = x.m_var_map_ushort_wstring;
 
     }
 
@@ -5424,7 +5350,7 @@ public:
             const MapUShortWString& x)
     {
 
-                    m_var_map_ushort_wstring = x.m_var_map_ushort_wstring;
+        m_var_map_ushort_wstring = x.m_var_map_ushort_wstring;
 
         return *this;
     }
@@ -5499,8 +5425,6 @@ public:
         return m_var_map_ushort_wstring;
     }
 
-
-
 private:
 
     std::map<uint16_t, std::wstring> m_var_map_ushort_wstring;
@@ -5535,7 +5459,7 @@ public:
     eProsima_user_DllExport MapUShortInnerAliasBoundedStringHelper(
             const MapUShortInnerAliasBoundedStringHelper& x)
     {
-                    m_var_map_ushort_inneraliasboundedstringhelper = x.m_var_map_ushort_inneraliasboundedstringhelper;
+        m_var_map_ushort_inneraliasboundedstringhelper = x.m_var_map_ushort_inneraliasboundedstringhelper;
 
     }
 
@@ -5557,7 +5481,7 @@ public:
             const MapUShortInnerAliasBoundedStringHelper& x)
     {
 
-                    m_var_map_ushort_inneraliasboundedstringhelper = x.m_var_map_ushort_inneraliasboundedstringhelper;
+        m_var_map_ushort_inneraliasboundedstringhelper = x.m_var_map_ushort_inneraliasboundedstringhelper;
 
         return *this;
     }
@@ -5618,7 +5542,8 @@ public:
      * @brief This function returns a constant reference to member var_map_ushort_inneraliasboundedstringhelper
      * @return Constant reference to member var_map_ushort_inneraliasboundedstringhelper
      */
-    eProsima_user_DllExport const std::map<uint16_t, Inner_alias_bounded_string_helper>& var_map_ushort_inneraliasboundedstringhelper() const
+    eProsima_user_DllExport const std::map<uint16_t,
+            Inner_alias_bounded_string_helper>& var_map_ushort_inneraliasboundedstringhelper() const
     {
         return m_var_map_ushort_inneraliasboundedstringhelper;
     }
@@ -5627,12 +5552,11 @@ public:
      * @brief This function returns a reference to member var_map_ushort_inneraliasboundedstringhelper
      * @return Reference to member var_map_ushort_inneraliasboundedstringhelper
      */
-    eProsima_user_DllExport std::map<uint16_t, Inner_alias_bounded_string_helper>& var_map_ushort_inneraliasboundedstringhelper()
+    eProsima_user_DllExport std::map<uint16_t,
+            Inner_alias_bounded_string_helper>& var_map_ushort_inneraliasboundedstringhelper()
     {
         return m_var_map_ushort_inneraliasboundedstringhelper;
     }
-
-
 
 private:
 
@@ -5668,7 +5592,7 @@ public:
     eProsima_user_DllExport MapUShortInnerAliasBoundedWStringHelper(
             const MapUShortInnerAliasBoundedWStringHelper& x)
     {
-                    m_var_map_ushort_inneraliasboundedwstringhelper = x.m_var_map_ushort_inneraliasboundedwstringhelper;
+        m_var_map_ushort_inneraliasboundedwstringhelper = x.m_var_map_ushort_inneraliasboundedwstringhelper;
 
     }
 
@@ -5690,7 +5614,7 @@ public:
             const MapUShortInnerAliasBoundedWStringHelper& x)
     {
 
-                    m_var_map_ushort_inneraliasboundedwstringhelper = x.m_var_map_ushort_inneraliasboundedwstringhelper;
+        m_var_map_ushort_inneraliasboundedwstringhelper = x.m_var_map_ushort_inneraliasboundedwstringhelper;
 
         return *this;
     }
@@ -5732,7 +5656,8 @@ public:
      * @param _var_map_ushort_inneraliasboundedwstringhelper New value to be copied in member var_map_ushort_inneraliasboundedwstringhelper
      */
     eProsima_user_DllExport void var_map_ushort_inneraliasboundedwstringhelper(
-            const std::map<uint16_t, Inner_alias_bounded_wstring_helper>& _var_map_ushort_inneraliasboundedwstringhelper)
+            const std::map<uint16_t,
+            Inner_alias_bounded_wstring_helper>& _var_map_ushort_inneraliasboundedwstringhelper)
     {
         m_var_map_ushort_inneraliasboundedwstringhelper = _var_map_ushort_inneraliasboundedwstringhelper;
     }
@@ -5751,7 +5676,8 @@ public:
      * @brief This function returns a constant reference to member var_map_ushort_inneraliasboundedwstringhelper
      * @return Constant reference to member var_map_ushort_inneraliasboundedwstringhelper
      */
-    eProsima_user_DllExport const std::map<uint16_t, Inner_alias_bounded_wstring_helper>& var_map_ushort_inneraliasboundedwstringhelper() const
+    eProsima_user_DllExport const std::map<uint16_t,
+            Inner_alias_bounded_wstring_helper>& var_map_ushort_inneraliasboundedwstringhelper() const
     {
         return m_var_map_ushort_inneraliasboundedwstringhelper;
     }
@@ -5760,12 +5686,11 @@ public:
      * @brief This function returns a reference to member var_map_ushort_inneraliasboundedwstringhelper
      * @return Reference to member var_map_ushort_inneraliasboundedwstringhelper
      */
-    eProsima_user_DllExport std::map<uint16_t, Inner_alias_bounded_wstring_helper>& var_map_ushort_inneraliasboundedwstringhelper()
+    eProsima_user_DllExport std::map<uint16_t,
+            Inner_alias_bounded_wstring_helper>& var_map_ushort_inneraliasboundedwstringhelper()
     {
         return m_var_map_ushort_inneraliasboundedwstringhelper;
     }
-
-
 
 private:
 
@@ -5801,7 +5726,7 @@ public:
     eProsima_user_DllExport MapUShortInnerEnumHelper(
             const MapUShortInnerEnumHelper& x)
     {
-                    m_var_map_ushort_innerenumhelper = x.m_var_map_ushort_innerenumhelper;
+        m_var_map_ushort_innerenumhelper = x.m_var_map_ushort_innerenumhelper;
 
     }
 
@@ -5823,7 +5748,7 @@ public:
             const MapUShortInnerEnumHelper& x)
     {
 
-                    m_var_map_ushort_innerenumhelper = x.m_var_map_ushort_innerenumhelper;
+        m_var_map_ushort_innerenumhelper = x.m_var_map_ushort_innerenumhelper;
 
         return *this;
     }
@@ -5898,8 +5823,6 @@ public:
         return m_var_map_ushort_innerenumhelper;
     }
 
-
-
 private:
 
     std::map<uint16_t, InnerEnumHelper> m_var_map_ushort_innerenumhelper;
@@ -5934,7 +5857,7 @@ public:
     eProsima_user_DllExport MapUShortInnerBitMaskHelper(
             const MapUShortInnerBitMaskHelper& x)
     {
-                    m_var_map_ushort_innerbitmaskhelper = x.m_var_map_ushort_innerbitmaskhelper;
+        m_var_map_ushort_innerbitmaskhelper = x.m_var_map_ushort_innerbitmaskhelper;
 
     }
 
@@ -5956,7 +5879,7 @@ public:
             const MapUShortInnerBitMaskHelper& x)
     {
 
-                    m_var_map_ushort_innerbitmaskhelper = x.m_var_map_ushort_innerbitmaskhelper;
+        m_var_map_ushort_innerbitmaskhelper = x.m_var_map_ushort_innerbitmaskhelper;
 
         return *this;
     }
@@ -6031,8 +5954,6 @@ public:
         return m_var_map_ushort_innerbitmaskhelper;
     }
 
-
-
 private:
 
     std::map<uint16_t, InnerBitMaskHelper> m_var_map_ushort_innerbitmaskhelper;
@@ -6067,7 +5988,7 @@ public:
     eProsima_user_DllExport MapUShortInnerAliasHelper(
             const MapUShortInnerAliasHelper& x)
     {
-                    m_var_map_ushort_inneraliashelper = x.m_var_map_ushort_inneraliashelper;
+        m_var_map_ushort_inneraliashelper = x.m_var_map_ushort_inneraliashelper;
 
     }
 
@@ -6089,7 +6010,7 @@ public:
             const MapUShortInnerAliasHelper& x)
     {
 
-                    m_var_map_ushort_inneraliashelper = x.m_var_map_ushort_inneraliashelper;
+        m_var_map_ushort_inneraliashelper = x.m_var_map_ushort_inneraliashelper;
 
         return *this;
     }
@@ -6164,8 +6085,6 @@ public:
         return m_var_map_ushort_inneraliashelper;
     }
 
-
-
 private:
 
     std::map<uint16_t, InnerAliasHelper> m_var_map_ushort_inneraliashelper;
@@ -6200,7 +6119,7 @@ public:
     eProsima_user_DllExport MapUShortInnerAliasArrayHelper(
             const MapUShortInnerAliasArrayHelper& x)
     {
-                    m_var_map_ushort_inneraliasarrayhelper = x.m_var_map_ushort_inneraliasarrayhelper;
+        m_var_map_ushort_inneraliasarrayhelper = x.m_var_map_ushort_inneraliasarrayhelper;
 
     }
 
@@ -6222,7 +6141,7 @@ public:
             const MapUShortInnerAliasArrayHelper& x)
     {
 
-                    m_var_map_ushort_inneraliasarrayhelper = x.m_var_map_ushort_inneraliasarrayhelper;
+        m_var_map_ushort_inneraliasarrayhelper = x.m_var_map_ushort_inneraliasarrayhelper;
 
         return *this;
     }
@@ -6283,7 +6202,8 @@ public:
      * @brief This function returns a constant reference to member var_map_ushort_inneraliasarrayhelper
      * @return Constant reference to member var_map_ushort_inneraliasarrayhelper
      */
-    eProsima_user_DllExport const std::map<uint16_t, Inner_alias_array_helper>& var_map_ushort_inneraliasarrayhelper() const
+    eProsima_user_DllExport const std::map<uint16_t,
+            Inner_alias_array_helper>& var_map_ushort_inneraliasarrayhelper() const
     {
         return m_var_map_ushort_inneraliasarrayhelper;
     }
@@ -6296,8 +6216,6 @@ public:
     {
         return m_var_map_ushort_inneraliasarrayhelper;
     }
-
-
 
 private:
 
@@ -6333,7 +6251,7 @@ public:
     eProsima_user_DllExport MapUShortInnerAliasSequenceHelper(
             const MapUShortInnerAliasSequenceHelper& x)
     {
-                    m_var_map_ushort_inneraliassequencehelper = x.m_var_map_ushort_inneraliassequencehelper;
+        m_var_map_ushort_inneraliassequencehelper = x.m_var_map_ushort_inneraliassequencehelper;
 
     }
 
@@ -6355,7 +6273,7 @@ public:
             const MapUShortInnerAliasSequenceHelper& x)
     {
 
-                    m_var_map_ushort_inneraliassequencehelper = x.m_var_map_ushort_inneraliassequencehelper;
+        m_var_map_ushort_inneraliassequencehelper = x.m_var_map_ushort_inneraliassequencehelper;
 
         return *this;
     }
@@ -6416,7 +6334,8 @@ public:
      * @brief This function returns a constant reference to member var_map_ushort_inneraliassequencehelper
      * @return Constant reference to member var_map_ushort_inneraliassequencehelper
      */
-    eProsima_user_DllExport const std::map<uint16_t, Inner_alias_sequence_helper>& var_map_ushort_inneraliassequencehelper() const
+    eProsima_user_DllExport const std::map<uint16_t,
+            Inner_alias_sequence_helper>& var_map_ushort_inneraliassequencehelper() const
     {
         return m_var_map_ushort_inneraliassequencehelper;
     }
@@ -6429,8 +6348,6 @@ public:
     {
         return m_var_map_ushort_inneraliassequencehelper;
     }
-
-
 
 private:
 
@@ -6466,7 +6383,7 @@ public:
     eProsima_user_DllExport MapUShortInnerAliasMapHelper(
             const MapUShortInnerAliasMapHelper& x)
     {
-                    m_var_map_ushort_inneraliasmaphelper = x.m_var_map_ushort_inneraliasmaphelper;
+        m_var_map_ushort_inneraliasmaphelper = x.m_var_map_ushort_inneraliasmaphelper;
 
     }
 
@@ -6488,7 +6405,7 @@ public:
             const MapUShortInnerAliasMapHelper& x)
     {
 
-                    m_var_map_ushort_inneraliasmaphelper = x.m_var_map_ushort_inneraliasmaphelper;
+        m_var_map_ushort_inneraliasmaphelper = x.m_var_map_ushort_inneraliasmaphelper;
 
         return *this;
     }
@@ -6563,8 +6480,6 @@ public:
         return m_var_map_ushort_inneraliasmaphelper;
     }
 
-
-
 private:
 
     std::map<uint16_t, Inner_alias_map_helper> m_var_map_ushort_inneraliasmaphelper;
@@ -6599,7 +6514,7 @@ public:
     eProsima_user_DllExport MapUShortInnerUnionHelper(
             const MapUShortInnerUnionHelper& x)
     {
-                    m_var_map_ushort_innerunionhelper = x.m_var_map_ushort_innerunionhelper;
+        m_var_map_ushort_innerunionhelper = x.m_var_map_ushort_innerunionhelper;
 
     }
 
@@ -6621,7 +6536,7 @@ public:
             const MapUShortInnerUnionHelper& x)
     {
 
-                    m_var_map_ushort_innerunionhelper = x.m_var_map_ushort_innerunionhelper;
+        m_var_map_ushort_innerunionhelper = x.m_var_map_ushort_innerunionhelper;
 
         return *this;
     }
@@ -6696,8 +6611,6 @@ public:
         return m_var_map_ushort_innerunionhelper;
     }
 
-
-
 private:
 
     std::map<uint16_t, InnerUnionHelper> m_var_map_ushort_innerunionhelper;
@@ -6732,7 +6645,7 @@ public:
     eProsima_user_DllExport MapUShortInnerStructureHelper(
             const MapUShortInnerStructureHelper& x)
     {
-                    m_var_map_ushort_innerstructurehelper = x.m_var_map_ushort_innerstructurehelper;
+        m_var_map_ushort_innerstructurehelper = x.m_var_map_ushort_innerstructurehelper;
 
     }
 
@@ -6754,7 +6667,7 @@ public:
             const MapUShortInnerStructureHelper& x)
     {
 
-                    m_var_map_ushort_innerstructurehelper = x.m_var_map_ushort_innerstructurehelper;
+        m_var_map_ushort_innerstructurehelper = x.m_var_map_ushort_innerstructurehelper;
 
         return *this;
     }
@@ -6829,8 +6742,6 @@ public:
         return m_var_map_ushort_innerstructurehelper;
     }
 
-
-
 private:
 
     std::map<uint16_t, InnerStructureHelper> m_var_map_ushort_innerstructurehelper;
@@ -6865,7 +6776,7 @@ public:
     eProsima_user_DllExport MapUShortInnerBitsetHelper(
             const MapUShortInnerBitsetHelper& x)
     {
-                    m_var_map_ushort_innerbitsethelper = x.m_var_map_ushort_innerbitsethelper;
+        m_var_map_ushort_innerbitsethelper = x.m_var_map_ushort_innerbitsethelper;
 
     }
 
@@ -6887,7 +6798,7 @@ public:
             const MapUShortInnerBitsetHelper& x)
     {
 
-                    m_var_map_ushort_innerbitsethelper = x.m_var_map_ushort_innerbitsethelper;
+        m_var_map_ushort_innerbitsethelper = x.m_var_map_ushort_innerbitsethelper;
 
         return *this;
     }
@@ -6962,8 +6873,6 @@ public:
         return m_var_map_ushort_innerbitsethelper;
     }
 
-
-
 private:
 
     std::map<uint16_t, InnerBitsetHelper> m_var_map_ushort_innerbitsethelper;
@@ -6998,7 +6907,7 @@ public:
     eProsima_user_DllExport MapLongShort(
             const MapLongShort& x)
     {
-                    m_var_map_long_short = x.m_var_map_long_short;
+        m_var_map_long_short = x.m_var_map_long_short;
 
     }
 
@@ -7020,7 +6929,7 @@ public:
             const MapLongShort& x)
     {
 
-                    m_var_map_long_short = x.m_var_map_long_short;
+        m_var_map_long_short = x.m_var_map_long_short;
 
         return *this;
     }
@@ -7095,8 +7004,6 @@ public:
         return m_var_map_long_short;
     }
 
-
-
 private:
 
     std::map<int32_t, int16_t> m_var_map_long_short;
@@ -7131,7 +7038,7 @@ public:
     eProsima_user_DllExport MapLongUShort(
             const MapLongUShort& x)
     {
-                    m_var_map_long_ushort = x.m_var_map_long_ushort;
+        m_var_map_long_ushort = x.m_var_map_long_ushort;
 
     }
 
@@ -7153,7 +7060,7 @@ public:
             const MapLongUShort& x)
     {
 
-                    m_var_map_long_ushort = x.m_var_map_long_ushort;
+        m_var_map_long_ushort = x.m_var_map_long_ushort;
 
         return *this;
     }
@@ -7228,8 +7135,6 @@ public:
         return m_var_map_long_ushort;
     }
 
-
-
 private:
 
     std::map<int32_t, uint16_t> m_var_map_long_ushort;
@@ -7264,7 +7169,7 @@ public:
     eProsima_user_DllExport MapLongLong(
             const MapLongLong& x)
     {
-                    m_var_map_long_long = x.m_var_map_long_long;
+        m_var_map_long_long = x.m_var_map_long_long;
 
     }
 
@@ -7286,7 +7191,7 @@ public:
             const MapLongLong& x)
     {
 
-                    m_var_map_long_long = x.m_var_map_long_long;
+        m_var_map_long_long = x.m_var_map_long_long;
 
         return *this;
     }
@@ -7361,8 +7266,6 @@ public:
         return m_var_map_long_long;
     }
 
-
-
 private:
 
     std::map<int32_t, int32_t> m_var_map_long_long;
@@ -7397,7 +7300,7 @@ public:
     eProsima_user_DllExport MapLongULong(
             const MapLongULong& x)
     {
-                    m_var_map_long_ulong = x.m_var_map_long_ulong;
+        m_var_map_long_ulong = x.m_var_map_long_ulong;
 
     }
 
@@ -7419,7 +7322,7 @@ public:
             const MapLongULong& x)
     {
 
-                    m_var_map_long_ulong = x.m_var_map_long_ulong;
+        m_var_map_long_ulong = x.m_var_map_long_ulong;
 
         return *this;
     }
@@ -7494,8 +7397,6 @@ public:
         return m_var_map_long_ulong;
     }
 
-
-
 private:
 
     std::map<int32_t, uint32_t> m_var_map_long_ulong;
@@ -7530,7 +7431,7 @@ public:
     eProsima_user_DllExport MapLongKeyLongLongValue(
             const MapLongKeyLongLongValue& x)
     {
-                    m_var_map_long_longlong = x.m_var_map_long_longlong;
+        m_var_map_long_longlong = x.m_var_map_long_longlong;
 
     }
 
@@ -7552,7 +7453,7 @@ public:
             const MapLongKeyLongLongValue& x)
     {
 
-                    m_var_map_long_longlong = x.m_var_map_long_longlong;
+        m_var_map_long_longlong = x.m_var_map_long_longlong;
 
         return *this;
     }
@@ -7627,8 +7528,6 @@ public:
         return m_var_map_long_longlong;
     }
 
-
-
 private:
 
     std::map<int32_t, int64_t> m_var_map_long_longlong;
@@ -7663,7 +7562,7 @@ public:
     eProsima_user_DllExport MapLongULongLong(
             const MapLongULongLong& x)
     {
-                    m_var_map_long_ulonglong = x.m_var_map_long_ulonglong;
+        m_var_map_long_ulonglong = x.m_var_map_long_ulonglong;
 
     }
 
@@ -7685,7 +7584,7 @@ public:
             const MapLongULongLong& x)
     {
 
-                    m_var_map_long_ulonglong = x.m_var_map_long_ulonglong;
+        m_var_map_long_ulonglong = x.m_var_map_long_ulonglong;
 
         return *this;
     }
@@ -7760,8 +7659,6 @@ public:
         return m_var_map_long_ulonglong;
     }
 
-
-
 private:
 
     std::map<int32_t, uint64_t> m_var_map_long_ulonglong;
@@ -7796,7 +7693,7 @@ public:
     eProsima_user_DllExport MapLongFloat(
             const MapLongFloat& x)
     {
-                    m_var_map_long_float = x.m_var_map_long_float;
+        m_var_map_long_float = x.m_var_map_long_float;
 
     }
 
@@ -7818,7 +7715,7 @@ public:
             const MapLongFloat& x)
     {
 
-                    m_var_map_long_float = x.m_var_map_long_float;
+        m_var_map_long_float = x.m_var_map_long_float;
 
         return *this;
     }
@@ -7893,8 +7790,6 @@ public:
         return m_var_map_long_float;
     }
 
-
-
 private:
 
     std::map<int32_t, float> m_var_map_long_float;
@@ -7929,7 +7824,7 @@ public:
     eProsima_user_DllExport MapLongDouble(
             const MapLongDouble& x)
     {
-                    m_var_map_long_double = x.m_var_map_long_double;
+        m_var_map_long_double = x.m_var_map_long_double;
 
     }
 
@@ -7951,7 +7846,7 @@ public:
             const MapLongDouble& x)
     {
 
-                    m_var_map_long_double = x.m_var_map_long_double;
+        m_var_map_long_double = x.m_var_map_long_double;
 
         return *this;
     }
@@ -8026,8 +7921,6 @@ public:
         return m_var_map_long_double;
     }
 
-
-
 private:
 
     std::map<int32_t, double> m_var_map_long_double;
@@ -8062,7 +7955,7 @@ public:
     eProsima_user_DllExport MapLongKeyLongDoubleValue(
             const MapLongKeyLongDoubleValue& x)
     {
-                    m_var_map_long_longdouble = x.m_var_map_long_longdouble;
+        m_var_map_long_longdouble = x.m_var_map_long_longdouble;
 
     }
 
@@ -8084,7 +7977,7 @@ public:
             const MapLongKeyLongDoubleValue& x)
     {
 
-                    m_var_map_long_longdouble = x.m_var_map_long_longdouble;
+        m_var_map_long_longdouble = x.m_var_map_long_longdouble;
 
         return *this;
     }
@@ -8159,8 +8052,6 @@ public:
         return m_var_map_long_longdouble;
     }
 
-
-
 private:
 
     std::map<int32_t, long double> m_var_map_long_longdouble;
@@ -8195,7 +8086,7 @@ public:
     eProsima_user_DllExport MapLongBoolean(
             const MapLongBoolean& x)
     {
-                    m_var_map_long_boolean = x.m_var_map_long_boolean;
+        m_var_map_long_boolean = x.m_var_map_long_boolean;
 
     }
 
@@ -8217,7 +8108,7 @@ public:
             const MapLongBoolean& x)
     {
 
-                    m_var_map_long_boolean = x.m_var_map_long_boolean;
+        m_var_map_long_boolean = x.m_var_map_long_boolean;
 
         return *this;
     }
@@ -8292,8 +8183,6 @@ public:
         return m_var_map_long_boolean;
     }
 
-
-
 private:
 
     std::map<int32_t, bool> m_var_map_long_boolean;
@@ -8328,7 +8217,7 @@ public:
     eProsima_user_DllExport MapLongOctet(
             const MapLongOctet& x)
     {
-                    m_var_map_long_octet = x.m_var_map_long_octet;
+        m_var_map_long_octet = x.m_var_map_long_octet;
 
     }
 
@@ -8350,7 +8239,7 @@ public:
             const MapLongOctet& x)
     {
 
-                    m_var_map_long_octet = x.m_var_map_long_octet;
+        m_var_map_long_octet = x.m_var_map_long_octet;
 
         return *this;
     }
@@ -8425,8 +8314,6 @@ public:
         return m_var_map_long_octet;
     }
 
-
-
 private:
 
     std::map<int32_t, uint8_t> m_var_map_long_octet;
@@ -8461,7 +8348,7 @@ public:
     eProsima_user_DllExport MapLongChar(
             const MapLongChar& x)
     {
-                    m_var_map_long_char = x.m_var_map_long_char;
+        m_var_map_long_char = x.m_var_map_long_char;
 
     }
 
@@ -8483,7 +8370,7 @@ public:
             const MapLongChar& x)
     {
 
-                    m_var_map_long_char = x.m_var_map_long_char;
+        m_var_map_long_char = x.m_var_map_long_char;
 
         return *this;
     }
@@ -8558,8 +8445,6 @@ public:
         return m_var_map_long_char;
     }
 
-
-
 private:
 
     std::map<int32_t, char> m_var_map_long_char;
@@ -8594,7 +8479,7 @@ public:
     eProsima_user_DllExport MapLongWChar(
             const MapLongWChar& x)
     {
-                    m_var_map_long_wchar = x.m_var_map_long_wchar;
+        m_var_map_long_wchar = x.m_var_map_long_wchar;
 
     }
 
@@ -8616,7 +8501,7 @@ public:
             const MapLongWChar& x)
     {
 
-                    m_var_map_long_wchar = x.m_var_map_long_wchar;
+        m_var_map_long_wchar = x.m_var_map_long_wchar;
 
         return *this;
     }
@@ -8691,8 +8576,6 @@ public:
         return m_var_map_long_wchar;
     }
 
-
-
 private:
 
     std::map<int32_t, wchar_t> m_var_map_long_wchar;
@@ -8727,7 +8610,7 @@ public:
     eProsima_user_DllExport MapLongString(
             const MapLongString& x)
     {
-                    m_var_map_long_string = x.m_var_map_long_string;
+        m_var_map_long_string = x.m_var_map_long_string;
 
     }
 
@@ -8749,7 +8632,7 @@ public:
             const MapLongString& x)
     {
 
-                    m_var_map_long_string = x.m_var_map_long_string;
+        m_var_map_long_string = x.m_var_map_long_string;
 
         return *this;
     }
@@ -8824,8 +8707,6 @@ public:
         return m_var_map_long_string;
     }
 
-
-
 private:
 
     std::map<int32_t, std::string> m_var_map_long_string;
@@ -8860,7 +8741,7 @@ public:
     eProsima_user_DllExport MapLongWString(
             const MapLongWString& x)
     {
-                    m_var_map_long_wstring = x.m_var_map_long_wstring;
+        m_var_map_long_wstring = x.m_var_map_long_wstring;
 
     }
 
@@ -8882,7 +8763,7 @@ public:
             const MapLongWString& x)
     {
 
-                    m_var_map_long_wstring = x.m_var_map_long_wstring;
+        m_var_map_long_wstring = x.m_var_map_long_wstring;
 
         return *this;
     }
@@ -8957,8 +8838,6 @@ public:
         return m_var_map_long_wstring;
     }
 
-
-
 private:
 
     std::map<int32_t, std::wstring> m_var_map_long_wstring;
@@ -8993,7 +8872,7 @@ public:
     eProsima_user_DllExport MapLongInnerAliasBoundedStringHelper(
             const MapLongInnerAliasBoundedStringHelper& x)
     {
-                    m_var_map_long_inneraliasboundedstringhelper = x.m_var_map_long_inneraliasboundedstringhelper;
+        m_var_map_long_inneraliasboundedstringhelper = x.m_var_map_long_inneraliasboundedstringhelper;
 
     }
 
@@ -9015,7 +8894,7 @@ public:
             const MapLongInnerAliasBoundedStringHelper& x)
     {
 
-                    m_var_map_long_inneraliasboundedstringhelper = x.m_var_map_long_inneraliasboundedstringhelper;
+        m_var_map_long_inneraliasboundedstringhelper = x.m_var_map_long_inneraliasboundedstringhelper;
 
         return *this;
     }
@@ -9076,7 +8955,8 @@ public:
      * @brief This function returns a constant reference to member var_map_long_inneraliasboundedstringhelper
      * @return Constant reference to member var_map_long_inneraliasboundedstringhelper
      */
-    eProsima_user_DllExport const std::map<int32_t, Inner_alias_bounded_string_helper>& var_map_long_inneraliasboundedstringhelper() const
+    eProsima_user_DllExport const std::map<int32_t,
+            Inner_alias_bounded_string_helper>& var_map_long_inneraliasboundedstringhelper() const
     {
         return m_var_map_long_inneraliasboundedstringhelper;
     }
@@ -9085,12 +8965,11 @@ public:
      * @brief This function returns a reference to member var_map_long_inneraliasboundedstringhelper
      * @return Reference to member var_map_long_inneraliasboundedstringhelper
      */
-    eProsima_user_DllExport std::map<int32_t, Inner_alias_bounded_string_helper>& var_map_long_inneraliasboundedstringhelper()
+    eProsima_user_DllExport std::map<int32_t,
+            Inner_alias_bounded_string_helper>& var_map_long_inneraliasboundedstringhelper()
     {
         return m_var_map_long_inneraliasboundedstringhelper;
     }
-
-
 
 private:
 
@@ -9126,7 +9005,7 @@ public:
     eProsima_user_DllExport MapLongInnerAliasBoundedWStringHelper(
             const MapLongInnerAliasBoundedWStringHelper& x)
     {
-                    m_var_map_long_inneraliasboundedwstringhelper = x.m_var_map_long_inneraliasboundedwstringhelper;
+        m_var_map_long_inneraliasboundedwstringhelper = x.m_var_map_long_inneraliasboundedwstringhelper;
 
     }
 
@@ -9148,7 +9027,7 @@ public:
             const MapLongInnerAliasBoundedWStringHelper& x)
     {
 
-                    m_var_map_long_inneraliasboundedwstringhelper = x.m_var_map_long_inneraliasboundedwstringhelper;
+        m_var_map_long_inneraliasboundedwstringhelper = x.m_var_map_long_inneraliasboundedwstringhelper;
 
         return *this;
     }
@@ -9209,7 +9088,8 @@ public:
      * @brief This function returns a constant reference to member var_map_long_inneraliasboundedwstringhelper
      * @return Constant reference to member var_map_long_inneraliasboundedwstringhelper
      */
-    eProsima_user_DllExport const std::map<int32_t, Inner_alias_bounded_wstring_helper>& var_map_long_inneraliasboundedwstringhelper() const
+    eProsima_user_DllExport const std::map<int32_t,
+            Inner_alias_bounded_wstring_helper>& var_map_long_inneraliasboundedwstringhelper() const
     {
         return m_var_map_long_inneraliasboundedwstringhelper;
     }
@@ -9218,12 +9098,11 @@ public:
      * @brief This function returns a reference to member var_map_long_inneraliasboundedwstringhelper
      * @return Reference to member var_map_long_inneraliasboundedwstringhelper
      */
-    eProsima_user_DllExport std::map<int32_t, Inner_alias_bounded_wstring_helper>& var_map_long_inneraliasboundedwstringhelper()
+    eProsima_user_DllExport std::map<int32_t,
+            Inner_alias_bounded_wstring_helper>& var_map_long_inneraliasboundedwstringhelper()
     {
         return m_var_map_long_inneraliasboundedwstringhelper;
     }
-
-
 
 private:
 
@@ -9259,7 +9138,7 @@ public:
     eProsima_user_DllExport MapLongInnerEnumHelper(
             const MapLongInnerEnumHelper& x)
     {
-                    m_var_map_long_innerenumhelper = x.m_var_map_long_innerenumhelper;
+        m_var_map_long_innerenumhelper = x.m_var_map_long_innerenumhelper;
 
     }
 
@@ -9281,7 +9160,7 @@ public:
             const MapLongInnerEnumHelper& x)
     {
 
-                    m_var_map_long_innerenumhelper = x.m_var_map_long_innerenumhelper;
+        m_var_map_long_innerenumhelper = x.m_var_map_long_innerenumhelper;
 
         return *this;
     }
@@ -9356,8 +9235,6 @@ public:
         return m_var_map_long_innerenumhelper;
     }
 
-
-
 private:
 
     std::map<int32_t, InnerEnumHelper> m_var_map_long_innerenumhelper;
@@ -9392,7 +9269,7 @@ public:
     eProsima_user_DllExport MapLongInnerBitMaskHelper(
             const MapLongInnerBitMaskHelper& x)
     {
-                    m_var_map_long_innerbitmaskhelper = x.m_var_map_long_innerbitmaskhelper;
+        m_var_map_long_innerbitmaskhelper = x.m_var_map_long_innerbitmaskhelper;
 
     }
 
@@ -9414,7 +9291,7 @@ public:
             const MapLongInnerBitMaskHelper& x)
     {
 
-                    m_var_map_long_innerbitmaskhelper = x.m_var_map_long_innerbitmaskhelper;
+        m_var_map_long_innerbitmaskhelper = x.m_var_map_long_innerbitmaskhelper;
 
         return *this;
     }
@@ -9489,8 +9366,6 @@ public:
         return m_var_map_long_innerbitmaskhelper;
     }
 
-
-
 private:
 
     std::map<int32_t, InnerBitMaskHelper> m_var_map_long_innerbitmaskhelper;
@@ -9525,7 +9400,7 @@ public:
     eProsima_user_DllExport MapLongInnerAliasHelper(
             const MapLongInnerAliasHelper& x)
     {
-                    m_var_map_long_inneraliashelper = x.m_var_map_long_inneraliashelper;
+        m_var_map_long_inneraliashelper = x.m_var_map_long_inneraliashelper;
 
     }
 
@@ -9547,7 +9422,7 @@ public:
             const MapLongInnerAliasHelper& x)
     {
 
-                    m_var_map_long_inneraliashelper = x.m_var_map_long_inneraliashelper;
+        m_var_map_long_inneraliashelper = x.m_var_map_long_inneraliashelper;
 
         return *this;
     }
@@ -9622,8 +9497,6 @@ public:
         return m_var_map_long_inneraliashelper;
     }
 
-
-
 private:
 
     std::map<int32_t, InnerAliasHelper> m_var_map_long_inneraliashelper;
@@ -9658,7 +9531,7 @@ public:
     eProsima_user_DllExport MapLongInnerAliasArrayHelper(
             const MapLongInnerAliasArrayHelper& x)
     {
-                    m_var_map_long_inneraliasarrayhelper = x.m_var_map_long_inneraliasarrayhelper;
+        m_var_map_long_inneraliasarrayhelper = x.m_var_map_long_inneraliasarrayhelper;
 
     }
 
@@ -9680,7 +9553,7 @@ public:
             const MapLongInnerAliasArrayHelper& x)
     {
 
-                    m_var_map_long_inneraliasarrayhelper = x.m_var_map_long_inneraliasarrayhelper;
+        m_var_map_long_inneraliasarrayhelper = x.m_var_map_long_inneraliasarrayhelper;
 
         return *this;
     }
@@ -9741,7 +9614,8 @@ public:
      * @brief This function returns a constant reference to member var_map_long_inneraliasarrayhelper
      * @return Constant reference to member var_map_long_inneraliasarrayhelper
      */
-    eProsima_user_DllExport const std::map<int32_t, Inner_alias_array_helper>& var_map_long_inneraliasarrayhelper() const
+    eProsima_user_DllExport const std::map<int32_t,
+            Inner_alias_array_helper>& var_map_long_inneraliasarrayhelper() const
     {
         return m_var_map_long_inneraliasarrayhelper;
     }
@@ -9754,8 +9628,6 @@ public:
     {
         return m_var_map_long_inneraliasarrayhelper;
     }
-
-
 
 private:
 
@@ -9791,7 +9663,7 @@ public:
     eProsima_user_DllExport MapLongInnerAliasSequenceHelper(
             const MapLongInnerAliasSequenceHelper& x)
     {
-                    m_var_map_long_inneraliassequencehelper = x.m_var_map_long_inneraliassequencehelper;
+        m_var_map_long_inneraliassequencehelper = x.m_var_map_long_inneraliassequencehelper;
 
     }
 
@@ -9813,7 +9685,7 @@ public:
             const MapLongInnerAliasSequenceHelper& x)
     {
 
-                    m_var_map_long_inneraliassequencehelper = x.m_var_map_long_inneraliassequencehelper;
+        m_var_map_long_inneraliassequencehelper = x.m_var_map_long_inneraliassequencehelper;
 
         return *this;
     }
@@ -9874,7 +9746,8 @@ public:
      * @brief This function returns a constant reference to member var_map_long_inneraliassequencehelper
      * @return Constant reference to member var_map_long_inneraliassequencehelper
      */
-    eProsima_user_DllExport const std::map<int32_t, Inner_alias_sequence_helper>& var_map_long_inneraliassequencehelper() const
+    eProsima_user_DllExport const std::map<int32_t,
+            Inner_alias_sequence_helper>& var_map_long_inneraliassequencehelper() const
     {
         return m_var_map_long_inneraliassequencehelper;
     }
@@ -9887,8 +9760,6 @@ public:
     {
         return m_var_map_long_inneraliassequencehelper;
     }
-
-
 
 private:
 
@@ -9924,7 +9795,7 @@ public:
     eProsima_user_DllExport MapLongInnerAliasMapHelper(
             const MapLongInnerAliasMapHelper& x)
     {
-                    m_var_map_long_inneraliasmaphelper = x.m_var_map_long_inneraliasmaphelper;
+        m_var_map_long_inneraliasmaphelper = x.m_var_map_long_inneraliasmaphelper;
 
     }
 
@@ -9946,7 +9817,7 @@ public:
             const MapLongInnerAliasMapHelper& x)
     {
 
-                    m_var_map_long_inneraliasmaphelper = x.m_var_map_long_inneraliasmaphelper;
+        m_var_map_long_inneraliasmaphelper = x.m_var_map_long_inneraliasmaphelper;
 
         return *this;
     }
@@ -10021,8 +9892,6 @@ public:
         return m_var_map_long_inneraliasmaphelper;
     }
 
-
-
 private:
 
     std::map<int32_t, Inner_alias_map_helper> m_var_map_long_inneraliasmaphelper;
@@ -10057,7 +9926,7 @@ public:
     eProsima_user_DllExport MapLongInnerUnionHelper(
             const MapLongInnerUnionHelper& x)
     {
-                    m_var_map_long_innerunionhelper = x.m_var_map_long_innerunionhelper;
+        m_var_map_long_innerunionhelper = x.m_var_map_long_innerunionhelper;
 
     }
 
@@ -10079,7 +9948,7 @@ public:
             const MapLongInnerUnionHelper& x)
     {
 
-                    m_var_map_long_innerunionhelper = x.m_var_map_long_innerunionhelper;
+        m_var_map_long_innerunionhelper = x.m_var_map_long_innerunionhelper;
 
         return *this;
     }
@@ -10154,8 +10023,6 @@ public:
         return m_var_map_long_innerunionhelper;
     }
 
-
-
 private:
 
     std::map<int32_t, InnerUnionHelper> m_var_map_long_innerunionhelper;
@@ -10190,7 +10057,7 @@ public:
     eProsima_user_DllExport MapLongInnerStructureHelper(
             const MapLongInnerStructureHelper& x)
     {
-                    m_var_map_long_innerstructurehelper = x.m_var_map_long_innerstructurehelper;
+        m_var_map_long_innerstructurehelper = x.m_var_map_long_innerstructurehelper;
 
     }
 
@@ -10212,7 +10079,7 @@ public:
             const MapLongInnerStructureHelper& x)
     {
 
-                    m_var_map_long_innerstructurehelper = x.m_var_map_long_innerstructurehelper;
+        m_var_map_long_innerstructurehelper = x.m_var_map_long_innerstructurehelper;
 
         return *this;
     }
@@ -10287,8 +10154,6 @@ public:
         return m_var_map_long_innerstructurehelper;
     }
 
-
-
 private:
 
     std::map<int32_t, InnerStructureHelper> m_var_map_long_innerstructurehelper;
@@ -10323,7 +10188,7 @@ public:
     eProsima_user_DllExport MapLongInnerBitsetHelper(
             const MapLongInnerBitsetHelper& x)
     {
-                    m_var_map_long_innerbitsethelper = x.m_var_map_long_innerbitsethelper;
+        m_var_map_long_innerbitsethelper = x.m_var_map_long_innerbitsethelper;
 
     }
 
@@ -10345,7 +10210,7 @@ public:
             const MapLongInnerBitsetHelper& x)
     {
 
-                    m_var_map_long_innerbitsethelper = x.m_var_map_long_innerbitsethelper;
+        m_var_map_long_innerbitsethelper = x.m_var_map_long_innerbitsethelper;
 
         return *this;
     }
@@ -10420,8 +10285,6 @@ public:
         return m_var_map_long_innerbitsethelper;
     }
 
-
-
 private:
 
     std::map<int32_t, InnerBitsetHelper> m_var_map_long_innerbitsethelper;
@@ -10456,7 +10319,7 @@ public:
     eProsima_user_DllExport MapULongShort(
             const MapULongShort& x)
     {
-                    m_var_map_ulong_short = x.m_var_map_ulong_short;
+        m_var_map_ulong_short = x.m_var_map_ulong_short;
 
     }
 
@@ -10478,7 +10341,7 @@ public:
             const MapULongShort& x)
     {
 
-                    m_var_map_ulong_short = x.m_var_map_ulong_short;
+        m_var_map_ulong_short = x.m_var_map_ulong_short;
 
         return *this;
     }
@@ -10553,8 +10416,6 @@ public:
         return m_var_map_ulong_short;
     }
 
-
-
 private:
 
     std::map<uint32_t, int16_t> m_var_map_ulong_short;
@@ -10589,7 +10450,7 @@ public:
     eProsima_user_DllExport MapULongUShort(
             const MapULongUShort& x)
     {
-                    m_var_map_ulong_ushort = x.m_var_map_ulong_ushort;
+        m_var_map_ulong_ushort = x.m_var_map_ulong_ushort;
 
     }
 
@@ -10611,7 +10472,7 @@ public:
             const MapULongUShort& x)
     {
 
-                    m_var_map_ulong_ushort = x.m_var_map_ulong_ushort;
+        m_var_map_ulong_ushort = x.m_var_map_ulong_ushort;
 
         return *this;
     }
@@ -10686,8 +10547,6 @@ public:
         return m_var_map_ulong_ushort;
     }
 
-
-
 private:
 
     std::map<uint32_t, uint16_t> m_var_map_ulong_ushort;
@@ -10722,7 +10581,7 @@ public:
     eProsima_user_DllExport MapULongLong(
             const MapULongLong& x)
     {
-                    m_var_map_ulong_long = x.m_var_map_ulong_long;
+        m_var_map_ulong_long = x.m_var_map_ulong_long;
 
     }
 
@@ -10744,7 +10603,7 @@ public:
             const MapULongLong& x)
     {
 
-                    m_var_map_ulong_long = x.m_var_map_ulong_long;
+        m_var_map_ulong_long = x.m_var_map_ulong_long;
 
         return *this;
     }
@@ -10819,8 +10678,6 @@ public:
         return m_var_map_ulong_long;
     }
 
-
-
 private:
 
     std::map<uint32_t, int32_t> m_var_map_ulong_long;
@@ -10855,7 +10712,7 @@ public:
     eProsima_user_DllExport MapULongULong(
             const MapULongULong& x)
     {
-                    m_var_map_ulong_ulong = x.m_var_map_ulong_ulong;
+        m_var_map_ulong_ulong = x.m_var_map_ulong_ulong;
 
     }
 
@@ -10877,7 +10734,7 @@ public:
             const MapULongULong& x)
     {
 
-                    m_var_map_ulong_ulong = x.m_var_map_ulong_ulong;
+        m_var_map_ulong_ulong = x.m_var_map_ulong_ulong;
 
         return *this;
     }
@@ -10952,8 +10809,6 @@ public:
         return m_var_map_ulong_ulong;
     }
 
-
-
 private:
 
     std::map<uint32_t, uint32_t> m_var_map_ulong_ulong;
@@ -10988,7 +10843,7 @@ public:
     eProsima_user_DllExport MapKeyULongValueLongLong(
             const MapKeyULongValueLongLong& x)
     {
-                    m_var_map_ulong_longlong = x.m_var_map_ulong_longlong;
+        m_var_map_ulong_longlong = x.m_var_map_ulong_longlong;
 
     }
 
@@ -11010,7 +10865,7 @@ public:
             const MapKeyULongValueLongLong& x)
     {
 
-                    m_var_map_ulong_longlong = x.m_var_map_ulong_longlong;
+        m_var_map_ulong_longlong = x.m_var_map_ulong_longlong;
 
         return *this;
     }
@@ -11085,8 +10940,6 @@ public:
         return m_var_map_ulong_longlong;
     }
 
-
-
 private:
 
     std::map<uint32_t, int64_t> m_var_map_ulong_longlong;
@@ -11121,7 +10974,7 @@ public:
     eProsima_user_DllExport MapULongULongLong(
             const MapULongULongLong& x)
     {
-                    m_var_map_ulong_ulonglong = x.m_var_map_ulong_ulonglong;
+        m_var_map_ulong_ulonglong = x.m_var_map_ulong_ulonglong;
 
     }
 
@@ -11143,7 +10996,7 @@ public:
             const MapULongULongLong& x)
     {
 
-                    m_var_map_ulong_ulonglong = x.m_var_map_ulong_ulonglong;
+        m_var_map_ulong_ulonglong = x.m_var_map_ulong_ulonglong;
 
         return *this;
     }
@@ -11218,8 +11071,6 @@ public:
         return m_var_map_ulong_ulonglong;
     }
 
-
-
 private:
 
     std::map<uint32_t, uint64_t> m_var_map_ulong_ulonglong;
@@ -11254,7 +11105,7 @@ public:
     eProsima_user_DllExport MapULongFloat(
             const MapULongFloat& x)
     {
-                    m_var_map_ulong_float = x.m_var_map_ulong_float;
+        m_var_map_ulong_float = x.m_var_map_ulong_float;
 
     }
 
@@ -11276,7 +11127,7 @@ public:
             const MapULongFloat& x)
     {
 
-                    m_var_map_ulong_float = x.m_var_map_ulong_float;
+        m_var_map_ulong_float = x.m_var_map_ulong_float;
 
         return *this;
     }
@@ -11351,8 +11202,6 @@ public:
         return m_var_map_ulong_float;
     }
 
-
-
 private:
 
     std::map<uint32_t, float> m_var_map_ulong_float;
@@ -11387,7 +11236,7 @@ public:
     eProsima_user_DllExport MapULongDouble(
             const MapULongDouble& x)
     {
-                    m_var_map_ulong_double = x.m_var_map_ulong_double;
+        m_var_map_ulong_double = x.m_var_map_ulong_double;
 
     }
 
@@ -11409,7 +11258,7 @@ public:
             const MapULongDouble& x)
     {
 
-                    m_var_map_ulong_double = x.m_var_map_ulong_double;
+        m_var_map_ulong_double = x.m_var_map_ulong_double;
 
         return *this;
     }
@@ -11484,8 +11333,6 @@ public:
         return m_var_map_ulong_double;
     }
 
-
-
 private:
 
     std::map<uint32_t, double> m_var_map_ulong_double;
@@ -11520,7 +11367,7 @@ public:
     eProsima_user_DllExport MapKeyULongValueLongDouble(
             const MapKeyULongValueLongDouble& x)
     {
-                    m_var_map_ulong_longdouble = x.m_var_map_ulong_longdouble;
+        m_var_map_ulong_longdouble = x.m_var_map_ulong_longdouble;
 
     }
 
@@ -11542,7 +11389,7 @@ public:
             const MapKeyULongValueLongDouble& x)
     {
 
-                    m_var_map_ulong_longdouble = x.m_var_map_ulong_longdouble;
+        m_var_map_ulong_longdouble = x.m_var_map_ulong_longdouble;
 
         return *this;
     }
@@ -11617,8 +11464,6 @@ public:
         return m_var_map_ulong_longdouble;
     }
 
-
-
 private:
 
     std::map<uint32_t, long double> m_var_map_ulong_longdouble;
@@ -11653,7 +11498,7 @@ public:
     eProsima_user_DllExport MapULongBoolean(
             const MapULongBoolean& x)
     {
-                    m_var_map_ulong_boolean = x.m_var_map_ulong_boolean;
+        m_var_map_ulong_boolean = x.m_var_map_ulong_boolean;
 
     }
 
@@ -11675,7 +11520,7 @@ public:
             const MapULongBoolean& x)
     {
 
-                    m_var_map_ulong_boolean = x.m_var_map_ulong_boolean;
+        m_var_map_ulong_boolean = x.m_var_map_ulong_boolean;
 
         return *this;
     }
@@ -11750,8 +11595,6 @@ public:
         return m_var_map_ulong_boolean;
     }
 
-
-
 private:
 
     std::map<uint32_t, bool> m_var_map_ulong_boolean;
@@ -11786,7 +11629,7 @@ public:
     eProsima_user_DllExport MapULongOctet(
             const MapULongOctet& x)
     {
-                    m_var_map_ulong_octet = x.m_var_map_ulong_octet;
+        m_var_map_ulong_octet = x.m_var_map_ulong_octet;
 
     }
 
@@ -11808,7 +11651,7 @@ public:
             const MapULongOctet& x)
     {
 
-                    m_var_map_ulong_octet = x.m_var_map_ulong_octet;
+        m_var_map_ulong_octet = x.m_var_map_ulong_octet;
 
         return *this;
     }
@@ -11883,8 +11726,6 @@ public:
         return m_var_map_ulong_octet;
     }
 
-
-
 private:
 
     std::map<uint32_t, uint8_t> m_var_map_ulong_octet;
@@ -11919,7 +11760,7 @@ public:
     eProsima_user_DllExport MapULongChar(
             const MapULongChar& x)
     {
-                    m_var_map_ulong_char = x.m_var_map_ulong_char;
+        m_var_map_ulong_char = x.m_var_map_ulong_char;
 
     }
 
@@ -11941,7 +11782,7 @@ public:
             const MapULongChar& x)
     {
 
-                    m_var_map_ulong_char = x.m_var_map_ulong_char;
+        m_var_map_ulong_char = x.m_var_map_ulong_char;
 
         return *this;
     }
@@ -12016,8 +11857,6 @@ public:
         return m_var_map_ulong_char;
     }
 
-
-
 private:
 
     std::map<uint32_t, char> m_var_map_ulong_char;
@@ -12052,7 +11891,7 @@ public:
     eProsima_user_DllExport MapULongWChar(
             const MapULongWChar& x)
     {
-                    m_var_map_ulong_wchar = x.m_var_map_ulong_wchar;
+        m_var_map_ulong_wchar = x.m_var_map_ulong_wchar;
 
     }
 
@@ -12074,7 +11913,7 @@ public:
             const MapULongWChar& x)
     {
 
-                    m_var_map_ulong_wchar = x.m_var_map_ulong_wchar;
+        m_var_map_ulong_wchar = x.m_var_map_ulong_wchar;
 
         return *this;
     }
@@ -12149,8 +11988,6 @@ public:
         return m_var_map_ulong_wchar;
     }
 
-
-
 private:
 
     std::map<uint32_t, wchar_t> m_var_map_ulong_wchar;
@@ -12185,7 +12022,7 @@ public:
     eProsima_user_DllExport MapULongString(
             const MapULongString& x)
     {
-                    m_var_map_ulong_string = x.m_var_map_ulong_string;
+        m_var_map_ulong_string = x.m_var_map_ulong_string;
 
     }
 
@@ -12207,7 +12044,7 @@ public:
             const MapULongString& x)
     {
 
-                    m_var_map_ulong_string = x.m_var_map_ulong_string;
+        m_var_map_ulong_string = x.m_var_map_ulong_string;
 
         return *this;
     }
@@ -12282,8 +12119,6 @@ public:
         return m_var_map_ulong_string;
     }
 
-
-
 private:
 
     std::map<uint32_t, std::string> m_var_map_ulong_string;
@@ -12318,7 +12153,7 @@ public:
     eProsima_user_DllExport MapULongWString(
             const MapULongWString& x)
     {
-                    m_var_map_ulong_wstring = x.m_var_map_ulong_wstring;
+        m_var_map_ulong_wstring = x.m_var_map_ulong_wstring;
 
     }
 
@@ -12340,7 +12175,7 @@ public:
             const MapULongWString& x)
     {
 
-                    m_var_map_ulong_wstring = x.m_var_map_ulong_wstring;
+        m_var_map_ulong_wstring = x.m_var_map_ulong_wstring;
 
         return *this;
     }
@@ -12415,8 +12250,6 @@ public:
         return m_var_map_ulong_wstring;
     }
 
-
-
 private:
 
     std::map<uint32_t, std::wstring> m_var_map_ulong_wstring;
@@ -12451,7 +12284,7 @@ public:
     eProsima_user_DllExport MapULongInnerAliasBoundedStringHelper(
             const MapULongInnerAliasBoundedStringHelper& x)
     {
-                    m_var_map_ulong_inneraliasboundedstringhelper = x.m_var_map_ulong_inneraliasboundedstringhelper;
+        m_var_map_ulong_inneraliasboundedstringhelper = x.m_var_map_ulong_inneraliasboundedstringhelper;
 
     }
 
@@ -12473,7 +12306,7 @@ public:
             const MapULongInnerAliasBoundedStringHelper& x)
     {
 
-                    m_var_map_ulong_inneraliasboundedstringhelper = x.m_var_map_ulong_inneraliasboundedstringhelper;
+        m_var_map_ulong_inneraliasboundedstringhelper = x.m_var_map_ulong_inneraliasboundedstringhelper;
 
         return *this;
     }
@@ -12534,7 +12367,8 @@ public:
      * @brief This function returns a constant reference to member var_map_ulong_inneraliasboundedstringhelper
      * @return Constant reference to member var_map_ulong_inneraliasboundedstringhelper
      */
-    eProsima_user_DllExport const std::map<uint32_t, Inner_alias_bounded_string_helper>& var_map_ulong_inneraliasboundedstringhelper() const
+    eProsima_user_DllExport const std::map<uint32_t,
+            Inner_alias_bounded_string_helper>& var_map_ulong_inneraliasboundedstringhelper() const
     {
         return m_var_map_ulong_inneraliasboundedstringhelper;
     }
@@ -12543,12 +12377,11 @@ public:
      * @brief This function returns a reference to member var_map_ulong_inneraliasboundedstringhelper
      * @return Reference to member var_map_ulong_inneraliasboundedstringhelper
      */
-    eProsima_user_DllExport std::map<uint32_t, Inner_alias_bounded_string_helper>& var_map_ulong_inneraliasboundedstringhelper()
+    eProsima_user_DllExport std::map<uint32_t,
+            Inner_alias_bounded_string_helper>& var_map_ulong_inneraliasboundedstringhelper()
     {
         return m_var_map_ulong_inneraliasboundedstringhelper;
     }
-
-
 
 private:
 
@@ -12584,7 +12417,7 @@ public:
     eProsima_user_DllExport MapULongInnerAliasBoundedWStringHelper(
             const MapULongInnerAliasBoundedWStringHelper& x)
     {
-                    m_var_map_ulong_inneraliasboundedwstringhelper = x.m_var_map_ulong_inneraliasboundedwstringhelper;
+        m_var_map_ulong_inneraliasboundedwstringhelper = x.m_var_map_ulong_inneraliasboundedwstringhelper;
 
     }
 
@@ -12606,7 +12439,7 @@ public:
             const MapULongInnerAliasBoundedWStringHelper& x)
     {
 
-                    m_var_map_ulong_inneraliasboundedwstringhelper = x.m_var_map_ulong_inneraliasboundedwstringhelper;
+        m_var_map_ulong_inneraliasboundedwstringhelper = x.m_var_map_ulong_inneraliasboundedwstringhelper;
 
         return *this;
     }
@@ -12667,7 +12500,8 @@ public:
      * @brief This function returns a constant reference to member var_map_ulong_inneraliasboundedwstringhelper
      * @return Constant reference to member var_map_ulong_inneraliasboundedwstringhelper
      */
-    eProsima_user_DllExport const std::map<uint32_t, Inner_alias_bounded_wstring_helper>& var_map_ulong_inneraliasboundedwstringhelper() const
+    eProsima_user_DllExport const std::map<uint32_t,
+            Inner_alias_bounded_wstring_helper>& var_map_ulong_inneraliasboundedwstringhelper() const
     {
         return m_var_map_ulong_inneraliasboundedwstringhelper;
     }
@@ -12676,12 +12510,11 @@ public:
      * @brief This function returns a reference to member var_map_ulong_inneraliasboundedwstringhelper
      * @return Reference to member var_map_ulong_inneraliasboundedwstringhelper
      */
-    eProsima_user_DllExport std::map<uint32_t, Inner_alias_bounded_wstring_helper>& var_map_ulong_inneraliasboundedwstringhelper()
+    eProsima_user_DllExport std::map<uint32_t,
+            Inner_alias_bounded_wstring_helper>& var_map_ulong_inneraliasboundedwstringhelper()
     {
         return m_var_map_ulong_inneraliasboundedwstringhelper;
     }
-
-
 
 private:
 
@@ -12717,7 +12550,7 @@ public:
     eProsima_user_DllExport MapULongInnerEnumHelper(
             const MapULongInnerEnumHelper& x)
     {
-                    m_var_map_ulong_innerenumhelper = x.m_var_map_ulong_innerenumhelper;
+        m_var_map_ulong_innerenumhelper = x.m_var_map_ulong_innerenumhelper;
 
     }
 
@@ -12739,7 +12572,7 @@ public:
             const MapULongInnerEnumHelper& x)
     {
 
-                    m_var_map_ulong_innerenumhelper = x.m_var_map_ulong_innerenumhelper;
+        m_var_map_ulong_innerenumhelper = x.m_var_map_ulong_innerenumhelper;
 
         return *this;
     }
@@ -12814,8 +12647,6 @@ public:
         return m_var_map_ulong_innerenumhelper;
     }
 
-
-
 private:
 
     std::map<uint32_t, InnerEnumHelper> m_var_map_ulong_innerenumhelper;
@@ -12850,7 +12681,7 @@ public:
     eProsima_user_DllExport MapULongInnerBitMaskHelper(
             const MapULongInnerBitMaskHelper& x)
     {
-                    m_var_map_ulong_innerbitmaskhelper = x.m_var_map_ulong_innerbitmaskhelper;
+        m_var_map_ulong_innerbitmaskhelper = x.m_var_map_ulong_innerbitmaskhelper;
 
     }
 
@@ -12872,7 +12703,7 @@ public:
             const MapULongInnerBitMaskHelper& x)
     {
 
-                    m_var_map_ulong_innerbitmaskhelper = x.m_var_map_ulong_innerbitmaskhelper;
+        m_var_map_ulong_innerbitmaskhelper = x.m_var_map_ulong_innerbitmaskhelper;
 
         return *this;
     }
@@ -12947,8 +12778,6 @@ public:
         return m_var_map_ulong_innerbitmaskhelper;
     }
 
-
-
 private:
 
     std::map<uint32_t, InnerBitMaskHelper> m_var_map_ulong_innerbitmaskhelper;
@@ -12983,7 +12812,7 @@ public:
     eProsima_user_DllExport MapULongInnerAliasHelper(
             const MapULongInnerAliasHelper& x)
     {
-                    m_var_map_ulong_inneraliashelper = x.m_var_map_ulong_inneraliashelper;
+        m_var_map_ulong_inneraliashelper = x.m_var_map_ulong_inneraliashelper;
 
     }
 
@@ -13005,7 +12834,7 @@ public:
             const MapULongInnerAliasHelper& x)
     {
 
-                    m_var_map_ulong_inneraliashelper = x.m_var_map_ulong_inneraliashelper;
+        m_var_map_ulong_inneraliashelper = x.m_var_map_ulong_inneraliashelper;
 
         return *this;
     }
@@ -13080,8 +12909,6 @@ public:
         return m_var_map_ulong_inneraliashelper;
     }
 
-
-
 private:
 
     std::map<uint32_t, InnerAliasHelper> m_var_map_ulong_inneraliashelper;
@@ -13116,7 +12943,7 @@ public:
     eProsima_user_DllExport MapULongInnerAliasArrayHelper(
             const MapULongInnerAliasArrayHelper& x)
     {
-                    m_var_map_ulong_inneraliasarrayhelper = x.m_var_map_ulong_inneraliasarrayhelper;
+        m_var_map_ulong_inneraliasarrayhelper = x.m_var_map_ulong_inneraliasarrayhelper;
 
     }
 
@@ -13138,7 +12965,7 @@ public:
             const MapULongInnerAliasArrayHelper& x)
     {
 
-                    m_var_map_ulong_inneraliasarrayhelper = x.m_var_map_ulong_inneraliasarrayhelper;
+        m_var_map_ulong_inneraliasarrayhelper = x.m_var_map_ulong_inneraliasarrayhelper;
 
         return *this;
     }
@@ -13199,7 +13026,8 @@ public:
      * @brief This function returns a constant reference to member var_map_ulong_inneraliasarrayhelper
      * @return Constant reference to member var_map_ulong_inneraliasarrayhelper
      */
-    eProsima_user_DllExport const std::map<uint32_t, Inner_alias_array_helper>& var_map_ulong_inneraliasarrayhelper() const
+    eProsima_user_DllExport const std::map<uint32_t,
+            Inner_alias_array_helper>& var_map_ulong_inneraliasarrayhelper() const
     {
         return m_var_map_ulong_inneraliasarrayhelper;
     }
@@ -13212,8 +13040,6 @@ public:
     {
         return m_var_map_ulong_inneraliasarrayhelper;
     }
-
-
 
 private:
 
@@ -13249,7 +13075,7 @@ public:
     eProsima_user_DllExport MapULongInnerAliasSequenceHelper(
             const MapULongInnerAliasSequenceHelper& x)
     {
-                    m_var_map_ulong_inneraliassequencehelper = x.m_var_map_ulong_inneraliassequencehelper;
+        m_var_map_ulong_inneraliassequencehelper = x.m_var_map_ulong_inneraliassequencehelper;
 
     }
 
@@ -13271,7 +13097,7 @@ public:
             const MapULongInnerAliasSequenceHelper& x)
     {
 
-                    m_var_map_ulong_inneraliassequencehelper = x.m_var_map_ulong_inneraliassequencehelper;
+        m_var_map_ulong_inneraliassequencehelper = x.m_var_map_ulong_inneraliassequencehelper;
 
         return *this;
     }
@@ -13332,7 +13158,8 @@ public:
      * @brief This function returns a constant reference to member var_map_ulong_inneraliassequencehelper
      * @return Constant reference to member var_map_ulong_inneraliassequencehelper
      */
-    eProsima_user_DllExport const std::map<uint32_t, Inner_alias_sequence_helper>& var_map_ulong_inneraliassequencehelper() const
+    eProsima_user_DllExport const std::map<uint32_t,
+            Inner_alias_sequence_helper>& var_map_ulong_inneraliassequencehelper() const
     {
         return m_var_map_ulong_inneraliassequencehelper;
     }
@@ -13345,8 +13172,6 @@ public:
     {
         return m_var_map_ulong_inneraliassequencehelper;
     }
-
-
 
 private:
 
@@ -13382,7 +13207,7 @@ public:
     eProsima_user_DllExport MapULongInnerAliasMapHelper(
             const MapULongInnerAliasMapHelper& x)
     {
-                    m_var_map_ulong_inneraliasmaphelper = x.m_var_map_ulong_inneraliasmaphelper;
+        m_var_map_ulong_inneraliasmaphelper = x.m_var_map_ulong_inneraliasmaphelper;
 
     }
 
@@ -13404,7 +13229,7 @@ public:
             const MapULongInnerAliasMapHelper& x)
     {
 
-                    m_var_map_ulong_inneraliasmaphelper = x.m_var_map_ulong_inneraliasmaphelper;
+        m_var_map_ulong_inneraliasmaphelper = x.m_var_map_ulong_inneraliasmaphelper;
 
         return *this;
     }
@@ -13479,8 +13304,6 @@ public:
         return m_var_map_ulong_inneraliasmaphelper;
     }
 
-
-
 private:
 
     std::map<uint32_t, Inner_alias_map_helper> m_var_map_ulong_inneraliasmaphelper;
@@ -13515,7 +13338,7 @@ public:
     eProsima_user_DllExport MapULongInnerUnionHelper(
             const MapULongInnerUnionHelper& x)
     {
-                    m_var_map_ulong_innerunionhelper = x.m_var_map_ulong_innerunionhelper;
+        m_var_map_ulong_innerunionhelper = x.m_var_map_ulong_innerunionhelper;
 
     }
 
@@ -13537,7 +13360,7 @@ public:
             const MapULongInnerUnionHelper& x)
     {
 
-                    m_var_map_ulong_innerunionhelper = x.m_var_map_ulong_innerunionhelper;
+        m_var_map_ulong_innerunionhelper = x.m_var_map_ulong_innerunionhelper;
 
         return *this;
     }
@@ -13612,8 +13435,6 @@ public:
         return m_var_map_ulong_innerunionhelper;
     }
 
-
-
 private:
 
     std::map<uint32_t, InnerUnionHelper> m_var_map_ulong_innerunionhelper;
@@ -13648,7 +13469,7 @@ public:
     eProsima_user_DllExport MapULongInnerStructureHelper(
             const MapULongInnerStructureHelper& x)
     {
-                    m_var_map_ulong_innerstructurehelper = x.m_var_map_ulong_innerstructurehelper;
+        m_var_map_ulong_innerstructurehelper = x.m_var_map_ulong_innerstructurehelper;
 
     }
 
@@ -13670,7 +13491,7 @@ public:
             const MapULongInnerStructureHelper& x)
     {
 
-                    m_var_map_ulong_innerstructurehelper = x.m_var_map_ulong_innerstructurehelper;
+        m_var_map_ulong_innerstructurehelper = x.m_var_map_ulong_innerstructurehelper;
 
         return *this;
     }
@@ -13745,8 +13566,6 @@ public:
         return m_var_map_ulong_innerstructurehelper;
     }
 
-
-
 private:
 
     std::map<uint32_t, InnerStructureHelper> m_var_map_ulong_innerstructurehelper;
@@ -13781,7 +13600,7 @@ public:
     eProsima_user_DllExport MapULongInnerBitsetHelper(
             const MapULongInnerBitsetHelper& x)
     {
-                    m_var_map_ulong_innerbitsethelper = x.m_var_map_ulong_innerbitsethelper;
+        m_var_map_ulong_innerbitsethelper = x.m_var_map_ulong_innerbitsethelper;
 
     }
 
@@ -13803,7 +13622,7 @@ public:
             const MapULongInnerBitsetHelper& x)
     {
 
-                    m_var_map_ulong_innerbitsethelper = x.m_var_map_ulong_innerbitsethelper;
+        m_var_map_ulong_innerbitsethelper = x.m_var_map_ulong_innerbitsethelper;
 
         return *this;
     }
@@ -13878,8 +13697,6 @@ public:
         return m_var_map_ulong_innerbitsethelper;
     }
 
-
-
 private:
 
     std::map<uint32_t, InnerBitsetHelper> m_var_map_ulong_innerbitsethelper;
@@ -13914,7 +13731,7 @@ public:
     eProsima_user_DllExport MapLongLongShort(
             const MapLongLongShort& x)
     {
-                    m_var_map_longlong_short = x.m_var_map_longlong_short;
+        m_var_map_longlong_short = x.m_var_map_longlong_short;
 
     }
 
@@ -13936,7 +13753,7 @@ public:
             const MapLongLongShort& x)
     {
 
-                    m_var_map_longlong_short = x.m_var_map_longlong_short;
+        m_var_map_longlong_short = x.m_var_map_longlong_short;
 
         return *this;
     }
@@ -14011,8 +13828,6 @@ public:
         return m_var_map_longlong_short;
     }
 
-
-
 private:
 
     std::map<int64_t, int16_t> m_var_map_longlong_short;
@@ -14047,7 +13862,7 @@ public:
     eProsima_user_DllExport MapLongLongUShort(
             const MapLongLongUShort& x)
     {
-                    m_var_map_longlong_ushort = x.m_var_map_longlong_ushort;
+        m_var_map_longlong_ushort = x.m_var_map_longlong_ushort;
 
     }
 
@@ -14069,7 +13884,7 @@ public:
             const MapLongLongUShort& x)
     {
 
-                    m_var_map_longlong_ushort = x.m_var_map_longlong_ushort;
+        m_var_map_longlong_ushort = x.m_var_map_longlong_ushort;
 
         return *this;
     }
@@ -14144,8 +13959,6 @@ public:
         return m_var_map_longlong_ushort;
     }
 
-
-
 private:
 
     std::map<int64_t, uint16_t> m_var_map_longlong_ushort;
@@ -14180,7 +13993,7 @@ public:
     eProsima_user_DllExport MapLongLongKeyLongValue(
             const MapLongLongKeyLongValue& x)
     {
-                    m_var_map_longlong_long = x.m_var_map_longlong_long;
+        m_var_map_longlong_long = x.m_var_map_longlong_long;
 
     }
 
@@ -14202,7 +14015,7 @@ public:
             const MapLongLongKeyLongValue& x)
     {
 
-                    m_var_map_longlong_long = x.m_var_map_longlong_long;
+        m_var_map_longlong_long = x.m_var_map_longlong_long;
 
         return *this;
     }
@@ -14277,8 +14090,6 @@ public:
         return m_var_map_longlong_long;
     }
 
-
-
 private:
 
     std::map<int64_t, int32_t> m_var_map_longlong_long;
@@ -14313,7 +14124,7 @@ public:
     eProsima_user_DllExport MapLongLongULong(
             const MapLongLongULong& x)
     {
-                    m_var_map_longlong_ulong = x.m_var_map_longlong_ulong;
+        m_var_map_longlong_ulong = x.m_var_map_longlong_ulong;
 
     }
 
@@ -14335,7 +14146,7 @@ public:
             const MapLongLongULong& x)
     {
 
-                    m_var_map_longlong_ulong = x.m_var_map_longlong_ulong;
+        m_var_map_longlong_ulong = x.m_var_map_longlong_ulong;
 
         return *this;
     }
@@ -14410,8 +14221,6 @@ public:
         return m_var_map_longlong_ulong;
     }
 
-
-
 private:
 
     std::map<int64_t, uint32_t> m_var_map_longlong_ulong;
@@ -14446,7 +14255,7 @@ public:
     eProsima_user_DllExport MapLongLongLongLong(
             const MapLongLongLongLong& x)
     {
-                    m_var_map_longlong_longlong = x.m_var_map_longlong_longlong;
+        m_var_map_longlong_longlong = x.m_var_map_longlong_longlong;
 
     }
 
@@ -14468,7 +14277,7 @@ public:
             const MapLongLongLongLong& x)
     {
 
-                    m_var_map_longlong_longlong = x.m_var_map_longlong_longlong;
+        m_var_map_longlong_longlong = x.m_var_map_longlong_longlong;
 
         return *this;
     }
@@ -14543,8 +14352,6 @@ public:
         return m_var_map_longlong_longlong;
     }
 
-
-
 private:
 
     std::map<int64_t, int64_t> m_var_map_longlong_longlong;
@@ -14579,7 +14386,7 @@ public:
     eProsima_user_DllExport MapLongLongULongLong(
             const MapLongLongULongLong& x)
     {
-                    m_var_map_longlong_ulonglong = x.m_var_map_longlong_ulonglong;
+        m_var_map_longlong_ulonglong = x.m_var_map_longlong_ulonglong;
 
     }
 
@@ -14601,7 +14408,7 @@ public:
             const MapLongLongULongLong& x)
     {
 
-                    m_var_map_longlong_ulonglong = x.m_var_map_longlong_ulonglong;
+        m_var_map_longlong_ulonglong = x.m_var_map_longlong_ulonglong;
 
         return *this;
     }
@@ -14676,8 +14483,6 @@ public:
         return m_var_map_longlong_ulonglong;
     }
 
-
-
 private:
 
     std::map<int64_t, uint64_t> m_var_map_longlong_ulonglong;
@@ -14712,7 +14517,7 @@ public:
     eProsima_user_DllExport MapLongLongFloat(
             const MapLongLongFloat& x)
     {
-                    m_var_map_longlong_float = x.m_var_map_longlong_float;
+        m_var_map_longlong_float = x.m_var_map_longlong_float;
 
     }
 
@@ -14734,7 +14539,7 @@ public:
             const MapLongLongFloat& x)
     {
 
-                    m_var_map_longlong_float = x.m_var_map_longlong_float;
+        m_var_map_longlong_float = x.m_var_map_longlong_float;
 
         return *this;
     }
@@ -14809,8 +14614,6 @@ public:
         return m_var_map_longlong_float;
     }
 
-
-
 private:
 
     std::map<int64_t, float> m_var_map_longlong_float;
@@ -14845,7 +14648,7 @@ public:
     eProsima_user_DllExport MapLongLongKeyDoubleValue(
             const MapLongLongKeyDoubleValue& x)
     {
-                    m_var_map_longlong_double = x.m_var_map_longlong_double;
+        m_var_map_longlong_double = x.m_var_map_longlong_double;
 
     }
 
@@ -14867,7 +14670,7 @@ public:
             const MapLongLongKeyDoubleValue& x)
     {
 
-                    m_var_map_longlong_double = x.m_var_map_longlong_double;
+        m_var_map_longlong_double = x.m_var_map_longlong_double;
 
         return *this;
     }
@@ -14942,8 +14745,6 @@ public:
         return m_var_map_longlong_double;
     }
 
-
-
 private:
 
     std::map<int64_t, double> m_var_map_longlong_double;
@@ -14978,7 +14779,7 @@ public:
     eProsima_user_DllExport MapLongLongLongDouble(
             const MapLongLongLongDouble& x)
     {
-                    m_var_map_longlong_longdouble = x.m_var_map_longlong_longdouble;
+        m_var_map_longlong_longdouble = x.m_var_map_longlong_longdouble;
 
     }
 
@@ -15000,7 +14801,7 @@ public:
             const MapLongLongLongDouble& x)
     {
 
-                    m_var_map_longlong_longdouble = x.m_var_map_longlong_longdouble;
+        m_var_map_longlong_longdouble = x.m_var_map_longlong_longdouble;
 
         return *this;
     }
@@ -15075,8 +14876,6 @@ public:
         return m_var_map_longlong_longdouble;
     }
 
-
-
 private:
 
     std::map<int64_t, long double> m_var_map_longlong_longdouble;
@@ -15111,7 +14910,7 @@ public:
     eProsima_user_DllExport MapLongLongBoolean(
             const MapLongLongBoolean& x)
     {
-                    m_var_map_longlong_boolean = x.m_var_map_longlong_boolean;
+        m_var_map_longlong_boolean = x.m_var_map_longlong_boolean;
 
     }
 
@@ -15133,7 +14932,7 @@ public:
             const MapLongLongBoolean& x)
     {
 
-                    m_var_map_longlong_boolean = x.m_var_map_longlong_boolean;
+        m_var_map_longlong_boolean = x.m_var_map_longlong_boolean;
 
         return *this;
     }
@@ -15208,8 +15007,6 @@ public:
         return m_var_map_longlong_boolean;
     }
 
-
-
 private:
 
     std::map<int64_t, bool> m_var_map_longlong_boolean;
@@ -15244,7 +15041,7 @@ public:
     eProsima_user_DllExport MapLongLongOctet(
             const MapLongLongOctet& x)
     {
-                    m_var_map_longlong_octet = x.m_var_map_longlong_octet;
+        m_var_map_longlong_octet = x.m_var_map_longlong_octet;
 
     }
 
@@ -15266,7 +15063,7 @@ public:
             const MapLongLongOctet& x)
     {
 
-                    m_var_map_longlong_octet = x.m_var_map_longlong_octet;
+        m_var_map_longlong_octet = x.m_var_map_longlong_octet;
 
         return *this;
     }
@@ -15341,8 +15138,6 @@ public:
         return m_var_map_longlong_octet;
     }
 
-
-
 private:
 
     std::map<int64_t, uint8_t> m_var_map_longlong_octet;
@@ -15377,7 +15172,7 @@ public:
     eProsima_user_DllExport MapLongLongChar(
             const MapLongLongChar& x)
     {
-                    m_var_map_longlong_char = x.m_var_map_longlong_char;
+        m_var_map_longlong_char = x.m_var_map_longlong_char;
 
     }
 
@@ -15399,7 +15194,7 @@ public:
             const MapLongLongChar& x)
     {
 
-                    m_var_map_longlong_char = x.m_var_map_longlong_char;
+        m_var_map_longlong_char = x.m_var_map_longlong_char;
 
         return *this;
     }
@@ -15474,8 +15269,6 @@ public:
         return m_var_map_longlong_char;
     }
 
-
-
 private:
 
     std::map<int64_t, char> m_var_map_longlong_char;
@@ -15510,7 +15303,7 @@ public:
     eProsima_user_DllExport MapLongLongWChar(
             const MapLongLongWChar& x)
     {
-                    m_var_map_longlong_wchar = x.m_var_map_longlong_wchar;
+        m_var_map_longlong_wchar = x.m_var_map_longlong_wchar;
 
     }
 
@@ -15532,7 +15325,7 @@ public:
             const MapLongLongWChar& x)
     {
 
-                    m_var_map_longlong_wchar = x.m_var_map_longlong_wchar;
+        m_var_map_longlong_wchar = x.m_var_map_longlong_wchar;
 
         return *this;
     }
@@ -15607,8 +15400,6 @@ public:
         return m_var_map_longlong_wchar;
     }
 
-
-
 private:
 
     std::map<int64_t, wchar_t> m_var_map_longlong_wchar;
@@ -15643,7 +15434,7 @@ public:
     eProsima_user_DllExport MapLongLongString(
             const MapLongLongString& x)
     {
-                    m_var_map_longlong_string = x.m_var_map_longlong_string;
+        m_var_map_longlong_string = x.m_var_map_longlong_string;
 
     }
 
@@ -15665,7 +15456,7 @@ public:
             const MapLongLongString& x)
     {
 
-                    m_var_map_longlong_string = x.m_var_map_longlong_string;
+        m_var_map_longlong_string = x.m_var_map_longlong_string;
 
         return *this;
     }
@@ -15740,8 +15531,6 @@ public:
         return m_var_map_longlong_string;
     }
 
-
-
 private:
 
     std::map<int64_t, std::string> m_var_map_longlong_string;
@@ -15776,7 +15565,7 @@ public:
     eProsima_user_DllExport MapLongLongWString(
             const MapLongLongWString& x)
     {
-                    m_var_map_longlong_wstring = x.m_var_map_longlong_wstring;
+        m_var_map_longlong_wstring = x.m_var_map_longlong_wstring;
 
     }
 
@@ -15798,7 +15587,7 @@ public:
             const MapLongLongWString& x)
     {
 
-                    m_var_map_longlong_wstring = x.m_var_map_longlong_wstring;
+        m_var_map_longlong_wstring = x.m_var_map_longlong_wstring;
 
         return *this;
     }
@@ -15873,8 +15662,6 @@ public:
         return m_var_map_longlong_wstring;
     }
 
-
-
 private:
 
     std::map<int64_t, std::wstring> m_var_map_longlong_wstring;
@@ -15909,7 +15696,7 @@ public:
     eProsima_user_DllExport MapLongLongInnerAliasBoundedStringHelper(
             const MapLongLongInnerAliasBoundedStringHelper& x)
     {
-                    m_var_map_longlong_inneraliasboundedstringhelper = x.m_var_map_longlong_inneraliasboundedstringhelper;
+        m_var_map_longlong_inneraliasboundedstringhelper = x.m_var_map_longlong_inneraliasboundedstringhelper;
 
     }
 
@@ -15920,7 +15707,8 @@ public:
     eProsima_user_DllExport MapLongLongInnerAliasBoundedStringHelper(
             MapLongLongInnerAliasBoundedStringHelper&& x) noexcept
     {
-        m_var_map_longlong_inneraliasboundedstringhelper = std::move(x.m_var_map_longlong_inneraliasboundedstringhelper);
+        m_var_map_longlong_inneraliasboundedstringhelper =
+                std::move(x.m_var_map_longlong_inneraliasboundedstringhelper);
     }
 
     /*!
@@ -15931,7 +15719,7 @@ public:
             const MapLongLongInnerAliasBoundedStringHelper& x)
     {
 
-                    m_var_map_longlong_inneraliasboundedstringhelper = x.m_var_map_longlong_inneraliasboundedstringhelper;
+        m_var_map_longlong_inneraliasboundedstringhelper = x.m_var_map_longlong_inneraliasboundedstringhelper;
 
         return *this;
     }
@@ -15944,7 +15732,8 @@ public:
             MapLongLongInnerAliasBoundedStringHelper&& x) noexcept
     {
 
-        m_var_map_longlong_inneraliasboundedstringhelper = std::move(x.m_var_map_longlong_inneraliasboundedstringhelper);
+        m_var_map_longlong_inneraliasboundedstringhelper =
+                std::move(x.m_var_map_longlong_inneraliasboundedstringhelper);
         return *this;
     }
 
@@ -15992,7 +15781,8 @@ public:
      * @brief This function returns a constant reference to member var_map_longlong_inneraliasboundedstringhelper
      * @return Constant reference to member var_map_longlong_inneraliasboundedstringhelper
      */
-    eProsima_user_DllExport const std::map<int64_t, Inner_alias_bounded_string_helper>& var_map_longlong_inneraliasboundedstringhelper() const
+    eProsima_user_DllExport const std::map<int64_t,
+            Inner_alias_bounded_string_helper>& var_map_longlong_inneraliasboundedstringhelper() const
     {
         return m_var_map_longlong_inneraliasboundedstringhelper;
     }
@@ -16001,12 +15791,11 @@ public:
      * @brief This function returns a reference to member var_map_longlong_inneraliasboundedstringhelper
      * @return Reference to member var_map_longlong_inneraliasboundedstringhelper
      */
-    eProsima_user_DllExport std::map<int64_t, Inner_alias_bounded_string_helper>& var_map_longlong_inneraliasboundedstringhelper()
+    eProsima_user_DllExport std::map<int64_t,
+            Inner_alias_bounded_string_helper>& var_map_longlong_inneraliasboundedstringhelper()
     {
         return m_var_map_longlong_inneraliasboundedstringhelper;
     }
-
-
 
 private:
 
@@ -16042,7 +15831,7 @@ public:
     eProsima_user_DllExport MapLongLongInnerAliasBoundedWStringHelper(
             const MapLongLongInnerAliasBoundedWStringHelper& x)
     {
-                    m_var_map_longlong_inneraliasboundedwstringhelper = x.m_var_map_longlong_inneraliasboundedwstringhelper;
+        m_var_map_longlong_inneraliasboundedwstringhelper = x.m_var_map_longlong_inneraliasboundedwstringhelper;
 
     }
 
@@ -16053,7 +15842,8 @@ public:
     eProsima_user_DllExport MapLongLongInnerAliasBoundedWStringHelper(
             MapLongLongInnerAliasBoundedWStringHelper&& x) noexcept
     {
-        m_var_map_longlong_inneraliasboundedwstringhelper = std::move(x.m_var_map_longlong_inneraliasboundedwstringhelper);
+        m_var_map_longlong_inneraliasboundedwstringhelper =
+                std::move(x.m_var_map_longlong_inneraliasboundedwstringhelper);
     }
 
     /*!
@@ -16064,7 +15854,7 @@ public:
             const MapLongLongInnerAliasBoundedWStringHelper& x)
     {
 
-                    m_var_map_longlong_inneraliasboundedwstringhelper = x.m_var_map_longlong_inneraliasboundedwstringhelper;
+        m_var_map_longlong_inneraliasboundedwstringhelper = x.m_var_map_longlong_inneraliasboundedwstringhelper;
 
         return *this;
     }
@@ -16077,7 +15867,8 @@ public:
             MapLongLongInnerAliasBoundedWStringHelper&& x) noexcept
     {
 
-        m_var_map_longlong_inneraliasboundedwstringhelper = std::move(x.m_var_map_longlong_inneraliasboundedwstringhelper);
+        m_var_map_longlong_inneraliasboundedwstringhelper =
+                std::move(x.m_var_map_longlong_inneraliasboundedwstringhelper);
         return *this;
     }
 
@@ -16088,7 +15879,8 @@ public:
     eProsima_user_DllExport bool operator ==(
             const MapLongLongInnerAliasBoundedWStringHelper& x) const
     {
-        return (m_var_map_longlong_inneraliasboundedwstringhelper == x.m_var_map_longlong_inneraliasboundedwstringhelper);
+        return (m_var_map_longlong_inneraliasboundedwstringhelper ==
+               x.m_var_map_longlong_inneraliasboundedwstringhelper);
     }
 
     /*!
@@ -16106,7 +15898,8 @@ public:
      * @param _var_map_longlong_inneraliasboundedwstringhelper New value to be copied in member var_map_longlong_inneraliasboundedwstringhelper
      */
     eProsima_user_DllExport void var_map_longlong_inneraliasboundedwstringhelper(
-            const std::map<int64_t, Inner_alias_bounded_wstring_helper>& _var_map_longlong_inneraliasboundedwstringhelper)
+            const std::map<int64_t,
+            Inner_alias_bounded_wstring_helper>& _var_map_longlong_inneraliasboundedwstringhelper)
     {
         m_var_map_longlong_inneraliasboundedwstringhelper = _var_map_longlong_inneraliasboundedwstringhelper;
     }
@@ -16125,7 +15918,8 @@ public:
      * @brief This function returns a constant reference to member var_map_longlong_inneraliasboundedwstringhelper
      * @return Constant reference to member var_map_longlong_inneraliasboundedwstringhelper
      */
-    eProsima_user_DllExport const std::map<int64_t, Inner_alias_bounded_wstring_helper>& var_map_longlong_inneraliasboundedwstringhelper() const
+    eProsima_user_DllExport const std::map<int64_t,
+            Inner_alias_bounded_wstring_helper>& var_map_longlong_inneraliasboundedwstringhelper() const
     {
         return m_var_map_longlong_inneraliasboundedwstringhelper;
     }
@@ -16134,12 +15928,11 @@ public:
      * @brief This function returns a reference to member var_map_longlong_inneraliasboundedwstringhelper
      * @return Reference to member var_map_longlong_inneraliasboundedwstringhelper
      */
-    eProsima_user_DllExport std::map<int64_t, Inner_alias_bounded_wstring_helper>& var_map_longlong_inneraliasboundedwstringhelper()
+    eProsima_user_DllExport std::map<int64_t,
+            Inner_alias_bounded_wstring_helper>& var_map_longlong_inneraliasboundedwstringhelper()
     {
         return m_var_map_longlong_inneraliasboundedwstringhelper;
     }
-
-
 
 private:
 
@@ -16175,7 +15968,7 @@ public:
     eProsima_user_DllExport MapLongLongInnerEnumHelper(
             const MapLongLongInnerEnumHelper& x)
     {
-                    m_var_map_longlong_innerenumhelper = x.m_var_map_longlong_innerenumhelper;
+        m_var_map_longlong_innerenumhelper = x.m_var_map_longlong_innerenumhelper;
 
     }
 
@@ -16197,7 +15990,7 @@ public:
             const MapLongLongInnerEnumHelper& x)
     {
 
-                    m_var_map_longlong_innerenumhelper = x.m_var_map_longlong_innerenumhelper;
+        m_var_map_longlong_innerenumhelper = x.m_var_map_longlong_innerenumhelper;
 
         return *this;
     }
@@ -16272,8 +16065,6 @@ public:
         return m_var_map_longlong_innerenumhelper;
     }
 
-
-
 private:
 
     std::map<int64_t, InnerEnumHelper> m_var_map_longlong_innerenumhelper;
@@ -16308,7 +16099,7 @@ public:
     eProsima_user_DllExport MapLongLongInnerBitMaskHelper(
             const MapLongLongInnerBitMaskHelper& x)
     {
-                    m_var_map_longlong_innerbitmaskhelper = x.m_var_map_longlong_innerbitmaskhelper;
+        m_var_map_longlong_innerbitmaskhelper = x.m_var_map_longlong_innerbitmaskhelper;
 
     }
 
@@ -16330,7 +16121,7 @@ public:
             const MapLongLongInnerBitMaskHelper& x)
     {
 
-                    m_var_map_longlong_innerbitmaskhelper = x.m_var_map_longlong_innerbitmaskhelper;
+        m_var_map_longlong_innerbitmaskhelper = x.m_var_map_longlong_innerbitmaskhelper;
 
         return *this;
     }
@@ -16405,8 +16196,6 @@ public:
         return m_var_map_longlong_innerbitmaskhelper;
     }
 
-
-
 private:
 
     std::map<int64_t, InnerBitMaskHelper> m_var_map_longlong_innerbitmaskhelper;
@@ -16441,7 +16230,7 @@ public:
     eProsima_user_DllExport MapLongLongInnerAliasHelper(
             const MapLongLongInnerAliasHelper& x)
     {
-                    m_var_map_longlong_inneraliashelper = x.m_var_map_longlong_inneraliashelper;
+        m_var_map_longlong_inneraliashelper = x.m_var_map_longlong_inneraliashelper;
 
     }
 
@@ -16463,7 +16252,7 @@ public:
             const MapLongLongInnerAliasHelper& x)
     {
 
-                    m_var_map_longlong_inneraliashelper = x.m_var_map_longlong_inneraliashelper;
+        m_var_map_longlong_inneraliashelper = x.m_var_map_longlong_inneraliashelper;
 
         return *this;
     }
@@ -16538,8 +16327,6 @@ public:
         return m_var_map_longlong_inneraliashelper;
     }
 
-
-
 private:
 
     std::map<int64_t, InnerAliasHelper> m_var_map_longlong_inneraliashelper;
@@ -16574,7 +16361,7 @@ public:
     eProsima_user_DllExport MapLongLongInnerAliasArrayHelper(
             const MapLongLongInnerAliasArrayHelper& x)
     {
-                    m_var_map_longlong_inneraliasarrayhelper = x.m_var_map_longlong_inneraliasarrayhelper;
+        m_var_map_longlong_inneraliasarrayhelper = x.m_var_map_longlong_inneraliasarrayhelper;
 
     }
 
@@ -16596,7 +16383,7 @@ public:
             const MapLongLongInnerAliasArrayHelper& x)
     {
 
-                    m_var_map_longlong_inneraliasarrayhelper = x.m_var_map_longlong_inneraliasarrayhelper;
+        m_var_map_longlong_inneraliasarrayhelper = x.m_var_map_longlong_inneraliasarrayhelper;
 
         return *this;
     }
@@ -16657,7 +16444,8 @@ public:
      * @brief This function returns a constant reference to member var_map_longlong_inneraliasarrayhelper
      * @return Constant reference to member var_map_longlong_inneraliasarrayhelper
      */
-    eProsima_user_DllExport const std::map<int64_t, Inner_alias_array_helper>& var_map_longlong_inneraliasarrayhelper() const
+    eProsima_user_DllExport const std::map<int64_t,
+            Inner_alias_array_helper>& var_map_longlong_inneraliasarrayhelper() const
     {
         return m_var_map_longlong_inneraliasarrayhelper;
     }
@@ -16670,8 +16458,6 @@ public:
     {
         return m_var_map_longlong_inneraliasarrayhelper;
     }
-
-
 
 private:
 
@@ -16707,7 +16493,7 @@ public:
     eProsima_user_DllExport MapLongLongInnerAliasSequenceHelper(
             const MapLongLongInnerAliasSequenceHelper& x)
     {
-                    m_var_map_longlong_inneraliassequencehelper = x.m_var_map_longlong_inneraliassequencehelper;
+        m_var_map_longlong_inneraliassequencehelper = x.m_var_map_longlong_inneraliassequencehelper;
 
     }
 
@@ -16729,7 +16515,7 @@ public:
             const MapLongLongInnerAliasSequenceHelper& x)
     {
 
-                    m_var_map_longlong_inneraliassequencehelper = x.m_var_map_longlong_inneraliassequencehelper;
+        m_var_map_longlong_inneraliassequencehelper = x.m_var_map_longlong_inneraliassequencehelper;
 
         return *this;
     }
@@ -16790,7 +16576,8 @@ public:
      * @brief This function returns a constant reference to member var_map_longlong_inneraliassequencehelper
      * @return Constant reference to member var_map_longlong_inneraliassequencehelper
      */
-    eProsima_user_DllExport const std::map<int64_t, Inner_alias_sequence_helper>& var_map_longlong_inneraliassequencehelper() const
+    eProsima_user_DllExport const std::map<int64_t,
+            Inner_alias_sequence_helper>& var_map_longlong_inneraliassequencehelper() const
     {
         return m_var_map_longlong_inneraliassequencehelper;
     }
@@ -16803,8 +16590,6 @@ public:
     {
         return m_var_map_longlong_inneraliassequencehelper;
     }
-
-
 
 private:
 
@@ -16840,7 +16625,7 @@ public:
     eProsima_user_DllExport MapLongLongInnerAliasMapHelper(
             const MapLongLongInnerAliasMapHelper& x)
     {
-                    m_var_map_longlong_inneraliasmaphelper = x.m_var_map_longlong_inneraliasmaphelper;
+        m_var_map_longlong_inneraliasmaphelper = x.m_var_map_longlong_inneraliasmaphelper;
 
     }
 
@@ -16862,7 +16647,7 @@ public:
             const MapLongLongInnerAliasMapHelper& x)
     {
 
-                    m_var_map_longlong_inneraliasmaphelper = x.m_var_map_longlong_inneraliasmaphelper;
+        m_var_map_longlong_inneraliasmaphelper = x.m_var_map_longlong_inneraliasmaphelper;
 
         return *this;
     }
@@ -16923,7 +16708,8 @@ public:
      * @brief This function returns a constant reference to member var_map_longlong_inneraliasmaphelper
      * @return Constant reference to member var_map_longlong_inneraliasmaphelper
      */
-    eProsima_user_DllExport const std::map<int64_t, Inner_alias_map_helper>& var_map_longlong_inneraliasmaphelper() const
+    eProsima_user_DllExport const std::map<int64_t,
+            Inner_alias_map_helper>& var_map_longlong_inneraliasmaphelper() const
     {
         return m_var_map_longlong_inneraliasmaphelper;
     }
@@ -16936,8 +16722,6 @@ public:
     {
         return m_var_map_longlong_inneraliasmaphelper;
     }
-
-
 
 private:
 
@@ -16973,7 +16757,7 @@ public:
     eProsima_user_DllExport MapLongLongInnerUnionHelper(
             const MapLongLongInnerUnionHelper& x)
     {
-                    m_var_map_longlong_innerunionhelper = x.m_var_map_longlong_innerunionhelper;
+        m_var_map_longlong_innerunionhelper = x.m_var_map_longlong_innerunionhelper;
 
     }
 
@@ -16995,7 +16779,7 @@ public:
             const MapLongLongInnerUnionHelper& x)
     {
 
-                    m_var_map_longlong_innerunionhelper = x.m_var_map_longlong_innerunionhelper;
+        m_var_map_longlong_innerunionhelper = x.m_var_map_longlong_innerunionhelper;
 
         return *this;
     }
@@ -17070,8 +16854,6 @@ public:
         return m_var_map_longlong_innerunionhelper;
     }
 
-
-
 private:
 
     std::map<int64_t, InnerUnionHelper> m_var_map_longlong_innerunionhelper;
@@ -17106,7 +16888,7 @@ public:
     eProsima_user_DllExport MapLongLongInnerStructureHelper(
             const MapLongLongInnerStructureHelper& x)
     {
-                    m_var_map_longlong_innerstructurehelper = x.m_var_map_longlong_innerstructurehelper;
+        m_var_map_longlong_innerstructurehelper = x.m_var_map_longlong_innerstructurehelper;
 
     }
 
@@ -17128,7 +16910,7 @@ public:
             const MapLongLongInnerStructureHelper& x)
     {
 
-                    m_var_map_longlong_innerstructurehelper = x.m_var_map_longlong_innerstructurehelper;
+        m_var_map_longlong_innerstructurehelper = x.m_var_map_longlong_innerstructurehelper;
 
         return *this;
     }
@@ -17203,8 +16985,6 @@ public:
         return m_var_map_longlong_innerstructurehelper;
     }
 
-
-
 private:
 
     std::map<int64_t, InnerStructureHelper> m_var_map_longlong_innerstructurehelper;
@@ -17239,7 +17019,7 @@ public:
     eProsima_user_DllExport MapLongLongInnerBitsetHelper(
             const MapLongLongInnerBitsetHelper& x)
     {
-                    m_var_map_longlong_innerbitsethelper = x.m_var_map_longlong_innerbitsethelper;
+        m_var_map_longlong_innerbitsethelper = x.m_var_map_longlong_innerbitsethelper;
 
     }
 
@@ -17261,7 +17041,7 @@ public:
             const MapLongLongInnerBitsetHelper& x)
     {
 
-                    m_var_map_longlong_innerbitsethelper = x.m_var_map_longlong_innerbitsethelper;
+        m_var_map_longlong_innerbitsethelper = x.m_var_map_longlong_innerbitsethelper;
 
         return *this;
     }
@@ -17336,8 +17116,6 @@ public:
         return m_var_map_longlong_innerbitsethelper;
     }
 
-
-
 private:
 
     std::map<int64_t, InnerBitsetHelper> m_var_map_longlong_innerbitsethelper;
@@ -17372,7 +17150,7 @@ public:
     eProsima_user_DllExport MapULongLongShort(
             const MapULongLongShort& x)
     {
-                    m_var_map_u_long_long_short = x.m_var_map_u_long_long_short;
+        m_var_map_u_long_long_short = x.m_var_map_u_long_long_short;
 
     }
 
@@ -17394,7 +17172,7 @@ public:
             const MapULongLongShort& x)
     {
 
-                    m_var_map_u_long_long_short = x.m_var_map_u_long_long_short;
+        m_var_map_u_long_long_short = x.m_var_map_u_long_long_short;
 
         return *this;
     }
@@ -17469,8 +17247,6 @@ public:
         return m_var_map_u_long_long_short;
     }
 
-
-
 private:
 
     std::map<uint64_t, int16_t> m_var_map_u_long_long_short;
@@ -17505,7 +17281,7 @@ public:
     eProsima_user_DllExport MapULongLongUShort(
             const MapULongLongUShort& x)
     {
-                    m_var_map_u_long_long_u_short = x.m_var_map_u_long_long_u_short;
+        m_var_map_u_long_long_u_short = x.m_var_map_u_long_long_u_short;
 
     }
 
@@ -17527,7 +17303,7 @@ public:
             const MapULongLongUShort& x)
     {
 
-                    m_var_map_u_long_long_u_short = x.m_var_map_u_long_long_u_short;
+        m_var_map_u_long_long_u_short = x.m_var_map_u_long_long_u_short;
 
         return *this;
     }
@@ -17602,8 +17378,6 @@ public:
         return m_var_map_u_long_long_u_short;
     }
 
-
-
 private:
 
     std::map<uint64_t, uint16_t> m_var_map_u_long_long_u_short;
@@ -17638,7 +17412,7 @@ public:
     eProsima_user_DllExport MapULongLongLong(
             const MapULongLongLong& x)
     {
-                    m_var_map_u_long_long_long = x.m_var_map_u_long_long_long;
+        m_var_map_u_long_long_long = x.m_var_map_u_long_long_long;
 
     }
 
@@ -17660,7 +17434,7 @@ public:
             const MapULongLongLong& x)
     {
 
-                    m_var_map_u_long_long_long = x.m_var_map_u_long_long_long;
+        m_var_map_u_long_long_long = x.m_var_map_u_long_long_long;
 
         return *this;
     }
@@ -17735,8 +17509,6 @@ public:
         return m_var_map_u_long_long_long;
     }
 
-
-
 private:
 
     std::map<uint64_t, int32_t> m_var_map_u_long_long_long;
@@ -17771,7 +17543,7 @@ public:
     eProsima_user_DllExport MapULongLongULong(
             const MapULongLongULong& x)
     {
-                    m_var_map_u_long_long_u_long = x.m_var_map_u_long_long_u_long;
+        m_var_map_u_long_long_u_long = x.m_var_map_u_long_long_u_long;
 
     }
 
@@ -17793,7 +17565,7 @@ public:
             const MapULongLongULong& x)
     {
 
-                    m_var_map_u_long_long_u_long = x.m_var_map_u_long_long_u_long;
+        m_var_map_u_long_long_u_long = x.m_var_map_u_long_long_u_long;
 
         return *this;
     }
@@ -17868,8 +17640,6 @@ public:
         return m_var_map_u_long_long_u_long;
     }
 
-
-
 private:
 
     std::map<uint64_t, uint32_t> m_var_map_u_long_long_u_long;
@@ -17904,7 +17674,7 @@ public:
     eProsima_user_DllExport MapULongLongLongLong(
             const MapULongLongLongLong& x)
     {
-                    m_var_map_u_long_long_long_long = x.m_var_map_u_long_long_long_long;
+        m_var_map_u_long_long_long_long = x.m_var_map_u_long_long_long_long;
 
     }
 
@@ -17926,7 +17696,7 @@ public:
             const MapULongLongLongLong& x)
     {
 
-                    m_var_map_u_long_long_long_long = x.m_var_map_u_long_long_long_long;
+        m_var_map_u_long_long_long_long = x.m_var_map_u_long_long_long_long;
 
         return *this;
     }
@@ -18001,8 +17771,6 @@ public:
         return m_var_map_u_long_long_long_long;
     }
 
-
-
 private:
 
     std::map<uint64_t, int64_t> m_var_map_u_long_long_long_long;
@@ -18037,7 +17805,7 @@ public:
     eProsima_user_DllExport MapULongLongULongLong(
             const MapULongLongULongLong& x)
     {
-                    m_var_map_u_long_long_u_long_long = x.m_var_map_u_long_long_u_long_long;
+        m_var_map_u_long_long_u_long_long = x.m_var_map_u_long_long_u_long_long;
 
     }
 
@@ -18059,7 +17827,7 @@ public:
             const MapULongLongULongLong& x)
     {
 
-                    m_var_map_u_long_long_u_long_long = x.m_var_map_u_long_long_u_long_long;
+        m_var_map_u_long_long_u_long_long = x.m_var_map_u_long_long_u_long_long;
 
         return *this;
     }
@@ -18134,8 +17902,6 @@ public:
         return m_var_map_u_long_long_u_long_long;
     }
 
-
-
 private:
 
     std::map<uint64_t, uint64_t> m_var_map_u_long_long_u_long_long;
@@ -18170,7 +17936,7 @@ public:
     eProsima_user_DllExport MapULongLongFloat(
             const MapULongLongFloat& x)
     {
-                    m_var_map_u_long_long_float = x.m_var_map_u_long_long_float;
+        m_var_map_u_long_long_float = x.m_var_map_u_long_long_float;
 
     }
 
@@ -18192,7 +17958,7 @@ public:
             const MapULongLongFloat& x)
     {
 
-                    m_var_map_u_long_long_float = x.m_var_map_u_long_long_float;
+        m_var_map_u_long_long_float = x.m_var_map_u_long_long_float;
 
         return *this;
     }
@@ -18267,8 +18033,6 @@ public:
         return m_var_map_u_long_long_float;
     }
 
-
-
 private:
 
     std::map<uint64_t, float> m_var_map_u_long_long_float;
@@ -18303,7 +18067,7 @@ public:
     eProsima_user_DllExport MapKeyULongLongValueDouble(
             const MapKeyULongLongValueDouble& x)
     {
-                    m_var_map_u_long_long_double = x.m_var_map_u_long_long_double;
+        m_var_map_u_long_long_double = x.m_var_map_u_long_long_double;
 
     }
 
@@ -18325,7 +18089,7 @@ public:
             const MapKeyULongLongValueDouble& x)
     {
 
-                    m_var_map_u_long_long_double = x.m_var_map_u_long_long_double;
+        m_var_map_u_long_long_double = x.m_var_map_u_long_long_double;
 
         return *this;
     }
@@ -18400,8 +18164,6 @@ public:
         return m_var_map_u_long_long_double;
     }
 
-
-
 private:
 
     std::map<uint64_t, double> m_var_map_u_long_long_double;
@@ -18436,7 +18198,7 @@ public:
     eProsima_user_DllExport MapULongLongLongDouble(
             const MapULongLongLongDouble& x)
     {
-                    m_var_map_u_long_long_long_double = x.m_var_map_u_long_long_long_double;
+        m_var_map_u_long_long_long_double = x.m_var_map_u_long_long_long_double;
 
     }
 
@@ -18458,7 +18220,7 @@ public:
             const MapULongLongLongDouble& x)
     {
 
-                    m_var_map_u_long_long_long_double = x.m_var_map_u_long_long_long_double;
+        m_var_map_u_long_long_long_double = x.m_var_map_u_long_long_long_double;
 
         return *this;
     }
@@ -18533,8 +18295,6 @@ public:
         return m_var_map_u_long_long_long_double;
     }
 
-
-
 private:
 
     std::map<uint64_t, long double> m_var_map_u_long_long_long_double;
@@ -18569,7 +18329,7 @@ public:
     eProsima_user_DllExport MapULongLongBoolean(
             const MapULongLongBoolean& x)
     {
-                    m_var_map_u_long_long_boolean = x.m_var_map_u_long_long_boolean;
+        m_var_map_u_long_long_boolean = x.m_var_map_u_long_long_boolean;
 
     }
 
@@ -18591,7 +18351,7 @@ public:
             const MapULongLongBoolean& x)
     {
 
-                    m_var_map_u_long_long_boolean = x.m_var_map_u_long_long_boolean;
+        m_var_map_u_long_long_boolean = x.m_var_map_u_long_long_boolean;
 
         return *this;
     }
@@ -18666,8 +18426,6 @@ public:
         return m_var_map_u_long_long_boolean;
     }
 
-
-
 private:
 
     std::map<uint64_t, bool> m_var_map_u_long_long_boolean;
@@ -18702,7 +18460,7 @@ public:
     eProsima_user_DllExport MapULongLongOctet(
             const MapULongLongOctet& x)
     {
-                    m_var_map_u_long_long_octet = x.m_var_map_u_long_long_octet;
+        m_var_map_u_long_long_octet = x.m_var_map_u_long_long_octet;
 
     }
 
@@ -18724,7 +18482,7 @@ public:
             const MapULongLongOctet& x)
     {
 
-                    m_var_map_u_long_long_octet = x.m_var_map_u_long_long_octet;
+        m_var_map_u_long_long_octet = x.m_var_map_u_long_long_octet;
 
         return *this;
     }
@@ -18799,8 +18557,6 @@ public:
         return m_var_map_u_long_long_octet;
     }
 
-
-
 private:
 
     std::map<uint64_t, uint8_t> m_var_map_u_long_long_octet;
@@ -18835,7 +18591,7 @@ public:
     eProsima_user_DllExport MapULongLongChar(
             const MapULongLongChar& x)
     {
-                    m_var_map_u_long_long_char = x.m_var_map_u_long_long_char;
+        m_var_map_u_long_long_char = x.m_var_map_u_long_long_char;
 
     }
 
@@ -18857,7 +18613,7 @@ public:
             const MapULongLongChar& x)
     {
 
-                    m_var_map_u_long_long_char = x.m_var_map_u_long_long_char;
+        m_var_map_u_long_long_char = x.m_var_map_u_long_long_char;
 
         return *this;
     }
@@ -18932,8 +18688,6 @@ public:
         return m_var_map_u_long_long_char;
     }
 
-
-
 private:
 
     std::map<uint64_t, char> m_var_map_u_long_long_char;
@@ -18968,7 +18722,7 @@ public:
     eProsima_user_DllExport MapULongLongWChar(
             const MapULongLongWChar& x)
     {
-                    m_var_map_u_long_long_wchar = x.m_var_map_u_long_long_wchar;
+        m_var_map_u_long_long_wchar = x.m_var_map_u_long_long_wchar;
 
     }
 
@@ -18990,7 +18744,7 @@ public:
             const MapULongLongWChar& x)
     {
 
-                    m_var_map_u_long_long_wchar = x.m_var_map_u_long_long_wchar;
+        m_var_map_u_long_long_wchar = x.m_var_map_u_long_long_wchar;
 
         return *this;
     }
@@ -19065,8 +18819,6 @@ public:
         return m_var_map_u_long_long_wchar;
     }
 
-
-
 private:
 
     std::map<uint64_t, wchar_t> m_var_map_u_long_long_wchar;
@@ -19101,7 +18853,7 @@ public:
     eProsima_user_DllExport MapULongLongString(
             const MapULongLongString& x)
     {
-                    m_var_map_u_long_long_string = x.m_var_map_u_long_long_string;
+        m_var_map_u_long_long_string = x.m_var_map_u_long_long_string;
 
     }
 
@@ -19123,7 +18875,7 @@ public:
             const MapULongLongString& x)
     {
 
-                    m_var_map_u_long_long_string = x.m_var_map_u_long_long_string;
+        m_var_map_u_long_long_string = x.m_var_map_u_long_long_string;
 
         return *this;
     }
@@ -19198,8 +18950,6 @@ public:
         return m_var_map_u_long_long_string;
     }
 
-
-
 private:
 
     std::map<uint64_t, std::string> m_var_map_u_long_long_string;
@@ -19234,7 +18984,7 @@ public:
     eProsima_user_DllExport MapULongLongWString(
             const MapULongLongWString& x)
     {
-                    m_var_map_u_long_long_wstring = x.m_var_map_u_long_long_wstring;
+        m_var_map_u_long_long_wstring = x.m_var_map_u_long_long_wstring;
 
     }
 
@@ -19256,7 +19006,7 @@ public:
             const MapULongLongWString& x)
     {
 
-                    m_var_map_u_long_long_wstring = x.m_var_map_u_long_long_wstring;
+        m_var_map_u_long_long_wstring = x.m_var_map_u_long_long_wstring;
 
         return *this;
     }
@@ -19331,8 +19081,6 @@ public:
         return m_var_map_u_long_long_wstring;
     }
 
-
-
 private:
 
     std::map<uint64_t, std::wstring> m_var_map_u_long_long_wstring;
@@ -19367,7 +19115,8 @@ public:
     eProsima_user_DllExport MapULongLongInnerAliasBoundedStringHelper(
             const MapULongLongInnerAliasBoundedStringHelper& x)
     {
-                    m_var_map_u_long_long_inner_alias_bounded_string_helper = x.m_var_map_u_long_long_inner_alias_bounded_string_helper;
+        m_var_map_u_long_long_inner_alias_bounded_string_helper =
+                x.m_var_map_u_long_long_inner_alias_bounded_string_helper;
 
     }
 
@@ -19378,7 +19127,8 @@ public:
     eProsima_user_DllExport MapULongLongInnerAliasBoundedStringHelper(
             MapULongLongInnerAliasBoundedStringHelper&& x) noexcept
     {
-        m_var_map_u_long_long_inner_alias_bounded_string_helper = std::move(x.m_var_map_u_long_long_inner_alias_bounded_string_helper);
+        m_var_map_u_long_long_inner_alias_bounded_string_helper =
+                std::move(x.m_var_map_u_long_long_inner_alias_bounded_string_helper);
     }
 
     /*!
@@ -19389,7 +19139,8 @@ public:
             const MapULongLongInnerAliasBoundedStringHelper& x)
     {
 
-                    m_var_map_u_long_long_inner_alias_bounded_string_helper = x.m_var_map_u_long_long_inner_alias_bounded_string_helper;
+        m_var_map_u_long_long_inner_alias_bounded_string_helper =
+                x.m_var_map_u_long_long_inner_alias_bounded_string_helper;
 
         return *this;
     }
@@ -19402,7 +19153,8 @@ public:
             MapULongLongInnerAliasBoundedStringHelper&& x) noexcept
     {
 
-        m_var_map_u_long_long_inner_alias_bounded_string_helper = std::move(x.m_var_map_u_long_long_inner_alias_bounded_string_helper);
+        m_var_map_u_long_long_inner_alias_bounded_string_helper =
+                std::move(x.m_var_map_u_long_long_inner_alias_bounded_string_helper);
         return *this;
     }
 
@@ -19413,7 +19165,8 @@ public:
     eProsima_user_DllExport bool operator ==(
             const MapULongLongInnerAliasBoundedStringHelper& x) const
     {
-        return (m_var_map_u_long_long_inner_alias_bounded_string_helper == x.m_var_map_u_long_long_inner_alias_bounded_string_helper);
+        return (m_var_map_u_long_long_inner_alias_bounded_string_helper ==
+               x.m_var_map_u_long_long_inner_alias_bounded_string_helper);
     }
 
     /*!
@@ -19431,9 +19184,11 @@ public:
      * @param _var_map_u_long_long_inner_alias_bounded_string_helper New value to be copied in member var_map_u_long_long_inner_alias_bounded_string_helper
      */
     eProsima_user_DllExport void var_map_u_long_long_inner_alias_bounded_string_helper(
-            const std::map<uint64_t, Inner_alias_bounded_string_helper>& _var_map_u_long_long_inner_alias_bounded_string_helper)
+            const std::map<uint64_t,
+            Inner_alias_bounded_string_helper>& _var_map_u_long_long_inner_alias_bounded_string_helper)
     {
-        m_var_map_u_long_long_inner_alias_bounded_string_helper = _var_map_u_long_long_inner_alias_bounded_string_helper;
+        m_var_map_u_long_long_inner_alias_bounded_string_helper =
+                _var_map_u_long_long_inner_alias_bounded_string_helper;
     }
 
     /*!
@@ -19441,16 +19196,19 @@ public:
      * @param _var_map_u_long_long_inner_alias_bounded_string_helper New value to be moved in member var_map_u_long_long_inner_alias_bounded_string_helper
      */
     eProsima_user_DllExport void var_map_u_long_long_inner_alias_bounded_string_helper(
-            std::map<uint64_t, Inner_alias_bounded_string_helper>&& _var_map_u_long_long_inner_alias_bounded_string_helper)
+            std::map<uint64_t,
+            Inner_alias_bounded_string_helper>&& _var_map_u_long_long_inner_alias_bounded_string_helper)
     {
-        m_var_map_u_long_long_inner_alias_bounded_string_helper = std::move(_var_map_u_long_long_inner_alias_bounded_string_helper);
+        m_var_map_u_long_long_inner_alias_bounded_string_helper =
+                std::move(_var_map_u_long_long_inner_alias_bounded_string_helper);
     }
 
     /*!
      * @brief This function returns a constant reference to member var_map_u_long_long_inner_alias_bounded_string_helper
      * @return Constant reference to member var_map_u_long_long_inner_alias_bounded_string_helper
      */
-    eProsima_user_DllExport const std::map<uint64_t, Inner_alias_bounded_string_helper>& var_map_u_long_long_inner_alias_bounded_string_helper() const
+    eProsima_user_DllExport const std::map<uint64_t,
+            Inner_alias_bounded_string_helper>& var_map_u_long_long_inner_alias_bounded_string_helper() const
     {
         return m_var_map_u_long_long_inner_alias_bounded_string_helper;
     }
@@ -19459,12 +19217,11 @@ public:
      * @brief This function returns a reference to member var_map_u_long_long_inner_alias_bounded_string_helper
      * @return Reference to member var_map_u_long_long_inner_alias_bounded_string_helper
      */
-    eProsima_user_DllExport std::map<uint64_t, Inner_alias_bounded_string_helper>& var_map_u_long_long_inner_alias_bounded_string_helper()
+    eProsima_user_DllExport std::map<uint64_t,
+            Inner_alias_bounded_string_helper>& var_map_u_long_long_inner_alias_bounded_string_helper()
     {
         return m_var_map_u_long_long_inner_alias_bounded_string_helper;
     }
-
-
 
 private:
 
@@ -19500,7 +19257,8 @@ public:
     eProsima_user_DllExport MapULongLongInnerAliasBoundedWStringHelper(
             const MapULongLongInnerAliasBoundedWStringHelper& x)
     {
-                    m_var_map_u_long_long_inner_alias_bounded_wstring_helper = x.m_var_map_u_long_long_inner_alias_bounded_wstring_helper;
+        m_var_map_u_long_long_inner_alias_bounded_wstring_helper =
+                x.m_var_map_u_long_long_inner_alias_bounded_wstring_helper;
 
     }
 
@@ -19511,7 +19269,8 @@ public:
     eProsima_user_DllExport MapULongLongInnerAliasBoundedWStringHelper(
             MapULongLongInnerAliasBoundedWStringHelper&& x) noexcept
     {
-        m_var_map_u_long_long_inner_alias_bounded_wstring_helper = std::move(x.m_var_map_u_long_long_inner_alias_bounded_wstring_helper);
+        m_var_map_u_long_long_inner_alias_bounded_wstring_helper =
+                std::move(x.m_var_map_u_long_long_inner_alias_bounded_wstring_helper);
     }
 
     /*!
@@ -19522,7 +19281,8 @@ public:
             const MapULongLongInnerAliasBoundedWStringHelper& x)
     {
 
-                    m_var_map_u_long_long_inner_alias_bounded_wstring_helper = x.m_var_map_u_long_long_inner_alias_bounded_wstring_helper;
+        m_var_map_u_long_long_inner_alias_bounded_wstring_helper =
+                x.m_var_map_u_long_long_inner_alias_bounded_wstring_helper;
 
         return *this;
     }
@@ -19535,7 +19295,8 @@ public:
             MapULongLongInnerAliasBoundedWStringHelper&& x) noexcept
     {
 
-        m_var_map_u_long_long_inner_alias_bounded_wstring_helper = std::move(x.m_var_map_u_long_long_inner_alias_bounded_wstring_helper);
+        m_var_map_u_long_long_inner_alias_bounded_wstring_helper =
+                std::move(x.m_var_map_u_long_long_inner_alias_bounded_wstring_helper);
         return *this;
     }
 
@@ -19546,7 +19307,8 @@ public:
     eProsima_user_DllExport bool operator ==(
             const MapULongLongInnerAliasBoundedWStringHelper& x) const
     {
-        return (m_var_map_u_long_long_inner_alias_bounded_wstring_helper == x.m_var_map_u_long_long_inner_alias_bounded_wstring_helper);
+        return (m_var_map_u_long_long_inner_alias_bounded_wstring_helper ==
+               x.m_var_map_u_long_long_inner_alias_bounded_wstring_helper);
     }
 
     /*!
@@ -19564,9 +19326,11 @@ public:
      * @param _var_map_u_long_long_inner_alias_bounded_wstring_helper New value to be copied in member var_map_u_long_long_inner_alias_bounded_wstring_helper
      */
     eProsima_user_DllExport void var_map_u_long_long_inner_alias_bounded_wstring_helper(
-            const std::map<uint64_t, Inner_alias_bounded_wstring_helper>& _var_map_u_long_long_inner_alias_bounded_wstring_helper)
+            const std::map<uint64_t,
+            Inner_alias_bounded_wstring_helper>& _var_map_u_long_long_inner_alias_bounded_wstring_helper)
     {
-        m_var_map_u_long_long_inner_alias_bounded_wstring_helper = _var_map_u_long_long_inner_alias_bounded_wstring_helper;
+        m_var_map_u_long_long_inner_alias_bounded_wstring_helper =
+                _var_map_u_long_long_inner_alias_bounded_wstring_helper;
     }
 
     /*!
@@ -19574,16 +19338,19 @@ public:
      * @param _var_map_u_long_long_inner_alias_bounded_wstring_helper New value to be moved in member var_map_u_long_long_inner_alias_bounded_wstring_helper
      */
     eProsima_user_DllExport void var_map_u_long_long_inner_alias_bounded_wstring_helper(
-            std::map<uint64_t, Inner_alias_bounded_wstring_helper>&& _var_map_u_long_long_inner_alias_bounded_wstring_helper)
+            std::map<uint64_t,
+            Inner_alias_bounded_wstring_helper>&& _var_map_u_long_long_inner_alias_bounded_wstring_helper)
     {
-        m_var_map_u_long_long_inner_alias_bounded_wstring_helper = std::move(_var_map_u_long_long_inner_alias_bounded_wstring_helper);
+        m_var_map_u_long_long_inner_alias_bounded_wstring_helper =
+                std::move(_var_map_u_long_long_inner_alias_bounded_wstring_helper);
     }
 
     /*!
      * @brief This function returns a constant reference to member var_map_u_long_long_inner_alias_bounded_wstring_helper
      * @return Constant reference to member var_map_u_long_long_inner_alias_bounded_wstring_helper
      */
-    eProsima_user_DllExport const std::map<uint64_t, Inner_alias_bounded_wstring_helper>& var_map_u_long_long_inner_alias_bounded_wstring_helper() const
+    eProsima_user_DllExport const std::map<uint64_t,
+            Inner_alias_bounded_wstring_helper>& var_map_u_long_long_inner_alias_bounded_wstring_helper() const
     {
         return m_var_map_u_long_long_inner_alias_bounded_wstring_helper;
     }
@@ -19592,12 +19359,11 @@ public:
      * @brief This function returns a reference to member var_map_u_long_long_inner_alias_bounded_wstring_helper
      * @return Reference to member var_map_u_long_long_inner_alias_bounded_wstring_helper
      */
-    eProsima_user_DllExport std::map<uint64_t, Inner_alias_bounded_wstring_helper>& var_map_u_long_long_inner_alias_bounded_wstring_helper()
+    eProsima_user_DllExport std::map<uint64_t,
+            Inner_alias_bounded_wstring_helper>& var_map_u_long_long_inner_alias_bounded_wstring_helper()
     {
         return m_var_map_u_long_long_inner_alias_bounded_wstring_helper;
     }
-
-
 
 private:
 
@@ -19633,7 +19399,7 @@ public:
     eProsima_user_DllExport MapULongLongInnerEnumHelper(
             const MapULongLongInnerEnumHelper& x)
     {
-                    m_var_map_u_long_long_inner_enum_helper = x.m_var_map_u_long_long_inner_enum_helper;
+        m_var_map_u_long_long_inner_enum_helper = x.m_var_map_u_long_long_inner_enum_helper;
 
     }
 
@@ -19655,7 +19421,7 @@ public:
             const MapULongLongInnerEnumHelper& x)
     {
 
-                    m_var_map_u_long_long_inner_enum_helper = x.m_var_map_u_long_long_inner_enum_helper;
+        m_var_map_u_long_long_inner_enum_helper = x.m_var_map_u_long_long_inner_enum_helper;
 
         return *this;
     }
@@ -19730,8 +19496,6 @@ public:
         return m_var_map_u_long_long_inner_enum_helper;
     }
 
-
-
 private:
 
     std::map<uint64_t, InnerEnumHelper> m_var_map_u_long_long_inner_enum_helper;
@@ -19766,7 +19530,7 @@ public:
     eProsima_user_DllExport MapULongLongInnerBitMaskHelper(
             const MapULongLongInnerBitMaskHelper& x)
     {
-                    m_var_map_u_long_long_inner_bit_mask_helper = x.m_var_map_u_long_long_inner_bit_mask_helper;
+        m_var_map_u_long_long_inner_bit_mask_helper = x.m_var_map_u_long_long_inner_bit_mask_helper;
 
     }
 
@@ -19788,7 +19552,7 @@ public:
             const MapULongLongInnerBitMaskHelper& x)
     {
 
-                    m_var_map_u_long_long_inner_bit_mask_helper = x.m_var_map_u_long_long_inner_bit_mask_helper;
+        m_var_map_u_long_long_inner_bit_mask_helper = x.m_var_map_u_long_long_inner_bit_mask_helper;
 
         return *this;
     }
@@ -19849,7 +19613,8 @@ public:
      * @brief This function returns a constant reference to member var_map_u_long_long_inner_bit_mask_helper
      * @return Constant reference to member var_map_u_long_long_inner_bit_mask_helper
      */
-    eProsima_user_DllExport const std::map<uint64_t, InnerBitMaskHelper>& var_map_u_long_long_inner_bit_mask_helper() const
+    eProsima_user_DllExport const std::map<uint64_t,
+            InnerBitMaskHelper>& var_map_u_long_long_inner_bit_mask_helper() const
     {
         return m_var_map_u_long_long_inner_bit_mask_helper;
     }
@@ -19862,8 +19627,6 @@ public:
     {
         return m_var_map_u_long_long_inner_bit_mask_helper;
     }
-
-
 
 private:
 
@@ -19899,7 +19662,7 @@ public:
     eProsima_user_DllExport MapULongLongInnerAliasHelper(
             const MapULongLongInnerAliasHelper& x)
     {
-                    m_var_map_u_long_long_inner_alias_helper = x.m_var_map_u_long_long_inner_alias_helper;
+        m_var_map_u_long_long_inner_alias_helper = x.m_var_map_u_long_long_inner_alias_helper;
 
     }
 
@@ -19921,7 +19684,7 @@ public:
             const MapULongLongInnerAliasHelper& x)
     {
 
-                    m_var_map_u_long_long_inner_alias_helper = x.m_var_map_u_long_long_inner_alias_helper;
+        m_var_map_u_long_long_inner_alias_helper = x.m_var_map_u_long_long_inner_alias_helper;
 
         return *this;
     }
@@ -19996,8 +19759,6 @@ public:
         return m_var_map_u_long_long_inner_alias_helper;
     }
 
-
-
 private:
 
     std::map<uint64_t, InnerAliasHelper> m_var_map_u_long_long_inner_alias_helper;
@@ -20032,7 +19793,7 @@ public:
     eProsima_user_DllExport MapULongLongInnerAliasArrayHelper(
             const MapULongLongInnerAliasArrayHelper& x)
     {
-                    m_var_map_u_long_long_inner_alias_array_helper = x.m_var_map_u_long_long_inner_alias_array_helper;
+        m_var_map_u_long_long_inner_alias_array_helper = x.m_var_map_u_long_long_inner_alias_array_helper;
 
     }
 
@@ -20054,7 +19815,7 @@ public:
             const MapULongLongInnerAliasArrayHelper& x)
     {
 
-                    m_var_map_u_long_long_inner_alias_array_helper = x.m_var_map_u_long_long_inner_alias_array_helper;
+        m_var_map_u_long_long_inner_alias_array_helper = x.m_var_map_u_long_long_inner_alias_array_helper;
 
         return *this;
     }
@@ -20115,7 +19876,8 @@ public:
      * @brief This function returns a constant reference to member var_map_u_long_long_inner_alias_array_helper
      * @return Constant reference to member var_map_u_long_long_inner_alias_array_helper
      */
-    eProsima_user_DllExport const std::map<uint64_t, Inner_alias_array_helper>& var_map_u_long_long_inner_alias_array_helper() const
+    eProsima_user_DllExport const std::map<uint64_t,
+            Inner_alias_array_helper>& var_map_u_long_long_inner_alias_array_helper() const
     {
         return m_var_map_u_long_long_inner_alias_array_helper;
     }
@@ -20128,8 +19890,6 @@ public:
     {
         return m_var_map_u_long_long_inner_alias_array_helper;
     }
-
-
 
 private:
 
@@ -20165,7 +19925,7 @@ public:
     eProsima_user_DllExport MapULongLongInnerAliasSequenceHelper(
             const MapULongLongInnerAliasSequenceHelper& x)
     {
-                    m_var_map_u_long_long_inner_alias_sequence_helper = x.m_var_map_u_long_long_inner_alias_sequence_helper;
+        m_var_map_u_long_long_inner_alias_sequence_helper = x.m_var_map_u_long_long_inner_alias_sequence_helper;
 
     }
 
@@ -20176,7 +19936,8 @@ public:
     eProsima_user_DllExport MapULongLongInnerAliasSequenceHelper(
             MapULongLongInnerAliasSequenceHelper&& x) noexcept
     {
-        m_var_map_u_long_long_inner_alias_sequence_helper = std::move(x.m_var_map_u_long_long_inner_alias_sequence_helper);
+        m_var_map_u_long_long_inner_alias_sequence_helper =
+                std::move(x.m_var_map_u_long_long_inner_alias_sequence_helper);
     }
 
     /*!
@@ -20187,7 +19948,7 @@ public:
             const MapULongLongInnerAliasSequenceHelper& x)
     {
 
-                    m_var_map_u_long_long_inner_alias_sequence_helper = x.m_var_map_u_long_long_inner_alias_sequence_helper;
+        m_var_map_u_long_long_inner_alias_sequence_helper = x.m_var_map_u_long_long_inner_alias_sequence_helper;
 
         return *this;
     }
@@ -20200,7 +19961,8 @@ public:
             MapULongLongInnerAliasSequenceHelper&& x) noexcept
     {
 
-        m_var_map_u_long_long_inner_alias_sequence_helper = std::move(x.m_var_map_u_long_long_inner_alias_sequence_helper);
+        m_var_map_u_long_long_inner_alias_sequence_helper =
+                std::move(x.m_var_map_u_long_long_inner_alias_sequence_helper);
         return *this;
     }
 
@@ -20211,7 +19973,8 @@ public:
     eProsima_user_DllExport bool operator ==(
             const MapULongLongInnerAliasSequenceHelper& x) const
     {
-        return (m_var_map_u_long_long_inner_alias_sequence_helper == x.m_var_map_u_long_long_inner_alias_sequence_helper);
+        return (m_var_map_u_long_long_inner_alias_sequence_helper ==
+               x.m_var_map_u_long_long_inner_alias_sequence_helper);
     }
 
     /*!
@@ -20248,7 +20011,8 @@ public:
      * @brief This function returns a constant reference to member var_map_u_long_long_inner_alias_sequence_helper
      * @return Constant reference to member var_map_u_long_long_inner_alias_sequence_helper
      */
-    eProsima_user_DllExport const std::map<uint64_t, Inner_alias_sequence_helper>& var_map_u_long_long_inner_alias_sequence_helper() const
+    eProsima_user_DllExport const std::map<uint64_t,
+            Inner_alias_sequence_helper>& var_map_u_long_long_inner_alias_sequence_helper() const
     {
         return m_var_map_u_long_long_inner_alias_sequence_helper;
     }
@@ -20257,12 +20021,11 @@ public:
      * @brief This function returns a reference to member var_map_u_long_long_inner_alias_sequence_helper
      * @return Reference to member var_map_u_long_long_inner_alias_sequence_helper
      */
-    eProsima_user_DllExport std::map<uint64_t, Inner_alias_sequence_helper>& var_map_u_long_long_inner_alias_sequence_helper()
+    eProsima_user_DllExport std::map<uint64_t,
+            Inner_alias_sequence_helper>& var_map_u_long_long_inner_alias_sequence_helper()
     {
         return m_var_map_u_long_long_inner_alias_sequence_helper;
     }
-
-
 
 private:
 
@@ -20298,7 +20061,7 @@ public:
     eProsima_user_DllExport MapULongLongInnerAliasMapHelper(
             const MapULongLongInnerAliasMapHelper& x)
     {
-                    m_var_map_u_long_long_inner_alias_map_helper = x.m_var_map_u_long_long_inner_alias_map_helper;
+        m_var_map_u_long_long_inner_alias_map_helper = x.m_var_map_u_long_long_inner_alias_map_helper;
 
     }
 
@@ -20320,7 +20083,7 @@ public:
             const MapULongLongInnerAliasMapHelper& x)
     {
 
-                    m_var_map_u_long_long_inner_alias_map_helper = x.m_var_map_u_long_long_inner_alias_map_helper;
+        m_var_map_u_long_long_inner_alias_map_helper = x.m_var_map_u_long_long_inner_alias_map_helper;
 
         return *this;
     }
@@ -20381,7 +20144,8 @@ public:
      * @brief This function returns a constant reference to member var_map_u_long_long_inner_alias_map_helper
      * @return Constant reference to member var_map_u_long_long_inner_alias_map_helper
      */
-    eProsima_user_DllExport const std::map<uint64_t, Inner_alias_map_helper>& var_map_u_long_long_inner_alias_map_helper() const
+    eProsima_user_DllExport const std::map<uint64_t,
+            Inner_alias_map_helper>& var_map_u_long_long_inner_alias_map_helper() const
     {
         return m_var_map_u_long_long_inner_alias_map_helper;
     }
@@ -20394,8 +20158,6 @@ public:
     {
         return m_var_map_u_long_long_inner_alias_map_helper;
     }
-
-
 
 private:
 
@@ -20431,7 +20193,7 @@ public:
     eProsima_user_DllExport MapULongLongInnerUnionHelper(
             const MapULongLongInnerUnionHelper& x)
     {
-                    m_var_map_u_long_long_inner_union_helper = x.m_var_map_u_long_long_inner_union_helper;
+        m_var_map_u_long_long_inner_union_helper = x.m_var_map_u_long_long_inner_union_helper;
 
     }
 
@@ -20453,7 +20215,7 @@ public:
             const MapULongLongInnerUnionHelper& x)
     {
 
-                    m_var_map_u_long_long_inner_union_helper = x.m_var_map_u_long_long_inner_union_helper;
+        m_var_map_u_long_long_inner_union_helper = x.m_var_map_u_long_long_inner_union_helper;
 
         return *this;
     }
@@ -20528,8 +20290,6 @@ public:
         return m_var_map_u_long_long_inner_union_helper;
     }
 
-
-
 private:
 
     std::map<uint64_t, InnerUnionHelper> m_var_map_u_long_long_inner_union_helper;
@@ -20564,7 +20324,7 @@ public:
     eProsima_user_DllExport MapULongLongInnerStructureHelper(
             const MapULongLongInnerStructureHelper& x)
     {
-                    m_var_map_u_long_long_inner_structure_helper = x.m_var_map_u_long_long_inner_structure_helper;
+        m_var_map_u_long_long_inner_structure_helper = x.m_var_map_u_long_long_inner_structure_helper;
 
     }
 
@@ -20586,7 +20346,7 @@ public:
             const MapULongLongInnerStructureHelper& x)
     {
 
-                    m_var_map_u_long_long_inner_structure_helper = x.m_var_map_u_long_long_inner_structure_helper;
+        m_var_map_u_long_long_inner_structure_helper = x.m_var_map_u_long_long_inner_structure_helper;
 
         return *this;
     }
@@ -20647,7 +20407,8 @@ public:
      * @brief This function returns a constant reference to member var_map_u_long_long_inner_structure_helper
      * @return Constant reference to member var_map_u_long_long_inner_structure_helper
      */
-    eProsima_user_DllExport const std::map<uint64_t, InnerStructureHelper>& var_map_u_long_long_inner_structure_helper() const
+    eProsima_user_DllExport const std::map<uint64_t,
+            InnerStructureHelper>& var_map_u_long_long_inner_structure_helper() const
     {
         return m_var_map_u_long_long_inner_structure_helper;
     }
@@ -20660,8 +20421,6 @@ public:
     {
         return m_var_map_u_long_long_inner_structure_helper;
     }
-
-
 
 private:
 
@@ -20697,7 +20456,7 @@ public:
     eProsima_user_DllExport MapULongLongInnerBitsetHelper(
             const MapULongLongInnerBitsetHelper& x)
     {
-                    m_var_map_u_long_long_inner_bitset_helper = x.m_var_map_u_long_long_inner_bitset_helper;
+        m_var_map_u_long_long_inner_bitset_helper = x.m_var_map_u_long_long_inner_bitset_helper;
 
     }
 
@@ -20719,7 +20478,7 @@ public:
             const MapULongLongInnerBitsetHelper& x)
     {
 
-                    m_var_map_u_long_long_inner_bitset_helper = x.m_var_map_u_long_long_inner_bitset_helper;
+        m_var_map_u_long_long_inner_bitset_helper = x.m_var_map_u_long_long_inner_bitset_helper;
 
         return *this;
     }
@@ -20794,8 +20553,6 @@ public:
         return m_var_map_u_long_long_inner_bitset_helper;
     }
 
-
-
 private:
 
     std::map<uint64_t, InnerBitsetHelper> m_var_map_u_long_long_inner_bitset_helper;
@@ -20830,7 +20587,7 @@ public:
     eProsima_user_DllExport MapStringShort(
             const MapStringShort& x)
     {
-                    m_var_map_string_short = x.m_var_map_string_short;
+        m_var_map_string_short = x.m_var_map_string_short;
 
     }
 
@@ -20852,7 +20609,7 @@ public:
             const MapStringShort& x)
     {
 
-                    m_var_map_string_short = x.m_var_map_string_short;
+        m_var_map_string_short = x.m_var_map_string_short;
 
         return *this;
     }
@@ -20927,8 +20684,6 @@ public:
         return m_var_map_string_short;
     }
 
-
-
 private:
 
     std::map<std::string, int16_t> m_var_map_string_short;
@@ -20963,7 +20718,7 @@ public:
     eProsima_user_DllExport MapStringUShort(
             const MapStringUShort& x)
     {
-                    m_var_map_string_ushort = x.m_var_map_string_ushort;
+        m_var_map_string_ushort = x.m_var_map_string_ushort;
 
     }
 
@@ -20985,7 +20740,7 @@ public:
             const MapStringUShort& x)
     {
 
-                    m_var_map_string_ushort = x.m_var_map_string_ushort;
+        m_var_map_string_ushort = x.m_var_map_string_ushort;
 
         return *this;
     }
@@ -21060,8 +20815,6 @@ public:
         return m_var_map_string_ushort;
     }
 
-
-
 private:
 
     std::map<std::string, uint16_t> m_var_map_string_ushort;
@@ -21096,7 +20849,7 @@ public:
     eProsima_user_DllExport MapStringLong(
             const MapStringLong& x)
     {
-                    m_var_map_string_long = x.m_var_map_string_long;
+        m_var_map_string_long = x.m_var_map_string_long;
 
     }
 
@@ -21118,7 +20871,7 @@ public:
             const MapStringLong& x)
     {
 
-                    m_var_map_string_long = x.m_var_map_string_long;
+        m_var_map_string_long = x.m_var_map_string_long;
 
         return *this;
     }
@@ -21193,8 +20946,6 @@ public:
         return m_var_map_string_long;
     }
 
-
-
 private:
 
     std::map<std::string, int32_t> m_var_map_string_long;
@@ -21229,7 +20980,7 @@ public:
     eProsima_user_DllExport MapStringULong(
             const MapStringULong& x)
     {
-                    m_var_map_string_ulong = x.m_var_map_string_ulong;
+        m_var_map_string_ulong = x.m_var_map_string_ulong;
 
     }
 
@@ -21251,7 +21002,7 @@ public:
             const MapStringULong& x)
     {
 
-                    m_var_map_string_ulong = x.m_var_map_string_ulong;
+        m_var_map_string_ulong = x.m_var_map_string_ulong;
 
         return *this;
     }
@@ -21326,8 +21077,6 @@ public:
         return m_var_map_string_ulong;
     }
 
-
-
 private:
 
     std::map<std::string, uint32_t> m_var_map_string_ulong;
@@ -21362,7 +21111,7 @@ public:
     eProsima_user_DllExport MapStringLongLong(
             const MapStringLongLong& x)
     {
-                    m_var_map_string_longlong = x.m_var_map_string_longlong;
+        m_var_map_string_longlong = x.m_var_map_string_longlong;
 
     }
 
@@ -21384,7 +21133,7 @@ public:
             const MapStringLongLong& x)
     {
 
-                    m_var_map_string_longlong = x.m_var_map_string_longlong;
+        m_var_map_string_longlong = x.m_var_map_string_longlong;
 
         return *this;
     }
@@ -21459,8 +21208,6 @@ public:
         return m_var_map_string_longlong;
     }
 
-
-
 private:
 
     std::map<std::string, int64_t> m_var_map_string_longlong;
@@ -21495,7 +21242,7 @@ public:
     eProsima_user_DllExport MapStringULongLong(
             const MapStringULongLong& x)
     {
-                    m_var_map_string_ulonglong = x.m_var_map_string_ulonglong;
+        m_var_map_string_ulonglong = x.m_var_map_string_ulonglong;
 
     }
 
@@ -21517,7 +21264,7 @@ public:
             const MapStringULongLong& x)
     {
 
-                    m_var_map_string_ulonglong = x.m_var_map_string_ulonglong;
+        m_var_map_string_ulonglong = x.m_var_map_string_ulonglong;
 
         return *this;
     }
@@ -21592,8 +21339,6 @@ public:
         return m_var_map_string_ulonglong;
     }
 
-
-
 private:
 
     std::map<std::string, uint64_t> m_var_map_string_ulonglong;
@@ -21628,7 +21373,7 @@ public:
     eProsima_user_DllExport MapStringFloat(
             const MapStringFloat& x)
     {
-                    m_var_map_string_float = x.m_var_map_string_float;
+        m_var_map_string_float = x.m_var_map_string_float;
 
     }
 
@@ -21650,7 +21395,7 @@ public:
             const MapStringFloat& x)
     {
 
-                    m_var_map_string_float = x.m_var_map_string_float;
+        m_var_map_string_float = x.m_var_map_string_float;
 
         return *this;
     }
@@ -21725,8 +21470,6 @@ public:
         return m_var_map_string_float;
     }
 
-
-
 private:
 
     std::map<std::string, float> m_var_map_string_float;
@@ -21761,7 +21504,7 @@ public:
     eProsima_user_DllExport MapStringDouble(
             const MapStringDouble& x)
     {
-                    m_var_map_string_double = x.m_var_map_string_double;
+        m_var_map_string_double = x.m_var_map_string_double;
 
     }
 
@@ -21783,7 +21526,7 @@ public:
             const MapStringDouble& x)
     {
 
-                    m_var_map_string_double = x.m_var_map_string_double;
+        m_var_map_string_double = x.m_var_map_string_double;
 
         return *this;
     }
@@ -21858,8 +21601,6 @@ public:
         return m_var_map_string_double;
     }
 
-
-
 private:
 
     std::map<std::string, double> m_var_map_string_double;
@@ -21894,7 +21635,7 @@ public:
     eProsima_user_DllExport MapStringLongDouble(
             const MapStringLongDouble& x)
     {
-                    m_var_map_string_longdouble = x.m_var_map_string_longdouble;
+        m_var_map_string_longdouble = x.m_var_map_string_longdouble;
 
     }
 
@@ -21916,7 +21657,7 @@ public:
             const MapStringLongDouble& x)
     {
 
-                    m_var_map_string_longdouble = x.m_var_map_string_longdouble;
+        m_var_map_string_longdouble = x.m_var_map_string_longdouble;
 
         return *this;
     }
@@ -21991,8 +21732,6 @@ public:
         return m_var_map_string_longdouble;
     }
 
-
-
 private:
 
     std::map<std::string, long double> m_var_map_string_longdouble;
@@ -22027,7 +21766,7 @@ public:
     eProsima_user_DllExport MapStringBoolean(
             const MapStringBoolean& x)
     {
-                    m_var_map_string_boolean = x.m_var_map_string_boolean;
+        m_var_map_string_boolean = x.m_var_map_string_boolean;
 
     }
 
@@ -22049,7 +21788,7 @@ public:
             const MapStringBoolean& x)
     {
 
-                    m_var_map_string_boolean = x.m_var_map_string_boolean;
+        m_var_map_string_boolean = x.m_var_map_string_boolean;
 
         return *this;
     }
@@ -22124,8 +21863,6 @@ public:
         return m_var_map_string_boolean;
     }
 
-
-
 private:
 
     std::map<std::string, bool> m_var_map_string_boolean;
@@ -22160,7 +21897,7 @@ public:
     eProsima_user_DllExport MapStringOctet(
             const MapStringOctet& x)
     {
-                    m_var_map_string_octet = x.m_var_map_string_octet;
+        m_var_map_string_octet = x.m_var_map_string_octet;
 
     }
 
@@ -22182,7 +21919,7 @@ public:
             const MapStringOctet& x)
     {
 
-                    m_var_map_string_octet = x.m_var_map_string_octet;
+        m_var_map_string_octet = x.m_var_map_string_octet;
 
         return *this;
     }
@@ -22257,8 +21994,6 @@ public:
         return m_var_map_string_octet;
     }
 
-
-
 private:
 
     std::map<std::string, uint8_t> m_var_map_string_octet;
@@ -22293,7 +22028,7 @@ public:
     eProsima_user_DllExport MapStringChar(
             const MapStringChar& x)
     {
-                    m_var_map_string_char = x.m_var_map_string_char;
+        m_var_map_string_char = x.m_var_map_string_char;
 
     }
 
@@ -22315,7 +22050,7 @@ public:
             const MapStringChar& x)
     {
 
-                    m_var_map_string_char = x.m_var_map_string_char;
+        m_var_map_string_char = x.m_var_map_string_char;
 
         return *this;
     }
@@ -22390,8 +22125,6 @@ public:
         return m_var_map_string_char;
     }
 
-
-
 private:
 
     std::map<std::string, char> m_var_map_string_char;
@@ -22426,7 +22159,7 @@ public:
     eProsima_user_DllExport MapStringWChar(
             const MapStringWChar& x)
     {
-                    m_var_map_string_wchar = x.m_var_map_string_wchar;
+        m_var_map_string_wchar = x.m_var_map_string_wchar;
 
     }
 
@@ -22448,7 +22181,7 @@ public:
             const MapStringWChar& x)
     {
 
-                    m_var_map_string_wchar = x.m_var_map_string_wchar;
+        m_var_map_string_wchar = x.m_var_map_string_wchar;
 
         return *this;
     }
@@ -22523,8 +22256,6 @@ public:
         return m_var_map_string_wchar;
     }
 
-
-
 private:
 
     std::map<std::string, wchar_t> m_var_map_string_wchar;
@@ -22559,7 +22290,7 @@ public:
     eProsima_user_DllExport MapStringString(
             const MapStringString& x)
     {
-                    m_var_map_string_string = x.m_var_map_string_string;
+        m_var_map_string_string = x.m_var_map_string_string;
 
     }
 
@@ -22581,7 +22312,7 @@ public:
             const MapStringString& x)
     {
 
-                    m_var_map_string_string = x.m_var_map_string_string;
+        m_var_map_string_string = x.m_var_map_string_string;
 
         return *this;
     }
@@ -22656,8 +22387,6 @@ public:
         return m_var_map_string_string;
     }
 
-
-
 private:
 
     std::map<std::string, std::string> m_var_map_string_string;
@@ -22692,7 +22421,7 @@ public:
     eProsima_user_DllExport MapStringWString(
             const MapStringWString& x)
     {
-                    m_var_map_string_wstring = x.m_var_map_string_wstring;
+        m_var_map_string_wstring = x.m_var_map_string_wstring;
 
     }
 
@@ -22714,7 +22443,7 @@ public:
             const MapStringWString& x)
     {
 
-                    m_var_map_string_wstring = x.m_var_map_string_wstring;
+        m_var_map_string_wstring = x.m_var_map_string_wstring;
 
         return *this;
     }
@@ -22789,8 +22518,6 @@ public:
         return m_var_map_string_wstring;
     }
 
-
-
 private:
 
     std::map<std::string, std::wstring> m_var_map_string_wstring;
@@ -22825,7 +22552,7 @@ public:
     eProsima_user_DllExport MapStringInnerAliasBoundedStringHelper(
             const MapStringInnerAliasBoundedStringHelper& x)
     {
-                    m_var_map_string_inneraliasboundedstringhelper = x.m_var_map_string_inneraliasboundedstringhelper;
+        m_var_map_string_inneraliasboundedstringhelper = x.m_var_map_string_inneraliasboundedstringhelper;
 
     }
 
@@ -22847,7 +22574,7 @@ public:
             const MapStringInnerAliasBoundedStringHelper& x)
     {
 
-                    m_var_map_string_inneraliasboundedstringhelper = x.m_var_map_string_inneraliasboundedstringhelper;
+        m_var_map_string_inneraliasboundedstringhelper = x.m_var_map_string_inneraliasboundedstringhelper;
 
         return *this;
     }
@@ -22889,7 +22616,8 @@ public:
      * @param _var_map_string_inneraliasboundedstringhelper New value to be copied in member var_map_string_inneraliasboundedstringhelper
      */
     eProsima_user_DllExport void var_map_string_inneraliasboundedstringhelper(
-            const std::map<std::string, Inner_alias_bounded_string_helper>& _var_map_string_inneraliasboundedstringhelper)
+            const std::map<std::string,
+            Inner_alias_bounded_string_helper>& _var_map_string_inneraliasboundedstringhelper)
     {
         m_var_map_string_inneraliasboundedstringhelper = _var_map_string_inneraliasboundedstringhelper;
     }
@@ -22908,7 +22636,8 @@ public:
      * @brief This function returns a constant reference to member var_map_string_inneraliasboundedstringhelper
      * @return Constant reference to member var_map_string_inneraliasboundedstringhelper
      */
-    eProsima_user_DllExport const std::map<std::string, Inner_alias_bounded_string_helper>& var_map_string_inneraliasboundedstringhelper() const
+    eProsima_user_DllExport const std::map<std::string,
+            Inner_alias_bounded_string_helper>& var_map_string_inneraliasboundedstringhelper() const
     {
         return m_var_map_string_inneraliasboundedstringhelper;
     }
@@ -22917,12 +22646,11 @@ public:
      * @brief This function returns a reference to member var_map_string_inneraliasboundedstringhelper
      * @return Reference to member var_map_string_inneraliasboundedstringhelper
      */
-    eProsima_user_DllExport std::map<std::string, Inner_alias_bounded_string_helper>& var_map_string_inneraliasboundedstringhelper()
+    eProsima_user_DllExport std::map<std::string,
+            Inner_alias_bounded_string_helper>& var_map_string_inneraliasboundedstringhelper()
     {
         return m_var_map_string_inneraliasboundedstringhelper;
     }
-
-
 
 private:
 
@@ -22958,7 +22686,7 @@ public:
     eProsima_user_DllExport MapStringInnerAliasBoundedWStringHelper(
             const MapStringInnerAliasBoundedWStringHelper& x)
     {
-                    m_var_map_string_inneraliasboundedwstringhelper = x.m_var_map_string_inneraliasboundedwstringhelper;
+        m_var_map_string_inneraliasboundedwstringhelper = x.m_var_map_string_inneraliasboundedwstringhelper;
 
     }
 
@@ -22980,7 +22708,7 @@ public:
             const MapStringInnerAliasBoundedWStringHelper& x)
     {
 
-                    m_var_map_string_inneraliasboundedwstringhelper = x.m_var_map_string_inneraliasboundedwstringhelper;
+        m_var_map_string_inneraliasboundedwstringhelper = x.m_var_map_string_inneraliasboundedwstringhelper;
 
         return *this;
     }
@@ -23022,7 +22750,8 @@ public:
      * @param _var_map_string_inneraliasboundedwstringhelper New value to be copied in member var_map_string_inneraliasboundedwstringhelper
      */
     eProsima_user_DllExport void var_map_string_inneraliasboundedwstringhelper(
-            const std::map<std::string, Inner_alias_bounded_wstring_helper>& _var_map_string_inneraliasboundedwstringhelper)
+            const std::map<std::string,
+            Inner_alias_bounded_wstring_helper>& _var_map_string_inneraliasboundedwstringhelper)
     {
         m_var_map_string_inneraliasboundedwstringhelper = _var_map_string_inneraliasboundedwstringhelper;
     }
@@ -23041,7 +22770,8 @@ public:
      * @brief This function returns a constant reference to member var_map_string_inneraliasboundedwstringhelper
      * @return Constant reference to member var_map_string_inneraliasboundedwstringhelper
      */
-    eProsima_user_DllExport const std::map<std::string, Inner_alias_bounded_wstring_helper>& var_map_string_inneraliasboundedwstringhelper() const
+    eProsima_user_DllExport const std::map<std::string,
+            Inner_alias_bounded_wstring_helper>& var_map_string_inneraliasboundedwstringhelper() const
     {
         return m_var_map_string_inneraliasboundedwstringhelper;
     }
@@ -23050,12 +22780,11 @@ public:
      * @brief This function returns a reference to member var_map_string_inneraliasboundedwstringhelper
      * @return Reference to member var_map_string_inneraliasboundedwstringhelper
      */
-    eProsima_user_DllExport std::map<std::string, Inner_alias_bounded_wstring_helper>& var_map_string_inneraliasboundedwstringhelper()
+    eProsima_user_DllExport std::map<std::string,
+            Inner_alias_bounded_wstring_helper>& var_map_string_inneraliasboundedwstringhelper()
     {
         return m_var_map_string_inneraliasboundedwstringhelper;
     }
-
-
 
 private:
 
@@ -23091,7 +22820,7 @@ public:
     eProsima_user_DllExport MapStringInnerEnumHelper(
             const MapStringInnerEnumHelper& x)
     {
-                    m_var_map_string_innerenumhelper = x.m_var_map_string_innerenumhelper;
+        m_var_map_string_innerenumhelper = x.m_var_map_string_innerenumhelper;
 
     }
 
@@ -23113,7 +22842,7 @@ public:
             const MapStringInnerEnumHelper& x)
     {
 
-                    m_var_map_string_innerenumhelper = x.m_var_map_string_innerenumhelper;
+        m_var_map_string_innerenumhelper = x.m_var_map_string_innerenumhelper;
 
         return *this;
     }
@@ -23188,8 +22917,6 @@ public:
         return m_var_map_string_innerenumhelper;
     }
 
-
-
 private:
 
     std::map<std::string, InnerEnumHelper> m_var_map_string_innerenumhelper;
@@ -23224,7 +22951,7 @@ public:
     eProsima_user_DllExport MapStringInnerBitMaskHelper(
             const MapStringInnerBitMaskHelper& x)
     {
-                    m_var_map_string_innerbitmaskhelper = x.m_var_map_string_innerbitmaskhelper;
+        m_var_map_string_innerbitmaskhelper = x.m_var_map_string_innerbitmaskhelper;
 
     }
 
@@ -23246,7 +22973,7 @@ public:
             const MapStringInnerBitMaskHelper& x)
     {
 
-                    m_var_map_string_innerbitmaskhelper = x.m_var_map_string_innerbitmaskhelper;
+        m_var_map_string_innerbitmaskhelper = x.m_var_map_string_innerbitmaskhelper;
 
         return *this;
     }
@@ -23321,8 +23048,6 @@ public:
         return m_var_map_string_innerbitmaskhelper;
     }
 
-
-
 private:
 
     std::map<std::string, InnerBitMaskHelper> m_var_map_string_innerbitmaskhelper;
@@ -23357,7 +23082,7 @@ public:
     eProsima_user_DllExport MapStringInnerAliasHelper(
             const MapStringInnerAliasHelper& x)
     {
-                    m_var_map_string_inneraliashelper = x.m_var_map_string_inneraliashelper;
+        m_var_map_string_inneraliashelper = x.m_var_map_string_inneraliashelper;
 
     }
 
@@ -23379,7 +23104,7 @@ public:
             const MapStringInnerAliasHelper& x)
     {
 
-                    m_var_map_string_inneraliashelper = x.m_var_map_string_inneraliashelper;
+        m_var_map_string_inneraliashelper = x.m_var_map_string_inneraliashelper;
 
         return *this;
     }
@@ -23454,8 +23179,6 @@ public:
         return m_var_map_string_inneraliashelper;
     }
 
-
-
 private:
 
     std::map<std::string, InnerAliasHelper> m_var_map_string_inneraliashelper;
@@ -23490,7 +23213,7 @@ public:
     eProsima_user_DllExport MapStringInnerAliasArrayHelper(
             const MapStringInnerAliasArrayHelper& x)
     {
-                    m_var_map_string_inneraliasarrayhelper = x.m_var_map_string_inneraliasarrayhelper;
+        m_var_map_string_inneraliasarrayhelper = x.m_var_map_string_inneraliasarrayhelper;
 
     }
 
@@ -23512,7 +23235,7 @@ public:
             const MapStringInnerAliasArrayHelper& x)
     {
 
-                    m_var_map_string_inneraliasarrayhelper = x.m_var_map_string_inneraliasarrayhelper;
+        m_var_map_string_inneraliasarrayhelper = x.m_var_map_string_inneraliasarrayhelper;
 
         return *this;
     }
@@ -23573,7 +23296,8 @@ public:
      * @brief This function returns a constant reference to member var_map_string_inneraliasarrayhelper
      * @return Constant reference to member var_map_string_inneraliasarrayhelper
      */
-    eProsima_user_DllExport const std::map<std::string, Inner_alias_array_helper>& var_map_string_inneraliasarrayhelper() const
+    eProsima_user_DllExport const std::map<std::string,
+            Inner_alias_array_helper>& var_map_string_inneraliasarrayhelper() const
     {
         return m_var_map_string_inneraliasarrayhelper;
     }
@@ -23586,8 +23310,6 @@ public:
     {
         return m_var_map_string_inneraliasarrayhelper;
     }
-
-
 
 private:
 
@@ -23623,7 +23345,7 @@ public:
     eProsima_user_DllExport MapStringInnerAliasSequenceHelper(
             const MapStringInnerAliasSequenceHelper& x)
     {
-                    m_var_map_string_inneraliassequencehelper = x.m_var_map_string_inneraliassequencehelper;
+        m_var_map_string_inneraliassequencehelper = x.m_var_map_string_inneraliassequencehelper;
 
     }
 
@@ -23645,7 +23367,7 @@ public:
             const MapStringInnerAliasSequenceHelper& x)
     {
 
-                    m_var_map_string_inneraliassequencehelper = x.m_var_map_string_inneraliassequencehelper;
+        m_var_map_string_inneraliassequencehelper = x.m_var_map_string_inneraliassequencehelper;
 
         return *this;
     }
@@ -23706,7 +23428,8 @@ public:
      * @brief This function returns a constant reference to member var_map_string_inneraliassequencehelper
      * @return Constant reference to member var_map_string_inneraliassequencehelper
      */
-    eProsima_user_DllExport const std::map<std::string, Inner_alias_sequence_helper>& var_map_string_inneraliassequencehelper() const
+    eProsima_user_DllExport const std::map<std::string,
+            Inner_alias_sequence_helper>& var_map_string_inneraliassequencehelper() const
     {
         return m_var_map_string_inneraliassequencehelper;
     }
@@ -23715,12 +23438,11 @@ public:
      * @brief This function returns a reference to member var_map_string_inneraliassequencehelper
      * @return Reference to member var_map_string_inneraliassequencehelper
      */
-    eProsima_user_DllExport std::map<std::string, Inner_alias_sequence_helper>& var_map_string_inneraliassequencehelper()
+    eProsima_user_DllExport std::map<std::string,
+            Inner_alias_sequence_helper>& var_map_string_inneraliassequencehelper()
     {
         return m_var_map_string_inneraliassequencehelper;
     }
-
-
 
 private:
 
@@ -23756,7 +23478,7 @@ public:
     eProsima_user_DllExport MapStringInnerAliasMapHelper(
             const MapStringInnerAliasMapHelper& x)
     {
-                    m_var_map_string_inneraliasmaphelper = x.m_var_map_string_inneraliasmaphelper;
+        m_var_map_string_inneraliasmaphelper = x.m_var_map_string_inneraliasmaphelper;
 
     }
 
@@ -23778,7 +23500,7 @@ public:
             const MapStringInnerAliasMapHelper& x)
     {
 
-                    m_var_map_string_inneraliasmaphelper = x.m_var_map_string_inneraliasmaphelper;
+        m_var_map_string_inneraliasmaphelper = x.m_var_map_string_inneraliasmaphelper;
 
         return *this;
     }
@@ -23839,7 +23561,8 @@ public:
      * @brief This function returns a constant reference to member var_map_string_inneraliasmaphelper
      * @return Constant reference to member var_map_string_inneraliasmaphelper
      */
-    eProsima_user_DllExport const std::map<std::string, Inner_alias_map_helper>& var_map_string_inneraliasmaphelper() const
+    eProsima_user_DllExport const std::map<std::string,
+            Inner_alias_map_helper>& var_map_string_inneraliasmaphelper() const
     {
         return m_var_map_string_inneraliasmaphelper;
     }
@@ -23852,8 +23575,6 @@ public:
     {
         return m_var_map_string_inneraliasmaphelper;
     }
-
-
 
 private:
 
@@ -23889,7 +23610,7 @@ public:
     eProsima_user_DllExport MapStringInnerUnionHelper(
             const MapStringInnerUnionHelper& x)
     {
-                    m_var_map_string_innerunionhelper = x.m_var_map_string_innerunionhelper;
+        m_var_map_string_innerunionhelper = x.m_var_map_string_innerunionhelper;
 
     }
 
@@ -23911,7 +23632,7 @@ public:
             const MapStringInnerUnionHelper& x)
     {
 
-                    m_var_map_string_innerunionhelper = x.m_var_map_string_innerunionhelper;
+        m_var_map_string_innerunionhelper = x.m_var_map_string_innerunionhelper;
 
         return *this;
     }
@@ -23986,8 +23707,6 @@ public:
         return m_var_map_string_innerunionhelper;
     }
 
-
-
 private:
 
     std::map<std::string, InnerUnionHelper> m_var_map_string_innerunionhelper;
@@ -24022,7 +23741,7 @@ public:
     eProsima_user_DllExport MapStringInnerStructureHelper(
             const MapStringInnerStructureHelper& x)
     {
-                    m_var_map_string_innerstructurehelper = x.m_var_map_string_innerstructurehelper;
+        m_var_map_string_innerstructurehelper = x.m_var_map_string_innerstructurehelper;
 
     }
 
@@ -24044,7 +23763,7 @@ public:
             const MapStringInnerStructureHelper& x)
     {
 
-                    m_var_map_string_innerstructurehelper = x.m_var_map_string_innerstructurehelper;
+        m_var_map_string_innerstructurehelper = x.m_var_map_string_innerstructurehelper;
 
         return *this;
     }
@@ -24105,7 +23824,8 @@ public:
      * @brief This function returns a constant reference to member var_map_string_innerstructurehelper
      * @return Constant reference to member var_map_string_innerstructurehelper
      */
-    eProsima_user_DllExport const std::map<std::string, InnerStructureHelper>& var_map_string_innerstructurehelper() const
+    eProsima_user_DllExport const std::map<std::string,
+            InnerStructureHelper>& var_map_string_innerstructurehelper() const
     {
         return m_var_map_string_innerstructurehelper;
     }
@@ -24118,8 +23838,6 @@ public:
     {
         return m_var_map_string_innerstructurehelper;
     }
-
-
 
 private:
 
@@ -24155,7 +23873,7 @@ public:
     eProsima_user_DllExport MapStringInnerBitsetHelper(
             const MapStringInnerBitsetHelper& x)
     {
-                    m_var_map_string_innerbitsethelper = x.m_var_map_string_innerbitsethelper;
+        m_var_map_string_innerbitsethelper = x.m_var_map_string_innerbitsethelper;
 
     }
 
@@ -24177,7 +23895,7 @@ public:
             const MapStringInnerBitsetHelper& x)
     {
 
-                    m_var_map_string_innerbitsethelper = x.m_var_map_string_innerbitsethelper;
+        m_var_map_string_innerbitsethelper = x.m_var_map_string_innerbitsethelper;
 
         return *this;
     }
@@ -24252,8 +23970,6 @@ public:
         return m_var_map_string_innerbitsethelper;
     }
 
-
-
 private:
 
     std::map<std::string, InnerBitsetHelper> m_var_map_string_innerbitsethelper;
@@ -24288,7 +24004,7 @@ public:
     eProsima_user_DllExport MapWStringShort(
             const MapWStringShort& x)
     {
-                    m_var_map_wstring_short = x.m_var_map_wstring_short;
+        m_var_map_wstring_short = x.m_var_map_wstring_short;
 
     }
 
@@ -24310,7 +24026,7 @@ public:
             const MapWStringShort& x)
     {
 
-                    m_var_map_wstring_short = x.m_var_map_wstring_short;
+        m_var_map_wstring_short = x.m_var_map_wstring_short;
 
         return *this;
     }
@@ -24385,8 +24101,6 @@ public:
         return m_var_map_wstring_short;
     }
 
-
-
 private:
 
     std::map<std::wstring, int16_t> m_var_map_wstring_short;
@@ -24421,7 +24135,7 @@ public:
     eProsima_user_DllExport MapWStringUShort(
             const MapWStringUShort& x)
     {
-                    m_var_map_wstring_ushort = x.m_var_map_wstring_ushort;
+        m_var_map_wstring_ushort = x.m_var_map_wstring_ushort;
 
     }
 
@@ -24443,7 +24157,7 @@ public:
             const MapWStringUShort& x)
     {
 
-                    m_var_map_wstring_ushort = x.m_var_map_wstring_ushort;
+        m_var_map_wstring_ushort = x.m_var_map_wstring_ushort;
 
         return *this;
     }
@@ -24518,8 +24232,6 @@ public:
         return m_var_map_wstring_ushort;
     }
 
-
-
 private:
 
     std::map<std::wstring, uint16_t> m_var_map_wstring_ushort;
@@ -24554,7 +24266,7 @@ public:
     eProsima_user_DllExport MapWStringLong(
             const MapWStringLong& x)
     {
-                    m_var_map_wstring_long = x.m_var_map_wstring_long;
+        m_var_map_wstring_long = x.m_var_map_wstring_long;
 
     }
 
@@ -24576,7 +24288,7 @@ public:
             const MapWStringLong& x)
     {
 
-                    m_var_map_wstring_long = x.m_var_map_wstring_long;
+        m_var_map_wstring_long = x.m_var_map_wstring_long;
 
         return *this;
     }
@@ -24651,8 +24363,6 @@ public:
         return m_var_map_wstring_long;
     }
 
-
-
 private:
 
     std::map<std::wstring, int32_t> m_var_map_wstring_long;
@@ -24687,7 +24397,7 @@ public:
     eProsima_user_DllExport MapWStringULong(
             const MapWStringULong& x)
     {
-                    m_var_map_wstring_ulong = x.m_var_map_wstring_ulong;
+        m_var_map_wstring_ulong = x.m_var_map_wstring_ulong;
 
     }
 
@@ -24709,7 +24419,7 @@ public:
             const MapWStringULong& x)
     {
 
-                    m_var_map_wstring_ulong = x.m_var_map_wstring_ulong;
+        m_var_map_wstring_ulong = x.m_var_map_wstring_ulong;
 
         return *this;
     }
@@ -24784,8 +24494,6 @@ public:
         return m_var_map_wstring_ulong;
     }
 
-
-
 private:
 
     std::map<std::wstring, uint32_t> m_var_map_wstring_ulong;
@@ -24820,7 +24528,7 @@ public:
     eProsima_user_DllExport MapWStringLongLong(
             const MapWStringLongLong& x)
     {
-                    m_var_map_wstring_longlong = x.m_var_map_wstring_longlong;
+        m_var_map_wstring_longlong = x.m_var_map_wstring_longlong;
 
     }
 
@@ -24842,7 +24550,7 @@ public:
             const MapWStringLongLong& x)
     {
 
-                    m_var_map_wstring_longlong = x.m_var_map_wstring_longlong;
+        m_var_map_wstring_longlong = x.m_var_map_wstring_longlong;
 
         return *this;
     }
@@ -24917,8 +24625,6 @@ public:
         return m_var_map_wstring_longlong;
     }
 
-
-
 private:
 
     std::map<std::wstring, int64_t> m_var_map_wstring_longlong;
@@ -24953,7 +24659,7 @@ public:
     eProsima_user_DllExport MapWStringULongLong(
             const MapWStringULongLong& x)
     {
-                    m_var_map_wstring_ulonglong = x.m_var_map_wstring_ulonglong;
+        m_var_map_wstring_ulonglong = x.m_var_map_wstring_ulonglong;
 
     }
 
@@ -24975,7 +24681,7 @@ public:
             const MapWStringULongLong& x)
     {
 
-                    m_var_map_wstring_ulonglong = x.m_var_map_wstring_ulonglong;
+        m_var_map_wstring_ulonglong = x.m_var_map_wstring_ulonglong;
 
         return *this;
     }
@@ -25050,8 +24756,6 @@ public:
         return m_var_map_wstring_ulonglong;
     }
 
-
-
 private:
 
     std::map<std::wstring, uint64_t> m_var_map_wstring_ulonglong;
@@ -25086,7 +24790,7 @@ public:
     eProsima_user_DllExport MapWStringFloat(
             const MapWStringFloat& x)
     {
-                    m_var_map_wstring_float = x.m_var_map_wstring_float;
+        m_var_map_wstring_float = x.m_var_map_wstring_float;
 
     }
 
@@ -25108,7 +24812,7 @@ public:
             const MapWStringFloat& x)
     {
 
-                    m_var_map_wstring_float = x.m_var_map_wstring_float;
+        m_var_map_wstring_float = x.m_var_map_wstring_float;
 
         return *this;
     }
@@ -25183,8 +24887,6 @@ public:
         return m_var_map_wstring_float;
     }
 
-
-
 private:
 
     std::map<std::wstring, float> m_var_map_wstring_float;
@@ -25219,7 +24921,7 @@ public:
     eProsima_user_DllExport MapWStringDouble(
             const MapWStringDouble& x)
     {
-                    m_var_map_wstring_double = x.m_var_map_wstring_double;
+        m_var_map_wstring_double = x.m_var_map_wstring_double;
 
     }
 
@@ -25241,7 +24943,7 @@ public:
             const MapWStringDouble& x)
     {
 
-                    m_var_map_wstring_double = x.m_var_map_wstring_double;
+        m_var_map_wstring_double = x.m_var_map_wstring_double;
 
         return *this;
     }
@@ -25316,8 +25018,6 @@ public:
         return m_var_map_wstring_double;
     }
 
-
-
 private:
 
     std::map<std::wstring, double> m_var_map_wstring_double;
@@ -25352,7 +25052,7 @@ public:
     eProsima_user_DllExport MapWStringLongDouble(
             const MapWStringLongDouble& x)
     {
-                    m_var_map_wstring_longdouble = x.m_var_map_wstring_longdouble;
+        m_var_map_wstring_longdouble = x.m_var_map_wstring_longdouble;
 
     }
 
@@ -25374,7 +25074,7 @@ public:
             const MapWStringLongDouble& x)
     {
 
-                    m_var_map_wstring_longdouble = x.m_var_map_wstring_longdouble;
+        m_var_map_wstring_longdouble = x.m_var_map_wstring_longdouble;
 
         return *this;
     }
@@ -25449,8 +25149,6 @@ public:
         return m_var_map_wstring_longdouble;
     }
 
-
-
 private:
 
     std::map<std::wstring, long double> m_var_map_wstring_longdouble;
@@ -25485,7 +25183,7 @@ public:
     eProsima_user_DllExport MapWStringBoolean(
             const MapWStringBoolean& x)
     {
-                    m_var_map_wstring_boolean = x.m_var_map_wstring_boolean;
+        m_var_map_wstring_boolean = x.m_var_map_wstring_boolean;
 
     }
 
@@ -25507,7 +25205,7 @@ public:
             const MapWStringBoolean& x)
     {
 
-                    m_var_map_wstring_boolean = x.m_var_map_wstring_boolean;
+        m_var_map_wstring_boolean = x.m_var_map_wstring_boolean;
 
         return *this;
     }
@@ -25582,8 +25280,6 @@ public:
         return m_var_map_wstring_boolean;
     }
 
-
-
 private:
 
     std::map<std::wstring, bool> m_var_map_wstring_boolean;
@@ -25618,7 +25314,7 @@ public:
     eProsima_user_DllExport MapWStringOctet(
             const MapWStringOctet& x)
     {
-                    m_var_map_wstring_octet = x.m_var_map_wstring_octet;
+        m_var_map_wstring_octet = x.m_var_map_wstring_octet;
 
     }
 
@@ -25640,7 +25336,7 @@ public:
             const MapWStringOctet& x)
     {
 
-                    m_var_map_wstring_octet = x.m_var_map_wstring_octet;
+        m_var_map_wstring_octet = x.m_var_map_wstring_octet;
 
         return *this;
     }
@@ -25715,8 +25411,6 @@ public:
         return m_var_map_wstring_octet;
     }
 
-
-
 private:
 
     std::map<std::wstring, uint8_t> m_var_map_wstring_octet;
@@ -25751,7 +25445,7 @@ public:
     eProsima_user_DllExport MapWStringChar(
             const MapWStringChar& x)
     {
-                    m_var_map_wstring_char = x.m_var_map_wstring_char;
+        m_var_map_wstring_char = x.m_var_map_wstring_char;
 
     }
 
@@ -25773,7 +25467,7 @@ public:
             const MapWStringChar& x)
     {
 
-                    m_var_map_wstring_char = x.m_var_map_wstring_char;
+        m_var_map_wstring_char = x.m_var_map_wstring_char;
 
         return *this;
     }
@@ -25848,8 +25542,6 @@ public:
         return m_var_map_wstring_char;
     }
 
-
-
 private:
 
     std::map<std::wstring, char> m_var_map_wstring_char;
@@ -25884,7 +25576,7 @@ public:
     eProsima_user_DllExport MapWStringWChar(
             const MapWStringWChar& x)
     {
-                    m_var_map_wstring_wchar = x.m_var_map_wstring_wchar;
+        m_var_map_wstring_wchar = x.m_var_map_wstring_wchar;
 
     }
 
@@ -25906,7 +25598,7 @@ public:
             const MapWStringWChar& x)
     {
 
-                    m_var_map_wstring_wchar = x.m_var_map_wstring_wchar;
+        m_var_map_wstring_wchar = x.m_var_map_wstring_wchar;
 
         return *this;
     }
@@ -25981,8 +25673,6 @@ public:
         return m_var_map_wstring_wchar;
     }
 
-
-
 private:
 
     std::map<std::wstring, wchar_t> m_var_map_wstring_wchar;
@@ -26017,7 +25707,7 @@ public:
     eProsima_user_DllExport MapWStringString(
             const MapWStringString& x)
     {
-                    m_var_map_wstring_string = x.m_var_map_wstring_string;
+        m_var_map_wstring_string = x.m_var_map_wstring_string;
 
     }
 
@@ -26039,7 +25729,7 @@ public:
             const MapWStringString& x)
     {
 
-                    m_var_map_wstring_string = x.m_var_map_wstring_string;
+        m_var_map_wstring_string = x.m_var_map_wstring_string;
 
         return *this;
     }
@@ -26114,8 +25804,6 @@ public:
         return m_var_map_wstring_string;
     }
 
-
-
 private:
 
     std::map<std::wstring, std::string> m_var_map_wstring_string;
@@ -26150,7 +25838,7 @@ public:
     eProsima_user_DllExport MapWStringWString(
             const MapWStringWString& x)
     {
-                    m_var_map_wstring_wstring = x.m_var_map_wstring_wstring;
+        m_var_map_wstring_wstring = x.m_var_map_wstring_wstring;
 
     }
 
@@ -26172,7 +25860,7 @@ public:
             const MapWStringWString& x)
     {
 
-                    m_var_map_wstring_wstring = x.m_var_map_wstring_wstring;
+        m_var_map_wstring_wstring = x.m_var_map_wstring_wstring;
 
         return *this;
     }
@@ -26247,8 +25935,6 @@ public:
         return m_var_map_wstring_wstring;
     }
 
-
-
 private:
 
     std::map<std::wstring, std::wstring> m_var_map_wstring_wstring;
@@ -26283,7 +25969,7 @@ public:
     eProsima_user_DllExport MapWStringInnerAliasBoundedStringHelper(
             const MapWStringInnerAliasBoundedStringHelper& x)
     {
-                    m_var_map_wstring_inneraliasboundedstringhelper = x.m_var_map_wstring_inneraliasboundedstringhelper;
+        m_var_map_wstring_inneraliasboundedstringhelper = x.m_var_map_wstring_inneraliasboundedstringhelper;
 
     }
 
@@ -26305,7 +25991,7 @@ public:
             const MapWStringInnerAliasBoundedStringHelper& x)
     {
 
-                    m_var_map_wstring_inneraliasboundedstringhelper = x.m_var_map_wstring_inneraliasboundedstringhelper;
+        m_var_map_wstring_inneraliasboundedstringhelper = x.m_var_map_wstring_inneraliasboundedstringhelper;
 
         return *this;
     }
@@ -26347,7 +26033,8 @@ public:
      * @param _var_map_wstring_inneraliasboundedstringhelper New value to be copied in member var_map_wstring_inneraliasboundedstringhelper
      */
     eProsima_user_DllExport void var_map_wstring_inneraliasboundedstringhelper(
-            const std::map<std::wstring, Inner_alias_bounded_string_helper>& _var_map_wstring_inneraliasboundedstringhelper)
+            const std::map<std::wstring,
+            Inner_alias_bounded_string_helper>& _var_map_wstring_inneraliasboundedstringhelper)
     {
         m_var_map_wstring_inneraliasboundedstringhelper = _var_map_wstring_inneraliasboundedstringhelper;
     }
@@ -26366,7 +26053,8 @@ public:
      * @brief This function returns a constant reference to member var_map_wstring_inneraliasboundedstringhelper
      * @return Constant reference to member var_map_wstring_inneraliasboundedstringhelper
      */
-    eProsima_user_DllExport const std::map<std::wstring, Inner_alias_bounded_string_helper>& var_map_wstring_inneraliasboundedstringhelper() const
+    eProsima_user_DllExport const std::map<std::wstring,
+            Inner_alias_bounded_string_helper>& var_map_wstring_inneraliasboundedstringhelper() const
     {
         return m_var_map_wstring_inneraliasboundedstringhelper;
     }
@@ -26375,12 +26063,11 @@ public:
      * @brief This function returns a reference to member var_map_wstring_inneraliasboundedstringhelper
      * @return Reference to member var_map_wstring_inneraliasboundedstringhelper
      */
-    eProsima_user_DllExport std::map<std::wstring, Inner_alias_bounded_string_helper>& var_map_wstring_inneraliasboundedstringhelper()
+    eProsima_user_DllExport std::map<std::wstring,
+            Inner_alias_bounded_string_helper>& var_map_wstring_inneraliasboundedstringhelper()
     {
         return m_var_map_wstring_inneraliasboundedstringhelper;
     }
-
-
 
 private:
 
@@ -26416,7 +26103,7 @@ public:
     eProsima_user_DllExport MapWStringInnerAliasBoundedWStringHelper(
             const MapWStringInnerAliasBoundedWStringHelper& x)
     {
-                    m_var_map_wstring_inneraliasboundedwstringhelper = x.m_var_map_wstring_inneraliasboundedwstringhelper;
+        m_var_map_wstring_inneraliasboundedwstringhelper = x.m_var_map_wstring_inneraliasboundedwstringhelper;
 
     }
 
@@ -26427,7 +26114,8 @@ public:
     eProsima_user_DllExport MapWStringInnerAliasBoundedWStringHelper(
             MapWStringInnerAliasBoundedWStringHelper&& x) noexcept
     {
-        m_var_map_wstring_inneraliasboundedwstringhelper = std::move(x.m_var_map_wstring_inneraliasboundedwstringhelper);
+        m_var_map_wstring_inneraliasboundedwstringhelper =
+                std::move(x.m_var_map_wstring_inneraliasboundedwstringhelper);
     }
 
     /*!
@@ -26438,7 +26126,7 @@ public:
             const MapWStringInnerAliasBoundedWStringHelper& x)
     {
 
-                    m_var_map_wstring_inneraliasboundedwstringhelper = x.m_var_map_wstring_inneraliasboundedwstringhelper;
+        m_var_map_wstring_inneraliasboundedwstringhelper = x.m_var_map_wstring_inneraliasboundedwstringhelper;
 
         return *this;
     }
@@ -26451,7 +26139,8 @@ public:
             MapWStringInnerAliasBoundedWStringHelper&& x) noexcept
     {
 
-        m_var_map_wstring_inneraliasboundedwstringhelper = std::move(x.m_var_map_wstring_inneraliasboundedwstringhelper);
+        m_var_map_wstring_inneraliasboundedwstringhelper =
+                std::move(x.m_var_map_wstring_inneraliasboundedwstringhelper);
         return *this;
     }
 
@@ -26480,7 +26169,8 @@ public:
      * @param _var_map_wstring_inneraliasboundedwstringhelper New value to be copied in member var_map_wstring_inneraliasboundedwstringhelper
      */
     eProsima_user_DllExport void var_map_wstring_inneraliasboundedwstringhelper(
-            const std::map<std::wstring, Inner_alias_bounded_wstring_helper>& _var_map_wstring_inneraliasboundedwstringhelper)
+            const std::map<std::wstring,
+            Inner_alias_bounded_wstring_helper>& _var_map_wstring_inneraliasboundedwstringhelper)
     {
         m_var_map_wstring_inneraliasboundedwstringhelper = _var_map_wstring_inneraliasboundedwstringhelper;
     }
@@ -26490,7 +26180,8 @@ public:
      * @param _var_map_wstring_inneraliasboundedwstringhelper New value to be moved in member var_map_wstring_inneraliasboundedwstringhelper
      */
     eProsima_user_DllExport void var_map_wstring_inneraliasboundedwstringhelper(
-            std::map<std::wstring, Inner_alias_bounded_wstring_helper>&& _var_map_wstring_inneraliasboundedwstringhelper)
+            std::map<std::wstring,
+            Inner_alias_bounded_wstring_helper>&& _var_map_wstring_inneraliasboundedwstringhelper)
     {
         m_var_map_wstring_inneraliasboundedwstringhelper = std::move(_var_map_wstring_inneraliasboundedwstringhelper);
     }
@@ -26499,7 +26190,8 @@ public:
      * @brief This function returns a constant reference to member var_map_wstring_inneraliasboundedwstringhelper
      * @return Constant reference to member var_map_wstring_inneraliasboundedwstringhelper
      */
-    eProsima_user_DllExport const std::map<std::wstring, Inner_alias_bounded_wstring_helper>& var_map_wstring_inneraliasboundedwstringhelper() const
+    eProsima_user_DllExport const std::map<std::wstring,
+            Inner_alias_bounded_wstring_helper>& var_map_wstring_inneraliasboundedwstringhelper() const
     {
         return m_var_map_wstring_inneraliasboundedwstringhelper;
     }
@@ -26508,12 +26200,11 @@ public:
      * @brief This function returns a reference to member var_map_wstring_inneraliasboundedwstringhelper
      * @return Reference to member var_map_wstring_inneraliasboundedwstringhelper
      */
-    eProsima_user_DllExport std::map<std::wstring, Inner_alias_bounded_wstring_helper>& var_map_wstring_inneraliasboundedwstringhelper()
+    eProsima_user_DllExport std::map<std::wstring,
+            Inner_alias_bounded_wstring_helper>& var_map_wstring_inneraliasboundedwstringhelper()
     {
         return m_var_map_wstring_inneraliasboundedwstringhelper;
     }
-
-
 
 private:
 
@@ -26549,7 +26240,7 @@ public:
     eProsima_user_DllExport MapWStringInnerEnumHelper(
             const MapWStringInnerEnumHelper& x)
     {
-                    m_var_map_wstring_innerenumhelper = x.m_var_map_wstring_innerenumhelper;
+        m_var_map_wstring_innerenumhelper = x.m_var_map_wstring_innerenumhelper;
 
     }
 
@@ -26571,7 +26262,7 @@ public:
             const MapWStringInnerEnumHelper& x)
     {
 
-                    m_var_map_wstring_innerenumhelper = x.m_var_map_wstring_innerenumhelper;
+        m_var_map_wstring_innerenumhelper = x.m_var_map_wstring_innerenumhelper;
 
         return *this;
     }
@@ -26646,8 +26337,6 @@ public:
         return m_var_map_wstring_innerenumhelper;
     }
 
-
-
 private:
 
     std::map<std::wstring, InnerEnumHelper> m_var_map_wstring_innerenumhelper;
@@ -26682,7 +26371,7 @@ public:
     eProsima_user_DllExport MapWStringInnerBitMaskHelper(
             const MapWStringInnerBitMaskHelper& x)
     {
-                    m_var_map_wstring_innerbitmaskhelper = x.m_var_map_wstring_innerbitmaskhelper;
+        m_var_map_wstring_innerbitmaskhelper = x.m_var_map_wstring_innerbitmaskhelper;
 
     }
 
@@ -26704,7 +26393,7 @@ public:
             const MapWStringInnerBitMaskHelper& x)
     {
 
-                    m_var_map_wstring_innerbitmaskhelper = x.m_var_map_wstring_innerbitmaskhelper;
+        m_var_map_wstring_innerbitmaskhelper = x.m_var_map_wstring_innerbitmaskhelper;
 
         return *this;
     }
@@ -26779,8 +26468,6 @@ public:
         return m_var_map_wstring_innerbitmaskhelper;
     }
 
-
-
 private:
 
     std::map<std::wstring, InnerBitMaskHelper> m_var_map_wstring_innerbitmaskhelper;
@@ -26815,7 +26502,7 @@ public:
     eProsima_user_DllExport MapWStringInnerAliasHelper(
             const MapWStringInnerAliasHelper& x)
     {
-                    m_var_map_wstring_inneraliashelper = x.m_var_map_wstring_inneraliashelper;
+        m_var_map_wstring_inneraliashelper = x.m_var_map_wstring_inneraliashelper;
 
     }
 
@@ -26837,7 +26524,7 @@ public:
             const MapWStringInnerAliasHelper& x)
     {
 
-                    m_var_map_wstring_inneraliashelper = x.m_var_map_wstring_inneraliashelper;
+        m_var_map_wstring_inneraliashelper = x.m_var_map_wstring_inneraliashelper;
 
         return *this;
     }
@@ -26912,8 +26599,6 @@ public:
         return m_var_map_wstring_inneraliashelper;
     }
 
-
-
 private:
 
     std::map<std::wstring, InnerAliasHelper> m_var_map_wstring_inneraliashelper;
@@ -26948,7 +26633,7 @@ public:
     eProsima_user_DllExport MapWStringInnerAliasArrayHelper(
             const MapWStringInnerAliasArrayHelper& x)
     {
-                    m_var_map_wstring_inneraliasarrayhelper = x.m_var_map_wstring_inneraliasarrayhelper;
+        m_var_map_wstring_inneraliasarrayhelper = x.m_var_map_wstring_inneraliasarrayhelper;
 
     }
 
@@ -26970,7 +26655,7 @@ public:
             const MapWStringInnerAliasArrayHelper& x)
     {
 
-                    m_var_map_wstring_inneraliasarrayhelper = x.m_var_map_wstring_inneraliasarrayhelper;
+        m_var_map_wstring_inneraliasarrayhelper = x.m_var_map_wstring_inneraliasarrayhelper;
 
         return *this;
     }
@@ -27031,7 +26716,8 @@ public:
      * @brief This function returns a constant reference to member var_map_wstring_inneraliasarrayhelper
      * @return Constant reference to member var_map_wstring_inneraliasarrayhelper
      */
-    eProsima_user_DllExport const std::map<std::wstring, Inner_alias_array_helper>& var_map_wstring_inneraliasarrayhelper() const
+    eProsima_user_DllExport const std::map<std::wstring,
+            Inner_alias_array_helper>& var_map_wstring_inneraliasarrayhelper() const
     {
         return m_var_map_wstring_inneraliasarrayhelper;
     }
@@ -27044,8 +26730,6 @@ public:
     {
         return m_var_map_wstring_inneraliasarrayhelper;
     }
-
-
 
 private:
 
@@ -27081,7 +26765,7 @@ public:
     eProsima_user_DllExport MapWStringInnerAliasSequenceHelper(
             const MapWStringInnerAliasSequenceHelper& x)
     {
-                    m_var_map_wstring_inneraliassequencehelper = x.m_var_map_wstring_inneraliassequencehelper;
+        m_var_map_wstring_inneraliassequencehelper = x.m_var_map_wstring_inneraliassequencehelper;
 
     }
 
@@ -27103,7 +26787,7 @@ public:
             const MapWStringInnerAliasSequenceHelper& x)
     {
 
-                    m_var_map_wstring_inneraliassequencehelper = x.m_var_map_wstring_inneraliassequencehelper;
+        m_var_map_wstring_inneraliassequencehelper = x.m_var_map_wstring_inneraliassequencehelper;
 
         return *this;
     }
@@ -27164,7 +26848,8 @@ public:
      * @brief This function returns a constant reference to member var_map_wstring_inneraliassequencehelper
      * @return Constant reference to member var_map_wstring_inneraliassequencehelper
      */
-    eProsima_user_DllExport const std::map<std::wstring, Inner_alias_sequence_helper>& var_map_wstring_inneraliassequencehelper() const
+    eProsima_user_DllExport const std::map<std::wstring,
+            Inner_alias_sequence_helper>& var_map_wstring_inneraliassequencehelper() const
     {
         return m_var_map_wstring_inneraliassequencehelper;
     }
@@ -27173,12 +26858,11 @@ public:
      * @brief This function returns a reference to member var_map_wstring_inneraliassequencehelper
      * @return Reference to member var_map_wstring_inneraliassequencehelper
      */
-    eProsima_user_DllExport std::map<std::wstring, Inner_alias_sequence_helper>& var_map_wstring_inneraliassequencehelper()
+    eProsima_user_DllExport std::map<std::wstring,
+            Inner_alias_sequence_helper>& var_map_wstring_inneraliassequencehelper()
     {
         return m_var_map_wstring_inneraliassequencehelper;
     }
-
-
 
 private:
 
@@ -27214,7 +26898,7 @@ public:
     eProsima_user_DllExport MapWStringInnerAliasMapHelper(
             const MapWStringInnerAliasMapHelper& x)
     {
-                    m_var_map_wstring_inneraliasmaphelper = x.m_var_map_wstring_inneraliasmaphelper;
+        m_var_map_wstring_inneraliasmaphelper = x.m_var_map_wstring_inneraliasmaphelper;
 
     }
 
@@ -27236,7 +26920,7 @@ public:
             const MapWStringInnerAliasMapHelper& x)
     {
 
-                    m_var_map_wstring_inneraliasmaphelper = x.m_var_map_wstring_inneraliasmaphelper;
+        m_var_map_wstring_inneraliasmaphelper = x.m_var_map_wstring_inneraliasmaphelper;
 
         return *this;
     }
@@ -27297,7 +26981,8 @@ public:
      * @brief This function returns a constant reference to member var_map_wstring_inneraliasmaphelper
      * @return Constant reference to member var_map_wstring_inneraliasmaphelper
      */
-    eProsima_user_DllExport const std::map<std::wstring, Inner_alias_map_helper>& var_map_wstring_inneraliasmaphelper() const
+    eProsima_user_DllExport const std::map<std::wstring,
+            Inner_alias_map_helper>& var_map_wstring_inneraliasmaphelper() const
     {
         return m_var_map_wstring_inneraliasmaphelper;
     }
@@ -27310,8 +26995,6 @@ public:
     {
         return m_var_map_wstring_inneraliasmaphelper;
     }
-
-
 
 private:
 
@@ -27347,7 +27030,7 @@ public:
     eProsima_user_DllExport MapWStringInnerUnionHelper(
             const MapWStringInnerUnionHelper& x)
     {
-                    m_var_map_wstring_innerunionhelper = x.m_var_map_wstring_innerunionhelper;
+        m_var_map_wstring_innerunionhelper = x.m_var_map_wstring_innerunionhelper;
 
     }
 
@@ -27369,7 +27052,7 @@ public:
             const MapWStringInnerUnionHelper& x)
     {
 
-                    m_var_map_wstring_innerunionhelper = x.m_var_map_wstring_innerunionhelper;
+        m_var_map_wstring_innerunionhelper = x.m_var_map_wstring_innerunionhelper;
 
         return *this;
     }
@@ -27444,8 +27127,6 @@ public:
         return m_var_map_wstring_innerunionhelper;
     }
 
-
-
 private:
 
     std::map<std::wstring, InnerUnionHelper> m_var_map_wstring_innerunionhelper;
@@ -27480,7 +27161,7 @@ public:
     eProsima_user_DllExport MapWStringInnerStructureHelper(
             const MapWStringInnerStructureHelper& x)
     {
-                    m_var_map_wstring_innerstructurehelper = x.m_var_map_wstring_innerstructurehelper;
+        m_var_map_wstring_innerstructurehelper = x.m_var_map_wstring_innerstructurehelper;
 
     }
 
@@ -27502,7 +27183,7 @@ public:
             const MapWStringInnerStructureHelper& x)
     {
 
-                    m_var_map_wstring_innerstructurehelper = x.m_var_map_wstring_innerstructurehelper;
+        m_var_map_wstring_innerstructurehelper = x.m_var_map_wstring_innerstructurehelper;
 
         return *this;
     }
@@ -27563,7 +27244,8 @@ public:
      * @brief This function returns a constant reference to member var_map_wstring_innerstructurehelper
      * @return Constant reference to member var_map_wstring_innerstructurehelper
      */
-    eProsima_user_DllExport const std::map<std::wstring, InnerStructureHelper>& var_map_wstring_innerstructurehelper() const
+    eProsima_user_DllExport const std::map<std::wstring,
+            InnerStructureHelper>& var_map_wstring_innerstructurehelper() const
     {
         return m_var_map_wstring_innerstructurehelper;
     }
@@ -27576,8 +27258,6 @@ public:
     {
         return m_var_map_wstring_innerstructurehelper;
     }
-
-
 
 private:
 
@@ -27613,7 +27293,7 @@ public:
     eProsima_user_DllExport MapWStringInnerBitsetHelper(
             const MapWStringInnerBitsetHelper& x)
     {
-                    m_var_map_wstring_innerbitsethelper = x.m_var_map_wstring_innerbitsethelper;
+        m_var_map_wstring_innerbitsethelper = x.m_var_map_wstring_innerbitsethelper;
 
     }
 
@@ -27635,7 +27315,7 @@ public:
             const MapWStringInnerBitsetHelper& x)
     {
 
-                    m_var_map_wstring_innerbitsethelper = x.m_var_map_wstring_innerbitsethelper;
+        m_var_map_wstring_innerbitsethelper = x.m_var_map_wstring_innerbitsethelper;
 
         return *this;
     }
@@ -27710,8 +27390,6 @@ public:
         return m_var_map_wstring_innerbitsethelper;
     }
 
-
-
 private:
 
     std::map<std::wstring, InnerBitsetHelper> m_var_map_wstring_innerbitsethelper;
@@ -27746,7 +27424,7 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedStringHelperShort(
             const MapInnerAliasBoundedStringHelperShort& x)
     {
-                    m_var_map_inneraliasboundedstringhelper_short = x.m_var_map_inneraliasboundedstringhelper_short;
+        m_var_map_inneraliasboundedstringhelper_short = x.m_var_map_inneraliasboundedstringhelper_short;
 
     }
 
@@ -27768,7 +27446,7 @@ public:
             const MapInnerAliasBoundedStringHelperShort& x)
     {
 
-                    m_var_map_inneraliasboundedstringhelper_short = x.m_var_map_inneraliasboundedstringhelper_short;
+        m_var_map_inneraliasboundedstringhelper_short = x.m_var_map_inneraliasboundedstringhelper_short;
 
         return *this;
     }
@@ -27829,7 +27507,8 @@ public:
      * @brief This function returns a constant reference to member var_map_inneraliasboundedstringhelper_short
      * @return Constant reference to member var_map_inneraliasboundedstringhelper_short
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper, int16_t>& var_map_inneraliasboundedstringhelper_short() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper,
+            int16_t>& var_map_inneraliasboundedstringhelper_short() const
     {
         return m_var_map_inneraliasboundedstringhelper_short;
     }
@@ -27838,12 +27517,11 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedstringhelper_short
      * @return Reference to member var_map_inneraliasboundedstringhelper_short
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper, int16_t>& var_map_inneraliasboundedstringhelper_short()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper,
+            int16_t>& var_map_inneraliasboundedstringhelper_short()
     {
         return m_var_map_inneraliasboundedstringhelper_short;
     }
-
-
 
 private:
 
@@ -27879,7 +27557,7 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedStringHelperUShort(
             const MapInnerAliasBoundedStringHelperUShort& x)
     {
-                    m_var_map_inneraliasboundedstringhelper_ushort = x.m_var_map_inneraliasboundedstringhelper_ushort;
+        m_var_map_inneraliasboundedstringhelper_ushort = x.m_var_map_inneraliasboundedstringhelper_ushort;
 
     }
 
@@ -27901,7 +27579,7 @@ public:
             const MapInnerAliasBoundedStringHelperUShort& x)
     {
 
-                    m_var_map_inneraliasboundedstringhelper_ushort = x.m_var_map_inneraliasboundedstringhelper_ushort;
+        m_var_map_inneraliasboundedstringhelper_ushort = x.m_var_map_inneraliasboundedstringhelper_ushort;
 
         return *this;
     }
@@ -27962,7 +27640,8 @@ public:
      * @brief This function returns a constant reference to member var_map_inneraliasboundedstringhelper_ushort
      * @return Constant reference to member var_map_inneraliasboundedstringhelper_ushort
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper, uint16_t>& var_map_inneraliasboundedstringhelper_ushort() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper,
+            uint16_t>& var_map_inneraliasboundedstringhelper_ushort() const
     {
         return m_var_map_inneraliasboundedstringhelper_ushort;
     }
@@ -27971,12 +27650,11 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedstringhelper_ushort
      * @return Reference to member var_map_inneraliasboundedstringhelper_ushort
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper, uint16_t>& var_map_inneraliasboundedstringhelper_ushort()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper,
+            uint16_t>& var_map_inneraliasboundedstringhelper_ushort()
     {
         return m_var_map_inneraliasboundedstringhelper_ushort;
     }
-
-
 
 private:
 
@@ -28012,7 +27690,7 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedStringHelperLong(
             const MapInnerAliasBoundedStringHelperLong& x)
     {
-                    m_var_map_inneraliasboundedstringhelper_long = x.m_var_map_inneraliasboundedstringhelper_long;
+        m_var_map_inneraliasboundedstringhelper_long = x.m_var_map_inneraliasboundedstringhelper_long;
 
     }
 
@@ -28034,7 +27712,7 @@ public:
             const MapInnerAliasBoundedStringHelperLong& x)
     {
 
-                    m_var_map_inneraliasboundedstringhelper_long = x.m_var_map_inneraliasboundedstringhelper_long;
+        m_var_map_inneraliasboundedstringhelper_long = x.m_var_map_inneraliasboundedstringhelper_long;
 
         return *this;
     }
@@ -28095,7 +27773,8 @@ public:
      * @brief This function returns a constant reference to member var_map_inneraliasboundedstringhelper_long
      * @return Constant reference to member var_map_inneraliasboundedstringhelper_long
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper, int32_t>& var_map_inneraliasboundedstringhelper_long() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper,
+            int32_t>& var_map_inneraliasboundedstringhelper_long() const
     {
         return m_var_map_inneraliasboundedstringhelper_long;
     }
@@ -28104,12 +27783,11 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedstringhelper_long
      * @return Reference to member var_map_inneraliasboundedstringhelper_long
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper, int32_t>& var_map_inneraliasboundedstringhelper_long()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper,
+            int32_t>& var_map_inneraliasboundedstringhelper_long()
     {
         return m_var_map_inneraliasboundedstringhelper_long;
     }
-
-
 
 private:
 
@@ -28145,7 +27823,7 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedStringHelperULong(
             const MapInnerAliasBoundedStringHelperULong& x)
     {
-                    m_var_map_inneraliasboundedstringhelper_ulong = x.m_var_map_inneraliasboundedstringhelper_ulong;
+        m_var_map_inneraliasboundedstringhelper_ulong = x.m_var_map_inneraliasboundedstringhelper_ulong;
 
     }
 
@@ -28167,7 +27845,7 @@ public:
             const MapInnerAliasBoundedStringHelperULong& x)
     {
 
-                    m_var_map_inneraliasboundedstringhelper_ulong = x.m_var_map_inneraliasboundedstringhelper_ulong;
+        m_var_map_inneraliasboundedstringhelper_ulong = x.m_var_map_inneraliasboundedstringhelper_ulong;
 
         return *this;
     }
@@ -28228,7 +27906,8 @@ public:
      * @brief This function returns a constant reference to member var_map_inneraliasboundedstringhelper_ulong
      * @return Constant reference to member var_map_inneraliasboundedstringhelper_ulong
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper, uint32_t>& var_map_inneraliasboundedstringhelper_ulong() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper,
+            uint32_t>& var_map_inneraliasboundedstringhelper_ulong() const
     {
         return m_var_map_inneraliasboundedstringhelper_ulong;
     }
@@ -28237,12 +27916,11 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedstringhelper_ulong
      * @return Reference to member var_map_inneraliasboundedstringhelper_ulong
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper, uint32_t>& var_map_inneraliasboundedstringhelper_ulong()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper,
+            uint32_t>& var_map_inneraliasboundedstringhelper_ulong()
     {
         return m_var_map_inneraliasboundedstringhelper_ulong;
     }
-
-
 
 private:
 
@@ -28278,7 +27956,7 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedStringHelperLongLong(
             const MapInnerAliasBoundedStringHelperLongLong& x)
     {
-                    m_var_map_inneraliasboundedstringhelper_longlong = x.m_var_map_inneraliasboundedstringhelper_longlong;
+        m_var_map_inneraliasboundedstringhelper_longlong = x.m_var_map_inneraliasboundedstringhelper_longlong;
 
     }
 
@@ -28289,7 +27967,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedStringHelperLongLong(
             MapInnerAliasBoundedStringHelperLongLong&& x) noexcept
     {
-        m_var_map_inneraliasboundedstringhelper_longlong = std::move(x.m_var_map_inneraliasboundedstringhelper_longlong);
+        m_var_map_inneraliasboundedstringhelper_longlong =
+                std::move(x.m_var_map_inneraliasboundedstringhelper_longlong);
     }
 
     /*!
@@ -28300,7 +27979,7 @@ public:
             const MapInnerAliasBoundedStringHelperLongLong& x)
     {
 
-                    m_var_map_inneraliasboundedstringhelper_longlong = x.m_var_map_inneraliasboundedstringhelper_longlong;
+        m_var_map_inneraliasboundedstringhelper_longlong = x.m_var_map_inneraliasboundedstringhelper_longlong;
 
         return *this;
     }
@@ -28313,7 +27992,8 @@ public:
             MapInnerAliasBoundedStringHelperLongLong&& x) noexcept
     {
 
-        m_var_map_inneraliasboundedstringhelper_longlong = std::move(x.m_var_map_inneraliasboundedstringhelper_longlong);
+        m_var_map_inneraliasboundedstringhelper_longlong =
+                std::move(x.m_var_map_inneraliasboundedstringhelper_longlong);
         return *this;
     }
 
@@ -28361,7 +28041,8 @@ public:
      * @brief This function returns a constant reference to member var_map_inneraliasboundedstringhelper_longlong
      * @return Constant reference to member var_map_inneraliasboundedstringhelper_longlong
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper, int64_t>& var_map_inneraliasboundedstringhelper_longlong() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper,
+            int64_t>& var_map_inneraliasboundedstringhelper_longlong() const
     {
         return m_var_map_inneraliasboundedstringhelper_longlong;
     }
@@ -28370,12 +28051,11 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedstringhelper_longlong
      * @return Reference to member var_map_inneraliasboundedstringhelper_longlong
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper, int64_t>& var_map_inneraliasboundedstringhelper_longlong()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper,
+            int64_t>& var_map_inneraliasboundedstringhelper_longlong()
     {
         return m_var_map_inneraliasboundedstringhelper_longlong;
     }
-
-
 
 private:
 
@@ -28411,7 +28091,7 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedStringHelperULongLong(
             const MapInnerAliasBoundedStringHelperULongLong& x)
     {
-                    m_var_map_inneraliasboundedstringhelper_ulonglong = x.m_var_map_inneraliasboundedstringhelper_ulonglong;
+        m_var_map_inneraliasboundedstringhelper_ulonglong = x.m_var_map_inneraliasboundedstringhelper_ulonglong;
 
     }
 
@@ -28422,7 +28102,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedStringHelperULongLong(
             MapInnerAliasBoundedStringHelperULongLong&& x) noexcept
     {
-        m_var_map_inneraliasboundedstringhelper_ulonglong = std::move(x.m_var_map_inneraliasboundedstringhelper_ulonglong);
+        m_var_map_inneraliasboundedstringhelper_ulonglong =
+                std::move(x.m_var_map_inneraliasboundedstringhelper_ulonglong);
     }
 
     /*!
@@ -28433,7 +28114,7 @@ public:
             const MapInnerAliasBoundedStringHelperULongLong& x)
     {
 
-                    m_var_map_inneraliasboundedstringhelper_ulonglong = x.m_var_map_inneraliasboundedstringhelper_ulonglong;
+        m_var_map_inneraliasboundedstringhelper_ulonglong = x.m_var_map_inneraliasboundedstringhelper_ulonglong;
 
         return *this;
     }
@@ -28446,7 +28127,8 @@ public:
             MapInnerAliasBoundedStringHelperULongLong&& x) noexcept
     {
 
-        m_var_map_inneraliasboundedstringhelper_ulonglong = std::move(x.m_var_map_inneraliasboundedstringhelper_ulonglong);
+        m_var_map_inneraliasboundedstringhelper_ulonglong =
+                std::move(x.m_var_map_inneraliasboundedstringhelper_ulonglong);
         return *this;
     }
 
@@ -28457,7 +28139,8 @@ public:
     eProsima_user_DllExport bool operator ==(
             const MapInnerAliasBoundedStringHelperULongLong& x) const
     {
-        return (m_var_map_inneraliasboundedstringhelper_ulonglong == x.m_var_map_inneraliasboundedstringhelper_ulonglong);
+        return (m_var_map_inneraliasboundedstringhelper_ulonglong ==
+               x.m_var_map_inneraliasboundedstringhelper_ulonglong);
     }
 
     /*!
@@ -28475,7 +28158,8 @@ public:
      * @param _var_map_inneraliasboundedstringhelper_ulonglong New value to be copied in member var_map_inneraliasboundedstringhelper_ulonglong
      */
     eProsima_user_DllExport void var_map_inneraliasboundedstringhelper_ulonglong(
-            const std::map<Inner_alias_bounded_string_helper, uint64_t>& _var_map_inneraliasboundedstringhelper_ulonglong)
+            const std::map<Inner_alias_bounded_string_helper,
+            uint64_t>& _var_map_inneraliasboundedstringhelper_ulonglong)
     {
         m_var_map_inneraliasboundedstringhelper_ulonglong = _var_map_inneraliasboundedstringhelper_ulonglong;
     }
@@ -28494,7 +28178,8 @@ public:
      * @brief This function returns a constant reference to member var_map_inneraliasboundedstringhelper_ulonglong
      * @return Constant reference to member var_map_inneraliasboundedstringhelper_ulonglong
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper, uint64_t>& var_map_inneraliasboundedstringhelper_ulonglong() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper,
+            uint64_t>& var_map_inneraliasboundedstringhelper_ulonglong() const
     {
         return m_var_map_inneraliasboundedstringhelper_ulonglong;
     }
@@ -28503,12 +28188,11 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedstringhelper_ulonglong
      * @return Reference to member var_map_inneraliasboundedstringhelper_ulonglong
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper, uint64_t>& var_map_inneraliasboundedstringhelper_ulonglong()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper,
+            uint64_t>& var_map_inneraliasboundedstringhelper_ulonglong()
     {
         return m_var_map_inneraliasboundedstringhelper_ulonglong;
     }
-
-
 
 private:
 
@@ -28544,7 +28228,7 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedStringHelperFloat(
             const MapInnerAliasBoundedStringHelperFloat& x)
     {
-                    m_var_map_inneraliasboundedstringhelper_float = x.m_var_map_inneraliasboundedstringhelper_float;
+        m_var_map_inneraliasboundedstringhelper_float = x.m_var_map_inneraliasboundedstringhelper_float;
 
     }
 
@@ -28566,7 +28250,7 @@ public:
             const MapInnerAliasBoundedStringHelperFloat& x)
     {
 
-                    m_var_map_inneraliasboundedstringhelper_float = x.m_var_map_inneraliasboundedstringhelper_float;
+        m_var_map_inneraliasboundedstringhelper_float = x.m_var_map_inneraliasboundedstringhelper_float;
 
         return *this;
     }
@@ -28627,7 +28311,8 @@ public:
      * @brief This function returns a constant reference to member var_map_inneraliasboundedstringhelper_float
      * @return Constant reference to member var_map_inneraliasboundedstringhelper_float
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper, float>& var_map_inneraliasboundedstringhelper_float() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper,
+            float>& var_map_inneraliasboundedstringhelper_float() const
     {
         return m_var_map_inneraliasboundedstringhelper_float;
     }
@@ -28636,12 +28321,11 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedstringhelper_float
      * @return Reference to member var_map_inneraliasboundedstringhelper_float
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper, float>& var_map_inneraliasboundedstringhelper_float()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper,
+            float>& var_map_inneraliasboundedstringhelper_float()
     {
         return m_var_map_inneraliasboundedstringhelper_float;
     }
-
-
 
 private:
 
@@ -28677,7 +28361,7 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedStringHelperDouble(
             const MapInnerAliasBoundedStringHelperDouble& x)
     {
-                    m_var_map_inneraliasboundedstringhelper_double = x.m_var_map_inneraliasboundedstringhelper_double;
+        m_var_map_inneraliasboundedstringhelper_double = x.m_var_map_inneraliasboundedstringhelper_double;
 
     }
 
@@ -28699,7 +28383,7 @@ public:
             const MapInnerAliasBoundedStringHelperDouble& x)
     {
 
-                    m_var_map_inneraliasboundedstringhelper_double = x.m_var_map_inneraliasboundedstringhelper_double;
+        m_var_map_inneraliasboundedstringhelper_double = x.m_var_map_inneraliasboundedstringhelper_double;
 
         return *this;
     }
@@ -28760,7 +28444,8 @@ public:
      * @brief This function returns a constant reference to member var_map_inneraliasboundedstringhelper_double
      * @return Constant reference to member var_map_inneraliasboundedstringhelper_double
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper, double>& var_map_inneraliasboundedstringhelper_double() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper,
+            double>& var_map_inneraliasboundedstringhelper_double() const
     {
         return m_var_map_inneraliasboundedstringhelper_double;
     }
@@ -28769,12 +28454,11 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedstringhelper_double
      * @return Reference to member var_map_inneraliasboundedstringhelper_double
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper, double>& var_map_inneraliasboundedstringhelper_double()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper,
+            double>& var_map_inneraliasboundedstringhelper_double()
     {
         return m_var_map_inneraliasboundedstringhelper_double;
     }
-
-
 
 private:
 
@@ -28810,7 +28494,7 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedStringHelperLongDouble(
             const MapInnerAliasBoundedStringHelperLongDouble& x)
     {
-                    m_var_map_inneraliasboundedstringhelper_longdouble = x.m_var_map_inneraliasboundedstringhelper_longdouble;
+        m_var_map_inneraliasboundedstringhelper_longdouble = x.m_var_map_inneraliasboundedstringhelper_longdouble;
 
     }
 
@@ -28821,7 +28505,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedStringHelperLongDouble(
             MapInnerAliasBoundedStringHelperLongDouble&& x) noexcept
     {
-        m_var_map_inneraliasboundedstringhelper_longdouble = std::move(x.m_var_map_inneraliasboundedstringhelper_longdouble);
+        m_var_map_inneraliasboundedstringhelper_longdouble =
+                std::move(x.m_var_map_inneraliasboundedstringhelper_longdouble);
     }
 
     /*!
@@ -28832,7 +28517,7 @@ public:
             const MapInnerAliasBoundedStringHelperLongDouble& x)
     {
 
-                    m_var_map_inneraliasboundedstringhelper_longdouble = x.m_var_map_inneraliasboundedstringhelper_longdouble;
+        m_var_map_inneraliasboundedstringhelper_longdouble = x.m_var_map_inneraliasboundedstringhelper_longdouble;
 
         return *this;
     }
@@ -28845,7 +28530,8 @@ public:
             MapInnerAliasBoundedStringHelperLongDouble&& x) noexcept
     {
 
-        m_var_map_inneraliasboundedstringhelper_longdouble = std::move(x.m_var_map_inneraliasboundedstringhelper_longdouble);
+        m_var_map_inneraliasboundedstringhelper_longdouble =
+                std::move(x.m_var_map_inneraliasboundedstringhelper_longdouble);
         return *this;
     }
 
@@ -28856,7 +28542,8 @@ public:
     eProsima_user_DllExport bool operator ==(
             const MapInnerAliasBoundedStringHelperLongDouble& x) const
     {
-        return (m_var_map_inneraliasboundedstringhelper_longdouble == x.m_var_map_inneraliasboundedstringhelper_longdouble);
+        return (m_var_map_inneraliasboundedstringhelper_longdouble ==
+               x.m_var_map_inneraliasboundedstringhelper_longdouble);
     }
 
     /*!
@@ -28874,7 +28561,8 @@ public:
      * @param _var_map_inneraliasboundedstringhelper_longdouble New value to be copied in member var_map_inneraliasboundedstringhelper_longdouble
      */
     eProsima_user_DllExport void var_map_inneraliasboundedstringhelper_longdouble(
-            const std::map<Inner_alias_bounded_string_helper, long double>& _var_map_inneraliasboundedstringhelper_longdouble)
+            const std::map<Inner_alias_bounded_string_helper,
+            long double>& _var_map_inneraliasboundedstringhelper_longdouble)
     {
         m_var_map_inneraliasboundedstringhelper_longdouble = _var_map_inneraliasboundedstringhelper_longdouble;
     }
@@ -28884,16 +28572,19 @@ public:
      * @param _var_map_inneraliasboundedstringhelper_longdouble New value to be moved in member var_map_inneraliasboundedstringhelper_longdouble
      */
     eProsima_user_DllExport void var_map_inneraliasboundedstringhelper_longdouble(
-            std::map<Inner_alias_bounded_string_helper, long double>&& _var_map_inneraliasboundedstringhelper_longdouble)
+            std::map<Inner_alias_bounded_string_helper,
+            long double>&& _var_map_inneraliasboundedstringhelper_longdouble)
     {
-        m_var_map_inneraliasboundedstringhelper_longdouble = std::move(_var_map_inneraliasboundedstringhelper_longdouble);
+        m_var_map_inneraliasboundedstringhelper_longdouble =
+                std::move(_var_map_inneraliasboundedstringhelper_longdouble);
     }
 
     /*!
      * @brief This function returns a constant reference to member var_map_inneraliasboundedstringhelper_longdouble
      * @return Constant reference to member var_map_inneraliasboundedstringhelper_longdouble
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper, long double>& var_map_inneraliasboundedstringhelper_longdouble() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper,
+            long double>& var_map_inneraliasboundedstringhelper_longdouble() const
     {
         return m_var_map_inneraliasboundedstringhelper_longdouble;
     }
@@ -28902,12 +28593,11 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedstringhelper_longdouble
      * @return Reference to member var_map_inneraliasboundedstringhelper_longdouble
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper, long double>& var_map_inneraliasboundedstringhelper_longdouble()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper,
+            long double>& var_map_inneraliasboundedstringhelper_longdouble()
     {
         return m_var_map_inneraliasboundedstringhelper_longdouble;
     }
-
-
 
 private:
 
@@ -28943,7 +28633,7 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedStringHelperBoolean(
             const MapInnerAliasBoundedStringHelperBoolean& x)
     {
-                    m_var_map_inneraliasboundedstringhelper_boolean = x.m_var_map_inneraliasboundedstringhelper_boolean;
+        m_var_map_inneraliasboundedstringhelper_boolean = x.m_var_map_inneraliasboundedstringhelper_boolean;
 
     }
 
@@ -28965,7 +28655,7 @@ public:
             const MapInnerAliasBoundedStringHelperBoolean& x)
     {
 
-                    m_var_map_inneraliasboundedstringhelper_boolean = x.m_var_map_inneraliasboundedstringhelper_boolean;
+        m_var_map_inneraliasboundedstringhelper_boolean = x.m_var_map_inneraliasboundedstringhelper_boolean;
 
         return *this;
     }
@@ -29026,7 +28716,8 @@ public:
      * @brief This function returns a constant reference to member var_map_inneraliasboundedstringhelper_boolean
      * @return Constant reference to member var_map_inneraliasboundedstringhelper_boolean
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper, bool>& var_map_inneraliasboundedstringhelper_boolean() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper,
+            bool>& var_map_inneraliasboundedstringhelper_boolean() const
     {
         return m_var_map_inneraliasboundedstringhelper_boolean;
     }
@@ -29035,12 +28726,11 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedstringhelper_boolean
      * @return Reference to member var_map_inneraliasboundedstringhelper_boolean
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper, bool>& var_map_inneraliasboundedstringhelper_boolean()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper,
+            bool>& var_map_inneraliasboundedstringhelper_boolean()
     {
         return m_var_map_inneraliasboundedstringhelper_boolean;
     }
-
-
 
 private:
 
@@ -29076,7 +28766,7 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedStringHelperOctet(
             const MapInnerAliasBoundedStringHelperOctet& x)
     {
-                    m_var_map_inneraliasboundedstringhelper_octet = x.m_var_map_inneraliasboundedstringhelper_octet;
+        m_var_map_inneraliasboundedstringhelper_octet = x.m_var_map_inneraliasboundedstringhelper_octet;
 
     }
 
@@ -29098,7 +28788,7 @@ public:
             const MapInnerAliasBoundedStringHelperOctet& x)
     {
 
-                    m_var_map_inneraliasboundedstringhelper_octet = x.m_var_map_inneraliasboundedstringhelper_octet;
+        m_var_map_inneraliasboundedstringhelper_octet = x.m_var_map_inneraliasboundedstringhelper_octet;
 
         return *this;
     }
@@ -29159,7 +28849,8 @@ public:
      * @brief This function returns a constant reference to member var_map_inneraliasboundedstringhelper_octet
      * @return Constant reference to member var_map_inneraliasboundedstringhelper_octet
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper, uint8_t>& var_map_inneraliasboundedstringhelper_octet() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper,
+            uint8_t>& var_map_inneraliasboundedstringhelper_octet() const
     {
         return m_var_map_inneraliasboundedstringhelper_octet;
     }
@@ -29168,12 +28859,11 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedstringhelper_octet
      * @return Reference to member var_map_inneraliasboundedstringhelper_octet
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper, uint8_t>& var_map_inneraliasboundedstringhelper_octet()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper,
+            uint8_t>& var_map_inneraliasboundedstringhelper_octet()
     {
         return m_var_map_inneraliasboundedstringhelper_octet;
     }
-
-
 
 private:
 
@@ -29209,7 +28899,7 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedStringHelperChar(
             const MapInnerAliasBoundedStringHelperChar& x)
     {
-                    m_var_map_inneraliasboundedstringhelper_char = x.m_var_map_inneraliasboundedstringhelper_char;
+        m_var_map_inneraliasboundedstringhelper_char = x.m_var_map_inneraliasboundedstringhelper_char;
 
     }
 
@@ -29231,7 +28921,7 @@ public:
             const MapInnerAliasBoundedStringHelperChar& x)
     {
 
-                    m_var_map_inneraliasboundedstringhelper_char = x.m_var_map_inneraliasboundedstringhelper_char;
+        m_var_map_inneraliasboundedstringhelper_char = x.m_var_map_inneraliasboundedstringhelper_char;
 
         return *this;
     }
@@ -29292,7 +28982,8 @@ public:
      * @brief This function returns a constant reference to member var_map_inneraliasboundedstringhelper_char
      * @return Constant reference to member var_map_inneraliasboundedstringhelper_char
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper, char>& var_map_inneraliasboundedstringhelper_char() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper,
+            char>& var_map_inneraliasboundedstringhelper_char() const
     {
         return m_var_map_inneraliasboundedstringhelper_char;
     }
@@ -29301,12 +28992,11 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedstringhelper_char
      * @return Reference to member var_map_inneraliasboundedstringhelper_char
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper, char>& var_map_inneraliasboundedstringhelper_char()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper,
+            char>& var_map_inneraliasboundedstringhelper_char()
     {
         return m_var_map_inneraliasboundedstringhelper_char;
     }
-
-
 
 private:
 
@@ -29342,7 +29032,7 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedStringHelperWChar(
             const MapInnerAliasBoundedStringHelperWChar& x)
     {
-                    m_var_map_inneraliasboundedstringhelper_wchar = x.m_var_map_inneraliasboundedstringhelper_wchar;
+        m_var_map_inneraliasboundedstringhelper_wchar = x.m_var_map_inneraliasboundedstringhelper_wchar;
 
     }
 
@@ -29364,7 +29054,7 @@ public:
             const MapInnerAliasBoundedStringHelperWChar& x)
     {
 
-                    m_var_map_inneraliasboundedstringhelper_wchar = x.m_var_map_inneraliasboundedstringhelper_wchar;
+        m_var_map_inneraliasboundedstringhelper_wchar = x.m_var_map_inneraliasboundedstringhelper_wchar;
 
         return *this;
     }
@@ -29425,7 +29115,8 @@ public:
      * @brief This function returns a constant reference to member var_map_inneraliasboundedstringhelper_wchar
      * @return Constant reference to member var_map_inneraliasboundedstringhelper_wchar
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper, wchar_t>& var_map_inneraliasboundedstringhelper_wchar() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper,
+            wchar_t>& var_map_inneraliasboundedstringhelper_wchar() const
     {
         return m_var_map_inneraliasboundedstringhelper_wchar;
     }
@@ -29434,12 +29125,11 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedstringhelper_wchar
      * @return Reference to member var_map_inneraliasboundedstringhelper_wchar
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper, wchar_t>& var_map_inneraliasboundedstringhelper_wchar()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper,
+            wchar_t>& var_map_inneraliasboundedstringhelper_wchar()
     {
         return m_var_map_inneraliasboundedstringhelper_wchar;
     }
-
-
 
 private:
 
@@ -29475,7 +29165,7 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedStringHelperString(
             const MapInnerAliasBoundedStringHelperString& x)
     {
-                    m_var_map_inneraliasboundedstringhelper_string = x.m_var_map_inneraliasboundedstringhelper_string;
+        m_var_map_inneraliasboundedstringhelper_string = x.m_var_map_inneraliasboundedstringhelper_string;
 
     }
 
@@ -29497,7 +29187,7 @@ public:
             const MapInnerAliasBoundedStringHelperString& x)
     {
 
-                    m_var_map_inneraliasboundedstringhelper_string = x.m_var_map_inneraliasboundedstringhelper_string;
+        m_var_map_inneraliasboundedstringhelper_string = x.m_var_map_inneraliasboundedstringhelper_string;
 
         return *this;
     }
@@ -29539,7 +29229,8 @@ public:
      * @param _var_map_inneraliasboundedstringhelper_string New value to be copied in member var_map_inneraliasboundedstringhelper_string
      */
     eProsima_user_DllExport void var_map_inneraliasboundedstringhelper_string(
-            const std::map<Inner_alias_bounded_string_helper, std::string>& _var_map_inneraliasboundedstringhelper_string)
+            const std::map<Inner_alias_bounded_string_helper,
+            std::string>& _var_map_inneraliasboundedstringhelper_string)
     {
         m_var_map_inneraliasboundedstringhelper_string = _var_map_inneraliasboundedstringhelper_string;
     }
@@ -29558,7 +29249,8 @@ public:
      * @brief This function returns a constant reference to member var_map_inneraliasboundedstringhelper_string
      * @return Constant reference to member var_map_inneraliasboundedstringhelper_string
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper, std::string>& var_map_inneraliasboundedstringhelper_string() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper,
+            std::string>& var_map_inneraliasboundedstringhelper_string() const
     {
         return m_var_map_inneraliasboundedstringhelper_string;
     }
@@ -29567,12 +29259,11 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedstringhelper_string
      * @return Reference to member var_map_inneraliasboundedstringhelper_string
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper, std::string>& var_map_inneraliasboundedstringhelper_string()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper,
+            std::string>& var_map_inneraliasboundedstringhelper_string()
     {
         return m_var_map_inneraliasboundedstringhelper_string;
     }
-
-
 
 private:
 
@@ -29608,7 +29299,7 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedStringHelperWString(
             const MapInnerAliasBoundedStringHelperWString& x)
     {
-                    m_var_map_inneraliasboundedstringhelper_wstring = x.m_var_map_inneraliasboundedstringhelper_wstring;
+        m_var_map_inneraliasboundedstringhelper_wstring = x.m_var_map_inneraliasboundedstringhelper_wstring;
 
     }
 
@@ -29630,7 +29321,7 @@ public:
             const MapInnerAliasBoundedStringHelperWString& x)
     {
 
-                    m_var_map_inneraliasboundedstringhelper_wstring = x.m_var_map_inneraliasboundedstringhelper_wstring;
+        m_var_map_inneraliasboundedstringhelper_wstring = x.m_var_map_inneraliasboundedstringhelper_wstring;
 
         return *this;
     }
@@ -29672,7 +29363,8 @@ public:
      * @param _var_map_inneraliasboundedstringhelper_wstring New value to be copied in member var_map_inneraliasboundedstringhelper_wstring
      */
     eProsima_user_DllExport void var_map_inneraliasboundedstringhelper_wstring(
-            const std::map<Inner_alias_bounded_string_helper, std::wstring>& _var_map_inneraliasboundedstringhelper_wstring)
+            const std::map<Inner_alias_bounded_string_helper,
+            std::wstring>& _var_map_inneraliasboundedstringhelper_wstring)
     {
         m_var_map_inneraliasboundedstringhelper_wstring = _var_map_inneraliasboundedstringhelper_wstring;
     }
@@ -29691,7 +29383,8 @@ public:
      * @brief This function returns a constant reference to member var_map_inneraliasboundedstringhelper_wstring
      * @return Constant reference to member var_map_inneraliasboundedstringhelper_wstring
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper, std::wstring>& var_map_inneraliasboundedstringhelper_wstring() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper,
+            std::wstring>& var_map_inneraliasboundedstringhelper_wstring() const
     {
         return m_var_map_inneraliasboundedstringhelper_wstring;
     }
@@ -29700,12 +29393,11 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedstringhelper_wstring
      * @return Reference to member var_map_inneraliasboundedstringhelper_wstring
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper, std::wstring>& var_map_inneraliasboundedstringhelper_wstring()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper,
+            std::wstring>& var_map_inneraliasboundedstringhelper_wstring()
     {
         return m_var_map_inneraliasboundedstringhelper_wstring;
     }
-
-
 
 private:
 
@@ -29741,7 +29433,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedStringHelperInnerAliasBoundedStringHelper(
             const MapInnerAliasBoundedStringHelperInnerAliasBoundedStringHelper& x)
     {
-                    m_var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper = x.m_var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper;
+        m_var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper =
+                x.m_var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper;
 
     }
 
@@ -29752,7 +29445,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedStringHelperInnerAliasBoundedStringHelper(
             MapInnerAliasBoundedStringHelperInnerAliasBoundedStringHelper&& x) noexcept
     {
-        m_var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper = std::move(x.m_var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper);
+        m_var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper =
+                std::move(x.m_var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper);
     }
 
     /*!
@@ -29763,7 +29457,8 @@ public:
             const MapInnerAliasBoundedStringHelperInnerAliasBoundedStringHelper& x)
     {
 
-                    m_var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper = x.m_var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper;
+        m_var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper =
+                x.m_var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper;
 
         return *this;
     }
@@ -29776,7 +29471,8 @@ public:
             MapInnerAliasBoundedStringHelperInnerAliasBoundedStringHelper&& x) noexcept
     {
 
-        m_var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper = std::move(x.m_var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper);
+        m_var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper =
+                std::move(x.m_var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper);
         return *this;
     }
 
@@ -29787,7 +29483,8 @@ public:
     eProsima_user_DllExport bool operator ==(
             const MapInnerAliasBoundedStringHelperInnerAliasBoundedStringHelper& x) const
     {
-        return (m_var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper == x.m_var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper);
+        return (m_var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper ==
+               x.m_var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper);
     }
 
     /*!
@@ -29805,9 +29502,11 @@ public:
      * @param _var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper New value to be copied in member var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper(
-            const std::map<Inner_alias_bounded_string_helper, Inner_alias_bounded_string_helper>& _var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper)
+            const std::map<Inner_alias_bounded_string_helper,
+            Inner_alias_bounded_string_helper>& _var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper)
     {
-        m_var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper = _var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper;
+        m_var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper =
+                _var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper;
     }
 
     /*!
@@ -29815,16 +29514,20 @@ public:
      * @param _var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper New value to be moved in member var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper(
-            std::map<Inner_alias_bounded_string_helper, Inner_alias_bounded_string_helper>&& _var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper)
+            std::map<Inner_alias_bounded_string_helper,
+            Inner_alias_bounded_string_helper>&& _var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper)
     {
-        m_var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper = std::move(_var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper);
+        m_var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper =
+                std::move(_var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper);
     }
 
     /*!
      * @brief This function returns a constant reference to member var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper
      * @return Constant reference to member var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper, Inner_alias_bounded_string_helper>& var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper,
+            Inner_alias_bounded_string_helper>& var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper()
+    const
     {
         return m_var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper;
     }
@@ -29833,16 +29536,16 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper
      * @return Reference to member var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper, Inner_alias_bounded_string_helper>& var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper,
+            Inner_alias_bounded_string_helper>& var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper()
     {
         return m_var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper;
     }
 
-
-
 private:
 
-    std::map<Inner_alias_bounded_string_helper, Inner_alias_bounded_string_helper> m_var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper;
+    std::map<Inner_alias_bounded_string_helper,
+            Inner_alias_bounded_string_helper> m_var_map_inneraliasboundedstringhelper_inneraliasboundedstringhelper;
 
 };
 /*!
@@ -29874,7 +29577,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedStringHelperInnerAliasBoundedWStringHelper(
             const MapInnerAliasBoundedStringHelperInnerAliasBoundedWStringHelper& x)
     {
-                    m_var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper = x.m_var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper;
+        m_var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper =
+                x.m_var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper;
 
     }
 
@@ -29885,7 +29589,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedStringHelperInnerAliasBoundedWStringHelper(
             MapInnerAliasBoundedStringHelperInnerAliasBoundedWStringHelper&& x) noexcept
     {
-        m_var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper = std::move(x.m_var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper);
+        m_var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper =
+                std::move(x.m_var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper);
     }
 
     /*!
@@ -29896,7 +29601,8 @@ public:
             const MapInnerAliasBoundedStringHelperInnerAliasBoundedWStringHelper& x)
     {
 
-                    m_var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper = x.m_var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper;
+        m_var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper =
+                x.m_var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper;
 
         return *this;
     }
@@ -29909,7 +29615,8 @@ public:
             MapInnerAliasBoundedStringHelperInnerAliasBoundedWStringHelper&& x) noexcept
     {
 
-        m_var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper = std::move(x.m_var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper);
+        m_var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper =
+                std::move(x.m_var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper);
         return *this;
     }
 
@@ -29920,7 +29627,8 @@ public:
     eProsima_user_DllExport bool operator ==(
             const MapInnerAliasBoundedStringHelperInnerAliasBoundedWStringHelper& x) const
     {
-        return (m_var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper == x.m_var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper);
+        return (m_var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper ==
+               x.m_var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper);
     }
 
     /*!
@@ -29938,9 +29646,11 @@ public:
      * @param _var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper New value to be copied in member var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper(
-            const std::map<Inner_alias_bounded_string_helper, Inner_alias_bounded_wstring_helper>& _var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper)
+            const std::map<Inner_alias_bounded_string_helper,
+            Inner_alias_bounded_wstring_helper>& _var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper)
     {
-        m_var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper = _var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper;
+        m_var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper =
+                _var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper;
     }
 
     /*!
@@ -29948,16 +29658,20 @@ public:
      * @param _var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper New value to be moved in member var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper(
-            std::map<Inner_alias_bounded_string_helper, Inner_alias_bounded_wstring_helper>&& _var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper)
+            std::map<Inner_alias_bounded_string_helper,
+            Inner_alias_bounded_wstring_helper>&& _var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper)
     {
-        m_var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper = std::move(_var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper);
+        m_var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper =
+                std::move(_var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper);
     }
 
     /*!
      * @brief This function returns a constant reference to member var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper
      * @return Constant reference to member var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper, Inner_alias_bounded_wstring_helper>& var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper,
+            Inner_alias_bounded_wstring_helper>& var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper()
+    const
     {
         return m_var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper;
     }
@@ -29966,16 +29680,16 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper
      * @return Reference to member var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper, Inner_alias_bounded_wstring_helper>& var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper,
+            Inner_alias_bounded_wstring_helper>& var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper()
     {
         return m_var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper;
     }
 
-
-
 private:
 
-    std::map<Inner_alias_bounded_string_helper, Inner_alias_bounded_wstring_helper> m_var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper;
+    std::map<Inner_alias_bounded_string_helper,
+            Inner_alias_bounded_wstring_helper> m_var_map_inneraliasboundedstringhelper_inneraliasboundedwstringhelper;
 
 };
 /*!
@@ -30007,7 +29721,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedStringHelperInnerEnumHelper(
             const MapInnerAliasBoundedStringHelperInnerEnumHelper& x)
     {
-                    m_var_map_inneraliasboundedstringhelper_innerenumhelper = x.m_var_map_inneraliasboundedstringhelper_innerenumhelper;
+        m_var_map_inneraliasboundedstringhelper_innerenumhelper =
+                x.m_var_map_inneraliasboundedstringhelper_innerenumhelper;
 
     }
 
@@ -30018,7 +29733,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedStringHelperInnerEnumHelper(
             MapInnerAliasBoundedStringHelperInnerEnumHelper&& x) noexcept
     {
-        m_var_map_inneraliasboundedstringhelper_innerenumhelper = std::move(x.m_var_map_inneraliasboundedstringhelper_innerenumhelper);
+        m_var_map_inneraliasboundedstringhelper_innerenumhelper =
+                std::move(x.m_var_map_inneraliasboundedstringhelper_innerenumhelper);
     }
 
     /*!
@@ -30029,7 +29745,8 @@ public:
             const MapInnerAliasBoundedStringHelperInnerEnumHelper& x)
     {
 
-                    m_var_map_inneraliasboundedstringhelper_innerenumhelper = x.m_var_map_inneraliasboundedstringhelper_innerenumhelper;
+        m_var_map_inneraliasboundedstringhelper_innerenumhelper =
+                x.m_var_map_inneraliasboundedstringhelper_innerenumhelper;
 
         return *this;
     }
@@ -30042,7 +29759,8 @@ public:
             MapInnerAliasBoundedStringHelperInnerEnumHelper&& x) noexcept
     {
 
-        m_var_map_inneraliasboundedstringhelper_innerenumhelper = std::move(x.m_var_map_inneraliasboundedstringhelper_innerenumhelper);
+        m_var_map_inneraliasboundedstringhelper_innerenumhelper =
+                std::move(x.m_var_map_inneraliasboundedstringhelper_innerenumhelper);
         return *this;
     }
 
@@ -30053,7 +29771,8 @@ public:
     eProsima_user_DllExport bool operator ==(
             const MapInnerAliasBoundedStringHelperInnerEnumHelper& x) const
     {
-        return (m_var_map_inneraliasboundedstringhelper_innerenumhelper == x.m_var_map_inneraliasboundedstringhelper_innerenumhelper);
+        return (m_var_map_inneraliasboundedstringhelper_innerenumhelper ==
+               x.m_var_map_inneraliasboundedstringhelper_innerenumhelper);
     }
 
     /*!
@@ -30071,9 +29790,11 @@ public:
      * @param _var_map_inneraliasboundedstringhelper_innerenumhelper New value to be copied in member var_map_inneraliasboundedstringhelper_innerenumhelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedstringhelper_innerenumhelper(
-            const std::map<Inner_alias_bounded_string_helper, InnerEnumHelper>& _var_map_inneraliasboundedstringhelper_innerenumhelper)
+            const std::map<Inner_alias_bounded_string_helper,
+            InnerEnumHelper>& _var_map_inneraliasboundedstringhelper_innerenumhelper)
     {
-        m_var_map_inneraliasboundedstringhelper_innerenumhelper = _var_map_inneraliasboundedstringhelper_innerenumhelper;
+        m_var_map_inneraliasboundedstringhelper_innerenumhelper =
+                _var_map_inneraliasboundedstringhelper_innerenumhelper;
     }
 
     /*!
@@ -30081,16 +29802,19 @@ public:
      * @param _var_map_inneraliasboundedstringhelper_innerenumhelper New value to be moved in member var_map_inneraliasboundedstringhelper_innerenumhelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedstringhelper_innerenumhelper(
-            std::map<Inner_alias_bounded_string_helper, InnerEnumHelper>&& _var_map_inneraliasboundedstringhelper_innerenumhelper)
+            std::map<Inner_alias_bounded_string_helper,
+            InnerEnumHelper>&& _var_map_inneraliasboundedstringhelper_innerenumhelper)
     {
-        m_var_map_inneraliasboundedstringhelper_innerenumhelper = std::move(_var_map_inneraliasboundedstringhelper_innerenumhelper);
+        m_var_map_inneraliasboundedstringhelper_innerenumhelper =
+                std::move(_var_map_inneraliasboundedstringhelper_innerenumhelper);
     }
 
     /*!
      * @brief This function returns a constant reference to member var_map_inneraliasboundedstringhelper_innerenumhelper
      * @return Constant reference to member var_map_inneraliasboundedstringhelper_innerenumhelper
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper, InnerEnumHelper>& var_map_inneraliasboundedstringhelper_innerenumhelper() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper,
+            InnerEnumHelper>& var_map_inneraliasboundedstringhelper_innerenumhelper() const
     {
         return m_var_map_inneraliasboundedstringhelper_innerenumhelper;
     }
@@ -30099,16 +29823,16 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedstringhelper_innerenumhelper
      * @return Reference to member var_map_inneraliasboundedstringhelper_innerenumhelper
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper, InnerEnumHelper>& var_map_inneraliasboundedstringhelper_innerenumhelper()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper,
+            InnerEnumHelper>& var_map_inneraliasboundedstringhelper_innerenumhelper()
     {
         return m_var_map_inneraliasboundedstringhelper_innerenumhelper;
     }
 
-
-
 private:
 
-    std::map<Inner_alias_bounded_string_helper, InnerEnumHelper> m_var_map_inneraliasboundedstringhelper_innerenumhelper;
+    std::map<Inner_alias_bounded_string_helper,
+            InnerEnumHelper> m_var_map_inneraliasboundedstringhelper_innerenumhelper;
 
 };
 /*!
@@ -30140,7 +29864,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedStringHelperInnerBitMaskHelper(
             const MapInnerAliasBoundedStringHelperInnerBitMaskHelper& x)
     {
-                    m_var_map_inneraliasboundedstringhelper_innerbitmaskhelper = x.m_var_map_inneraliasboundedstringhelper_innerbitmaskhelper;
+        m_var_map_inneraliasboundedstringhelper_innerbitmaskhelper =
+                x.m_var_map_inneraliasboundedstringhelper_innerbitmaskhelper;
 
     }
 
@@ -30151,7 +29876,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedStringHelperInnerBitMaskHelper(
             MapInnerAliasBoundedStringHelperInnerBitMaskHelper&& x) noexcept
     {
-        m_var_map_inneraliasboundedstringhelper_innerbitmaskhelper = std::move(x.m_var_map_inneraliasboundedstringhelper_innerbitmaskhelper);
+        m_var_map_inneraliasboundedstringhelper_innerbitmaskhelper =
+                std::move(x.m_var_map_inneraliasboundedstringhelper_innerbitmaskhelper);
     }
 
     /*!
@@ -30162,7 +29888,8 @@ public:
             const MapInnerAliasBoundedStringHelperInnerBitMaskHelper& x)
     {
 
-                    m_var_map_inneraliasboundedstringhelper_innerbitmaskhelper = x.m_var_map_inneraliasboundedstringhelper_innerbitmaskhelper;
+        m_var_map_inneraliasboundedstringhelper_innerbitmaskhelper =
+                x.m_var_map_inneraliasboundedstringhelper_innerbitmaskhelper;
 
         return *this;
     }
@@ -30175,7 +29902,8 @@ public:
             MapInnerAliasBoundedStringHelperInnerBitMaskHelper&& x) noexcept
     {
 
-        m_var_map_inneraliasboundedstringhelper_innerbitmaskhelper = std::move(x.m_var_map_inneraliasboundedstringhelper_innerbitmaskhelper);
+        m_var_map_inneraliasboundedstringhelper_innerbitmaskhelper =
+                std::move(x.m_var_map_inneraliasboundedstringhelper_innerbitmaskhelper);
         return *this;
     }
 
@@ -30186,7 +29914,8 @@ public:
     eProsima_user_DllExport bool operator ==(
             const MapInnerAliasBoundedStringHelperInnerBitMaskHelper& x) const
     {
-        return (m_var_map_inneraliasboundedstringhelper_innerbitmaskhelper == x.m_var_map_inneraliasboundedstringhelper_innerbitmaskhelper);
+        return (m_var_map_inneraliasboundedstringhelper_innerbitmaskhelper ==
+               x.m_var_map_inneraliasboundedstringhelper_innerbitmaskhelper);
     }
 
     /*!
@@ -30204,9 +29933,11 @@ public:
      * @param _var_map_inneraliasboundedstringhelper_innerbitmaskhelper New value to be copied in member var_map_inneraliasboundedstringhelper_innerbitmaskhelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedstringhelper_innerbitmaskhelper(
-            const std::map<Inner_alias_bounded_string_helper, InnerBitMaskHelper>& _var_map_inneraliasboundedstringhelper_innerbitmaskhelper)
+            const std::map<Inner_alias_bounded_string_helper,
+            InnerBitMaskHelper>& _var_map_inneraliasboundedstringhelper_innerbitmaskhelper)
     {
-        m_var_map_inneraliasboundedstringhelper_innerbitmaskhelper = _var_map_inneraliasboundedstringhelper_innerbitmaskhelper;
+        m_var_map_inneraliasboundedstringhelper_innerbitmaskhelper =
+                _var_map_inneraliasboundedstringhelper_innerbitmaskhelper;
     }
 
     /*!
@@ -30214,16 +29945,19 @@ public:
      * @param _var_map_inneraliasboundedstringhelper_innerbitmaskhelper New value to be moved in member var_map_inneraliasboundedstringhelper_innerbitmaskhelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedstringhelper_innerbitmaskhelper(
-            std::map<Inner_alias_bounded_string_helper, InnerBitMaskHelper>&& _var_map_inneraliasboundedstringhelper_innerbitmaskhelper)
+            std::map<Inner_alias_bounded_string_helper,
+            InnerBitMaskHelper>&& _var_map_inneraliasboundedstringhelper_innerbitmaskhelper)
     {
-        m_var_map_inneraliasboundedstringhelper_innerbitmaskhelper = std::move(_var_map_inneraliasboundedstringhelper_innerbitmaskhelper);
+        m_var_map_inneraliasboundedstringhelper_innerbitmaskhelper =
+                std::move(_var_map_inneraliasboundedstringhelper_innerbitmaskhelper);
     }
 
     /*!
      * @brief This function returns a constant reference to member var_map_inneraliasboundedstringhelper_innerbitmaskhelper
      * @return Constant reference to member var_map_inneraliasboundedstringhelper_innerbitmaskhelper
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper, InnerBitMaskHelper>& var_map_inneraliasboundedstringhelper_innerbitmaskhelper() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper,
+            InnerBitMaskHelper>& var_map_inneraliasboundedstringhelper_innerbitmaskhelper() const
     {
         return m_var_map_inneraliasboundedstringhelper_innerbitmaskhelper;
     }
@@ -30232,16 +29966,16 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedstringhelper_innerbitmaskhelper
      * @return Reference to member var_map_inneraliasboundedstringhelper_innerbitmaskhelper
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper, InnerBitMaskHelper>& var_map_inneraliasboundedstringhelper_innerbitmaskhelper()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper,
+            InnerBitMaskHelper>& var_map_inneraliasboundedstringhelper_innerbitmaskhelper()
     {
         return m_var_map_inneraliasboundedstringhelper_innerbitmaskhelper;
     }
 
-
-
 private:
 
-    std::map<Inner_alias_bounded_string_helper, InnerBitMaskHelper> m_var_map_inneraliasboundedstringhelper_innerbitmaskhelper;
+    std::map<Inner_alias_bounded_string_helper,
+            InnerBitMaskHelper> m_var_map_inneraliasboundedstringhelper_innerbitmaskhelper;
 
 };
 /*!
@@ -30273,7 +30007,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedStringHelperInnerAliasHelper(
             const MapInnerAliasBoundedStringHelperInnerAliasHelper& x)
     {
-                    m_var_map_inneraliasboundedstringhelper_inneraliashelper = x.m_var_map_inneraliasboundedstringhelper_inneraliashelper;
+        m_var_map_inneraliasboundedstringhelper_inneraliashelper =
+                x.m_var_map_inneraliasboundedstringhelper_inneraliashelper;
 
     }
 
@@ -30284,7 +30019,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedStringHelperInnerAliasHelper(
             MapInnerAliasBoundedStringHelperInnerAliasHelper&& x) noexcept
     {
-        m_var_map_inneraliasboundedstringhelper_inneraliashelper = std::move(x.m_var_map_inneraliasboundedstringhelper_inneraliashelper);
+        m_var_map_inneraliasboundedstringhelper_inneraliashelper =
+                std::move(x.m_var_map_inneraliasboundedstringhelper_inneraliashelper);
     }
 
     /*!
@@ -30295,7 +30031,8 @@ public:
             const MapInnerAliasBoundedStringHelperInnerAliasHelper& x)
     {
 
-                    m_var_map_inneraliasboundedstringhelper_inneraliashelper = x.m_var_map_inneraliasboundedstringhelper_inneraliashelper;
+        m_var_map_inneraliasboundedstringhelper_inneraliashelper =
+                x.m_var_map_inneraliasboundedstringhelper_inneraliashelper;
 
         return *this;
     }
@@ -30308,7 +30045,8 @@ public:
             MapInnerAliasBoundedStringHelperInnerAliasHelper&& x) noexcept
     {
 
-        m_var_map_inneraliasboundedstringhelper_inneraliashelper = std::move(x.m_var_map_inneraliasboundedstringhelper_inneraliashelper);
+        m_var_map_inneraliasboundedstringhelper_inneraliashelper =
+                std::move(x.m_var_map_inneraliasboundedstringhelper_inneraliashelper);
         return *this;
     }
 
@@ -30319,7 +30057,8 @@ public:
     eProsima_user_DllExport bool operator ==(
             const MapInnerAliasBoundedStringHelperInnerAliasHelper& x) const
     {
-        return (m_var_map_inneraliasboundedstringhelper_inneraliashelper == x.m_var_map_inneraliasboundedstringhelper_inneraliashelper);
+        return (m_var_map_inneraliasboundedstringhelper_inneraliashelper ==
+               x.m_var_map_inneraliasboundedstringhelper_inneraliashelper);
     }
 
     /*!
@@ -30337,9 +30076,11 @@ public:
      * @param _var_map_inneraliasboundedstringhelper_inneraliashelper New value to be copied in member var_map_inneraliasboundedstringhelper_inneraliashelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedstringhelper_inneraliashelper(
-            const std::map<Inner_alias_bounded_string_helper, InnerAliasHelper>& _var_map_inneraliasboundedstringhelper_inneraliashelper)
+            const std::map<Inner_alias_bounded_string_helper,
+            InnerAliasHelper>& _var_map_inneraliasboundedstringhelper_inneraliashelper)
     {
-        m_var_map_inneraliasboundedstringhelper_inneraliashelper = _var_map_inneraliasboundedstringhelper_inneraliashelper;
+        m_var_map_inneraliasboundedstringhelper_inneraliashelper =
+                _var_map_inneraliasboundedstringhelper_inneraliashelper;
     }
 
     /*!
@@ -30347,16 +30088,19 @@ public:
      * @param _var_map_inneraliasboundedstringhelper_inneraliashelper New value to be moved in member var_map_inneraliasboundedstringhelper_inneraliashelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedstringhelper_inneraliashelper(
-            std::map<Inner_alias_bounded_string_helper, InnerAliasHelper>&& _var_map_inneraliasboundedstringhelper_inneraliashelper)
+            std::map<Inner_alias_bounded_string_helper,
+            InnerAliasHelper>&& _var_map_inneraliasboundedstringhelper_inneraliashelper)
     {
-        m_var_map_inneraliasboundedstringhelper_inneraliashelper = std::move(_var_map_inneraliasboundedstringhelper_inneraliashelper);
+        m_var_map_inneraliasboundedstringhelper_inneraliashelper =
+                std::move(_var_map_inneraliasboundedstringhelper_inneraliashelper);
     }
 
     /*!
      * @brief This function returns a constant reference to member var_map_inneraliasboundedstringhelper_inneraliashelper
      * @return Constant reference to member var_map_inneraliasboundedstringhelper_inneraliashelper
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper, InnerAliasHelper>& var_map_inneraliasboundedstringhelper_inneraliashelper() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper,
+            InnerAliasHelper>& var_map_inneraliasboundedstringhelper_inneraliashelper() const
     {
         return m_var_map_inneraliasboundedstringhelper_inneraliashelper;
     }
@@ -30365,16 +30109,16 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedstringhelper_inneraliashelper
      * @return Reference to member var_map_inneraliasboundedstringhelper_inneraliashelper
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper, InnerAliasHelper>& var_map_inneraliasboundedstringhelper_inneraliashelper()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper,
+            InnerAliasHelper>& var_map_inneraliasboundedstringhelper_inneraliashelper()
     {
         return m_var_map_inneraliasboundedstringhelper_inneraliashelper;
     }
 
-
-
 private:
 
-    std::map<Inner_alias_bounded_string_helper, InnerAliasHelper> m_var_map_inneraliasboundedstringhelper_inneraliashelper;
+    std::map<Inner_alias_bounded_string_helper,
+            InnerAliasHelper> m_var_map_inneraliasboundedstringhelper_inneraliashelper;
 
 };
 /*!
@@ -30406,7 +30150,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedStringHelperInnerAliasArrayHelper(
             const MapInnerAliasBoundedStringHelperInnerAliasArrayHelper& x)
     {
-                    m_var_map_inneraliasboundedstringhelper_inneraliasarrayhelper = x.m_var_map_inneraliasboundedstringhelper_inneraliasarrayhelper;
+        m_var_map_inneraliasboundedstringhelper_inneraliasarrayhelper =
+                x.m_var_map_inneraliasboundedstringhelper_inneraliasarrayhelper;
 
     }
 
@@ -30417,7 +30162,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedStringHelperInnerAliasArrayHelper(
             MapInnerAliasBoundedStringHelperInnerAliasArrayHelper&& x) noexcept
     {
-        m_var_map_inneraliasboundedstringhelper_inneraliasarrayhelper = std::move(x.m_var_map_inneraliasboundedstringhelper_inneraliasarrayhelper);
+        m_var_map_inneraliasboundedstringhelper_inneraliasarrayhelper =
+                std::move(x.m_var_map_inneraliasboundedstringhelper_inneraliasarrayhelper);
     }
 
     /*!
@@ -30428,7 +30174,8 @@ public:
             const MapInnerAliasBoundedStringHelperInnerAliasArrayHelper& x)
     {
 
-                    m_var_map_inneraliasboundedstringhelper_inneraliasarrayhelper = x.m_var_map_inneraliasboundedstringhelper_inneraliasarrayhelper;
+        m_var_map_inneraliasboundedstringhelper_inneraliasarrayhelper =
+                x.m_var_map_inneraliasboundedstringhelper_inneraliasarrayhelper;
 
         return *this;
     }
@@ -30441,7 +30188,8 @@ public:
             MapInnerAliasBoundedStringHelperInnerAliasArrayHelper&& x) noexcept
     {
 
-        m_var_map_inneraliasboundedstringhelper_inneraliasarrayhelper = std::move(x.m_var_map_inneraliasboundedstringhelper_inneraliasarrayhelper);
+        m_var_map_inneraliasboundedstringhelper_inneraliasarrayhelper =
+                std::move(x.m_var_map_inneraliasboundedstringhelper_inneraliasarrayhelper);
         return *this;
     }
 
@@ -30452,7 +30200,8 @@ public:
     eProsima_user_DllExport bool operator ==(
             const MapInnerAliasBoundedStringHelperInnerAliasArrayHelper& x) const
     {
-        return (m_var_map_inneraliasboundedstringhelper_inneraliasarrayhelper == x.m_var_map_inneraliasboundedstringhelper_inneraliasarrayhelper);
+        return (m_var_map_inneraliasboundedstringhelper_inneraliasarrayhelper ==
+               x.m_var_map_inneraliasboundedstringhelper_inneraliasarrayhelper);
     }
 
     /*!
@@ -30470,9 +30219,11 @@ public:
      * @param _var_map_inneraliasboundedstringhelper_inneraliasarrayhelper New value to be copied in member var_map_inneraliasboundedstringhelper_inneraliasarrayhelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedstringhelper_inneraliasarrayhelper(
-            const std::map<Inner_alias_bounded_string_helper, Inner_alias_array_helper>& _var_map_inneraliasboundedstringhelper_inneraliasarrayhelper)
+            const std::map<Inner_alias_bounded_string_helper,
+            Inner_alias_array_helper>& _var_map_inneraliasboundedstringhelper_inneraliasarrayhelper)
     {
-        m_var_map_inneraliasboundedstringhelper_inneraliasarrayhelper = _var_map_inneraliasboundedstringhelper_inneraliasarrayhelper;
+        m_var_map_inneraliasboundedstringhelper_inneraliasarrayhelper =
+                _var_map_inneraliasboundedstringhelper_inneraliasarrayhelper;
     }
 
     /*!
@@ -30480,16 +30231,19 @@ public:
      * @param _var_map_inneraliasboundedstringhelper_inneraliasarrayhelper New value to be moved in member var_map_inneraliasboundedstringhelper_inneraliasarrayhelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedstringhelper_inneraliasarrayhelper(
-            std::map<Inner_alias_bounded_string_helper, Inner_alias_array_helper>&& _var_map_inneraliasboundedstringhelper_inneraliasarrayhelper)
+            std::map<Inner_alias_bounded_string_helper,
+            Inner_alias_array_helper>&& _var_map_inneraliasboundedstringhelper_inneraliasarrayhelper)
     {
-        m_var_map_inneraliasboundedstringhelper_inneraliasarrayhelper = std::move(_var_map_inneraliasboundedstringhelper_inneraliasarrayhelper);
+        m_var_map_inneraliasboundedstringhelper_inneraliasarrayhelper =
+                std::move(_var_map_inneraliasboundedstringhelper_inneraliasarrayhelper);
     }
 
     /*!
      * @brief This function returns a constant reference to member var_map_inneraliasboundedstringhelper_inneraliasarrayhelper
      * @return Constant reference to member var_map_inneraliasboundedstringhelper_inneraliasarrayhelper
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper, Inner_alias_array_helper>& var_map_inneraliasboundedstringhelper_inneraliasarrayhelper() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper,
+            Inner_alias_array_helper>& var_map_inneraliasboundedstringhelper_inneraliasarrayhelper() const
     {
         return m_var_map_inneraliasboundedstringhelper_inneraliasarrayhelper;
     }
@@ -30498,16 +30252,16 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedstringhelper_inneraliasarrayhelper
      * @return Reference to member var_map_inneraliasboundedstringhelper_inneraliasarrayhelper
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper, Inner_alias_array_helper>& var_map_inneraliasboundedstringhelper_inneraliasarrayhelper()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper,
+            Inner_alias_array_helper>& var_map_inneraliasboundedstringhelper_inneraliasarrayhelper()
     {
         return m_var_map_inneraliasboundedstringhelper_inneraliasarrayhelper;
     }
 
-
-
 private:
 
-    std::map<Inner_alias_bounded_string_helper, Inner_alias_array_helper> m_var_map_inneraliasboundedstringhelper_inneraliasarrayhelper;
+    std::map<Inner_alias_bounded_string_helper,
+            Inner_alias_array_helper> m_var_map_inneraliasboundedstringhelper_inneraliasarrayhelper;
 
 };
 /*!
@@ -30539,7 +30293,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedStringHelperInnerAliasSequenceHelper(
             const MapInnerAliasBoundedStringHelperInnerAliasSequenceHelper& x)
     {
-                    m_var_map_inneraliasboundedstringhelper_inneraliassequencehelper = x.m_var_map_inneraliasboundedstringhelper_inneraliassequencehelper;
+        m_var_map_inneraliasboundedstringhelper_inneraliassequencehelper =
+                x.m_var_map_inneraliasboundedstringhelper_inneraliassequencehelper;
 
     }
 
@@ -30550,7 +30305,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedStringHelperInnerAliasSequenceHelper(
             MapInnerAliasBoundedStringHelperInnerAliasSequenceHelper&& x) noexcept
     {
-        m_var_map_inneraliasboundedstringhelper_inneraliassequencehelper = std::move(x.m_var_map_inneraliasboundedstringhelper_inneraliassequencehelper);
+        m_var_map_inneraliasboundedstringhelper_inneraliassequencehelper =
+                std::move(x.m_var_map_inneraliasboundedstringhelper_inneraliassequencehelper);
     }
 
     /*!
@@ -30561,7 +30317,8 @@ public:
             const MapInnerAliasBoundedStringHelperInnerAliasSequenceHelper& x)
     {
 
-                    m_var_map_inneraliasboundedstringhelper_inneraliassequencehelper = x.m_var_map_inneraliasboundedstringhelper_inneraliassequencehelper;
+        m_var_map_inneraliasboundedstringhelper_inneraliassequencehelper =
+                x.m_var_map_inneraliasboundedstringhelper_inneraliassequencehelper;
 
         return *this;
     }
@@ -30574,7 +30331,8 @@ public:
             MapInnerAliasBoundedStringHelperInnerAliasSequenceHelper&& x) noexcept
     {
 
-        m_var_map_inneraliasboundedstringhelper_inneraliassequencehelper = std::move(x.m_var_map_inneraliasboundedstringhelper_inneraliassequencehelper);
+        m_var_map_inneraliasboundedstringhelper_inneraliassequencehelper =
+                std::move(x.m_var_map_inneraliasboundedstringhelper_inneraliassequencehelper);
         return *this;
     }
 
@@ -30585,7 +30343,8 @@ public:
     eProsima_user_DllExport bool operator ==(
             const MapInnerAliasBoundedStringHelperInnerAliasSequenceHelper& x) const
     {
-        return (m_var_map_inneraliasboundedstringhelper_inneraliassequencehelper == x.m_var_map_inneraliasboundedstringhelper_inneraliassequencehelper);
+        return (m_var_map_inneraliasboundedstringhelper_inneraliassequencehelper ==
+               x.m_var_map_inneraliasboundedstringhelper_inneraliassequencehelper);
     }
 
     /*!
@@ -30603,9 +30362,11 @@ public:
      * @param _var_map_inneraliasboundedstringhelper_inneraliassequencehelper New value to be copied in member var_map_inneraliasboundedstringhelper_inneraliassequencehelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedstringhelper_inneraliassequencehelper(
-            const std::map<Inner_alias_bounded_string_helper, Inner_alias_sequence_helper>& _var_map_inneraliasboundedstringhelper_inneraliassequencehelper)
+            const std::map<Inner_alias_bounded_string_helper,
+            Inner_alias_sequence_helper>& _var_map_inneraliasboundedstringhelper_inneraliassequencehelper)
     {
-        m_var_map_inneraliasboundedstringhelper_inneraliassequencehelper = _var_map_inneraliasboundedstringhelper_inneraliassequencehelper;
+        m_var_map_inneraliasboundedstringhelper_inneraliassequencehelper =
+                _var_map_inneraliasboundedstringhelper_inneraliassequencehelper;
     }
 
     /*!
@@ -30613,16 +30374,19 @@ public:
      * @param _var_map_inneraliasboundedstringhelper_inneraliassequencehelper New value to be moved in member var_map_inneraliasboundedstringhelper_inneraliassequencehelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedstringhelper_inneraliassequencehelper(
-            std::map<Inner_alias_bounded_string_helper, Inner_alias_sequence_helper>&& _var_map_inneraliasboundedstringhelper_inneraliassequencehelper)
+            std::map<Inner_alias_bounded_string_helper,
+            Inner_alias_sequence_helper>&& _var_map_inneraliasboundedstringhelper_inneraliassequencehelper)
     {
-        m_var_map_inneraliasboundedstringhelper_inneraliassequencehelper = std::move(_var_map_inneraliasboundedstringhelper_inneraliassequencehelper);
+        m_var_map_inneraliasboundedstringhelper_inneraliassequencehelper =
+                std::move(_var_map_inneraliasboundedstringhelper_inneraliassequencehelper);
     }
 
     /*!
      * @brief This function returns a constant reference to member var_map_inneraliasboundedstringhelper_inneraliassequencehelper
      * @return Constant reference to member var_map_inneraliasboundedstringhelper_inneraliassequencehelper
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper, Inner_alias_sequence_helper>& var_map_inneraliasboundedstringhelper_inneraliassequencehelper() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper,
+            Inner_alias_sequence_helper>& var_map_inneraliasboundedstringhelper_inneraliassequencehelper() const
     {
         return m_var_map_inneraliasboundedstringhelper_inneraliassequencehelper;
     }
@@ -30631,16 +30395,16 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedstringhelper_inneraliassequencehelper
      * @return Reference to member var_map_inneraliasboundedstringhelper_inneraliassequencehelper
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper, Inner_alias_sequence_helper>& var_map_inneraliasboundedstringhelper_inneraliassequencehelper()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper,
+            Inner_alias_sequence_helper>& var_map_inneraliasboundedstringhelper_inneraliassequencehelper()
     {
         return m_var_map_inneraliasboundedstringhelper_inneraliassequencehelper;
     }
 
-
-
 private:
 
-    std::map<Inner_alias_bounded_string_helper, Inner_alias_sequence_helper> m_var_map_inneraliasboundedstringhelper_inneraliassequencehelper;
+    std::map<Inner_alias_bounded_string_helper,
+            Inner_alias_sequence_helper> m_var_map_inneraliasboundedstringhelper_inneraliassequencehelper;
 
 };
 /*!
@@ -30672,7 +30436,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedStringHelperInnerAliasMapHelper(
             const MapInnerAliasBoundedStringHelperInnerAliasMapHelper& x)
     {
-                    m_var_map_inneraliasboundedstringhelper_inneraliasmaphelper = x.m_var_map_inneraliasboundedstringhelper_inneraliasmaphelper;
+        m_var_map_inneraliasboundedstringhelper_inneraliasmaphelper =
+                x.m_var_map_inneraliasboundedstringhelper_inneraliasmaphelper;
 
     }
 
@@ -30683,7 +30448,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedStringHelperInnerAliasMapHelper(
             MapInnerAliasBoundedStringHelperInnerAliasMapHelper&& x) noexcept
     {
-        m_var_map_inneraliasboundedstringhelper_inneraliasmaphelper = std::move(x.m_var_map_inneraliasboundedstringhelper_inneraliasmaphelper);
+        m_var_map_inneraliasboundedstringhelper_inneraliasmaphelper =
+                std::move(x.m_var_map_inneraliasboundedstringhelper_inneraliasmaphelper);
     }
 
     /*!
@@ -30694,7 +30460,8 @@ public:
             const MapInnerAliasBoundedStringHelperInnerAliasMapHelper& x)
     {
 
-                    m_var_map_inneraliasboundedstringhelper_inneraliasmaphelper = x.m_var_map_inneraliasboundedstringhelper_inneraliasmaphelper;
+        m_var_map_inneraliasboundedstringhelper_inneraliasmaphelper =
+                x.m_var_map_inneraliasboundedstringhelper_inneraliasmaphelper;
 
         return *this;
     }
@@ -30707,7 +30474,8 @@ public:
             MapInnerAliasBoundedStringHelperInnerAliasMapHelper&& x) noexcept
     {
 
-        m_var_map_inneraliasboundedstringhelper_inneraliasmaphelper = std::move(x.m_var_map_inneraliasboundedstringhelper_inneraliasmaphelper);
+        m_var_map_inneraliasboundedstringhelper_inneraliasmaphelper =
+                std::move(x.m_var_map_inneraliasboundedstringhelper_inneraliasmaphelper);
         return *this;
     }
 
@@ -30718,7 +30486,8 @@ public:
     eProsima_user_DllExport bool operator ==(
             const MapInnerAliasBoundedStringHelperInnerAliasMapHelper& x) const
     {
-        return (m_var_map_inneraliasboundedstringhelper_inneraliasmaphelper == x.m_var_map_inneraliasboundedstringhelper_inneraliasmaphelper);
+        return (m_var_map_inneraliasboundedstringhelper_inneraliasmaphelper ==
+               x.m_var_map_inneraliasboundedstringhelper_inneraliasmaphelper);
     }
 
     /*!
@@ -30736,9 +30505,11 @@ public:
      * @param _var_map_inneraliasboundedstringhelper_inneraliasmaphelper New value to be copied in member var_map_inneraliasboundedstringhelper_inneraliasmaphelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedstringhelper_inneraliasmaphelper(
-            const std::map<Inner_alias_bounded_string_helper, Inner_alias_map_helper>& _var_map_inneraliasboundedstringhelper_inneraliasmaphelper)
+            const std::map<Inner_alias_bounded_string_helper,
+            Inner_alias_map_helper>& _var_map_inneraliasboundedstringhelper_inneraliasmaphelper)
     {
-        m_var_map_inneraliasboundedstringhelper_inneraliasmaphelper = _var_map_inneraliasboundedstringhelper_inneraliasmaphelper;
+        m_var_map_inneraliasboundedstringhelper_inneraliasmaphelper =
+                _var_map_inneraliasboundedstringhelper_inneraliasmaphelper;
     }
 
     /*!
@@ -30746,16 +30517,19 @@ public:
      * @param _var_map_inneraliasboundedstringhelper_inneraliasmaphelper New value to be moved in member var_map_inneraliasboundedstringhelper_inneraliasmaphelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedstringhelper_inneraliasmaphelper(
-            std::map<Inner_alias_bounded_string_helper, Inner_alias_map_helper>&& _var_map_inneraliasboundedstringhelper_inneraliasmaphelper)
+            std::map<Inner_alias_bounded_string_helper,
+            Inner_alias_map_helper>&& _var_map_inneraliasboundedstringhelper_inneraliasmaphelper)
     {
-        m_var_map_inneraliasboundedstringhelper_inneraliasmaphelper = std::move(_var_map_inneraliasboundedstringhelper_inneraliasmaphelper);
+        m_var_map_inneraliasboundedstringhelper_inneraliasmaphelper =
+                std::move(_var_map_inneraliasboundedstringhelper_inneraliasmaphelper);
     }
 
     /*!
      * @brief This function returns a constant reference to member var_map_inneraliasboundedstringhelper_inneraliasmaphelper
      * @return Constant reference to member var_map_inneraliasboundedstringhelper_inneraliasmaphelper
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper, Inner_alias_map_helper>& var_map_inneraliasboundedstringhelper_inneraliasmaphelper() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper,
+            Inner_alias_map_helper>& var_map_inneraliasboundedstringhelper_inneraliasmaphelper() const
     {
         return m_var_map_inneraliasboundedstringhelper_inneraliasmaphelper;
     }
@@ -30764,16 +30538,16 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedstringhelper_inneraliasmaphelper
      * @return Reference to member var_map_inneraliasboundedstringhelper_inneraliasmaphelper
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper, Inner_alias_map_helper>& var_map_inneraliasboundedstringhelper_inneraliasmaphelper()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper,
+            Inner_alias_map_helper>& var_map_inneraliasboundedstringhelper_inneraliasmaphelper()
     {
         return m_var_map_inneraliasboundedstringhelper_inneraliasmaphelper;
     }
 
-
-
 private:
 
-    std::map<Inner_alias_bounded_string_helper, Inner_alias_map_helper> m_var_map_inneraliasboundedstringhelper_inneraliasmaphelper;
+    std::map<Inner_alias_bounded_string_helper,
+            Inner_alias_map_helper> m_var_map_inneraliasboundedstringhelper_inneraliasmaphelper;
 
 };
 /*!
@@ -30805,7 +30579,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedStringHelperInnerUnionHelper(
             const MapInnerAliasBoundedStringHelperInnerUnionHelper& x)
     {
-                    m_var_map_inneraliasboundedstringhelper_innerunionhelper = x.m_var_map_inneraliasboundedstringhelper_innerunionhelper;
+        m_var_map_inneraliasboundedstringhelper_innerunionhelper =
+                x.m_var_map_inneraliasboundedstringhelper_innerunionhelper;
 
     }
 
@@ -30816,7 +30591,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedStringHelperInnerUnionHelper(
             MapInnerAliasBoundedStringHelperInnerUnionHelper&& x) noexcept
     {
-        m_var_map_inneraliasboundedstringhelper_innerunionhelper = std::move(x.m_var_map_inneraliasboundedstringhelper_innerunionhelper);
+        m_var_map_inneraliasboundedstringhelper_innerunionhelper =
+                std::move(x.m_var_map_inneraliasboundedstringhelper_innerunionhelper);
     }
 
     /*!
@@ -30827,7 +30603,8 @@ public:
             const MapInnerAliasBoundedStringHelperInnerUnionHelper& x)
     {
 
-                    m_var_map_inneraliasboundedstringhelper_innerunionhelper = x.m_var_map_inneraliasboundedstringhelper_innerunionhelper;
+        m_var_map_inneraliasboundedstringhelper_innerunionhelper =
+                x.m_var_map_inneraliasboundedstringhelper_innerunionhelper;
 
         return *this;
     }
@@ -30840,7 +30617,8 @@ public:
             MapInnerAliasBoundedStringHelperInnerUnionHelper&& x) noexcept
     {
 
-        m_var_map_inneraliasboundedstringhelper_innerunionhelper = std::move(x.m_var_map_inneraliasboundedstringhelper_innerunionhelper);
+        m_var_map_inneraliasboundedstringhelper_innerunionhelper =
+                std::move(x.m_var_map_inneraliasboundedstringhelper_innerunionhelper);
         return *this;
     }
 
@@ -30851,7 +30629,8 @@ public:
     eProsima_user_DllExport bool operator ==(
             const MapInnerAliasBoundedStringHelperInnerUnionHelper& x) const
     {
-        return (m_var_map_inneraliasboundedstringhelper_innerunionhelper == x.m_var_map_inneraliasboundedstringhelper_innerunionhelper);
+        return (m_var_map_inneraliasboundedstringhelper_innerunionhelper ==
+               x.m_var_map_inneraliasboundedstringhelper_innerunionhelper);
     }
 
     /*!
@@ -30869,9 +30648,11 @@ public:
      * @param _var_map_inneraliasboundedstringhelper_innerunionhelper New value to be copied in member var_map_inneraliasboundedstringhelper_innerunionhelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedstringhelper_innerunionhelper(
-            const std::map<Inner_alias_bounded_string_helper, InnerUnionHelper>& _var_map_inneraliasboundedstringhelper_innerunionhelper)
+            const std::map<Inner_alias_bounded_string_helper,
+            InnerUnionHelper>& _var_map_inneraliasboundedstringhelper_innerunionhelper)
     {
-        m_var_map_inneraliasboundedstringhelper_innerunionhelper = _var_map_inneraliasboundedstringhelper_innerunionhelper;
+        m_var_map_inneraliasboundedstringhelper_innerunionhelper =
+                _var_map_inneraliasboundedstringhelper_innerunionhelper;
     }
 
     /*!
@@ -30879,16 +30660,19 @@ public:
      * @param _var_map_inneraliasboundedstringhelper_innerunionhelper New value to be moved in member var_map_inneraliasboundedstringhelper_innerunionhelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedstringhelper_innerunionhelper(
-            std::map<Inner_alias_bounded_string_helper, InnerUnionHelper>&& _var_map_inneraliasboundedstringhelper_innerunionhelper)
+            std::map<Inner_alias_bounded_string_helper,
+            InnerUnionHelper>&& _var_map_inneraliasboundedstringhelper_innerunionhelper)
     {
-        m_var_map_inneraliasboundedstringhelper_innerunionhelper = std::move(_var_map_inneraliasboundedstringhelper_innerunionhelper);
+        m_var_map_inneraliasboundedstringhelper_innerunionhelper =
+                std::move(_var_map_inneraliasboundedstringhelper_innerunionhelper);
     }
 
     /*!
      * @brief This function returns a constant reference to member var_map_inneraliasboundedstringhelper_innerunionhelper
      * @return Constant reference to member var_map_inneraliasboundedstringhelper_innerunionhelper
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper, InnerUnionHelper>& var_map_inneraliasboundedstringhelper_innerunionhelper() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper,
+            InnerUnionHelper>& var_map_inneraliasboundedstringhelper_innerunionhelper() const
     {
         return m_var_map_inneraliasboundedstringhelper_innerunionhelper;
     }
@@ -30897,16 +30681,16 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedstringhelper_innerunionhelper
      * @return Reference to member var_map_inneraliasboundedstringhelper_innerunionhelper
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper, InnerUnionHelper>& var_map_inneraliasboundedstringhelper_innerunionhelper()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper,
+            InnerUnionHelper>& var_map_inneraliasboundedstringhelper_innerunionhelper()
     {
         return m_var_map_inneraliasboundedstringhelper_innerunionhelper;
     }
 
-
-
 private:
 
-    std::map<Inner_alias_bounded_string_helper, InnerUnionHelper> m_var_map_inneraliasboundedstringhelper_innerunionhelper;
+    std::map<Inner_alias_bounded_string_helper,
+            InnerUnionHelper> m_var_map_inneraliasboundedstringhelper_innerunionhelper;
 
 };
 /*!
@@ -30938,7 +30722,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedStringHelperInnerStructureHelper(
             const MapInnerAliasBoundedStringHelperInnerStructureHelper& x)
     {
-                    m_var_map_inneraliasboundedstringhelper_innerstructurehelper = x.m_var_map_inneraliasboundedstringhelper_innerstructurehelper;
+        m_var_map_inneraliasboundedstringhelper_innerstructurehelper =
+                x.m_var_map_inneraliasboundedstringhelper_innerstructurehelper;
 
     }
 
@@ -30949,7 +30734,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedStringHelperInnerStructureHelper(
             MapInnerAliasBoundedStringHelperInnerStructureHelper&& x) noexcept
     {
-        m_var_map_inneraliasboundedstringhelper_innerstructurehelper = std::move(x.m_var_map_inneraliasboundedstringhelper_innerstructurehelper);
+        m_var_map_inneraliasboundedstringhelper_innerstructurehelper =
+                std::move(x.m_var_map_inneraliasboundedstringhelper_innerstructurehelper);
     }
 
     /*!
@@ -30960,7 +30746,8 @@ public:
             const MapInnerAliasBoundedStringHelperInnerStructureHelper& x)
     {
 
-                    m_var_map_inneraliasboundedstringhelper_innerstructurehelper = x.m_var_map_inneraliasboundedstringhelper_innerstructurehelper;
+        m_var_map_inneraliasboundedstringhelper_innerstructurehelper =
+                x.m_var_map_inneraliasboundedstringhelper_innerstructurehelper;
 
         return *this;
     }
@@ -30973,7 +30760,8 @@ public:
             MapInnerAliasBoundedStringHelperInnerStructureHelper&& x) noexcept
     {
 
-        m_var_map_inneraliasboundedstringhelper_innerstructurehelper = std::move(x.m_var_map_inneraliasboundedstringhelper_innerstructurehelper);
+        m_var_map_inneraliasboundedstringhelper_innerstructurehelper =
+                std::move(x.m_var_map_inneraliasboundedstringhelper_innerstructurehelper);
         return *this;
     }
 
@@ -30984,7 +30772,8 @@ public:
     eProsima_user_DllExport bool operator ==(
             const MapInnerAliasBoundedStringHelperInnerStructureHelper& x) const
     {
-        return (m_var_map_inneraliasboundedstringhelper_innerstructurehelper == x.m_var_map_inneraliasboundedstringhelper_innerstructurehelper);
+        return (m_var_map_inneraliasboundedstringhelper_innerstructurehelper ==
+               x.m_var_map_inneraliasboundedstringhelper_innerstructurehelper);
     }
 
     /*!
@@ -31002,9 +30791,11 @@ public:
      * @param _var_map_inneraliasboundedstringhelper_innerstructurehelper New value to be copied in member var_map_inneraliasboundedstringhelper_innerstructurehelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedstringhelper_innerstructurehelper(
-            const std::map<Inner_alias_bounded_string_helper, InnerStructureHelper>& _var_map_inneraliasboundedstringhelper_innerstructurehelper)
+            const std::map<Inner_alias_bounded_string_helper,
+            InnerStructureHelper>& _var_map_inneraliasboundedstringhelper_innerstructurehelper)
     {
-        m_var_map_inneraliasboundedstringhelper_innerstructurehelper = _var_map_inneraliasboundedstringhelper_innerstructurehelper;
+        m_var_map_inneraliasboundedstringhelper_innerstructurehelper =
+                _var_map_inneraliasboundedstringhelper_innerstructurehelper;
     }
 
     /*!
@@ -31012,16 +30803,19 @@ public:
      * @param _var_map_inneraliasboundedstringhelper_innerstructurehelper New value to be moved in member var_map_inneraliasboundedstringhelper_innerstructurehelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedstringhelper_innerstructurehelper(
-            std::map<Inner_alias_bounded_string_helper, InnerStructureHelper>&& _var_map_inneraliasboundedstringhelper_innerstructurehelper)
+            std::map<Inner_alias_bounded_string_helper,
+            InnerStructureHelper>&& _var_map_inneraliasboundedstringhelper_innerstructurehelper)
     {
-        m_var_map_inneraliasboundedstringhelper_innerstructurehelper = std::move(_var_map_inneraliasboundedstringhelper_innerstructurehelper);
+        m_var_map_inneraliasboundedstringhelper_innerstructurehelper =
+                std::move(_var_map_inneraliasboundedstringhelper_innerstructurehelper);
     }
 
     /*!
      * @brief This function returns a constant reference to member var_map_inneraliasboundedstringhelper_innerstructurehelper
      * @return Constant reference to member var_map_inneraliasboundedstringhelper_innerstructurehelper
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper, InnerStructureHelper>& var_map_inneraliasboundedstringhelper_innerstructurehelper() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper,
+            InnerStructureHelper>& var_map_inneraliasboundedstringhelper_innerstructurehelper() const
     {
         return m_var_map_inneraliasboundedstringhelper_innerstructurehelper;
     }
@@ -31030,16 +30824,16 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedstringhelper_innerstructurehelper
      * @return Reference to member var_map_inneraliasboundedstringhelper_innerstructurehelper
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper, InnerStructureHelper>& var_map_inneraliasboundedstringhelper_innerstructurehelper()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper,
+            InnerStructureHelper>& var_map_inneraliasboundedstringhelper_innerstructurehelper()
     {
         return m_var_map_inneraliasboundedstringhelper_innerstructurehelper;
     }
 
-
-
 private:
 
-    std::map<Inner_alias_bounded_string_helper, InnerStructureHelper> m_var_map_inneraliasboundedstringhelper_innerstructurehelper;
+    std::map<Inner_alias_bounded_string_helper,
+            InnerStructureHelper> m_var_map_inneraliasboundedstringhelper_innerstructurehelper;
 
 };
 /*!
@@ -31071,7 +30865,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedStringHelperInnerBitsetHelper(
             const MapInnerAliasBoundedStringHelperInnerBitsetHelper& x)
     {
-                    m_var_map_inneraliasboundedstringhelper_innerbitsethelper = x.m_var_map_inneraliasboundedstringhelper_innerbitsethelper;
+        m_var_map_inneraliasboundedstringhelper_innerbitsethelper =
+                x.m_var_map_inneraliasboundedstringhelper_innerbitsethelper;
 
     }
 
@@ -31082,7 +30877,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedStringHelperInnerBitsetHelper(
             MapInnerAliasBoundedStringHelperInnerBitsetHelper&& x) noexcept
     {
-        m_var_map_inneraliasboundedstringhelper_innerbitsethelper = std::move(x.m_var_map_inneraliasboundedstringhelper_innerbitsethelper);
+        m_var_map_inneraliasboundedstringhelper_innerbitsethelper =
+                std::move(x.m_var_map_inneraliasboundedstringhelper_innerbitsethelper);
     }
 
     /*!
@@ -31093,7 +30889,8 @@ public:
             const MapInnerAliasBoundedStringHelperInnerBitsetHelper& x)
     {
 
-                    m_var_map_inneraliasboundedstringhelper_innerbitsethelper = x.m_var_map_inneraliasboundedstringhelper_innerbitsethelper;
+        m_var_map_inneraliasboundedstringhelper_innerbitsethelper =
+                x.m_var_map_inneraliasboundedstringhelper_innerbitsethelper;
 
         return *this;
     }
@@ -31106,7 +30903,8 @@ public:
             MapInnerAliasBoundedStringHelperInnerBitsetHelper&& x) noexcept
     {
 
-        m_var_map_inneraliasboundedstringhelper_innerbitsethelper = std::move(x.m_var_map_inneraliasboundedstringhelper_innerbitsethelper);
+        m_var_map_inneraliasboundedstringhelper_innerbitsethelper =
+                std::move(x.m_var_map_inneraliasboundedstringhelper_innerbitsethelper);
         return *this;
     }
 
@@ -31117,7 +30915,8 @@ public:
     eProsima_user_DllExport bool operator ==(
             const MapInnerAliasBoundedStringHelperInnerBitsetHelper& x) const
     {
-        return (m_var_map_inneraliasboundedstringhelper_innerbitsethelper == x.m_var_map_inneraliasboundedstringhelper_innerbitsethelper);
+        return (m_var_map_inneraliasboundedstringhelper_innerbitsethelper ==
+               x.m_var_map_inneraliasboundedstringhelper_innerbitsethelper);
     }
 
     /*!
@@ -31135,9 +30934,11 @@ public:
      * @param _var_map_inneraliasboundedstringhelper_innerbitsethelper New value to be copied in member var_map_inneraliasboundedstringhelper_innerbitsethelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedstringhelper_innerbitsethelper(
-            const std::map<Inner_alias_bounded_string_helper, InnerBitsetHelper>& _var_map_inneraliasboundedstringhelper_innerbitsethelper)
+            const std::map<Inner_alias_bounded_string_helper,
+            InnerBitsetHelper>& _var_map_inneraliasboundedstringhelper_innerbitsethelper)
     {
-        m_var_map_inneraliasboundedstringhelper_innerbitsethelper = _var_map_inneraliasboundedstringhelper_innerbitsethelper;
+        m_var_map_inneraliasboundedstringhelper_innerbitsethelper =
+                _var_map_inneraliasboundedstringhelper_innerbitsethelper;
     }
 
     /*!
@@ -31145,16 +30946,19 @@ public:
      * @param _var_map_inneraliasboundedstringhelper_innerbitsethelper New value to be moved in member var_map_inneraliasboundedstringhelper_innerbitsethelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedstringhelper_innerbitsethelper(
-            std::map<Inner_alias_bounded_string_helper, InnerBitsetHelper>&& _var_map_inneraliasboundedstringhelper_innerbitsethelper)
+            std::map<Inner_alias_bounded_string_helper,
+            InnerBitsetHelper>&& _var_map_inneraliasboundedstringhelper_innerbitsethelper)
     {
-        m_var_map_inneraliasboundedstringhelper_innerbitsethelper = std::move(_var_map_inneraliasboundedstringhelper_innerbitsethelper);
+        m_var_map_inneraliasboundedstringhelper_innerbitsethelper =
+                std::move(_var_map_inneraliasboundedstringhelper_innerbitsethelper);
     }
 
     /*!
      * @brief This function returns a constant reference to member var_map_inneraliasboundedstringhelper_innerbitsethelper
      * @return Constant reference to member var_map_inneraliasboundedstringhelper_innerbitsethelper
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper, InnerBitsetHelper>& var_map_inneraliasboundedstringhelper_innerbitsethelper() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_string_helper,
+            InnerBitsetHelper>& var_map_inneraliasboundedstringhelper_innerbitsethelper() const
     {
         return m_var_map_inneraliasboundedstringhelper_innerbitsethelper;
     }
@@ -31163,16 +30967,16 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedstringhelper_innerbitsethelper
      * @return Reference to member var_map_inneraliasboundedstringhelper_innerbitsethelper
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper, InnerBitsetHelper>& var_map_inneraliasboundedstringhelper_innerbitsethelper()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_string_helper,
+            InnerBitsetHelper>& var_map_inneraliasboundedstringhelper_innerbitsethelper()
     {
         return m_var_map_inneraliasboundedstringhelper_innerbitsethelper;
     }
 
-
-
 private:
 
-    std::map<Inner_alias_bounded_string_helper, InnerBitsetHelper> m_var_map_inneraliasboundedstringhelper_innerbitsethelper;
+    std::map<Inner_alias_bounded_string_helper,
+            InnerBitsetHelper> m_var_map_inneraliasboundedstringhelper_innerbitsethelper;
 
 };
 /*!
@@ -31204,7 +31008,7 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedWStringHelperShort(
             const MapInnerAliasBoundedWStringHelperShort& x)
     {
-                    m_var_map_inneraliasboundedwstringhelper_short = x.m_var_map_inneraliasboundedwstringhelper_short;
+        m_var_map_inneraliasboundedwstringhelper_short = x.m_var_map_inneraliasboundedwstringhelper_short;
 
     }
 
@@ -31226,7 +31030,7 @@ public:
             const MapInnerAliasBoundedWStringHelperShort& x)
     {
 
-                    m_var_map_inneraliasboundedwstringhelper_short = x.m_var_map_inneraliasboundedwstringhelper_short;
+        m_var_map_inneraliasboundedwstringhelper_short = x.m_var_map_inneraliasboundedwstringhelper_short;
 
         return *this;
     }
@@ -31287,7 +31091,8 @@ public:
      * @brief This function returns a constant reference to member var_map_inneraliasboundedwstringhelper_short
      * @return Constant reference to member var_map_inneraliasboundedwstringhelper_short
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper, int16_t>& var_map_inneraliasboundedwstringhelper_short() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper,
+            int16_t>& var_map_inneraliasboundedwstringhelper_short() const
     {
         return m_var_map_inneraliasboundedwstringhelper_short;
     }
@@ -31296,12 +31101,11 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedwstringhelper_short
      * @return Reference to member var_map_inneraliasboundedwstringhelper_short
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper, int16_t>& var_map_inneraliasboundedwstringhelper_short()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper,
+            int16_t>& var_map_inneraliasboundedwstringhelper_short()
     {
         return m_var_map_inneraliasboundedwstringhelper_short;
     }
-
-
 
 private:
 
@@ -31337,7 +31141,7 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedWStringHelperUShort(
             const MapInnerAliasBoundedWStringHelperUShort& x)
     {
-                    m_var_map_inneraliasboundedwstringhelper_ushort = x.m_var_map_inneraliasboundedwstringhelper_ushort;
+        m_var_map_inneraliasboundedwstringhelper_ushort = x.m_var_map_inneraliasboundedwstringhelper_ushort;
 
     }
 
@@ -31359,7 +31163,7 @@ public:
             const MapInnerAliasBoundedWStringHelperUShort& x)
     {
 
-                    m_var_map_inneraliasboundedwstringhelper_ushort = x.m_var_map_inneraliasboundedwstringhelper_ushort;
+        m_var_map_inneraliasboundedwstringhelper_ushort = x.m_var_map_inneraliasboundedwstringhelper_ushort;
 
         return *this;
     }
@@ -31401,7 +31205,8 @@ public:
      * @param _var_map_inneraliasboundedwstringhelper_ushort New value to be copied in member var_map_inneraliasboundedwstringhelper_ushort
      */
     eProsima_user_DllExport void var_map_inneraliasboundedwstringhelper_ushort(
-            const std::map<Inner_alias_bounded_wstring_helper, uint16_t>& _var_map_inneraliasboundedwstringhelper_ushort)
+            const std::map<Inner_alias_bounded_wstring_helper,
+            uint16_t>& _var_map_inneraliasboundedwstringhelper_ushort)
     {
         m_var_map_inneraliasboundedwstringhelper_ushort = _var_map_inneraliasboundedwstringhelper_ushort;
     }
@@ -31420,7 +31225,8 @@ public:
      * @brief This function returns a constant reference to member var_map_inneraliasboundedwstringhelper_ushort
      * @return Constant reference to member var_map_inneraliasboundedwstringhelper_ushort
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper, uint16_t>& var_map_inneraliasboundedwstringhelper_ushort() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper,
+            uint16_t>& var_map_inneraliasboundedwstringhelper_ushort() const
     {
         return m_var_map_inneraliasboundedwstringhelper_ushort;
     }
@@ -31429,12 +31235,11 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedwstringhelper_ushort
      * @return Reference to member var_map_inneraliasboundedwstringhelper_ushort
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper, uint16_t>& var_map_inneraliasboundedwstringhelper_ushort()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper,
+            uint16_t>& var_map_inneraliasboundedwstringhelper_ushort()
     {
         return m_var_map_inneraliasboundedwstringhelper_ushort;
     }
-
-
 
 private:
 
@@ -31470,7 +31275,7 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedWStringHelperLong(
             const MapInnerAliasBoundedWStringHelperLong& x)
     {
-                    m_var_map_inneraliasboundedwstringhelper_long = x.m_var_map_inneraliasboundedwstringhelper_long;
+        m_var_map_inneraliasboundedwstringhelper_long = x.m_var_map_inneraliasboundedwstringhelper_long;
 
     }
 
@@ -31492,7 +31297,7 @@ public:
             const MapInnerAliasBoundedWStringHelperLong& x)
     {
 
-                    m_var_map_inneraliasboundedwstringhelper_long = x.m_var_map_inneraliasboundedwstringhelper_long;
+        m_var_map_inneraliasboundedwstringhelper_long = x.m_var_map_inneraliasboundedwstringhelper_long;
 
         return *this;
     }
@@ -31553,7 +31358,8 @@ public:
      * @brief This function returns a constant reference to member var_map_inneraliasboundedwstringhelper_long
      * @return Constant reference to member var_map_inneraliasboundedwstringhelper_long
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper, int32_t>& var_map_inneraliasboundedwstringhelper_long() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper,
+            int32_t>& var_map_inneraliasboundedwstringhelper_long() const
     {
         return m_var_map_inneraliasboundedwstringhelper_long;
     }
@@ -31562,12 +31368,11 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedwstringhelper_long
      * @return Reference to member var_map_inneraliasboundedwstringhelper_long
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper, int32_t>& var_map_inneraliasboundedwstringhelper_long()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper,
+            int32_t>& var_map_inneraliasboundedwstringhelper_long()
     {
         return m_var_map_inneraliasboundedwstringhelper_long;
     }
-
-
 
 private:
 
@@ -31603,7 +31408,7 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedWStringHelperULong(
             const MapInnerAliasBoundedWStringHelperULong& x)
     {
-                    m_var_map_inneraliasboundedwstringhelper_ulong = x.m_var_map_inneraliasboundedwstringhelper_ulong;
+        m_var_map_inneraliasboundedwstringhelper_ulong = x.m_var_map_inneraliasboundedwstringhelper_ulong;
 
     }
 
@@ -31625,7 +31430,7 @@ public:
             const MapInnerAliasBoundedWStringHelperULong& x)
     {
 
-                    m_var_map_inneraliasboundedwstringhelper_ulong = x.m_var_map_inneraliasboundedwstringhelper_ulong;
+        m_var_map_inneraliasboundedwstringhelper_ulong = x.m_var_map_inneraliasboundedwstringhelper_ulong;
 
         return *this;
     }
@@ -31686,7 +31491,8 @@ public:
      * @brief This function returns a constant reference to member var_map_inneraliasboundedwstringhelper_ulong
      * @return Constant reference to member var_map_inneraliasboundedwstringhelper_ulong
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper, uint32_t>& var_map_inneraliasboundedwstringhelper_ulong() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper,
+            uint32_t>& var_map_inneraliasboundedwstringhelper_ulong() const
     {
         return m_var_map_inneraliasboundedwstringhelper_ulong;
     }
@@ -31695,12 +31501,11 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedwstringhelper_ulong
      * @return Reference to member var_map_inneraliasboundedwstringhelper_ulong
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper, uint32_t>& var_map_inneraliasboundedwstringhelper_ulong()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper,
+            uint32_t>& var_map_inneraliasboundedwstringhelper_ulong()
     {
         return m_var_map_inneraliasboundedwstringhelper_ulong;
     }
-
-
 
 private:
 
@@ -31736,7 +31541,7 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedWStringHelperLongLong(
             const MapInnerAliasBoundedWStringHelperLongLong& x)
     {
-                    m_var_map_inneraliasboundedwstringhelper_longlong = x.m_var_map_inneraliasboundedwstringhelper_longlong;
+        m_var_map_inneraliasboundedwstringhelper_longlong = x.m_var_map_inneraliasboundedwstringhelper_longlong;
 
     }
 
@@ -31747,7 +31552,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedWStringHelperLongLong(
             MapInnerAliasBoundedWStringHelperLongLong&& x) noexcept
     {
-        m_var_map_inneraliasboundedwstringhelper_longlong = std::move(x.m_var_map_inneraliasboundedwstringhelper_longlong);
+        m_var_map_inneraliasboundedwstringhelper_longlong =
+                std::move(x.m_var_map_inneraliasboundedwstringhelper_longlong);
     }
 
     /*!
@@ -31758,7 +31564,7 @@ public:
             const MapInnerAliasBoundedWStringHelperLongLong& x)
     {
 
-                    m_var_map_inneraliasboundedwstringhelper_longlong = x.m_var_map_inneraliasboundedwstringhelper_longlong;
+        m_var_map_inneraliasboundedwstringhelper_longlong = x.m_var_map_inneraliasboundedwstringhelper_longlong;
 
         return *this;
     }
@@ -31771,7 +31577,8 @@ public:
             MapInnerAliasBoundedWStringHelperLongLong&& x) noexcept
     {
 
-        m_var_map_inneraliasboundedwstringhelper_longlong = std::move(x.m_var_map_inneraliasboundedwstringhelper_longlong);
+        m_var_map_inneraliasboundedwstringhelper_longlong =
+                std::move(x.m_var_map_inneraliasboundedwstringhelper_longlong);
         return *this;
     }
 
@@ -31782,7 +31589,8 @@ public:
     eProsima_user_DllExport bool operator ==(
             const MapInnerAliasBoundedWStringHelperLongLong& x) const
     {
-        return (m_var_map_inneraliasboundedwstringhelper_longlong == x.m_var_map_inneraliasboundedwstringhelper_longlong);
+        return (m_var_map_inneraliasboundedwstringhelper_longlong ==
+               x.m_var_map_inneraliasboundedwstringhelper_longlong);
     }
 
     /*!
@@ -31800,7 +31608,8 @@ public:
      * @param _var_map_inneraliasboundedwstringhelper_longlong New value to be copied in member var_map_inneraliasboundedwstringhelper_longlong
      */
     eProsima_user_DllExport void var_map_inneraliasboundedwstringhelper_longlong(
-            const std::map<Inner_alias_bounded_wstring_helper, int64_t>& _var_map_inneraliasboundedwstringhelper_longlong)
+            const std::map<Inner_alias_bounded_wstring_helper,
+            int64_t>& _var_map_inneraliasboundedwstringhelper_longlong)
     {
         m_var_map_inneraliasboundedwstringhelper_longlong = _var_map_inneraliasboundedwstringhelper_longlong;
     }
@@ -31819,7 +31628,8 @@ public:
      * @brief This function returns a constant reference to member var_map_inneraliasboundedwstringhelper_longlong
      * @return Constant reference to member var_map_inneraliasboundedwstringhelper_longlong
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper, int64_t>& var_map_inneraliasboundedwstringhelper_longlong() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper,
+            int64_t>& var_map_inneraliasboundedwstringhelper_longlong() const
     {
         return m_var_map_inneraliasboundedwstringhelper_longlong;
     }
@@ -31828,12 +31638,11 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedwstringhelper_longlong
      * @return Reference to member var_map_inneraliasboundedwstringhelper_longlong
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper, int64_t>& var_map_inneraliasboundedwstringhelper_longlong()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper,
+            int64_t>& var_map_inneraliasboundedwstringhelper_longlong()
     {
         return m_var_map_inneraliasboundedwstringhelper_longlong;
     }
-
-
 
 private:
 
@@ -31869,7 +31678,7 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedWStringHelperULongLong(
             const MapInnerAliasBoundedWStringHelperULongLong& x)
     {
-                    m_var_map_inneraliasboundedwstringhelper_ulonglong = x.m_var_map_inneraliasboundedwstringhelper_ulonglong;
+        m_var_map_inneraliasboundedwstringhelper_ulonglong = x.m_var_map_inneraliasboundedwstringhelper_ulonglong;
 
     }
 
@@ -31880,7 +31689,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedWStringHelperULongLong(
             MapInnerAliasBoundedWStringHelperULongLong&& x) noexcept
     {
-        m_var_map_inneraliasboundedwstringhelper_ulonglong = std::move(x.m_var_map_inneraliasboundedwstringhelper_ulonglong);
+        m_var_map_inneraliasboundedwstringhelper_ulonglong =
+                std::move(x.m_var_map_inneraliasboundedwstringhelper_ulonglong);
     }
 
     /*!
@@ -31891,7 +31701,7 @@ public:
             const MapInnerAliasBoundedWStringHelperULongLong& x)
     {
 
-                    m_var_map_inneraliasboundedwstringhelper_ulonglong = x.m_var_map_inneraliasboundedwstringhelper_ulonglong;
+        m_var_map_inneraliasboundedwstringhelper_ulonglong = x.m_var_map_inneraliasboundedwstringhelper_ulonglong;
 
         return *this;
     }
@@ -31904,7 +31714,8 @@ public:
             MapInnerAliasBoundedWStringHelperULongLong&& x) noexcept
     {
 
-        m_var_map_inneraliasboundedwstringhelper_ulonglong = std::move(x.m_var_map_inneraliasboundedwstringhelper_ulonglong);
+        m_var_map_inneraliasboundedwstringhelper_ulonglong =
+                std::move(x.m_var_map_inneraliasboundedwstringhelper_ulonglong);
         return *this;
     }
 
@@ -31915,7 +31726,8 @@ public:
     eProsima_user_DllExport bool operator ==(
             const MapInnerAliasBoundedWStringHelperULongLong& x) const
     {
-        return (m_var_map_inneraliasboundedwstringhelper_ulonglong == x.m_var_map_inneraliasboundedwstringhelper_ulonglong);
+        return (m_var_map_inneraliasboundedwstringhelper_ulonglong ==
+               x.m_var_map_inneraliasboundedwstringhelper_ulonglong);
     }
 
     /*!
@@ -31933,7 +31745,8 @@ public:
      * @param _var_map_inneraliasboundedwstringhelper_ulonglong New value to be copied in member var_map_inneraliasboundedwstringhelper_ulonglong
      */
     eProsima_user_DllExport void var_map_inneraliasboundedwstringhelper_ulonglong(
-            const std::map<Inner_alias_bounded_wstring_helper, uint64_t>& _var_map_inneraliasboundedwstringhelper_ulonglong)
+            const std::map<Inner_alias_bounded_wstring_helper,
+            uint64_t>& _var_map_inneraliasboundedwstringhelper_ulonglong)
     {
         m_var_map_inneraliasboundedwstringhelper_ulonglong = _var_map_inneraliasboundedwstringhelper_ulonglong;
     }
@@ -31945,14 +31758,16 @@ public:
     eProsima_user_DllExport void var_map_inneraliasboundedwstringhelper_ulonglong(
             std::map<Inner_alias_bounded_wstring_helper, uint64_t>&& _var_map_inneraliasboundedwstringhelper_ulonglong)
     {
-        m_var_map_inneraliasboundedwstringhelper_ulonglong = std::move(_var_map_inneraliasboundedwstringhelper_ulonglong);
+        m_var_map_inneraliasboundedwstringhelper_ulonglong =
+                std::move(_var_map_inneraliasboundedwstringhelper_ulonglong);
     }
 
     /*!
      * @brief This function returns a constant reference to member var_map_inneraliasboundedwstringhelper_ulonglong
      * @return Constant reference to member var_map_inneraliasboundedwstringhelper_ulonglong
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper, uint64_t>& var_map_inneraliasboundedwstringhelper_ulonglong() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper,
+            uint64_t>& var_map_inneraliasboundedwstringhelper_ulonglong() const
     {
         return m_var_map_inneraliasboundedwstringhelper_ulonglong;
     }
@@ -31961,12 +31776,11 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedwstringhelper_ulonglong
      * @return Reference to member var_map_inneraliasboundedwstringhelper_ulonglong
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper, uint64_t>& var_map_inneraliasboundedwstringhelper_ulonglong()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper,
+            uint64_t>& var_map_inneraliasboundedwstringhelper_ulonglong()
     {
         return m_var_map_inneraliasboundedwstringhelper_ulonglong;
     }
-
-
 
 private:
 
@@ -32002,7 +31816,7 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedWStringHelperFloat(
             const MapInnerAliasBoundedWStringHelperFloat& x)
     {
-                    m_var_map_inneraliasboundedwstringhelper_float = x.m_var_map_inneraliasboundedwstringhelper_float;
+        m_var_map_inneraliasboundedwstringhelper_float = x.m_var_map_inneraliasboundedwstringhelper_float;
 
     }
 
@@ -32024,7 +31838,7 @@ public:
             const MapInnerAliasBoundedWStringHelperFloat& x)
     {
 
-                    m_var_map_inneraliasboundedwstringhelper_float = x.m_var_map_inneraliasboundedwstringhelper_float;
+        m_var_map_inneraliasboundedwstringhelper_float = x.m_var_map_inneraliasboundedwstringhelper_float;
 
         return *this;
     }
@@ -32085,7 +31899,8 @@ public:
      * @brief This function returns a constant reference to member var_map_inneraliasboundedwstringhelper_float
      * @return Constant reference to member var_map_inneraliasboundedwstringhelper_float
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper, float>& var_map_inneraliasboundedwstringhelper_float() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper,
+            float>& var_map_inneraliasboundedwstringhelper_float() const
     {
         return m_var_map_inneraliasboundedwstringhelper_float;
     }
@@ -32094,12 +31909,11 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedwstringhelper_float
      * @return Reference to member var_map_inneraliasboundedwstringhelper_float
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper, float>& var_map_inneraliasboundedwstringhelper_float()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper,
+            float>& var_map_inneraliasboundedwstringhelper_float()
     {
         return m_var_map_inneraliasboundedwstringhelper_float;
     }
-
-
 
 private:
 
@@ -32135,7 +31949,7 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedWStringHelperDouble(
             const MapInnerAliasBoundedWStringHelperDouble& x)
     {
-                    m_var_map_inneraliasboundedwstringhelper_double = x.m_var_map_inneraliasboundedwstringhelper_double;
+        m_var_map_inneraliasboundedwstringhelper_double = x.m_var_map_inneraliasboundedwstringhelper_double;
 
     }
 
@@ -32157,7 +31971,7 @@ public:
             const MapInnerAliasBoundedWStringHelperDouble& x)
     {
 
-                    m_var_map_inneraliasboundedwstringhelper_double = x.m_var_map_inneraliasboundedwstringhelper_double;
+        m_var_map_inneraliasboundedwstringhelper_double = x.m_var_map_inneraliasboundedwstringhelper_double;
 
         return *this;
     }
@@ -32218,7 +32032,8 @@ public:
      * @brief This function returns a constant reference to member var_map_inneraliasboundedwstringhelper_double
      * @return Constant reference to member var_map_inneraliasboundedwstringhelper_double
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper, double>& var_map_inneraliasboundedwstringhelper_double() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper,
+            double>& var_map_inneraliasboundedwstringhelper_double() const
     {
         return m_var_map_inneraliasboundedwstringhelper_double;
     }
@@ -32227,12 +32042,11 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedwstringhelper_double
      * @return Reference to member var_map_inneraliasboundedwstringhelper_double
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper, double>& var_map_inneraliasboundedwstringhelper_double()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper,
+            double>& var_map_inneraliasboundedwstringhelper_double()
     {
         return m_var_map_inneraliasboundedwstringhelper_double;
     }
-
-
 
 private:
 
@@ -32268,7 +32082,7 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedWStringHelperLongDouble(
             const MapInnerAliasBoundedWStringHelperLongDouble& x)
     {
-                    m_var_map_inneraliasboundedwstringhelper_longdouble = x.m_var_map_inneraliasboundedwstringhelper_longdouble;
+        m_var_map_inneraliasboundedwstringhelper_longdouble = x.m_var_map_inneraliasboundedwstringhelper_longdouble;
 
     }
 
@@ -32279,7 +32093,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedWStringHelperLongDouble(
             MapInnerAliasBoundedWStringHelperLongDouble&& x) noexcept
     {
-        m_var_map_inneraliasboundedwstringhelper_longdouble = std::move(x.m_var_map_inneraliasboundedwstringhelper_longdouble);
+        m_var_map_inneraliasboundedwstringhelper_longdouble =
+                std::move(x.m_var_map_inneraliasboundedwstringhelper_longdouble);
     }
 
     /*!
@@ -32290,7 +32105,7 @@ public:
             const MapInnerAliasBoundedWStringHelperLongDouble& x)
     {
 
-                    m_var_map_inneraliasboundedwstringhelper_longdouble = x.m_var_map_inneraliasboundedwstringhelper_longdouble;
+        m_var_map_inneraliasboundedwstringhelper_longdouble = x.m_var_map_inneraliasboundedwstringhelper_longdouble;
 
         return *this;
     }
@@ -32303,7 +32118,8 @@ public:
             MapInnerAliasBoundedWStringHelperLongDouble&& x) noexcept
     {
 
-        m_var_map_inneraliasboundedwstringhelper_longdouble = std::move(x.m_var_map_inneraliasboundedwstringhelper_longdouble);
+        m_var_map_inneraliasboundedwstringhelper_longdouble =
+                std::move(x.m_var_map_inneraliasboundedwstringhelper_longdouble);
         return *this;
     }
 
@@ -32314,7 +32130,8 @@ public:
     eProsima_user_DllExport bool operator ==(
             const MapInnerAliasBoundedWStringHelperLongDouble& x) const
     {
-        return (m_var_map_inneraliasboundedwstringhelper_longdouble == x.m_var_map_inneraliasboundedwstringhelper_longdouble);
+        return (m_var_map_inneraliasboundedwstringhelper_longdouble ==
+               x.m_var_map_inneraliasboundedwstringhelper_longdouble);
     }
 
     /*!
@@ -32332,7 +32149,8 @@ public:
      * @param _var_map_inneraliasboundedwstringhelper_longdouble New value to be copied in member var_map_inneraliasboundedwstringhelper_longdouble
      */
     eProsima_user_DllExport void var_map_inneraliasboundedwstringhelper_longdouble(
-            const std::map<Inner_alias_bounded_wstring_helper, long double>& _var_map_inneraliasboundedwstringhelper_longdouble)
+            const std::map<Inner_alias_bounded_wstring_helper,
+            long double>& _var_map_inneraliasboundedwstringhelper_longdouble)
     {
         m_var_map_inneraliasboundedwstringhelper_longdouble = _var_map_inneraliasboundedwstringhelper_longdouble;
     }
@@ -32342,16 +32160,19 @@ public:
      * @param _var_map_inneraliasboundedwstringhelper_longdouble New value to be moved in member var_map_inneraliasboundedwstringhelper_longdouble
      */
     eProsima_user_DllExport void var_map_inneraliasboundedwstringhelper_longdouble(
-            std::map<Inner_alias_bounded_wstring_helper, long double>&& _var_map_inneraliasboundedwstringhelper_longdouble)
+            std::map<Inner_alias_bounded_wstring_helper,
+            long double>&& _var_map_inneraliasboundedwstringhelper_longdouble)
     {
-        m_var_map_inneraliasboundedwstringhelper_longdouble = std::move(_var_map_inneraliasboundedwstringhelper_longdouble);
+        m_var_map_inneraliasboundedwstringhelper_longdouble =
+                std::move(_var_map_inneraliasboundedwstringhelper_longdouble);
     }
 
     /*!
      * @brief This function returns a constant reference to member var_map_inneraliasboundedwstringhelper_longdouble
      * @return Constant reference to member var_map_inneraliasboundedwstringhelper_longdouble
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper, long double>& var_map_inneraliasboundedwstringhelper_longdouble() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper,
+            long double>& var_map_inneraliasboundedwstringhelper_longdouble() const
     {
         return m_var_map_inneraliasboundedwstringhelper_longdouble;
     }
@@ -32360,12 +32181,11 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedwstringhelper_longdouble
      * @return Reference to member var_map_inneraliasboundedwstringhelper_longdouble
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper, long double>& var_map_inneraliasboundedwstringhelper_longdouble()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper,
+            long double>& var_map_inneraliasboundedwstringhelper_longdouble()
     {
         return m_var_map_inneraliasboundedwstringhelper_longdouble;
     }
-
-
 
 private:
 
@@ -32401,7 +32221,7 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedWStringHelperBoolean(
             const MapInnerAliasBoundedWStringHelperBoolean& x)
     {
-                    m_var_map_inneraliasboundedwstringhelper_boolean = x.m_var_map_inneraliasboundedwstringhelper_boolean;
+        m_var_map_inneraliasboundedwstringhelper_boolean = x.m_var_map_inneraliasboundedwstringhelper_boolean;
 
     }
 
@@ -32412,7 +32232,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedWStringHelperBoolean(
             MapInnerAliasBoundedWStringHelperBoolean&& x) noexcept
     {
-        m_var_map_inneraliasboundedwstringhelper_boolean = std::move(x.m_var_map_inneraliasboundedwstringhelper_boolean);
+        m_var_map_inneraliasboundedwstringhelper_boolean =
+                std::move(x.m_var_map_inneraliasboundedwstringhelper_boolean);
     }
 
     /*!
@@ -32423,7 +32244,7 @@ public:
             const MapInnerAliasBoundedWStringHelperBoolean& x)
     {
 
-                    m_var_map_inneraliasboundedwstringhelper_boolean = x.m_var_map_inneraliasboundedwstringhelper_boolean;
+        m_var_map_inneraliasboundedwstringhelper_boolean = x.m_var_map_inneraliasboundedwstringhelper_boolean;
 
         return *this;
     }
@@ -32436,7 +32257,8 @@ public:
             MapInnerAliasBoundedWStringHelperBoolean&& x) noexcept
     {
 
-        m_var_map_inneraliasboundedwstringhelper_boolean = std::move(x.m_var_map_inneraliasboundedwstringhelper_boolean);
+        m_var_map_inneraliasboundedwstringhelper_boolean =
+                std::move(x.m_var_map_inneraliasboundedwstringhelper_boolean);
         return *this;
     }
 
@@ -32484,7 +32306,8 @@ public:
      * @brief This function returns a constant reference to member var_map_inneraliasboundedwstringhelper_boolean
      * @return Constant reference to member var_map_inneraliasboundedwstringhelper_boolean
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper, bool>& var_map_inneraliasboundedwstringhelper_boolean() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper,
+            bool>& var_map_inneraliasboundedwstringhelper_boolean() const
     {
         return m_var_map_inneraliasboundedwstringhelper_boolean;
     }
@@ -32493,12 +32316,11 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedwstringhelper_boolean
      * @return Reference to member var_map_inneraliasboundedwstringhelper_boolean
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper, bool>& var_map_inneraliasboundedwstringhelper_boolean()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper,
+            bool>& var_map_inneraliasboundedwstringhelper_boolean()
     {
         return m_var_map_inneraliasboundedwstringhelper_boolean;
     }
-
-
 
 private:
 
@@ -32534,7 +32356,7 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedWStringHelperOctet(
             const MapInnerAliasBoundedWStringHelperOctet& x)
     {
-                    m_var_map_inneraliasboundedwstringhelper_octet = x.m_var_map_inneraliasboundedwstringhelper_octet;
+        m_var_map_inneraliasboundedwstringhelper_octet = x.m_var_map_inneraliasboundedwstringhelper_octet;
 
     }
 
@@ -32556,7 +32378,7 @@ public:
             const MapInnerAliasBoundedWStringHelperOctet& x)
     {
 
-                    m_var_map_inneraliasboundedwstringhelper_octet = x.m_var_map_inneraliasboundedwstringhelper_octet;
+        m_var_map_inneraliasboundedwstringhelper_octet = x.m_var_map_inneraliasboundedwstringhelper_octet;
 
         return *this;
     }
@@ -32617,7 +32439,8 @@ public:
      * @brief This function returns a constant reference to member var_map_inneraliasboundedwstringhelper_octet
      * @return Constant reference to member var_map_inneraliasboundedwstringhelper_octet
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper, uint8_t>& var_map_inneraliasboundedwstringhelper_octet() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper,
+            uint8_t>& var_map_inneraliasboundedwstringhelper_octet() const
     {
         return m_var_map_inneraliasboundedwstringhelper_octet;
     }
@@ -32626,12 +32449,11 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedwstringhelper_octet
      * @return Reference to member var_map_inneraliasboundedwstringhelper_octet
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper, uint8_t>& var_map_inneraliasboundedwstringhelper_octet()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper,
+            uint8_t>& var_map_inneraliasboundedwstringhelper_octet()
     {
         return m_var_map_inneraliasboundedwstringhelper_octet;
     }
-
-
 
 private:
 
@@ -32667,7 +32489,7 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedWStringHelperChar(
             const MapInnerAliasBoundedWStringHelperChar& x)
     {
-                    m_var_map_inneraliasboundedwstringhelper_char = x.m_var_map_inneraliasboundedwstringhelper_char;
+        m_var_map_inneraliasboundedwstringhelper_char = x.m_var_map_inneraliasboundedwstringhelper_char;
 
     }
 
@@ -32689,7 +32511,7 @@ public:
             const MapInnerAliasBoundedWStringHelperChar& x)
     {
 
-                    m_var_map_inneraliasboundedwstringhelper_char = x.m_var_map_inneraliasboundedwstringhelper_char;
+        m_var_map_inneraliasboundedwstringhelper_char = x.m_var_map_inneraliasboundedwstringhelper_char;
 
         return *this;
     }
@@ -32750,7 +32572,8 @@ public:
      * @brief This function returns a constant reference to member var_map_inneraliasboundedwstringhelper_char
      * @return Constant reference to member var_map_inneraliasboundedwstringhelper_char
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper, char>& var_map_inneraliasboundedwstringhelper_char() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper,
+            char>& var_map_inneraliasboundedwstringhelper_char() const
     {
         return m_var_map_inneraliasboundedwstringhelper_char;
     }
@@ -32759,12 +32582,11 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedwstringhelper_char
      * @return Reference to member var_map_inneraliasboundedwstringhelper_char
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper, char>& var_map_inneraliasboundedwstringhelper_char()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper,
+            char>& var_map_inneraliasboundedwstringhelper_char()
     {
         return m_var_map_inneraliasboundedwstringhelper_char;
     }
-
-
 
 private:
 
@@ -32800,7 +32622,7 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedWStringHelperWChar(
             const MapInnerAliasBoundedWStringHelperWChar& x)
     {
-                    m_var_map_inneraliasboundedwstringhelper_wchar = x.m_var_map_inneraliasboundedwstringhelper_wchar;
+        m_var_map_inneraliasboundedwstringhelper_wchar = x.m_var_map_inneraliasboundedwstringhelper_wchar;
 
     }
 
@@ -32822,7 +32644,7 @@ public:
             const MapInnerAliasBoundedWStringHelperWChar& x)
     {
 
-                    m_var_map_inneraliasboundedwstringhelper_wchar = x.m_var_map_inneraliasboundedwstringhelper_wchar;
+        m_var_map_inneraliasboundedwstringhelper_wchar = x.m_var_map_inneraliasboundedwstringhelper_wchar;
 
         return *this;
     }
@@ -32883,7 +32705,8 @@ public:
      * @brief This function returns a constant reference to member var_map_inneraliasboundedwstringhelper_wchar
      * @return Constant reference to member var_map_inneraliasboundedwstringhelper_wchar
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper, wchar_t>& var_map_inneraliasboundedwstringhelper_wchar() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper,
+            wchar_t>& var_map_inneraliasboundedwstringhelper_wchar() const
     {
         return m_var_map_inneraliasboundedwstringhelper_wchar;
     }
@@ -32892,12 +32715,11 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedwstringhelper_wchar
      * @return Reference to member var_map_inneraliasboundedwstringhelper_wchar
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper, wchar_t>& var_map_inneraliasboundedwstringhelper_wchar()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper,
+            wchar_t>& var_map_inneraliasboundedwstringhelper_wchar()
     {
         return m_var_map_inneraliasboundedwstringhelper_wchar;
     }
-
-
 
 private:
 
@@ -32933,7 +32755,7 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedWStringHelperString(
             const MapInnerAliasBoundedWStringHelperString& x)
     {
-                    m_var_map_inneraliasboundedwstringhelper_string = x.m_var_map_inneraliasboundedwstringhelper_string;
+        m_var_map_inneraliasboundedwstringhelper_string = x.m_var_map_inneraliasboundedwstringhelper_string;
 
     }
 
@@ -32955,7 +32777,7 @@ public:
             const MapInnerAliasBoundedWStringHelperString& x)
     {
 
-                    m_var_map_inneraliasboundedwstringhelper_string = x.m_var_map_inneraliasboundedwstringhelper_string;
+        m_var_map_inneraliasboundedwstringhelper_string = x.m_var_map_inneraliasboundedwstringhelper_string;
 
         return *this;
     }
@@ -32997,7 +32819,8 @@ public:
      * @param _var_map_inneraliasboundedwstringhelper_string New value to be copied in member var_map_inneraliasboundedwstringhelper_string
      */
     eProsima_user_DllExport void var_map_inneraliasboundedwstringhelper_string(
-            const std::map<Inner_alias_bounded_wstring_helper, std::string>& _var_map_inneraliasboundedwstringhelper_string)
+            const std::map<Inner_alias_bounded_wstring_helper,
+            std::string>& _var_map_inneraliasboundedwstringhelper_string)
     {
         m_var_map_inneraliasboundedwstringhelper_string = _var_map_inneraliasboundedwstringhelper_string;
     }
@@ -33016,7 +32839,8 @@ public:
      * @brief This function returns a constant reference to member var_map_inneraliasboundedwstringhelper_string
      * @return Constant reference to member var_map_inneraliasboundedwstringhelper_string
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper, std::string>& var_map_inneraliasboundedwstringhelper_string() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper,
+            std::string>& var_map_inneraliasboundedwstringhelper_string() const
     {
         return m_var_map_inneraliasboundedwstringhelper_string;
     }
@@ -33025,12 +32849,11 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedwstringhelper_string
      * @return Reference to member var_map_inneraliasboundedwstringhelper_string
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper, std::string>& var_map_inneraliasboundedwstringhelper_string()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper,
+            std::string>& var_map_inneraliasboundedwstringhelper_string()
     {
         return m_var_map_inneraliasboundedwstringhelper_string;
     }
-
-
 
 private:
 
@@ -33066,7 +32889,7 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedWStringHelperWString(
             const MapInnerAliasBoundedWStringHelperWString& x)
     {
-                    m_var_map_inneraliasboundedwstringhelper_wstring = x.m_var_map_inneraliasboundedwstringhelper_wstring;
+        m_var_map_inneraliasboundedwstringhelper_wstring = x.m_var_map_inneraliasboundedwstringhelper_wstring;
 
     }
 
@@ -33077,7 +32900,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedWStringHelperWString(
             MapInnerAliasBoundedWStringHelperWString&& x) noexcept
     {
-        m_var_map_inneraliasboundedwstringhelper_wstring = std::move(x.m_var_map_inneraliasboundedwstringhelper_wstring);
+        m_var_map_inneraliasboundedwstringhelper_wstring =
+                std::move(x.m_var_map_inneraliasboundedwstringhelper_wstring);
     }
 
     /*!
@@ -33088,7 +32912,7 @@ public:
             const MapInnerAliasBoundedWStringHelperWString& x)
     {
 
-                    m_var_map_inneraliasboundedwstringhelper_wstring = x.m_var_map_inneraliasboundedwstringhelper_wstring;
+        m_var_map_inneraliasboundedwstringhelper_wstring = x.m_var_map_inneraliasboundedwstringhelper_wstring;
 
         return *this;
     }
@@ -33101,7 +32925,8 @@ public:
             MapInnerAliasBoundedWStringHelperWString&& x) noexcept
     {
 
-        m_var_map_inneraliasboundedwstringhelper_wstring = std::move(x.m_var_map_inneraliasboundedwstringhelper_wstring);
+        m_var_map_inneraliasboundedwstringhelper_wstring =
+                std::move(x.m_var_map_inneraliasboundedwstringhelper_wstring);
         return *this;
     }
 
@@ -33130,7 +32955,8 @@ public:
      * @param _var_map_inneraliasboundedwstringhelper_wstring New value to be copied in member var_map_inneraliasboundedwstringhelper_wstring
      */
     eProsima_user_DllExport void var_map_inneraliasboundedwstringhelper_wstring(
-            const std::map<Inner_alias_bounded_wstring_helper, std::wstring>& _var_map_inneraliasboundedwstringhelper_wstring)
+            const std::map<Inner_alias_bounded_wstring_helper,
+            std::wstring>& _var_map_inneraliasboundedwstringhelper_wstring)
     {
         m_var_map_inneraliasboundedwstringhelper_wstring = _var_map_inneraliasboundedwstringhelper_wstring;
     }
@@ -33140,7 +32966,8 @@ public:
      * @param _var_map_inneraliasboundedwstringhelper_wstring New value to be moved in member var_map_inneraliasboundedwstringhelper_wstring
      */
     eProsima_user_DllExport void var_map_inneraliasboundedwstringhelper_wstring(
-            std::map<Inner_alias_bounded_wstring_helper, std::wstring>&& _var_map_inneraliasboundedwstringhelper_wstring)
+            std::map<Inner_alias_bounded_wstring_helper,
+            std::wstring>&& _var_map_inneraliasboundedwstringhelper_wstring)
     {
         m_var_map_inneraliasboundedwstringhelper_wstring = std::move(_var_map_inneraliasboundedwstringhelper_wstring);
     }
@@ -33149,7 +32976,8 @@ public:
      * @brief This function returns a constant reference to member var_map_inneraliasboundedwstringhelper_wstring
      * @return Constant reference to member var_map_inneraliasboundedwstringhelper_wstring
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper, std::wstring>& var_map_inneraliasboundedwstringhelper_wstring() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper,
+            std::wstring>& var_map_inneraliasboundedwstringhelper_wstring() const
     {
         return m_var_map_inneraliasboundedwstringhelper_wstring;
     }
@@ -33158,12 +32986,11 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedwstringhelper_wstring
      * @return Reference to member var_map_inneraliasboundedwstringhelper_wstring
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper, std::wstring>& var_map_inneraliasboundedwstringhelper_wstring()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper,
+            std::wstring>& var_map_inneraliasboundedwstringhelper_wstring()
     {
         return m_var_map_inneraliasboundedwstringhelper_wstring;
     }
-
-
 
 private:
 
@@ -33199,7 +33026,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedWStringHelperInnerAliasBoundedStringHelper(
             const MapInnerAliasBoundedWStringHelperInnerAliasBoundedStringHelper& x)
     {
-                    m_var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper = x.m_var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper;
+        m_var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper =
+                x.m_var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper;
 
     }
 
@@ -33210,7 +33038,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedWStringHelperInnerAliasBoundedStringHelper(
             MapInnerAliasBoundedWStringHelperInnerAliasBoundedStringHelper&& x) noexcept
     {
-        m_var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper = std::move(x.m_var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper);
+        m_var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper =
+                std::move(x.m_var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper);
     }
 
     /*!
@@ -33221,7 +33050,8 @@ public:
             const MapInnerAliasBoundedWStringHelperInnerAliasBoundedStringHelper& x)
     {
 
-                    m_var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper = x.m_var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper;
+        m_var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper =
+                x.m_var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper;
 
         return *this;
     }
@@ -33234,7 +33064,8 @@ public:
             MapInnerAliasBoundedWStringHelperInnerAliasBoundedStringHelper&& x) noexcept
     {
 
-        m_var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper = std::move(x.m_var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper);
+        m_var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper =
+                std::move(x.m_var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper);
         return *this;
     }
 
@@ -33245,7 +33076,8 @@ public:
     eProsima_user_DllExport bool operator ==(
             const MapInnerAliasBoundedWStringHelperInnerAliasBoundedStringHelper& x) const
     {
-        return (m_var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper == x.m_var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper);
+        return (m_var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper ==
+               x.m_var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper);
     }
 
     /*!
@@ -33263,9 +33095,11 @@ public:
      * @param _var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper New value to be copied in member var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper(
-            const std::map<Inner_alias_bounded_wstring_helper, Inner_alias_bounded_string_helper>& _var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper)
+            const std::map<Inner_alias_bounded_wstring_helper,
+            Inner_alias_bounded_string_helper>& _var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper)
     {
-        m_var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper = _var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper;
+        m_var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper =
+                _var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper;
     }
 
     /*!
@@ -33273,16 +33107,20 @@ public:
      * @param _var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper New value to be moved in member var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper(
-            std::map<Inner_alias_bounded_wstring_helper, Inner_alias_bounded_string_helper>&& _var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper)
+            std::map<Inner_alias_bounded_wstring_helper,
+            Inner_alias_bounded_string_helper>&& _var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper)
     {
-        m_var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper = std::move(_var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper);
+        m_var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper =
+                std::move(_var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper);
     }
 
     /*!
      * @brief This function returns a constant reference to member var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper
      * @return Constant reference to member var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper, Inner_alias_bounded_string_helper>& var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper,
+            Inner_alias_bounded_string_helper>& var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper()
+    const
     {
         return m_var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper;
     }
@@ -33291,16 +33129,16 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper
      * @return Reference to member var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper, Inner_alias_bounded_string_helper>& var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper,
+            Inner_alias_bounded_string_helper>& var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper()
     {
         return m_var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper;
     }
 
-
-
 private:
 
-    std::map<Inner_alias_bounded_wstring_helper, Inner_alias_bounded_string_helper> m_var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper;
+    std::map<Inner_alias_bounded_wstring_helper,
+            Inner_alias_bounded_string_helper> m_var_map_inneraliasboundedwstringhelper_inneraliasboundedstringhelper;
 
 };
 /*!
@@ -33332,7 +33170,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedWStringHelperInnerAliasBoundedWStringHelper(
             const MapInnerAliasBoundedWStringHelperInnerAliasBoundedWStringHelper& x)
     {
-                    m_var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper = x.m_var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper;
+        m_var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper =
+                x.m_var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper;
 
     }
 
@@ -33343,7 +33182,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedWStringHelperInnerAliasBoundedWStringHelper(
             MapInnerAliasBoundedWStringHelperInnerAliasBoundedWStringHelper&& x) noexcept
     {
-        m_var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper = std::move(x.m_var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper);
+        m_var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper =
+                std::move(x.m_var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper);
     }
 
     /*!
@@ -33354,7 +33194,8 @@ public:
             const MapInnerAliasBoundedWStringHelperInnerAliasBoundedWStringHelper& x)
     {
 
-                    m_var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper = x.m_var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper;
+        m_var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper =
+                x.m_var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper;
 
         return *this;
     }
@@ -33367,7 +33208,8 @@ public:
             MapInnerAliasBoundedWStringHelperInnerAliasBoundedWStringHelper&& x) noexcept
     {
 
-        m_var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper = std::move(x.m_var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper);
+        m_var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper =
+                std::move(x.m_var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper);
         return *this;
     }
 
@@ -33378,7 +33220,8 @@ public:
     eProsima_user_DllExport bool operator ==(
             const MapInnerAliasBoundedWStringHelperInnerAliasBoundedWStringHelper& x) const
     {
-        return (m_var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper == x.m_var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper);
+        return (m_var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper ==
+               x.m_var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper);
     }
 
     /*!
@@ -33396,9 +33239,11 @@ public:
      * @param _var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper New value to be copied in member var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper(
-            const std::map<Inner_alias_bounded_wstring_helper, Inner_alias_bounded_wstring_helper>& _var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper)
+            const std::map<Inner_alias_bounded_wstring_helper,
+            Inner_alias_bounded_wstring_helper>& _var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper)
     {
-        m_var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper = _var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper;
+        m_var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper =
+                _var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper;
     }
 
     /*!
@@ -33406,16 +33251,20 @@ public:
      * @param _var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper New value to be moved in member var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper(
-            std::map<Inner_alias_bounded_wstring_helper, Inner_alias_bounded_wstring_helper>&& _var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper)
+            std::map<Inner_alias_bounded_wstring_helper,
+            Inner_alias_bounded_wstring_helper>&& _var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper)
     {
-        m_var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper = std::move(_var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper);
+        m_var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper =
+                std::move(_var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper);
     }
 
     /*!
      * @brief This function returns a constant reference to member var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper
      * @return Constant reference to member var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper, Inner_alias_bounded_wstring_helper>& var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper,
+            Inner_alias_bounded_wstring_helper>& var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper()
+    const
     {
         return m_var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper;
     }
@@ -33424,16 +33273,16 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper
      * @return Reference to member var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper, Inner_alias_bounded_wstring_helper>& var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper,
+            Inner_alias_bounded_wstring_helper>& var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper()
     {
         return m_var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper;
     }
 
-
-
 private:
 
-    std::map<Inner_alias_bounded_wstring_helper, Inner_alias_bounded_wstring_helper> m_var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper;
+    std::map<Inner_alias_bounded_wstring_helper,
+            Inner_alias_bounded_wstring_helper> m_var_map_inneraliasboundedwstringhelper_inneraliasboundedwstringhelper;
 
 };
 /*!
@@ -33465,7 +33314,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedWStringHelperInnerEnumHelper(
             const MapInnerAliasBoundedWStringHelperInnerEnumHelper& x)
     {
-                    m_var_map_inneraliasboundedwstringhelper_innerenumhelper = x.m_var_map_inneraliasboundedwstringhelper_innerenumhelper;
+        m_var_map_inneraliasboundedwstringhelper_innerenumhelper =
+                x.m_var_map_inneraliasboundedwstringhelper_innerenumhelper;
 
     }
 
@@ -33476,7 +33326,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedWStringHelperInnerEnumHelper(
             MapInnerAliasBoundedWStringHelperInnerEnumHelper&& x) noexcept
     {
-        m_var_map_inneraliasboundedwstringhelper_innerenumhelper = std::move(x.m_var_map_inneraliasboundedwstringhelper_innerenumhelper);
+        m_var_map_inneraliasboundedwstringhelper_innerenumhelper =
+                std::move(x.m_var_map_inneraliasboundedwstringhelper_innerenumhelper);
     }
 
     /*!
@@ -33487,7 +33338,8 @@ public:
             const MapInnerAliasBoundedWStringHelperInnerEnumHelper& x)
     {
 
-                    m_var_map_inneraliasboundedwstringhelper_innerenumhelper = x.m_var_map_inneraliasboundedwstringhelper_innerenumhelper;
+        m_var_map_inneraliasboundedwstringhelper_innerenumhelper =
+                x.m_var_map_inneraliasboundedwstringhelper_innerenumhelper;
 
         return *this;
     }
@@ -33500,7 +33352,8 @@ public:
             MapInnerAliasBoundedWStringHelperInnerEnumHelper&& x) noexcept
     {
 
-        m_var_map_inneraliasboundedwstringhelper_innerenumhelper = std::move(x.m_var_map_inneraliasboundedwstringhelper_innerenumhelper);
+        m_var_map_inneraliasboundedwstringhelper_innerenumhelper =
+                std::move(x.m_var_map_inneraliasboundedwstringhelper_innerenumhelper);
         return *this;
     }
 
@@ -33511,7 +33364,8 @@ public:
     eProsima_user_DllExport bool operator ==(
             const MapInnerAliasBoundedWStringHelperInnerEnumHelper& x) const
     {
-        return (m_var_map_inneraliasboundedwstringhelper_innerenumhelper == x.m_var_map_inneraliasboundedwstringhelper_innerenumhelper);
+        return (m_var_map_inneraliasboundedwstringhelper_innerenumhelper ==
+               x.m_var_map_inneraliasboundedwstringhelper_innerenumhelper);
     }
 
     /*!
@@ -33529,9 +33383,11 @@ public:
      * @param _var_map_inneraliasboundedwstringhelper_innerenumhelper New value to be copied in member var_map_inneraliasboundedwstringhelper_innerenumhelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedwstringhelper_innerenumhelper(
-            const std::map<Inner_alias_bounded_wstring_helper, InnerEnumHelper>& _var_map_inneraliasboundedwstringhelper_innerenumhelper)
+            const std::map<Inner_alias_bounded_wstring_helper,
+            InnerEnumHelper>& _var_map_inneraliasboundedwstringhelper_innerenumhelper)
     {
-        m_var_map_inneraliasboundedwstringhelper_innerenumhelper = _var_map_inneraliasboundedwstringhelper_innerenumhelper;
+        m_var_map_inneraliasboundedwstringhelper_innerenumhelper =
+                _var_map_inneraliasboundedwstringhelper_innerenumhelper;
     }
 
     /*!
@@ -33539,16 +33395,19 @@ public:
      * @param _var_map_inneraliasboundedwstringhelper_innerenumhelper New value to be moved in member var_map_inneraliasboundedwstringhelper_innerenumhelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedwstringhelper_innerenumhelper(
-            std::map<Inner_alias_bounded_wstring_helper, InnerEnumHelper>&& _var_map_inneraliasboundedwstringhelper_innerenumhelper)
+            std::map<Inner_alias_bounded_wstring_helper,
+            InnerEnumHelper>&& _var_map_inneraliasboundedwstringhelper_innerenumhelper)
     {
-        m_var_map_inneraliasboundedwstringhelper_innerenumhelper = std::move(_var_map_inneraliasboundedwstringhelper_innerenumhelper);
+        m_var_map_inneraliasboundedwstringhelper_innerenumhelper =
+                std::move(_var_map_inneraliasboundedwstringhelper_innerenumhelper);
     }
 
     /*!
      * @brief This function returns a constant reference to member var_map_inneraliasboundedwstringhelper_innerenumhelper
      * @return Constant reference to member var_map_inneraliasboundedwstringhelper_innerenumhelper
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper, InnerEnumHelper>& var_map_inneraliasboundedwstringhelper_innerenumhelper() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper,
+            InnerEnumHelper>& var_map_inneraliasboundedwstringhelper_innerenumhelper() const
     {
         return m_var_map_inneraliasboundedwstringhelper_innerenumhelper;
     }
@@ -33557,16 +33416,16 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedwstringhelper_innerenumhelper
      * @return Reference to member var_map_inneraliasboundedwstringhelper_innerenumhelper
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper, InnerEnumHelper>& var_map_inneraliasboundedwstringhelper_innerenumhelper()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper,
+            InnerEnumHelper>& var_map_inneraliasboundedwstringhelper_innerenumhelper()
     {
         return m_var_map_inneraliasboundedwstringhelper_innerenumhelper;
     }
 
-
-
 private:
 
-    std::map<Inner_alias_bounded_wstring_helper, InnerEnumHelper> m_var_map_inneraliasboundedwstringhelper_innerenumhelper;
+    std::map<Inner_alias_bounded_wstring_helper,
+            InnerEnumHelper> m_var_map_inneraliasboundedwstringhelper_innerenumhelper;
 
 };
 /*!
@@ -33598,7 +33457,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedWStringHelperInnerBitMaskHelper(
             const MapInnerAliasBoundedWStringHelperInnerBitMaskHelper& x)
     {
-                    m_var_map_inneraliasboundedwstringhelper_innerbitmaskhelper = x.m_var_map_inneraliasboundedwstringhelper_innerbitmaskhelper;
+        m_var_map_inneraliasboundedwstringhelper_innerbitmaskhelper =
+                x.m_var_map_inneraliasboundedwstringhelper_innerbitmaskhelper;
 
     }
 
@@ -33609,7 +33469,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedWStringHelperInnerBitMaskHelper(
             MapInnerAliasBoundedWStringHelperInnerBitMaskHelper&& x) noexcept
     {
-        m_var_map_inneraliasboundedwstringhelper_innerbitmaskhelper = std::move(x.m_var_map_inneraliasboundedwstringhelper_innerbitmaskhelper);
+        m_var_map_inneraliasboundedwstringhelper_innerbitmaskhelper =
+                std::move(x.m_var_map_inneraliasboundedwstringhelper_innerbitmaskhelper);
     }
 
     /*!
@@ -33620,7 +33481,8 @@ public:
             const MapInnerAliasBoundedWStringHelperInnerBitMaskHelper& x)
     {
 
-                    m_var_map_inneraliasboundedwstringhelper_innerbitmaskhelper = x.m_var_map_inneraliasboundedwstringhelper_innerbitmaskhelper;
+        m_var_map_inneraliasboundedwstringhelper_innerbitmaskhelper =
+                x.m_var_map_inneraliasboundedwstringhelper_innerbitmaskhelper;
 
         return *this;
     }
@@ -33633,7 +33495,8 @@ public:
             MapInnerAliasBoundedWStringHelperInnerBitMaskHelper&& x) noexcept
     {
 
-        m_var_map_inneraliasboundedwstringhelper_innerbitmaskhelper = std::move(x.m_var_map_inneraliasboundedwstringhelper_innerbitmaskhelper);
+        m_var_map_inneraliasboundedwstringhelper_innerbitmaskhelper =
+                std::move(x.m_var_map_inneraliasboundedwstringhelper_innerbitmaskhelper);
         return *this;
     }
 
@@ -33644,7 +33507,8 @@ public:
     eProsima_user_DllExport bool operator ==(
             const MapInnerAliasBoundedWStringHelperInnerBitMaskHelper& x) const
     {
-        return (m_var_map_inneraliasboundedwstringhelper_innerbitmaskhelper == x.m_var_map_inneraliasboundedwstringhelper_innerbitmaskhelper);
+        return (m_var_map_inneraliasboundedwstringhelper_innerbitmaskhelper ==
+               x.m_var_map_inneraliasboundedwstringhelper_innerbitmaskhelper);
     }
 
     /*!
@@ -33662,9 +33526,11 @@ public:
      * @param _var_map_inneraliasboundedwstringhelper_innerbitmaskhelper New value to be copied in member var_map_inneraliasboundedwstringhelper_innerbitmaskhelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedwstringhelper_innerbitmaskhelper(
-            const std::map<Inner_alias_bounded_wstring_helper, InnerBitMaskHelper>& _var_map_inneraliasboundedwstringhelper_innerbitmaskhelper)
+            const std::map<Inner_alias_bounded_wstring_helper,
+            InnerBitMaskHelper>& _var_map_inneraliasboundedwstringhelper_innerbitmaskhelper)
     {
-        m_var_map_inneraliasboundedwstringhelper_innerbitmaskhelper = _var_map_inneraliasboundedwstringhelper_innerbitmaskhelper;
+        m_var_map_inneraliasboundedwstringhelper_innerbitmaskhelper =
+                _var_map_inneraliasboundedwstringhelper_innerbitmaskhelper;
     }
 
     /*!
@@ -33672,16 +33538,19 @@ public:
      * @param _var_map_inneraliasboundedwstringhelper_innerbitmaskhelper New value to be moved in member var_map_inneraliasboundedwstringhelper_innerbitmaskhelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedwstringhelper_innerbitmaskhelper(
-            std::map<Inner_alias_bounded_wstring_helper, InnerBitMaskHelper>&& _var_map_inneraliasboundedwstringhelper_innerbitmaskhelper)
+            std::map<Inner_alias_bounded_wstring_helper,
+            InnerBitMaskHelper>&& _var_map_inneraliasboundedwstringhelper_innerbitmaskhelper)
     {
-        m_var_map_inneraliasboundedwstringhelper_innerbitmaskhelper = std::move(_var_map_inneraliasboundedwstringhelper_innerbitmaskhelper);
+        m_var_map_inneraliasboundedwstringhelper_innerbitmaskhelper =
+                std::move(_var_map_inneraliasboundedwstringhelper_innerbitmaskhelper);
     }
 
     /*!
      * @brief This function returns a constant reference to member var_map_inneraliasboundedwstringhelper_innerbitmaskhelper
      * @return Constant reference to member var_map_inneraliasboundedwstringhelper_innerbitmaskhelper
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper, InnerBitMaskHelper>& var_map_inneraliasboundedwstringhelper_innerbitmaskhelper() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper,
+            InnerBitMaskHelper>& var_map_inneraliasboundedwstringhelper_innerbitmaskhelper() const
     {
         return m_var_map_inneraliasboundedwstringhelper_innerbitmaskhelper;
     }
@@ -33690,16 +33559,16 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedwstringhelper_innerbitmaskhelper
      * @return Reference to member var_map_inneraliasboundedwstringhelper_innerbitmaskhelper
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper, InnerBitMaskHelper>& var_map_inneraliasboundedwstringhelper_innerbitmaskhelper()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper,
+            InnerBitMaskHelper>& var_map_inneraliasboundedwstringhelper_innerbitmaskhelper()
     {
         return m_var_map_inneraliasboundedwstringhelper_innerbitmaskhelper;
     }
 
-
-
 private:
 
-    std::map<Inner_alias_bounded_wstring_helper, InnerBitMaskHelper> m_var_map_inneraliasboundedwstringhelper_innerbitmaskhelper;
+    std::map<Inner_alias_bounded_wstring_helper,
+            InnerBitMaskHelper> m_var_map_inneraliasboundedwstringhelper_innerbitmaskhelper;
 
 };
 /*!
@@ -33731,7 +33600,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedWStringHelperInnerAliasHelper(
             const MapInnerAliasBoundedWStringHelperInnerAliasHelper& x)
     {
-                    m_var_map_inneraliasboundedwstringhelper_inneraliashelper = x.m_var_map_inneraliasboundedwstringhelper_inneraliashelper;
+        m_var_map_inneraliasboundedwstringhelper_inneraliashelper =
+                x.m_var_map_inneraliasboundedwstringhelper_inneraliashelper;
 
     }
 
@@ -33742,7 +33612,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedWStringHelperInnerAliasHelper(
             MapInnerAliasBoundedWStringHelperInnerAliasHelper&& x) noexcept
     {
-        m_var_map_inneraliasboundedwstringhelper_inneraliashelper = std::move(x.m_var_map_inneraliasboundedwstringhelper_inneraliashelper);
+        m_var_map_inneraliasboundedwstringhelper_inneraliashelper =
+                std::move(x.m_var_map_inneraliasboundedwstringhelper_inneraliashelper);
     }
 
     /*!
@@ -33753,7 +33624,8 @@ public:
             const MapInnerAliasBoundedWStringHelperInnerAliasHelper& x)
     {
 
-                    m_var_map_inneraliasboundedwstringhelper_inneraliashelper = x.m_var_map_inneraliasboundedwstringhelper_inneraliashelper;
+        m_var_map_inneraliasboundedwstringhelper_inneraliashelper =
+                x.m_var_map_inneraliasboundedwstringhelper_inneraliashelper;
 
         return *this;
     }
@@ -33766,7 +33638,8 @@ public:
             MapInnerAliasBoundedWStringHelperInnerAliasHelper&& x) noexcept
     {
 
-        m_var_map_inneraliasboundedwstringhelper_inneraliashelper = std::move(x.m_var_map_inneraliasboundedwstringhelper_inneraliashelper);
+        m_var_map_inneraliasboundedwstringhelper_inneraliashelper =
+                std::move(x.m_var_map_inneraliasboundedwstringhelper_inneraliashelper);
         return *this;
     }
 
@@ -33777,7 +33650,8 @@ public:
     eProsima_user_DllExport bool operator ==(
             const MapInnerAliasBoundedWStringHelperInnerAliasHelper& x) const
     {
-        return (m_var_map_inneraliasboundedwstringhelper_inneraliashelper == x.m_var_map_inneraliasboundedwstringhelper_inneraliashelper);
+        return (m_var_map_inneraliasboundedwstringhelper_inneraliashelper ==
+               x.m_var_map_inneraliasboundedwstringhelper_inneraliashelper);
     }
 
     /*!
@@ -33795,9 +33669,11 @@ public:
      * @param _var_map_inneraliasboundedwstringhelper_inneraliashelper New value to be copied in member var_map_inneraliasboundedwstringhelper_inneraliashelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedwstringhelper_inneraliashelper(
-            const std::map<Inner_alias_bounded_wstring_helper, InnerAliasHelper>& _var_map_inneraliasboundedwstringhelper_inneraliashelper)
+            const std::map<Inner_alias_bounded_wstring_helper,
+            InnerAliasHelper>& _var_map_inneraliasboundedwstringhelper_inneraliashelper)
     {
-        m_var_map_inneraliasboundedwstringhelper_inneraliashelper = _var_map_inneraliasboundedwstringhelper_inneraliashelper;
+        m_var_map_inneraliasboundedwstringhelper_inneraliashelper =
+                _var_map_inneraliasboundedwstringhelper_inneraliashelper;
     }
 
     /*!
@@ -33805,16 +33681,19 @@ public:
      * @param _var_map_inneraliasboundedwstringhelper_inneraliashelper New value to be moved in member var_map_inneraliasboundedwstringhelper_inneraliashelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedwstringhelper_inneraliashelper(
-            std::map<Inner_alias_bounded_wstring_helper, InnerAliasHelper>&& _var_map_inneraliasboundedwstringhelper_inneraliashelper)
+            std::map<Inner_alias_bounded_wstring_helper,
+            InnerAliasHelper>&& _var_map_inneraliasboundedwstringhelper_inneraliashelper)
     {
-        m_var_map_inneraliasboundedwstringhelper_inneraliashelper = std::move(_var_map_inneraliasboundedwstringhelper_inneraliashelper);
+        m_var_map_inneraliasboundedwstringhelper_inneraliashelper =
+                std::move(_var_map_inneraliasboundedwstringhelper_inneraliashelper);
     }
 
     /*!
      * @brief This function returns a constant reference to member var_map_inneraliasboundedwstringhelper_inneraliashelper
      * @return Constant reference to member var_map_inneraliasboundedwstringhelper_inneraliashelper
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper, InnerAliasHelper>& var_map_inneraliasboundedwstringhelper_inneraliashelper() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper,
+            InnerAliasHelper>& var_map_inneraliasboundedwstringhelper_inneraliashelper() const
     {
         return m_var_map_inneraliasboundedwstringhelper_inneraliashelper;
     }
@@ -33823,16 +33702,16 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedwstringhelper_inneraliashelper
      * @return Reference to member var_map_inneraliasboundedwstringhelper_inneraliashelper
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper, InnerAliasHelper>& var_map_inneraliasboundedwstringhelper_inneraliashelper()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper,
+            InnerAliasHelper>& var_map_inneraliasboundedwstringhelper_inneraliashelper()
     {
         return m_var_map_inneraliasboundedwstringhelper_inneraliashelper;
     }
 
-
-
 private:
 
-    std::map<Inner_alias_bounded_wstring_helper, InnerAliasHelper> m_var_map_inneraliasboundedwstringhelper_inneraliashelper;
+    std::map<Inner_alias_bounded_wstring_helper,
+            InnerAliasHelper> m_var_map_inneraliasboundedwstringhelper_inneraliashelper;
 
 };
 /*!
@@ -33864,7 +33743,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedWStringHelperInnerAliasArrayHelper(
             const MapInnerAliasBoundedWStringHelperInnerAliasArrayHelper& x)
     {
-                    m_var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper = x.m_var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper;
+        m_var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper =
+                x.m_var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper;
 
     }
 
@@ -33875,7 +33755,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedWStringHelperInnerAliasArrayHelper(
             MapInnerAliasBoundedWStringHelperInnerAliasArrayHelper&& x) noexcept
     {
-        m_var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper = std::move(x.m_var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper);
+        m_var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper =
+                std::move(x.m_var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper);
     }
 
     /*!
@@ -33886,7 +33767,8 @@ public:
             const MapInnerAliasBoundedWStringHelperInnerAliasArrayHelper& x)
     {
 
-                    m_var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper = x.m_var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper;
+        m_var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper =
+                x.m_var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper;
 
         return *this;
     }
@@ -33899,7 +33781,8 @@ public:
             MapInnerAliasBoundedWStringHelperInnerAliasArrayHelper&& x) noexcept
     {
 
-        m_var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper = std::move(x.m_var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper);
+        m_var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper =
+                std::move(x.m_var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper);
         return *this;
     }
 
@@ -33910,7 +33793,8 @@ public:
     eProsima_user_DllExport bool operator ==(
             const MapInnerAliasBoundedWStringHelperInnerAliasArrayHelper& x) const
     {
-        return (m_var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper == x.m_var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper);
+        return (m_var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper ==
+               x.m_var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper);
     }
 
     /*!
@@ -33928,9 +33812,11 @@ public:
      * @param _var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper New value to be copied in member var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper(
-            const std::map<Inner_alias_bounded_wstring_helper, Inner_alias_array_helper>& _var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper)
+            const std::map<Inner_alias_bounded_wstring_helper,
+            Inner_alias_array_helper>& _var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper)
     {
-        m_var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper = _var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper;
+        m_var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper =
+                _var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper;
     }
 
     /*!
@@ -33938,16 +33824,19 @@ public:
      * @param _var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper New value to be moved in member var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper(
-            std::map<Inner_alias_bounded_wstring_helper, Inner_alias_array_helper>&& _var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper)
+            std::map<Inner_alias_bounded_wstring_helper,
+            Inner_alias_array_helper>&& _var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper)
     {
-        m_var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper = std::move(_var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper);
+        m_var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper =
+                std::move(_var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper);
     }
 
     /*!
      * @brief This function returns a constant reference to member var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper
      * @return Constant reference to member var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper, Inner_alias_array_helper>& var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper,
+            Inner_alias_array_helper>& var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper() const
     {
         return m_var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper;
     }
@@ -33956,16 +33845,16 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper
      * @return Reference to member var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper, Inner_alias_array_helper>& var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper,
+            Inner_alias_array_helper>& var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper()
     {
         return m_var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper;
     }
 
-
-
 private:
 
-    std::map<Inner_alias_bounded_wstring_helper, Inner_alias_array_helper> m_var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper;
+    std::map<Inner_alias_bounded_wstring_helper,
+            Inner_alias_array_helper> m_var_map_inneraliasboundedwstringhelper_inneraliasarrayhelper;
 
 };
 /*!
@@ -33997,7 +33886,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedWStringHelperInnerAliasSequenceHelper(
             const MapInnerAliasBoundedWStringHelperInnerAliasSequenceHelper& x)
     {
-                    m_var_map_inneraliasboundedwstringhelper_inneraliassequencehelper = x.m_var_map_inneraliasboundedwstringhelper_inneraliassequencehelper;
+        m_var_map_inneraliasboundedwstringhelper_inneraliassequencehelper =
+                x.m_var_map_inneraliasboundedwstringhelper_inneraliassequencehelper;
 
     }
 
@@ -34008,7 +33898,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedWStringHelperInnerAliasSequenceHelper(
             MapInnerAliasBoundedWStringHelperInnerAliasSequenceHelper&& x) noexcept
     {
-        m_var_map_inneraliasboundedwstringhelper_inneraliassequencehelper = std::move(x.m_var_map_inneraliasboundedwstringhelper_inneraliassequencehelper);
+        m_var_map_inneraliasboundedwstringhelper_inneraliassequencehelper =
+                std::move(x.m_var_map_inneraliasboundedwstringhelper_inneraliassequencehelper);
     }
 
     /*!
@@ -34019,7 +33910,8 @@ public:
             const MapInnerAliasBoundedWStringHelperInnerAliasSequenceHelper& x)
     {
 
-                    m_var_map_inneraliasboundedwstringhelper_inneraliassequencehelper = x.m_var_map_inneraliasboundedwstringhelper_inneraliassequencehelper;
+        m_var_map_inneraliasboundedwstringhelper_inneraliassequencehelper =
+                x.m_var_map_inneraliasboundedwstringhelper_inneraliassequencehelper;
 
         return *this;
     }
@@ -34032,7 +33924,8 @@ public:
             MapInnerAliasBoundedWStringHelperInnerAliasSequenceHelper&& x) noexcept
     {
 
-        m_var_map_inneraliasboundedwstringhelper_inneraliassequencehelper = std::move(x.m_var_map_inneraliasboundedwstringhelper_inneraliassequencehelper);
+        m_var_map_inneraliasboundedwstringhelper_inneraliassequencehelper =
+                std::move(x.m_var_map_inneraliasboundedwstringhelper_inneraliassequencehelper);
         return *this;
     }
 
@@ -34043,7 +33936,8 @@ public:
     eProsima_user_DllExport bool operator ==(
             const MapInnerAliasBoundedWStringHelperInnerAliasSequenceHelper& x) const
     {
-        return (m_var_map_inneraliasboundedwstringhelper_inneraliassequencehelper == x.m_var_map_inneraliasboundedwstringhelper_inneraliassequencehelper);
+        return (m_var_map_inneraliasboundedwstringhelper_inneraliassequencehelper ==
+               x.m_var_map_inneraliasboundedwstringhelper_inneraliassequencehelper);
     }
 
     /*!
@@ -34061,9 +33955,11 @@ public:
      * @param _var_map_inneraliasboundedwstringhelper_inneraliassequencehelper New value to be copied in member var_map_inneraliasboundedwstringhelper_inneraliassequencehelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedwstringhelper_inneraliassequencehelper(
-            const std::map<Inner_alias_bounded_wstring_helper, Inner_alias_sequence_helper>& _var_map_inneraliasboundedwstringhelper_inneraliassequencehelper)
+            const std::map<Inner_alias_bounded_wstring_helper,
+            Inner_alias_sequence_helper>& _var_map_inneraliasboundedwstringhelper_inneraliassequencehelper)
     {
-        m_var_map_inneraliasboundedwstringhelper_inneraliassequencehelper = _var_map_inneraliasboundedwstringhelper_inneraliassequencehelper;
+        m_var_map_inneraliasboundedwstringhelper_inneraliassequencehelper =
+                _var_map_inneraliasboundedwstringhelper_inneraliassequencehelper;
     }
 
     /*!
@@ -34071,16 +33967,19 @@ public:
      * @param _var_map_inneraliasboundedwstringhelper_inneraliassequencehelper New value to be moved in member var_map_inneraliasboundedwstringhelper_inneraliassequencehelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedwstringhelper_inneraliassequencehelper(
-            std::map<Inner_alias_bounded_wstring_helper, Inner_alias_sequence_helper>&& _var_map_inneraliasboundedwstringhelper_inneraliassequencehelper)
+            std::map<Inner_alias_bounded_wstring_helper,
+            Inner_alias_sequence_helper>&& _var_map_inneraliasboundedwstringhelper_inneraliassequencehelper)
     {
-        m_var_map_inneraliasboundedwstringhelper_inneraliassequencehelper = std::move(_var_map_inneraliasboundedwstringhelper_inneraliassequencehelper);
+        m_var_map_inneraliasboundedwstringhelper_inneraliassequencehelper =
+                std::move(_var_map_inneraliasboundedwstringhelper_inneraliassequencehelper);
     }
 
     /*!
      * @brief This function returns a constant reference to member var_map_inneraliasboundedwstringhelper_inneraliassequencehelper
      * @return Constant reference to member var_map_inneraliasboundedwstringhelper_inneraliassequencehelper
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper, Inner_alias_sequence_helper>& var_map_inneraliasboundedwstringhelper_inneraliassequencehelper() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper,
+            Inner_alias_sequence_helper>& var_map_inneraliasboundedwstringhelper_inneraliassequencehelper() const
     {
         return m_var_map_inneraliasboundedwstringhelper_inneraliassequencehelper;
     }
@@ -34089,16 +33988,16 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedwstringhelper_inneraliassequencehelper
      * @return Reference to member var_map_inneraliasboundedwstringhelper_inneraliassequencehelper
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper, Inner_alias_sequence_helper>& var_map_inneraliasboundedwstringhelper_inneraliassequencehelper()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper,
+            Inner_alias_sequence_helper>& var_map_inneraliasboundedwstringhelper_inneraliassequencehelper()
     {
         return m_var_map_inneraliasboundedwstringhelper_inneraliassequencehelper;
     }
 
-
-
 private:
 
-    std::map<Inner_alias_bounded_wstring_helper, Inner_alias_sequence_helper> m_var_map_inneraliasboundedwstringhelper_inneraliassequencehelper;
+    std::map<Inner_alias_bounded_wstring_helper,
+            Inner_alias_sequence_helper> m_var_map_inneraliasboundedwstringhelper_inneraliassequencehelper;
 
 };
 /*!
@@ -34130,7 +34029,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedWStringHelperInnerAliasMapHelper(
             const MapInnerAliasBoundedWStringHelperInnerAliasMapHelper& x)
     {
-                    m_var_map_inneraliasboundedwstringhelper_inneraliasmaphelper = x.m_var_map_inneraliasboundedwstringhelper_inneraliasmaphelper;
+        m_var_map_inneraliasboundedwstringhelper_inneraliasmaphelper =
+                x.m_var_map_inneraliasboundedwstringhelper_inneraliasmaphelper;
 
     }
 
@@ -34141,7 +34041,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedWStringHelperInnerAliasMapHelper(
             MapInnerAliasBoundedWStringHelperInnerAliasMapHelper&& x) noexcept
     {
-        m_var_map_inneraliasboundedwstringhelper_inneraliasmaphelper = std::move(x.m_var_map_inneraliasboundedwstringhelper_inneraliasmaphelper);
+        m_var_map_inneraliasboundedwstringhelper_inneraliasmaphelper =
+                std::move(x.m_var_map_inneraliasboundedwstringhelper_inneraliasmaphelper);
     }
 
     /*!
@@ -34152,7 +34053,8 @@ public:
             const MapInnerAliasBoundedWStringHelperInnerAliasMapHelper& x)
     {
 
-                    m_var_map_inneraliasboundedwstringhelper_inneraliasmaphelper = x.m_var_map_inneraliasboundedwstringhelper_inneraliasmaphelper;
+        m_var_map_inneraliasboundedwstringhelper_inneraliasmaphelper =
+                x.m_var_map_inneraliasboundedwstringhelper_inneraliasmaphelper;
 
         return *this;
     }
@@ -34165,7 +34067,8 @@ public:
             MapInnerAliasBoundedWStringHelperInnerAliasMapHelper&& x) noexcept
     {
 
-        m_var_map_inneraliasboundedwstringhelper_inneraliasmaphelper = std::move(x.m_var_map_inneraliasboundedwstringhelper_inneraliasmaphelper);
+        m_var_map_inneraliasboundedwstringhelper_inneraliasmaphelper =
+                std::move(x.m_var_map_inneraliasboundedwstringhelper_inneraliasmaphelper);
         return *this;
     }
 
@@ -34176,7 +34079,8 @@ public:
     eProsima_user_DllExport bool operator ==(
             const MapInnerAliasBoundedWStringHelperInnerAliasMapHelper& x) const
     {
-        return (m_var_map_inneraliasboundedwstringhelper_inneraliasmaphelper == x.m_var_map_inneraliasboundedwstringhelper_inneraliasmaphelper);
+        return (m_var_map_inneraliasboundedwstringhelper_inneraliasmaphelper ==
+               x.m_var_map_inneraliasboundedwstringhelper_inneraliasmaphelper);
     }
 
     /*!
@@ -34194,9 +34098,11 @@ public:
      * @param _var_map_inneraliasboundedwstringhelper_inneraliasmaphelper New value to be copied in member var_map_inneraliasboundedwstringhelper_inneraliasmaphelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedwstringhelper_inneraliasmaphelper(
-            const std::map<Inner_alias_bounded_wstring_helper, Inner_alias_map_helper>& _var_map_inneraliasboundedwstringhelper_inneraliasmaphelper)
+            const std::map<Inner_alias_bounded_wstring_helper,
+            Inner_alias_map_helper>& _var_map_inneraliasboundedwstringhelper_inneraliasmaphelper)
     {
-        m_var_map_inneraliasboundedwstringhelper_inneraliasmaphelper = _var_map_inneraliasboundedwstringhelper_inneraliasmaphelper;
+        m_var_map_inneraliasboundedwstringhelper_inneraliasmaphelper =
+                _var_map_inneraliasboundedwstringhelper_inneraliasmaphelper;
     }
 
     /*!
@@ -34204,16 +34110,19 @@ public:
      * @param _var_map_inneraliasboundedwstringhelper_inneraliasmaphelper New value to be moved in member var_map_inneraliasboundedwstringhelper_inneraliasmaphelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedwstringhelper_inneraliasmaphelper(
-            std::map<Inner_alias_bounded_wstring_helper, Inner_alias_map_helper>&& _var_map_inneraliasboundedwstringhelper_inneraliasmaphelper)
+            std::map<Inner_alias_bounded_wstring_helper,
+            Inner_alias_map_helper>&& _var_map_inneraliasboundedwstringhelper_inneraliasmaphelper)
     {
-        m_var_map_inneraliasboundedwstringhelper_inneraliasmaphelper = std::move(_var_map_inneraliasboundedwstringhelper_inneraliasmaphelper);
+        m_var_map_inneraliasboundedwstringhelper_inneraliasmaphelper =
+                std::move(_var_map_inneraliasboundedwstringhelper_inneraliasmaphelper);
     }
 
     /*!
      * @brief This function returns a constant reference to member var_map_inneraliasboundedwstringhelper_inneraliasmaphelper
      * @return Constant reference to member var_map_inneraliasboundedwstringhelper_inneraliasmaphelper
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper, Inner_alias_map_helper>& var_map_inneraliasboundedwstringhelper_inneraliasmaphelper() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper,
+            Inner_alias_map_helper>& var_map_inneraliasboundedwstringhelper_inneraliasmaphelper() const
     {
         return m_var_map_inneraliasboundedwstringhelper_inneraliasmaphelper;
     }
@@ -34222,16 +34131,16 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedwstringhelper_inneraliasmaphelper
      * @return Reference to member var_map_inneraliasboundedwstringhelper_inneraliasmaphelper
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper, Inner_alias_map_helper>& var_map_inneraliasboundedwstringhelper_inneraliasmaphelper()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper,
+            Inner_alias_map_helper>& var_map_inneraliasboundedwstringhelper_inneraliasmaphelper()
     {
         return m_var_map_inneraliasboundedwstringhelper_inneraliasmaphelper;
     }
 
-
-
 private:
 
-    std::map<Inner_alias_bounded_wstring_helper, Inner_alias_map_helper> m_var_map_inneraliasboundedwstringhelper_inneraliasmaphelper;
+    std::map<Inner_alias_bounded_wstring_helper,
+            Inner_alias_map_helper> m_var_map_inneraliasboundedwstringhelper_inneraliasmaphelper;
 
 };
 /*!
@@ -34263,7 +34172,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedWStringHelperInnerUnionHelper(
             const MapInnerAliasBoundedWStringHelperInnerUnionHelper& x)
     {
-                    m_var_map_inneraliasboundedwstringhelper_innerunionhelper = x.m_var_map_inneraliasboundedwstringhelper_innerunionhelper;
+        m_var_map_inneraliasboundedwstringhelper_innerunionhelper =
+                x.m_var_map_inneraliasboundedwstringhelper_innerunionhelper;
 
     }
 
@@ -34274,7 +34184,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedWStringHelperInnerUnionHelper(
             MapInnerAliasBoundedWStringHelperInnerUnionHelper&& x) noexcept
     {
-        m_var_map_inneraliasboundedwstringhelper_innerunionhelper = std::move(x.m_var_map_inneraliasboundedwstringhelper_innerunionhelper);
+        m_var_map_inneraliasboundedwstringhelper_innerunionhelper =
+                std::move(x.m_var_map_inneraliasboundedwstringhelper_innerunionhelper);
     }
 
     /*!
@@ -34285,7 +34196,8 @@ public:
             const MapInnerAliasBoundedWStringHelperInnerUnionHelper& x)
     {
 
-                    m_var_map_inneraliasboundedwstringhelper_innerunionhelper = x.m_var_map_inneraliasboundedwstringhelper_innerunionhelper;
+        m_var_map_inneraliasboundedwstringhelper_innerunionhelper =
+                x.m_var_map_inneraliasboundedwstringhelper_innerunionhelper;
 
         return *this;
     }
@@ -34298,7 +34210,8 @@ public:
             MapInnerAliasBoundedWStringHelperInnerUnionHelper&& x) noexcept
     {
 
-        m_var_map_inneraliasboundedwstringhelper_innerunionhelper = std::move(x.m_var_map_inneraliasboundedwstringhelper_innerunionhelper);
+        m_var_map_inneraliasboundedwstringhelper_innerunionhelper =
+                std::move(x.m_var_map_inneraliasboundedwstringhelper_innerunionhelper);
         return *this;
     }
 
@@ -34309,7 +34222,8 @@ public:
     eProsima_user_DllExport bool operator ==(
             const MapInnerAliasBoundedWStringHelperInnerUnionHelper& x) const
     {
-        return (m_var_map_inneraliasboundedwstringhelper_innerunionhelper == x.m_var_map_inneraliasboundedwstringhelper_innerunionhelper);
+        return (m_var_map_inneraliasboundedwstringhelper_innerunionhelper ==
+               x.m_var_map_inneraliasboundedwstringhelper_innerunionhelper);
     }
 
     /*!
@@ -34327,9 +34241,11 @@ public:
      * @param _var_map_inneraliasboundedwstringhelper_innerunionhelper New value to be copied in member var_map_inneraliasboundedwstringhelper_innerunionhelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedwstringhelper_innerunionhelper(
-            const std::map<Inner_alias_bounded_wstring_helper, InnerUnionHelper>& _var_map_inneraliasboundedwstringhelper_innerunionhelper)
+            const std::map<Inner_alias_bounded_wstring_helper,
+            InnerUnionHelper>& _var_map_inneraliasboundedwstringhelper_innerunionhelper)
     {
-        m_var_map_inneraliasboundedwstringhelper_innerunionhelper = _var_map_inneraliasboundedwstringhelper_innerunionhelper;
+        m_var_map_inneraliasboundedwstringhelper_innerunionhelper =
+                _var_map_inneraliasboundedwstringhelper_innerunionhelper;
     }
 
     /*!
@@ -34337,16 +34253,19 @@ public:
      * @param _var_map_inneraliasboundedwstringhelper_innerunionhelper New value to be moved in member var_map_inneraliasboundedwstringhelper_innerunionhelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedwstringhelper_innerunionhelper(
-            std::map<Inner_alias_bounded_wstring_helper, InnerUnionHelper>&& _var_map_inneraliasboundedwstringhelper_innerunionhelper)
+            std::map<Inner_alias_bounded_wstring_helper,
+            InnerUnionHelper>&& _var_map_inneraliasboundedwstringhelper_innerunionhelper)
     {
-        m_var_map_inneraliasboundedwstringhelper_innerunionhelper = std::move(_var_map_inneraliasboundedwstringhelper_innerunionhelper);
+        m_var_map_inneraliasboundedwstringhelper_innerunionhelper =
+                std::move(_var_map_inneraliasboundedwstringhelper_innerunionhelper);
     }
 
     /*!
      * @brief This function returns a constant reference to member var_map_inneraliasboundedwstringhelper_innerunionhelper
      * @return Constant reference to member var_map_inneraliasboundedwstringhelper_innerunionhelper
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper, InnerUnionHelper>& var_map_inneraliasboundedwstringhelper_innerunionhelper() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper,
+            InnerUnionHelper>& var_map_inneraliasboundedwstringhelper_innerunionhelper() const
     {
         return m_var_map_inneraliasboundedwstringhelper_innerunionhelper;
     }
@@ -34355,16 +34274,16 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedwstringhelper_innerunionhelper
      * @return Reference to member var_map_inneraliasboundedwstringhelper_innerunionhelper
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper, InnerUnionHelper>& var_map_inneraliasboundedwstringhelper_innerunionhelper()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper,
+            InnerUnionHelper>& var_map_inneraliasboundedwstringhelper_innerunionhelper()
     {
         return m_var_map_inneraliasboundedwstringhelper_innerunionhelper;
     }
 
-
-
 private:
 
-    std::map<Inner_alias_bounded_wstring_helper, InnerUnionHelper> m_var_map_inneraliasboundedwstringhelper_innerunionhelper;
+    std::map<Inner_alias_bounded_wstring_helper,
+            InnerUnionHelper> m_var_map_inneraliasboundedwstringhelper_innerunionhelper;
 
 };
 /*!
@@ -34396,7 +34315,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedWStringHelperInnerStructureHelper(
             const MapInnerAliasBoundedWStringHelperInnerStructureHelper& x)
     {
-                    m_var_map_inneraliasboundedwstringhelper_innerstructurehelper = x.m_var_map_inneraliasboundedwstringhelper_innerstructurehelper;
+        m_var_map_inneraliasboundedwstringhelper_innerstructurehelper =
+                x.m_var_map_inneraliasboundedwstringhelper_innerstructurehelper;
 
     }
 
@@ -34407,7 +34327,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedWStringHelperInnerStructureHelper(
             MapInnerAliasBoundedWStringHelperInnerStructureHelper&& x) noexcept
     {
-        m_var_map_inneraliasboundedwstringhelper_innerstructurehelper = std::move(x.m_var_map_inneraliasboundedwstringhelper_innerstructurehelper);
+        m_var_map_inneraliasboundedwstringhelper_innerstructurehelper =
+                std::move(x.m_var_map_inneraliasboundedwstringhelper_innerstructurehelper);
     }
 
     /*!
@@ -34418,7 +34339,8 @@ public:
             const MapInnerAliasBoundedWStringHelperInnerStructureHelper& x)
     {
 
-                    m_var_map_inneraliasboundedwstringhelper_innerstructurehelper = x.m_var_map_inneraliasboundedwstringhelper_innerstructurehelper;
+        m_var_map_inneraliasboundedwstringhelper_innerstructurehelper =
+                x.m_var_map_inneraliasboundedwstringhelper_innerstructurehelper;
 
         return *this;
     }
@@ -34431,7 +34353,8 @@ public:
             MapInnerAliasBoundedWStringHelperInnerStructureHelper&& x) noexcept
     {
 
-        m_var_map_inneraliasboundedwstringhelper_innerstructurehelper = std::move(x.m_var_map_inneraliasboundedwstringhelper_innerstructurehelper);
+        m_var_map_inneraliasboundedwstringhelper_innerstructurehelper =
+                std::move(x.m_var_map_inneraliasboundedwstringhelper_innerstructurehelper);
         return *this;
     }
 
@@ -34442,7 +34365,8 @@ public:
     eProsima_user_DllExport bool operator ==(
             const MapInnerAliasBoundedWStringHelperInnerStructureHelper& x) const
     {
-        return (m_var_map_inneraliasboundedwstringhelper_innerstructurehelper == x.m_var_map_inneraliasboundedwstringhelper_innerstructurehelper);
+        return (m_var_map_inneraliasboundedwstringhelper_innerstructurehelper ==
+               x.m_var_map_inneraliasboundedwstringhelper_innerstructurehelper);
     }
 
     /*!
@@ -34460,9 +34384,11 @@ public:
      * @param _var_map_inneraliasboundedwstringhelper_innerstructurehelper New value to be copied in member var_map_inneraliasboundedwstringhelper_innerstructurehelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedwstringhelper_innerstructurehelper(
-            const std::map<Inner_alias_bounded_wstring_helper, InnerStructureHelper>& _var_map_inneraliasboundedwstringhelper_innerstructurehelper)
+            const std::map<Inner_alias_bounded_wstring_helper,
+            InnerStructureHelper>& _var_map_inneraliasboundedwstringhelper_innerstructurehelper)
     {
-        m_var_map_inneraliasboundedwstringhelper_innerstructurehelper = _var_map_inneraliasboundedwstringhelper_innerstructurehelper;
+        m_var_map_inneraliasboundedwstringhelper_innerstructurehelper =
+                _var_map_inneraliasboundedwstringhelper_innerstructurehelper;
     }
 
     /*!
@@ -34470,16 +34396,19 @@ public:
      * @param _var_map_inneraliasboundedwstringhelper_innerstructurehelper New value to be moved in member var_map_inneraliasboundedwstringhelper_innerstructurehelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedwstringhelper_innerstructurehelper(
-            std::map<Inner_alias_bounded_wstring_helper, InnerStructureHelper>&& _var_map_inneraliasboundedwstringhelper_innerstructurehelper)
+            std::map<Inner_alias_bounded_wstring_helper,
+            InnerStructureHelper>&& _var_map_inneraliasboundedwstringhelper_innerstructurehelper)
     {
-        m_var_map_inneraliasboundedwstringhelper_innerstructurehelper = std::move(_var_map_inneraliasboundedwstringhelper_innerstructurehelper);
+        m_var_map_inneraliasboundedwstringhelper_innerstructurehelper =
+                std::move(_var_map_inneraliasboundedwstringhelper_innerstructurehelper);
     }
 
     /*!
      * @brief This function returns a constant reference to member var_map_inneraliasboundedwstringhelper_innerstructurehelper
      * @return Constant reference to member var_map_inneraliasboundedwstringhelper_innerstructurehelper
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper, InnerStructureHelper>& var_map_inneraliasboundedwstringhelper_innerstructurehelper() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper,
+            InnerStructureHelper>& var_map_inneraliasboundedwstringhelper_innerstructurehelper() const
     {
         return m_var_map_inneraliasboundedwstringhelper_innerstructurehelper;
     }
@@ -34488,16 +34417,16 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedwstringhelper_innerstructurehelper
      * @return Reference to member var_map_inneraliasboundedwstringhelper_innerstructurehelper
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper, InnerStructureHelper>& var_map_inneraliasboundedwstringhelper_innerstructurehelper()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper,
+            InnerStructureHelper>& var_map_inneraliasboundedwstringhelper_innerstructurehelper()
     {
         return m_var_map_inneraliasboundedwstringhelper_innerstructurehelper;
     }
 
-
-
 private:
 
-    std::map<Inner_alias_bounded_wstring_helper, InnerStructureHelper> m_var_map_inneraliasboundedwstringhelper_innerstructurehelper;
+    std::map<Inner_alias_bounded_wstring_helper,
+            InnerStructureHelper> m_var_map_inneraliasboundedwstringhelper_innerstructurehelper;
 
 };
 /*!
@@ -34529,7 +34458,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedWStringHelperInnerBitsetHelper(
             const MapInnerAliasBoundedWStringHelperInnerBitsetHelper& x)
     {
-                    m_var_map_inneraliasboundedwstringhelper_innerbitsethelper = x.m_var_map_inneraliasboundedwstringhelper_innerbitsethelper;
+        m_var_map_inneraliasboundedwstringhelper_innerbitsethelper =
+                x.m_var_map_inneraliasboundedwstringhelper_innerbitsethelper;
 
     }
 
@@ -34540,7 +34470,8 @@ public:
     eProsima_user_DllExport MapInnerAliasBoundedWStringHelperInnerBitsetHelper(
             MapInnerAliasBoundedWStringHelperInnerBitsetHelper&& x) noexcept
     {
-        m_var_map_inneraliasboundedwstringhelper_innerbitsethelper = std::move(x.m_var_map_inneraliasboundedwstringhelper_innerbitsethelper);
+        m_var_map_inneraliasboundedwstringhelper_innerbitsethelper =
+                std::move(x.m_var_map_inneraliasboundedwstringhelper_innerbitsethelper);
     }
 
     /*!
@@ -34551,7 +34482,8 @@ public:
             const MapInnerAliasBoundedWStringHelperInnerBitsetHelper& x)
     {
 
-                    m_var_map_inneraliasboundedwstringhelper_innerbitsethelper = x.m_var_map_inneraliasboundedwstringhelper_innerbitsethelper;
+        m_var_map_inneraliasboundedwstringhelper_innerbitsethelper =
+                x.m_var_map_inneraliasboundedwstringhelper_innerbitsethelper;
 
         return *this;
     }
@@ -34564,7 +34496,8 @@ public:
             MapInnerAliasBoundedWStringHelperInnerBitsetHelper&& x) noexcept
     {
 
-        m_var_map_inneraliasboundedwstringhelper_innerbitsethelper = std::move(x.m_var_map_inneraliasboundedwstringhelper_innerbitsethelper);
+        m_var_map_inneraliasboundedwstringhelper_innerbitsethelper =
+                std::move(x.m_var_map_inneraliasboundedwstringhelper_innerbitsethelper);
         return *this;
     }
 
@@ -34575,7 +34508,8 @@ public:
     eProsima_user_DllExport bool operator ==(
             const MapInnerAliasBoundedWStringHelperInnerBitsetHelper& x) const
     {
-        return (m_var_map_inneraliasboundedwstringhelper_innerbitsethelper == x.m_var_map_inneraliasboundedwstringhelper_innerbitsethelper);
+        return (m_var_map_inneraliasboundedwstringhelper_innerbitsethelper ==
+               x.m_var_map_inneraliasboundedwstringhelper_innerbitsethelper);
     }
 
     /*!
@@ -34593,9 +34527,11 @@ public:
      * @param _var_map_inneraliasboundedwstringhelper_innerbitsethelper New value to be copied in member var_map_inneraliasboundedwstringhelper_innerbitsethelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedwstringhelper_innerbitsethelper(
-            const std::map<Inner_alias_bounded_wstring_helper, InnerBitsetHelper>& _var_map_inneraliasboundedwstringhelper_innerbitsethelper)
+            const std::map<Inner_alias_bounded_wstring_helper,
+            InnerBitsetHelper>& _var_map_inneraliasboundedwstringhelper_innerbitsethelper)
     {
-        m_var_map_inneraliasboundedwstringhelper_innerbitsethelper = _var_map_inneraliasboundedwstringhelper_innerbitsethelper;
+        m_var_map_inneraliasboundedwstringhelper_innerbitsethelper =
+                _var_map_inneraliasboundedwstringhelper_innerbitsethelper;
     }
 
     /*!
@@ -34603,16 +34539,19 @@ public:
      * @param _var_map_inneraliasboundedwstringhelper_innerbitsethelper New value to be moved in member var_map_inneraliasboundedwstringhelper_innerbitsethelper
      */
     eProsima_user_DllExport void var_map_inneraliasboundedwstringhelper_innerbitsethelper(
-            std::map<Inner_alias_bounded_wstring_helper, InnerBitsetHelper>&& _var_map_inneraliasboundedwstringhelper_innerbitsethelper)
+            std::map<Inner_alias_bounded_wstring_helper,
+            InnerBitsetHelper>&& _var_map_inneraliasboundedwstringhelper_innerbitsethelper)
     {
-        m_var_map_inneraliasboundedwstringhelper_innerbitsethelper = std::move(_var_map_inneraliasboundedwstringhelper_innerbitsethelper);
+        m_var_map_inneraliasboundedwstringhelper_innerbitsethelper =
+                std::move(_var_map_inneraliasboundedwstringhelper_innerbitsethelper);
     }
 
     /*!
      * @brief This function returns a constant reference to member var_map_inneraliasboundedwstringhelper_innerbitsethelper
      * @return Constant reference to member var_map_inneraliasboundedwstringhelper_innerbitsethelper
      */
-    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper, InnerBitsetHelper>& var_map_inneraliasboundedwstringhelper_innerbitsethelper() const
+    eProsima_user_DllExport const std::map<Inner_alias_bounded_wstring_helper,
+            InnerBitsetHelper>& var_map_inneraliasboundedwstringhelper_innerbitsethelper() const
     {
         return m_var_map_inneraliasboundedwstringhelper_innerbitsethelper;
     }
@@ -34621,16 +34560,16 @@ public:
      * @brief This function returns a reference to member var_map_inneraliasboundedwstringhelper_innerbitsethelper
      * @return Reference to member var_map_inneraliasboundedwstringhelper_innerbitsethelper
      */
-    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper, InnerBitsetHelper>& var_map_inneraliasboundedwstringhelper_innerbitsethelper()
+    eProsima_user_DllExport std::map<Inner_alias_bounded_wstring_helper,
+            InnerBitsetHelper>& var_map_inneraliasboundedwstringhelper_innerbitsethelper()
     {
         return m_var_map_inneraliasboundedwstringhelper_innerbitsethelper;
     }
 
-
-
 private:
 
-    std::map<Inner_alias_bounded_wstring_helper, InnerBitsetHelper> m_var_map_inneraliasboundedwstringhelper_innerbitsethelper;
+    std::map<Inner_alias_bounded_wstring_helper,
+            InnerBitsetHelper> m_var_map_inneraliasboundedwstringhelper_innerbitsethelper;
 
 };
 /*!
@@ -34662,11 +34601,11 @@ public:
     eProsima_user_DllExport BoundedSmallMap(
             const BoundedSmallMap& x)
     {
-                    m_var_small_map = x.m_var_small_map;
+        m_var_small_map = x.m_var_small_map;
 
-                    m_var_unbounded_string_long_bounded_small_map = x.m_var_unbounded_string_long_bounded_small_map;
+        m_var_unbounded_string_long_bounded_small_map = x.m_var_unbounded_string_long_bounded_small_map;
 
-                    m_var_long_unbounded_string_bounded_small_map = x.m_var_long_unbounded_string_bounded_small_map;
+        m_var_long_unbounded_string_bounded_small_map = x.m_var_long_unbounded_string_bounded_small_map;
 
     }
 
@@ -34690,11 +34629,11 @@ public:
             const BoundedSmallMap& x)
     {
 
-                    m_var_small_map = x.m_var_small_map;
+        m_var_small_map = x.m_var_small_map;
 
-                    m_var_unbounded_string_long_bounded_small_map = x.m_var_unbounded_string_long_bounded_small_map;
+        m_var_unbounded_string_long_bounded_small_map = x.m_var_unbounded_string_long_bounded_small_map;
 
-                    m_var_long_unbounded_string_bounded_small_map = x.m_var_long_unbounded_string_bounded_small_map;
+        m_var_long_unbounded_string_bounded_small_map = x.m_var_long_unbounded_string_bounded_small_map;
 
         return *this;
     }
@@ -34721,8 +34660,8 @@ public:
             const BoundedSmallMap& x) const
     {
         return (m_var_small_map == x.m_var_small_map &&
-           m_var_unbounded_string_long_bounded_small_map == x.m_var_unbounded_string_long_bounded_small_map &&
-           m_var_long_unbounded_string_bounded_small_map == x.m_var_long_unbounded_string_bounded_small_map);
+               m_var_unbounded_string_long_bounded_small_map == x.m_var_unbounded_string_long_bounded_small_map &&
+               m_var_long_unbounded_string_bounded_small_map == x.m_var_long_unbounded_string_bounded_small_map);
     }
 
     /*!
@@ -34773,7 +34712,6 @@ public:
         return m_var_small_map;
     }
 
-
     /*!
      * @brief This function copies the value in member var_unbounded_string_long_bounded_small_map
      * @param _var_unbounded_string_long_bounded_small_map New value to be copied in member var_unbounded_string_long_bounded_small_map
@@ -34811,7 +34749,6 @@ public:
     {
         return m_var_unbounded_string_long_bounded_small_map;
     }
-
 
     /*!
      * @brief This function copies the value in member var_long_unbounded_string_bounded_small_map
@@ -34851,8 +34788,6 @@ public:
         return m_var_long_unbounded_string_bounded_small_map;
     }
 
-
-
 private:
 
     std::map<int32_t, int32_t> m_var_small_map;
@@ -34889,11 +34824,11 @@ public:
     eProsima_user_DllExport BoundedLargeMap(
             const BoundedLargeMap& x)
     {
-                    m_var_large_map = x.m_var_large_map;
+        m_var_large_map = x.m_var_large_map;
 
-                    m_var_unbounded_string_long_bounded_large_map = x.m_var_unbounded_string_long_bounded_large_map;
+        m_var_unbounded_string_long_bounded_large_map = x.m_var_unbounded_string_long_bounded_large_map;
 
-                    m_var_long_unbounded_string_bounded_large_map = x.m_var_long_unbounded_string_bounded_large_map;
+        m_var_long_unbounded_string_bounded_large_map = x.m_var_long_unbounded_string_bounded_large_map;
 
     }
 
@@ -34917,11 +34852,11 @@ public:
             const BoundedLargeMap& x)
     {
 
-                    m_var_large_map = x.m_var_large_map;
+        m_var_large_map = x.m_var_large_map;
 
-                    m_var_unbounded_string_long_bounded_large_map = x.m_var_unbounded_string_long_bounded_large_map;
+        m_var_unbounded_string_long_bounded_large_map = x.m_var_unbounded_string_long_bounded_large_map;
 
-                    m_var_long_unbounded_string_bounded_large_map = x.m_var_long_unbounded_string_bounded_large_map;
+        m_var_long_unbounded_string_bounded_large_map = x.m_var_long_unbounded_string_bounded_large_map;
 
         return *this;
     }
@@ -34948,8 +34883,8 @@ public:
             const BoundedLargeMap& x) const
     {
         return (m_var_large_map == x.m_var_large_map &&
-           m_var_unbounded_string_long_bounded_large_map == x.m_var_unbounded_string_long_bounded_large_map &&
-           m_var_long_unbounded_string_bounded_large_map == x.m_var_long_unbounded_string_bounded_large_map);
+               m_var_unbounded_string_long_bounded_large_map == x.m_var_unbounded_string_long_bounded_large_map &&
+               m_var_long_unbounded_string_bounded_large_map == x.m_var_long_unbounded_string_bounded_large_map);
     }
 
     /*!
@@ -35000,7 +34935,6 @@ public:
         return m_var_large_map;
     }
 
-
     /*!
      * @brief This function copies the value in member var_unbounded_string_long_bounded_large_map
      * @param _var_unbounded_string_long_bounded_large_map New value to be copied in member var_unbounded_string_long_bounded_large_map
@@ -35039,7 +34973,6 @@ public:
         return m_var_unbounded_string_long_bounded_large_map;
     }
 
-
     /*!
      * @brief This function copies the value in member var_long_unbounded_string_bounded_large_map
      * @param _var_long_unbounded_string_bounded_large_map New value to be copied in member var_long_unbounded_string_bounded_large_map
@@ -35077,8 +35010,6 @@ public:
     {
         return m_var_long_unbounded_string_bounded_large_map;
     }
-
-
 
 private:
 

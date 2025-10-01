@@ -135,7 +135,7 @@ public:
     eProsima_user_DllExport AliasInt16(
             const AliasInt16& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -157,7 +157,7 @@ public:
             const AliasInt16& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -222,8 +222,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     alias_int16 m_value{0};
@@ -258,7 +256,7 @@ public:
     eProsima_user_DllExport AliasUint16(
             const AliasUint16& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -280,7 +278,7 @@ public:
             const AliasUint16& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -345,8 +343,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     alias_uint16 m_value{0};
@@ -381,7 +377,7 @@ public:
     eProsima_user_DllExport AliasInt32(
             const AliasInt32& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -403,7 +399,7 @@ public:
             const AliasInt32& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -468,8 +464,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     alias_int32 m_value{0};
@@ -504,7 +498,7 @@ public:
     eProsima_user_DllExport AliasUInt32(
             const AliasUInt32& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -526,7 +520,7 @@ public:
             const AliasUInt32& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -591,8 +585,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     alias_uint32 m_value{0};
@@ -627,7 +619,7 @@ public:
     eProsima_user_DllExport AliasInt64(
             const AliasInt64& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -649,7 +641,7 @@ public:
             const AliasInt64& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -714,8 +706,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     alias_int64 m_value{0};
@@ -750,7 +740,7 @@ public:
     eProsima_user_DllExport AliasUInt64(
             const AliasUInt64& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -772,7 +762,7 @@ public:
             const AliasUInt64& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -837,8 +827,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     alias_uint64 m_value{0};
@@ -873,7 +861,7 @@ public:
     eProsima_user_DllExport AliasFloat32(
             const AliasFloat32& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -895,7 +883,7 @@ public:
             const AliasFloat32& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -960,8 +948,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     alias_float32 m_value{0.0};
@@ -996,7 +982,7 @@ public:
     eProsima_user_DllExport AliasFloat64(
             const AliasFloat64& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -1018,7 +1004,7 @@ public:
             const AliasFloat64& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -1083,8 +1069,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     alias_float64 m_value{0.0};
@@ -1119,7 +1103,7 @@ public:
     eProsima_user_DllExport AliasFloat128(
             const AliasFloat128& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -1141,7 +1125,7 @@ public:
             const AliasFloat128& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -1206,8 +1190,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     alias_float128 m_value{0.0};
@@ -1242,7 +1224,7 @@ public:
     eProsima_user_DllExport AliasBool(
             const AliasBool& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -1264,7 +1246,7 @@ public:
             const AliasBool& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -1329,8 +1311,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     alias_bool m_value{false};
@@ -1365,7 +1345,7 @@ public:
     eProsima_user_DllExport AliasOctet(
             const AliasOctet& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -1387,7 +1367,7 @@ public:
             const AliasOctet& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -1452,8 +1432,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     alias_octet m_value{0};
@@ -1488,7 +1466,7 @@ public:
     eProsima_user_DllExport AliasChar8(
             const AliasChar8& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -1510,7 +1488,7 @@ public:
             const AliasChar8& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -1575,8 +1553,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     alias_char8 m_value{0};
@@ -1611,7 +1587,7 @@ public:
     eProsima_user_DllExport AliasChar16(
             const AliasChar16& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -1633,7 +1609,7 @@ public:
             const AliasChar16& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -1698,8 +1674,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     alias_char16 m_value{0};
@@ -1734,7 +1708,7 @@ public:
     eProsima_user_DllExport AliasString8(
             const AliasString8& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -1756,7 +1730,7 @@ public:
             const AliasString8& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -1831,8 +1805,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     alias_string8 m_value;
@@ -1867,7 +1839,7 @@ public:
     eProsima_user_DllExport AliasString16(
             const AliasString16& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -1889,7 +1861,7 @@ public:
             const AliasString16& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -1964,8 +1936,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     alias_string16 m_value;
@@ -2000,7 +1970,7 @@ public:
     eProsima_user_DllExport AliasEnum(
             const AliasEnum& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -2022,7 +1992,7 @@ public:
             const AliasEnum& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -2087,8 +2057,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     alias_enum m_value{InnerEnumHelper::ENUM_VALUE_1};
@@ -2123,7 +2091,7 @@ public:
     eProsima_user_DllExport AliasBitmask(
             const AliasBitmask& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -2145,7 +2113,7 @@ public:
             const AliasBitmask& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -2220,8 +2188,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     alias_bitmask m_value{0};
@@ -2256,7 +2222,7 @@ public:
     eProsima_user_DllExport AliasAlias(
             const AliasAlias& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -2278,7 +2244,7 @@ public:
             const AliasAlias& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -2343,8 +2309,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     alias_alias m_value{0};
@@ -2379,7 +2343,7 @@ public:
     eProsima_user_DllExport AliasArray(
             const AliasArray& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -2401,7 +2365,7 @@ public:
             const AliasArray& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -2476,8 +2440,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     alias_array m_value{0};
@@ -2512,7 +2474,7 @@ public:
     eProsima_user_DllExport AliasMultiArray(
             const AliasMultiArray& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -2534,7 +2496,7 @@ public:
             const AliasMultiArray& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -2609,8 +2571,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     alias_multiarray m_value{ {{0}} };
@@ -2645,7 +2605,7 @@ public:
     eProsima_user_DllExport AliasSequence(
             const AliasSequence& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -2667,7 +2627,7 @@ public:
             const AliasSequence& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -2742,8 +2702,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     alias_sequence m_value;
@@ -2778,7 +2736,7 @@ public:
     eProsima_user_DllExport AliasMap(
             const AliasMap& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -2800,7 +2758,7 @@ public:
             const AliasMap& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -2875,8 +2833,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     alias_map m_value;
@@ -2911,7 +2867,7 @@ public:
     eProsima_user_DllExport AliasUnion(
             const AliasUnion& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -2933,7 +2889,7 @@ public:
             const AliasUnion& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -3008,8 +2964,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     alias_union m_value;
@@ -3044,7 +2998,7 @@ public:
     eProsima_user_DllExport AliasStruct(
             const AliasStruct& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -3066,7 +3020,7 @@ public:
             const AliasStruct& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -3141,8 +3095,6 @@ public:
         return m_value;
     }
 
-
-
 private:
 
     alias_structure m_value;
@@ -3177,7 +3129,7 @@ public:
     eProsima_user_DllExport AliasBitset(
             const AliasBitset& x)
     {
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
     }
 
@@ -3199,7 +3151,7 @@ public:
             const AliasBitset& x)
     {
 
-                    m_value = x.m_value;
+        m_value = x.m_value;
 
         return *this;
     }
@@ -3273,8 +3225,6 @@ public:
     {
         return m_value;
     }
-
-
 
 private:
 

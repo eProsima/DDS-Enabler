@@ -66,7 +66,9 @@ DDSEnabler::DDSEnabler(
         [this](const std::string& action_name, const UUID& action_id)
         {
             if (this->send_action_get_result_request(action_name, action_id))
+            {
                 return true;
+            }
             this->cancel_action_goal(action_name, action_id, 0);
             return false;
         });
@@ -78,7 +80,8 @@ DDSEnabler::DDSEnabler(
         });
 
     handler_->set_send_action_get_result_reply_callback(
-        [this](const std::string& action_name, const UUID& goal_id, const std::string& reply_json, const uint64_t request_id)
+        [this](const std::string& action_name, const UUID& goal_id, const std::string& reply_json,
+        const uint64_t request_id)
         {
             return this->send_action_get_result_reply(action_name, goal_id, reply_json, request_id);
         });
@@ -290,10 +293,10 @@ bool DDSEnabler::publish(
 }
 
 bool DDSEnabler::send_service_request(
-    const std::string& service_name,
-    const std::string& json,
-    uint64_t& request_id,
-    participants::RPC_PROTOCOL rpc_protocol)
+        const std::string& service_name,
+        const std::string& json,
+        uint64_t& request_id,
+        participants::RPC_PROTOCOL rpc_protocol)
 {
     std::string prefix, suffix;
     switch (rpc_protocol)
@@ -314,31 +317,33 @@ bool DDSEnabler::send_service_request(
 
     request_id = handler_->get_new_request_id();
     if (!enabler_participant_->publish_rpc(
-            prefix + service_name + suffix,
-            json,
-            request_id))
+                prefix + service_name + suffix,
+                json,
+                request_id))
+    {
         return false;
+    }
 
     return true;
 }
 
 bool DDSEnabler::announce_service(
-    const std::string& service_name,
-    participants::RPC_PROTOCOL rpc_protocol)
+        const std::string& service_name,
+        participants::RPC_PROTOCOL rpc_protocol)
 {
     return enabler_participant_->announce_service(service_name, rpc_protocol);
 }
 
 bool DDSEnabler::revoke_service(
-    const std::string& service_name)
+        const std::string& service_name)
 {
     return enabler_participant_->revoke_service(service_name);
 }
 
 bool DDSEnabler::send_service_reply(
-    const std::string& service_name,
-    const std::string& json,
-    const uint64_t request_id)
+        const std::string& service_name,
+        const std::string& json,
+        const uint64_t request_id)
 {
     RPC_PROTOCOL rpc_protocol = enabler_participant_->get_service_rpc_protocol(service_name);
     std::string prefix, suffix;
@@ -359,26 +364,26 @@ bool DDSEnabler::send_service_reply(
     }
 
     return enabler_participant_->publish_rpc(
-            prefix + service_name + suffix,
-            json,
-            request_id);
+        prefix + service_name + suffix,
+        json,
+        request_id);
 }
 
 bool DDSEnabler::send_action_goal(
-    const std::string& action_name,
-    const std::string& json,
-    UUID& action_id,
-    participants::RPC_PROTOCOL rpc_protocol)
+        const std::string& action_name,
+        const std::string& json,
+        UUID& action_id,
+        participants::RPC_PROTOCOL rpc_protocol)
 {
     std::string goal_json = RpcUtils::create_goal_request_msg(json, action_id);
     std::string goal_request_topic = action_name + participants::ACTION_GOAL_SUFFIX;
     uint64_t goal_request_id = 0;
 
     if (!send_service_request(
-            goal_request_topic,
-            goal_json,
-            goal_request_id,
-            rpc_protocol))
+                goal_request_topic,
+                goal_json,
+                goal_request_id,
+                rpc_protocol))
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
                 "Failed to send action goal request to action " << action_name);
@@ -386,11 +391,11 @@ bool DDSEnabler::send_action_goal(
     }
 
     if (!handler_->store_action_request(
-            action_name,
-            action_id,
-            goal_request_id,
-            ACTION_TYPE::ACTION_GOAL,
-            rpc_protocol))
+                action_name,
+                action_id,
+                goal_request_id,
+                ACTION_TYPE::ACTION_GOAL,
+                rpc_protocol))
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
                 "Failed to store action goal request to action " << action_name);
@@ -402,8 +407,8 @@ bool DDSEnabler::send_action_goal(
 }
 
 bool DDSEnabler::send_action_get_result_request(
-    const std::string& action_name,
-    const UUID& action_id)
+        const std::string& action_name,
+        const UUID& action_id)
 {
     std::string json = participants::RpcUtils::create_result_request_msg(action_id);
 
@@ -411,9 +416,9 @@ bool DDSEnabler::send_action_get_result_request(
     uint64_t get_result_request_id = 0;
 
     if (!send_service_request(
-            get_result_request_topic,
-            json,
-            get_result_request_id))
+                get_result_request_topic,
+                json,
+                get_result_request_id))
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
                 "Failed to send action get result request to action " << action_name);
@@ -421,14 +426,14 @@ bool DDSEnabler::send_action_get_result_request(
     }
 
     if (!handler_->store_action_request(
-            action_name,
-            action_id,
-            get_result_request_id,
-            ACTION_TYPE::ACTION_RESULT))
+                action_name,
+                action_id,
+                get_result_request_id,
+                ACTION_TYPE::ACTION_RESULT))
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
                 "Failed to store action get result request to action " << action_name
-                << ": cancelling.");
+                                                                       << ": cancelling.");
         cancel_action_goal(action_name, action_id, 0);
         return false;
     }
@@ -437,16 +442,16 @@ bool DDSEnabler::send_action_get_result_request(
 }
 
 bool DDSEnabler::cancel_action_goal(
-    const std::string& action_name,
-    const participants::UUID& goal_id,
-    const int64_t timestamp)
+        const std::string& action_name,
+        const participants::UUID& goal_id,
+        const int64_t timestamp)
 {
     if (goal_id != participants::UUID() &&
-        !handler_->is_UUID_active(action_name, goal_id))
+            !handler_->is_UUID_active(action_name, goal_id))
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
                 "Failed to cancel action goal for action " << action_name
-                << ": goal id not found.");
+                                                           << ": goal id not found.");
         return false;
     }
 
@@ -456,9 +461,9 @@ bool DDSEnabler::cancel_action_goal(
     std::string cancel_request_topic = action_name + participants::ACTION_CANCEL_SUFFIX;
 
     if (send_service_request(
-            cancel_request_topic,
-            cancel_json,
-            cancel_request_id))
+                cancel_request_topic,
+                cancel_json,
+                cancel_request_id))
     {
         return true;
     }
@@ -469,42 +474,42 @@ bool DDSEnabler::cancel_action_goal(
 }
 
 bool DDSEnabler::announce_action(
-    const std::string& action_name,
-    participants::RPC_PROTOCOL rpc_protocol)
+        const std::string& action_name,
+        participants::RPC_PROTOCOL rpc_protocol)
 {
     return enabler_participant_->announce_action(action_name, rpc_protocol);
 }
 
 bool DDSEnabler::revoke_action(
-    const std::string& action_name)
+        const std::string& action_name)
 {
     return enabler_participant_->revoke_action(action_name);
 }
 
 void DDSEnabler::send_action_send_goal_reply(
-    const std::string& action_name,
-    const uint64_t goal_id,
-    bool accepted)
+        const std::string& action_name,
+        const uint64_t goal_id,
+        bool accepted)
 {
     std::string reply_json = participants::RpcUtils::create_goal_reply_msg(accepted);
 
     if (!send_service_reply(
-            action_name + participants::ACTION_GOAL_SUFFIX,
-            reply_json,
-            goal_id))
+                action_name + participants::ACTION_GOAL_SUFFIX,
+                reply_json,
+                goal_id))
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
                 "Failed to send action goal reply to action " << action_name
-                << ": goal id not found.");
+                                                              << ": goal id not found.");
     }
     return;
 }
 
 bool DDSEnabler::send_action_cancel_goal_reply(
-    const char* action_name,
-    const std::vector<participants::UUID>& goal_ids,
-    const participants::CANCEL_CODE& cancel_code,
-    const uint64_t request_id)
+        const char* action_name,
+        const std::vector<participants::UUID>& goal_ids,
+        const participants::CANCEL_CODE& cancel_code,
+        const uint64_t request_id)
 {
     std::vector<std::pair<participants::UUID, std::chrono::system_clock::time_point>> cancelling_goals;
     for (const auto& goal_id : goal_ids)
@@ -520,29 +525,29 @@ bool DDSEnabler::send_action_cancel_goal_reply(
     std::string reply_json = participants::RpcUtils::create_cancel_reply_msg(cancelling_goals, cancel_code);
 
     if (!send_service_reply(
-            std::string(action_name) + participants::ACTION_CANCEL_SUFFIX,
-            reply_json,
-            request_id))
+                std::string(action_name) + participants::ACTION_CANCEL_SUFFIX,
+                reply_json,
+                request_id))
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
                 "Failed to send action cancel reply to action " << action_name
-                << ": request id not found.");
+                                                                << ": request id not found.");
         return false;
     }
     return true;
 }
 
 bool DDSEnabler::send_action_result(
-    const char* action_name,
-    const participants::UUID& goal_id,
-    const participants::STATUS_CODE& status_code,
-    const char* json)
+        const char* action_name,
+        const participants::UUID& goal_id,
+        const participants::STATUS_CODE& status_code,
+        const char* json)
 {
-    if (!handler_->is_UUID_active(action_name,goal_id))
+    if (!handler_->is_UUID_active(action_name, goal_id))
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
                 "Failed to send action result to action " << action_name
-                << ": goal id not found.");
+                                                          << ": goal id not found.");
         return false;
     }
 
@@ -552,17 +557,17 @@ bool DDSEnabler::send_action_result(
 }
 
 bool DDSEnabler::send_action_get_result_reply(
-    const std::string& action_name,
-    const participants::UUID& goal_id,
-    const std::string& reply_json,
-    const uint64_t request_id)
+        const std::string& action_name,
+        const participants::UUID& goal_id,
+        const std::string& reply_json,
+        const uint64_t request_id)
 {
     std::string result_topic = action_name + participants::ACTION_RESULT_SUFFIX;
 
     if (send_service_reply(
-        result_topic,
-        reply_json,
-        request_id))
+                result_topic,
+                reply_json,
+                request_id))
     {
         handler_->erase_action_UUID(goal_id, ActionEraseReason::FORCED);
         return true;
@@ -572,15 +577,15 @@ bool DDSEnabler::send_action_get_result_reply(
 }
 
 bool DDSEnabler::send_action_feedback(
-    const char* action_name,
-    const char* json,
-    const participants::UUID& goal_id)
+        const char* action_name,
+        const char* json,
+        const participants::UUID& goal_id)
 {
-    if (!handler_->is_UUID_active(action_name,goal_id))
+    if (!handler_->is_UUID_active(action_name, goal_id))
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
                 "Failed to send action feedback to action " << action_name
-                << ": goal id not found.");
+                                                            << ": goal id not found.");
         return false;
     }
 
@@ -598,7 +603,7 @@ bool DDSEnabler::send_action_feedback(
         default:
             EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
                     "Failed to send feedback to action " << action_name
-                    << ": unsupported RPC protocol.");
+                                                         << ": unsupported RPC protocol.");
             return false;
     }
 
@@ -609,16 +614,16 @@ bool DDSEnabler::send_action_feedback(
 }
 
 bool DDSEnabler::update_action_status(
-    const std::string& action_name,
-    const participants::UUID& goal_id,
-    const participants::STATUS_CODE& status_code)
+        const std::string& action_name,
+        const participants::UUID& goal_id,
+        const participants::STATUS_CODE& status_code)
 {
     std::chrono::system_clock::time_point goal_accepted_stamp;
-    if (!handler_->is_UUID_active(action_name,goal_id, &goal_accepted_stamp))
+    if (!handler_->is_UUID_active(action_name, goal_id, &goal_accepted_stamp))
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
                 "Failed to update action status to action " << action_name
-                << ": goal id not found.");
+                                                            << ": goal id not found.");
         return false;
     }
 
@@ -636,7 +641,7 @@ bool DDSEnabler::update_action_status(
         default:
             EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
                     "Failed to send status to action " << action_name
-                    << ": unsupported RPC protocol.");
+                                                       << ": unsupported RPC protocol.");
             return false;
     }
 
@@ -644,7 +649,6 @@ bool DDSEnabler::update_action_status(
     std::string status_topic = prefix + action_name + participants::ACTION_STATUS_SUFFIX;
     return enabler_participant_->publish(status_topic, status_json);
 }
-
 
 } /* namespace ddsenabler */
 } /* namespace eprosima */

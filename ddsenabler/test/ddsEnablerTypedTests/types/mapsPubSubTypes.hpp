@@ -18106,7 +18106,8 @@ private:
  * @brief This class represents the TopicDataType of the type MapInnerAliasBoundedStringHelperInnerAliasBoundedStringHelper defined by the user in the IDL file.
  * @ingroup maps
  */
-class MapInnerAliasBoundedStringHelperInnerAliasBoundedStringHelperPubSubType : public eprosima::fastdds::dds::TopicDataType
+class MapInnerAliasBoundedStringHelperInnerAliasBoundedStringHelperPubSubType : public eprosima::fastdds::dds::
+            TopicDataType
 {
 public:
 
@@ -18187,7 +18188,8 @@ private:
  * @brief This class represents the TopicDataType of the type MapInnerAliasBoundedStringHelperInnerAliasBoundedWStringHelper defined by the user in the IDL file.
  * @ingroup maps
  */
-class MapInnerAliasBoundedStringHelperInnerAliasBoundedWStringHelperPubSubType : public eprosima::fastdds::dds::TopicDataType
+class MapInnerAliasBoundedStringHelperInnerAliasBoundedWStringHelperPubSubType : public eprosima::fastdds::dds::
+            TopicDataType
 {
 public:
 
@@ -20212,7 +20214,8 @@ private:
  * @brief This class represents the TopicDataType of the type MapInnerAliasBoundedWStringHelperInnerAliasBoundedStringHelper defined by the user in the IDL file.
  * @ingroup maps
  */
-class MapInnerAliasBoundedWStringHelperInnerAliasBoundedStringHelperPubSubType : public eprosima::fastdds::dds::TopicDataType
+class MapInnerAliasBoundedWStringHelperInnerAliasBoundedStringHelperPubSubType : public eprosima::fastdds::dds::
+            TopicDataType
 {
 public:
 
@@ -20293,7 +20296,8 @@ private:
  * @brief This class represents the TopicDataType of the type MapInnerAliasBoundedWStringHelperInnerAliasBoundedWStringHelper defined by the user in the IDL file.
  * @ingroup maps
  */
-class MapInnerAliasBoundedWStringHelperInnerAliasBoundedWStringHelperPubSubType : public eprosima::fastdds::dds::TopicDataType
+class MapInnerAliasBoundedWStringHelperInnerAliasBoundedWStringHelperPubSubType : public eprosima::fastdds::dds::
+            TopicDataType
 {
 public:
 
