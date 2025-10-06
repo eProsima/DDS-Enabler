@@ -10,10 +10,10 @@ Users are encouraged to implement their own functional server logic as needed in
 
 ### CLIENT
 ```bash
-./install/ddsenabler/bin/ddsenabler_example_action -client --persistence-path $PATH_TO_WS/DDS-Enabler/ddsenabler/examples/persistence/ --config $PATH_TO_WS/DDS-Enabler/ddsenabler/DDS_ENABLER_CONFIGURATION.yaml --request-initial-wait 3  --cancel-requests false
+./install/ddsenabler/bin/ddsenabler_example_action -client --persistence-path $PATH_TO_WS/ddsenabler/ddsenabler/examples/persistence/ --config $PATH_TO_WS/ddsenabler/ddsenabler/DDS_ENABLER_CONFIGURATION.yaml --request-initial-wait 3  --cancel-requests false
 ```
 
 ### SERVER
 ```bash
-./install/ddsenabler/bin/ddsenabler_example_action -server --persistence-path $PATH_TO_WS/DDS-Enabler/ddsenabler/examples/persistence/ --config $PATH_TO_WS/DDS-Enabler/ddsenabler/DDS_ENABLER_CONFIGURATION.yaml --expected-requests 3
+./install/ddsenabler/bin/ddsenabler_example_action -server --persistence-path $PATH_TO_WS/ddsenabler/ddsenabler/examples/persistence/ --config $PATH_TO_WS/ddsenabler/ddsenabler/DDS_ENABLER_CONFIGURATION.yaml --expected-requests 3
 ```
