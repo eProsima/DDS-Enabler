@@ -97,35 +97,35 @@ RpcInfo remove_prefix_suffix(
     {
         base = base.substr(request_prefix.length());
         base = base.substr(0, base.size() - (request_suffix.length()));
-        rpc_info.service_type = SERVICE_REQUEST;
+        rpc_info.service_type = SERVICE_TYPE::REQUEST;
         rpc_info.service_name = base;
 
         if (base.size() >= (std::strlen(ACTION_GOAL_SUFFIX)) &&
                 base.substr(base.size() - (std::strlen(ACTION_GOAL_SUFFIX))) == ACTION_GOAL_SUFFIX)
         {
             rpc_info.action_name = base.substr(0, base.size() - (std::strlen(ACTION_GOAL_SUFFIX)));
-            rpc_info.rpc_type = RPC_ACTION;
-            rpc_info.action_type = ACTION_GOAL;
+            rpc_info.rpc_type = RPC_TYPE::ACTION;
+            rpc_info.action_type = ACTION_TYPE::GOAL;
             return rpc_info;
         }
         else if (base.size() >= (std::strlen(ACTION_RESULT_SUFFIX)) &&
                 base.substr(base.size() - (std::strlen(ACTION_RESULT_SUFFIX))) == ACTION_RESULT_SUFFIX)
         {
             rpc_info.action_name = base.substr(0, base.size() - (std::strlen(ACTION_RESULT_SUFFIX)));
-            rpc_info.rpc_type = RPC_ACTION;
-            rpc_info.action_type = ACTION_RESULT;
+            rpc_info.rpc_type = RPC_TYPE::ACTION;
+            rpc_info.action_type = ACTION_TYPE::RESULT;
             return rpc_info;
         }
         else if (base.size() >= (std::strlen(ACTION_CANCEL_SUFFIX)) &&
                 base.substr(base.size() - (std::strlen(ACTION_CANCEL_SUFFIX))) == ACTION_CANCEL_SUFFIX)
         {
             rpc_info.action_name = base.substr(0, base.size() - (std::strlen(ACTION_CANCEL_SUFFIX)));
-            rpc_info.rpc_type = RPC_ACTION;
-            rpc_info.action_type = ACTION_CANCEL;
+            rpc_info.rpc_type = RPC_TYPE::ACTION;
+            rpc_info.action_type = ACTION_TYPE::CANCEL;
             return rpc_info;
         }
 
-        rpc_info.rpc_type = RPC_SERVICE;
+        rpc_info.rpc_type = RPC_TYPE::SERVICE;
         return rpc_info;
     }
     if ((base.rfind(reply_prefix, 0) == 0) &&
@@ -134,35 +134,35 @@ RpcInfo remove_prefix_suffix(
     {
         base = base.substr(reply_prefix.length());
         base = base.substr(0, base.size() - (reply_suffix.length()));
-        rpc_info.service_type = SERVICE_REPLY;
+        rpc_info.service_type = SERVICE_TYPE::REPLY;
         rpc_info.service_name = base;
 
         if (base.size() >= (std::strlen(ACTION_GOAL_SUFFIX)) &&
                 base.substr(base.size() - (std::strlen(ACTION_GOAL_SUFFIX))) == ACTION_GOAL_SUFFIX)
         {
             rpc_info.action_name = base.substr(0, base.size() - (std::strlen(ACTION_GOAL_SUFFIX)));
-            rpc_info.rpc_type = RPC_ACTION;
-            rpc_info.action_type = ACTION_GOAL;
+            rpc_info.rpc_type = RPC_TYPE::ACTION;
+            rpc_info.action_type = ACTION_TYPE::GOAL;
             return rpc_info;
         }
         else if (base.size() >= (std::strlen(ACTION_RESULT_SUFFIX)) &&
                 base.substr(base.size() - (std::strlen(ACTION_RESULT_SUFFIX))) == ACTION_RESULT_SUFFIX)
         {
             rpc_info.action_name = base.substr(0, base.size() - (std::strlen(ACTION_RESULT_SUFFIX)));
-            rpc_info.rpc_type = RPC_ACTION;
-            rpc_info.action_type = ACTION_RESULT;
+            rpc_info.rpc_type = RPC_TYPE::ACTION;
+            rpc_info.action_type = ACTION_TYPE::RESULT;
             return rpc_info;
         }
         else if (base.size() >= (std::strlen(ACTION_CANCEL_SUFFIX)) &&
                 base.substr(base.size() - (std::strlen(ACTION_CANCEL_SUFFIX))) == ACTION_CANCEL_SUFFIX)
         {
             rpc_info.action_name = base.substr(0, base.size() - (std::strlen(ACTION_CANCEL_SUFFIX)));
-            rpc_info.rpc_type = RPC_ACTION;
-            rpc_info.action_type = ACTION_CANCEL;
+            rpc_info.rpc_type = RPC_TYPE::ACTION;
+            rpc_info.action_type = ACTION_TYPE::CANCEL;
             return rpc_info;
         }
 
-        rpc_info.rpc_type = RPC_SERVICE;
+        rpc_info.rpc_type = RPC_TYPE::SERVICE;
         return rpc_info;
     }
 
@@ -173,8 +173,8 @@ RpcInfo remove_prefix_suffix(
             (std::string("/") + ACTION_FEEDBACK_SUFFIX))
     {
         rpc_info.action_name = base.substr(0, base.size() - std::strlen(ACTION_FEEDBACK_SUFFIX));
-        rpc_info.rpc_type = RPC_ACTION;
-        rpc_info.action_type = ACTION_FEEDBACK;
+        rpc_info.rpc_type = RPC_TYPE::ACTION;
+        rpc_info.action_type = ACTION_TYPE::FEEDBACK;
         return rpc_info;
     }
     if (base.size() >= (std::strlen(ACTION_STATUS_SUFFIX) + 1) &&
@@ -182,8 +182,8 @@ RpcInfo remove_prefix_suffix(
             (std::string("/") + ACTION_STATUS_SUFFIX))
     {
         rpc_info.action_name = base.substr(0, base.size() - (std::strlen(ACTION_STATUS_SUFFIX)));
-        rpc_info.rpc_type = RPC_ACTION;
-        rpc_info.action_type = ACTION_STATUS;
+        rpc_info.rpc_type = RPC_TYPE::ACTION;
+        rpc_info.action_type = ACTION_TYPE::STATUS;
         return rpc_info;
     }
 
@@ -319,14 +319,9 @@ std::string create_feedback_msg(
     return j.dump(4);
 }
 
-} // namespace RpcUtils
-} // namespace participants
-} // namespace ddsenabler
-} // namespace eprosima
-
 std::ostream& operator <<(
         std::ostream& os,
-        const eprosima::ddsenabler::participants::UUID& uuid)
+        const UUID& uuid)
 {
     for (size_t i = 0; i < uuid.size(); ++i)
     {
@@ -338,3 +333,8 @@ std::ostream& operator <<(
     }
     return os;
 }
+
+} // namespace RpcUtils
+} // namespace participants
+} // namespace ddsenabler
+} // namespace eprosima

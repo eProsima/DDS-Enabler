@@ -31,58 +31,58 @@ namespace participants {
 
 using UUID = std::array<uint8_t, 16>;
 
-enum RPC_PROTOCOL
+enum class RPC_PROTOCOL
 {
     ROS2 = 0,
     FASTDDS,
     PROTOCOL_UNKNOWN
 };
 
-enum RPC_TYPE
+enum class RPC_TYPE
 {
-    RPC_NONE = 0,
-    RPC_SERVICE,
-    RPC_ACTION
+    NONE = 0,
+    SERVICE,
+    ACTION
 };
 
-enum SERVICE_TYPE
+enum class SERVICE_TYPE
 {
-    SERVICE_NONE = 0,
-    SERVICE_REQUEST,
-    SERVICE_REPLY
+    NONE = 0,
+    REQUEST,
+    REPLY
 };
 
-enum ACTION_TYPE
+enum class ACTION_TYPE
 {
-    ACTION_NONE = 0,
-    ACTION_GOAL,
-    ACTION_RESULT,
-    ACTION_CANCEL,
-    ACTION_FEEDBACK,
-    ACTION_STATUS
+    NONE = 0,
+    GOAL,
+    RESULT,
+    CANCEL,
+    FEEDBACK,
+    STATUS
 };
 
-enum STATUS_CODE
+enum class STATUS_CODE
 {
-    STATUS_UNKNOWN = 0,
-    STATUS_ACCEPTED,
-    STATUS_EXECUTING,
-    STATUS_CANCELING,
-    STATUS_SUCCEEDED,
-    STATUS_CANCELED,
-    STATUS_ABORTED,
-    STATUS_REJECTED,
-    STATUS_TIMEOUT,
-    STATUS_FAILED,
-    STATUS_CANCEL_REQUEST_FAILED
+    UNKNOWN = 0,
+    ACCEPTED,
+    EXECUTING,
+    CANCELING,
+    SUCCEEDED,
+    CANCELED,
+    ABORTED,
+    REJECTED,
+    TIMEOUT,
+    FAILED,
+    CANCEL_REQUEST_FAILED
 };
 
-enum CANCEL_CODE
+enum class CANCEL_CODE
 {
-    ERROR_NONE = 0,
-    ERROR_REJECTED,
-    ERROR_UNKNOWN_GOAL_ID,
-    ERROR_GOAL_TERMINATED
+    NONE = 0,
+    REJECTED,
+    UNKNOWN_GOAL_ID,
+    GOAL_TERMINATED
 };
 
 } /* namespace participants */

@@ -159,16 +159,16 @@ void Handler::add_data(
     RpcInfo rpc_info = RpcUtils::get_rpc_info(topic.m_topic_name);
     switch (rpc_info.rpc_type)
     {
-        case RPC_TYPE::RPC_NONE:
+        case RPC_TYPE::NONE:
         {
             write_sample_nts_(msg, dyn_type);
             break;
         }
 
         // SERVICE
-        case RPC_TYPE::RPC_SERVICE:
+        case RPC_TYPE::SERVICE:
         {
-            if (rpc_info.service_type == SERVICE_TYPE::SERVICE_REQUEST)
+            if (rpc_info.service_type == SERVICE_TYPE::REQUEST)
             {
                 requests_id_++;
                 RpcPayloadData& rpc_data = dynamic_cast<RpcPayloadData&>(data);
@@ -186,21 +186,21 @@ void Handler::add_data(
         }
 
         // ACTIONS CLIENT
-        case RPC_TYPE::RPC_ACTION:
+        case RPC_TYPE::ACTION:
         {
             switch (rpc_info.service_type)
             {
-                case SERVICE_TYPE::SERVICE_REPLY:
+                case SERVICE_TYPE::REPLY:
                 {
                     switch (rpc_info.action_type)
                     {
-                        case ACTION_TYPE::ACTION_RESULT:
+                        case ACTION_TYPE::RESULT:
                         {
                             auto action_id =
                                     dynamic_cast<ddspipe::core::types::RpcPayloadData&>(data).write_params.get_reference()
                                             .related_sample_identity().sequence_number().to64long();
                             UUID action_id_uuid;
-                            if (get_action_request_UUID(action_id, ACTION_TYPE::ACTION_RESULT, action_id_uuid))
+                            if (get_action_request_UUID(action_id, ACTION_TYPE::RESULT, action_id_uuid))
                             {
                                 write_action_result_nts_(msg, dyn_type, action_id_uuid, rpc_info.action_name);
                             }
@@ -208,20 +208,20 @@ void Handler::add_data(
                             break;
                         }
 
-                        case ACTION_TYPE::ACTION_GOAL:
+                        case ACTION_TYPE::GOAL:
                         {
                             auto action_id =
                                     dynamic_cast<ddspipe::core::types::RpcPayloadData&>(data).write_params.get_reference()
                                             .related_sample_identity().sequence_number().to64long();
                             UUID action_id_uuid;
-                            if (get_action_request_UUID(action_id, ACTION_TYPE::ACTION_GOAL, action_id_uuid))
+                            if (get_action_request_UUID(action_id, ACTION_TYPE::GOAL, action_id_uuid))
                             {
                                 write_action_goal_reply_nts_(msg, dyn_type, action_id_uuid, rpc_info.action_name);
                             }
                             break;
                         }
 
-                        case ACTION_TYPE::ACTION_CANCEL:
+                        case ACTION_TYPE::CANCEL:
                         {
                             auto request_id =
                                     dynamic_cast<ddspipe::core::types::RpcPayloadData&>(data).write_params.get_reference()
@@ -240,12 +240,12 @@ void Handler::add_data(
                     break;
                 }
 
-                case SERVICE_TYPE::SERVICE_REQUEST:
+                case SERVICE_TYPE::REQUEST:
                 {
                     switch (rpc_info.action_type)
                     {
-                        case ACTION_TYPE::ACTION_GOAL:
-                        case ACTION_TYPE::ACTION_CANCEL:
+                        case ACTION_TYPE::GOAL:
+                        case ACTION_TYPE::CANCEL:
                         {
                             requests_id_++;
                             RpcPayloadData& rpc_data = dynamic_cast<RpcPayloadData&>(data);
@@ -274,7 +274,7 @@ void Handler::add_data(
                             break;
                         }
 
-                        case ACTION_TYPE::ACTION_RESULT:
+                        case ACTION_TYPE::RESULT:
                         {
                             UUID uuid;
                             if (!writer_->uuid_from_request_json(
@@ -294,7 +294,7 @@ void Handler::add_data(
                                         rpc_info.action_name,
                                         uuid,
                                         requests_id_,
-                                        ACTION_TYPE::ACTION_RESULT))
+                                        ACTION_TYPE::RESULT))
                             {
                                 EPROSIMA_LOG_ERROR(DDSENABLER_HANDLER,
                                         "Failed to store action request for get_result_request.");
@@ -324,17 +324,17 @@ void Handler::add_data(
                     break;
                 }
 
-                case SERVICE_TYPE::SERVICE_NONE:
+                case SERVICE_TYPE::NONE:
                 {
                     switch (rpc_info.action_type)
                     {
-                        case ACTION_TYPE::ACTION_FEEDBACK:
+                        case ACTION_TYPE::FEEDBACK:
                         {
                             write_action_feedback_nts_(msg, dyn_type, rpc_info.action_name);
                             break;
                         }
 
-                        case ACTION_TYPE::ACTION_STATUS:
+                        case ACTION_TYPE::STATUS:
                         {
                             write_action_status_nts_(msg, dyn_type, rpc_info.action_name);
                             break;
@@ -702,7 +702,7 @@ bool Handler::store_action_request(
                     << it->second.action_name << ", got " << action_name);
             return false;
         }
-        if (ACTION_TYPE::ACTION_GOAL == action_type)
+        if (ACTION_TYPE::GOAL == action_type)
         {
             EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
                     "Cannot store action goal request as action id already exists.");
@@ -714,7 +714,7 @@ bool Handler::store_action_request(
     else
     {
         // If it does not exist, create a new entry only if the action type is goal request
-        if (ACTION_TYPE::ACTION_GOAL != action_type)
+        if (ACTION_TYPE::GOAL != action_type)
         {
             EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
                     "Cannot store action request, action does not exist and request type is not GOAL.");

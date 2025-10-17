@@ -61,7 +61,7 @@ bool EnablerParticipant::action_discovered_nts_(
 {
     auto [it, inserted] = actions_.try_emplace(rpc_info.action_name,
                     ActionDiscovered(rpc_info.action_name, rpc_info.rpc_protocol));
-    if (SERVICE_TYPE::SERVICE_NONE != rpc_info.service_type)
+    if (SERVICE_TYPE::NONE != rpc_info.service_type)
     {
         service_discovered_nts_(rpc_info, topic);
         auto service_it = services_.find(rpc_info.service_name);
@@ -95,9 +95,9 @@ std::shared_ptr<IReader> EnablerParticipant::create_reader(
         std::lock_guard<std::mutex> lck(mtx_);
         auto dds_topic = dynamic_cast<const DdsTopic&>(topic);
         RpcInfo rpc_info = RpcUtils::get_rpc_info(dds_topic.m_topic_name);
-        if (RPC_TYPE::RPC_NONE != rpc_info.rpc_type)
+        if (RPC_TYPE::NONE != rpc_info.rpc_type)
         {
-            if (SERVICE_TYPE::SERVICE_NONE != rpc_info.service_type)
+            if (SERVICE_TYPE::NONE != rpc_info.service_type)
             {
                 reader = std::make_shared<InternalRpcReader>(id(), dds_topic);
             }
@@ -109,7 +109,7 @@ std::shared_ptr<IReader> EnablerParticipant::create_reader(
             // Only notify the discovery of topics that do not originate from a topic query callback
             if (dds_topic.topic_discoverer() != this->id())
             {
-                if (ACTION_TYPE::ACTION_NONE == rpc_info.action_type)
+                if (ACTION_TYPE::NONE == rpc_info.action_type)
                 {
                     if (service_discovered_nts_(rpc_info, dds_topic))
                     {
@@ -250,7 +250,7 @@ bool EnablerParticipant::publish_rpc(
 
     std::string service_name;
     RpcInfo rpc_info = RpcUtils::get_rpc_info(topic_name);
-    if (SERVICE_TYPE::SERVICE_NONE == rpc_info.service_type)
+    if (SERVICE_TYPE::NONE == rpc_info.service_type)
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
                 "Failed to publish data in topic " << topic_name << " : not a service topic.");
@@ -416,7 +416,7 @@ bool EnablerParticipant::revoke_service_nts_(
 
     this->discovery_database_->erase_endpoint(it->second->endpoint_request.value());
     it->second->endpoint_request.reset();
-    it->second->remove_topic(SERVICE_TYPE::SERVICE_REQUEST);
+    it->second->remove_topic(SERVICE_TYPE::REQUEST);
 
     auto reader = lookup_reader_nts_(request_name);
     if (nullptr != reader)
@@ -618,7 +618,7 @@ bool EnablerParticipant::fullfill_service_type_nts_(
     {
         return false;
     }
-    service->add_topic(topic_request, SERVICE_TYPE::SERVICE_REQUEST);
+    service->add_topic(topic_request, SERVICE_TYPE::REQUEST);
 
     DdsTopic topic_reply;
     std::string topic_reply_name = rp_prefix + service->service_name + rp_suffix;
@@ -626,7 +626,7 @@ bool EnablerParticipant::fullfill_service_type_nts_(
     {
         return false;
     }
-    service->add_topic(topic_reply, SERVICE_TYPE::SERVICE_REPLY);
+    service->add_topic(topic_reply, SERVICE_TYPE::REPLY);
 
     if (!service->fully_discovered)
     {

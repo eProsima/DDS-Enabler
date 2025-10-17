@@ -67,9 +67,9 @@ struct RpcInfo
             const std::string& dds_topic_name)
         : topic_name(dds_topic_name)
         , rpc_protocol(RPC_PROTOCOL::PROTOCOL_UNKNOWN)
-        , rpc_type(RPC_TYPE::RPC_NONE)
-        , service_type(SERVICE_TYPE::SERVICE_NONE)
-        , action_type(ACTION_TYPE::ACTION_NONE)
+        , rpc_type(RPC_TYPE::NONE)
+        , service_type(SERVICE_TYPE::NONE)
+        , action_type(ACTION_TYPE::NONE)
     {
     }
 
@@ -104,10 +104,10 @@ struct ActionRequestInfo
     {
         switch (action_type)
         {
-            case ACTION_TYPE::ACTION_GOAL:
+            case ACTION_TYPE::GOAL:
                 goal_request_id = request_id;
                 break;
-            case ACTION_TYPE::ACTION_RESULT:
+            case ACTION_TYPE::RESULT:
                 result_request_id = request_id;
                 break;
             default:
@@ -121,9 +121,9 @@ struct ActionRequestInfo
     {
         switch (action_type)
         {
-            case ACTION_TYPE::ACTION_GOAL:
+            case ACTION_TYPE::GOAL:
                 return goal_request_id;
-            case ACTION_TYPE::ACTION_RESULT:
+            case ACTION_TYPE::RESULT:
                 return result_request_id;
             default:
                 return 0;
@@ -205,7 +205,7 @@ struct ServiceDiscovered
             const ddspipe::core::types::DdsTopic& topic,
             SERVICE_TYPE service_type)
     {
-        if (service_type == SERVICE_TYPE::SERVICE_REQUEST)
+        if (service_type == SERVICE_TYPE::REQUEST)
         {
             if (request_discovered)
             {
@@ -244,7 +244,7 @@ struct ServiceDiscovered
     bool remove_topic(
             SERVICE_TYPE service_type)
     {
-        if (service_type == SERVICE_TYPE::SERVICE_REQUEST)
+        if (service_type == SERVICE_TYPE::REQUEST)
         {
             request_discovered = false;
             topic_request = ddspipe::core::types::DdsTopic();
@@ -274,7 +274,7 @@ struct ServiceDiscovered
             SERVICE_TYPE service_type,
             ddspipe::core::types::DdsTopic& topic)
     {
-        if (service_type == SERVICE_TYPE::SERVICE_REQUEST)
+        if (service_type == SERVICE_TYPE::REQUEST)
         {
             if (!request_discovered)
             {
@@ -283,7 +283,7 @@ struct ServiceDiscovered
             topic = topic_request;
             return true;
         }
-        if (service_type == SERVICE_TYPE::SERVICE_REPLY)
+        if (service_type == SERVICE_TYPE::REPLY)
         {
             if (!reply_discovered)
             {
@@ -347,13 +347,13 @@ struct ActionDiscovered
     {
         switch (action_type)
         {
-            case ACTION_TYPE::ACTION_GOAL:
+            case ACTION_TYPE::GOAL:
                 goal = service;
                 break;
-            case ACTION_TYPE::ACTION_RESULT:
+            case ACTION_TYPE::RESULT:
                 result = service;
                 break;
-            case ACTION_TYPE::ACTION_CANCEL:
+            case ACTION_TYPE::CANCEL:
                 cancel = service;
                 break;
             default:
@@ -368,11 +368,11 @@ struct ActionDiscovered
     {
         switch (action_type)
         {
-            case ACTION_TYPE::ACTION_FEEDBACK:
+            case ACTION_TYPE::FEEDBACK:
                 feedback = topic;
                 feedback_discovered = true;
                 break;
-            case ACTION_TYPE::ACTION_STATUS:
+            case ACTION_TYPE::STATUS:
                 status = topic;
                 status_discovered = true;
                 break;

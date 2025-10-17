@@ -237,8 +237,7 @@ static void test_action_feedback_notification_callback(
         int64_t publish_time)
 {
     std::lock_guard<std::mutex> lock(app_mutex_);
-    std::cout << "Action feedback callback received for action: " << action_name
-              << " with UUID: " << goal_id << std::endl;
+    std::cout << "Action feedback callback received for action: " << action_name << std::endl;
 }
 
 // Static action status notification callback
@@ -250,7 +249,7 @@ static void test_action_status_notification_callback(
         int64_t publish_time)
 {
     std::lock_guard<std::mutex> lock(app_mutex_);
-    std::cout << "Action status callback received: " << statusCode << ": " << statusMessage << std::endl;
+    std::cout << "Action status callback received: " << statusMessage << std::endl;
 }
 
 // Static action cancel request notification callback
@@ -357,7 +356,7 @@ bool client_routine(
             if (enabler->send_action_goal(action_name, file_content, request_id))
             {
                 std::cout << "Published content from file: " << path.filename() << " in service: "
-                          << action_name << " with request ID: " << request_id << std::endl;
+                          << action_name << std::endl;
                 sent_requests++;
             }
             else
@@ -377,10 +376,10 @@ bool client_routine(
             // Cancel the request after sending it
             if (!enabler->cancel_action_goal(action_name, request_id))
             {
-                std::cerr << "Failed to send action cancel request for ID: " << request_id << std::endl;
+                std::cerr << "Failed to send action cancel request." << std::endl;
                 return false;
             }
-            std::cout << "Sent cancel request for action: " << action_name << " with ID: " << request_id << std::endl;
+            std::cout << "Sent cancel request for action: " << action_name << std::endl;
         }
 
         // Wait publish period or until stop signal is received
@@ -429,7 +428,7 @@ bool server_specific_logic(
     if (!enabler->send_action_result(
                 action_name.c_str(),
                 request_id,
-                eprosima::ddsenabler::participants::STATUS_CODE::STATUS_SUCCEEDED,
+                eprosima::ddsenabler::participants::STATUS_CODE::SUCCEEDED,
                 json.c_str()))
     {
         std::cerr << "Failed to send action result" << std::endl;
@@ -465,7 +464,7 @@ bool server_routine(
         }
 
         uint64_t fibonacci_number = 5; // Default Fibonacci number, can be parsed from json if needed
-        std::cout << "Received request for action: " << action_name << " with request ID: " << request_id << std::endl;
+        std::cout << "Received request for action: " << action_name << std::endl;
         std::this_thread::sleep_for(std::chrono::milliseconds(500)); // Simulate processing time
 
         // Send Feedback & Result
@@ -475,7 +474,7 @@ bool server_routine(
                     fibonacci_number,
                     request_id))
         {
-            std::cerr << "Failed to process action: " << action_name << " with request ID: " << request_id << std::endl;
+            std::cerr << "Failed to process action: " << action_name << std::endl;
             return false;
         }
 
