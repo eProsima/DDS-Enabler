@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <ddsenabler_participants/Callbacks.hpp>
+
 #include <filesystem>
 #include <fstream>
 #include <string>
@@ -20,6 +22,10 @@
 #pragma once
 
 namespace utils {
+
+using eprosima::ddsenabler::participants::TopicInfo;
+using eprosima::ddsenabler::participants::ServiceInfo;
+using eprosima::ddsenabler::participants::ActionInfo;
 
 std::string safe_file_name(
         const std::string& name);
@@ -39,14 +45,12 @@ bool load_type_from_file(
 bool save_topic_to_file(
         const std::string& directory,
         const char* topic_name,
-        const char* type_name,
-        const char* serialized_qos);
+        const TopicInfo& topic_info);
 
 bool load_topic_from_file(
         const std::string& directory,
         const char* topic_name,
-        std::string& type_name,
-        std::string& serialized_qos);
+        TopicInfo& topic_info);
 
 bool save_data_to_file(
         const std::string& directory,
@@ -57,58 +61,22 @@ bool save_data_to_file(
 void save_service_to_file(
         const std::string& directory,
         const char* service_name,
-        const char* request_type_name,
-        const char* reply_type_name,
-        const char* request_serialized_qos,
-        const char* reply_serialized_qos);
+        const ServiceInfo& service_info);
 
 bool load_service_from_file(
         const std::string& directory,
         const char* service_name,
-        std::string& request_type_name,
-        std::string& reply_type_name,
-        std::string& request_serialized_qos,
-        std::string& reply_serialized_qos);
+        ServiceInfo& service_info);
 
 void save_action_to_file(
         const std::string& directory,
         const char* action_name,
-        const char* goal_request_action_type,
-        const char* goal_reply_action_type,
-        const char* cancel_request_action_type,
-        const char* cancel_reply_action_type,
-        const char* result_request_action_type,
-        const char* result_reply_action_type,
-        const char* feedback_action_type,
-        const char* status_action_type,
-        const char* goal_request_action_serialized_qos,
-        const char* goal_reply_action_serialized_qos,
-        const char* cancel_request_action_serialized_qos,
-        const char* cancel_reply_action_serialized_qos,
-        const char* result_request_action_serialized_qos,
-        const char* result_reply_action_serialized_qos,
-        const char* feedback_action_serialized_qos,
-        const char* status_action_serialized_qos);
+        const ActionInfo& action_info);
 
 bool load_action_from_file(
         const std::string& directory,
         const char* action_name,
-        std::string& goal_request_action_type,
-        std::string& goal_reply_action_type,
-        std::string& cancel_request_action_type,
-        std::string& cancel_reply_action_type,
-        std::string& result_request_action_type,
-        std::string& result_reply_action_type,
-        std::string& feedback_action_type,
-        std::string& status_action_type,
-        std::string& goal_request_action_serialized_qos,
-        std::string& goal_reply_action_serialized_qos,
-        std::string& cancel_request_action_serialized_qos,
-        std::string& cancel_reply_action_serialized_qos,
-        std::string& result_request_action_serialized_qos,
-        std::string& result_reply_action_serialized_qos,
-        std::string& feedback_action_serialized_qos,
-        std::string& status_action_serialized_qos);
+        ActionInfo& action_info);
 
 void init_persistence(
         const std::string& persistence_path,

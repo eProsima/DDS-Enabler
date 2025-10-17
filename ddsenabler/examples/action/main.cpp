@@ -152,22 +152,7 @@ static void test_action_notification_callback(
             utils::save_action_to_file(
                 action_file,
                 action_name,
-                action_info.goal.request.type_name.c_str(),
-                action_info.goal.reply.type_name.c_str(),
-                action_info.cancel.request.type_name.c_str(),
-                action_info.cancel.reply.type_name.c_str(),
-                action_info.result.request.type_name.c_str(),
-                action_info.result.reply.type_name.c_str(),
-                action_info.feedback.type_name.c_str(),
-                action_info.status.type_name.c_str(),
-                action_info.goal.request.serialized_qos.c_str(),
-                action_info.goal.reply.serialized_qos.c_str(),
-                action_info.cancel.request.serialized_qos.c_str(),
-                action_info.cancel.reply.serialized_qos.c_str(),
-                action_info.result.request.serialized_qos.c_str(),
-                action_info.result.reply.serialized_qos.c_str(),
-                action_info.feedback.serialized_qos.c_str(),
-                action_info.status.serialized_qos.c_str());
+                action_info);
 
             action_discovered_ = true;
             app_cv_.notify_all();
@@ -198,22 +183,7 @@ static bool test_action_query_callback(
             if (!utils::load_action_from_file(
                         action_file,
                         action_name,
-                        action_info.goal.request.type_name,
-                        action_info.goal.reply.type_name,
-                        action_info.cancel.request.type_name,
-                        action_info.cancel.reply.type_name,
-                        action_info.result.request.type_name,
-                        action_info.result.reply.type_name,
-                        action_info.feedback.type_name,
-                        action_info.status.type_name,
-                        action_info.goal.request.serialized_qos,
-                        action_info.goal.reply.serialized_qos,
-                        action_info.cancel.request.serialized_qos,
-                        action_info.cancel.reply.serialized_qos,
-                        action_info.result.request.serialized_qos,
-                        action_info.result.reply.serialized_qos,
-                        action_info.feedback.serialized_qos,
-                        action_info.status.serialized_qos))
+                        action_info))
             {
                 std::cerr << "Failed to load action: " << action_name << std::endl;
                 return false;

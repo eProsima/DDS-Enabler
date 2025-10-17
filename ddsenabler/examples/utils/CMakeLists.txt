@@ -15,6 +15,8 @@
 cmake_minimum_required(VERSION 3.20)
 project(ddsenabler_example_utils LANGUAGES CXX)
 
+find_package(ddsenabler_participants)
+
 add_library(utils STATIC
     Utils.cpp
 )
@@ -22,3 +24,5 @@ add_library(utils STATIC
 target_include_directories(utils PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}
 )
+
+target_link_libraries(utils PUBLIC ddsenabler_participants)

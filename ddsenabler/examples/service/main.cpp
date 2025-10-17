@@ -151,10 +151,7 @@ static void test_service_notification_callback(
             utils::save_service_to_file(
                 service_file,
                 service_name,
-                service_info.request.type_name.c_str(),
-                service_info.reply.type_name.c_str(),
-                service_info.request.serialized_qos.c_str(),
-                service_info.reply.serialized_qos.c_str());
+                service_info);
 
             service_discovered_ = true;
             app_cv_.notify_all();
@@ -190,10 +187,7 @@ static bool test_service_query_callback(
         if (utils::load_service_from_file(
                     service_file,
                     service_name,
-                    service_info.request.type_name,
-                    service_info.reply.type_name,
-                    service_info.request.serialized_qos,
-                    service_info.reply.serialized_qos))
+                    service_info))
         {
             app_cv_.notify_all();
             return true;

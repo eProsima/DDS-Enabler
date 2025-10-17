@@ -138,7 +138,7 @@ static void test_topic_notification_callback(
         if (!config.persistence_path.empty() &&
                 !utils::save_topic_to_file((std::filesystem::path(config.persistence_path) / TOPICS_SUBDIR).string(),
                 topic_name,
-                topic_info.type_name.c_str(), topic_info.serialized_qos.c_str()))
+                topic_info))
         {
             std::cerr << "Failed to save topic: " << topic_name << std::endl;
         }
@@ -163,8 +163,7 @@ static bool test_topic_query_callback(
     // Load the topic from file
     if (!utils::load_topic_from_file((std::filesystem::path(config.persistence_path) / TOPICS_SUBDIR).string(),
             topic_name,
-            topic_info.type_name,
-            topic_info.serialized_qos))
+            topic_info))
     {
         std::cerr << "Failed to load topic: " << topic_name << std::endl;
         return false;

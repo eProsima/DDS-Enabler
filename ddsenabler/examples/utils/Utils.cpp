@@ -150,8 +150,7 @@ bool load_type_from_file(
 bool save_topic_to_file(
         const std::string& directory,
         const char* topic_name,
-        const char* type_name,
-        const char* serialized_qos)
+        const TopicInfo& topic_info)
 {
     // Check if directory exists
     if (!std::filesystem::exists(directory))
@@ -182,14 +181,14 @@ bool save_topic_to_file(
     }
 
     // Write type name
-    uint32_t len_type_name = static_cast<uint32_t>(std::strlen(type_name));
+    uint32_t len_type_name = static_cast<uint32_t>(topic_info.type_name.size());
     ofs.write(reinterpret_cast<const char*>(&len_type_name), sizeof(len_type_name));
-    ofs.write(type_name, len_type_name);
+    ofs.write(topic_info.type_name.data(), len_type_name);
 
     // Write serialized QoS
-    uint32_t len_serialized_qos = static_cast<uint32_t>(std::strlen(serialized_qos));
+    uint32_t len_serialized_qos = static_cast<uint32_t>(topic_info.serialized_qos.size());
     ofs.write(reinterpret_cast<const char*>(&len_serialized_qos), sizeof(len_serialized_qos));
-    ofs.write(serialized_qos, len_serialized_qos);
+    ofs.write(topic_info.serialized_qos.data(), len_serialized_qos);
 
     if (!ofs.good())
     {
@@ -204,8 +203,7 @@ bool save_topic_to_file(
 bool load_topic_from_file(
         const std::string& directory,
         const char* topic_name,
-        std::string& type_name,
-        std::string& serialized_qos)
+        TopicInfo& topic_info)
 {
     // Check if directory exists
     if (!std::filesystem::exists(directory))
@@ -271,8 +269,8 @@ bool load_topic_from_file(
         return false;
     }
 
-    type_name.assign(type_name_buffer.begin(), type_name_buffer.end());
-    serialized_qos.assign(serialized_qos_buffer.begin(), serialized_qos_buffer.end());
+    topic_info.type_name.assign(type_name_buffer.begin(), type_name_buffer.end());
+    topic_info.serialized_qos.assign(serialized_qos_buffer.begin(), serialized_qos_buffer.end());
 
     return true;
 }
@@ -369,10 +367,7 @@ bool save_data_to_file(
 void save_service_to_file(
         const std::string& directory,
         const char* service_name,
-        const char* request_type_name,
-        const char* reply_type_name,
-        const char* request_serialized_qos,
-        const char* reply_serialized_qos)
+        const ServiceInfo& service_info)
 {
     // Check if directory exists
     if (!std::filesystem::exists(directory))
@@ -396,10 +391,10 @@ void save_service_to_file(
 
     nlohmann::json j;
     j["service_name"] = service_name;
-    j["request_type_name"] = request_type_name;
-    j["reply_type_name"] = reply_type_name;
-    j["request_serialized_qos"] = request_serialized_qos;
-    j["reply_serialized_qos"] = reply_serialized_qos;
+    j["request_type_name"] = service_info.request.type_name;
+    j["reply_type_name"] = service_info.reply.type_name;
+    j["request_serialized_qos"] = service_info.request.serialized_qos;
+    j["reply_serialized_qos"] = service_info.reply.serialized_qos;
 
     std::ofstream ofs(file_path);
     if (ofs.is_open())
@@ -411,10 +406,7 @@ void save_service_to_file(
 bool load_service_from_file(
         const std::string& directory,
         const char* service_name,
-        std::string& request_type_name,
-        std::string& reply_type_name,
-        std::string& request_serialized_qos,
-        std::string& reply_serialized_qos)
+        ServiceInfo& service_info)
 {
     // Check if directory exists
     if (!std::filesystem::exists(directory))
@@ -451,10 +443,10 @@ bool load_service_from_file(
         return false;  // Service name does not match
     }
 
-    request_type_name = j["request_type_name"].get<std::string>();
-    reply_type_name = j["reply_type_name"].get<std::string>();
-    request_serialized_qos = j["request_serialized_qos"].get<std::string>();
-    reply_serialized_qos = j["reply_serialized_qos"].get<std::string>();
+    service_info.request.type_name = j["request_type_name"].get<std::string>();
+    service_info.reply.type_name = j["reply_type_name"].get<std::string>();
+    service_info.request.serialized_qos = j["request_serialized_qos"].get<std::string>();
+    service_info.reply.serialized_qos = j["reply_serialized_qos"].get<std::string>();
     ifs.close();
 
     return true;
@@ -463,22 +455,7 @@ bool load_service_from_file(
 void save_action_to_file(
         const std::string& directory,
         const char* action_name,
-        const char* goal_request_action_type,
-        const char* goal_reply_action_type,
-        const char* cancel_request_action_type,
-        const char* cancel_reply_action_type,
-        const char* result_request_action_type,
-        const char* result_reply_action_type,
-        const char* feedback_action_type,
-        const char* status_action_type,
-        const char* goal_request_action_serialized_qos,
-        const char* goal_reply_action_serialized_qos,
-        const char* cancel_request_action_serialized_qos,
-        const char* cancel_reply_action_serialized_qos,
-        const char* result_request_action_serialized_qos,
-        const char* result_reply_action_serialized_qos,
-        const char* feedback_action_serialized_qos,
-        const char* status_action_serialized_qos)
+        const ActionInfo& action_info)
 {
     // Check if directory exists
     if (!std::filesystem::exists(directory))
@@ -502,22 +479,22 @@ void save_action_to_file(
 
     nlohmann::json j;
     j["action_name"] = action_name;
-    j["goal_request_action_type"] = goal_request_action_type;
-    j["goal_reply_action_type"] = goal_reply_action_type;
-    j["cancel_request_action_type"] = cancel_request_action_type;
-    j["cancel_reply_action_type"] = cancel_reply_action_type;
-    j["result_request_action_type"] = result_request_action_type;
-    j["result_reply_action_type"] = result_reply_action_type;
-    j["feedback_action_type"] = feedback_action_type;
-    j["status_action_type"] = status_action_type;
-    j["goal_request_action_serialized_qos"] = goal_request_action_serialized_qos;
-    j["goal_reply_action_serialized_qos"] = goal_reply_action_serialized_qos;
-    j["cancel_request_action_serialized_qos"] = cancel_request_action_serialized_qos;
-    j["cancel_reply_action_serialized_qos"] = cancel_reply_action_serialized_qos;
-    j["result_request_action_serialized_qos"] = result_request_action_serialized_qos;
-    j["result_reply_action_serialized_qos"] = result_reply_action_serialized_qos;
-    j["feedback_action_serialized_qos"] = feedback_action_serialized_qos;
-    j["status_action_serialized_qos"] = status_action_serialized_qos;
+    j["goal_request_action_type"] = action_info.goal.request.type_name;
+    j["goal_reply_action_type"] = action_info.goal.reply.type_name;
+    j["cancel_request_action_type"] = action_info.cancel.request.type_name;
+    j["cancel_reply_action_type"] = action_info.cancel.reply.type_name;
+    j["result_request_action_type"] = action_info.result.request.type_name;
+    j["result_reply_action_type"] = action_info.result.reply.type_name;
+    j["feedback_action_type"] = action_info.feedback.type_name;
+    j["status_action_type"] = action_info.status.type_name;
+    j["goal_request_action_serialized_qos"] = action_info.goal.request.serialized_qos;
+    j["goal_reply_action_serialized_qos"] = action_info.goal.reply.serialized_qos;
+    j["cancel_request_action_serialized_qos"] = action_info.cancel.request.serialized_qos;
+    j["cancel_reply_action_serialized_qos"] = action_info.cancel.reply.serialized_qos;
+    j["result_request_action_serialized_qos"] = action_info.result.request.serialized_qos;
+    j["result_reply_action_serialized_qos"] = action_info.result.reply.serialized_qos;
+    j["feedback_action_serialized_qos"] = action_info.feedback.serialized_qos;
+    j["status_action_serialized_qos"] = action_info.status.serialized_qos;
 
     std::ofstream ofs(file_path);
     if (ofs.is_open())
@@ -530,22 +507,7 @@ void save_action_to_file(
 bool load_action_from_file(
         const std::string& directory,
         const char* action_name,
-        std::string& goal_request_action_type,
-        std::string& goal_reply_action_type,
-        std::string& cancel_request_action_type,
-        std::string& cancel_reply_action_type,
-        std::string& result_request_action_type,
-        std::string& result_reply_action_type,
-        std::string& feedback_action_type,
-        std::string& status_action_type,
-        std::string& goal_request_action_serialized_qos,
-        std::string& goal_reply_action_serialized_qos,
-        std::string& cancel_request_action_serialized_qos,
-        std::string& cancel_reply_action_serialized_qos,
-        std::string& result_request_action_serialized_qos,
-        std::string& result_reply_action_serialized_qos,
-        std::string& feedback_action_serialized_qos,
-        std::string& status_action_serialized_qos)
+        ActionInfo& action_info)
 {
     // Check if directory exists
     if (!std::filesystem::exists(directory))
@@ -581,22 +543,22 @@ bool load_action_from_file(
     {
         return false;  // Action name does not match
     }
-    goal_request_action_type = j["goal_request_action_type"].get<std::string>();
-    goal_reply_action_type = j["goal_reply_action_type"].get<std::string>();
-    cancel_request_action_type = j["cancel_request_action_type"].get<std::string>();
-    cancel_reply_action_type = j["cancel_reply_action_type"].get<std::string>();
-    result_request_action_type = j["result_request_action_type"].get<std::string>();
-    result_reply_action_type = j["result_reply_action_type"].get<std::string>();
-    feedback_action_type = j["feedback_action_type"].get<std::string>();
-    status_action_type = j["status_action_type"].get<std::string>();
-    goal_request_action_serialized_qos = j["goal_request_action_serialized_qos"].get<std::string>();
-    goal_reply_action_serialized_qos = j["goal_reply_action_serialized_qos"].get<std::string>();
-    cancel_request_action_serialized_qos = j["cancel_request_action_serialized_qos"].get<std::string>();
-    cancel_reply_action_serialized_qos = j["cancel_reply_action_serialized_qos"].get<std::string>();
-    result_request_action_serialized_qos = j["result_request_action_serialized_qos"].get<std::string>();
-    result_reply_action_serialized_qos = j["result_reply_action_serialized_qos"].get<std::string>();
-    feedback_action_serialized_qos = j["feedback_action_serialized_qos"].get<std::string>();
-    status_action_serialized_qos = j["status_action_serialized_qos"].get<std::string>();
+    action_info.goal.request.type_name = j["goal_request_action_type"].get<std::string>();
+    action_info.goal.reply.type_name = j["goal_reply_action_type"].get<std::string>();
+    action_info.cancel.request.type_name = j["cancel_request_action_type"].get<std::string>();
+    action_info.cancel.reply.type_name = j["cancel_reply_action_type"].get<std::string>();
+    action_info.result.request.type_name = j["result_request_action_type"].get<std::string>();
+    action_info.result.reply.type_name = j["result_reply_action_type"].get<std::string>();
+    action_info.feedback.type_name = j["feedback_action_type"].get<std::string>();
+    action_info.status.type_name = j["status_action_type"].get<std::string>();
+    action_info.goal.request.serialized_qos = j["goal_request_action_serialized_qos"].get<std::string>();
+    action_info.goal.reply.serialized_qos = j["goal_reply_action_serialized_qos"].get<std::string>();
+    action_info.cancel.request.serialized_qos = j["cancel_request_action_serialized_qos"].get<std::string>();
+    action_info.cancel.reply.serialized_qos = j["cancel_reply_action_serialized_qos"].get<std::string>();
+    action_info.result.request.serialized_qos = j["result_request_action_serialized_qos"].get<std::string>();
+    action_info.result.reply.serialized_qos = j["result_reply_action_serialized_qos"].get<std::string>();
+    action_info.feedback.serialized_qos = j["feedback_action_serialized_qos"].get<std::string>();
+    action_info.status.serialized_qos = j["status_action_serialized_qos"].get<std::string>();
     ifs.close();
 
     return true;
