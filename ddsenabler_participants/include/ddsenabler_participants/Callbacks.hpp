@@ -28,6 +28,11 @@ namespace eprosima {
 namespace ddsenabler {
 namespace participants {
 
+
+/*********************/
+/*        DDS        */
+/*********************/
+
 /**
  * @brief Struct that contains information about a DDS topic.
  *
@@ -47,57 +52,6 @@ struct TopicInfo
 
     std::string type_name;
     std::string serialized_qos;
-};
-
-/**
- * @brief Struct that contains information about a DDS service.
- *
- * This struct is used to encapsulate the request and reply topics of a DDS service.
- */
-struct ServiceInfo
-{
-    ServiceInfo() = default;
-
-    ServiceInfo(
-            const TopicInfo& _request,
-            const TopicInfo& _reply)
-        : request(_request)
-        , reply(_reply)
-    {
-    }
-
-    TopicInfo request;
-    TopicInfo reply;
-};
-
-/**
- * @brief Struct that contains information about a DDS action.
- *
- * This struct is used to encapsulate the goal, result and cancel services as well as the feedback and status topics of a DDS action.
- */
-struct ActionInfo
-{
-    ActionInfo() = default;
-
-    ActionInfo(
-            const ServiceInfo& _goal,
-            const ServiceInfo& _result,
-            const ServiceInfo& _cancel,
-            const TopicInfo& _feedback,
-            const TopicInfo& _status)
-        : goal(_goal)
-        , result(_result)
-        , cancel(_cancel)
-        , feedback(_feedback)
-        , status(_status)
-    {
-    }
-
-    ServiceInfo goal;
-    ServiceInfo result;
-    ServiceInfo cancel;
-    TopicInfo feedback;
-    TopicInfo status;
 };
 
 /**
@@ -178,10 +132,31 @@ typedef bool (* DdsTopicQuery)(
         const char* topic_name,
         TopicInfo& topic_info);
 
+
 /**********************/
 /*      SERVICES      */
 /**********************/
 
+/**
+ * @brief Struct that contains information about a DDS service.
+ *
+ * This struct is used to encapsulate the request and reply topics of a DDS service.
+ */
+struct ServiceInfo
+{
+    ServiceInfo() = default;
+
+    ServiceInfo(
+            const TopicInfo& _request,
+            const TopicInfo& _reply)
+        : request(_request)
+        , reply(_reply)
+    {
+    }
+
+    TopicInfo request;
+    TopicInfo reply;
+};
 
 /**
  * @brief Callback for notification of service discovery and its request and reply types.
@@ -230,13 +205,13 @@ typedef void (* ServiceReplyNotification)(
         int64_t publish_time);
 
 /**
- * @brief Callback requesting the type information of a given service's request and reply.
+ * @brief Callback requesting the information of a given service's request and reply.
  *
- * This callback is used to request the type information for a service's request and reply.
+ * This callback is used to request the information for a service's request and reply.
  *
- * @param [in] service_name The name of the service for which the type information is requested.
+ * @param [in] service_name The name of the service for which the information is requested.
  * @param [out] service_info Information about the service, including request and reply types and their serialized QoS.
- * @return \c true if the service was found and the type information was retrieved successfully, \c false otherwise.
+ * @return \c true if the service was found and the information was retrieved successfully, \c false otherwise.
  */
 typedef bool (* ServiceQuery)(
         const char* service_name,
@@ -247,6 +222,35 @@ typedef bool (* ServiceQuery)(
 /*      ACTIONS       */
 /**********************/
 
+/**
+ * @brief Struct that contains information about a DDS action.
+ *
+ * This struct is used to encapsulate the goal, result and cancel services as well as the feedback and status topics of a DDS action.
+ */
+struct ActionInfo
+{
+    ActionInfo() = default;
+
+    ActionInfo(
+            const ServiceInfo& _goal,
+            const ServiceInfo& _result,
+            const ServiceInfo& _cancel,
+            const TopicInfo& _feedback,
+            const TopicInfo& _status)
+        : goal(_goal)
+        , result(_result)
+        , cancel(_cancel)
+        , feedback(_feedback)
+        , status(_status)
+    {
+    }
+
+    ServiceInfo goal;
+    ServiceInfo result;
+    ServiceInfo cancel;
+    TopicInfo feedback;
+    TopicInfo status;
+};
 
 /**
  * @brief Callback for notification of action discovery and its associated types.
@@ -351,13 +355,13 @@ typedef void (* ActionResultNotification)(
         int64_t publish_time);
 
 /**
- * @brief Callback for requesting the action types.
+ * @brief Callback for requesting action's information.
  *
- * This callback is used to request the action types for a specific action.
+ * This callback is used to request information about a specific action.
  *
- * @param [in] action_name The name of the action for which the types are being requested.
+ * @param [in] action_name The name of the action for which the information is being requested.
  * @param [out] action_info Information about the action, including goal, result, cancel, feedback, and status types and their serialized QoS.
- * @return \c true if the action was found and the types were retrieved successfully, \c false otherwise.
+ * @return \c true if the action was found and the information was retrieved successfully, \c false otherwise.
  */
 typedef bool (* ActionQuery)(
         const char* action_name,
