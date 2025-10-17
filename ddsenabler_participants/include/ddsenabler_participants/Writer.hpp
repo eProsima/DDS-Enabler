@@ -230,7 +230,7 @@ public:
             const fastdds::dds::DynamicType::_ref_type& dyn_type,
             const uint64_t request_id,
             const std::string& action_name,
-            const ACTION_TYPE action_type);
+            const ActionType action_type);
 
     DDSENABLER_PARTICIPANTS_DllAPI
     void set_is_UUID_active_callback(

@@ -31,28 +31,28 @@ namespace participants {
 
 using UUID = std::array<uint8_t, 16>;
 
-enum class RPC_PROTOCOL
+enum class RpcProtocol
 {
     ROS2 = 0,
     FASTDDS,
     PROTOCOL_UNKNOWN
 };
 
-enum class RPC_TYPE
+enum class RpcType
 {
     NONE = 0,
     SERVICE,
     ACTION
 };
 
-enum class SERVICE_TYPE
+enum class ServiceType
 {
     NONE = 0,
     REQUEST,
     REPLY
 };
 
-enum class ACTION_TYPE
+enum class ActionType
 {
     NONE = 0,
     GOAL,
@@ -62,7 +62,7 @@ enum class ACTION_TYPE
     STATUS
 };
 
-enum class STATUS_CODE
+enum class StatusCode
 {
     UNKNOWN = 0,
     ACCEPTED,
@@ -77,7 +77,7 @@ enum class STATUS_CODE
     CANCEL_REQUEST_FAILED
 };
 
-enum class CANCEL_CODE
+enum class CancelCode
 {
     NONE = 0,
     REJECTED,

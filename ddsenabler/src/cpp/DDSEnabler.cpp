@@ -296,16 +296,16 @@ bool DDSEnabler::send_service_request(
         const std::string& service_name,
         const std::string& json,
         uint64_t& request_id,
-        participants::RPC_PROTOCOL rpc_protocol)
+        participants::RpcProtocol RpcProtocol)
 {
     std::string prefix, suffix;
-    switch (rpc_protocol)
+    switch (RpcProtocol)
     {
-        case participants::RPC_PROTOCOL::ROS2:
+        case participants::RpcProtocol::ROS2:
             prefix = participants::ROS_REQUEST_PREFIX;
             suffix = participants::ROS_REQUEST_SUFFIX;
             break;
-        case participants::RPC_PROTOCOL::FASTDDS:
+        case participants::RpcProtocol::FASTDDS:
             prefix = participants::FASTDDS_REQUEST_PREFIX;
             suffix = participants::FASTDDS_REQUEST_SUFFIX;
             break;
@@ -329,9 +329,9 @@ bool DDSEnabler::send_service_request(
 
 bool DDSEnabler::announce_service(
         const std::string& service_name,
-        participants::RPC_PROTOCOL rpc_protocol)
+        participants::RpcProtocol RpcProtocol)
 {
-    return enabler_participant_->announce_service(service_name, rpc_protocol);
+    return enabler_participant_->announce_service(service_name, RpcProtocol);
 }
 
 bool DDSEnabler::revoke_service(
@@ -345,15 +345,15 @@ bool DDSEnabler::send_service_reply(
         const std::string& json,
         const uint64_t request_id)
 {
-    RPC_PROTOCOL rpc_protocol = enabler_participant_->get_service_rpc_protocol(service_name);
+    RpcProtocol RpcProtocol = enabler_participant_->get_service_rpc_protocol(service_name);
     std::string prefix, suffix;
-    switch (rpc_protocol)
+    switch (RpcProtocol)
     {
-        case participants::RPC_PROTOCOL::ROS2:
+        case participants::RpcProtocol::ROS2:
             prefix = participants::ROS_REPLY_PREFIX;
             suffix = participants::ROS_REPLY_SUFFIX;
             break;
-        case participants::RPC_PROTOCOL::FASTDDS:
+        case participants::RpcProtocol::FASTDDS:
             prefix = participants::FASTDDS_REPLY_PREFIX;
             suffix = participants::FASTDDS_REPLY_SUFFIX;
             break;
@@ -373,7 +373,7 @@ bool DDSEnabler::send_action_goal(
         const std::string& action_name,
         const std::string& json,
         UUID& action_id,
-        participants::RPC_PROTOCOL rpc_protocol)
+        participants::RpcProtocol RpcProtocol)
 {
     std::string goal_json = RpcUtils::create_goal_request_msg(json, action_id);
     std::string goal_request_topic = action_name + participants::ACTION_GOAL_SUFFIX;
@@ -383,7 +383,7 @@ bool DDSEnabler::send_action_goal(
                 goal_request_topic,
                 goal_json,
                 goal_request_id,
-                rpc_protocol))
+                RpcProtocol))
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
                 "Failed to send action goal request to action " << action_name);
@@ -394,8 +394,8 @@ bool DDSEnabler::send_action_goal(
                 action_name,
                 action_id,
                 goal_request_id,
-                ACTION_TYPE::GOAL,
-                rpc_protocol))
+                ActionType::GOAL,
+                RpcProtocol))
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
                 "Failed to store action goal request to action " << action_name);
@@ -429,7 +429,7 @@ bool DDSEnabler::send_action_get_result_request(
                 action_name,
                 action_id,
                 get_result_request_id,
-                ACTION_TYPE::RESULT))
+                ActionType::RESULT))
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
                 "Failed to store action get result request to action " << action_name
@@ -475,9 +475,9 @@ bool DDSEnabler::cancel_action_goal(
 
 bool DDSEnabler::announce_action(
         const std::string& action_name,
-        participants::RPC_PROTOCOL rpc_protocol)
+        participants::RpcProtocol RpcProtocol)
 {
-    return enabler_participant_->announce_action(action_name, rpc_protocol);
+    return enabler_participant_->announce_action(action_name, RpcProtocol);
 }
 
 bool DDSEnabler::revoke_action(
@@ -508,7 +508,7 @@ void DDSEnabler::send_action_send_goal_reply(
 bool DDSEnabler::send_action_cancel_goal_reply(
         const char* action_name,
         const std::vector<participants::UUID>& goal_ids,
-        const participants::CANCEL_CODE& cancel_code,
+        const participants::CancelCode& cancel_code,
         const uint64_t request_id)
 {
     std::vector<std::pair<participants::UUID, std::chrono::system_clock::time_point>> cancelling_goals;
@@ -540,7 +540,7 @@ bool DDSEnabler::send_action_cancel_goal_reply(
 bool DDSEnabler::send_action_result(
         const char* action_name,
         const participants::UUID& goal_id,
-        const participants::STATUS_CODE& status_code,
+        const participants::StatusCode& status_code,
         const char* json)
 {
     if (!handler_->is_UUID_active(action_name, goal_id))
@@ -589,15 +589,15 @@ bool DDSEnabler::send_action_feedback(
         return false;
     }
 
-    RPC_PROTOCOL protocol = handler_->get_action_rpc_protocol(action_name, goal_id);
+    RpcProtocol protocol = handler_->get_action_rpc_protocol(action_name, goal_id);
 
     std::string prefix;
     switch (protocol)
     {
-        case RPC_PROTOCOL::ROS2:
+        case RpcProtocol::ROS2:
             prefix = participants::ROS_TOPIC_PREFIX;
             break;
-        case RPC_PROTOCOL::FASTDDS:
+        case RpcProtocol::FASTDDS:
             prefix = participants::FASTDDS_TOPIC_PREFIX;
             break;
         default:
@@ -616,7 +616,7 @@ bool DDSEnabler::send_action_feedback(
 bool DDSEnabler::update_action_status(
         const std::string& action_name,
         const participants::UUID& goal_id,
-        const participants::STATUS_CODE& status_code)
+        const participants::StatusCode& status_code)
 {
     std::chrono::system_clock::time_point goal_accepted_stamp;
     if (!handler_->is_UUID_active(action_name, goal_id, &goal_accepted_stamp))
@@ -627,15 +627,15 @@ bool DDSEnabler::update_action_status(
         return false;
     }
 
-    RPC_PROTOCOL protocol = handler_->get_action_rpc_protocol(action_name, goal_id);
+    RpcProtocol protocol = handler_->get_action_rpc_protocol(action_name, goal_id);
 
     std::string prefix;
     switch (protocol)
     {
-        case RPC_PROTOCOL::ROS2:
+        case RpcProtocol::ROS2:
             prefix = participants::ROS_TOPIC_PREFIX;
             break;
-        case RPC_PROTOCOL::FASTDDS:
+        case RpcProtocol::FASTDDS:
             prefix = participants::FASTDDS_TOPIC_PREFIX;
             break;
         default:

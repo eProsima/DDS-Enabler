@@ -244,7 +244,7 @@ static void test_action_feedback_notification_callback(
 static void test_action_status_notification_callback(
         const char* action_name,
         const eprosima::ddsenabler::participants::UUID& goal_id,
-        eprosima::ddsenabler::participants::STATUS_CODE statusCode,
+        eprosima::ddsenabler::participants::StatusCode statusCode,
         const char* statusMessage,
         int64_t publish_time)
 {
@@ -428,7 +428,7 @@ bool server_specific_logic(
     if (!enabler->send_action_result(
                 action_name.c_str(),
                 request_id,
-                eprosima::ddsenabler::participants::STATUS_CODE::SUCCEEDED,
+                eprosima::ddsenabler::participants::StatusCode::SUCCEEDED,
                 json.c_str()))
     {
         std::cerr << "Failed to send action result" << std::endl;

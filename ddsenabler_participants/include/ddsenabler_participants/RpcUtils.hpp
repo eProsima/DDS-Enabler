@@ -43,13 +43,13 @@ RpcInfo get_rpc_info(
         const std::string& topic_name);
 
 DDSENABLER_PARTICIPANTS_DllAPI
-RPC_PROTOCOL detect_rpc_protocol(
+RpcProtocol detect_rpc_protocol(
         const std::string& topic_name);
 
 DDSENABLER_PARTICIPANTS_DllAPI
 RpcInfo remove_prefix_suffix(
         const std::string& topic_name,
-        RPC_PROTOCOL rpc_protocol);
+        RpcProtocol RpcProtocol);
 
 /**
  * @brief Generates a UUID.
@@ -103,7 +103,7 @@ std::string create_cancel_request_msg(
 DDSENABLER_PARTICIPANTS_DllAPI
 std::string create_cancel_reply_msg(
         std::vector<std::pair<UUID, std::chrono::system_clock::time_point>> cancelling_goals,
-        const CANCEL_CODE& cancel_code);
+        const CancelCode& cancel_code);
 
 /**
  * @brief Creates a result request message for an action.
@@ -124,7 +124,7 @@ std::string create_result_request_msg(
  */
 DDSENABLER_PARTICIPANTS_DllAPI
 std::string create_result_reply_msg(
-        const STATUS_CODE& status_code,
+        const StatusCode& status_code,
         const char* json);
 
 /**
@@ -150,7 +150,7 @@ std::string create_feedback_msg(
 DDSENABLER_PARTICIPANTS_DllAPI
 std::string create_status_msg(
         const UUID& goal_id,
-        const STATUS_CODE& status_code,
+        const StatusCode& status_code,
         std::chrono::system_clock::time_point goal_accepted_stamp);
 
 } // namespace RpcUtils

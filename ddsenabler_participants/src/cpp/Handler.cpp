@@ -159,16 +159,16 @@ void Handler::add_data(
     RpcInfo rpc_info = RpcUtils::get_rpc_info(topic.m_topic_name);
     switch (rpc_info.rpc_type)
     {
-        case RPC_TYPE::NONE:
+        case RpcType::NONE:
         {
             write_sample_nts_(msg, dyn_type);
             break;
         }
 
         // SERVICE
-        case RPC_TYPE::SERVICE:
+        case RpcType::SERVICE:
         {
-            if (rpc_info.service_type == SERVICE_TYPE::REQUEST)
+            if (rpc_info.service_type == ServiceType::REQUEST)
             {
                 requests_id_++;
                 RpcPayloadData& rpc_data = dynamic_cast<RpcPayloadData&>(data);
@@ -186,21 +186,21 @@ void Handler::add_data(
         }
 
         // ACTIONS CLIENT
-        case RPC_TYPE::ACTION:
+        case RpcType::ACTION:
         {
             switch (rpc_info.service_type)
             {
-                case SERVICE_TYPE::REPLY:
+                case ServiceType::REPLY:
                 {
                     switch (rpc_info.action_type)
                     {
-                        case ACTION_TYPE::RESULT:
+                        case ActionType::RESULT:
                         {
                             auto action_id =
                                     dynamic_cast<ddspipe::core::types::RpcPayloadData&>(data).write_params.get_reference()
                                             .related_sample_identity().sequence_number().to64long();
                             UUID action_id_uuid;
-                            if (get_action_request_UUID(action_id, ACTION_TYPE::RESULT, action_id_uuid))
+                            if (get_action_request_UUID(action_id, ActionType::RESULT, action_id_uuid))
                             {
                                 write_action_result_nts_(msg, dyn_type, action_id_uuid, rpc_info.action_name);
                             }
@@ -208,20 +208,20 @@ void Handler::add_data(
                             break;
                         }
 
-                        case ACTION_TYPE::GOAL:
+                        case ActionType::GOAL:
                         {
                             auto action_id =
                                     dynamic_cast<ddspipe::core::types::RpcPayloadData&>(data).write_params.get_reference()
                                             .related_sample_identity().sequence_number().to64long();
                             UUID action_id_uuid;
-                            if (get_action_request_UUID(action_id, ACTION_TYPE::GOAL, action_id_uuid))
+                            if (get_action_request_UUID(action_id, ActionType::GOAL, action_id_uuid))
                             {
                                 write_action_goal_reply_nts_(msg, dyn_type, action_id_uuid, rpc_info.action_name);
                             }
                             break;
                         }
 
-                        case ACTION_TYPE::CANCEL:
+                        case ActionType::CANCEL:
                         {
                             auto request_id =
                                     dynamic_cast<ddspipe::core::types::RpcPayloadData&>(data).write_params.get_reference()
@@ -240,12 +240,12 @@ void Handler::add_data(
                     break;
                 }
 
-                case SERVICE_TYPE::REQUEST:
+                case ServiceType::REQUEST:
                 {
                     switch (rpc_info.action_type)
                     {
-                        case ACTION_TYPE::GOAL:
-                        case ACTION_TYPE::CANCEL:
+                        case ActionType::GOAL:
+                        case ActionType::CANCEL:
                         {
                             requests_id_++;
                             RpcPayloadData& rpc_data = dynamic_cast<RpcPayloadData&>(data);
@@ -274,7 +274,7 @@ void Handler::add_data(
                             break;
                         }
 
-                        case ACTION_TYPE::RESULT:
+                        case ActionType::RESULT:
                         {
                             UUID uuid;
                             if (!writer_->uuid_from_request_json(
@@ -294,7 +294,7 @@ void Handler::add_data(
                                         rpc_info.action_name,
                                         uuid,
                                         requests_id_,
-                                        ACTION_TYPE::RESULT))
+                                        ActionType::RESULT))
                             {
                                 EPROSIMA_LOG_ERROR(DDSENABLER_HANDLER,
                                         "Failed to store action request for get_result_request.");
@@ -324,17 +324,17 @@ void Handler::add_data(
                     break;
                 }
 
-                case SERVICE_TYPE::NONE:
+                case ServiceType::NONE:
                 {
                     switch (rpc_info.action_type)
                     {
-                        case ACTION_TYPE::FEEDBACK:
+                        case ActionType::FEEDBACK:
                         {
                             write_action_feedback_nts_(msg, dyn_type, rpc_info.action_name);
                             break;
                         }
 
-                        case ACTION_TYPE::STATUS:
+                        case ActionType::STATUS:
                         {
                             write_action_status_nts_(msg, dyn_type, rpc_info.action_name);
                             break;
@@ -618,7 +618,7 @@ void Handler::write_action_request_nts_(
         const fastdds::dds::DynamicType::_ref_type& dyn_type,
         const uint64_t request_id,
         const std::string& action_name,
-        const ACTION_TYPE action_type)
+        const ActionType action_type)
 {
     writer_->write_action_request_notification(msg, dyn_type, request_id, action_name, action_type);
 }
@@ -687,8 +687,8 @@ bool Handler::store_action_request(
         const std::string& action_name,
         const UUID& action_id,
         const uint64_t request_id,
-        const ACTION_TYPE action_type,
-        const RPC_PROTOCOL rpc_protocol)
+        const ActionType action_type,
+        const RpcProtocol RpcProtocol)
 {
     std::lock_guard<std::recursive_mutex> lock(mtx_);
 
@@ -702,7 +702,7 @@ bool Handler::store_action_request(
                     << it->second.action_name << ", got " << action_name);
             return false;
         }
-        if (ACTION_TYPE::GOAL == action_type)
+        if (ActionType::GOAL == action_type)
         {
             EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
                     "Cannot store action goal request as action id already exists.");
@@ -714,13 +714,13 @@ bool Handler::store_action_request(
     else
     {
         // If it does not exist, create a new entry only if the action type is goal request
-        if (ACTION_TYPE::GOAL != action_type)
+        if (ActionType::GOAL != action_type)
         {
             EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
                     "Cannot store action request, action does not exist and request type is not GOAL.");
             return false;
         }
-        action_request_id_to_uuid_[action_id] = ActionRequestInfo(action_name, action_type, request_id, rpc_protocol);
+        action_request_id_to_uuid_[action_id] = ActionRequestInfo(action_name, action_type, request_id, RpcProtocol);
     }
 
     return true;
@@ -800,7 +800,7 @@ bool Handler::is_UUID_active(
     return false;
 }
 
-RPC_PROTOCOL Handler::get_action_rpc_protocol(
+RpcProtocol Handler::get_action_rpc_protocol(
         const std::string& action_name,
         const UUID& action_id)
 {
@@ -811,12 +811,12 @@ RPC_PROTOCOL Handler::get_action_rpc_protocol(
         return it->second.rpc_protocol;
     }
 
-    return RPC_PROTOCOL::PROTOCOL_UNKNOWN;
+    return RpcProtocol::PROTOCOL_UNKNOWN;
 }
 
 bool Handler::get_action_request_UUID(
         const uint64_t request_id,
-        const ACTION_TYPE action_type,
+        const ActionType action_type,
         UUID& action_id)
 {
     std::lock_guard<std::recursive_mutex> lock(mtx_);

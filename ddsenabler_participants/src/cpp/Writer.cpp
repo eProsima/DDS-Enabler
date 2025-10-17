@@ -361,7 +361,7 @@ void Writer::write_action_goal_reply_notification(
     }
 
     std::string status_message = "Action goal accepted";
-    ddsenabler::participants::STATUS_CODE status_code = ddsenabler::participants::STATUS_CODE::ACCEPTED;
+    ddsenabler::participants::StatusCode status_code = ddsenabler::participants::StatusCode::ACCEPTED;
     std::stringstream instanceHandle;
     instanceHandle << msg.instanceHandle;
     try
@@ -369,7 +369,7 @@ void Writer::write_action_goal_reply_notification(
         if (!json_data[msg.topic.topic_name()]["data"][instanceHandle.str()]["accepted"])
         {
             status_message = "Action goal rejected";
-            status_code = ddsenabler::participants::STATUS_CODE::REJECTED;
+            status_code = ddsenabler::participants::StatusCode::REJECTED;
         }
     }
     catch (const nlohmann::json::exception& e)
@@ -377,7 +377,7 @@ void Writer::write_action_goal_reply_notification(
         EPROSIMA_LOG_ERROR(DDSENABLER_WRITER,
                 "Error parsing action goal reply notification: " << e.what());
         status_message = "Action goal reply notification malformed";
-        status_code = ddsenabler::participants::STATUS_CODE::UNKNOWN;
+        status_code = ddsenabler::participants::StatusCode::UNKNOWN;
     }
     if (action_status_notification_callback_)
     {
@@ -390,14 +390,14 @@ void Writer::write_action_goal_reply_notification(
             );
     }
 
-    if (ddsenabler::participants::STATUS_CODE::ACCEPTED == status_code &&
+    if (ddsenabler::participants::StatusCode::ACCEPTED == status_code &&
             send_action_get_result_request_callback_ &&
             !send_action_get_result_request_callback_(
                 action_name.c_str(),
                 action_id))
     {
         status_message = "Action goal aborted";
-        status_code = ddsenabler::participants::STATUS_CODE::ABORTED;
+        status_code = ddsenabler::participants::StatusCode::ABORTED;
 
         if (action_status_notification_callback_)
         {
@@ -418,7 +418,7 @@ void Writer::write_action_cancel_reply_notification(
         const uint64_t request_id,
         const std::string& action_name)
 {
-    ddsenabler::participants::STATUS_CODE status_code = ddsenabler::participants::STATUS_CODE::CANCELED;
+    ddsenabler::participants::StatusCode status_code = ddsenabler::participants::StatusCode::CANCELED;
 
     nlohmann::json json_data;
     if (!prepare_json_data_(msg, dyn_type, json_data))
@@ -439,30 +439,30 @@ void Writer::write_action_cancel_reply_notification(
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_WRITER,
                 "Error parsing action cancel reply notification: " << e.what());
-        status_code = ddsenabler::participants::STATUS_CODE::UNKNOWN;
+        status_code = ddsenabler::participants::StatusCode::UNKNOWN;
         return;
     }
     switch (return_code)
     {
         case 0:
             status_message = "Action canceled successfully";
-            status_code = ddsenabler::participants::STATUS_CODE::CANCELED;
+            status_code = ddsenabler::participants::StatusCode::CANCELED;
             break;
         case 1:
             status_message = "Action cancel request rejected";
-            status_code = ddsenabler::participants::STATUS_CODE::REJECTED;
+            status_code = ddsenabler::participants::StatusCode::REJECTED;
             break;
         case 2:
             status_message = "Action cancel request unknown goal ID";
-            status_code = ddsenabler::participants::STATUS_CODE::CANCEL_REQUEST_FAILED;
+            status_code = ddsenabler::participants::StatusCode::CANCEL_REQUEST_FAILED;
             break;
         case 3:
             status_message = "Action cancel request rejected as goal was already terminated";
-            status_code = ddsenabler::participants::STATUS_CODE::CANCEL_REQUEST_FAILED;
+            status_code = ddsenabler::participants::StatusCode::CANCEL_REQUEST_FAILED;
             break;
         default:
             status_message = "Action cancel request unknown code";
-            status_code = ddsenabler::participants::STATUS_CODE::UNKNOWN;
+            status_code = ddsenabler::participants::StatusCode::UNKNOWN;
             break;
     }
 
@@ -521,28 +521,28 @@ void Writer::write_action_status_notification(
                 continue;
             }
 
-            ddsenabler::participants::STATUS_CODE status_code(status["status"]);
+            ddsenabler::participants::StatusCode status_code(status["status"]);
             std::string status_message;
             switch (status_code)
             {
-                case ddsenabler::participants::STATUS_CODE::UNKNOWN:
+                case ddsenabler::participants::StatusCode::UNKNOWN:
                     status_message = "The status has not been properly set";
                     break;
 
-                case ddsenabler::participants::STATUS_CODE::ACCEPTED:
+                case ddsenabler::participants::StatusCode::ACCEPTED:
                     status_message = "The goal has been accepted and is awaiting execution";
                     break;
 
-                case ddsenabler::participants::STATUS_CODE::EXECUTING:
+                case ddsenabler::participants::StatusCode::EXECUTING:
                     status_message = "The goal is currently being executed by the action server";
                     break;
 
-                case ddsenabler::participants::STATUS_CODE::CANCELING:
+                case ddsenabler::participants::StatusCode::CANCELING:
                     status_message =
                             "The client has requested that the goal be canceled and the action server has accepted the cancel request";
                     break;
 
-                case ddsenabler::participants::STATUS_CODE::SUCCEEDED:
+                case ddsenabler::participants::StatusCode::SUCCEEDED:
                     if (erase_action_UUID_callback_)
                     {
                         erase_action_UUID_callback_(uuid, ActionEraseReason::FINAL_STATUS);
@@ -550,7 +550,7 @@ void Writer::write_action_status_notification(
                     status_message = "The goal was achieved successfully by the action server";
                     break;
 
-                case ddsenabler::participants::STATUS_CODE::CANCELED:
+                case ddsenabler::participants::StatusCode::CANCELED:
                     if (erase_action_UUID_callback_)
                     {
                         erase_action_UUID_callback_(uuid, ActionEraseReason::FINAL_STATUS);
@@ -558,14 +558,14 @@ void Writer::write_action_status_notification(
                     status_message = "The goal was canceled after an external request from an action client";
                     break;
 
-                case ddsenabler::participants::STATUS_CODE::ABORTED:
+                case ddsenabler::participants::StatusCode::ABORTED:
                     if (erase_action_UUID_callback_)
                     {
                         erase_action_UUID_callback_(uuid, ActionEraseReason::FINAL_STATUS);
                     }
                     status_message = "The goal was terminated by the action server without an external request";
                     break;
-                case ddsenabler::participants::STATUS_CODE::REJECTED:
+                case ddsenabler::participants::StatusCode::REJECTED:
                     if (erase_action_UUID_callback_)
                     {
                         erase_action_UUID_callback_(uuid, ActionEraseReason::FINAL_STATUS);
@@ -602,7 +602,7 @@ void Writer::write_action_request_notification(
         const fastdds::dds::DynamicType::_ref_type& dyn_type,
         const uint64_t request_id,
         const std::string& action_name,
-        const ACTION_TYPE action_type)
+        const ActionType action_type)
 {
     nlohmann::json json_data;
     if (!prepare_json_data_(msg, dyn_type, json_data))
@@ -614,7 +614,7 @@ void Writer::write_action_request_notification(
     instanceHandle << msg.instanceHandle;
     try
     {
-        if (ACTION_TYPE::GOAL == action_type)
+        if (ActionType::GOAL == action_type)
         {
             bool accepted;
             if (action_goal_request_notification_callback_)
@@ -634,7 +634,7 @@ void Writer::write_action_request_notification(
 
             return;
         }
-        if (ACTION_TYPE::CANCEL == action_type)
+        if (ActionType::CANCEL == action_type)
         {
             if (action_cancel_request_notification_callback_)
             {

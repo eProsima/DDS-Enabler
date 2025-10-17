@@ -334,7 +334,7 @@ typedef void (* ActionFeedbackNotification)(
 typedef void (* ActionStatusNotification)(
         const char* action_name,
         const UUID& goal_id,
-        STATUS_CODE status_code,
+        StatusCode status_code,
         const char* status_message,
         int64_t publish_time);
 

@@ -196,7 +196,7 @@ public:
      * @param [in] action_id UUID of the action.
      * @param [in] request_id Request ID of the action request.
      * @param [in] action_type Type of the action (GOAL, RESULT, CANCEL).
-     * @param [in] rpc_protocol Protocol of the action, only used to create the ActionRequestInfo if action_type is GOAL.
+     * @param [in] RpcProtocol Protocol of the action, only used to create the ActionRequestInfo if action_type is GOAL.
      * @return \c true if the action request was successfully stored, \c false otherwise.
      */
     DDSENABLER_PARTICIPANTS_DllAPI
@@ -204,8 +204,8 @@ public:
             const std::string& action_name,
             const UUID& action_id,
             const uint64_t request_id,
-            const ACTION_TYPE action_type,
-            const RPC_PROTOCOL rpc_protocol = RPC_PROTOCOL::ROS2);
+            const ActionType action_type,
+            const RpcProtocol RpcProtocol = RpcProtocol::ROS2);
 
     /**
      * @brief Send the reply containing the result of an action or store it for a later reply.
@@ -258,10 +258,10 @@ public:
      *
      * @param [in] action_name Name of the action.
      * @param [in] action_id UUID of the action to be checked.
-     * @return The RPC protocol of the action, or RPC_PROTOCOL::PROTOCOL_UNKNOWN if the action is not found.
+     * @return The RPC protocol of the action, or RpcProtocol::PROTOCOL_UNKNOWN if the action is not found.
      */
     DDSENABLER_PARTICIPANTS_DllAPI
-    RPC_PROTOCOL get_action_rpc_protocol(
+    RpcProtocol get_action_rpc_protocol(
             const std::string& action_name,
             const UUID& action_id);
 
@@ -428,7 +428,7 @@ protected:
      */
     bool get_action_request_UUID(
             const uint64_t request_id,
-            const ACTION_TYPE action_type,
+            const ActionType action_type,
             UUID& action_id);
 
     /**
@@ -609,7 +609,7 @@ protected:
             const fastdds::dds::DynamicType::_ref_type& dyn_type,
             const uint64_t request_id,
             const std::string& action_name,
-            const ACTION_TYPE action_type);
+            const ActionType action_type);
 
     /**
      * @brief Register a type using the given serialized type data.

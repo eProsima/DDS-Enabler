@@ -118,14 +118,14 @@ public:
      * for the corresponding request and reply topics.
      *
      * @param service_name The name of the service to be announced.
-     * @param rpc_protocol The RPC protocol to be used (default is ROS2).
+     * @param RpcProtocol The RPC protocol to be used (default is ROS2).
      *
      * @return true if the service was successfully announced, false otherwise.
      */
     DDSENABLER_DllAPI
     bool announce_service(
             const std::string& service_name,
-            participants::RPC_PROTOCOL rpc_protocol = participants::RPC_PROTOCOL::ROS2);
+            participants::RpcProtocol RpcProtocol = participants::RpcProtocol::ROS2);
 
     /**
      * @brief Stops the server for the given service.
@@ -154,7 +154,7 @@ public:
      * @param service_name The target service name.
      * @param json The JSON-formatted request data.
      * @param request_id Reference to store the unique request identifier.
-     * @param rpc_protocol The RPC protocol to be used (default is ROS2).
+     * @param RpcProtocol The RPC protocol to be used (default is ROS2).
      *
      * @return true if the request was successfully sent, false otherwise.
      */
@@ -163,7 +163,7 @@ public:
             const std::string& service_name,
             const std::string& json,
             uint64_t& request_id,
-            participants::RPC_PROTOCOL rpc_protocol = participants::RPC_PROTOCOL::ROS2);
+            participants::RpcProtocol RpcProtocol = participants::RpcProtocol::ROS2);
 
     /**
      * @brief Sends a reply to the given service.
@@ -198,14 +198,14 @@ public:
      * Failure may occur if there is an issue requesting the data types to user's app.
      *
      * @param action_name The name of the action to be announced.
-     * @param rpc_protocol The RPC protocol to be used (default is ROS2).
+     * @param RpcProtocol The RPC protocol to be used (default is ROS2).
      *
      * @return true if the action was successfully announced, false otherwise.
      */
     DDSENABLER_DllAPI
     bool announce_action(
             const std::string& action_name,
-            participants::RPC_PROTOCOL rpc_protocol = participants::RPC_PROTOCOL::ROS2);
+            participants::RpcProtocol RpcProtocol = participants::RpcProtocol::ROS2);
 
     /**
      * @brief Stops the server for the given action.
@@ -257,7 +257,7 @@ public:
     bool send_action_result(
             const char* action_name,
             const participants::UUID& goal_id,
-            const participants::STATUS_CODE& status_code,
+            const participants::StatusCode& status_code,
             const char* json);
 
     /**
@@ -277,7 +277,7 @@ public:
     bool send_action_cancel_goal_reply(
             const char* action_name,
             const std::vector<participants::UUID>& goal_ids,
-            const participants::CANCEL_CODE& cancel_code,
+            const participants::CancelCode& cancel_code,
             const uint64_t request_id);
 
     /**
@@ -298,7 +298,7 @@ public:
     bool update_action_status(
             const std::string& action_name,
             const participants::UUID& goal_id,
-            const participants::STATUS_CODE& status_code);
+            const participants::StatusCode& status_code);
 
     /*****************************************/
     /*            ACTION CLIENT              */
@@ -317,7 +317,7 @@ public:
      * @param action_name The name of the action to send the goal to.
      * @param json The JSON data to be sent with the action goal.
      * @param goal_id Reference to store the unique identifier of the action goal.
-     * @param rpc_protocol The RPC protocol to be used (default is ROS2).
+     * @param RpcProtocol The RPC protocol to be used (default is ROS2).
      *
      * @return true if the action goal was successfully sent, false otherwise.
      */
@@ -326,7 +326,7 @@ public:
             const std::string& action_name,
             const std::string& json,
             participants::UUID& goal_id,
-            participants::RPC_PROTOCOL rpc_protocol = participants::RPC_PROTOCOL::ROS2);
+            participants::RpcProtocol RpcProtocol = participants::RpcProtocol::ROS2);
 
     /**
      * @brief Cancels an action goal for the specified action.

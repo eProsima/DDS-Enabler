@@ -66,20 +66,20 @@ struct RpcInfo
     RpcInfo(
             const std::string& dds_topic_name)
         : topic_name(dds_topic_name)
-        , rpc_protocol(RPC_PROTOCOL::PROTOCOL_UNKNOWN)
-        , rpc_type(RPC_TYPE::NONE)
-        , service_type(SERVICE_TYPE::NONE)
-        , action_type(ACTION_TYPE::NONE)
+        , rpc_protocol(RpcProtocol::PROTOCOL_UNKNOWN)
+        , rpc_type(RpcType::NONE)
+        , service_type(ServiceType::NONE)
+        , action_type(ActionType::NONE)
     {
     }
 
     std::string topic_name;
     std::string service_name;
     std::string action_name;
-    RPC_PROTOCOL rpc_protocol;
-    RPC_TYPE rpc_type;
-    SERVICE_TYPE service_type;
-    ACTION_TYPE action_type;
+    RpcProtocol rpc_protocol;
+    RpcType rpc_type;
+    ServiceType service_type;
+    ActionType action_type;
 };
 
 struct ActionRequestInfo
@@ -88,9 +88,9 @@ struct ActionRequestInfo
 
     ActionRequestInfo(
             const std::string& _action_name,
-            ACTION_TYPE action_type,
+            ActionType action_type,
             uint64_t request_id,
-            RPC_PROTOCOL rpc_protocol)
+            RpcProtocol rpc_protocol)
         : action_name(_action_name)
         , goal_accepted_stamp(std::chrono::system_clock::now())
         , rpc_protocol(rpc_protocol)
@@ -100,14 +100,14 @@ struct ActionRequestInfo
 
     void set_request(
             uint64_t request_id,
-            ACTION_TYPE action_type)
+            ActionType action_type)
     {
         switch (action_type)
         {
-            case ACTION_TYPE::GOAL:
+            case ActionType::GOAL:
                 goal_request_id = request_id;
                 break;
-            case ACTION_TYPE::RESULT:
+            case ActionType::RESULT:
                 result_request_id = request_id;
                 break;
             default:
@@ -117,13 +117,13 @@ struct ActionRequestInfo
     }
 
     uint64_t get_request(
-            ACTION_TYPE action_type) const
+            ActionType action_type) const
     {
         switch (action_type)
         {
-            case ACTION_TYPE::GOAL:
+            case ActionType::GOAL:
                 return goal_request_id;
-            case ACTION_TYPE::RESULT:
+            case ActionType::RESULT:
                 return result_request_id;
             default:
                 return 0;
@@ -160,13 +160,13 @@ struct ActionRequestInfo
         return final_status_received && result_received;
     }
 
-    RPC_PROTOCOL get_rpc_protocol() const
+    RpcProtocol get_rpc_protocol() const
     {
         return rpc_protocol;
     }
 
     std::string action_name;
-    RPC_PROTOCOL rpc_protocol;
+    RpcProtocol rpc_protocol;
     uint64_t goal_request_id = 0;
     uint64_t result_request_id = 0;
     std::chrono::system_clock::time_point goal_accepted_stamp;
@@ -180,14 +180,14 @@ struct ServiceDiscovered
 
     ServiceDiscovered(
             const std::string& service_name,
-            RPC_PROTOCOL rpc_protocol)
+            RpcProtocol rpc_protocol)
         : service_name(service_name)
         , rpc_protocol(rpc_protocol)
     {
     }
 
     std::string service_name;
-    RPC_PROTOCOL rpc_protocol{RPC_PROTOCOL::PROTOCOL_UNKNOWN};
+    RpcProtocol rpc_protocol{RpcProtocol::PROTOCOL_UNKNOWN};
 
     ddspipe::core::types::DdsTopic topic_request;
     bool request_discovered{false};
@@ -203,9 +203,9 @@ struct ServiceDiscovered
 
     bool add_topic(
             const ddspipe::core::types::DdsTopic& topic,
-            SERVICE_TYPE service_type)
+            ServiceType service_type)
     {
-        if (service_type == SERVICE_TYPE::REQUEST)
+        if (service_type == ServiceType::REQUEST)
         {
             if (request_discovered)
             {
@@ -242,9 +242,9 @@ struct ServiceDiscovered
     }
 
     bool remove_topic(
-            SERVICE_TYPE service_type)
+            ServiceType service_type)
     {
-        if (service_type == SERVICE_TYPE::REQUEST)
+        if (service_type == ServiceType::REQUEST)
         {
             request_discovered = false;
             topic_request = ddspipe::core::types::DdsTopic();
@@ -271,10 +271,10 @@ struct ServiceDiscovered
     }
 
     bool get_topic(
-            SERVICE_TYPE service_type,
+            ServiceType service_type,
             ddspipe::core::types::DdsTopic& topic)
     {
-        if (service_type == SERVICE_TYPE::REQUEST)
+        if (service_type == ServiceType::REQUEST)
         {
             if (!request_discovered)
             {
@@ -283,7 +283,7 @@ struct ServiceDiscovered
             topic = topic_request;
             return true;
         }
-        if (service_type == SERVICE_TYPE::REPLY)
+        if (service_type == ServiceType::REPLY)
         {
             if (!reply_discovered)
             {
@@ -295,7 +295,7 @@ struct ServiceDiscovered
         return false;
     }
 
-    RPC_PROTOCOL get_rpc_protocol() const
+    RpcProtocol get_rpc_protocol() const
     {
         return rpc_protocol;
     }
@@ -306,14 +306,14 @@ struct ActionDiscovered
 {
     ActionDiscovered(
             const std::string& action_name,
-            RPC_PROTOCOL rpc_protocol)
+            RpcProtocol rpc_protocol)
         : action_name(action_name)
         , rpc_protocol(rpc_protocol)
     {
     }
 
     std::string action_name;
-    RPC_PROTOCOL rpc_protocol{RPC_PROTOCOL::PROTOCOL_UNKNOWN};
+    RpcProtocol rpc_protocol{RpcProtocol::PROTOCOL_UNKNOWN};
     std::weak_ptr<ServiceDiscovered> goal;
     std::weak_ptr<ServiceDiscovered> result;
     std::weak_ptr<ServiceDiscovered> cancel;
@@ -343,17 +343,17 @@ struct ActionDiscovered
 
     bool add_service(
             std::shared_ptr<ServiceDiscovered> service,
-            ACTION_TYPE action_type)
+            ActionType action_type)
     {
         switch (action_type)
         {
-            case ACTION_TYPE::GOAL:
+            case ActionType::GOAL:
                 goal = service;
                 break;
-            case ACTION_TYPE::RESULT:
+            case ActionType::RESULT:
                 result = service;
                 break;
-            case ACTION_TYPE::CANCEL:
+            case ActionType::CANCEL:
                 cancel = service;
                 break;
             default:
@@ -364,15 +364,15 @@ struct ActionDiscovered
 
     bool add_topic(
             const ddspipe::core::types::DdsTopic& topic,
-            ACTION_TYPE action_type)
+            ActionType action_type)
     {
         switch (action_type)
         {
-            case ACTION_TYPE::FEEDBACK:
+            case ActionType::FEEDBACK:
                 feedback = topic;
                 feedback_discovered = true;
                 break;
-            case ACTION_TYPE::STATUS:
+            case ActionType::STATUS:
                 status = topic;
                 status_discovered = true;
                 break;
