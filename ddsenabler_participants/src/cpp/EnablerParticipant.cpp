@@ -90,7 +90,7 @@ std::shared_ptr<IReader> EnablerParticipant::create_reader(
         return std::make_shared<BlankReader>();
     }
 
-    std::shared_ptr<IReader> reader;
+    std::shared_ptr<InternalReader> reader;
     {
         std::lock_guard<std::mutex> lck(mtx_);
         auto dds_topic = dynamic_cast<const DdsTopic&>(topic);

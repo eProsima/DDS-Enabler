@@ -164,7 +164,7 @@ protected:
     bool revoke_service_nts_(
             const std::string& service_name);
 
-    std::map<ddspipe::core::types::DdsTopic, std::shared_ptr<ddspipe::core::IReader>> readers_;
+    std::map<ddspipe::core::types::DdsTopic, std::shared_ptr<ddspipe::participants::InternalReader>> readers_;
 
     std::map<std::string, std::shared_ptr<ServiceDiscovered>> services_;
 
