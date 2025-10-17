@@ -178,13 +178,7 @@ void Writer::write_data(
         const fastdds::dds::DynamicType::_ref_type& dyn_type)
 {
     nlohmann::json json_data;
-    if (!prepare_json_data_(msg, dyn_type, json_data))
-    {
-        return;
-    }
-
-    //STORE DATA
-    if (data_notification_callback_)
+    if (data_notification_callback_ && prepare_json_data_(msg, dyn_type, json_data))
     {
         data_notification_callback_(
             msg.topic.topic_name().c_str(),
@@ -221,13 +215,7 @@ void Writer::write_service_reply_notification(
         const std::string& service_name)
 {
     nlohmann::json json_data;
-    if (!prepare_json_data_(msg, dyn_type, json_data))
-    {
-        return;
-    }
-
-    //STORE DATA
-    if (service_reply_notification_callback_)
+    if (service_reply_notification_callback_ && prepare_json_data_(msg, dyn_type, json_data))
     {
         service_reply_notification_callback_(
             service_name.c_str(),
@@ -245,13 +233,7 @@ void Writer::write_service_request_notification(
         const std::string& service_name)
 {
     nlohmann::json json_data;
-    if (!prepare_json_data_(msg, dyn_type, json_data))
-    {
-        return;
-    }
-
-    //STORE DATA
-    if (service_request_notification_callback_)
+    if (service_request_notification_callback_ && prepare_json_data_(msg, dyn_type, json_data))
     {
         service_request_notification_callback_(
             service_name.c_str(),
@@ -307,13 +289,7 @@ void Writer::write_action_result_notification(
         const std::string& action_name)
 {
     nlohmann::json json_data;
-    if (!prepare_json_data_(msg, dyn_type, json_data))
-    {
-        return;
-    }
-
-    //STORE DATA
-    if (action_result_notification_callback_)
+    if (action_result_notification_callback_ && prepare_json_data_(msg, dyn_type, json_data))
     {
         action_result_notification_callback_(
             action_name.c_str(),
@@ -330,14 +306,9 @@ void Writer::write_action_feedback_notification(
         const std::string& action_name)
 {
     nlohmann::json json_data;
-    if (!prepare_json_data_(msg, dyn_type, json_data))
-    {
-        return;
-    }
-
     std::stringstream instanceHandle;
     instanceHandle << msg.instanceHandle;
-    if (action_feedback_notification_callback_)
+    if (action_feedback_notification_callback_ && prepare_json_data_(msg, dyn_type, json_data))
     {
         action_feedback_notification_callback_(
             action_name.c_str(),
