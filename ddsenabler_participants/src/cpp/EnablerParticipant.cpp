@@ -441,6 +441,12 @@ RPC_PROTOCOL EnablerParticipant::get_service_rpc_protocol(
 }
 
 bool EnablerParticipant::announce_action(
+        const std::string& action_name)
+{
+    return announce_action(action_name, RPC_PROTOCOL::ROS2);
+}
+
+bool EnablerParticipant::announce_action(
         const std::string& action_name,
         RPC_PROTOCOL rpc_protocol)
 {

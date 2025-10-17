@@ -104,8 +104,12 @@ public:
 
     DDSENABLER_PARTICIPANTS_DllAPI
     bool announce_action(
+            const std::string& action_name);
+
+    DDSENABLER_PARTICIPANTS_DllAPI
+    bool announce_action(
             const std::string& action_name,
-            RPC_PROTOCOL rpc_protocol = RPC_PROTOCOL::ROS2);
+            RPC_PROTOCOL rpc_protocol);
 
     DDSENABLER_PARTICIPANTS_DllAPI
     bool revoke_action(
