@@ -129,8 +129,14 @@ protected:
     bool create_topic_writer_nts_(
             const ddspipe::core::types::DdsTopic& topic,
             std::shared_ptr<eprosima::ddspipe::core::IReader>& reader,
+            std::unique_lock<std::mutex>& lck);
+
+    bool create_topic_writer_nts_(
+            const ddspipe::core::types::DdsTopic& topic,
+            std::shared_ptr<eprosima::ddspipe::core::IReader>& reader,
             ddspipe::core::types::Endpoint& request_edp,
             std::unique_lock<std::mutex>& lck);
+
 
     bool create_service_request_writer_nts_(
             std::shared_ptr<ServiceDiscovered> service,

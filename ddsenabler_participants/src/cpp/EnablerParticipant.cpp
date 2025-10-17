@@ -145,6 +145,15 @@ std::shared_ptr<IReader> EnablerParticipant::create_reader(
 bool EnablerParticipant::create_topic_writer_nts_(
         const DdsTopic& topic,
         std::shared_ptr<IReader>& reader,
+        std::unique_lock<std::mutex>& lck)
+{
+    ddspipe::core::types::Endpoint request_edp;
+    return create_topic_writer_nts_(topic, reader, request_edp, lck);
+}
+
+bool EnablerParticipant::create_topic_writer_nts_(
+        const DdsTopic& topic,
+        std::shared_ptr<IReader>& reader,
         ddspipe::core::types::Endpoint& request_edp,
         std::unique_lock<std::mutex>& lck)
 {
@@ -194,8 +203,13 @@ bool EnablerParticipant::publish(
             return false;
         }
 
-        ddspipe::core::types::Endpoint _;
-        create_topic_writer_nts_(topic, i_reader, _, lck);
+        if (!create_topic_writer_nts_(topic, i_reader, lck))
+        {
+            EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
+                    "Failed to publish data in topic " << topic_name << " : writer creation failed.");
+            return false;
+        }
+
         type_name = topic.type_name;
 
         // (Optionally) wait for writer created in DDS participant to match with external readers, to avoid losing this
@@ -778,11 +792,9 @@ bool EnablerParticipant::query_action_nts_(
         auto feedback_reader = lookup_reader_nts_(feedback_topic_name);
         if (!feedback_reader)
         {
-            ddspipe::core::types::Endpoint _;
             create_topic_writer_nts_(
                 action.feedback,
                 feedback_reader,
-                _,
                 lck);
         }
     }
@@ -804,11 +816,9 @@ bool EnablerParticipant::query_action_nts_(
         auto status_reader = lookup_reader_nts_(action.status.m_topic_name);
         if (!status_reader)
         {
-            ddspipe::core::types::Endpoint _;
             create_topic_writer_nts_(
                 action.status,
                 status_reader,
-                _,
                 lck);
         }
     }
