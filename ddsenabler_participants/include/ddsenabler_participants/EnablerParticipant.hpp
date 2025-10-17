@@ -23,6 +23,7 @@
 #include <mutex>
 
 #include <ddspipe_participants/participant/dynamic_types/SchemaParticipant.hpp>
+#include <ddspipe_participants/reader/auxiliar/InternalReader.hpp>
 
 #include <ddsenabler_participants/Callbacks.hpp>
 #include <ddsenabler_participants/EnablerParticipantConfiguration.hpp>
