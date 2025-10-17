@@ -28,6 +28,8 @@
 
 #include <ddsenabler_participants/Writer.hpp>
 
+#include <nlohmann/json.hpp>
+
 namespace eprosima {
 namespace ddsenabler {
 namespace participants {
