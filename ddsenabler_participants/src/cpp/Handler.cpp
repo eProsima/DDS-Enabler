@@ -156,17 +156,17 @@ void Handler::add_data(
         throw utils::InconsistencyException(STR_ENTRY << "Received sample with no payload.");
     }
 
-    RpcInfo rpc_info(topic.m_topic_name);
+    std::shared_ptr<RpcInfo> rpc_info;
     try
     {
-        rpc_info = RpcUtils::get_rpc_info(topic.m_topic_name);
+        rpc_info = std::make_shared<RpcInfo>(topic.m_topic_name);
     }
     catch(const std::exception& e)
     {
         throw utils::InconsistencyException(STR_ENTRY << e.what());
     }
 
-    switch (rpc_info.rpc_type)
+    switch (rpc_info->rpc_type)
     {
         case RpcType::NONE:
         {
@@ -177,19 +177,19 @@ void Handler::add_data(
         // SERVICE
         case RpcType::SERVICE:
         {
-            if (rpc_info.service_type == ServiceType::REQUEST)
+            if (rpc_info->service_type == ServiceType::REQUEST)
             {
                 requests_id_++;
                 RpcPayloadData& rpc_data = dynamic_cast<RpcPayloadData&>(data);
                 rpc_data.sent_sequence_number = eprosima::fastdds::rtps::SequenceNumber_t(requests_id_);
-                write_service_request_nts_(msg, dyn_type, requests_id_, rpc_info.service_name);
+                write_service_request_nts_(msg, dyn_type, requests_id_, rpc_info->service_name);
             }
             else
             {
                 auto request_id =
                         dynamic_cast<ddspipe::core::types::RpcPayloadData&>(data).write_params.get_reference().
                                 related_sample_identity().sequence_number().to64long();
-                write_service_reply_nts_(msg, dyn_type, request_id, rpc_info.service_name);
+                write_service_reply_nts_(msg, dyn_type, request_id, rpc_info->service_name);
             }
             break;
         }
@@ -197,11 +197,11 @@ void Handler::add_data(
         // ACTIONS CLIENT
         case RpcType::ACTION:
         {
-            switch (rpc_info.service_type)
+            switch (rpc_info->service_type)
             {
                 case ServiceType::REPLY:
                 {
-                    switch (rpc_info.action_type)
+                    switch (rpc_info->action_type)
                     {
                         case ActionType::RESULT:
                         {
@@ -211,7 +211,7 @@ void Handler::add_data(
                             UUID action_id_uuid;
                             if (get_action_request_UUID(action_id, ActionType::RESULT, action_id_uuid))
                             {
-                                write_action_result_nts_(msg, dyn_type, action_id_uuid, rpc_info.action_name);
+                                write_action_result_nts_(msg, dyn_type, action_id_uuid, rpc_info->action_name);
                             }
                             erase_action_UUID(action_id_uuid, ActionEraseReason::RESULT);
                             break;
@@ -225,7 +225,7 @@ void Handler::add_data(
                             UUID action_id_uuid;
                             if (get_action_request_UUID(action_id, ActionType::GOAL, action_id_uuid))
                             {
-                                write_action_goal_reply_nts_(msg, dyn_type, action_id_uuid, rpc_info.action_name);
+                                write_action_goal_reply_nts_(msg, dyn_type, action_id_uuid, rpc_info->action_name);
                             }
                             break;
                         }
@@ -235,7 +235,7 @@ void Handler::add_data(
                             auto request_id =
                                     dynamic_cast<ddspipe::core::types::RpcPayloadData&>(data).write_params.get_reference()
                                             .related_sample_identity().sequence_number().to64long();
-                            write_action_cancel_reply_nts_(msg, dyn_type, request_id, rpc_info.action_name);
+                            write_action_cancel_reply_nts_(msg, dyn_type, request_id, rpc_info->action_name);
                             break;
                         }
 
@@ -251,7 +251,7 @@ void Handler::add_data(
 
                 case ServiceType::REQUEST:
                 {
-                    switch (rpc_info.action_type)
+                    switch (rpc_info->action_type)
                     {
                         case ActionType::GOAL:
                         case ActionType::CANCEL:
@@ -271,13 +271,13 @@ void Handler::add_data(
                             }
 
                             if (store_action_request(
-                                        rpc_info.action_name,
+                                        rpc_info->action_name,
                                         uuid,
                                         requests_id_,
-                                        rpc_info.action_type))
+                                        rpc_info->action_type))
                             {
-                                write_action_request_nts_(msg, dyn_type, requests_id_, rpc_info.action_name,
-                                        rpc_info.action_type);
+                                write_action_request_nts_(msg, dyn_type, requests_id_, rpc_info->action_name,
+                                        rpc_info->action_type);
                             }
 
                             break;
@@ -300,7 +300,7 @@ void Handler::add_data(
                             RpcPayloadData& rpc_data = dynamic_cast<RpcPayloadData&>(data);
                             rpc_data.sent_sequence_number = eprosima::fastdds::rtps::SequenceNumber_t(requests_id_);
                             if (!store_action_request(
-                                        rpc_info.action_name,
+                                        rpc_info->action_name,
                                         uuid,
                                         requests_id_,
                                         ActionType::RESULT))
@@ -316,7 +316,7 @@ void Handler::add_data(
                                 if (send_action_get_result_reply_callback_)
                                 {
                                     send_action_get_result_reply_callback_(
-                                        rpc_info.action_name,
+                                        rpc_info->action_name,
                                         uuid,
                                         result,
                                         requests_id_);
@@ -335,17 +335,17 @@ void Handler::add_data(
 
                 case ServiceType::NONE:
                 {
-                    switch (rpc_info.action_type)
+                    switch (rpc_info->action_type)
                     {
                         case ActionType::FEEDBACK:
                         {
-                            write_action_feedback_nts_(msg, dyn_type, rpc_info.action_name);
+                            write_action_feedback_nts_(msg, dyn_type, rpc_info->action_name);
                             break;
                         }
 
                         case ActionType::STATUS:
                         {
-                            write_action_status_nts_(msg, dyn_type, rpc_info.action_name);
+                            write_action_status_nts_(msg, dyn_type, rpc_info->action_name);
                             break;
                         }
 

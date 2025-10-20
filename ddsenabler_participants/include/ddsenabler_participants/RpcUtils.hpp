@@ -33,25 +33,6 @@ namespace participants {
 namespace RpcUtils {
 
 /**
- * @brief Extracts the service/action name from a given topic name.
- *
- * @param [in] topic_name Topic name to extract the service/action name from
- * @return Extracted service name
- */
-DDSENABLER_PARTICIPANTS_DllAPI
-RpcInfo get_rpc_info(
-        const std::string& topic_name);
-
-DDSENABLER_PARTICIPANTS_DllAPI
-RpcProtocol detect_rpc_protocol(
-        const std::string& topic_name);
-
-DDSENABLER_PARTICIPANTS_DllAPI
-RpcInfo remove_prefix_suffix(
-        const std::string& topic_name,
-        RpcProtocol RpcProtocol);
-
-/**
  * @brief Generates a UUID.
  *
  * @return A new UUID.

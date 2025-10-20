@@ -47,36 +47,36 @@ EnablerParticipant::EnablerParticipant(
 }
 
 bool EnablerParticipant::service_discovered_nts_(
-        const RpcInfo& rpc_info,
+        const std::shared_ptr<RpcInfo> rpc_info,
         const DdsTopic& topic)
 {
-    auto [it, inserted] = services_.try_emplace(rpc_info.service_name,
-                    std::make_shared<ServiceDiscovered>(rpc_info.service_name, rpc_info.rpc_protocol));
-    return it->second->add_topic(topic, rpc_info.service_type);
+    auto [it, inserted] = services_.try_emplace(rpc_info->service_name,
+                    std::make_shared<ServiceDiscovered>(rpc_info->service_name, rpc_info->rpc_protocol));
+    return it->second->add_topic(topic, rpc_info->service_type);
 }
 
 bool EnablerParticipant::action_discovered_nts_(
-        const RpcInfo& rpc_info,
+        const std::shared_ptr<RpcInfo> rpc_info,
         const DdsTopic& topic)
 {
-    auto [it, inserted] = actions_.try_emplace(rpc_info.action_name,
-                    std::make_shared<ActionDiscovered>(rpc_info.action_name, rpc_info.rpc_protocol));
-    if (ServiceType::NONE != rpc_info.service_type)
+    auto [it, inserted] = actions_.try_emplace(rpc_info->action_name,
+                    std::make_shared<ActionDiscovered>(rpc_info->action_name, rpc_info->rpc_protocol));
+    if (ServiceType::NONE != rpc_info->service_type)
     {
         service_discovered_nts_(rpc_info, topic);
-        auto service_it = services_.find(rpc_info.service_name);
+        auto service_it = services_.find(rpc_info->service_name);
         if (services_.end() == service_it)
         {
             EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                    "Service " << rpc_info.service_name << " not found in action " << rpc_info.action_name);
+                    "Service " << rpc_info->service_name << " not found in action " << rpc_info->action_name);
             return false;
         }
 
-        it->second->add_service(service_it->second, rpc_info.action_type);
+        it->second->add_service(service_it->second, rpc_info->action_type);
     }
     else
     {
-        it->second->add_topic(topic, rpc_info.action_type);
+        it->second->add_topic(topic, rpc_info->action_type);
     }
 
     return it->second->check_fully_discovered();
@@ -94,10 +94,10 @@ std::shared_ptr<IReader> EnablerParticipant::create_reader(
     {
         std::lock_guard<std::mutex> lck(mtx_);
         auto dds_topic = dynamic_cast<const DdsTopic&>(topic);
-        RpcInfo rpc_info(dds_topic.m_topic_name);
+        std::shared_ptr<RpcInfo> rpc_info;
         try
         {
-            rpc_info = RpcUtils::get_rpc_info(dds_topic.m_topic_name);
+            rpc_info = std::make_shared<RpcInfo>(dds_topic.m_topic_name);
         }
         catch(const std::exception& e)
         {
@@ -105,9 +105,9 @@ std::shared_ptr<IReader> EnablerParticipant::create_reader(
             return std::make_shared<BlankReader>();
         }
 
-        if (RpcType::NONE != rpc_info.rpc_type)
+        if (RpcType::NONE != rpc_info->rpc_type)
         {
-            if (ServiceType::NONE != rpc_info.service_type)
+            if (ServiceType::NONE != rpc_info->service_type)
             {
                 reader = std::make_shared<InternalRpcReader>(id(), dds_topic);
             }
@@ -119,27 +119,27 @@ std::shared_ptr<IReader> EnablerParticipant::create_reader(
             // Only notify the discovery of topics that do not originate from a topic query callback
             if (dds_topic.topic_discoverer() != this->id())
             {
-                if (RpcType::SERVICE == rpc_info.rpc_type)
+                if (RpcType::SERVICE == rpc_info->rpc_type)
                 {
                     if (service_discovered_nts_(rpc_info, dds_topic))
                     {
-                        RpcTopic service = services_.find(rpc_info.service_name)->second->get_service();
+                        RpcTopic service = services_.find(rpc_info->service_name)->second->get_service();
                         std::static_pointer_cast<Handler>(schema_handler_)->add_service(service);
                     }
                 }
-                else if (RpcType::ACTION == rpc_info.rpc_type)
+                else if (RpcType::ACTION == rpc_info->rpc_type)
                 {
                     if (action_discovered_nts_(rpc_info, dds_topic))
                     {
                         try
                         {
-                            auto action = actions_.find(rpc_info.action_name)->second->get_action();
+                            auto action = actions_.find(rpc_info->action_name)->second->get_action();
                             std::static_pointer_cast<Handler>(schema_handler_)->add_action(action);
                         }
                         catch (const std::exception& e)
                         {
                             EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                                    "Failed to add action " << rpc_info.action_name << ": " << e.what());
+                                    "Failed to add action " << rpc_info->action_name << ": " << e.what());
                             return std::make_shared<BlankReader>();
                         }
                     }
@@ -267,10 +267,10 @@ bool EnablerParticipant::publish_rpc(
 {
     std::unique_lock<std::mutex> lck(mtx_);
 
-    RpcInfo rpc_info(topic_name);
+    std::shared_ptr<RpcInfo> rpc_info;
     try
     {
-        rpc_info = RpcUtils::get_rpc_info(topic_name);
+        rpc_info = std::make_shared<RpcInfo>(topic_name);
     }
     catch(const std::exception& e)
     {
@@ -278,19 +278,19 @@ bool EnablerParticipant::publish_rpc(
         return false;
     }
 
-    if (ServiceType::NONE == rpc_info.service_type)
+    if (ServiceType::NONE == rpc_info->service_type)
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
                 "Failed to publish data in topic " << topic_name << " : not a service topic.");
         return false;
     }
 
-    auto it = services_.find(rpc_info.service_name);
+    auto it = services_.find(rpc_info->service_name);
     if (it == services_.end())
     {
         // There is no case where none of the service topics are discovered and yet the publish should be done
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                "Failed to publish data in service " << rpc_info.service_name << " : service does not exist.");
+                "Failed to publish data in service " << rpc_info->service_name << " : service does not exist.");
         return false;
     }
 
@@ -300,15 +300,15 @@ bool EnablerParticipant::publish_rpc(
     if (nullptr == reader)
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                "Failed to publish data in service " << rpc_info.service_name << " : service does not exist.");
+                "Failed to publish data in service " << rpc_info->service_name << " : service does not exist.");
         return false;
     }
 
     DdsTopic topic;
-    if (!it->second->get_topic(rpc_info.service_type, topic))
+    if (!it->second->get_topic(rpc_info->service_type, topic))
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                "Failed to publish data in service " << rpc_info.service_name << " : topic not found.");
+                "Failed to publish data in service " << rpc_info->service_name << " : topic not found.");
         return false;
     }
 

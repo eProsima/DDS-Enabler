@@ -165,11 +165,11 @@ protected:
             const std::string& topic_name) const;
 
     bool service_discovered_nts_(
-            const RpcInfo& rpc_info,
+            const std::shared_ptr<RpcInfo> rpc_info,
             const ddspipe::core::types::DdsTopic& topic);
 
     bool action_discovered_nts_(
-            const RpcInfo& rpc_info,
+            const std::shared_ptr<RpcInfo> rpc_info,
             const ddspipe::core::types::DdsTopic& topic);
 
     bool revoke_service_nts_(
