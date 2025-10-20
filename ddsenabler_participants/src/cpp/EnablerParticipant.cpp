@@ -819,7 +819,7 @@ bool EnablerParticipant::query_action_nts_(
         if (!feedback_reader)
         {
             create_topic_writer_nts_(
-                action.feedback,
+                feedback_topic,
                 feedback_reader,
                 lck);
         }
@@ -843,7 +843,7 @@ bool EnablerParticipant::query_action_nts_(
         if (!status_reader)
         {
             create_topic_writer_nts_(
-                action.status,
+                status_topic,
                 status_reader,
                 lck);
         }
