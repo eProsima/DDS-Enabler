@@ -374,7 +374,8 @@ bool EnablerParticipant::announce_service(
                     "Failed to announce service " << service_name << " : service already announced.");
             return false;
         }
-        services_.erase(it);
+        it->second->enabler_as_server = true;
+        return true;
     }
 
     std::shared_ptr<ServiceDiscovered> service = std::make_shared<ServiceDiscovered>(service_name, RpcProtocol);
@@ -478,6 +479,17 @@ bool EnablerParticipant::announce_action(
                 return false;
             }
             // Erase the action, to allow re-announcing it
+            auto goal = it->second->goal.lock();
+            auto result = it->second->result.lock();
+            auto cancel = it->second->cancel.lock();
+            if (goal && result && cancel)
+            {
+                it->second->enabler_as_server = true;
+                goal->enabler_as_server = true;
+                result->enabler_as_server = true;
+                cancel->enabler_as_server = true;
+                return true;
+            }
             actions_.erase(it);
         }
     }
