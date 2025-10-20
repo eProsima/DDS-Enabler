@@ -156,7 +156,16 @@ void Handler::add_data(
         throw utils::InconsistencyException(STR_ENTRY << "Received sample with no payload.");
     }
 
-    RpcInfo rpc_info = RpcUtils::get_rpc_info(topic.m_topic_name);
+    RpcInfo rpc_info(topic.m_topic_name);
+    try
+    {
+        rpc_info = RpcUtils::get_rpc_info(topic.m_topic_name);
+    }
+    catch(const std::exception& e)
+    {
+        throw utils::InconsistencyException(STR_ENTRY << e.what());
+    }
+
     switch (rpc_info.rpc_type)
     {
         case RpcType::NONE:
@@ -822,11 +831,19 @@ bool Handler::get_action_request_UUID(
     std::lock_guard<std::recursive_mutex> lock(mtx_);
     for (auto it = action_request_id_to_uuid_.begin(); it != action_request_id_to_uuid_.end(); ++it)
     {
-        uint64_t action_request_id = it->second.get_request(action_type);
-        if (request_id == action_request_id)
+        try
         {
-            action_id = it->first;
-            return true;
+            uint64_t action_request_id = it->second.get_request(action_type);
+            if (request_id == action_request_id)
+            {
+                action_id = it->first;
+                return true;
+            }
+        }
+        catch(const std::exception& e)
+        {
+            EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
+                    "Error getting action request ID: " << e.what());
         }
     }
     return false;

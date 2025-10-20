@@ -94,7 +94,17 @@ std::shared_ptr<IReader> EnablerParticipant::create_reader(
     {
         std::lock_guard<std::mutex> lck(mtx_);
         auto dds_topic = dynamic_cast<const DdsTopic&>(topic);
-        RpcInfo rpc_info = RpcUtils::get_rpc_info(dds_topic.m_topic_name);
+        RpcInfo rpc_info(dds_topic.m_topic_name);
+        try
+        {
+            rpc_info = RpcUtils::get_rpc_info(dds_topic.m_topic_name);
+        }
+        catch(const std::exception& e)
+        {
+            EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT, e.what());
+            return std::make_shared<BlankReader>();
+        }
+
         if (RpcType::NONE != rpc_info.rpc_type)
         {
             if (ServiceType::NONE != rpc_info.service_type)
@@ -130,6 +140,7 @@ std::shared_ptr<IReader> EnablerParticipant::create_reader(
                         {
                             EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
                                     "Failed to add action " << rpc_info.action_name << ": " << e.what());
+                            return std::make_shared<BlankReader>();
                         }
                     }
                 }
@@ -256,8 +267,17 @@ bool EnablerParticipant::publish_rpc(
 {
     std::unique_lock<std::mutex> lck(mtx_);
 
-    std::string service_name;
-    RpcInfo rpc_info = RpcUtils::get_rpc_info(topic_name);
+    RpcInfo rpc_info(topic_name);
+    try
+    {
+        rpc_info = RpcUtils::get_rpc_info(topic_name);
+    }
+    catch(const std::exception& e)
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT, e.what());
+        return false;
+    }
+
     if (ServiceType::NONE == rpc_info.service_type)
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
@@ -288,7 +308,7 @@ bool EnablerParticipant::publish_rpc(
     if (!it->second->get_topic(rpc_info.service_type, topic))
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                "Failed to publish data in service " << service_name << " : topic not found.");
+                "Failed to publish data in service " << rpc_info.service_name << " : topic not found.");
         return false;
     }
 

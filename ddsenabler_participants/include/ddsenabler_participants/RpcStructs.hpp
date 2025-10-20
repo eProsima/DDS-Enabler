@@ -126,7 +126,7 @@ struct ActionRequestInfo
             case ActionType::RESULT:
                 return result_request_id;
             default:
-                return 0;
+                throw std::runtime_error("Invalid action type for request retrieval");
         }
     }
 
@@ -265,7 +265,7 @@ struct ServiceDiscovered
     {
         if (!fully_discovered || rpc_topic == std::nullopt)
         {
-            throw std::runtime_error("Service not fully discovered");
+            throw std::runtime_error("Service " + service_name + " not fully discovered");
         }
         return rpc_topic.value();
     }
@@ -394,13 +394,20 @@ struct ActionDiscovered
             throw std::runtime_error("Action not fully discovered or ServiceDiscovered expired");
         }
 
-        return RpcAction(
-            action_name,
-            g->get_service(),
-            r->get_service(),
-            c->get_service(),
-            feedback,
-            status);
+        try
+        {
+            return RpcAction(
+                action_name,
+                g->get_service(),
+                r->get_service(),
+                c->get_service(),
+                feedback,
+                status);
+        }
+        catch(const std::exception& e)
+        {
+            throw std::runtime_error("Failed to create action " + action_name + ": " + e.what());
+        }
     }
 
 };

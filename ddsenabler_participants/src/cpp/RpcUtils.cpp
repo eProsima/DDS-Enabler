@@ -38,8 +38,14 @@ RpcInfo get_rpc_info(
         const std::string& topic_name)
 {
     RpcProtocol RpcProtocol = detect_rpc_protocol(topic_name);
-
-    return remove_prefix_suffix(topic_name, RpcProtocol);
+    try
+    {
+        return remove_prefix_suffix(topic_name, RpcProtocol);
+    }
+    catch(const std::exception& e)
+    {
+        throw std::runtime_error("Error extracting RPC info from topic name '" + topic_name + "': " + e.what());
+    }
 }
 
 RpcProtocol detect_rpc_protocol(
@@ -87,7 +93,7 @@ RpcInfo remove_prefix_suffix(
         default:
             EPROSIMA_LOG_ERROR(DDSENABLER_RPC_UTILS,
                     "Invalid RPC protocol");
-            return rpc_info;
+            throw std::runtime_error("Invalid RPC protocol");
     }
 
     std::string base = topic_name;
