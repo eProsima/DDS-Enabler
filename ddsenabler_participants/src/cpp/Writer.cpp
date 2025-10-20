@@ -310,10 +310,22 @@ void Writer::write_action_feedback_notification(
     instanceHandle << msg.instanceHandle;
     if (action_feedback_notification_callback_ && prepare_json_data_(msg, dyn_type, json_data))
     {
+        UUID uuid;
+        try
+        {
+            uuid = json_to_uuid(json_data[msg.topic.topic_name()]["data"][instanceHandle.str()]["goal_id"]);
+        }
+        catch (const nlohmann::json::exception& e)
+        {
+            EPROSIMA_LOG_ERROR(DDSENABLER_WRITER,
+                    "Error parsing UUID from JSON: " << e.what());
+            return;
+        }
+
         action_feedback_notification_callback_(
             action_name.c_str(),
             json_data[msg.topic.topic_name()]["data"][instanceHandle.str()]["feedback"].dump(4).c_str(),
-            json_to_uuid(json_data[msg.topic.topic_name()]["data"][instanceHandle.str()]["goal_id"]),
+            uuid,
             msg.publish_time.to_ns()
             );
     }
@@ -442,8 +454,19 @@ void Writer::write_action_cancel_reply_notification(
         const auto& goals = json_data[msg.topic.topic_name()]["data"][instanceHandle.str()]["goals_canceling"];
         for (const auto& goal : goals)
         {
-            UUID msg_action_id = json_to_uuid(goal["goal_id"]);
-            if (is_UUID_active_callback_ && !is_UUID_active_callback_(action_name, msg_action_id))
+            UUID uuid;
+            try
+            {
+                uuid = json_to_uuid(goal["goal_id"]);
+            }
+            catch (const nlohmann::json::exception& e)
+            {
+                EPROSIMA_LOG_ERROR(DDSENABLER_WRITER,
+                        "Error parsing UUID from JSON: " << e.what());
+                return;
+            }
+
+            if (is_UUID_active_callback_ && !is_UUID_active_callback_(action_name, uuid))
             {
                 continue;
             }
@@ -452,7 +475,7 @@ void Writer::write_action_cancel_reply_notification(
             {
                 action_status_notification_callback_(
                     action_name.c_str(),
-                    msg_action_id,
+                    uuid,
                     status_code,
                     status_message.c_str(),
                     msg.publish_time.to_ns()
@@ -486,7 +509,18 @@ void Writer::write_action_status_notification(
         const auto& list = json_data[msg.topic.topic_name()]["data"][instanceHandle.str()]["status_list"];
         for (const auto& status : list)
         {
-            UUID uuid = json_to_uuid(status["goal_info"]["goal_id"]);
+            UUID uuid;
+            try
+            {
+                uuid = json_to_uuid(status["goal_info"]["goal_id"]);
+            }
+            catch (const nlohmann::json::exception& e)
+            {
+                EPROSIMA_LOG_ERROR(DDSENABLER_WRITER,
+                        "Error parsing UUID from JSON: " << e.what());
+                return;
+            }
+
             if (is_UUID_active_callback_ && !is_UUID_active_callback_(action_name, uuid))
             {
                 continue;
