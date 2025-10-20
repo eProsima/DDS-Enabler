@@ -109,7 +109,7 @@ std::shared_ptr<IReader> EnablerParticipant::create_reader(
             // Only notify the discovery of topics that do not originate from a topic query callback
             if (dds_topic.topic_discoverer() != this->id())
             {
-                if (ActionType::NONE == rpc_info.action_type)
+                if (RpcType::SERVICE == rpc_info.rpc_type)
                 {
                     if (service_discovered_nts_(rpc_info, dds_topic))
                     {
@@ -117,7 +117,7 @@ std::shared_ptr<IReader> EnablerParticipant::create_reader(
                         std::static_pointer_cast<Handler>(schema_handler_)->add_service(service);
                     }
                 }
-                else
+                else if (RpcType::ACTION == rpc_info.rpc_type)
                 {
                     if (action_discovered_nts_(rpc_info, dds_topic))
                     {
