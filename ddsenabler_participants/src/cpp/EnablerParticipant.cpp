@@ -60,7 +60,7 @@ bool EnablerParticipant::action_discovered_nts_(
         const DdsTopic& topic)
 {
     auto [it, inserted] = actions_.try_emplace(rpc_info.action_name,
-                    ActionDiscovered(rpc_info.action_name, rpc_info.rpc_protocol));
+                    std::make_shared<ActionDiscovered>(rpc_info.action_name, rpc_info.rpc_protocol));
     if (ServiceType::NONE != rpc_info.service_type)
     {
         service_discovered_nts_(rpc_info, topic);
@@ -72,14 +72,14 @@ bool EnablerParticipant::action_discovered_nts_(
             return false;
         }
 
-        it->second.add_service(service_it->second, rpc_info.action_type);
+        it->second->add_service(service_it->second, rpc_info.action_type);
     }
     else
     {
-        it->second.add_topic(topic, rpc_info.action_type);
+        it->second->add_topic(topic, rpc_info.action_type);
     }
 
-    return it->second.check_fully_discovered();
+    return it->second->check_fully_discovered();
 }
 
 std::shared_ptr<IReader> EnablerParticipant::create_reader(
@@ -121,8 +121,16 @@ std::shared_ptr<IReader> EnablerParticipant::create_reader(
                 {
                     if (action_discovered_nts_(rpc_info, dds_topic))
                     {
-                        auto action = actions_.find(rpc_info.action_name)->second.get_action();
-                        std::static_pointer_cast<Handler>(schema_handler_)->add_action(action);
+                        try
+                        {
+                            auto action = actions_.find(rpc_info.action_name)->second->get_action();
+                            std::static_pointer_cast<Handler>(schema_handler_)->add_action(action);
+                        }
+                        catch (const std::exception& e)
+                        {
+                            EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
+                                    "Failed to add action " << rpc_info.action_name << ": " << e.what());
+                        }
                     }
                 }
             }
@@ -463,7 +471,7 @@ bool EnablerParticipant::announce_action(
         auto it = actions_.find(action_name);
         if (it != actions_.end())
         {
-            if (it->second.enabler_as_server)
+            if (it->second->enabler_as_server)
             {
                 EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
                         "Failed to announce action " << action_name << " : action already announced.");
@@ -474,8 +482,8 @@ bool EnablerParticipant::announce_action(
         }
     }
 
-    ActionDiscovered action(action_name, RpcProtocol);
-    if (!query_action_nts_(action, RpcProtocol, lck))
+    std::shared_ptr<ActionDiscovered> action = std::make_shared<ActionDiscovered>(action_name, RpcProtocol);
+    if (!query_action_nts_(*action, RpcProtocol, lck))
     {
         return false;
     }
@@ -496,18 +504,18 @@ bool EnablerParticipant::revoke_action(
                 "Failed to stop action " << action_name << " : action not found.");
         return false;
     }
-    if (!it->second.enabler_as_server)
+    if (!it->second->enabler_as_server)
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
                 "Failed to stop action " << action_name << " : action not announced as server.");
         return false;
     }
 
-    auto& action = it->second;
+    auto action = it->second;
 
-    auto goal = action.goal.lock();
-    auto result = action.result.lock();
-    auto cancel = action.cancel.lock();
+    auto goal = action->goal.lock();
+    auto result = action->result.lock();
+    auto cancel = action->cancel.lock();
     if (!goal || !result || !cancel)
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
@@ -518,8 +526,8 @@ bool EnablerParticipant::revoke_action(
             this->revoke_service_nts_(result->service_name) &&
             this->revoke_service_nts_(cancel->service_name))
     {
-        action.enabler_as_server = false;
-        action.fully_discovered = false;
+        action->enabler_as_server = false;
+        action->fully_discovered = false;
         return true;
     }
 

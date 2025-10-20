@@ -179,7 +179,7 @@ protected:
 
     std::map<std::string, std::shared_ptr<ServiceDiscovered>> services_;
 
-    std::map<std::string, ActionDiscovered> actions_;
+    std::map<std::string, std::shared_ptr<ActionDiscovered>> actions_;
 
     std::mutex mtx_;
 
