@@ -19,7 +19,7 @@
 #pragma once
 
 
-#include <ddsenabler_participants/RpcTypes.hpp>
+#include <ddsenabler_participants/rpc/RpcTypes.hpp>
 #include <ddsenabler_participants/Constants.hpp>
 
 #include <ddspipe_core/types/dds/Endpoint.hpp>

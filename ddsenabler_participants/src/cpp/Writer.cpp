@@ -23,7 +23,7 @@
 #include <fastdds/rtps/common/Types.hpp>
 
 #include <ddsenabler_participants/Serialization.hpp>
-#include <ddsenabler_participants/RpcUtils.hpp>
+#include <ddsenabler_participants/rpc/RpcUtils.hpp>
 #include <ddsenabler_participants/types/dynamic_types_collection/DynamicTypesCollection.hpp>
 
 #include <ddsenabler_participants/Writer.hpp>

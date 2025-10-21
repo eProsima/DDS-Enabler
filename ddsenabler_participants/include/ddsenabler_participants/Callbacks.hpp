@@ -22,7 +22,7 @@
 #include <memory>
 #include <string>
 
-#include "RpcTypes.hpp"
+#include <ddsenabler_participants/rpc/RpcTypes.hpp>
 
 namespace eprosima {
 namespace ddsenabler {

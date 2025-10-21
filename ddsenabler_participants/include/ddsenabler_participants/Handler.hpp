@@ -37,8 +37,8 @@
 #include <ddsenabler_participants/HandlerConfiguration.hpp>
 #include <ddsenabler_participants/Message.hpp>
 #include <ddsenabler_participants/Writer.hpp>
-#include <ddsenabler_participants/RpcUtils.hpp>
-#include <ddsenabler_participants/RpcStructs.hpp>
+#include <ddsenabler_participants/rpc/RpcUtils.hpp>
+#include <ddsenabler_participants/rpc/RpcStructs.hpp>
 #include <ddsenabler_participants/library/library_dll.h>
 
 namespace std {

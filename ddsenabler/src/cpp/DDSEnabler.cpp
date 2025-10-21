@@ -12,13 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <ddsenabler/DDSEnabler.hpp>
+
 #include <cpp_utils/exception/InitializationException.hpp>
 #include <cpp_utils/utils.hpp>
 
 #include <ddspipe_core/types/dynamic_types/types.hpp>
 
-#include "ddsenabler/DDSEnabler.hpp"
-#include "ddsenabler_participants/RpcUtils.hpp"
+#include <ddsenabler_participants/rpc/RpcUtils.hpp>
 
 namespace eprosima {
 namespace ddsenabler {

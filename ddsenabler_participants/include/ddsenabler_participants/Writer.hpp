@@ -31,8 +31,8 @@
 
 #include <ddsenabler_participants/Callbacks.hpp>
 #include <ddsenabler_participants/Message.hpp>
-#include <ddsenabler_participants/RpcStructs.hpp>
-#include <ddsenabler_participants/RpcUtils.hpp>
+#include <ddsenabler_participants/rpc/RpcStructs.hpp>
+#include <ddsenabler_participants/rpc/RpcUtils.hpp>
 
 namespace eprosima {
 namespace ddsenabler {

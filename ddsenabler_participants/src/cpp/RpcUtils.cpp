@@ -16,7 +16,7 @@
  * @file RpcUtils.cpp
  */
 
-#include <ddsenabler_participants/RpcUtils.hpp>
+#include <ddsenabler_participants/rpc/RpcUtils.hpp>
 
 #include <nlohmann/json.hpp>
 #include <fstream>

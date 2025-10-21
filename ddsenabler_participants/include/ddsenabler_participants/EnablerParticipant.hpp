@@ -29,8 +29,8 @@
 #include <ddsenabler_participants/EnablerParticipantConfiguration.hpp>
 #include <ddsenabler_participants/library/library_dll.h>
 #include <ddsenabler_participants/InternalRpcReader.hpp>
-#include <ddsenabler_participants/RpcUtils.hpp>
-#include <ddsenabler_participants/RpcStructs.hpp>
+#include <ddsenabler_participants/rpc/RpcUtils.hpp>
+#include <ddsenabler_participants/rpc/RpcStructs.hpp>
 
 
 namespace eprosima {

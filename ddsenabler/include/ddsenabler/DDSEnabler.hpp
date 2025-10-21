@@ -38,7 +38,7 @@
 #include <ddsenabler_participants/HandlerConfiguration.hpp>
 #include <ddsenabler_participants/DdsParticipant.hpp>
 #include <ddsenabler_participants/EnablerParticipant.hpp>
-#include <ddsenabler_participants/RpcTypes.hpp>
+#include <ddsenabler_participants/rpc/RpcTypes.hpp>
 
 #include <ddsenabler_yaml/EnablerConfiguration.hpp>
 

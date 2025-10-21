@@ -22,8 +22,8 @@
 
 #include <ddsenabler_participants/Constants.hpp>
 #include <ddsenabler_participants/Callbacks.hpp>
-#include <ddsenabler_participants/RpcTypes.hpp>
-#include <ddsenabler_participants/RpcStructs.hpp>
+#include <ddsenabler_participants/rpc/RpcTypes.hpp>
+#include <ddsenabler_participants/rpc/RpcStructs.hpp>
 
 #include <ddsenabler_participants/library/library_dll.h>
 
