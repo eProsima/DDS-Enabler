@@ -11,7 +11,7 @@ services:
     volumes:
       - ./config.yml:/config/config.yml
       - ../persistence:/persistence
-    command: ./build/ddsenabler/examples/service/ddsenabler_example_service -server --persistence-path /persistence --config /config/config.yml --expected-requests 3
+    command: ./build/ddsenabler/examples/service/ddsenabler_example_service server --persistence-path /persistence --requests-path /persistence/requests --config /config/config.yml --expected-requests 3
 
   add_two_ints_client_1:
     image: ${DDSENABLER_COMPOSE_TEST_ROS2_DOCKER_IMAGE}

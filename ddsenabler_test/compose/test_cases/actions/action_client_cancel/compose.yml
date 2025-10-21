@@ -12,7 +12,7 @@ services:
     volumes:
       - ./config.yml:/config/config.yml
       - ../persistence:/persistence
-    command: ./build/ddsenabler/examples/action/ddsenabler_example_action -client --persistence-path /persistence --config /config/config.yml --request-initial-wait 2 --cancel-requests true
+    command: ./build/ddsenabler/examples/action/ddsenabler_example_action client --persistence-path /persistence --goals-path /persistence/goals --config /config/config.yml --request-initial-wait 2 --cancel-requests true
 
   fibonacci_server:
     image: ${DDSENABLER_COMPOSE_TEST_ROS2_DOCKER_IMAGE}
