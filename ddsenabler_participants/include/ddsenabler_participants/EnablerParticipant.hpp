@@ -100,12 +100,21 @@ public:
             const std::string& service_name);
 
     DDSENABLER_PARTICIPANTS_DllAPI
-    RpcProtocol get_service_rpc_protocol(
-            const std::string& service_name);
+    bool send_service_request(
+            const std::string& service_name,
+            const std::string& json,
+            uint64_t& request_id,
+            participants::RpcProtocol RpcProtocol);
 
     DDSENABLER_PARTICIPANTS_DllAPI
-    bool announce_action(
-            const std::string& action_name);
+    bool send_service_reply(
+            const std::string& service_name,
+            const std::string& json,
+            const uint64_t request_id);
+
+    DDSENABLER_PARTICIPANTS_DllAPI
+    RpcProtocol get_service_rpc_protocol(
+            const std::string& service_name);
 
     DDSENABLER_PARTICIPANTS_DllAPI
     bool announce_action(
@@ -115,6 +124,63 @@ public:
     DDSENABLER_PARTICIPANTS_DllAPI
     bool revoke_action(
             const std::string& action_name);
+
+    DDSENABLER_PARTICIPANTS_DllAPI
+    bool send_action_goal(
+            const std::string& action_name,
+            const std::string& json,
+            UUID& action_id,
+            participants::RpcProtocol RpcProtocol);
+
+    DDSENABLER_PARTICIPANTS_DllAPI
+    bool cancel_action_goal(
+            const std::string& action_name,
+            const UUID& goal_id,
+            const int64_t timestamp);
+
+    DDSENABLER_PARTICIPANTS_DllAPI
+    bool send_action_get_result_request(
+            const std::string& action_name,
+            const UUID& action_id);
+
+    DDSENABLER_PARTICIPANTS_DllAPI
+    void send_action_send_goal_reply(
+            const std::string& action_name,
+            const uint64_t goal_id,
+            bool accepted);
+
+    DDSENABLER_PARTICIPANTS_DllAPI
+    bool send_action_cancel_goal_reply(
+            const char* action_name,
+            const std::vector<UUID>& goal_ids,
+            const CancelCode& cancel_code,
+            const uint64_t request_id);
+
+    DDSENABLER_PARTICIPANTS_DllAPI
+    bool send_action_result(
+            const char* action_name,
+            const UUID& goal_id,
+            const StatusCode& status_code,
+            const char* json);
+
+    DDSENABLER_PARTICIPANTS_DllAPI
+    bool send_action_get_result_reply(
+            const std::string& action_name,
+            const UUID& goal_id,
+            const std::string& reply_json,
+            const uint64_t request_id);
+
+    DDSENABLER_PARTICIPANTS_DllAPI
+    bool send_action_feedback(
+            const char* action_name,
+            const char* json,
+            const UUID& goal_id);
+
+    DDSENABLER_PARTICIPANTS_DllAPI
+    bool update_action_status(
+            const std::string& action_name,
+            const UUID& goal_id,
+            const StatusCode& status_code);
 
 protected:
 
@@ -190,6 +256,8 @@ protected:
     ServiceQuery service_query_callback_;
 
     ActionQuery action_query_callback_;
+
+    std::shared_ptr<Handler> handler_;
 };
 
 } /* namespace participants */

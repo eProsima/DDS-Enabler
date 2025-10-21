@@ -43,6 +43,7 @@ EnablerParticipant::EnablerParticipant(
         std::shared_ptr<ISchemaHandler> schema_handler)
     : ddspipe::participants::SchemaParticipant(participant_configuration, payload_pool, discovery_database,
             schema_handler)
+    , handler_(std::static_pointer_cast<Handler>(schema_handler_))
 {
 }
 
@@ -124,7 +125,7 @@ std::shared_ptr<IReader> EnablerParticipant::create_reader(
                     if (service_discovered_nts_(rpc_info, dds_topic))
                     {
                         RpcTopic service = services_.find(rpc_info->service_name)->second->get_service();
-                        std::static_pointer_cast<Handler>(schema_handler_)->add_service(service);
+                        handler_->add_service(service);
                     }
                 }
                 else if (RpcType::ACTION == rpc_info->rpc_type)
@@ -134,7 +135,7 @@ std::shared_ptr<IReader> EnablerParticipant::create_reader(
                         try
                         {
                             auto action = actions_.find(rpc_info->action_name)->second->get_action();
-                            std::static_pointer_cast<Handler>(schema_handler_)->add_action(action);
+                            handler_->add_action(action);
                         }
                         catch (const std::exception& e)
                         {
@@ -152,7 +153,7 @@ std::shared_ptr<IReader> EnablerParticipant::create_reader(
             // Only notify the discovery of topics that do not originate from a topic query callback
             if (dds_topic.topic_discoverer() != this->id())
             {
-                std::static_pointer_cast<Handler>(schema_handler_)->add_topic(dds_topic);
+                handler_->add_topic(dds_topic);
             }
         }
         readers_[dds_topic] = reader;
@@ -242,7 +243,7 @@ bool EnablerParticipant::publish(
     auto data = std::make_unique<RtpsPayloadData>();
 
     Payload payload;
-    if (!std::static_pointer_cast<Handler>(schema_handler_)->get_serialized_data(type_name, json, payload))
+    if (!handler_->get_serialized_data(type_name, json, payload))
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
                 "Failed to publish data in topic " << topic_name << " : data serialization failed.");
@@ -322,7 +323,7 @@ bool EnablerParticipant::publish_rpc(
     auto data = std::make_unique<RpcPayloadData>();
 
     Payload payload;
-    if (!std::static_pointer_cast<Handler>(schema_handler_)->get_serialized_data(type_name, json, payload))
+    if (!handler_->get_serialized_data(type_name, json, payload))
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
                 "Failed to publish data in topic " << topic.m_topic_name << " : data serialization failed.");
@@ -456,6 +457,70 @@ bool EnablerParticipant::revoke_service_nts_(
     return true;
 }
 
+bool EnablerParticipant::send_service_request(
+            const std::string& service_name,
+            const std::string& json,
+            uint64_t& request_id,
+            RpcProtocol RpcProtocol)
+{
+    std::string prefix, suffix;
+    switch (RpcProtocol)
+    {
+        case RpcProtocol::ROS2:
+            prefix = ROS_REQUEST_PREFIX;
+            suffix = ROS_REQUEST_SUFFIX;
+            break;
+        case RpcProtocol::FASTDDS:
+            prefix = FASTDDS_REQUEST_PREFIX;
+            suffix = FASTDDS_REQUEST_SUFFIX;
+            break;
+        default:
+            EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
+                    "Failed to send service request to service " << service_name << ": unknown RPC protocol.");
+            return false;
+    }
+
+    request_id = handler_->get_new_request_id();
+    if (!publish_rpc(
+                prefix + service_name + suffix,
+                json,
+                request_id))
+    {
+        return false;
+    }
+
+    return true;
+}
+
+bool EnablerParticipant::send_service_reply(
+        const std::string& service_name,
+        const std::string& json,
+        const uint64_t request_id)
+{
+    RpcProtocol RpcProtocol = get_service_rpc_protocol(service_name);
+    std::string prefix, suffix;
+    switch (RpcProtocol)
+    {
+        case RpcProtocol::ROS2:
+            prefix = ROS_REPLY_PREFIX;
+            suffix = ROS_REPLY_SUFFIX;
+            break;
+        case RpcProtocol::FASTDDS:
+            prefix = FASTDDS_REPLY_PREFIX;
+            suffix = FASTDDS_REPLY_SUFFIX;
+            break;
+        default:
+            EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
+                    "Failed to send service reply to unknown service " << service_name);
+            return false;
+    }
+
+    return publish_rpc(
+        prefix + service_name + suffix,
+        json,
+        request_id);
+}
+
 RpcProtocol EnablerParticipant::get_service_rpc_protocol(
         const std::string& service_name)
 {
@@ -467,12 +532,6 @@ RpcProtocol EnablerParticipant::get_service_rpc_protocol(
     }
 
     return RpcProtocol::PROTOCOL_UNKNOWN;
-}
-
-bool EnablerParticipant::announce_action(
-        const std::string& action_name)
-{
-    return announce_action(action_name, RpcProtocol::ROS2);
 }
 
 bool EnablerParticipant::announce_action(
@@ -577,7 +636,7 @@ bool EnablerParticipant::query_topic_nts_(
                 " : topic is unknown and topic query callback not set.");
         return false;
     }
-    participants::TopicInfo topic_info;
+    TopicInfo topic_info;
     if (!topic_query_callback_(topic_name.c_str(), topic_info))
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
@@ -611,7 +670,7 @@ bool EnablerParticipant::fill_topic_struct_nts_(
     }
 
     fastdds::dds::xtypes::TypeIdentifier type_identifier;
-    if (!std::static_pointer_cast<Handler>(schema_handler_)->get_type_identifier(topic_info.type_name, type_identifier))
+    if (!handler_->get_type_identifier(topic_info.type_name, type_identifier))
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
                 "Failed to create topic " << topic_name << " : type identifier not found.");
@@ -823,7 +882,7 @@ bool EnablerParticipant::query_action_nts_(
             return false;
     }
 
-    std::string feedback_topic_name = prefix + action.action_name + participants::ACTION_FEEDBACK_SUFFIX;
+    std::string feedback_topic_name = prefix + action.action_name + ACTION_FEEDBACK_SUFFIX;
     DdsTopic feedback_topic;
     if (!fill_topic_struct_nts_(
                 feedback_topic_name,
@@ -847,7 +906,7 @@ bool EnablerParticipant::query_action_nts_(
     action.feedback = feedback_topic;
     action.feedback_discovered = true;
 
-    std::string status_topic_name = prefix + action.action_name + participants::ACTION_STATUS_SUFFIX;
+    std::string status_topic_name = prefix + action.action_name + ACTION_STATUS_SUFFIX;
     DdsTopic status_topic;
     if (!fill_topic_struct_nts_(
                 status_topic_name,
@@ -896,6 +955,280 @@ std::shared_ptr<IReader> EnablerParticipant::lookup_reader_nts_(
 {
     std::string _;
     return lookup_reader_nts_(topic_name, _);
+}
+
+bool EnablerParticipant::send_action_goal(
+        const std::string& action_name,
+        const std::string& json,
+        UUID& action_id,
+        RpcProtocol RpcProtocol)
+{
+    std::string goal_json = RpcUtils::create_goal_request_msg(json, action_id);
+    std::string goal_request_topic = action_name + ACTION_GOAL_SUFFIX;
+    uint64_t goal_request_id = 0;
+
+    if (!send_service_request(
+                goal_request_topic,
+                goal_json,
+                goal_request_id,
+                RpcProtocol))
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
+                "Failed to send action goal request to action " << action_name);
+        return false;
+    }
+
+    if (!handler_->store_action_request(
+                action_name,
+                action_id,
+                goal_request_id,
+                ActionType::GOAL,
+                RpcProtocol))
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
+                "Failed to store action goal request to action " << action_name);
+        handler_->erase_action_UUID(action_id, ActionEraseReason::FORCED);
+        return false;
+    }
+
+    return true;
+}
+
+bool EnablerParticipant::cancel_action_goal(
+        const std::string& action_name,
+        const UUID& goal_id,
+        const int64_t timestamp)
+{
+    if (goal_id != UUID() &&
+            !handler_->is_UUID_active(action_name, goal_id))
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
+                "Failed to cancel action goal for action " << action_name
+                << ": goal id not found.");
+        return false;
+    }
+
+    std::string cancel_json = RpcUtils::create_cancel_request_msg(goal_id, timestamp);
+
+    RpcProtocol protocol = handler_->get_action_rpc_protocol(action_name, goal_id);
+
+    uint64_t cancel_request_id = 0;
+    std::string cancel_request_topic = action_name + ACTION_CANCEL_SUFFIX;
+
+    if (send_service_request(
+                cancel_request_topic,
+                cancel_json,
+                cancel_request_id,
+                protocol))
+    {
+        return true;
+    }
+
+    EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
+            "Failed to send action cancel goal to action " << action_name);
+    return false;
+}
+
+bool EnablerParticipant::send_action_get_result_request(
+        const std::string& action_name,
+        const UUID& action_id)
+{
+    std::string json = RpcUtils::create_result_request_msg(action_id);
+
+    std::string get_result_request_topic = action_name + ACTION_RESULT_SUFFIX;
+    uint64_t get_result_request_id = 0;
+
+    RpcProtocol protocol = handler_->get_action_rpc_protocol(action_name, action_id);
+
+    if (!send_service_request(
+                get_result_request_topic,
+                json,
+                get_result_request_id,
+                protocol))
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
+                "Failed to send action get result request to action " << action_name);
+        return false;
+    }
+
+    if (!handler_->store_action_request(
+                action_name,
+                action_id,
+                get_result_request_id,
+                ActionType::RESULT))
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
+                "Failed to store action get result request to action " << action_name
+                                                                       << ": cancelling.");
+        cancel_action_goal(action_name, action_id, 0);
+        return false;
+    }
+
+    return true;
+}
+
+void EnablerParticipant::send_action_send_goal_reply(
+        const std::string& action_name,
+        const uint64_t goal_id,
+        bool accepted)
+{
+    std::string reply_json = RpcUtils::create_goal_reply_msg(accepted);
+
+    if (!send_service_reply(
+                action_name + ACTION_GOAL_SUFFIX,
+                reply_json,
+                goal_id))
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
+                "Failed to send action goal reply to action " << action_name
+                                                              << ": goal id not found.");
+    }
+    return;
+}
+
+bool EnablerParticipant::send_action_cancel_goal_reply(
+        const char* action_name,
+        const std::vector<UUID>& goal_ids,
+        const CancelCode& cancel_code,
+        const uint64_t request_id)
+{
+    std::vector<std::pair<UUID, std::chrono::system_clock::time_point>> cancelling_goals;
+    for (const auto& goal_id : goal_ids)
+    {
+        std::chrono::system_clock::time_point timestamp;
+        if (!handler_->is_UUID_active(action_name, goal_id, &timestamp))
+        {
+            continue;
+        }
+
+        cancelling_goals.emplace_back(goal_id, timestamp);
+    }
+    std::string reply_json = RpcUtils::create_cancel_reply_msg(cancelling_goals, cancel_code);
+
+    if (!send_service_reply(
+                std::string(action_name) + ACTION_CANCEL_SUFFIX,
+                reply_json,
+                request_id))
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
+                "Failed to send action cancel reply to action " << action_name
+                                                                << ": request id not found.");
+        return false;
+    }
+    return true;
+}
+
+bool EnablerParticipant::send_action_result(
+        const char* action_name,
+        const UUID& goal_id,
+        const StatusCode& status_code,
+        const char* json)
+{
+    if (!handler_->is_UUID_active(action_name, goal_id))
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
+                "Failed to send action result to action " << action_name
+                                                          << ": goal id not found.");
+        return false;
+    }
+
+    std::string reply_json = RpcUtils::create_result_reply_msg(status_code, json);
+
+    return handler_->handle_action_result(action_name, goal_id, reply_json);
+}
+
+bool EnablerParticipant::send_action_get_result_reply(
+        const std::string& action_name,
+        const UUID& goal_id,
+        const std::string& reply_json,
+        const uint64_t request_id)
+{
+    std::string result_topic = action_name + ACTION_RESULT_SUFFIX;
+
+    if (send_service_reply(
+                result_topic,
+                reply_json,
+                request_id))
+    {
+        handler_->erase_action_UUID(goal_id, ActionEraseReason::FORCED);
+        return true;
+    }
+
+    return false;
+}
+
+bool EnablerParticipant::send_action_feedback(
+        const char* action_name,
+        const char* json,
+        const UUID& goal_id)
+{
+    if (!handler_->is_UUID_active(action_name, goal_id))
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
+                "Failed to send action feedback to action " << action_name
+                                                            << ": goal id not found.");
+        return false;
+    }
+
+    RpcProtocol protocol = handler_->get_action_rpc_protocol(action_name, goal_id);
+
+    std::string prefix;
+    switch (protocol)
+    {
+        case RpcProtocol::ROS2:
+            prefix = ROS_TOPIC_PREFIX;
+            break;
+        case RpcProtocol::FASTDDS:
+            prefix = FASTDDS_TOPIC_PREFIX;
+            break;
+        default:
+            EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
+                    "Failed to send feedback to action " << action_name
+                                                         << ": unsupported RPC protocol.");
+            return false;
+    }
+
+    std::string feedback_json = RpcUtils::create_feedback_msg(json, goal_id);
+    std::string feedback_topic = prefix + std::string(action_name) + ACTION_FEEDBACK_SUFFIX;
+
+    return publish(feedback_topic, feedback_json);
+}
+
+bool EnablerParticipant::update_action_status(
+        const std::string& action_name,
+        const UUID& goal_id,
+        const StatusCode& status_code)
+{
+    std::chrono::system_clock::time_point goal_accepted_stamp;
+    if (!handler_->is_UUID_active(action_name, goal_id, &goal_accepted_stamp))
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
+                "Failed to update action status to action " << action_name
+                                                            << ": goal id not found.");
+        return false;
+    }
+
+    RpcProtocol protocol = handler_->get_action_rpc_protocol(action_name, goal_id);
+
+    std::string prefix;
+    switch (protocol)
+    {
+        case RpcProtocol::ROS2:
+            prefix = ROS_TOPIC_PREFIX;
+            break;
+        case RpcProtocol::FASTDDS:
+            prefix = FASTDDS_TOPIC_PREFIX;
+            break;
+        default:
+            EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
+                    "Failed to send status to action " << action_name
+                                                       << ": unsupported RPC protocol.");
+            return false;
+    }
+
+    std::string status_json = RpcUtils::create_status_msg(goal_id, status_code, goal_accepted_stamp);
+    std::string status_topic = prefix + action_name + ACTION_STATUS_SUFFIX;
+    return publish(status_topic, status_json);
 }
 
 } /* namespace participants */

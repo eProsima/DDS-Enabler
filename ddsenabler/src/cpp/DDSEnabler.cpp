@@ -295,36 +295,27 @@ bool DDSEnabler::publish(
 bool DDSEnabler::send_service_request(
         const std::string& service_name,
         const std::string& json,
+        uint64_t& request_id)
+{
+    return send_service_request(
+        service_name,
+        json,
+        request_id,
+        participants::RpcProtocol::ROS2);
+}
+
+
+bool DDSEnabler::send_service_request(
+        const std::string& service_name,
+        const std::string& json,
         uint64_t& request_id,
         participants::RpcProtocol RpcProtocol)
 {
-    std::string prefix, suffix;
-    switch (RpcProtocol)
-    {
-        case participants::RpcProtocol::ROS2:
-            prefix = participants::ROS_REQUEST_PREFIX;
-            suffix = participants::ROS_REQUEST_SUFFIX;
-            break;
-        case participants::RpcProtocol::FASTDDS:
-            prefix = participants::FASTDDS_REQUEST_PREFIX;
-            suffix = participants::FASTDDS_REQUEST_SUFFIX;
-            break;
-        default:
-            EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
-                    "Failed to send service request to service " << service_name << ": unknown RPC protocol.");
-            return false;
-    }
-
-    request_id = handler_->get_new_request_id();
-    if (!enabler_participant_->publish_rpc(
-                prefix + service_name + suffix,
-                json,
-                request_id))
-    {
-        return false;
-    }
-
-    return true;
+    return enabler_participant_->send_service_request(
+        service_name,
+        json,
+        request_id,
+        RpcProtocol);
 }
 
 bool DDSEnabler::announce_service(
@@ -345,28 +336,22 @@ bool DDSEnabler::send_service_reply(
         const std::string& json,
         const uint64_t request_id)
 {
-    RpcProtocol RpcProtocol = enabler_participant_->get_service_rpc_protocol(service_name);
-    std::string prefix, suffix;
-    switch (RpcProtocol)
-    {
-        case participants::RpcProtocol::ROS2:
-            prefix = participants::ROS_REPLY_PREFIX;
-            suffix = participants::ROS_REPLY_SUFFIX;
-            break;
-        case participants::RpcProtocol::FASTDDS:
-            prefix = participants::FASTDDS_REPLY_PREFIX;
-            suffix = participants::FASTDDS_REPLY_SUFFIX;
-            break;
-        default:
-            EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
-                    "Failed to send service reply to unknown service " << service_name);
-            return false;
-    }
-
-    return enabler_participant_->publish_rpc(
-        prefix + service_name + suffix,
+    return enabler_participant_->send_service_reply(
+        service_name,
         json,
         request_id);
+}
+
+bool DDSEnabler::send_action_goal(
+        const std::string& action_name,
+        const std::string& json,
+        UUID& action_id)
+{
+    return send_action_goal(
+        action_name,
+        json,
+        action_id,
+        participants::RpcProtocol::ROS2);
 }
 
 bool DDSEnabler::send_action_goal(
@@ -375,70 +360,20 @@ bool DDSEnabler::send_action_goal(
         UUID& action_id,
         participants::RpcProtocol RpcProtocol)
 {
-    std::string goal_json = RpcUtils::create_goal_request_msg(json, action_id);
-    std::string goal_request_topic = action_name + participants::ACTION_GOAL_SUFFIX;
-    uint64_t goal_request_id = 0;
-
-    if (!send_service_request(
-                goal_request_topic,
-                goal_json,
-                goal_request_id,
-                RpcProtocol))
-    {
-        EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
-                "Failed to send action goal request to action " << action_name);
-        return false;
-    }
-
-    if (!handler_->store_action_request(
-                action_name,
-                action_id,
-                goal_request_id,
-                ActionType::GOAL,
-                RpcProtocol))
-    {
-        EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
-                "Failed to store action goal request to action " << action_name);
-        handler_->erase_action_UUID(action_id, ActionEraseReason::FORCED);
-        return false;
-    }
-
-    return true;
+    return enabler_participant_->send_action_goal(
+        action_name,
+        json,
+        action_id,
+        RpcProtocol);
 }
 
 bool DDSEnabler::send_action_get_result_request(
         const std::string& action_name,
         const UUID& action_id)
 {
-    std::string json = participants::RpcUtils::create_result_request_msg(action_id);
-
-    std::string get_result_request_topic = action_name + participants::ACTION_RESULT_SUFFIX;
-    uint64_t get_result_request_id = 0;
-
-    if (!send_service_request(
-                get_result_request_topic,
-                json,
-                get_result_request_id))
-    {
-        EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
-                "Failed to send action get result request to action " << action_name);
-        return false;
-    }
-
-    if (!handler_->store_action_request(
-                action_name,
-                action_id,
-                get_result_request_id,
-                ActionType::RESULT))
-    {
-        EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
-                "Failed to store action get result request to action " << action_name
-                                                                       << ": cancelling.");
-        cancel_action_goal(action_name, action_id, 0);
-        return false;
-    }
-
-    return true;
+    return enabler_participant_->send_action_get_result_request(
+        action_name,
+        action_id);
 }
 
 bool DDSEnabler::cancel_action_goal(
@@ -446,31 +381,16 @@ bool DDSEnabler::cancel_action_goal(
         const participants::UUID& goal_id,
         const int64_t timestamp)
 {
-    if (goal_id != participants::UUID() &&
-            !handler_->is_UUID_active(action_name, goal_id))
-    {
-        EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
-                "Failed to cancel action goal for action " << action_name
-                                                           << ": goal id not found.");
-        return false;
-    }
+    return enabler_participant_->cancel_action_goal(
+        action_name,
+        goal_id,
+        timestamp);
+}
 
-    std::string cancel_json = participants::RpcUtils::create_cancel_request_msg(goal_id, timestamp);
-
-    uint64_t cancel_request_id = 0;
-    std::string cancel_request_topic = action_name + participants::ACTION_CANCEL_SUFFIX;
-
-    if (send_service_request(
-                cancel_request_topic,
-                cancel_json,
-                cancel_request_id))
-    {
-        return true;
-    }
-
-    EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
-            "Failed to send action cancel goal to action " << action_name);
-    return false;
+bool DDSEnabler::announce_action(
+        const std::string& action_name)
+{
+    return announce_action(action_name, participants::RpcProtocol::ROS2);
 }
 
 bool DDSEnabler::announce_action(
@@ -491,18 +411,10 @@ void DDSEnabler::send_action_send_goal_reply(
         const uint64_t goal_id,
         bool accepted)
 {
-    std::string reply_json = participants::RpcUtils::create_goal_reply_msg(accepted);
-
-    if (!send_service_reply(
-                action_name + participants::ACTION_GOAL_SUFFIX,
-                reply_json,
-                goal_id))
-    {
-        EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
-                "Failed to send action goal reply to action " << action_name
-                                                              << ": goal id not found.");
-    }
-    return;
+    enabler_participant_->send_action_send_goal_reply(
+        action_name,
+        goal_id,
+        accepted);
 }
 
 bool DDSEnabler::send_action_cancel_goal_reply(
@@ -511,30 +423,11 @@ bool DDSEnabler::send_action_cancel_goal_reply(
         const participants::CancelCode& cancel_code,
         const uint64_t request_id)
 {
-    std::vector<std::pair<participants::UUID, std::chrono::system_clock::time_point>> cancelling_goals;
-    for (const auto& goal_id : goal_ids)
-    {
-        std::chrono::system_clock::time_point timestamp;
-        if (!handler_->is_UUID_active(action_name, goal_id, &timestamp))
-        {
-            continue;
-        }
-
-        cancelling_goals.emplace_back(goal_id, timestamp);
-    }
-    std::string reply_json = participants::RpcUtils::create_cancel_reply_msg(cancelling_goals, cancel_code);
-
-    if (!send_service_reply(
-                std::string(action_name) + participants::ACTION_CANCEL_SUFFIX,
-                reply_json,
-                request_id))
-    {
-        EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
-                "Failed to send action cancel reply to action " << action_name
-                                                                << ": request id not found.");
-        return false;
-    }
-    return true;
+    return enabler_participant_->send_action_cancel_goal_reply(
+        action_name,
+        goal_ids,
+        cancel_code,
+        request_id);
 }
 
 bool DDSEnabler::send_action_result(
@@ -543,17 +436,11 @@ bool DDSEnabler::send_action_result(
         const participants::StatusCode& status_code,
         const char* json)
 {
-    if (!handler_->is_UUID_active(action_name, goal_id))
-    {
-        EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
-                "Failed to send action result to action " << action_name
-                                                          << ": goal id not found.");
-        return false;
-    }
-
-    std::string reply_json = participants::RpcUtils::create_result_reply_msg(status_code, json);
-
-    return handler_->handle_action_result(action_name, goal_id, reply_json);
+    return enabler_participant_->send_action_result(
+        action_name,
+        goal_id,
+        status_code,
+        json);
 }
 
 bool DDSEnabler::send_action_get_result_reply(
@@ -562,18 +449,11 @@ bool DDSEnabler::send_action_get_result_reply(
         const std::string& reply_json,
         const uint64_t request_id)
 {
-    std::string result_topic = action_name + participants::ACTION_RESULT_SUFFIX;
-
-    if (send_service_reply(
-                result_topic,
-                reply_json,
-                request_id))
-    {
-        handler_->erase_action_UUID(goal_id, ActionEraseReason::FORCED);
-        return true;
-    }
-
-    return false;
+    return enabler_participant_->send_action_get_result_reply(
+        action_name,
+        goal_id,
+        reply_json,
+        request_id);
 }
 
 bool DDSEnabler::send_action_feedback(
@@ -581,36 +461,10 @@ bool DDSEnabler::send_action_feedback(
         const char* json,
         const participants::UUID& goal_id)
 {
-    if (!handler_->is_UUID_active(action_name, goal_id))
-    {
-        EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
-                "Failed to send action feedback to action " << action_name
-                                                            << ": goal id not found.");
-        return false;
-    }
-
-    RpcProtocol protocol = handler_->get_action_rpc_protocol(action_name, goal_id);
-
-    std::string prefix;
-    switch (protocol)
-    {
-        case RpcProtocol::ROS2:
-            prefix = participants::ROS_TOPIC_PREFIX;
-            break;
-        case RpcProtocol::FASTDDS:
-            prefix = participants::FASTDDS_TOPIC_PREFIX;
-            break;
-        default:
-            EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
-                    "Failed to send feedback to action " << action_name
-                                                         << ": unsupported RPC protocol.");
-            return false;
-    }
-
-    std::string feedback_json = participants::RpcUtils::create_feedback_msg(json, goal_id);
-    std::string feedback_topic = prefix + std::string(action_name) + participants::ACTION_FEEDBACK_SUFFIX;
-
-    return enabler_participant_->publish(feedback_topic, feedback_json);
+    return enabler_participant_->send_action_feedback(
+        action_name,
+        json,
+        goal_id);
 }
 
 bool DDSEnabler::update_action_status(
@@ -618,36 +472,10 @@ bool DDSEnabler::update_action_status(
         const participants::UUID& goal_id,
         const participants::StatusCode& status_code)
 {
-    std::chrono::system_clock::time_point goal_accepted_stamp;
-    if (!handler_->is_UUID_active(action_name, goal_id, &goal_accepted_stamp))
-    {
-        EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
-                "Failed to update action status to action " << action_name
-                                                            << ": goal id not found.");
-        return false;
-    }
-
-    RpcProtocol protocol = handler_->get_action_rpc_protocol(action_name, goal_id);
-
-    std::string prefix;
-    switch (protocol)
-    {
-        case RpcProtocol::ROS2:
-            prefix = participants::ROS_TOPIC_PREFIX;
-            break;
-        case RpcProtocol::FASTDDS:
-            prefix = participants::FASTDDS_TOPIC_PREFIX;
-            break;
-        default:
-            EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
-                    "Failed to send status to action " << action_name
-                                                       << ": unsupported RPC protocol.");
-            return false;
-    }
-
-    std::string status_json = participants::RpcUtils::create_status_msg(goal_id, status_code, goal_accepted_stamp);
-    std::string status_topic = prefix + action_name + participants::ACTION_STATUS_SUFFIX;
-    return enabler_participant_->publish(status_topic, status_json);
+    return enabler_participant_->update_action_status(
+        action_name,
+        goal_id,
+        status_code);
 }
 
 } /* namespace ddsenabler */
