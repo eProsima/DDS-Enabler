@@ -486,6 +486,8 @@ bool EnablerParticipant::send_service_request(
                 json,
                 request_id))
     {
+        EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
+                "Failed to send service request to service " << service_name);
         return false;
     }
 
@@ -576,6 +578,8 @@ bool EnablerParticipant::announce_action(
     std::shared_ptr<ActionDiscovered> action = std::make_shared<ActionDiscovered>(action_name, RpcProtocol);
     if (!query_action_nts_(*action, RpcProtocol, lck))
     {
+        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
+                "Failed to announce action " << action_name << " : action type request failed.");
         return false;
     }
 
@@ -622,6 +626,8 @@ bool EnablerParticipant::revoke_action(
         return true;
     }
 
+    EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
+            "Failed to stop action " << action_name << " : error revoking action services.");
     return false;
 }
 
@@ -685,7 +691,7 @@ bool EnablerParticipant::fill_topic_struct_nts_(
     return true;
 }
 
-bool EnablerParticipant::fullfill_service_type_nts_(
+bool EnablerParticipant::fulfill_service_type_nts_(
         const ServiceInfo& service_info,
         std::shared_ptr<ServiceDiscovered> service,
         RpcProtocol RpcProtocol)
@@ -762,7 +768,7 @@ bool EnablerParticipant::query_service_nts_(
         return false;
     }
 
-    return fullfill_service_type_nts_(service_info, service, RpcProtocol);
+    return fulfill_service_type_nts_(service_info, service, RpcProtocol);
 }
 
 bool EnablerParticipant::query_action_nts_(
@@ -809,7 +815,7 @@ bool EnablerParticipant::query_action_nts_(
 
     std::shared_ptr<ServiceDiscovered> goal_service = std::make_shared<ServiceDiscovered>(goal_service_name,
                     RpcProtocol);
-    if (!fullfill_service_type_nts_(
+    if (!fulfill_service_type_nts_(
                 action_info.goal,
                 goal_service,
                 RpcProtocol))
@@ -829,7 +835,7 @@ bool EnablerParticipant::query_action_nts_(
 
     std::shared_ptr<ServiceDiscovered> cancel_service = std::make_shared<ServiceDiscovered>(cancel_service_name,
                     RpcProtocol);
-    if (!fullfill_service_type_nts_(
+    if (!fulfill_service_type_nts_(
                 action_info.cancel,
                 cancel_service,
                 RpcProtocol))
@@ -849,7 +855,7 @@ bool EnablerParticipant::query_action_nts_(
 
     std::shared_ptr<ServiceDiscovered> result_service = std::make_shared<ServiceDiscovered>(result_service_name,
                     RpcProtocol);
-    if (!fullfill_service_type_nts_(
+    if (!fulfill_service_type_nts_(
                 action_info.result,
                 result_service,
                 RpcProtocol))
@@ -1153,6 +1159,9 @@ bool EnablerParticipant::send_action_get_result_reply(
         handler_->erase_action_UUID(goal_id, ActionEraseReason::FORCED);
         return true;
     }
+
+    EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
+                "Failed to send action get result to action " << action_name);
 
     return false;
 }

@@ -218,7 +218,7 @@ protected:
             const TopicInfo& topic_info,
             ddspipe::core::types::DdsTopic& topic);
 
-    bool fullfill_service_type_nts_(
+    bool fulfill_service_type_nts_(
             const ServiceInfo& service_info,
             std::shared_ptr<ServiceDiscovered> service,
             RpcProtocol RpcProtocol);
