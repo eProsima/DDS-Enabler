@@ -41,7 +41,6 @@ uint32_t received_results_ = 0;
 std::vector<std::pair<eprosima::ddsenabler::participants::UUID, std::string>> received_requests_;
 std::mutex app_mutex_;
 std::condition_variable app_cv_;
-bool stop_app_ = false;
 
 const std::string REQUESTS_SUBDIR = "goals";
 const std::string TYPES_SUBDIR = "types";
@@ -496,17 +495,6 @@ bool server_routine(
     }
 
     return true;
-}
-
-void signal_handler(
-        int signum)
-{
-    std::cout << "Signal " << CLIParser::parse_signal(signum) << " received, stopping..." << std::endl;
-    {
-        std::lock_guard<std::mutex> lock(app_mutex_);
-        stop_app_ = true;
-    }
-    app_cv_.notify_all();
 }
 
 int main(

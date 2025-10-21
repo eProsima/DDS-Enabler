@@ -42,7 +42,6 @@ uint32_t sent_replies_ = 0;
 std::vector<std::pair<uint64_t, std::string>> received_requests_;
 std::mutex app_mutex_;
 std::condition_variable app_cv_;
-bool stop_app_ = false;
 
 const std::string REQUESTS_SUBDIR = "requests";
 const std::string TYPES_SUBDIR = "types";
@@ -419,17 +418,6 @@ bool server_routine(
         std::cerr << "Failed to revoke service: " << service_name << std::endl;
         return false;
     }
-}
-
-void signal_handler(
-        int signum)
-{
-    std::cout << "Signal " << CLIParser::parse_signal(signum) << " received, stopping..." << std::endl;
-    {
-        std::lock_guard<std::mutex> lock(app_mutex_);
-        stop_app_ = true;
-    }
-    app_cv_.notify_all();
 }
 
 int main(
