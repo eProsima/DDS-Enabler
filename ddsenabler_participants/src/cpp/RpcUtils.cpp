@@ -18,6 +18,8 @@
 
 #include <ddsenabler_participants/rpc/RpcUtils.hpp>
 
+#include <cpp_utils/math/random/RandomManager.hpp>
+
 #include <nlohmann/json.hpp>
 #include <fstream>
 #include <random>
@@ -31,13 +33,11 @@ namespace RpcUtils {
 UUID generate_UUID()
 {
     UUID uuid;
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_int_distribution<unsigned int> dis(0, 255);
+    utils::RandomManager rm;
 
     for (size_t i = 0; i < sizeof(uuid); ++i)
     {
-        uuid[i] = static_cast<uint8_t>(dis(gen));
+        uuid[i] = static_cast<uint8_t>(rm.pure_rand());
     }
     return uuid;
 }
