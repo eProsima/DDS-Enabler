@@ -468,9 +468,16 @@ int main(
     }
     else
     {
-        auto request_path =
-                config.persistence_path.empty() ? std::string() : (std::filesystem::path(config.persistence_path) /
-                REQUESTS_SUBDIR).string();
+        std::string request_path;
+        if (!config.request_path.empty())
+        {
+            request_path = config.request_path;
+        }
+        else
+        {
+            std::cerr << "Request path is not set." << std::endl;
+            return EXIT_FAILURE;
+        }
         ret = client_routine(enabler, config.service_name, request_path, config.timeout, config.request_initial_wait);
     }
 

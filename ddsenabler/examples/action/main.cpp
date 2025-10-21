@@ -552,9 +552,16 @@ int main(
     }
     else
     {
-        auto goal_path =
-                config.persistence_path.empty() ? std::string() : (std::filesystem::path(config.persistence_path) /
-                REQUESTS_SUBDIR).string();
+        std::string goal_path;
+        if (!config.action_path.empty())
+        {
+            goal_path = config.action_path;
+        }
+        else
+        {
+            goal_path = config.persistence_path.empty() ? std::string() :
+                    (std::filesystem::path(config.persistence_path) / REQUESTS_SUBDIR).string();
+        }
         ret = client_routine(enabler, config.action_name, goal_path, config.timeout, config.request_initial_wait,
                         config.cancel_requests);
     }

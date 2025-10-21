@@ -34,7 +34,7 @@ foreach(JSON_FILE_COMPLETE_PATH ${JSON_FILES})
         ${CMAKE_CURRENT_BINARY_DIR}/${JSON_FILE}.json
         COPYONLY)
     install(FILES ${JSON_FILE_COMPLETE_PATH}
-        DESTINATION ${DATA_INSTALL_DIR}/ddsenabler/examples/ddsenabler/${BIN_INSTALL_DIR})
+        DESTINATION bin)
 endforeach()
 
 # Copy the yaml files over to the build directory
@@ -46,5 +46,17 @@ foreach(YAML_FILE_COMPLETE_PATH ${YAML_FILES})
         ${CMAKE_CURRENT_BINARY_DIR}/${YAML_FILE}.yml
         COPYONLY)
     install(FILES ${YAML_FILE_COMPLETE_PATH}
-        DESTINATION ${DATA_INSTALL_DIR}/ddsenabler/examples/ddsenabler/${BIN_INSTALL_DIR})
+        DESTINATION bin)
 endforeach()
+
+# Install persistence directory
+install(
+    DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/../persistence
+    DESTINATION bin
+)
+
+# Install goals directory
+install(
+    DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/goals
+    DESTINATION bin
+)

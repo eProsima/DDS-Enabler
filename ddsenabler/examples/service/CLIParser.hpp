@@ -34,6 +34,7 @@ public:
         bool announce_server = true;
         uint32_t timeout = 30;
         std::string persistence_path = "";
+        std::string request_path = "";
         uint32_t expected_requests = 0;
         uint32_t request_initial_wait = 0;
     };
@@ -54,8 +55,6 @@ public:
             std::endl;
         std::cout << "--config <str>                        Path to the configuration file"                        <<
             std::endl;
-        std::cout << "                                      (Default: '')"                                         <<
-            std::endl;
         std::cout << "--service-name <str>                  Name of the service to be registered"                  <<
             std::endl;
         std::cout << "                                      (Default: 'add_two_ints')"                             <<
@@ -68,8 +67,6 @@ public:
             std::endl;
         std::cout << "--persistence-path <str>              Path to the persistence directory"                     <<
             std::endl;
-        std::cout << "                                      (Default: '')"                                         <<
-            std::endl;
         std::cout << "\n-------------------------------------SERVER OPTIONS------------------------------------\n" <<
             std::endl;
         std::cout << "--expected-requests <num>              Number of requests expected to be received"           <<
@@ -81,6 +78,8 @@ public:
         std::cout << "                                      requests publication since server matching"            <<
             std::endl;
         std::cout << "                                      (Default: 0)"                                          <<
+            std::endl;
+        std::cout << "--request-path <str>                   Directory containing request JSON files"               <<
             std::endl;
         std::exit(return_code);
     }
@@ -243,6 +242,24 @@ public:
                     print_help(EXIT_FAILURE);
                 }
             }
+            else if (arg == "--request-path")
+            {
+                if (++i < argc)
+                {
+                    config.request_path = argv[i];
+                    if (!std::filesystem::exists(config.request_path) ||
+                            !std::filesystem::is_directory(config.request_path))
+                    {
+                        std::cerr << "Invalid --request-path directory: " << config.request_path << std::endl;
+                        print_help(EXIT_FAILURE);
+                    }
+                }
+                else
+                {
+                    std::cerr << "Failed to parse --request-path argument" << std::endl;
+                    print_help(EXIT_FAILURE);
+                }
+            }
             else
             {
                 std::cerr << "Failed to parse unknown argument: " << arg << std::endl;
@@ -261,6 +278,24 @@ public:
         {
             std::cerr << "Configuration file path is required" << std::endl;
             print_help(EXIT_FAILURE);
+        }
+
+        if (client_flag && config.request_path.empty())
+        {
+            std::cerr << "--request-path is required in client mode" << std::endl;
+            print_help(EXIT_FAILURE);
+        }
+
+        if (server_flag && config.expected_requests == 0)
+        {
+            std::cerr << "--expected-requests is required in server mode and must be greater than 0" << std::endl;
+            print_help(EXIT_FAILURE);
+        }
+
+        if (config.persistence_path.empty())
+        {
+            std::cerr << "Warning: persistence path is not set, persistence features will be disabled" <<
+                std::endl;
         }
 
         return config;

@@ -1,0 +1,11 @@
+dds:
+  domain: 0
+
+ddsenabler:
+  initial-publish-wait: 500
+
+specs:
+  threads: 12
+  logging:
+    stdout: false
+    verbosity: error

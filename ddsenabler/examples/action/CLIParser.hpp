@@ -34,6 +34,7 @@ public:
         bool announce_server = true;
         uint32_t timeout = 30;
         std::string persistence_path = "";
+        std::string action_path = "";
         uint32_t expected_requests = 0;
         uint32_t request_initial_wait = 0;
         bool cancel_requests = false;
@@ -55,8 +56,6 @@ public:
             std::endl;
         std::cout << "--config <str>                        Path to the configuration file"                        <<
             std::endl;
-        std::cout << "                                      (Default: '')"                                         <<
-            std::endl;
         std::cout << "--action-name <str>                  Name of the action to be registered"                    <<
             std::endl;
         std::cout << "                                      (Default: 'Fibonacci/_action/')"                       <<
@@ -68,8 +67,6 @@ public:
         std::cout << "                                      (Default: 30)"                                         <<
             std::endl;
         std::cout << "--persistence-path <str>              Path to the persistence directory"                     <<
-            std::endl;
-        std::cout << "                                      (Default: '')"                                         <<
             std::endl;
         std::cout << "\n-------------------------------------SERVER OPTIONS------------------------------------\n" <<
             std::endl;
@@ -86,6 +83,8 @@ public:
         std::cout << "--cancel-requests <bool>              Whether to cancel requests after sending them"         <<
             std::endl;
         std::cout << "                                      (Default: false)"                                      <<
+            std::endl;
+        std::cout << "--action-path <str>                    Directory containing goal JSON files"                  <<
             std::endl;
         std::exit(return_code);
     }
@@ -262,6 +261,24 @@ public:
                     print_help(EXIT_FAILURE);
                 }
             }
+            else if (arg == "--action-path")
+            {
+                if (++i < argc)
+                {
+                    config.action_path = argv[i];
+                    if (!std::filesystem::exists(config.action_path) ||
+                            !std::filesystem::is_directory(config.action_path))
+                    {
+                        std::cerr << "Invalid --action-path directory: " << config.action_path << std::endl;
+                        print_help(EXIT_FAILURE);
+                    }
+                }
+                else
+                {
+                    std::cerr << "Failed to parse --action-path argument" << std::endl;
+                    print_help(EXIT_FAILURE);
+                }
+            }
             else
             {
                 std::cerr << "Failed to parse unknown argument: " << arg << std::endl;
@@ -279,6 +296,18 @@ public:
         if (config.config_file_path.empty())
         {
             std::cerr << "Configuration file path is required" << std::endl;
+            print_help(EXIT_FAILURE);
+        }
+
+        if (client_flag && config.action_path.empty())
+        {
+            std::cerr << "--action-path is required in client mode" << std::endl;
+            print_help(EXIT_FAILURE);
+        }
+
+        if (server_flag && config.expected_requests == 0)
+        {
+            std::cerr << "--expected-requests is required in server mode and must be greater than 0" << std::endl;
             print_help(EXIT_FAILURE);
         }
 
