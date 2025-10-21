@@ -49,7 +49,7 @@ public:
     static void print_help(
             uint8_t return_code)
     {
-        std::cout << "Usage: ddsenabler_example_action [options]"                                                 <<
+        std::cout << "Usage: ddsenabler_example_action <client|server> [options]"                                 <<
             std::endl;
         std::cout << ""                                                                                            <<
             std::endl;
@@ -60,10 +60,6 @@ public:
         std::cout << "--action-name <str>                  Name of the action to be registered"                    <<
             std::endl;
         std::cout << "                                      (Default: 'Fibonacci/_action/')"                       <<
-            std::endl;
-        std::cout << "-client                               Run as a client (mutually exclusive with -server)"   <<
-            std::endl;
-        std::cout << "-server                               Run as a server (mutually exclusive with -client)"   <<
             std::endl;
         std::cout << "--timeout <num>                       Time (seconds) to wait before stopping the"            <<
             std::endl;
@@ -111,14 +107,37 @@ public:
 
         if (argc < 2)
         {
-            std::cerr << "Configuration file path is required" << std::endl;
+            std::cerr << "Mode is required as the first argument: 'client' or 'server'" << std::endl;
             print_help(EXIT_FAILURE);
         }
 
         bool client_flag = false;
         bool server_flag = false;
 
-        for (int i = 1; i < argc; ++i)
+        // First positional argument must be the mode
+        std::string mode = argv[1];
+        if (mode == "-h" || mode == "--help")
+        {
+            print_help(EXIT_SUCCESS);
+        }
+        else if (mode == "client")
+        {
+            client_flag = true;
+            config.announce_server = false;
+        }
+        else if (mode == "server")
+        {
+            server_flag = true;
+            config.announce_server = true;
+        }
+        else
+        {
+            std::cerr << "Invalid mode '" << mode << "'. First argument must be 'client' or 'server'" << std::endl;
+            print_help(EXIT_FAILURE);
+        }
+
+        // Parse optional arguments starting from index 2
+        for (int i = 2; i < argc; ++i)
         {
             std::string arg = argv[i];
 
@@ -154,26 +173,6 @@ public:
                     std::cerr << "Failed to parse --action-name argument" << std::endl;
                     print_help(EXIT_FAILURE);
                 }
-            }
-            else if (arg == "-client")
-            {
-                if (server_flag)
-                {
-                    std::cerr << "Cannot specify both -client and -server flags" << std::endl;
-                    print_help(EXIT_FAILURE);
-                }
-                client_flag = true;
-                config.announce_server = false;
-            }
-            else if (arg == "-server")
-            {
-                if (client_flag)
-                {
-                    std::cerr << "Cannot specify both -client and -server flags" << std::endl;
-                    print_help(EXIT_FAILURE);
-                }
-                server_flag = true;
-                config.announce_server = true;
             }
             else if (arg == "--timeout")
             {
@@ -270,9 +269,10 @@ public:
             }
         }
 
+        // Sanity check (should be set from the positional mode)
         if (!client_flag && !server_flag)
         {
-            std::cerr << "Either -client or -server flag must be specified" << std::endl;
+            std::cerr << "Either 'client' or 'server' must be specified as the first argument" << std::endl;
             print_help(EXIT_FAILURE);
         }
 
