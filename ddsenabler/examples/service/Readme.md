@@ -12,7 +12,7 @@ Users are encouraged to implement their own functional server logic as needed in
 ```bash
 ./install/ddsenabler/bin/ddsenabler_example_service client \
 	--persistence-path ./install/ddsenabler/bin/persistence/ \
-	--request-path ./install/ddsenabler/bin/requests \
+	--requests-path ./install/ddsenabler/bin/requests \
 	--config ./install/ddsenabler/bin/config_service.yml \
 	--request-initial-wait 3
 ```

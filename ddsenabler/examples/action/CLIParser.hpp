@@ -34,7 +34,7 @@ public:
         bool announce_server = true;
         uint32_t timeout = 30;
         std::string persistence_path = "";
-        std::string action_path = "";
+        std::string goals_path = "";
         uint32_t expected_requests = 0;
         uint32_t request_initial_wait = 0;
         bool cancel_requests = false;
@@ -84,7 +84,7 @@ public:
             std::endl;
         std::cout << "                                      (Default: false)"                                      <<
             std::endl;
-        std::cout << "--action-path <str>                    Directory containing goal JSON files"                  <<
+        std::cout << "--goals-path <str>                    Directory containing goal JSON files"                  <<
             std::endl;
         std::exit(return_code);
     }
@@ -261,21 +261,21 @@ public:
                     print_help(EXIT_FAILURE);
                 }
             }
-            else if (arg == "--action-path")
+            else if (arg == "--goals-path")
             {
                 if (++i < argc)
                 {
-                    config.action_path = argv[i];
-                    if (!std::filesystem::exists(config.action_path) ||
-                            !std::filesystem::is_directory(config.action_path))
+                    config.goals_path = argv[i];
+                    if (!std::filesystem::exists(config.goals_path) ||
+                            !std::filesystem::is_directory(config.goals_path))
                     {
-                        std::cerr << "Invalid --action-path directory: " << config.action_path << std::endl;
+                        std::cerr << "Invalid --goals-path directory: " << config.goals_path << std::endl;
                         print_help(EXIT_FAILURE);
                     }
                 }
                 else
                 {
-                    std::cerr << "Failed to parse --action-path argument" << std::endl;
+                    std::cerr << "Failed to parse --goals-path argument" << std::endl;
                     print_help(EXIT_FAILURE);
                 }
             }
@@ -299,9 +299,9 @@ public:
             print_help(EXIT_FAILURE);
         }
 
-        if (client_flag && config.action_path.empty())
+        if (client_flag && config.goals_path.empty())
         {
-            std::cerr << "--action-path is required in client mode" << std::endl;
+            std::cerr << "--goals-path is required in client mode" << std::endl;
             print_help(EXIT_FAILURE);
         }
 

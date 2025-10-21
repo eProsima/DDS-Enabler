@@ -34,7 +34,7 @@ public:
         bool announce_server = true;
         uint32_t timeout = 30;
         std::string persistence_path = "";
-        std::string request_path = "";
+        std::string requests_path = "";
         uint32_t expected_requests = 0;
         uint32_t request_initial_wait = 0;
     };
@@ -79,7 +79,7 @@ public:
             std::endl;
         std::cout << "                                      (Default: 0)"                                          <<
             std::endl;
-        std::cout << "--request-path <str>                   Directory containing request JSON files"               <<
+        std::cout << "--requests-path <str>                   Directory containing request JSON files"               <<
             std::endl;
         std::exit(return_code);
     }
@@ -242,21 +242,21 @@ public:
                     print_help(EXIT_FAILURE);
                 }
             }
-            else if (arg == "--request-path")
+            else if (arg == "--requests-path")
             {
                 if (++i < argc)
                 {
-                    config.request_path = argv[i];
-                    if (!std::filesystem::exists(config.request_path) ||
-                            !std::filesystem::is_directory(config.request_path))
+                    config.requests_path = argv[i];
+                    if (!std::filesystem::exists(config.requests_path) ||
+                            !std::filesystem::is_directory(config.requests_path))
                     {
-                        std::cerr << "Invalid --request-path directory: " << config.request_path << std::endl;
+                        std::cerr << "Invalid --requests-path directory: " << config.requests_path << std::endl;
                         print_help(EXIT_FAILURE);
                     }
                 }
                 else
                 {
-                    std::cerr << "Failed to parse --request-path argument" << std::endl;
+                    std::cerr << "Failed to parse --requests-path argument" << std::endl;
                     print_help(EXIT_FAILURE);
                 }
             }
@@ -280,9 +280,9 @@ public:
             print_help(EXIT_FAILURE);
         }
 
-        if (client_flag && config.request_path.empty())
+        if (client_flag && config.requests_path.empty())
         {
-            std::cerr << "--request-path is required in client mode" << std::endl;
+            std::cerr << "--requests-path is required in client mode" << std::endl;
             print_help(EXIT_FAILURE);
         }
 

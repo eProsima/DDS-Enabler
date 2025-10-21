@@ -553,9 +553,9 @@ int main(
     else
     {
         std::string goal_path;
-        if (!config.action_path.empty())
+        if (!config.goals_path.empty())
         {
-            goal_path = config.action_path;
+            goal_path = config.goals_path;
         }
         else
         {

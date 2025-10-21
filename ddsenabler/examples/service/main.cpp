@@ -296,7 +296,7 @@ bool wait_for_service_reply(
 bool client_routine(
         std::shared_ptr<eprosima::ddsenabler::DDSEnabler> enabler,
         const std::string& service_name,
-        const std::string& request_path,
+        const std::string& requests_path,
         uint32_t timeout,
         uint32_t request_initial_wait)
 {
@@ -312,7 +312,7 @@ bool client_routine(
 
     // Get collection of files to publish, sorted in increasing order by their name (assumed to be numeric)
     std::vector<std::pair<std::filesystem::path, int32_t>> sample_files;
-    utils::get_sorted_files(request_path, sample_files);
+    utils::get_sorted_files(requests_path, sample_files);
     uint32_t sent_requests = 0;
     for (const auto& [path, number] : sample_files)
     {
@@ -468,17 +468,17 @@ int main(
     }
     else
     {
-        std::string request_path;
-        if (!config.request_path.empty())
+        std::string requests_path;
+        if (!config.requests_path.empty())
         {
-            request_path = config.request_path;
+            requests_path = config.requests_path;
         }
         else
         {
             std::cerr << "Request path is not set." << std::endl;
             return EXIT_FAILURE;
         }
-        ret = client_routine(enabler, config.service_name, request_path, config.timeout, config.request_initial_wait);
+        ret = client_routine(enabler, config.service_name, requests_path, config.timeout, config.request_initial_wait);
     }
 
     return ret ? EXIT_SUCCESS : EXIT_FAILURE;
