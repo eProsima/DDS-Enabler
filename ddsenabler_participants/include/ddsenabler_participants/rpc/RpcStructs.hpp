@@ -358,6 +358,7 @@ struct ServiceDiscovered
 
     std::optional<ddspipe::core::types::Endpoint> endpoint_request;
     bool enabler_as_server{false};
+    bool external_server{false};
 
     bool add_topic(
             const ddspipe::core::types::DdsTopic& topic,
@@ -481,6 +482,7 @@ struct ActionDiscovered
     bool status_discovered{false};
     bool fully_discovered{false};
     bool enabler_as_server{false};
+    bool external_server{false};
 
     bool check_fully_discovered()
     {

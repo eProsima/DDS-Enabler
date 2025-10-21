@@ -53,7 +53,12 @@ bool EnablerParticipant::service_discovered_nts_(
 {
     auto [it, inserted] = services_.try_emplace(rpc_info->service_name,
                     std::make_shared<ServiceDiscovered>(rpc_info->service_name, rpc_info->rpc_protocol));
-    return it->second->add_topic(topic, rpc_info->service_type);
+    if (it->second->add_topic(topic, rpc_info->service_type))
+    {
+        it->second->external_server = true;
+        return true;
+    }
+    return false;
 }
 
 bool EnablerParticipant::action_discovered_nts_(
@@ -80,7 +85,12 @@ bool EnablerParticipant::action_discovered_nts_(
         it->second->add_topic(topic, rpc_info->action_type);
     }
 
-    return it->second->check_fully_discovered();
+    if (it->second->check_fully_discovered())
+    {
+        it->second->external_server = true;
+        return true;
+    }
+    return false;
 }
 
 std::shared_ptr<IReader> EnablerParticipant::create_reader(
@@ -124,8 +134,17 @@ std::shared_ptr<IReader> EnablerParticipant::create_reader(
                 {
                     if (service_discovered_nts_(rpc_info, dds_topic))
                     {
-                        RpcTopic service = services_.find(rpc_info->service_name)->second->get_service();
-                        handler_->add_service(service);
+                        try
+                        {
+                            RpcTopic service = services_.find(rpc_info->service_name)->second->get_service();
+                            handler_->add_service(service);
+                        }
+                        catch (const std::exception& e)
+                        {
+                            EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
+                                    "Failed to add service " << rpc_info->service_name << ": " << e.what());
+                            return std::make_shared<BlankReader>();
+                        }
                     }
                 }
                 else if (RpcType::ACTION == rpc_info->rpc_type)
@@ -145,6 +164,10 @@ std::shared_ptr<IReader> EnablerParticipant::create_reader(
                         }
                     }
                 }
+            }
+            else
+            {
+                std::cout << "Topic " << dds_topic.m_topic_name << " discovered from topic query callback. Not adding RPC." << std::endl;
             }
         }
         else
@@ -295,6 +318,13 @@ bool EnablerParticipant::publish_rpc(
         return false;
     }
 
+    if (!it->second->external_server && rpc_info->service_type == ServiceType::REQUEST)
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
+                "Failed to publish data in service " << rpc_info->service_name << " : service is only announced on the enabler side.");
+        return false;
+    }
+
     std::string type_name;
     auto reader = std::dynamic_pointer_cast<InternalRpcReader>(lookup_reader_nts_(topic_name, type_name));
 
@@ -440,6 +470,12 @@ bool EnablerParticipant::revoke_service_nts_(
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
                 "Failed to stop service " << service_name << " : service not announced as server.");
         return false;
+    }
+
+    if (it->second->external_server)
+    {
+        it->second->enabler_as_server = false;
+        return true;
     }
 
     std::string request_name = it->second->topic_request.m_topic_name;
@@ -599,11 +635,18 @@ bool EnablerParticipant::revoke_action(
                 "Failed to stop action " << action_name << " : action not found.");
         return false;
     }
+
     if (!it->second->enabler_as_server)
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
                 "Failed to stop action " << action_name << " : action not announced as server.");
         return false;
+    }
+
+    if (it->second->external_server)
+    {
+        it->second->enabler_as_server = false;
+        return true;
     }
 
     auto action = it->second;
