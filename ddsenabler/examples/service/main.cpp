@@ -38,6 +38,7 @@
 CLIParser::example_config config;
 bool service_discovered_ = false;
 uint32_t received_replies_ = 0;
+uint32_t sent_replies_ = 0;
 std::vector<std::pair<uint64_t, std::string>> received_requests_;
 std::mutex app_mutex_;
 std::condition_variable app_cv_;
@@ -355,7 +356,7 @@ bool server_specific_logic(
         const std::string& request,
         uint64_t request_id)
 {
-    std::this_thread::sleep_for(std::chrono::milliseconds(500)); // Simulate processing time
+    std::this_thread::sleep_for(std::chrono::milliseconds(200)); // Simulate processing time
     std::string json = "{\"sum\": 3}"; // Example response, replace with actual logic
     if (!enabler->send_service_reply(service_name, json, request_id))
     {
@@ -403,8 +404,10 @@ bool server_routine(
         // Check if we have received the expected number of requests
         {
             std::lock_guard<std::mutex> lock(app_mutex_);
-            if (++received_replies_ >= expected_requests)
+            if (++sent_replies_ >= expected_requests)
             {
+                // Wait to ensure the last sent reply reaches destination
+                std::this_thread::sleep_for(std::chrono::milliseconds(1000));
                 return true;
             }
         }
