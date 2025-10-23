@@ -469,9 +469,13 @@ int main(
     std::shared_ptr<DDSEnabler> enabler;
     bool enabler_created = false;
     if (config.config_file_path.empty())
+    {
         enabler_created = create_dds_enabler(yaml::EnablerConfiguration(""), callbacks, enabler);
+    }
     else
+    {
         enabler_created = create_dds_enabler(config.config_file_path.c_str(), callbacks, enabler);
+    }
     if (!enabler_created)
     {
         std::cerr << "Failed to create DDSEnabler instance." << std::endl;
@@ -491,7 +495,8 @@ int main(
             std::cerr << "Request path is not set." << std::endl;
             return EXIT_FAILURE;
         }
-        ret = client_routine(enabler, config.service_name, config.requests_path, config.timeout, config.request_initial_wait);
+        ret = client_routine(enabler, config.service_name, config.requests_path, config.timeout,
+                        config.request_initial_wait);
     }
 
     return ret ? EXIT_SUCCESS : EXIT_FAILURE;

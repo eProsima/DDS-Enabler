@@ -64,7 +64,7 @@ std::shared_ptr<IReader> EnablerParticipant::create_reader(
         {
             rpc_info = std::make_shared<RpcInfo>(dds_topic.m_topic_name);
         }
-        catch(const std::exception& e)
+        catch (const std::exception& e)
         {
             EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT, e.what());
             return std::make_shared<BlankReader>();
@@ -211,7 +211,7 @@ bool EnablerParticipant::publish_rpc(
     {
         rpc_info = std::make_shared<RpcInfo>(topic_name);
     }
-    catch(const std::exception& e)
+    catch (const std::exception& e)
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT, e.what());
         return false;
@@ -236,7 +236,8 @@ bool EnablerParticipant::publish_rpc(
     if (!it->second->external_server && rpc_info->service_type == ServiceType::REQUEST)
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                "Failed to publish data in service " << rpc_info->service_name << " : service is only announced on the enabler side.");
+                "Failed to publish data in service " << rpc_info->service_name <<
+                            " : service is only announced on the enabler side.");
         return false;
     }
 
@@ -342,10 +343,10 @@ bool EnablerParticipant::revoke_service(
 }
 
 bool EnablerParticipant::send_service_request(
-            const std::string& service_name,
-            const std::string& json,
-            uint64_t& request_id,
-            RpcProtocol RpcProtocol)
+        const std::string& service_name,
+        const std::string& json,
+        uint64_t& request_id,
+        RpcProtocol RpcProtocol)
 {
     std::string prefix, suffix;
     switch (RpcProtocol)
@@ -569,7 +570,7 @@ bool EnablerParticipant::cancel_action_goal(
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
                 "Failed to cancel action goal for action " << action_name
-                << ": goal id not found.");
+                                                           << ": goal id not found.");
         return false;
     }
 
@@ -720,7 +721,7 @@ bool EnablerParticipant::send_action_get_result_reply(
     }
 
     EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
-                "Failed to send action get result to action " << action_name);
+            "Failed to send action get result to action " << action_name);
 
     return false;
 }
@@ -983,12 +984,13 @@ bool EnablerParticipant::query_action_nts_(
         if (!feedback_reader)
         {
             if (!create_topic_writer_nts_(
-                feedback_topic,
-                feedback_reader,
-                lck))
+                        feedback_topic,
+                        feedback_reader,
+                        lck))
             {
                 EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                        "Failed to announce action " << action.action_name << " : feedback topic writer creation failed.");
+                        "Failed to announce action " << action.action_name <<
+                                    " : feedback topic writer creation failed.");
                 return false;
             }
         }
@@ -1012,12 +1014,13 @@ bool EnablerParticipant::query_action_nts_(
         if (!status_reader)
         {
             if (!create_topic_writer_nts_(
-                status_topic,
-                status_reader,
-                lck))
+                        status_topic,
+                        status_reader,
+                        lck))
             {
                 EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                        "Failed to announce action " << action.action_name << " : status topic writer creation failed.");
+                        "Failed to announce action " << action.action_name <<
+                                    " : status topic writer creation failed.");
                 return false;
             }
         }

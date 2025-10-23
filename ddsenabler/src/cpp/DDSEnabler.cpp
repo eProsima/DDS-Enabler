@@ -305,7 +305,6 @@ bool DDSEnabler::send_service_request(
         participants::RpcProtocol::ROS2);
 }
 
-
 bool DDSEnabler::send_service_request(
         const std::string& service_name,
         const std::string& json,
@@ -325,7 +324,6 @@ bool DDSEnabler::announce_service(
 {
     return enabler_participant_->announce_service(service_name, RpcProtocol);
 }
-
 
 bool DDSEnabler::announce_service(
         const std::string& service_name)

@@ -88,11 +88,14 @@ struct ActionRequestInfo
             uint64_t request_id,
             ActionType action_type);
 
-    uint64_t get_request(ActionType action_type) const;
+    uint64_t get_request(
+            ActionType action_type) const;
 
-    bool set_result(const std::string&& str);
+    bool set_result(
+            const std::string&& str);
 
-    bool erase(ActionEraseReason erase_reason);
+    bool erase(
+            ActionEraseReason erase_reason);
 
     RpcProtocol get_rpc_protocol() const;
 

@@ -51,7 +51,7 @@ RpcInfo::RpcInfo(
     {
         remove_prefix_suffix();
     }
-    catch(const std::exception& e)
+    catch (const std::exception& e)
     {
         throw std::runtime_error("Error extracting RPC info from topic name '" + topic_name + "': " + e.what());
     }
@@ -476,7 +476,7 @@ RpcAction ActionDiscovered::get_action()
             feedback,
             status);
     }
-    catch(const std::exception& e)
+    catch (const std::exception& e)
     {
         throw std::runtime_error("Failed to create action " + action_name + ": " + e.what());
     }

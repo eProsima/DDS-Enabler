@@ -161,7 +161,7 @@ void Handler::add_data(
     {
         rpc_info = std::make_shared<RpcInfo>(topic.m_topic_name);
     }
-    catch(const std::exception& e)
+    catch (const std::exception& e)
     {
         throw utils::InconsistencyException(STR_ENTRY << e.what());
     }
@@ -840,7 +840,7 @@ bool Handler::get_action_request_UUID(
                 return true;
             }
         }
-        catch(const std::exception& e)
+        catch (const std::exception& e)
         {
             EPROSIMA_LOG_ERROR(DDSENABLER_HANDLER,
                     "Error getting action request ID: " << e.what());
