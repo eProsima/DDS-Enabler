@@ -79,8 +79,6 @@ void RpcInfo::detect_rpc_protocol()
 
 void RpcInfo::remove_prefix_suffix()
 {
-    rpc_protocol = rpc_protocol;
-
     std::string request_prefix, request_suffix, reply_prefix, reply_suffix, topic_prefix;
     switch (rpc_protocol)
     {
