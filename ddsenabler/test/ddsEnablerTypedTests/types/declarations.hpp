@@ -98,13 +98,13 @@ public:
     eProsima_user_DllExport ForwardDeclarationsRecursiveStruct(
             const ForwardDeclarationsRecursiveStruct& x)
     {
-        m_var_RecursiveUnboundedSeqForwardStruct = x.m_var_RecursiveUnboundedSeqForwardStruct;
+                    m_var_RecursiveUnboundedSeqForwardStruct = x.m_var_RecursiveUnboundedSeqForwardStruct;
 
-        m_var_RecursiveBoundedSeqForwardStruct = x.m_var_RecursiveBoundedSeqForwardStruct;
+                    m_var_RecursiveBoundedSeqForwardStruct = x.m_var_RecursiveBoundedSeqForwardStruct;
 
-        m_var_RecursiveUnboundedSeqForwardUnion = x.m_var_RecursiveUnboundedSeqForwardUnion;
+                    m_var_RecursiveUnboundedSeqForwardUnion = x.m_var_RecursiveUnboundedSeqForwardUnion;
 
-        m_var_RecursiveBoundedSeqForwardUnion = x.m_var_RecursiveBoundedSeqForwardUnion;
+                    m_var_RecursiveBoundedSeqForwardUnion = x.m_var_RecursiveBoundedSeqForwardUnion;
 
     }
 
@@ -129,13 +129,13 @@ public:
             const ForwardDeclarationsRecursiveStruct& x)
     {
 
-        m_var_RecursiveUnboundedSeqForwardStruct = x.m_var_RecursiveUnboundedSeqForwardStruct;
+                    m_var_RecursiveUnboundedSeqForwardStruct = x.m_var_RecursiveUnboundedSeqForwardStruct;
 
-        m_var_RecursiveBoundedSeqForwardStruct = x.m_var_RecursiveBoundedSeqForwardStruct;
+                    m_var_RecursiveBoundedSeqForwardStruct = x.m_var_RecursiveBoundedSeqForwardStruct;
 
-        m_var_RecursiveUnboundedSeqForwardUnion = x.m_var_RecursiveUnboundedSeqForwardUnion;
+                    m_var_RecursiveUnboundedSeqForwardUnion = x.m_var_RecursiveUnboundedSeqForwardUnion;
 
-        m_var_RecursiveBoundedSeqForwardUnion = x.m_var_RecursiveBoundedSeqForwardUnion;
+                    m_var_RecursiveBoundedSeqForwardUnion = x.m_var_RecursiveBoundedSeqForwardUnion;
 
         return *this;
     }
@@ -163,9 +163,9 @@ public:
             const ForwardDeclarationsRecursiveStruct& x) const
     {
         return (m_var_RecursiveUnboundedSeqForwardStruct == x.m_var_RecursiveUnboundedSeqForwardStruct &&
-               m_var_RecursiveBoundedSeqForwardStruct == x.m_var_RecursiveBoundedSeqForwardStruct &&
-               m_var_RecursiveUnboundedSeqForwardUnion == x.m_var_RecursiveUnboundedSeqForwardUnion &&
-               m_var_RecursiveBoundedSeqForwardUnion == x.m_var_RecursiveBoundedSeqForwardUnion);
+           m_var_RecursiveBoundedSeqForwardStruct == x.m_var_RecursiveBoundedSeqForwardStruct &&
+           m_var_RecursiveUnboundedSeqForwardUnion == x.m_var_RecursiveUnboundedSeqForwardUnion &&
+           m_var_RecursiveBoundedSeqForwardUnion == x.m_var_RecursiveBoundedSeqForwardUnion);
     }
 
     /*!
@@ -216,6 +216,7 @@ public:
         return m_var_RecursiveUnboundedSeqForwardStruct;
     }
 
+
     /*!
      * @brief This function copies the value in member var_RecursiveBoundedSeqForwardStruct
      * @param _var_RecursiveBoundedSeqForwardStruct New value to be copied in member var_RecursiveBoundedSeqForwardStruct
@@ -253,6 +254,7 @@ public:
     {
         return m_var_RecursiveBoundedSeqForwardStruct;
     }
+
 
     /*!
      * @brief This function copies the value in member var_RecursiveUnboundedSeqForwardUnion
@@ -292,6 +294,7 @@ public:
         return m_var_RecursiveUnboundedSeqForwardUnion;
     }
 
+
     /*!
      * @brief This function copies the value in member var_RecursiveBoundedSeqForwardUnion
      * @param _var_RecursiveBoundedSeqForwardUnion New value to be copied in member var_RecursiveBoundedSeqForwardUnion
@@ -329,6 +332,8 @@ public:
     {
         return m_var_RecursiveBoundedSeqForwardUnion;
     }
+
+
 
 private:
 
@@ -375,13 +380,13 @@ public:
 
         switch (x.selected_member_)
         {
-            case 0x00000001:
-                case_zero_() = x.m_case_zero;
-                break;
+                        case 0x00000001:
+                            case_zero_() = x.m_case_zero;
+                            break;
 
-            case 0x00000002:
-                case_one_() = x.m_case_one;
-                break;
+                        case 0x00000002:
+                            case_one_() = x.m_case_one;
+                            break;
 
         }
     }
@@ -397,13 +402,13 @@ public:
 
         switch (x.selected_member_)
         {
-            case 0x00000001:
-                case_zero_() = std::move(x.m_case_zero);
-                break;
+                        case 0x00000001:
+                            case_zero_() = std::move(x.m_case_zero);
+                            break;
 
-            case 0x00000002:
-                case_one_() = std::move(x.m_case_one);
-                break;
+                        case 0x00000002:
+                            case_one_() = std::move(x.m_case_one);
+                            break;
 
         }
     }
@@ -419,13 +424,13 @@ public:
 
         switch (x.selected_member_)
         {
-            case 0x00000001:
-                case_zero_() = x.m_case_zero;
-                break;
+                        case 0x00000001:
+                            case_zero_() = x.m_case_zero;
+                            break;
 
-            case 0x00000002:
-                case_one_() = x.m_case_one;
-                break;
+                        case 0x00000002:
+                            case_one_() = x.m_case_one;
+                            break;
 
         }
 
@@ -443,13 +448,13 @@ public:
 
         switch (x.selected_member_)
         {
-            case 0x00000001:
-                case_zero_() = std::move(x.m_case_zero);
-                break;
+                        case 0x00000001:
+                            case_zero_() = std::move(x.m_case_zero);
+                            break;
 
-            case 0x00000002:
-                case_one_() = std::move(x.m_case_one);
-                break;
+                        case 0x00000002:
+                            case_one_() = std::move(x.m_case_one);
+                            break;
 
         }
 
@@ -470,13 +475,13 @@ public:
         {
             switch (selected_member_)
             {
-                case 0x00000001:
-                    ret_value = (m_case_zero == x.m_case_zero);
-                    break;
+                                case 0x00000001:
+                                    ret_value = (m_case_zero == x.m_case_zero);
+                                    break;
 
-                case 0x00000002:
-                    ret_value = (m_case_one == x.m_case_one);
-                    break;
+                                case 0x00000002:
+                                    ret_value = (m_case_one == x.m_case_one);
+                                    break;
 
             }
         }
@@ -506,26 +511,25 @@ public:
 
         switch (__d)
         {
-            case 0:
-                if (0x00000001 == selected_member_)
-                {
-                    valid_discriminator = true;
-                }
-                break;
+                        case 0:
+                            if (0x00000001 == selected_member_)
+                            {
+                                valid_discriminator = true;
+                            }
+                            break;
 
-            case 1:
-                if (0x00000002 == selected_member_)
-                {
-                    valid_discriminator = true;
-                }
-                break;
+                        case 1:
+                            if (0x00000002 == selected_member_)
+                            {
+                                valid_discriminator = true;
+                            }
+                            break;
 
         }
 
         if (!valid_discriminator)
         {
-            throw eprosima::fastcdr::exception::BadParamException(
-                      "Discriminator doesn't correspond with the selected union member");
+            throw eprosima::fastcdr::exception::BadParamException("Discriminator doesn't correspond with the selected union member");
         }
 
         m__d = __d;
@@ -581,6 +585,7 @@ public:
         return m_case_zero;
     }
 
+
     /*!
      * @brief This function sets a value in member case_one
      * @param _case_one New value for member case_one
@@ -622,6 +627,7 @@ public:
         return m_case_one;
     }
 
+
     void _default()
     {
         if (member_destructor_)
@@ -632,43 +638,45 @@ public:
         selected_member_ = 0x0FFFFFFFu;
     }
 
+
 private:
 
-    int32_t& case_zero_()
-    {
-        if (0x00000001 != selected_member_)
-        {
-            if (member_destructor_)
+            int32_t& case_zero_()
             {
-                member_destructor_();
+                if (0x00000001 != selected_member_)
+                {
+                    if (member_destructor_)
+                    {
+                        member_destructor_();
+                    }
+
+                    selected_member_ = 0x00000001;
+                    member_destructor_ = nullptr;
+                    m_case_zero = {0};
+
+                }
+
+                return m_case_zero;
             }
 
-            selected_member_ = 0x00000001;
-            member_destructor_ = nullptr;
-            m_case_zero = {0};
-
-        }
-
-        return m_case_zero;
-    }
-
-    int32_t& case_one_()
-    {
-        if (0x00000002 != selected_member_)
-        {
-            if (member_destructor_)
+            int32_t& case_one_()
             {
-                member_destructor_();
+                if (0x00000002 != selected_member_)
+                {
+                    if (member_destructor_)
+                    {
+                        member_destructor_();
+                    }
+
+                    selected_member_ = 0x00000002;
+                    member_destructor_ = nullptr;
+                    m_case_one = {0};
+
+                }
+
+                return m_case_one;
             }
 
-            selected_member_ = 0x00000002;
-            member_destructor_ = nullptr;
-            m_case_one = {0};
-
-        }
-
-        return m_case_one;
-    }
 
     int32_t m__d {2147483647};
 
@@ -711,9 +719,9 @@ public:
     eProsima_user_DllExport ForwardStruct(
             const ForwardStruct& x)
     {
-        m_var_short = x.m_var_short;
+                    m_var_short = x.m_var_short;
 
-        m_var_long = x.m_var_long;
+                    m_var_long = x.m_var_long;
 
     }
 
@@ -736,9 +744,9 @@ public:
             const ForwardStruct& x)
     {
 
-        m_var_short = x.m_var_short;
+                    m_var_short = x.m_var_short;
 
-        m_var_long = x.m_var_long;
+                    m_var_long = x.m_var_long;
 
         return *this;
     }
@@ -764,7 +772,7 @@ public:
             const ForwardStruct& x) const
     {
         return (m_var_short == x.m_var_short &&
-               m_var_long == x.m_var_long);
+           m_var_long == x.m_var_long);
     }
 
     /*!
@@ -805,6 +813,7 @@ public:
         return m_var_short;
     }
 
+
     /*!
      * @brief This function sets a value in member var_long
      * @param _var_long New value for member var_long
@@ -832,6 +841,8 @@ public:
     {
         return m_var_long;
     }
+
+
 
 private:
 
@@ -882,7 +893,7 @@ public:
     eProsima_user_DllExport ForwardStruct(
             const ForwardStruct& x)
     {
-        m_var_u_long_long = x.m_var_u_long_long;
+                    m_var_u_long_long = x.m_var_u_long_long;
 
     }
 
@@ -904,7 +915,7 @@ public:
             const ForwardStruct& x)
     {
 
-        m_var_u_long_long = x.m_var_u_long_long;
+                    m_var_u_long_long = x.m_var_u_long_long;
 
         return *this;
     }
@@ -969,6 +980,8 @@ public:
         return m_var_u_long_long;
     }
 
+
+
 private:
 
     uint64_t m_var_u_long_long{0};
@@ -1005,13 +1018,13 @@ public:
     eProsima_user_DllExport ModuledForwardDeclarationsRecursiveStruct(
             const ModuledForwardDeclarationsRecursiveStruct& x)
     {
-        m_var_ModuledRecursiveUnboundedSeqForwardStruct = x.m_var_ModuledRecursiveUnboundedSeqForwardStruct;
+                    m_var_ModuledRecursiveUnboundedSeqForwardStruct = x.m_var_ModuledRecursiveUnboundedSeqForwardStruct;
 
-        m_var_ModuledRecursiveBoundedSeqForwardStruct = x.m_var_ModuledRecursiveBoundedSeqForwardStruct;
+                    m_var_ModuledRecursiveBoundedSeqForwardStruct = x.m_var_ModuledRecursiveBoundedSeqForwardStruct;
 
-        m_var_ModuledRecursiveUnboundedSeqForwardUnion = x.m_var_ModuledRecursiveUnboundedSeqForwardUnion;
+                    m_var_ModuledRecursiveUnboundedSeqForwardUnion = x.m_var_ModuledRecursiveUnboundedSeqForwardUnion;
 
-        m_var_ModuledRecursiveBoundedSeqForwardUnion = x.m_var_ModuledRecursiveBoundedSeqForwardUnion;
+                    m_var_ModuledRecursiveBoundedSeqForwardUnion = x.m_var_ModuledRecursiveBoundedSeqForwardUnion;
 
     }
 
@@ -1036,13 +1049,13 @@ public:
             const ModuledForwardDeclarationsRecursiveStruct& x)
     {
 
-        m_var_ModuledRecursiveUnboundedSeqForwardStruct = x.m_var_ModuledRecursiveUnboundedSeqForwardStruct;
+                    m_var_ModuledRecursiveUnboundedSeqForwardStruct = x.m_var_ModuledRecursiveUnboundedSeqForwardStruct;
 
-        m_var_ModuledRecursiveBoundedSeqForwardStruct = x.m_var_ModuledRecursiveBoundedSeqForwardStruct;
+                    m_var_ModuledRecursiveBoundedSeqForwardStruct = x.m_var_ModuledRecursiveBoundedSeqForwardStruct;
 
-        m_var_ModuledRecursiveUnboundedSeqForwardUnion = x.m_var_ModuledRecursiveUnboundedSeqForwardUnion;
+                    m_var_ModuledRecursiveUnboundedSeqForwardUnion = x.m_var_ModuledRecursiveUnboundedSeqForwardUnion;
 
-        m_var_ModuledRecursiveBoundedSeqForwardUnion = x.m_var_ModuledRecursiveBoundedSeqForwardUnion;
+                    m_var_ModuledRecursiveBoundedSeqForwardUnion = x.m_var_ModuledRecursiveBoundedSeqForwardUnion;
 
         return *this;
     }
@@ -1070,9 +1083,9 @@ public:
             const ModuledForwardDeclarationsRecursiveStruct& x) const
     {
         return (m_var_ModuledRecursiveUnboundedSeqForwardStruct == x.m_var_ModuledRecursiveUnboundedSeqForwardStruct &&
-               m_var_ModuledRecursiveBoundedSeqForwardStruct == x.m_var_ModuledRecursiveBoundedSeqForwardStruct &&
-               m_var_ModuledRecursiveUnboundedSeqForwardUnion == x.m_var_ModuledRecursiveUnboundedSeqForwardUnion &&
-               m_var_ModuledRecursiveBoundedSeqForwardUnion == x.m_var_ModuledRecursiveBoundedSeqForwardUnion);
+           m_var_ModuledRecursiveBoundedSeqForwardStruct == x.m_var_ModuledRecursiveBoundedSeqForwardStruct &&
+           m_var_ModuledRecursiveUnboundedSeqForwardUnion == x.m_var_ModuledRecursiveUnboundedSeqForwardUnion &&
+           m_var_ModuledRecursiveBoundedSeqForwardUnion == x.m_var_ModuledRecursiveBoundedSeqForwardUnion);
     }
 
     /*!
@@ -1090,8 +1103,7 @@ public:
      * @param _var_ModuledRecursiveUnboundedSeqForwardStruct New value to be copied in member var_ModuledRecursiveUnboundedSeqForwardStruct
      */
     eProsima_user_DllExport void var_ModuledRecursiveUnboundedSeqForwardStruct(
-            const declarations_module::ModuledRecursiveUnboundedSeqForwardStruct&
-            _var_ModuledRecursiveUnboundedSeqForwardStruct)
+            const declarations_module::ModuledRecursiveUnboundedSeqForwardStruct& _var_ModuledRecursiveUnboundedSeqForwardStruct)
     {
         m_var_ModuledRecursiveUnboundedSeqForwardStruct = _var_ModuledRecursiveUnboundedSeqForwardStruct;
     }
@@ -1101,8 +1113,7 @@ public:
      * @param _var_ModuledRecursiveUnboundedSeqForwardStruct New value to be moved in member var_ModuledRecursiveUnboundedSeqForwardStruct
      */
     eProsima_user_DllExport void var_ModuledRecursiveUnboundedSeqForwardStruct(
-            declarations_module::ModuledRecursiveUnboundedSeqForwardStruct&&
-            _var_ModuledRecursiveUnboundedSeqForwardStruct)
+            declarations_module::ModuledRecursiveUnboundedSeqForwardStruct&& _var_ModuledRecursiveUnboundedSeqForwardStruct)
     {
         m_var_ModuledRecursiveUnboundedSeqForwardStruct = std::move(_var_ModuledRecursiveUnboundedSeqForwardStruct);
     }
@@ -1111,8 +1122,7 @@ public:
      * @brief This function returns a constant reference to member var_ModuledRecursiveUnboundedSeqForwardStruct
      * @return Constant reference to member var_ModuledRecursiveUnboundedSeqForwardStruct
      */
-    eProsima_user_DllExport const declarations_module::ModuledRecursiveUnboundedSeqForwardStruct&
-    var_ModuledRecursiveUnboundedSeqForwardStruct() const
+    eProsima_user_DllExport const declarations_module::ModuledRecursiveUnboundedSeqForwardStruct& var_ModuledRecursiveUnboundedSeqForwardStruct() const
     {
         return m_var_ModuledRecursiveUnboundedSeqForwardStruct;
     }
@@ -1121,19 +1131,18 @@ public:
      * @brief This function returns a reference to member var_ModuledRecursiveUnboundedSeqForwardStruct
      * @return Reference to member var_ModuledRecursiveUnboundedSeqForwardStruct
      */
-    eProsima_user_DllExport declarations_module::ModuledRecursiveUnboundedSeqForwardStruct&
-    var_ModuledRecursiveUnboundedSeqForwardStruct()
+    eProsima_user_DllExport declarations_module::ModuledRecursiveUnboundedSeqForwardStruct& var_ModuledRecursiveUnboundedSeqForwardStruct()
     {
         return m_var_ModuledRecursiveUnboundedSeqForwardStruct;
     }
+
 
     /*!
      * @brief This function copies the value in member var_ModuledRecursiveBoundedSeqForwardStruct
      * @param _var_ModuledRecursiveBoundedSeqForwardStruct New value to be copied in member var_ModuledRecursiveBoundedSeqForwardStruct
      */
     eProsima_user_DllExport void var_ModuledRecursiveBoundedSeqForwardStruct(
-            const declarations_module::ModuledRecursiveBoundedSeqForwardStruct&
-            _var_ModuledRecursiveBoundedSeqForwardStruct)
+            const declarations_module::ModuledRecursiveBoundedSeqForwardStruct& _var_ModuledRecursiveBoundedSeqForwardStruct)
     {
         m_var_ModuledRecursiveBoundedSeqForwardStruct = _var_ModuledRecursiveBoundedSeqForwardStruct;
     }
@@ -1152,8 +1161,7 @@ public:
      * @brief This function returns a constant reference to member var_ModuledRecursiveBoundedSeqForwardStruct
      * @return Constant reference to member var_ModuledRecursiveBoundedSeqForwardStruct
      */
-    eProsima_user_DllExport const declarations_module::ModuledRecursiveBoundedSeqForwardStruct&
-    var_ModuledRecursiveBoundedSeqForwardStruct() const
+    eProsima_user_DllExport const declarations_module::ModuledRecursiveBoundedSeqForwardStruct& var_ModuledRecursiveBoundedSeqForwardStruct() const
     {
         return m_var_ModuledRecursiveBoundedSeqForwardStruct;
     }
@@ -1162,19 +1170,18 @@ public:
      * @brief This function returns a reference to member var_ModuledRecursiveBoundedSeqForwardStruct
      * @return Reference to member var_ModuledRecursiveBoundedSeqForwardStruct
      */
-    eProsima_user_DllExport declarations_module::ModuledRecursiveBoundedSeqForwardStruct&
-    var_ModuledRecursiveBoundedSeqForwardStruct()
+    eProsima_user_DllExport declarations_module::ModuledRecursiveBoundedSeqForwardStruct& var_ModuledRecursiveBoundedSeqForwardStruct()
     {
         return m_var_ModuledRecursiveBoundedSeqForwardStruct;
     }
+
 
     /*!
      * @brief This function copies the value in member var_ModuledRecursiveUnboundedSeqForwardUnion
      * @param _var_ModuledRecursiveUnboundedSeqForwardUnion New value to be copied in member var_ModuledRecursiveUnboundedSeqForwardUnion
      */
     eProsima_user_DllExport void var_ModuledRecursiveUnboundedSeqForwardUnion(
-            const declarations_module::ModuledRecursiveUnboundedSeqForwardUnion&
-            _var_ModuledRecursiveUnboundedSeqForwardUnion)
+            const declarations_module::ModuledRecursiveUnboundedSeqForwardUnion& _var_ModuledRecursiveUnboundedSeqForwardUnion)
     {
         m_var_ModuledRecursiveUnboundedSeqForwardUnion = _var_ModuledRecursiveUnboundedSeqForwardUnion;
     }
@@ -1184,8 +1191,7 @@ public:
      * @param _var_ModuledRecursiveUnboundedSeqForwardUnion New value to be moved in member var_ModuledRecursiveUnboundedSeqForwardUnion
      */
     eProsima_user_DllExport void var_ModuledRecursiveUnboundedSeqForwardUnion(
-            declarations_module::ModuledRecursiveUnboundedSeqForwardUnion&&
-            _var_ModuledRecursiveUnboundedSeqForwardUnion)
+            declarations_module::ModuledRecursiveUnboundedSeqForwardUnion&& _var_ModuledRecursiveUnboundedSeqForwardUnion)
     {
         m_var_ModuledRecursiveUnboundedSeqForwardUnion = std::move(_var_ModuledRecursiveUnboundedSeqForwardUnion);
     }
@@ -1194,8 +1200,7 @@ public:
      * @brief This function returns a constant reference to member var_ModuledRecursiveUnboundedSeqForwardUnion
      * @return Constant reference to member var_ModuledRecursiveUnboundedSeqForwardUnion
      */
-    eProsima_user_DllExport const declarations_module::ModuledRecursiveUnboundedSeqForwardUnion&
-    var_ModuledRecursiveUnboundedSeqForwardUnion() const
+    eProsima_user_DllExport const declarations_module::ModuledRecursiveUnboundedSeqForwardUnion& var_ModuledRecursiveUnboundedSeqForwardUnion() const
     {
         return m_var_ModuledRecursiveUnboundedSeqForwardUnion;
     }
@@ -1204,19 +1209,18 @@ public:
      * @brief This function returns a reference to member var_ModuledRecursiveUnboundedSeqForwardUnion
      * @return Reference to member var_ModuledRecursiveUnboundedSeqForwardUnion
      */
-    eProsima_user_DllExport declarations_module::ModuledRecursiveUnboundedSeqForwardUnion&
-    var_ModuledRecursiveUnboundedSeqForwardUnion()
+    eProsima_user_DllExport declarations_module::ModuledRecursiveUnboundedSeqForwardUnion& var_ModuledRecursiveUnboundedSeqForwardUnion()
     {
         return m_var_ModuledRecursiveUnboundedSeqForwardUnion;
     }
+
 
     /*!
      * @brief This function copies the value in member var_ModuledRecursiveBoundedSeqForwardUnion
      * @param _var_ModuledRecursiveBoundedSeqForwardUnion New value to be copied in member var_ModuledRecursiveBoundedSeqForwardUnion
      */
     eProsima_user_DllExport void var_ModuledRecursiveBoundedSeqForwardUnion(
-            const declarations_module::ModuledRecursiveBoundedSeqForwardUnion&
-            _var_ModuledRecursiveBoundedSeqForwardUnion)
+            const declarations_module::ModuledRecursiveBoundedSeqForwardUnion& _var_ModuledRecursiveBoundedSeqForwardUnion)
     {
         m_var_ModuledRecursiveBoundedSeqForwardUnion = _var_ModuledRecursiveBoundedSeqForwardUnion;
     }
@@ -1235,8 +1239,7 @@ public:
      * @brief This function returns a constant reference to member var_ModuledRecursiveBoundedSeqForwardUnion
      * @return Constant reference to member var_ModuledRecursiveBoundedSeqForwardUnion
      */
-    eProsima_user_DllExport const declarations_module::ModuledRecursiveBoundedSeqForwardUnion&
-    var_ModuledRecursiveBoundedSeqForwardUnion() const
+    eProsima_user_DllExport const declarations_module::ModuledRecursiveBoundedSeqForwardUnion& var_ModuledRecursiveBoundedSeqForwardUnion() const
     {
         return m_var_ModuledRecursiveBoundedSeqForwardUnion;
     }
@@ -1245,11 +1248,12 @@ public:
      * @brief This function returns a reference to member var_ModuledRecursiveBoundedSeqForwardUnion
      * @return Reference to member var_ModuledRecursiveBoundedSeqForwardUnion
      */
-    eProsima_user_DllExport declarations_module::ModuledRecursiveBoundedSeqForwardUnion&
-    var_ModuledRecursiveBoundedSeqForwardUnion()
+    eProsima_user_DllExport declarations_module::ModuledRecursiveBoundedSeqForwardUnion& var_ModuledRecursiveBoundedSeqForwardUnion()
     {
         return m_var_ModuledRecursiveBoundedSeqForwardUnion;
     }
+
+
 
 private:
 
@@ -1290,9 +1294,9 @@ public:
     eProsima_user_DllExport ModuledForwardStruct(
             const ModuledForwardStruct& x)
     {
-        m_var_short = x.m_var_short;
+                    m_var_short = x.m_var_short;
 
-        m_var_long = x.m_var_long;
+                    m_var_long = x.m_var_long;
 
     }
 
@@ -1315,9 +1319,9 @@ public:
             const ModuledForwardStruct& x)
     {
 
-        m_var_short = x.m_var_short;
+                    m_var_short = x.m_var_short;
 
-        m_var_long = x.m_var_long;
+                    m_var_long = x.m_var_long;
 
         return *this;
     }
@@ -1343,7 +1347,7 @@ public:
             const ModuledForwardStruct& x) const
     {
         return (m_var_short == x.m_var_short &&
-               m_var_long == x.m_var_long);
+           m_var_long == x.m_var_long);
     }
 
     /*!
@@ -1384,6 +1388,7 @@ public:
         return m_var_short;
     }
 
+
     /*!
      * @brief This function sets a value in member var_long
      * @param _var_long New value for member var_long
@@ -1411,6 +1416,8 @@ public:
     {
         return m_var_long;
     }
+
+
 
 private:
 
@@ -1456,13 +1463,13 @@ public:
 
         switch (x.selected_member_)
         {
-            case 0x00000001:
-                case_zero_() = x.m_case_zero;
-                break;
+                        case 0x00000001:
+                            case_zero_() = x.m_case_zero;
+                            break;
 
-            case 0x00000002:
-                case_one_() = x.m_case_one;
-                break;
+                        case 0x00000002:
+                            case_one_() = x.m_case_one;
+                            break;
 
         }
     }
@@ -1478,13 +1485,13 @@ public:
 
         switch (x.selected_member_)
         {
-            case 0x00000001:
-                case_zero_() = std::move(x.m_case_zero);
-                break;
+                        case 0x00000001:
+                            case_zero_() = std::move(x.m_case_zero);
+                            break;
 
-            case 0x00000002:
-                case_one_() = std::move(x.m_case_one);
-                break;
+                        case 0x00000002:
+                            case_one_() = std::move(x.m_case_one);
+                            break;
 
         }
     }
@@ -1500,13 +1507,13 @@ public:
 
         switch (x.selected_member_)
         {
-            case 0x00000001:
-                case_zero_() = x.m_case_zero;
-                break;
+                        case 0x00000001:
+                            case_zero_() = x.m_case_zero;
+                            break;
 
-            case 0x00000002:
-                case_one_() = x.m_case_one;
-                break;
+                        case 0x00000002:
+                            case_one_() = x.m_case_one;
+                            break;
 
         }
 
@@ -1524,13 +1531,13 @@ public:
 
         switch (x.selected_member_)
         {
-            case 0x00000001:
-                case_zero_() = std::move(x.m_case_zero);
-                break;
+                        case 0x00000001:
+                            case_zero_() = std::move(x.m_case_zero);
+                            break;
 
-            case 0x00000002:
-                case_one_() = std::move(x.m_case_one);
-                break;
+                        case 0x00000002:
+                            case_one_() = std::move(x.m_case_one);
+                            break;
 
         }
 
@@ -1551,13 +1558,13 @@ public:
         {
             switch (selected_member_)
             {
-                case 0x00000001:
-                    ret_value = (m_case_zero == x.m_case_zero);
-                    break;
+                                case 0x00000001:
+                                    ret_value = (m_case_zero == x.m_case_zero);
+                                    break;
 
-                case 0x00000002:
-                    ret_value = (m_case_one == x.m_case_one);
-                    break;
+                                case 0x00000002:
+                                    ret_value = (m_case_one == x.m_case_one);
+                                    break;
 
             }
         }
@@ -1587,26 +1594,25 @@ public:
 
         switch (__d)
         {
-            case long_const:
-                if (0x00000001 == selected_member_)
-                {
-                    valid_discriminator = true;
-                }
-                break;
+                        case long_const:
+                            if (0x00000001 == selected_member_)
+                            {
+                                valid_discriminator = true;
+                            }
+                            break;
 
-            case 1:
-                if (0x00000002 == selected_member_)
-                {
-                    valid_discriminator = true;
-                }
-                break;
+                        case 1:
+                            if (0x00000002 == selected_member_)
+                            {
+                                valid_discriminator = true;
+                            }
+                            break;
 
         }
 
         if (!valid_discriminator)
         {
-            throw eprosima::fastcdr::exception::BadParamException(
-                      "Discriminator doesn't correspond with the selected union member");
+            throw eprosima::fastcdr::exception::BadParamException("Discriminator doesn't correspond with the selected union member");
         }
 
         m__d = __d;
@@ -1662,6 +1668,7 @@ public:
         return m_case_zero;
     }
 
+
     /*!
      * @brief This function sets a value in member case_one
      * @param _case_one New value for member case_one
@@ -1703,6 +1710,7 @@ public:
         return m_case_one;
     }
 
+
     void _default()
     {
         if (member_destructor_)
@@ -1713,43 +1721,45 @@ public:
         selected_member_ = 0x0FFFFFFFu;
     }
 
+
 private:
 
-    int32_t& case_zero_()
-    {
-        if (0x00000001 != selected_member_)
-        {
-            if (member_destructor_)
+            int32_t& case_zero_()
             {
-                member_destructor_();
+                if (0x00000001 != selected_member_)
+                {
+                    if (member_destructor_)
+                    {
+                        member_destructor_();
+                    }
+
+                    selected_member_ = 0x00000001;
+                    member_destructor_ = nullptr;
+                    m_case_zero = {0};
+
+                }
+
+                return m_case_zero;
             }
 
-            selected_member_ = 0x00000001;
-            member_destructor_ = nullptr;
-            m_case_zero = {0};
-
-        }
-
-        return m_case_zero;
-    }
-
-    int32_t& case_one_()
-    {
-        if (0x00000002 != selected_member_)
-        {
-            if (member_destructor_)
+            int32_t& case_one_()
             {
-                member_destructor_();
+                if (0x00000002 != selected_member_)
+                {
+                    if (member_destructor_)
+                    {
+                        member_destructor_();
+                    }
+
+                    selected_member_ = 0x00000002;
+                    member_destructor_ = nullptr;
+                    m_case_one = {0};
+
+                }
+
+                return m_case_one;
             }
 
-            selected_member_ = 0x00000002;
-            member_destructor_ = nullptr;
-            m_case_one = {0};
-
-        }
-
-        return m_case_one;
-    }
 
     int32_t m__d {2147483647};
 
@@ -1794,9 +1804,9 @@ public:
     eProsima_user_DllExport ModuledCommonNameStructure(
             const ModuledCommonNameStructure& x)
     {
-        m_global_struct = x.m_global_struct;
+                    m_global_struct = x.m_global_struct;
 
-        m_namespaced_struct = x.m_namespaced_struct;
+                    m_namespaced_struct = x.m_namespaced_struct;
 
     }
 
@@ -1819,9 +1829,9 @@ public:
             const ModuledCommonNameStructure& x)
     {
 
-        m_global_struct = x.m_global_struct;
+                    m_global_struct = x.m_global_struct;
 
-        m_namespaced_struct = x.m_namespaced_struct;
+                    m_namespaced_struct = x.m_namespaced_struct;
 
         return *this;
     }
@@ -1847,7 +1857,7 @@ public:
             const ModuledCommonNameStructure& x) const
     {
         return (m_global_struct == x.m_global_struct &&
-               m_namespaced_struct == x.m_namespaced_struct);
+           m_namespaced_struct == x.m_namespaced_struct);
     }
 
     /*!
@@ -1898,6 +1908,7 @@ public:
         return m_global_struct;
     }
 
+
     /*!
      * @brief This function copies the value in member namespaced_struct
      * @param _namespaced_struct New value to be copied in member namespaced_struct
@@ -1935,6 +1946,8 @@ public:
     {
         return m_namespaced_struct;
     }
+
+
 
 private:
 

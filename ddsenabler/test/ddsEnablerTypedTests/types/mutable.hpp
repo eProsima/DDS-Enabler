@@ -81,7 +81,7 @@ public:
     eProsima_user_DllExport MutableShortStruct(
             const MutableShortStruct& x)
     {
-        m_var_short = x.m_var_short;
+                    m_var_short = x.m_var_short;
 
     }
 
@@ -103,7 +103,7 @@ public:
             const MutableShortStruct& x)
     {
 
-        m_var_short = x.m_var_short;
+                    m_var_short = x.m_var_short;
 
         return *this;
     }
@@ -168,6 +168,8 @@ public:
         return m_var_short;
     }
 
+
+
 private:
 
     int16_t m_var_short{0};
@@ -202,7 +204,7 @@ public:
     eProsima_user_DllExport MutableUShortStruct(
             const MutableUShortStruct& x)
     {
-        m_var_ushort = x.m_var_ushort;
+                    m_var_ushort = x.m_var_ushort;
 
     }
 
@@ -224,7 +226,7 @@ public:
             const MutableUShortStruct& x)
     {
 
-        m_var_ushort = x.m_var_ushort;
+                    m_var_ushort = x.m_var_ushort;
 
         return *this;
     }
@@ -289,6 +291,8 @@ public:
         return m_var_ushort;
     }
 
+
+
 private:
 
     uint16_t m_var_ushort{0};
@@ -323,7 +327,7 @@ public:
     eProsima_user_DllExport MutableLongStruct(
             const MutableLongStruct& x)
     {
-        m_var_long = x.m_var_long;
+                    m_var_long = x.m_var_long;
 
     }
 
@@ -345,7 +349,7 @@ public:
             const MutableLongStruct& x)
     {
 
-        m_var_long = x.m_var_long;
+                    m_var_long = x.m_var_long;
 
         return *this;
     }
@@ -410,6 +414,8 @@ public:
         return m_var_long;
     }
 
+
+
 private:
 
     int32_t m_var_long{0};
@@ -444,7 +450,7 @@ public:
     eProsima_user_DllExport MutableULongStruct(
             const MutableULongStruct& x)
     {
-        m_var_ulong = x.m_var_ulong;
+                    m_var_ulong = x.m_var_ulong;
 
     }
 
@@ -466,7 +472,7 @@ public:
             const MutableULongStruct& x)
     {
 
-        m_var_ulong = x.m_var_ulong;
+                    m_var_ulong = x.m_var_ulong;
 
         return *this;
     }
@@ -531,6 +537,8 @@ public:
         return m_var_ulong;
     }
 
+
+
 private:
 
     uint32_t m_var_ulong{0};
@@ -565,7 +573,7 @@ public:
     eProsima_user_DllExport MutableLongLongStruct(
             const MutableLongLongStruct& x)
     {
-        m_var_longlong = x.m_var_longlong;
+                    m_var_longlong = x.m_var_longlong;
 
     }
 
@@ -587,7 +595,7 @@ public:
             const MutableLongLongStruct& x)
     {
 
-        m_var_longlong = x.m_var_longlong;
+                    m_var_longlong = x.m_var_longlong;
 
         return *this;
     }
@@ -652,6 +660,8 @@ public:
         return m_var_longlong;
     }
 
+
+
 private:
 
     int64_t m_var_longlong{0};
@@ -686,7 +696,7 @@ public:
     eProsima_user_DllExport MutableULongLongStruct(
             const MutableULongLongStruct& x)
     {
-        m_var_ulonglong = x.m_var_ulonglong;
+                    m_var_ulonglong = x.m_var_ulonglong;
 
     }
 
@@ -708,7 +718,7 @@ public:
             const MutableULongLongStruct& x)
     {
 
-        m_var_ulonglong = x.m_var_ulonglong;
+                    m_var_ulonglong = x.m_var_ulonglong;
 
         return *this;
     }
@@ -773,6 +783,8 @@ public:
         return m_var_ulonglong;
     }
 
+
+
 private:
 
     uint64_t m_var_ulonglong{0};
@@ -807,7 +819,7 @@ public:
     eProsima_user_DllExport MutableFloatStruct(
             const MutableFloatStruct& x)
     {
-        m_var_float = x.m_var_float;
+                    m_var_float = x.m_var_float;
 
     }
 
@@ -829,7 +841,7 @@ public:
             const MutableFloatStruct& x)
     {
 
-        m_var_float = x.m_var_float;
+                    m_var_float = x.m_var_float;
 
         return *this;
     }
@@ -894,6 +906,8 @@ public:
         return m_var_float;
     }
 
+
+
 private:
 
     float m_var_float{0.0};
@@ -928,7 +942,7 @@ public:
     eProsima_user_DllExport MutableDoubleStruct(
             const MutableDoubleStruct& x)
     {
-        m_var_double = x.m_var_double;
+                    m_var_double = x.m_var_double;
 
     }
 
@@ -950,7 +964,7 @@ public:
             const MutableDoubleStruct& x)
     {
 
-        m_var_double = x.m_var_double;
+                    m_var_double = x.m_var_double;
 
         return *this;
     }
@@ -1015,6 +1029,8 @@ public:
         return m_var_double;
     }
 
+
+
 private:
 
     double m_var_double{0.0};
@@ -1049,7 +1065,7 @@ public:
     eProsima_user_DllExport MutableLongDoubleStruct(
             const MutableLongDoubleStruct& x)
     {
-        m_var_longdouble = x.m_var_longdouble;
+                    m_var_longdouble = x.m_var_longdouble;
 
     }
 
@@ -1071,7 +1087,7 @@ public:
             const MutableLongDoubleStruct& x)
     {
 
-        m_var_longdouble = x.m_var_longdouble;
+                    m_var_longdouble = x.m_var_longdouble;
 
         return *this;
     }
@@ -1136,6 +1152,8 @@ public:
         return m_var_longdouble;
     }
 
+
+
 private:
 
     long double m_var_longdouble{0.0};
@@ -1170,7 +1188,7 @@ public:
     eProsima_user_DllExport MutableBooleanStruct(
             const MutableBooleanStruct& x)
     {
-        m_var_boolean = x.m_var_boolean;
+                    m_var_boolean = x.m_var_boolean;
 
     }
 
@@ -1192,7 +1210,7 @@ public:
             const MutableBooleanStruct& x)
     {
 
-        m_var_boolean = x.m_var_boolean;
+                    m_var_boolean = x.m_var_boolean;
 
         return *this;
     }
@@ -1257,6 +1275,8 @@ public:
         return m_var_boolean;
     }
 
+
+
 private:
 
     bool m_var_boolean{false};
@@ -1291,7 +1311,7 @@ public:
     eProsima_user_DllExport MutableOctetStruct(
             const MutableOctetStruct& x)
     {
-        m_var_octet = x.m_var_octet;
+                    m_var_octet = x.m_var_octet;
 
     }
 
@@ -1313,7 +1333,7 @@ public:
             const MutableOctetStruct& x)
     {
 
-        m_var_octet = x.m_var_octet;
+                    m_var_octet = x.m_var_octet;
 
         return *this;
     }
@@ -1378,6 +1398,8 @@ public:
         return m_var_octet;
     }
 
+
+
 private:
 
     uint8_t m_var_octet{0};
@@ -1412,7 +1434,7 @@ public:
     eProsima_user_DllExport MutableCharStruct(
             const MutableCharStruct& x)
     {
-        m_var_char8 = x.m_var_char8;
+                    m_var_char8 = x.m_var_char8;
 
     }
 
@@ -1434,7 +1456,7 @@ public:
             const MutableCharStruct& x)
     {
 
-        m_var_char8 = x.m_var_char8;
+                    m_var_char8 = x.m_var_char8;
 
         return *this;
     }
@@ -1499,6 +1521,8 @@ public:
         return m_var_char8;
     }
 
+
+
 private:
 
     char m_var_char8{0};
@@ -1533,7 +1557,7 @@ public:
     eProsima_user_DllExport MutableWCharStruct(
             const MutableWCharStruct& x)
     {
-        m_var_char16 = x.m_var_char16;
+                    m_var_char16 = x.m_var_char16;
 
     }
 
@@ -1555,7 +1579,7 @@ public:
             const MutableWCharStruct& x)
     {
 
-        m_var_char16 = x.m_var_char16;
+                    m_var_char16 = x.m_var_char16;
 
         return *this;
     }
@@ -1620,6 +1644,8 @@ public:
         return m_var_char16;
     }
 
+
+
 private:
 
     wchar_t m_var_char16{0};
@@ -1654,7 +1680,7 @@ public:
     eProsima_user_DllExport MutableUnionStruct(
             const MutableUnionStruct& x)
     {
-        m_var_union = x.m_var_union;
+                    m_var_union = x.m_var_union;
 
     }
 
@@ -1676,7 +1702,7 @@ public:
             const MutableUnionStruct& x)
     {
 
-        m_var_union = x.m_var_union;
+                    m_var_union = x.m_var_union;
 
         return *this;
     }
@@ -1750,6 +1776,8 @@ public:
     {
         return m_var_union;
     }
+
+
 
 private:
 
@@ -1845,6 +1873,8 @@ public:
         return !(*this == x);
     }
 
+
+
 private:
 
 
@@ -1880,7 +1910,7 @@ public:
             const MutableEmptyInheritanceStruct& x)
         : MutableEmptyStruct(x)
     {
-        m_var_str = x.m_var_str;
+                    m_var_str = x.m_var_str;
 
     }
 
@@ -1905,7 +1935,7 @@ public:
     {
         MutableEmptyStruct::operator =(x);
 
-        m_var_str = x.m_var_str;
+                    m_var_str = x.m_var_str;
 
         return *this;
     }
@@ -1931,9 +1961,9 @@ public:
             const MutableEmptyInheritanceStruct& x) const
     {
         if (MutableEmptyStruct::operator !=(x))
-        {
-            return false;
-        }
+                {
+                    return false;
+                }
         return (m_var_str == x.m_var_str);
     }
 
@@ -1984,6 +2014,8 @@ public:
     {
         return m_var_str;
     }
+
+
 
 private:
 
@@ -2021,7 +2053,7 @@ public:
             const MutableInheritanceStruct& x)
         : MutableShortStruct(x)
     {
-        m_var_str = x.m_var_str;
+                    m_var_str = x.m_var_str;
 
     }
 
@@ -2046,7 +2078,7 @@ public:
     {
         MutableShortStruct::operator =(x);
 
-        m_var_str = x.m_var_str;
+                    m_var_str = x.m_var_str;
 
         return *this;
     }
@@ -2072,9 +2104,9 @@ public:
             const MutableInheritanceStruct& x) const
     {
         if (MutableShortStruct::operator !=(x))
-        {
-            return false;
-        }
+                {
+                    return false;
+                }
         return (m_var_str == x.m_var_str);
     }
 
@@ -2125,6 +2157,8 @@ public:
     {
         return m_var_str;
     }
+
+
 
 private:
 
@@ -2213,9 +2247,9 @@ public:
             const MutableInheritanceEmptyStruct& x) const
     {
         if (MutableShortStruct::operator !=(x))
-        {
-            return false;
-        }
+                {
+                    return false;
+                }
         static_cast<void>(x);
         return true;
     }
@@ -2229,6 +2263,8 @@ public:
     {
         return !(*this == x);
     }
+
+
 
 private:
 
@@ -2265,7 +2301,7 @@ public:
             const MutableExtensibilityInheritance& x)
         : MutableShortStruct(x)
     {
-        m_var_long = x.m_var_long;
+                    m_var_long = x.m_var_long;
 
     }
 
@@ -2290,7 +2326,7 @@ public:
     {
         MutableShortStruct::operator =(x);
 
-        m_var_long = x.m_var_long;
+                    m_var_long = x.m_var_long;
 
         return *this;
     }
@@ -2316,9 +2352,9 @@ public:
             const MutableExtensibilityInheritance& x) const
     {
         if (MutableShortStruct::operator !=(x))
-        {
-            return false;
-        }
+                {
+                    return false;
+                }
         return (m_var_long == x.m_var_long);
     }
 
@@ -2359,6 +2395,8 @@ public:
     {
         return m_var_long;
     }
+
+
 
 private:
 

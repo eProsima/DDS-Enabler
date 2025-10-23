@@ -80,9 +80,9 @@ public:
     eProsima_user_DllExport KeyedShortStruct(
             const KeyedShortStruct& x)
     {
-        m_key_short = x.m_key_short;
+                    m_key_short = x.m_key_short;
 
-        m_var_short = x.m_var_short;
+                    m_var_short = x.m_var_short;
 
     }
 
@@ -105,9 +105,9 @@ public:
             const KeyedShortStruct& x)
     {
 
-        m_key_short = x.m_key_short;
+                    m_key_short = x.m_key_short;
 
-        m_var_short = x.m_var_short;
+                    m_var_short = x.m_var_short;
 
         return *this;
     }
@@ -133,7 +133,7 @@ public:
             const KeyedShortStruct& x) const
     {
         return (m_key_short == x.m_key_short &&
-               m_var_short == x.m_var_short);
+           m_var_short == x.m_var_short);
     }
 
     /*!
@@ -174,6 +174,7 @@ public:
         return m_key_short;
     }
 
+
     /*!
      * @brief This function sets a value in member var_short
      * @param _var_short New value for member var_short
@@ -201,6 +202,8 @@ public:
     {
         return m_var_short;
     }
+
+
 
 private:
 
@@ -237,9 +240,9 @@ public:
     eProsima_user_DllExport KeyedUShortStruct(
             const KeyedUShortStruct& x)
     {
-        m_key_ushort = x.m_key_ushort;
+                    m_key_ushort = x.m_key_ushort;
 
-        m_var_ushort = x.m_var_ushort;
+                    m_var_ushort = x.m_var_ushort;
 
     }
 
@@ -262,9 +265,9 @@ public:
             const KeyedUShortStruct& x)
     {
 
-        m_key_ushort = x.m_key_ushort;
+                    m_key_ushort = x.m_key_ushort;
 
-        m_var_ushort = x.m_var_ushort;
+                    m_var_ushort = x.m_var_ushort;
 
         return *this;
     }
@@ -290,7 +293,7 @@ public:
             const KeyedUShortStruct& x) const
     {
         return (m_key_ushort == x.m_key_ushort &&
-               m_var_ushort == x.m_var_ushort);
+           m_var_ushort == x.m_var_ushort);
     }
 
     /*!
@@ -331,6 +334,7 @@ public:
         return m_key_ushort;
     }
 
+
     /*!
      * @brief This function sets a value in member var_ushort
      * @param _var_ushort New value for member var_ushort
@@ -358,6 +362,8 @@ public:
     {
         return m_var_ushort;
     }
+
+
 
 private:
 
@@ -394,9 +400,9 @@ public:
     eProsima_user_DllExport KeyedLongStruct(
             const KeyedLongStruct& x)
     {
-        m_key_long = x.m_key_long;
+                    m_key_long = x.m_key_long;
 
-        m_var_long = x.m_var_long;
+                    m_var_long = x.m_var_long;
 
     }
 
@@ -419,9 +425,9 @@ public:
             const KeyedLongStruct& x)
     {
 
-        m_key_long = x.m_key_long;
+                    m_key_long = x.m_key_long;
 
-        m_var_long = x.m_var_long;
+                    m_var_long = x.m_var_long;
 
         return *this;
     }
@@ -447,7 +453,7 @@ public:
             const KeyedLongStruct& x) const
     {
         return (m_key_long == x.m_key_long &&
-               m_var_long == x.m_var_long);
+           m_var_long == x.m_var_long);
     }
 
     /*!
@@ -488,6 +494,7 @@ public:
         return m_key_long;
     }
 
+
     /*!
      * @brief This function sets a value in member var_long
      * @param _var_long New value for member var_long
@@ -515,6 +522,8 @@ public:
     {
         return m_var_long;
     }
+
+
 
 private:
 
@@ -551,9 +560,9 @@ public:
     eProsima_user_DllExport KeyedULongStruct(
             const KeyedULongStruct& x)
     {
-        m_key_ulong = x.m_key_ulong;
+                    m_key_ulong = x.m_key_ulong;
 
-        m_var_ulong = x.m_var_ulong;
+                    m_var_ulong = x.m_var_ulong;
 
     }
 
@@ -576,9 +585,9 @@ public:
             const KeyedULongStruct& x)
     {
 
-        m_key_ulong = x.m_key_ulong;
+                    m_key_ulong = x.m_key_ulong;
 
-        m_var_ulong = x.m_var_ulong;
+                    m_var_ulong = x.m_var_ulong;
 
         return *this;
     }
@@ -604,7 +613,7 @@ public:
             const KeyedULongStruct& x) const
     {
         return (m_key_ulong == x.m_key_ulong &&
-               m_var_ulong == x.m_var_ulong);
+           m_var_ulong == x.m_var_ulong);
     }
 
     /*!
@@ -645,6 +654,7 @@ public:
         return m_key_ulong;
     }
 
+
     /*!
      * @brief This function sets a value in member var_ulong
      * @param _var_ulong New value for member var_ulong
@@ -672,6 +682,8 @@ public:
     {
         return m_var_ulong;
     }
+
+
 
 private:
 
@@ -708,9 +720,9 @@ public:
     eProsima_user_DllExport KeyedLongLongStruct(
             const KeyedLongLongStruct& x)
     {
-        m_key_longlong = x.m_key_longlong;
+                    m_key_longlong = x.m_key_longlong;
 
-        m_var_longlong = x.m_var_longlong;
+                    m_var_longlong = x.m_var_longlong;
 
     }
 
@@ -733,9 +745,9 @@ public:
             const KeyedLongLongStruct& x)
     {
 
-        m_key_longlong = x.m_key_longlong;
+                    m_key_longlong = x.m_key_longlong;
 
-        m_var_longlong = x.m_var_longlong;
+                    m_var_longlong = x.m_var_longlong;
 
         return *this;
     }
@@ -761,7 +773,7 @@ public:
             const KeyedLongLongStruct& x) const
     {
         return (m_key_longlong == x.m_key_longlong &&
-               m_var_longlong == x.m_var_longlong);
+           m_var_longlong == x.m_var_longlong);
     }
 
     /*!
@@ -802,6 +814,7 @@ public:
         return m_key_longlong;
     }
 
+
     /*!
      * @brief This function sets a value in member var_longlong
      * @param _var_longlong New value for member var_longlong
@@ -829,6 +842,8 @@ public:
     {
         return m_var_longlong;
     }
+
+
 
 private:
 
@@ -865,9 +880,9 @@ public:
     eProsima_user_DllExport KeyedULongLongStruct(
             const KeyedULongLongStruct& x)
     {
-        m_key_ulonglong = x.m_key_ulonglong;
+                    m_key_ulonglong = x.m_key_ulonglong;
 
-        m_var_ulonglong = x.m_var_ulonglong;
+                    m_var_ulonglong = x.m_var_ulonglong;
 
     }
 
@@ -890,9 +905,9 @@ public:
             const KeyedULongLongStruct& x)
     {
 
-        m_key_ulonglong = x.m_key_ulonglong;
+                    m_key_ulonglong = x.m_key_ulonglong;
 
-        m_var_ulonglong = x.m_var_ulonglong;
+                    m_var_ulonglong = x.m_var_ulonglong;
 
         return *this;
     }
@@ -918,7 +933,7 @@ public:
             const KeyedULongLongStruct& x) const
     {
         return (m_key_ulonglong == x.m_key_ulonglong &&
-               m_var_ulonglong == x.m_var_ulonglong);
+           m_var_ulonglong == x.m_var_ulonglong);
     }
 
     /*!
@@ -959,6 +974,7 @@ public:
         return m_key_ulonglong;
     }
 
+
     /*!
      * @brief This function sets a value in member var_ulonglong
      * @param _var_ulonglong New value for member var_ulonglong
@@ -986,6 +1002,8 @@ public:
     {
         return m_var_ulonglong;
     }
+
+
 
 private:
 
@@ -1022,9 +1040,9 @@ public:
     eProsima_user_DllExport KeyedFloatStruct(
             const KeyedFloatStruct& x)
     {
-        m_key_float = x.m_key_float;
+                    m_key_float = x.m_key_float;
 
-        m_var_float = x.m_var_float;
+                    m_var_float = x.m_var_float;
 
     }
 
@@ -1047,9 +1065,9 @@ public:
             const KeyedFloatStruct& x)
     {
 
-        m_key_float = x.m_key_float;
+                    m_key_float = x.m_key_float;
 
-        m_var_float = x.m_var_float;
+                    m_var_float = x.m_var_float;
 
         return *this;
     }
@@ -1075,7 +1093,7 @@ public:
             const KeyedFloatStruct& x) const
     {
         return (m_key_float == x.m_key_float &&
-               m_var_float == x.m_var_float);
+           m_var_float == x.m_var_float);
     }
 
     /*!
@@ -1116,6 +1134,7 @@ public:
         return m_key_float;
     }
 
+
     /*!
      * @brief This function sets a value in member var_float
      * @param _var_float New value for member var_float
@@ -1143,6 +1162,8 @@ public:
     {
         return m_var_float;
     }
+
+
 
 private:
 
@@ -1179,9 +1200,9 @@ public:
     eProsima_user_DllExport KeyedDoubleStruct(
             const KeyedDoubleStruct& x)
     {
-        m_key_double = x.m_key_double;
+                    m_key_double = x.m_key_double;
 
-        m_var_double = x.m_var_double;
+                    m_var_double = x.m_var_double;
 
     }
 
@@ -1204,9 +1225,9 @@ public:
             const KeyedDoubleStruct& x)
     {
 
-        m_key_double = x.m_key_double;
+                    m_key_double = x.m_key_double;
 
-        m_var_double = x.m_var_double;
+                    m_var_double = x.m_var_double;
 
         return *this;
     }
@@ -1232,7 +1253,7 @@ public:
             const KeyedDoubleStruct& x) const
     {
         return (m_key_double == x.m_key_double &&
-               m_var_double == x.m_var_double);
+           m_var_double == x.m_var_double);
     }
 
     /*!
@@ -1273,6 +1294,7 @@ public:
         return m_key_double;
     }
 
+
     /*!
      * @brief This function sets a value in member var_double
      * @param _var_double New value for member var_double
@@ -1300,6 +1322,8 @@ public:
     {
         return m_var_double;
     }
+
+
 
 private:
 
@@ -1336,9 +1360,9 @@ public:
     eProsima_user_DllExport KeyedLongDoubleStruct(
             const KeyedLongDoubleStruct& x)
     {
-        m_key_longdouble = x.m_key_longdouble;
+                    m_key_longdouble = x.m_key_longdouble;
 
-        m_var_longdouble = x.m_var_longdouble;
+                    m_var_longdouble = x.m_var_longdouble;
 
     }
 
@@ -1361,9 +1385,9 @@ public:
             const KeyedLongDoubleStruct& x)
     {
 
-        m_key_longdouble = x.m_key_longdouble;
+                    m_key_longdouble = x.m_key_longdouble;
 
-        m_var_longdouble = x.m_var_longdouble;
+                    m_var_longdouble = x.m_var_longdouble;
 
         return *this;
     }
@@ -1389,7 +1413,7 @@ public:
             const KeyedLongDoubleStruct& x) const
     {
         return (m_key_longdouble == x.m_key_longdouble &&
-               m_var_longdouble == x.m_var_longdouble);
+           m_var_longdouble == x.m_var_longdouble);
     }
 
     /*!
@@ -1430,6 +1454,7 @@ public:
         return m_key_longdouble;
     }
 
+
     /*!
      * @brief This function sets a value in member var_longdouble
      * @param _var_longdouble New value for member var_longdouble
@@ -1457,6 +1482,8 @@ public:
     {
         return m_var_longdouble;
     }
+
+
 
 private:
 
@@ -1493,9 +1520,9 @@ public:
     eProsima_user_DllExport KeyedBooleanStruct(
             const KeyedBooleanStruct& x)
     {
-        m_key_boolean = x.m_key_boolean;
+                    m_key_boolean = x.m_key_boolean;
 
-        m_var_boolean = x.m_var_boolean;
+                    m_var_boolean = x.m_var_boolean;
 
     }
 
@@ -1518,9 +1545,9 @@ public:
             const KeyedBooleanStruct& x)
     {
 
-        m_key_boolean = x.m_key_boolean;
+                    m_key_boolean = x.m_key_boolean;
 
-        m_var_boolean = x.m_var_boolean;
+                    m_var_boolean = x.m_var_boolean;
 
         return *this;
     }
@@ -1546,7 +1573,7 @@ public:
             const KeyedBooleanStruct& x) const
     {
         return (m_key_boolean == x.m_key_boolean &&
-               m_var_boolean == x.m_var_boolean);
+           m_var_boolean == x.m_var_boolean);
     }
 
     /*!
@@ -1587,6 +1614,7 @@ public:
         return m_key_boolean;
     }
 
+
     /*!
      * @brief This function sets a value in member var_boolean
      * @param _var_boolean New value for member var_boolean
@@ -1614,6 +1642,8 @@ public:
     {
         return m_var_boolean;
     }
+
+
 
 private:
 
@@ -1650,9 +1680,9 @@ public:
     eProsima_user_DllExport KeyedOctetStruct(
             const KeyedOctetStruct& x)
     {
-        m_key_octet = x.m_key_octet;
+                    m_key_octet = x.m_key_octet;
 
-        m_var_octet = x.m_var_octet;
+                    m_var_octet = x.m_var_octet;
 
     }
 
@@ -1675,9 +1705,9 @@ public:
             const KeyedOctetStruct& x)
     {
 
-        m_key_octet = x.m_key_octet;
+                    m_key_octet = x.m_key_octet;
 
-        m_var_octet = x.m_var_octet;
+                    m_var_octet = x.m_var_octet;
 
         return *this;
     }
@@ -1703,7 +1733,7 @@ public:
             const KeyedOctetStruct& x) const
     {
         return (m_key_octet == x.m_key_octet &&
-               m_var_octet == x.m_var_octet);
+           m_var_octet == x.m_var_octet);
     }
 
     /*!
@@ -1744,6 +1774,7 @@ public:
         return m_key_octet;
     }
 
+
     /*!
      * @brief This function sets a value in member var_octet
      * @param _var_octet New value for member var_octet
@@ -1771,6 +1802,8 @@ public:
     {
         return m_var_octet;
     }
+
+
 
 private:
 
@@ -1807,9 +1840,9 @@ public:
     eProsima_user_DllExport KeyedCharStruct(
             const KeyedCharStruct& x)
     {
-        m_key_char8 = x.m_key_char8;
+                    m_key_char8 = x.m_key_char8;
 
-        m_var_char8 = x.m_var_char8;
+                    m_var_char8 = x.m_var_char8;
 
     }
 
@@ -1832,9 +1865,9 @@ public:
             const KeyedCharStruct& x)
     {
 
-        m_key_char8 = x.m_key_char8;
+                    m_key_char8 = x.m_key_char8;
 
-        m_var_char8 = x.m_var_char8;
+                    m_var_char8 = x.m_var_char8;
 
         return *this;
     }
@@ -1860,7 +1893,7 @@ public:
             const KeyedCharStruct& x) const
     {
         return (m_key_char8 == x.m_key_char8 &&
-               m_var_char8 == x.m_var_char8);
+           m_var_char8 == x.m_var_char8);
     }
 
     /*!
@@ -1901,6 +1934,7 @@ public:
         return m_key_char8;
     }
 
+
     /*!
      * @brief This function sets a value in member var_char8
      * @param _var_char8 New value for member var_char8
@@ -1928,6 +1962,8 @@ public:
     {
         return m_var_char8;
     }
+
+
 
 private:
 
@@ -1964,9 +2000,9 @@ public:
     eProsima_user_DllExport KeyedWCharStruct(
             const KeyedWCharStruct& x)
     {
-        m_key_char16 = x.m_key_char16;
+                    m_key_char16 = x.m_key_char16;
 
-        m_var_char16 = x.m_var_char16;
+                    m_var_char16 = x.m_var_char16;
 
     }
 
@@ -1989,9 +2025,9 @@ public:
             const KeyedWCharStruct& x)
     {
 
-        m_key_char16 = x.m_key_char16;
+                    m_key_char16 = x.m_key_char16;
 
-        m_var_char16 = x.m_var_char16;
+                    m_var_char16 = x.m_var_char16;
 
         return *this;
     }
@@ -2017,7 +2053,7 @@ public:
             const KeyedWCharStruct& x) const
     {
         return (m_key_char16 == x.m_key_char16 &&
-               m_var_char16 == x.m_var_char16);
+           m_var_char16 == x.m_var_char16);
     }
 
     /*!
@@ -2058,6 +2094,7 @@ public:
         return m_key_char16;
     }
 
+
     /*!
      * @brief This function sets a value in member var_char16
      * @param _var_char16 New value for member var_char16
@@ -2085,6 +2122,8 @@ public:
     {
         return m_var_char16;
     }
+
+
 
 private:
 
@@ -2121,7 +2160,7 @@ public:
     eProsima_user_DllExport KeyedEmptyStruct(
             const KeyedEmptyStruct& x)
     {
-        m_key_short = x.m_key_short;
+                    m_key_short = x.m_key_short;
 
     }
 
@@ -2143,7 +2182,7 @@ public:
             const KeyedEmptyStruct& x)
     {
 
-        m_key_short = x.m_key_short;
+                    m_key_short = x.m_key_short;
 
         return *this;
     }
@@ -2208,6 +2247,8 @@ public:
         return m_key_short;
     }
 
+
+
 private:
 
     int16_t m_key_short{0};
@@ -2244,9 +2285,9 @@ public:
             const KeyedEmptyInheritanceStruct& x)
         : KeyedEmptyStruct(x)
     {
-        m_key_str = x.m_key_str;
+                    m_key_str = x.m_key_str;
 
-        m_var_str = x.m_var_str;
+                    m_var_str = x.m_var_str;
 
     }
 
@@ -2272,9 +2313,9 @@ public:
     {
         KeyedEmptyStruct::operator =(x);
 
-        m_key_str = x.m_key_str;
+                    m_key_str = x.m_key_str;
 
-        m_var_str = x.m_var_str;
+                    m_var_str = x.m_var_str;
 
         return *this;
     }
@@ -2301,11 +2342,11 @@ public:
             const KeyedEmptyInheritanceStruct& x) const
     {
         if (KeyedEmptyStruct::operator !=(x))
-        {
-            return false;
-        }
+                {
+                    return false;
+                }
         return (m_key_str == x.m_key_str &&
-               m_var_str == x.m_var_str);
+           m_var_str == x.m_var_str);
     }
 
     /*!
@@ -2356,6 +2397,7 @@ public:
         return m_key_str;
     }
 
+
     /*!
      * @brief This function copies the value in member var_str
      * @param _var_str New value to be copied in member var_str
@@ -2393,6 +2435,8 @@ public:
     {
         return m_var_str;
     }
+
+
 
 private:
 
@@ -2431,9 +2475,9 @@ public:
             const KeyedInheritanceStruct& x)
         : KeyedShortStruct(x)
     {
-        m_key_str = x.m_key_str;
+                    m_key_str = x.m_key_str;
 
-        m_var_str = x.m_var_str;
+                    m_var_str = x.m_var_str;
 
     }
 
@@ -2459,9 +2503,9 @@ public:
     {
         KeyedShortStruct::operator =(x);
 
-        m_key_str = x.m_key_str;
+                    m_key_str = x.m_key_str;
 
-        m_var_str = x.m_var_str;
+                    m_var_str = x.m_var_str;
 
         return *this;
     }
@@ -2488,11 +2532,11 @@ public:
             const KeyedInheritanceStruct& x) const
     {
         if (KeyedShortStruct::operator !=(x))
-        {
-            return false;
-        }
+                {
+                    return false;
+                }
         return (m_key_str == x.m_key_str &&
-               m_var_str == x.m_var_str);
+           m_var_str == x.m_var_str);
     }
 
     /*!
@@ -2543,6 +2587,7 @@ public:
         return m_key_str;
     }
 
+
     /*!
      * @brief This function copies the value in member var_str
      * @param _var_str New value to be copied in member var_str
@@ -2580,6 +2625,8 @@ public:
     {
         return m_var_str;
     }
+
+
 
 private:
 
@@ -2669,9 +2716,9 @@ public:
             const InheritanceKeyedEmptyStruct& x) const
     {
         if (KeyedShortStruct::operator !=(x))
-        {
-            return false;
-        }
+                {
+                    return false;
+                }
         static_cast<void>(x);
         return true;
     }
@@ -2685,6 +2732,8 @@ public:
     {
         return !(*this == x);
     }
+
+
 
 private:
 
@@ -2719,11 +2768,11 @@ public:
     eProsima_user_DllExport KeyedFinal(
             const KeyedFinal& x)
     {
-        m_key_long = x.m_key_long;
+                    m_key_long = x.m_key_long;
 
-        m_key_short = x.m_key_short;
+                    m_key_short = x.m_key_short;
 
-        m_key_string = x.m_key_string;
+                    m_key_string = x.m_key_string;
 
     }
 
@@ -2747,11 +2796,11 @@ public:
             const KeyedFinal& x)
     {
 
-        m_key_long = x.m_key_long;
+                    m_key_long = x.m_key_long;
 
-        m_key_short = x.m_key_short;
+                    m_key_short = x.m_key_short;
 
-        m_key_string = x.m_key_string;
+                    m_key_string = x.m_key_string;
 
         return *this;
     }
@@ -2778,8 +2827,8 @@ public:
             const KeyedFinal& x) const
     {
         return (m_key_long == x.m_key_long &&
-               m_key_short == x.m_key_short &&
-               m_key_string == x.m_key_string);
+           m_key_short == x.m_key_short &&
+           m_key_string == x.m_key_string);
     }
 
     /*!
@@ -2820,6 +2869,7 @@ public:
         return m_key_long;
     }
 
+
     /*!
      * @brief This function sets a value in member key_short
      * @param _key_short New value for member key_short
@@ -2847,6 +2897,7 @@ public:
     {
         return m_key_short;
     }
+
 
     /*!
      * @brief This function copies the value in member key_string
@@ -2885,6 +2936,8 @@ public:
     {
         return m_key_string;
     }
+
+
 
 private:
 
@@ -2922,11 +2975,11 @@ public:
     eProsima_user_DllExport KeyedAppendable(
             const KeyedAppendable& x)
     {
-        m_key_long = x.m_key_long;
+                    m_key_long = x.m_key_long;
 
-        m_key_short = x.m_key_short;
+                    m_key_short = x.m_key_short;
 
-        m_key_string = x.m_key_string;
+                    m_key_string = x.m_key_string;
 
     }
 
@@ -2950,11 +3003,11 @@ public:
             const KeyedAppendable& x)
     {
 
-        m_key_long = x.m_key_long;
+                    m_key_long = x.m_key_long;
 
-        m_key_short = x.m_key_short;
+                    m_key_short = x.m_key_short;
 
-        m_key_string = x.m_key_string;
+                    m_key_string = x.m_key_string;
 
         return *this;
     }
@@ -2981,8 +3034,8 @@ public:
             const KeyedAppendable& x) const
     {
         return (m_key_long == x.m_key_long &&
-               m_key_short == x.m_key_short &&
-               m_key_string == x.m_key_string);
+           m_key_short == x.m_key_short &&
+           m_key_string == x.m_key_string);
     }
 
     /*!
@@ -3023,6 +3076,7 @@ public:
         return m_key_long;
     }
 
+
     /*!
      * @brief This function sets a value in member key_short
      * @param _key_short New value for member key_short
@@ -3050,6 +3104,7 @@ public:
     {
         return m_key_short;
     }
+
 
     /*!
      * @brief This function copies the value in member key_string
@@ -3088,6 +3143,8 @@ public:
     {
         return m_key_string;
     }
+
+
 
 private:
 
@@ -3125,11 +3182,11 @@ public:
     eProsima_user_DllExport KeyedMutable(
             const KeyedMutable& x)
     {
-        m_key_long = x.m_key_long;
+                    m_key_long = x.m_key_long;
 
-        m_key_short = x.m_key_short;
+                    m_key_short = x.m_key_short;
 
-        m_key_string = x.m_key_string;
+                    m_key_string = x.m_key_string;
 
     }
 
@@ -3153,11 +3210,11 @@ public:
             const KeyedMutable& x)
     {
 
-        m_key_long = x.m_key_long;
+                    m_key_long = x.m_key_long;
 
-        m_key_short = x.m_key_short;
+                    m_key_short = x.m_key_short;
 
-        m_key_string = x.m_key_string;
+                    m_key_string = x.m_key_string;
 
         return *this;
     }
@@ -3184,8 +3241,8 @@ public:
             const KeyedMutable& x) const
     {
         return (m_key_long == x.m_key_long &&
-               m_key_short == x.m_key_short &&
-               m_key_string == x.m_key_string);
+           m_key_short == x.m_key_short &&
+           m_key_string == x.m_key_string);
     }
 
     /*!
@@ -3226,6 +3283,7 @@ public:
         return m_key_long;
     }
 
+
     /*!
      * @brief This function sets a value in member key_short
      * @param _key_short New value for member key_short
@@ -3253,6 +3311,7 @@ public:
     {
         return m_key_short;
     }
+
 
     /*!
      * @brief This function copies the value in member key_string
@@ -3291,6 +3350,8 @@ public:
     {
         return m_key_string;
     }
+
+
 
 private:
 

@@ -93,9 +93,9 @@ public:
     eProsima_user_DllExport EnumStructure(
             const EnumStructure& x)
     {
-        m_var_InnerEnumHelper = x.m_var_InnerEnumHelper;
+                    m_var_InnerEnumHelper = x.m_var_InnerEnumHelper;
 
-        m_var_scoped_InnerEnumHelper = x.m_var_scoped_InnerEnumHelper;
+                    m_var_scoped_InnerEnumHelper = x.m_var_scoped_InnerEnumHelper;
 
     }
 
@@ -118,9 +118,9 @@ public:
             const EnumStructure& x)
     {
 
-        m_var_InnerEnumHelper = x.m_var_InnerEnumHelper;
+                    m_var_InnerEnumHelper = x.m_var_InnerEnumHelper;
 
-        m_var_scoped_InnerEnumHelper = x.m_var_scoped_InnerEnumHelper;
+                    m_var_scoped_InnerEnumHelper = x.m_var_scoped_InnerEnumHelper;
 
         return *this;
     }
@@ -146,7 +146,7 @@ public:
             const EnumStructure& x) const
     {
         return (m_var_InnerEnumHelper == x.m_var_InnerEnumHelper &&
-               m_var_scoped_InnerEnumHelper == x.m_var_scoped_InnerEnumHelper);
+           m_var_scoped_InnerEnumHelper == x.m_var_scoped_InnerEnumHelper);
     }
 
     /*!
@@ -187,6 +187,7 @@ public:
         return m_var_InnerEnumHelper;
     }
 
+
     /*!
      * @brief This function sets a value in member var_scoped_InnerEnumHelper
      * @param _var_scoped_InnerEnumHelper New value for member var_scoped_InnerEnumHelper
@@ -214,6 +215,8 @@ public:
     {
         return m_var_scoped_InnerEnumHelper;
     }
+
+
 
 private:
 
@@ -250,7 +253,7 @@ public:
     eProsima_user_DllExport BitMaskStructure(
             const BitMaskStructure& x)
     {
-        m_var_InnerBitMaskHelper = x.m_var_InnerBitMaskHelper;
+                    m_var_InnerBitMaskHelper = x.m_var_InnerBitMaskHelper;
 
     }
 
@@ -272,7 +275,7 @@ public:
             const BitMaskStructure& x)
     {
 
-        m_var_InnerBitMaskHelper = x.m_var_InnerBitMaskHelper;
+                    m_var_InnerBitMaskHelper = x.m_var_InnerBitMaskHelper;
 
         return *this;
     }
@@ -347,6 +350,8 @@ public:
         return m_var_InnerBitMaskHelper;
     }
 
+
+
 private:
 
     InnerBitMaskHelper m_var_InnerBitMaskHelper{0};
@@ -381,7 +386,7 @@ public:
     eProsima_user_DllExport BoundedBitMaskStructure(
             const BoundedBitMaskStructure& x)
     {
-        m_var_InnerBoundedBitMaskHelper = x.m_var_InnerBoundedBitMaskHelper;
+                    m_var_InnerBoundedBitMaskHelper = x.m_var_InnerBoundedBitMaskHelper;
 
     }
 
@@ -403,7 +408,7 @@ public:
             const BoundedBitMaskStructure& x)
     {
 
-        m_var_InnerBoundedBitMaskHelper = x.m_var_InnerBoundedBitMaskHelper;
+                    m_var_InnerBoundedBitMaskHelper = x.m_var_InnerBoundedBitMaskHelper;
 
         return *this;
     }
@@ -477,6 +482,8 @@ public:
     {
         return m_var_InnerBoundedBitMaskHelper;
     }
+
+
 
 private:
 

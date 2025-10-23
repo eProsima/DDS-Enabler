@@ -78,13 +78,13 @@ public:
     eProsima_user_DllExport FixId(
             const FixId& x)
     {
-        m_o = x.m_o;
+                    m_o = x.m_o;
 
-        m_s = x.m_s;
+                    m_s = x.m_s;
 
-        m_l = x.m_l;
+                    m_l = x.m_l;
 
-        m_ll = x.m_ll;
+                    m_ll = x.m_ll;
 
     }
 
@@ -109,13 +109,13 @@ public:
             const FixId& x)
     {
 
-        m_o = x.m_o;
+                    m_o = x.m_o;
 
-        m_s = x.m_s;
+                    m_s = x.m_s;
 
-        m_l = x.m_l;
+                    m_l = x.m_l;
 
-        m_ll = x.m_ll;
+                    m_ll = x.m_ll;
 
         return *this;
     }
@@ -143,9 +143,9 @@ public:
             const FixId& x) const
     {
         return (m_o == x.m_o &&
-               m_s == x.m_s &&
-               m_l == x.m_l &&
-               m_ll == x.m_ll);
+           m_s == x.m_s &&
+           m_l == x.m_l &&
+           m_ll == x.m_ll);
     }
 
     /*!
@@ -186,6 +186,7 @@ public:
         return m_o;
     }
 
+
     /*!
      * @brief This function sets a value in member s
      * @param _s New value for member s
@@ -213,6 +214,7 @@ public:
     {
         return m_s;
     }
+
 
     /*!
      * @brief This function sets a value in member l
@@ -242,6 +244,7 @@ public:
         return m_l;
     }
 
+
     /*!
      * @brief This function sets a value in member ll
      * @param _ll New value for member ll
@@ -269,6 +272,8 @@ public:
     {
         return m_ll;
     }
+
+
 
 private:
 
@@ -307,13 +312,13 @@ public:
     eProsima_user_DllExport FixHexId(
             const FixHexId& x)
     {
-        m_ho = x.m_ho;
+                    m_ho = x.m_ho;
 
-        m_hs = x.m_hs;
+                    m_hs = x.m_hs;
 
-        m_hl = x.m_hl;
+                    m_hl = x.m_hl;
 
-        m_ll = x.m_ll;
+                    m_ll = x.m_ll;
 
     }
 
@@ -338,13 +343,13 @@ public:
             const FixHexId& x)
     {
 
-        m_ho = x.m_ho;
+                    m_ho = x.m_ho;
 
-        m_hs = x.m_hs;
+                    m_hs = x.m_hs;
 
-        m_hl = x.m_hl;
+                    m_hl = x.m_hl;
 
-        m_ll = x.m_ll;
+                    m_ll = x.m_ll;
 
         return *this;
     }
@@ -372,9 +377,9 @@ public:
             const FixHexId& x) const
     {
         return (m_ho == x.m_ho &&
-               m_hs == x.m_hs &&
-               m_hl == x.m_hl &&
-               m_ll == x.m_ll);
+           m_hs == x.m_hs &&
+           m_hl == x.m_hl &&
+           m_ll == x.m_ll);
     }
 
     /*!
@@ -415,6 +420,7 @@ public:
         return m_ho;
     }
 
+
     /*!
      * @brief This function sets a value in member hs
      * @param _hs New value for member hs
@@ -442,6 +448,7 @@ public:
     {
         return m_hs;
     }
+
 
     /*!
      * @brief This function sets a value in member hl
@@ -471,6 +478,7 @@ public:
         return m_hl;
     }
 
+
     /*!
      * @brief This function sets a value in member ll
      * @param _ll New value for member ll
@@ -498,6 +506,8 @@ public:
     {
         return m_ll;
     }
+
+
 
 private:
 
@@ -536,13 +546,13 @@ public:
     eProsima_user_DllExport FixHashidDefault(
             const FixHashidDefault& x)
     {
-        m_o = x.m_o;
+                    m_o = x.m_o;
 
-        m_s = x.m_s;
+                    m_s = x.m_s;
 
-        m_l = x.m_l;
+                    m_l = x.m_l;
 
-        m_ll = x.m_ll;
+                    m_ll = x.m_ll;
 
     }
 
@@ -567,13 +577,13 @@ public:
             const FixHashidDefault& x)
     {
 
-        m_o = x.m_o;
+                    m_o = x.m_o;
 
-        m_s = x.m_s;
+                    m_s = x.m_s;
 
-        m_l = x.m_l;
+                    m_l = x.m_l;
 
-        m_ll = x.m_ll;
+                    m_ll = x.m_ll;
 
         return *this;
     }
@@ -601,9 +611,9 @@ public:
             const FixHashidDefault& x) const
     {
         return (m_o == x.m_o &&
-               m_s == x.m_s &&
-               m_l == x.m_l &&
-               m_ll == x.m_ll);
+           m_s == x.m_s &&
+           m_l == x.m_l &&
+           m_ll == x.m_ll);
     }
 
     /*!
@@ -644,6 +654,7 @@ public:
         return m_o;
     }
 
+
     /*!
      * @brief This function sets a value in member s
      * @param _s New value for member s
@@ -671,6 +682,7 @@ public:
     {
         return m_s;
     }
+
 
     /*!
      * @brief This function sets a value in member l
@@ -700,6 +712,7 @@ public:
         return m_l;
     }
 
+
     /*!
      * @brief This function sets a value in member ll
      * @param _ll New value for member ll
@@ -727,6 +740,8 @@ public:
     {
         return m_ll;
     }
+
+
 
 private:
 
@@ -765,13 +780,13 @@ public:
     eProsima_user_DllExport FixHashid(
             const FixHashid& x)
     {
-        m_o = x.m_o;
+                    m_o = x.m_o;
 
-        m_s = x.m_s;
+                    m_s = x.m_s;
 
-        m_l = x.m_l;
+                    m_l = x.m_l;
 
-        m_ll = x.m_ll;
+                    m_ll = x.m_ll;
 
     }
 
@@ -796,13 +811,13 @@ public:
             const FixHashid& x)
     {
 
-        m_o = x.m_o;
+                    m_o = x.m_o;
 
-        m_s = x.m_s;
+                    m_s = x.m_s;
 
-        m_l = x.m_l;
+                    m_l = x.m_l;
 
-        m_ll = x.m_ll;
+                    m_ll = x.m_ll;
 
         return *this;
     }
@@ -830,9 +845,9 @@ public:
             const FixHashid& x) const
     {
         return (m_o == x.m_o &&
-               m_s == x.m_s &&
-               m_l == x.m_l &&
-               m_ll == x.m_ll);
+           m_s == x.m_s &&
+           m_l == x.m_l &&
+           m_ll == x.m_ll);
     }
 
     /*!
@@ -873,6 +888,7 @@ public:
         return m_o;
     }
 
+
     /*!
      * @brief This function sets a value in member s
      * @param _s New value for member s
@@ -900,6 +916,7 @@ public:
     {
         return m_s;
     }
+
 
     /*!
      * @brief This function sets a value in member l
@@ -929,6 +946,7 @@ public:
         return m_l;
     }
 
+
     /*!
      * @brief This function sets a value in member ll
      * @param _ll New value for member ll
@@ -956,6 +974,8 @@ public:
     {
         return m_ll;
     }
+
+
 
 private:
 
@@ -994,15 +1014,15 @@ public:
     eProsima_user_DllExport FixMix(
             const FixMix& x)
     {
-        m_o = x.m_o;
+                    m_o = x.m_o;
 
-        m_ho = x.m_ho;
+                    m_ho = x.m_ho;
 
-        m_s = x.m_s;
+                    m_s = x.m_s;
 
-        m_l = x.m_l;
+                    m_l = x.m_l;
 
-        m_ll = x.m_ll;
+                    m_ll = x.m_ll;
 
     }
 
@@ -1028,15 +1048,15 @@ public:
             const FixMix& x)
     {
 
-        m_o = x.m_o;
+                    m_o = x.m_o;
 
-        m_ho = x.m_ho;
+                    m_ho = x.m_ho;
 
-        m_s = x.m_s;
+                    m_s = x.m_s;
 
-        m_l = x.m_l;
+                    m_l = x.m_l;
 
-        m_ll = x.m_ll;
+                    m_ll = x.m_ll;
 
         return *this;
     }
@@ -1065,10 +1085,10 @@ public:
             const FixMix& x) const
     {
         return (m_o == x.m_o &&
-               m_ho == x.m_ho &&
-               m_s == x.m_s &&
-               m_l == x.m_l &&
-               m_ll == x.m_ll);
+           m_ho == x.m_ho &&
+           m_s == x.m_s &&
+           m_l == x.m_l &&
+           m_ll == x.m_ll);
     }
 
     /*!
@@ -1109,6 +1129,7 @@ public:
         return m_o;
     }
 
+
     /*!
      * @brief This function sets a value in member ho
      * @param _ho New value for member ho
@@ -1136,6 +1157,7 @@ public:
     {
         return m_ho;
     }
+
 
     /*!
      * @brief This function sets a value in member s
@@ -1165,6 +1187,7 @@ public:
         return m_s;
     }
 
+
     /*!
      * @brief This function sets a value in member l
      * @param _l New value for member l
@@ -1193,6 +1216,7 @@ public:
         return m_l;
     }
 
+
     /*!
      * @brief This function sets a value in member ll
      * @param _ll New value for member ll
@@ -1220,6 +1244,8 @@ public:
     {
         return m_ll;
     }
+
+
 
 private:
 
@@ -1259,15 +1285,15 @@ public:
     eProsima_user_DllExport AutoidDefault(
             const AutoidDefault& x)
     {
-        m_c = x.m_c;
+                    m_c = x.m_c;
 
-        m_o = x.m_o;
+                    m_o = x.m_o;
 
-        m_s = x.m_s;
+                    m_s = x.m_s;
 
-        m_l = x.m_l;
+                    m_l = x.m_l;
 
-        m_ll = x.m_ll;
+                    m_ll = x.m_ll;
 
     }
 
@@ -1293,15 +1319,15 @@ public:
             const AutoidDefault& x)
     {
 
-        m_c = x.m_c;
+                    m_c = x.m_c;
 
-        m_o = x.m_o;
+                    m_o = x.m_o;
 
-        m_s = x.m_s;
+                    m_s = x.m_s;
 
-        m_l = x.m_l;
+                    m_l = x.m_l;
 
-        m_ll = x.m_ll;
+                    m_ll = x.m_ll;
 
         return *this;
     }
@@ -1330,10 +1356,10 @@ public:
             const AutoidDefault& x) const
     {
         return (m_c == x.m_c &&
-               m_o == x.m_o &&
-               m_s == x.m_s &&
-               m_l == x.m_l &&
-               m_ll == x.m_ll);
+           m_o == x.m_o &&
+           m_s == x.m_s &&
+           m_l == x.m_l &&
+           m_ll == x.m_ll);
     }
 
     /*!
@@ -1374,6 +1400,7 @@ public:
         return m_c;
     }
 
+
     /*!
      * @brief This function sets a value in member o
      * @param _o New value for member o
@@ -1401,6 +1428,7 @@ public:
     {
         return m_o;
     }
+
 
     /*!
      * @brief This function sets a value in member s
@@ -1430,6 +1458,7 @@ public:
         return m_s;
     }
 
+
     /*!
      * @brief This function sets a value in member l
      * @param _l New value for member l
@@ -1458,6 +1487,7 @@ public:
         return m_l;
     }
 
+
     /*!
      * @brief This function sets a value in member ll
      * @param _ll New value for member ll
@@ -1485,6 +1515,8 @@ public:
     {
         return m_ll;
     }
+
+
 
 private:
 
@@ -1524,15 +1556,15 @@ public:
     eProsima_user_DllExport AutoidSequential(
             const AutoidSequential& x)
     {
-        m_c = x.m_c;
+                    m_c = x.m_c;
 
-        m_o = x.m_o;
+                    m_o = x.m_o;
 
-        m_s = x.m_s;
+                    m_s = x.m_s;
 
-        m_l = x.m_l;
+                    m_l = x.m_l;
 
-        m_ll = x.m_ll;
+                    m_ll = x.m_ll;
 
     }
 
@@ -1558,15 +1590,15 @@ public:
             const AutoidSequential& x)
     {
 
-        m_c = x.m_c;
+                    m_c = x.m_c;
 
-        m_o = x.m_o;
+                    m_o = x.m_o;
 
-        m_s = x.m_s;
+                    m_s = x.m_s;
 
-        m_l = x.m_l;
+                    m_l = x.m_l;
 
-        m_ll = x.m_ll;
+                    m_ll = x.m_ll;
 
         return *this;
     }
@@ -1595,10 +1627,10 @@ public:
             const AutoidSequential& x) const
     {
         return (m_c == x.m_c &&
-               m_o == x.m_o &&
-               m_s == x.m_s &&
-               m_l == x.m_l &&
-               m_ll == x.m_ll);
+           m_o == x.m_o &&
+           m_s == x.m_s &&
+           m_l == x.m_l &&
+           m_ll == x.m_ll);
     }
 
     /*!
@@ -1639,6 +1671,7 @@ public:
         return m_c;
     }
 
+
     /*!
      * @brief This function sets a value in member o
      * @param _o New value for member o
@@ -1666,6 +1699,7 @@ public:
     {
         return m_o;
     }
+
 
     /*!
      * @brief This function sets a value in member s
@@ -1695,6 +1729,7 @@ public:
         return m_s;
     }
 
+
     /*!
      * @brief This function sets a value in member l
      * @param _l New value for member l
@@ -1723,6 +1758,7 @@ public:
         return m_l;
     }
 
+
     /*!
      * @brief This function sets a value in member ll
      * @param _ll New value for member ll
@@ -1750,6 +1786,8 @@ public:
     {
         return m_ll;
     }
+
+
 
 private:
 
@@ -1789,15 +1827,15 @@ public:
     eProsima_user_DllExport AutoidHash(
             const AutoidHash& x)
     {
-        m_c = x.m_c;
+                    m_c = x.m_c;
 
-        m_o = x.m_o;
+                    m_o = x.m_o;
 
-        m_s = x.m_s;
+                    m_s = x.m_s;
 
-        m_l = x.m_l;
+                    m_l = x.m_l;
 
-        m_ll = x.m_ll;
+                    m_ll = x.m_ll;
 
     }
 
@@ -1823,15 +1861,15 @@ public:
             const AutoidHash& x)
     {
 
-        m_c = x.m_c;
+                    m_c = x.m_c;
 
-        m_o = x.m_o;
+                    m_o = x.m_o;
 
-        m_s = x.m_s;
+                    m_s = x.m_s;
 
-        m_l = x.m_l;
+                    m_l = x.m_l;
 
-        m_ll = x.m_ll;
+                    m_ll = x.m_ll;
 
         return *this;
     }
@@ -1860,10 +1898,10 @@ public:
             const AutoidHash& x) const
     {
         return (m_c == x.m_c &&
-               m_o == x.m_o &&
-               m_s == x.m_s &&
-               m_l == x.m_l &&
-               m_ll == x.m_ll);
+           m_o == x.m_o &&
+           m_s == x.m_s &&
+           m_l == x.m_l &&
+           m_ll == x.m_ll);
     }
 
     /*!
@@ -1904,6 +1942,7 @@ public:
         return m_c;
     }
 
+
     /*!
      * @brief This function sets a value in member o
      * @param _o New value for member o
@@ -1931,6 +1970,7 @@ public:
     {
         return m_o;
     }
+
 
     /*!
      * @brief This function sets a value in member s
@@ -1960,6 +2000,7 @@ public:
         return m_s;
     }
 
+
     /*!
      * @brief This function sets a value in member l
      * @param _l New value for member l
@@ -1988,6 +2029,7 @@ public:
         return m_l;
     }
 
+
     /*!
      * @brief This function sets a value in member ll
      * @param _ll New value for member ll
@@ -2015,6 +2057,8 @@ public:
     {
         return m_ll;
     }
+
+
 
 private:
 
@@ -2056,15 +2100,15 @@ public:
             const DerivedAutoidDefault& x)
         : AutoidDefault(x)
     {
-        m_cd = x.m_cd;
+                    m_cd = x.m_cd;
 
-        m_od = x.m_od;
+                    m_od = x.m_od;
 
-        m_sd = x.m_sd;
+                    m_sd = x.m_sd;
 
-        m_ld = x.m_ld;
+                    m_ld = x.m_ld;
 
-        m_lld = x.m_lld;
+                    m_lld = x.m_lld;
 
     }
 
@@ -2093,15 +2137,15 @@ public:
     {
         AutoidDefault::operator =(x);
 
-        m_cd = x.m_cd;
+                    m_cd = x.m_cd;
 
-        m_od = x.m_od;
+                    m_od = x.m_od;
 
-        m_sd = x.m_sd;
+                    m_sd = x.m_sd;
 
-        m_ld = x.m_ld;
+                    m_ld = x.m_ld;
 
-        m_lld = x.m_lld;
+                    m_lld = x.m_lld;
 
         return *this;
     }
@@ -2131,14 +2175,14 @@ public:
             const DerivedAutoidDefault& x) const
     {
         if (AutoidDefault::operator !=(x))
-        {
-            return false;
-        }
+                {
+                    return false;
+                }
         return (m_cd == x.m_cd &&
-               m_od == x.m_od &&
-               m_sd == x.m_sd &&
-               m_ld == x.m_ld &&
-               m_lld == x.m_lld);
+           m_od == x.m_od &&
+           m_sd == x.m_sd &&
+           m_ld == x.m_ld &&
+           m_lld == x.m_lld);
     }
 
     /*!
@@ -2179,6 +2223,7 @@ public:
         return m_cd;
     }
 
+
     /*!
      * @brief This function sets a value in member od
      * @param _od New value for member od
@@ -2206,6 +2251,7 @@ public:
     {
         return m_od;
     }
+
 
     /*!
      * @brief This function sets a value in member sd
@@ -2235,6 +2281,7 @@ public:
         return m_sd;
     }
 
+
     /*!
      * @brief This function sets a value in member ld
      * @param _ld New value for member ld
@@ -2263,6 +2310,7 @@ public:
         return m_ld;
     }
 
+
     /*!
      * @brief This function sets a value in member lld
      * @param _lld New value for member lld
@@ -2290,6 +2338,8 @@ public:
     {
         return m_lld;
     }
+
+
 
 private:
 
@@ -2382,9 +2432,9 @@ public:
             const DerivedEmptyAutoidSequential& x) const
     {
         if (AutoidSequential::operator !=(x))
-        {
-            return false;
-        }
+                {
+                    return false;
+                }
         static_cast<void>(x);
         return true;
     }
@@ -2398,6 +2448,8 @@ public:
     {
         return !(*this == x);
     }
+
+
 
 private:
 
@@ -2434,15 +2486,15 @@ public:
             const DerivedAutoidSequential& x)
         : DerivedEmptyAutoidSequential(x)
     {
-        m_cd = x.m_cd;
+                    m_cd = x.m_cd;
 
-        m_od = x.m_od;
+                    m_od = x.m_od;
 
-        m_sd = x.m_sd;
+                    m_sd = x.m_sd;
 
-        m_ld = x.m_ld;
+                    m_ld = x.m_ld;
 
-        m_lld = x.m_lld;
+                    m_lld = x.m_lld;
 
     }
 
@@ -2471,15 +2523,15 @@ public:
     {
         DerivedEmptyAutoidSequential::operator =(x);
 
-        m_cd = x.m_cd;
+                    m_cd = x.m_cd;
 
-        m_od = x.m_od;
+                    m_od = x.m_od;
 
-        m_sd = x.m_sd;
+                    m_sd = x.m_sd;
 
-        m_ld = x.m_ld;
+                    m_ld = x.m_ld;
 
-        m_lld = x.m_lld;
+                    m_lld = x.m_lld;
 
         return *this;
     }
@@ -2509,14 +2561,14 @@ public:
             const DerivedAutoidSequential& x) const
     {
         if (DerivedEmptyAutoidSequential::operator !=(x))
-        {
-            return false;
-        }
+                {
+                    return false;
+                }
         return (m_cd == x.m_cd &&
-               m_od == x.m_od &&
-               m_sd == x.m_sd &&
-               m_ld == x.m_ld &&
-               m_lld == x.m_lld);
+           m_od == x.m_od &&
+           m_sd == x.m_sd &&
+           m_ld == x.m_ld &&
+           m_lld == x.m_lld);
     }
 
     /*!
@@ -2557,6 +2609,7 @@ public:
         return m_cd;
     }
 
+
     /*!
      * @brief This function sets a value in member od
      * @param _od New value for member od
@@ -2584,6 +2637,7 @@ public:
     {
         return m_od;
     }
+
 
     /*!
      * @brief This function sets a value in member sd
@@ -2613,6 +2667,7 @@ public:
         return m_sd;
     }
 
+
     /*!
      * @brief This function sets a value in member ld
      * @param _ld New value for member ld
@@ -2641,6 +2696,7 @@ public:
         return m_ld;
     }
 
+
     /*!
      * @brief This function sets a value in member lld
      * @param _lld New value for member lld
@@ -2668,6 +2724,8 @@ public:
     {
         return m_lld;
     }
+
+
 
 private:
 
@@ -2709,15 +2767,15 @@ public:
             const DerivedAutoidHash& x)
         : AutoidHash(x)
     {
-        m_cd = x.m_cd;
+                    m_cd = x.m_cd;
 
-        m_od = x.m_od;
+                    m_od = x.m_od;
 
-        m_sd = x.m_sd;
+                    m_sd = x.m_sd;
 
-        m_ld = x.m_ld;
+                    m_ld = x.m_ld;
 
-        m_lld = x.m_lld;
+                    m_lld = x.m_lld;
 
     }
 
@@ -2746,15 +2804,15 @@ public:
     {
         AutoidHash::operator =(x);
 
-        m_cd = x.m_cd;
+                    m_cd = x.m_cd;
 
-        m_od = x.m_od;
+                    m_od = x.m_od;
 
-        m_sd = x.m_sd;
+                    m_sd = x.m_sd;
 
-        m_ld = x.m_ld;
+                    m_ld = x.m_ld;
 
-        m_lld = x.m_lld;
+                    m_lld = x.m_lld;
 
         return *this;
     }
@@ -2784,14 +2842,14 @@ public:
             const DerivedAutoidHash& x) const
     {
         if (AutoidHash::operator !=(x))
-        {
-            return false;
-        }
+                {
+                    return false;
+                }
         return (m_cd == x.m_cd &&
-               m_od == x.m_od &&
-               m_sd == x.m_sd &&
-               m_ld == x.m_ld &&
-               m_lld == x.m_lld);
+           m_od == x.m_od &&
+           m_sd == x.m_sd &&
+           m_ld == x.m_ld &&
+           m_lld == x.m_lld);
     }
 
     /*!
@@ -2832,6 +2890,7 @@ public:
         return m_cd;
     }
 
+
     /*!
      * @brief This function sets a value in member od
      * @param _od New value for member od
@@ -2859,6 +2918,7 @@ public:
     {
         return m_od;
     }
+
 
     /*!
      * @brief This function sets a value in member sd
@@ -2888,6 +2948,7 @@ public:
         return m_sd;
     }
 
+
     /*!
      * @brief This function sets a value in member ld
      * @param _ld New value for member ld
@@ -2916,6 +2977,7 @@ public:
         return m_ld;
     }
 
+
     /*!
      * @brief This function sets a value in member lld
      * @param _lld New value for member lld
@@ -2943,6 +3005,8 @@ public:
     {
         return m_lld;
     }
+
+
 
 private:
 

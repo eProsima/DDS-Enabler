@@ -80,7 +80,7 @@ public:
     eProsima_user_DllExport StringStruct(
             const StringStruct& x)
     {
-        m_var_string8 = x.m_var_string8;
+                    m_var_string8 = x.m_var_string8;
 
     }
 
@@ -102,7 +102,7 @@ public:
             const StringStruct& x)
     {
 
-        m_var_string8 = x.m_var_string8;
+                    m_var_string8 = x.m_var_string8;
 
         return *this;
     }
@@ -177,6 +177,8 @@ public:
         return m_var_string8;
     }
 
+
+
 private:
 
     std::string m_var_string8;
@@ -211,7 +213,7 @@ public:
     eProsima_user_DllExport WStringStruct(
             const WStringStruct& x)
     {
-        m_var_string16 = x.m_var_string16;
+                    m_var_string16 = x.m_var_string16;
 
     }
 
@@ -233,7 +235,7 @@ public:
             const WStringStruct& x)
     {
 
-        m_var_string16 = x.m_var_string16;
+                    m_var_string16 = x.m_var_string16;
 
         return *this;
     }
@@ -308,6 +310,8 @@ public:
         return m_var_string16;
     }
 
+
+
 private:
 
     std::wstring m_var_string16;
@@ -342,7 +346,7 @@ public:
     eProsima_user_DllExport SmallStringStruct(
             const SmallStringStruct& x)
     {
-        m_var_small_string = x.m_var_small_string;
+                    m_var_small_string = x.m_var_small_string;
 
     }
 
@@ -364,7 +368,7 @@ public:
             const SmallStringStruct& x)
     {
 
-        m_var_small_string = x.m_var_small_string;
+                    m_var_small_string = x.m_var_small_string;
 
         return *this;
     }
@@ -439,6 +443,8 @@ public:
         return m_var_small_string;
     }
 
+
+
 private:
 
     eprosima::fastcdr::fixed_string<1> m_var_small_string;
@@ -473,7 +479,7 @@ public:
     eProsima_user_DllExport SmallWStringStruct(
             const SmallWStringStruct& x)
     {
-        m_var_small_wstring = x.m_var_small_wstring;
+                    m_var_small_wstring = x.m_var_small_wstring;
 
     }
 
@@ -495,7 +501,7 @@ public:
             const SmallWStringStruct& x)
     {
 
-        m_var_small_wstring = x.m_var_small_wstring;
+                    m_var_small_wstring = x.m_var_small_wstring;
 
         return *this;
     }
@@ -570,6 +576,8 @@ public:
         return m_var_small_wstring;
     }
 
+
+
 private:
 
     std::wstring m_var_small_wstring;
@@ -604,7 +612,7 @@ public:
     eProsima_user_DllExport LargeStringStruct(
             const LargeStringStruct& x)
     {
-        m_var_large_string = x.m_var_large_string;
+                    m_var_large_string = x.m_var_large_string;
 
     }
 
@@ -626,7 +634,7 @@ public:
             const LargeStringStruct& x)
     {
 
-        m_var_large_string = x.m_var_large_string;
+                    m_var_large_string = x.m_var_large_string;
 
         return *this;
     }
@@ -701,6 +709,8 @@ public:
         return m_var_large_string;
     }
 
+
+
 private:
 
     eprosima::fastcdr::fixed_string<41925> m_var_large_string;
@@ -735,7 +745,7 @@ public:
     eProsima_user_DllExport LargeWStringStruct(
             const LargeWStringStruct& x)
     {
-        m_var_large_wstring = x.m_var_large_wstring;
+                    m_var_large_wstring = x.m_var_large_wstring;
 
     }
 
@@ -757,7 +767,7 @@ public:
             const LargeWStringStruct& x)
     {
 
-        m_var_large_wstring = x.m_var_large_wstring;
+                    m_var_large_wstring = x.m_var_large_wstring;
 
         return *this;
     }
@@ -831,6 +841,8 @@ public:
     {
         return m_var_large_wstring;
     }
+
+
 
 private:
 

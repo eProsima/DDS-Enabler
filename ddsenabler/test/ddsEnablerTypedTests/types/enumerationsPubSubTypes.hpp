@@ -38,7 +38,8 @@
     Generated enumerations is not compatible with current installed Fast DDS. Please, regenerate it with fastddsgen.
 #endif  // FASTDDS_GEN_API_VER
 
-namespace Test {
+namespace Test
+{
 } // namespace Test
 
 /*!

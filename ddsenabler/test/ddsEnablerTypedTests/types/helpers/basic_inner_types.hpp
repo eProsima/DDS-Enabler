@@ -123,9 +123,9 @@ public:
     eProsima_user_DllExport InnerStructureHelper(
             const InnerStructureHelper& x)
     {
-        m_field1 = x.m_field1;
+                    m_field1 = x.m_field1;
 
-        m_field2 = x.m_field2;
+                    m_field2 = x.m_field2;
 
     }
 
@@ -148,9 +148,9 @@ public:
             const InnerStructureHelper& x)
     {
 
-        m_field1 = x.m_field1;
+                    m_field1 = x.m_field1;
 
-        m_field2 = x.m_field2;
+                    m_field2 = x.m_field2;
 
         return *this;
     }
@@ -176,7 +176,7 @@ public:
             const InnerStructureHelper& x) const
     {
         return (m_field1 == x.m_field1 &&
-               m_field2 == x.m_field2);
+           m_field2 == x.m_field2);
     }
 
     /*!
@@ -217,6 +217,7 @@ public:
         return m_field1;
     }
 
+
     /*!
      * @brief This function sets a value in member field2
      * @param _field2 New value for member field2
@@ -244,6 +245,8 @@ public:
     {
         return m_field2;
     }
+
+
 
 private:
 
@@ -340,6 +343,8 @@ public:
         return !(*this == x);
     }
 
+
+
 private:
 
 
@@ -385,17 +390,17 @@ public:
 
         switch (x.selected_member_)
         {
-            case 0x00000001:
-                longValue_() = x.m_longValue;
-                break;
+                        case 0x00000001:
+                            longValue_() = x.m_longValue;
+                            break;
 
-            case 0x00000002:
-                floatValue_() = x.m_floatValue;
-                break;
+                        case 0x00000002:
+                            floatValue_() = x.m_floatValue;
+                            break;
 
-            case 0x00000003:
-                shortValue_() = x.m_shortValue;
-                break;
+                        case 0x00000003:
+                            shortValue_() = x.m_shortValue;
+                            break;
 
         }
     }
@@ -411,17 +416,17 @@ public:
 
         switch (x.selected_member_)
         {
-            case 0x00000001:
-                longValue_() = std::move(x.m_longValue);
-                break;
+                        case 0x00000001:
+                            longValue_() = std::move(x.m_longValue);
+                            break;
 
-            case 0x00000002:
-                floatValue_() = std::move(x.m_floatValue);
-                break;
+                        case 0x00000002:
+                            floatValue_() = std::move(x.m_floatValue);
+                            break;
 
-            case 0x00000003:
-                shortValue_() = std::move(x.m_shortValue);
-                break;
+                        case 0x00000003:
+                            shortValue_() = std::move(x.m_shortValue);
+                            break;
 
         }
     }
@@ -437,17 +442,17 @@ public:
 
         switch (x.selected_member_)
         {
-            case 0x00000001:
-                longValue_() = x.m_longValue;
-                break;
+                        case 0x00000001:
+                            longValue_() = x.m_longValue;
+                            break;
 
-            case 0x00000002:
-                floatValue_() = x.m_floatValue;
-                break;
+                        case 0x00000002:
+                            floatValue_() = x.m_floatValue;
+                            break;
 
-            case 0x00000003:
-                shortValue_() = x.m_shortValue;
-                break;
+                        case 0x00000003:
+                            shortValue_() = x.m_shortValue;
+                            break;
 
         }
 
@@ -465,17 +470,17 @@ public:
 
         switch (x.selected_member_)
         {
-            case 0x00000001:
-                longValue_() = std::move(x.m_longValue);
-                break;
+                        case 0x00000001:
+                            longValue_() = std::move(x.m_longValue);
+                            break;
 
-            case 0x00000002:
-                floatValue_() = std::move(x.m_floatValue);
-                break;
+                        case 0x00000002:
+                            floatValue_() = std::move(x.m_floatValue);
+                            break;
 
-            case 0x00000003:
-                shortValue_() = std::move(x.m_shortValue);
-                break;
+                        case 0x00000003:
+                            shortValue_() = std::move(x.m_shortValue);
+                            break;
 
         }
 
@@ -496,17 +501,17 @@ public:
         {
             switch (selected_member_)
             {
-                case 0x00000001:
-                    ret_value = (m_longValue == x.m_longValue);
-                    break;
+                                case 0x00000001:
+                                    ret_value = (m_longValue == x.m_longValue);
+                                    break;
 
-                case 0x00000002:
-                    ret_value = (m_floatValue == x.m_floatValue);
-                    break;
+                                case 0x00000002:
+                                    ret_value = (m_floatValue == x.m_floatValue);
+                                    break;
 
-                case 0x00000003:
-                    ret_value = (m_shortValue == x.m_shortValue);
-                    break;
+                                case 0x00000003:
+                                    ret_value = (m_shortValue == x.m_shortValue);
+                                    break;
 
             }
         }
@@ -536,33 +541,32 @@ public:
 
         switch (__d)
         {
-            case 0:
-                if (0x00000001 == selected_member_)
-                {
-                    valid_discriminator = true;
-                }
-                break;
+                        case 0:
+                            if (0x00000001 == selected_member_)
+                            {
+                                valid_discriminator = true;
+                            }
+                            break;
 
-            case 1:
-                if (0x00000002 == selected_member_)
-                {
-                    valid_discriminator = true;
-                }
-                break;
+                        case 1:
+                            if (0x00000002 == selected_member_)
+                            {
+                                valid_discriminator = true;
+                            }
+                            break;
 
-            default:
-                if (0x00000003 == selected_member_)
-                {
-                    valid_discriminator = true;
-                }
-                break;
+                        default:
+                            if (0x00000003 == selected_member_)
+                            {
+                                valid_discriminator = true;
+                            }
+                            break;
 
         }
 
         if (!valid_discriminator)
         {
-            throw eprosima::fastcdr::exception::BadParamException(
-                      "Discriminator doesn't correspond with the selected union member");
+            throw eprosima::fastcdr::exception::BadParamException("Discriminator doesn't correspond with the selected union member");
         }
 
         m__d = __d;
@@ -618,6 +622,7 @@ public:
         return m_longValue;
     }
 
+
     /*!
      * @brief This function sets a value in member floatValue
      * @param _floatValue New value for member floatValue
@@ -658,6 +663,7 @@ public:
 
         return m_floatValue;
     }
+
 
     /*!
      * @brief This function sets a value in member shortValue
@@ -700,61 +706,64 @@ public:
         return m_shortValue;
     }
 
+
+
 private:
 
-    int32_t& longValue_()
-    {
-        if (0x00000001 != selected_member_)
-        {
-            if (member_destructor_)
+            int32_t& longValue_()
             {
-                member_destructor_();
+                if (0x00000001 != selected_member_)
+                {
+                    if (member_destructor_)
+                    {
+                        member_destructor_();
+                    }
+
+                    selected_member_ = 0x00000001;
+                    member_destructor_ = nullptr;
+                    m_longValue = {0};
+
+                }
+
+                return m_longValue;
             }
 
-            selected_member_ = 0x00000001;
-            member_destructor_ = nullptr;
-            m_longValue = {0};
-
-        }
-
-        return m_longValue;
-    }
-
-    float& floatValue_()
-    {
-        if (0x00000002 != selected_member_)
-        {
-            if (member_destructor_)
+            float& floatValue_()
             {
-                member_destructor_();
+                if (0x00000002 != selected_member_)
+                {
+                    if (member_destructor_)
+                    {
+                        member_destructor_();
+                    }
+
+                    selected_member_ = 0x00000002;
+                    member_destructor_ = nullptr;
+                    m_floatValue = {0.0};
+
+                }
+
+                return m_floatValue;
             }
 
-            selected_member_ = 0x00000002;
-            member_destructor_ = nullptr;
-            m_floatValue = {0.0};
-
-        }
-
-        return m_floatValue;
-    }
-
-    int16_t& shortValue_()
-    {
-        if (0x00000003 != selected_member_)
-        {
-            if (member_destructor_)
+            int16_t& shortValue_()
             {
-                member_destructor_();
+                if (0x00000003 != selected_member_)
+                {
+                    if (member_destructor_)
+                    {
+                        member_destructor_();
+                    }
+
+                    selected_member_ = 0x00000003;
+                    member_destructor_ = nullptr;
+                    m_shortValue = {0};
+
+                }
+
+                return m_shortValue;
             }
 
-            selected_member_ = 0x00000003;
-            member_destructor_ = nullptr;
-            m_shortValue = {0};
-
-        }
-
-        return m_shortValue;
-    }
 
     int32_t m__d {2147483647};
 
@@ -775,17 +784,17 @@ private:
  */
 struct InnerBitsetHelper
 {
-    uint8_t a : 3;
+        uint8_t a : 3;
 
-    bool b : 1;
+        bool b : 1;
 
-    uint8_t  : 4;
+        uint8_t  : 4;
 
-    uint16_t c : 10;
+        uint16_t c : 10;
 
-    uint8_t  : 3;
+        uint8_t  : 3;
 
-    int16_t d : 12;
+        int16_t d : 12;
 
 
     /*!
@@ -796,9 +805,9 @@ struct InnerBitsetHelper
             const InnerBitsetHelper& x) const
     {
         return (a == x.a &&
-               b == x.b &&
-               c == x.c &&
-               d == x.d);
+           b == x.b &&
+           c == x.c &&
+           d == x.d);
     }
 
     /*!
@@ -810,7 +819,6 @@ struct InnerBitsetHelper
     {
         return !(*this == x);
     }
-
 };
 const int16_t inner_const_helper = 1;
 typedef eprosima::fastcdr::fixed_string<10> Inner_alias_bounded_string_helper;

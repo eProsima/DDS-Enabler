@@ -85,7 +85,7 @@ public:
     eProsima_user_DllExport ArrayShort(
             const ArrayShort& x)
     {
-        m_var_array_short = x.m_var_array_short;
+                    m_var_array_short = x.m_var_array_short;
 
     }
 
@@ -107,7 +107,7 @@ public:
             const ArrayShort& x)
     {
 
-        m_var_array_short = x.m_var_array_short;
+                    m_var_array_short = x.m_var_array_short;
 
         return *this;
     }
@@ -182,6 +182,8 @@ public:
         return m_var_array_short;
     }
 
+
+
 private:
 
     std::array<int16_t, 10> m_var_array_short{0};
@@ -216,7 +218,7 @@ public:
     eProsima_user_DllExport ArrayUShort(
             const ArrayUShort& x)
     {
-        m_var_array_ushort = x.m_var_array_ushort;
+                    m_var_array_ushort = x.m_var_array_ushort;
 
     }
 
@@ -238,7 +240,7 @@ public:
             const ArrayUShort& x)
     {
 
-        m_var_array_ushort = x.m_var_array_ushort;
+                    m_var_array_ushort = x.m_var_array_ushort;
 
         return *this;
     }
@@ -313,6 +315,8 @@ public:
         return m_var_array_ushort;
     }
 
+
+
 private:
 
     std::array<uint16_t, 10> m_var_array_ushort{0};
@@ -347,7 +351,7 @@ public:
     eProsima_user_DllExport ArrayLong(
             const ArrayLong& x)
     {
-        m_var_array_long = x.m_var_array_long;
+                    m_var_array_long = x.m_var_array_long;
 
     }
 
@@ -369,7 +373,7 @@ public:
             const ArrayLong& x)
     {
 
-        m_var_array_long = x.m_var_array_long;
+                    m_var_array_long = x.m_var_array_long;
 
         return *this;
     }
@@ -444,6 +448,8 @@ public:
         return m_var_array_long;
     }
 
+
+
 private:
 
     std::array<int32_t, 10> m_var_array_long{0};
@@ -478,7 +484,7 @@ public:
     eProsima_user_DllExport ArrayULong(
             const ArrayULong& x)
     {
-        m_var_array_ulong = x.m_var_array_ulong;
+                    m_var_array_ulong = x.m_var_array_ulong;
 
     }
 
@@ -500,7 +506,7 @@ public:
             const ArrayULong& x)
     {
 
-        m_var_array_ulong = x.m_var_array_ulong;
+                    m_var_array_ulong = x.m_var_array_ulong;
 
         return *this;
     }
@@ -575,6 +581,8 @@ public:
         return m_var_array_ulong;
     }
 
+
+
 private:
 
     std::array<uint32_t, 10> m_var_array_ulong{0};
@@ -609,7 +617,7 @@ public:
     eProsima_user_DllExport ArrayLongLong(
             const ArrayLongLong& x)
     {
-        m_var_array_longlong = x.m_var_array_longlong;
+                    m_var_array_longlong = x.m_var_array_longlong;
 
     }
 
@@ -631,7 +639,7 @@ public:
             const ArrayLongLong& x)
     {
 
-        m_var_array_longlong = x.m_var_array_longlong;
+                    m_var_array_longlong = x.m_var_array_longlong;
 
         return *this;
     }
@@ -706,6 +714,8 @@ public:
         return m_var_array_longlong;
     }
 
+
+
 private:
 
     std::array<int64_t, 10> m_var_array_longlong{0};
@@ -740,7 +750,7 @@ public:
     eProsima_user_DllExport ArrayULongLong(
             const ArrayULongLong& x)
     {
-        m_var_array_ulonglong = x.m_var_array_ulonglong;
+                    m_var_array_ulonglong = x.m_var_array_ulonglong;
 
     }
 
@@ -762,7 +772,7 @@ public:
             const ArrayULongLong& x)
     {
 
-        m_var_array_ulonglong = x.m_var_array_ulonglong;
+                    m_var_array_ulonglong = x.m_var_array_ulonglong;
 
         return *this;
     }
@@ -837,6 +847,8 @@ public:
         return m_var_array_ulonglong;
     }
 
+
+
 private:
 
     std::array<uint64_t, 10> m_var_array_ulonglong{0};
@@ -871,7 +883,7 @@ public:
     eProsima_user_DllExport ArrayFloat(
             const ArrayFloat& x)
     {
-        m_var_array_float = x.m_var_array_float;
+                    m_var_array_float = x.m_var_array_float;
 
     }
 
@@ -893,7 +905,7 @@ public:
             const ArrayFloat& x)
     {
 
-        m_var_array_float = x.m_var_array_float;
+                    m_var_array_float = x.m_var_array_float;
 
         return *this;
     }
@@ -968,6 +980,8 @@ public:
         return m_var_array_float;
     }
 
+
+
 private:
 
     std::array<float, 10> m_var_array_float{0.0};
@@ -1002,7 +1016,7 @@ public:
     eProsima_user_DllExport ArrayDouble(
             const ArrayDouble& x)
     {
-        m_var_array_double = x.m_var_array_double;
+                    m_var_array_double = x.m_var_array_double;
 
     }
 
@@ -1024,7 +1038,7 @@ public:
             const ArrayDouble& x)
     {
 
-        m_var_array_double = x.m_var_array_double;
+                    m_var_array_double = x.m_var_array_double;
 
         return *this;
     }
@@ -1099,6 +1113,8 @@ public:
         return m_var_array_double;
     }
 
+
+
 private:
 
     std::array<double, 10> m_var_array_double{0.0};
@@ -1133,7 +1149,7 @@ public:
     eProsima_user_DllExport ArrayLongDouble(
             const ArrayLongDouble& x)
     {
-        m_var_array_longdouble = x.m_var_array_longdouble;
+                    m_var_array_longdouble = x.m_var_array_longdouble;
 
     }
 
@@ -1155,7 +1171,7 @@ public:
             const ArrayLongDouble& x)
     {
 
-        m_var_array_longdouble = x.m_var_array_longdouble;
+                    m_var_array_longdouble = x.m_var_array_longdouble;
 
         return *this;
     }
@@ -1230,6 +1246,8 @@ public:
         return m_var_array_longdouble;
     }
 
+
+
 private:
 
     std::array<long double, 10> m_var_array_longdouble{0.0};
@@ -1264,7 +1282,7 @@ public:
     eProsima_user_DllExport ArrayBoolean(
             const ArrayBoolean& x)
     {
-        m_var_array_boolean = x.m_var_array_boolean;
+                    m_var_array_boolean = x.m_var_array_boolean;
 
     }
 
@@ -1286,7 +1304,7 @@ public:
             const ArrayBoolean& x)
     {
 
-        m_var_array_boolean = x.m_var_array_boolean;
+                    m_var_array_boolean = x.m_var_array_boolean;
 
         return *this;
     }
@@ -1361,6 +1379,8 @@ public:
         return m_var_array_boolean;
     }
 
+
+
 private:
 
     std::array<bool, 10> m_var_array_boolean{false};
@@ -1395,7 +1415,7 @@ public:
     eProsima_user_DllExport ArrayOctet(
             const ArrayOctet& x)
     {
-        m_var_array_octet = x.m_var_array_octet;
+                    m_var_array_octet = x.m_var_array_octet;
 
     }
 
@@ -1417,7 +1437,7 @@ public:
             const ArrayOctet& x)
     {
 
-        m_var_array_octet = x.m_var_array_octet;
+                    m_var_array_octet = x.m_var_array_octet;
 
         return *this;
     }
@@ -1492,6 +1512,8 @@ public:
         return m_var_array_octet;
     }
 
+
+
 private:
 
     std::array<uint8_t, 10> m_var_array_octet{0};
@@ -1526,7 +1548,7 @@ public:
     eProsima_user_DllExport ArrayUInt8(
             const ArrayUInt8& x)
     {
-        m_var_array_uint8 = x.m_var_array_uint8;
+                    m_var_array_uint8 = x.m_var_array_uint8;
 
     }
 
@@ -1548,7 +1570,7 @@ public:
             const ArrayUInt8& x)
     {
 
-        m_var_array_uint8 = x.m_var_array_uint8;
+                    m_var_array_uint8 = x.m_var_array_uint8;
 
         return *this;
     }
@@ -1623,6 +1645,8 @@ public:
         return m_var_array_uint8;
     }
 
+
+
 private:
 
     std::array<uint8_t, 10> m_var_array_uint8{0};
@@ -1657,7 +1681,7 @@ public:
     eProsima_user_DllExport ArrayChar(
             const ArrayChar& x)
     {
-        m_var_array_char = x.m_var_array_char;
+                    m_var_array_char = x.m_var_array_char;
 
     }
 
@@ -1679,7 +1703,7 @@ public:
             const ArrayChar& x)
     {
 
-        m_var_array_char = x.m_var_array_char;
+                    m_var_array_char = x.m_var_array_char;
 
         return *this;
     }
@@ -1754,6 +1778,8 @@ public:
         return m_var_array_char;
     }
 
+
+
 private:
 
     std::array<char, 10> m_var_array_char{0};
@@ -1788,7 +1814,7 @@ public:
     eProsima_user_DllExport ArrayWChar(
             const ArrayWChar& x)
     {
-        m_var_array_wchar = x.m_var_array_wchar;
+                    m_var_array_wchar = x.m_var_array_wchar;
 
     }
 
@@ -1810,7 +1836,7 @@ public:
             const ArrayWChar& x)
     {
 
-        m_var_array_wchar = x.m_var_array_wchar;
+                    m_var_array_wchar = x.m_var_array_wchar;
 
         return *this;
     }
@@ -1885,6 +1911,8 @@ public:
         return m_var_array_wchar;
     }
 
+
+
 private:
 
     std::array<wchar_t, 10> m_var_array_wchar{0};
@@ -1919,7 +1947,7 @@ public:
     eProsima_user_DllExport ArrayString(
             const ArrayString& x)
     {
-        m_var_array_string = x.m_var_array_string;
+                    m_var_array_string = x.m_var_array_string;
 
     }
 
@@ -1941,7 +1969,7 @@ public:
             const ArrayString& x)
     {
 
-        m_var_array_string = x.m_var_array_string;
+                    m_var_array_string = x.m_var_array_string;
 
         return *this;
     }
@@ -2016,6 +2044,8 @@ public:
         return m_var_array_string;
     }
 
+
+
 private:
 
     std::array<std::string, 10> m_var_array_string;
@@ -2050,7 +2080,7 @@ public:
     eProsima_user_DllExport ArrayWString(
             const ArrayWString& x)
     {
-        m_var_array_wstring = x.m_var_array_wstring;
+                    m_var_array_wstring = x.m_var_array_wstring;
 
     }
 
@@ -2072,7 +2102,7 @@ public:
             const ArrayWString& x)
     {
 
-        m_var_array_wstring = x.m_var_array_wstring;
+                    m_var_array_wstring = x.m_var_array_wstring;
 
         return *this;
     }
@@ -2147,6 +2177,8 @@ public:
         return m_var_array_wstring;
     }
 
+
+
 private:
 
     std::array<std::wstring, 10> m_var_array_wstring;
@@ -2181,7 +2213,7 @@ public:
     eProsima_user_DllExport ArrayBoundedString(
             const ArrayBoundedString& x)
     {
-        m_var_array_bounded_string = x.m_var_array_bounded_string;
+                    m_var_array_bounded_string = x.m_var_array_bounded_string;
 
     }
 
@@ -2203,7 +2235,7 @@ public:
             const ArrayBoundedString& x)
     {
 
-        m_var_array_bounded_string = x.m_var_array_bounded_string;
+                    m_var_array_bounded_string = x.m_var_array_bounded_string;
 
         return *this;
     }
@@ -2278,6 +2310,8 @@ public:
         return m_var_array_bounded_string;
     }
 
+
+
 private:
 
     std::array<Inner_alias_bounded_string_helper, 10> m_var_array_bounded_string;
@@ -2312,7 +2346,7 @@ public:
     eProsima_user_DllExport ArrayBoundedWString(
             const ArrayBoundedWString& x)
     {
-        m_var_array_bounded_wstring = x.m_var_array_bounded_wstring;
+                    m_var_array_bounded_wstring = x.m_var_array_bounded_wstring;
 
     }
 
@@ -2334,7 +2368,7 @@ public:
             const ArrayBoundedWString& x)
     {
 
-        m_var_array_bounded_wstring = x.m_var_array_bounded_wstring;
+                    m_var_array_bounded_wstring = x.m_var_array_bounded_wstring;
 
         return *this;
     }
@@ -2409,6 +2443,8 @@ public:
         return m_var_array_bounded_wstring;
     }
 
+
+
 private:
 
     std::array<Inner_alias_bounded_wstring_helper, 10> m_var_array_bounded_wstring;
@@ -2443,7 +2479,7 @@ public:
     eProsima_user_DllExport ArrayEnum(
             const ArrayEnum& x)
     {
-        m_var_array_enum = x.m_var_array_enum;
+                    m_var_array_enum = x.m_var_array_enum;
 
     }
 
@@ -2465,7 +2501,7 @@ public:
             const ArrayEnum& x)
     {
 
-        m_var_array_enum = x.m_var_array_enum;
+                    m_var_array_enum = x.m_var_array_enum;
 
         return *this;
     }
@@ -2540,6 +2576,8 @@ public:
         return m_var_array_enum;
     }
 
+
+
 private:
 
     std::array<InnerEnumHelper, 10> m_var_array_enum{InnerEnumHelper::ENUM_VALUE_1};
@@ -2574,7 +2612,7 @@ public:
     eProsima_user_DllExport ArrayBitMask(
             const ArrayBitMask& x)
     {
-        m_var_array_bitmask = x.m_var_array_bitmask;
+                    m_var_array_bitmask = x.m_var_array_bitmask;
 
     }
 
@@ -2596,7 +2634,7 @@ public:
             const ArrayBitMask& x)
     {
 
-        m_var_array_bitmask = x.m_var_array_bitmask;
+                    m_var_array_bitmask = x.m_var_array_bitmask;
 
         return *this;
     }
@@ -2671,6 +2709,8 @@ public:
         return m_var_array_bitmask;
     }
 
+
+
 private:
 
     std::array<InnerBitMaskHelper, 10> m_var_array_bitmask{0};
@@ -2705,7 +2745,7 @@ public:
     eProsima_user_DllExport ArrayAlias(
             const ArrayAlias& x)
     {
-        m_var_array_alias = x.m_var_array_alias;
+                    m_var_array_alias = x.m_var_array_alias;
 
     }
 
@@ -2727,7 +2767,7 @@ public:
             const ArrayAlias& x)
     {
 
-        m_var_array_alias = x.m_var_array_alias;
+                    m_var_array_alias = x.m_var_array_alias;
 
         return *this;
     }
@@ -2802,6 +2842,8 @@ public:
         return m_var_array_alias;
     }
 
+
+
 private:
 
     std::array<InnerAliasHelper, 10> m_var_array_alias{0};
@@ -2836,7 +2878,7 @@ public:
     eProsima_user_DllExport ArrayShortArray(
             const ArrayShortArray& x)
     {
-        m_var_array_short_array = x.m_var_array_short_array;
+                    m_var_array_short_array = x.m_var_array_short_array;
 
     }
 
@@ -2858,7 +2900,7 @@ public:
             const ArrayShortArray& x)
     {
 
-        m_var_array_short_array = x.m_var_array_short_array;
+                    m_var_array_short_array = x.m_var_array_short_array;
 
         return *this;
     }
@@ -2933,6 +2975,8 @@ public:
         return m_var_array_short_array;
     }
 
+
+
 private:
 
     std::array<std::array<int16_t, 10>, 10> m_var_array_short_array{ {{0}} };
@@ -2967,7 +3011,7 @@ public:
     eProsima_user_DllExport ArraySequence(
             const ArraySequence& x)
     {
-        m_var_array_sequence = x.m_var_array_sequence;
+                    m_var_array_sequence = x.m_var_array_sequence;
 
     }
 
@@ -2989,7 +3033,7 @@ public:
             const ArraySequence& x)
     {
 
-        m_var_array_sequence = x.m_var_array_sequence;
+                    m_var_array_sequence = x.m_var_array_sequence;
 
         return *this;
     }
@@ -3064,6 +3108,8 @@ public:
         return m_var_array_sequence;
     }
 
+
+
 private:
 
     std::array<std::vector<int32_t>, 10> m_var_array_sequence;
@@ -3098,7 +3144,7 @@ public:
     eProsima_user_DllExport ArrayMap(
             const ArrayMap& x)
     {
-        m_var_array_map = x.m_var_array_map;
+                    m_var_array_map = x.m_var_array_map;
 
     }
 
@@ -3120,7 +3166,7 @@ public:
             const ArrayMap& x)
     {
 
-        m_var_array_map = x.m_var_array_map;
+                    m_var_array_map = x.m_var_array_map;
 
         return *this;
     }
@@ -3195,6 +3241,8 @@ public:
         return m_var_array_map;
     }
 
+
+
 private:
 
     std::array<std::map<int32_t, int32_t>, 10> m_var_array_map;
@@ -3229,7 +3277,7 @@ public:
     eProsima_user_DllExport ArrayUnion(
             const ArrayUnion& x)
     {
-        m_var_array_union = x.m_var_array_union;
+                    m_var_array_union = x.m_var_array_union;
 
     }
 
@@ -3251,7 +3299,7 @@ public:
             const ArrayUnion& x)
     {
 
-        m_var_array_union = x.m_var_array_union;
+                    m_var_array_union = x.m_var_array_union;
 
         return *this;
     }
@@ -3326,6 +3374,8 @@ public:
         return m_var_array_union;
     }
 
+
+
 private:
 
     std::array<InnerUnionHelper, 10> m_var_array_union;
@@ -3360,7 +3410,7 @@ public:
     eProsima_user_DllExport ArrayStructure(
             const ArrayStructure& x)
     {
-        m_var_array_structure = x.m_var_array_structure;
+                    m_var_array_structure = x.m_var_array_structure;
 
     }
 
@@ -3382,7 +3432,7 @@ public:
             const ArrayStructure& x)
     {
 
-        m_var_array_structure = x.m_var_array_structure;
+                    m_var_array_structure = x.m_var_array_structure;
 
         return *this;
     }
@@ -3457,6 +3507,8 @@ public:
         return m_var_array_structure;
     }
 
+
+
 private:
 
     std::array<InnerStructureHelper, 10> m_var_array_structure;
@@ -3491,7 +3543,7 @@ public:
     eProsima_user_DllExport ArrayBitset(
             const ArrayBitset& x)
     {
-        m_var_array_bitset = x.m_var_array_bitset;
+                    m_var_array_bitset = x.m_var_array_bitset;
 
     }
 
@@ -3513,7 +3565,7 @@ public:
             const ArrayBitset& x)
     {
 
-        m_var_array_bitset = x.m_var_array_bitset;
+                    m_var_array_bitset = x.m_var_array_bitset;
 
         return *this;
     }
@@ -3588,6 +3640,8 @@ public:
         return m_var_array_bitset;
     }
 
+
+
 private:
 
     std::array<InnerBitsetHelper, 10> m_var_array_bitset;
@@ -3622,7 +3676,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionShort(
             const ArrayMultiDimensionShort& x)
     {
-        m_var_array_short = x.m_var_array_short;
+                    m_var_array_short = x.m_var_array_short;
 
     }
 
@@ -3644,7 +3698,7 @@ public:
             const ArrayMultiDimensionShort& x)
     {
 
-        m_var_array_short = x.m_var_array_short;
+                    m_var_array_short = x.m_var_array_short;
 
         return *this;
     }
@@ -3719,6 +3773,8 @@ public:
         return m_var_array_short;
     }
 
+
+
 private:
 
     std::array<std::array<std::array<int16_t, 10>, 10>, 10> m_var_array_short{ {{ {{0}} }} };
@@ -3753,7 +3809,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionUShort(
             const ArrayMultiDimensionUShort& x)
     {
-        m_var_array_ushort = x.m_var_array_ushort;
+                    m_var_array_ushort = x.m_var_array_ushort;
 
     }
 
@@ -3775,7 +3831,7 @@ public:
             const ArrayMultiDimensionUShort& x)
     {
 
-        m_var_array_ushort = x.m_var_array_ushort;
+                    m_var_array_ushort = x.m_var_array_ushort;
 
         return *this;
     }
@@ -3850,6 +3906,8 @@ public:
         return m_var_array_ushort;
     }
 
+
+
 private:
 
     std::array<std::array<std::array<uint16_t, 10>, 10>, 10> m_var_array_ushort{ {{ {{0}} }} };
@@ -3884,7 +3942,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionLong(
             const ArrayMultiDimensionLong& x)
     {
-        m_var_array_long = x.m_var_array_long;
+                    m_var_array_long = x.m_var_array_long;
 
     }
 
@@ -3906,7 +3964,7 @@ public:
             const ArrayMultiDimensionLong& x)
     {
 
-        m_var_array_long = x.m_var_array_long;
+                    m_var_array_long = x.m_var_array_long;
 
         return *this;
     }
@@ -3981,6 +4039,8 @@ public:
         return m_var_array_long;
     }
 
+
+
 private:
 
     std::array<std::array<std::array<int32_t, 10>, 10>, 10> m_var_array_long{ {{ {{0}} }} };
@@ -4015,7 +4075,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionULong(
             const ArrayMultiDimensionULong& x)
     {
-        m_var_array_ulong = x.m_var_array_ulong;
+                    m_var_array_ulong = x.m_var_array_ulong;
 
     }
 
@@ -4037,7 +4097,7 @@ public:
             const ArrayMultiDimensionULong& x)
     {
 
-        m_var_array_ulong = x.m_var_array_ulong;
+                    m_var_array_ulong = x.m_var_array_ulong;
 
         return *this;
     }
@@ -4112,6 +4172,8 @@ public:
         return m_var_array_ulong;
     }
 
+
+
 private:
 
     std::array<std::array<std::array<uint32_t, 10>, 10>, 10> m_var_array_ulong{ {{ {{0}} }} };
@@ -4146,7 +4208,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionLongLong(
             const ArrayMultiDimensionLongLong& x)
     {
-        m_var_array_longlong = x.m_var_array_longlong;
+                    m_var_array_longlong = x.m_var_array_longlong;
 
     }
 
@@ -4168,7 +4230,7 @@ public:
             const ArrayMultiDimensionLongLong& x)
     {
 
-        m_var_array_longlong = x.m_var_array_longlong;
+                    m_var_array_longlong = x.m_var_array_longlong;
 
         return *this;
     }
@@ -4243,6 +4305,8 @@ public:
         return m_var_array_longlong;
     }
 
+
+
 private:
 
     std::array<std::array<std::array<int64_t, 10>, 10>, 10> m_var_array_longlong{ {{ {{0}} }} };
@@ -4277,7 +4341,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionULongLong(
             const ArrayMultiDimensionULongLong& x)
     {
-        m_var_array_ulonglong = x.m_var_array_ulonglong;
+                    m_var_array_ulonglong = x.m_var_array_ulonglong;
 
     }
 
@@ -4299,7 +4363,7 @@ public:
             const ArrayMultiDimensionULongLong& x)
     {
 
-        m_var_array_ulonglong = x.m_var_array_ulonglong;
+                    m_var_array_ulonglong = x.m_var_array_ulonglong;
 
         return *this;
     }
@@ -4374,6 +4438,8 @@ public:
         return m_var_array_ulonglong;
     }
 
+
+
 private:
 
     std::array<std::array<std::array<uint64_t, 10>, 10>, 10> m_var_array_ulonglong{ {{ {{0}} }} };
@@ -4408,7 +4474,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionFloat(
             const ArrayMultiDimensionFloat& x)
     {
-        m_var_array_float = x.m_var_array_float;
+                    m_var_array_float = x.m_var_array_float;
 
     }
 
@@ -4430,7 +4496,7 @@ public:
             const ArrayMultiDimensionFloat& x)
     {
 
-        m_var_array_float = x.m_var_array_float;
+                    m_var_array_float = x.m_var_array_float;
 
         return *this;
     }
@@ -4505,6 +4571,8 @@ public:
         return m_var_array_float;
     }
 
+
+
 private:
 
     std::array<std::array<std::array<float, 10>, 10>, 10> m_var_array_float{ {{ {{0.0}} }} };
@@ -4539,7 +4607,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionDouble(
             const ArrayMultiDimensionDouble& x)
     {
-        m_var_array_double = x.m_var_array_double;
+                    m_var_array_double = x.m_var_array_double;
 
     }
 
@@ -4561,7 +4629,7 @@ public:
             const ArrayMultiDimensionDouble& x)
     {
 
-        m_var_array_double = x.m_var_array_double;
+                    m_var_array_double = x.m_var_array_double;
 
         return *this;
     }
@@ -4636,6 +4704,8 @@ public:
         return m_var_array_double;
     }
 
+
+
 private:
 
     std::array<std::array<std::array<double, 10>, 10>, 10> m_var_array_double{ {{ {{0.0}} }} };
@@ -4670,7 +4740,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionLongDouble(
             const ArrayMultiDimensionLongDouble& x)
     {
-        m_var_array_longdouble = x.m_var_array_longdouble;
+                    m_var_array_longdouble = x.m_var_array_longdouble;
 
     }
 
@@ -4692,7 +4762,7 @@ public:
             const ArrayMultiDimensionLongDouble& x)
     {
 
-        m_var_array_longdouble = x.m_var_array_longdouble;
+                    m_var_array_longdouble = x.m_var_array_longdouble;
 
         return *this;
     }
@@ -4753,8 +4823,7 @@ public:
      * @brief This function returns a constant reference to member var_array_longdouble
      * @return Constant reference to member var_array_longdouble
      */
-    eProsima_user_DllExport const std::array<std::array<std::array<long double, 10>, 10>,
-            10>& var_array_longdouble() const
+    eProsima_user_DllExport const std::array<std::array<std::array<long double, 10>, 10>, 10>& var_array_longdouble() const
     {
         return m_var_array_longdouble;
     }
@@ -4767,6 +4836,8 @@ public:
     {
         return m_var_array_longdouble;
     }
+
+
 
 private:
 
@@ -4802,7 +4873,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionBoolean(
             const ArrayMultiDimensionBoolean& x)
     {
-        m_var_array_boolean = x.m_var_array_boolean;
+                    m_var_array_boolean = x.m_var_array_boolean;
 
     }
 
@@ -4824,7 +4895,7 @@ public:
             const ArrayMultiDimensionBoolean& x)
     {
 
-        m_var_array_boolean = x.m_var_array_boolean;
+                    m_var_array_boolean = x.m_var_array_boolean;
 
         return *this;
     }
@@ -4899,6 +4970,8 @@ public:
         return m_var_array_boolean;
     }
 
+
+
 private:
 
     std::array<std::array<std::array<bool, 10>, 10>, 10> m_var_array_boolean{ {{ {{false}} }} };
@@ -4933,7 +5006,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionOctet(
             const ArrayMultiDimensionOctet& x)
     {
-        m_var_array_octet = x.m_var_array_octet;
+                    m_var_array_octet = x.m_var_array_octet;
 
     }
 
@@ -4955,7 +5028,7 @@ public:
             const ArrayMultiDimensionOctet& x)
     {
 
-        m_var_array_octet = x.m_var_array_octet;
+                    m_var_array_octet = x.m_var_array_octet;
 
         return *this;
     }
@@ -5030,6 +5103,8 @@ public:
         return m_var_array_octet;
     }
 
+
+
 private:
 
     std::array<std::array<std::array<uint8_t, 10>, 10>, 10> m_var_array_octet{ {{ {{0}} }} };
@@ -5064,7 +5139,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionChar(
             const ArrayMultiDimensionChar& x)
     {
-        m_var_array_char = x.m_var_array_char;
+                    m_var_array_char = x.m_var_array_char;
 
     }
 
@@ -5086,7 +5161,7 @@ public:
             const ArrayMultiDimensionChar& x)
     {
 
-        m_var_array_char = x.m_var_array_char;
+                    m_var_array_char = x.m_var_array_char;
 
         return *this;
     }
@@ -5161,6 +5236,8 @@ public:
         return m_var_array_char;
     }
 
+
+
 private:
 
     std::array<std::array<std::array<char, 10>, 10>, 10> m_var_array_char{ {{ {{0}} }} };
@@ -5195,7 +5272,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionWChar(
             const ArrayMultiDimensionWChar& x)
     {
-        m_var_array_wchar = x.m_var_array_wchar;
+                    m_var_array_wchar = x.m_var_array_wchar;
 
     }
 
@@ -5217,7 +5294,7 @@ public:
             const ArrayMultiDimensionWChar& x)
     {
 
-        m_var_array_wchar = x.m_var_array_wchar;
+                    m_var_array_wchar = x.m_var_array_wchar;
 
         return *this;
     }
@@ -5292,6 +5369,8 @@ public:
         return m_var_array_wchar;
     }
 
+
+
 private:
 
     std::array<std::array<std::array<wchar_t, 10>, 10>, 10> m_var_array_wchar{ {{ {{0}} }} };
@@ -5326,7 +5405,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionString(
             const ArrayMultiDimensionString& x)
     {
-        m_var_array_string = x.m_var_array_string;
+                    m_var_array_string = x.m_var_array_string;
 
     }
 
@@ -5348,7 +5427,7 @@ public:
             const ArrayMultiDimensionString& x)
     {
 
-        m_var_array_string = x.m_var_array_string;
+                    m_var_array_string = x.m_var_array_string;
 
         return *this;
     }
@@ -5423,6 +5502,8 @@ public:
         return m_var_array_string;
     }
 
+
+
 private:
 
     std::array<std::array<std::array<std::string, 10>, 10>, 10> m_var_array_string;
@@ -5457,7 +5538,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionWString(
             const ArrayMultiDimensionWString& x)
     {
-        m_var_array_wstring = x.m_var_array_wstring;
+                    m_var_array_wstring = x.m_var_array_wstring;
 
     }
 
@@ -5479,7 +5560,7 @@ public:
             const ArrayMultiDimensionWString& x)
     {
 
-        m_var_array_wstring = x.m_var_array_wstring;
+                    m_var_array_wstring = x.m_var_array_wstring;
 
         return *this;
     }
@@ -5540,8 +5621,7 @@ public:
      * @brief This function returns a constant reference to member var_array_wstring
      * @return Constant reference to member var_array_wstring
      */
-    eProsima_user_DllExport const std::array<std::array<std::array<std::wstring, 10>, 10>,
-            10>& var_array_wstring() const
+    eProsima_user_DllExport const std::array<std::array<std::array<std::wstring, 10>, 10>, 10>& var_array_wstring() const
     {
         return m_var_array_wstring;
     }
@@ -5554,6 +5634,8 @@ public:
     {
         return m_var_array_wstring;
     }
+
+
 
 private:
 
@@ -5589,7 +5671,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionBoundedString(
             const ArrayMultiDimensionBoundedString& x)
     {
-        m_var_array_bounded_string = x.m_var_array_bounded_string;
+                    m_var_array_bounded_string = x.m_var_array_bounded_string;
 
     }
 
@@ -5611,7 +5693,7 @@ public:
             const ArrayMultiDimensionBoundedString& x)
     {
 
-        m_var_array_bounded_string = x.m_var_array_bounded_string;
+                    m_var_array_bounded_string = x.m_var_array_bounded_string;
 
         return *this;
     }
@@ -5653,8 +5735,7 @@ public:
      * @param _var_array_bounded_string New value to be copied in member var_array_bounded_string
      */
     eProsima_user_DllExport void var_array_bounded_string(
-            const std::array<std::array<std::array<Inner_alias_bounded_string_helper, 10>, 10>,
-            10>& _var_array_bounded_string)
+            const std::array<std::array<std::array<Inner_alias_bounded_string_helper, 10>, 10>, 10>& _var_array_bounded_string)
     {
         m_var_array_bounded_string = _var_array_bounded_string;
     }
@@ -5664,8 +5745,7 @@ public:
      * @param _var_array_bounded_string New value to be moved in member var_array_bounded_string
      */
     eProsima_user_DllExport void var_array_bounded_string(
-            std::array<std::array<std::array<Inner_alias_bounded_string_helper, 10>, 10>,
-            10>&& _var_array_bounded_string)
+            std::array<std::array<std::array<Inner_alias_bounded_string_helper, 10>, 10>, 10>&& _var_array_bounded_string)
     {
         m_var_array_bounded_string = std::move(_var_array_bounded_string);
     }
@@ -5674,8 +5754,7 @@ public:
      * @brief This function returns a constant reference to member var_array_bounded_string
      * @return Constant reference to member var_array_bounded_string
      */
-    eProsima_user_DllExport const std::array<std::array<std::array<Inner_alias_bounded_string_helper, 10>, 10>,
-            10>& var_array_bounded_string() const
+    eProsima_user_DllExport const std::array<std::array<std::array<Inner_alias_bounded_string_helper, 10>, 10>, 10>& var_array_bounded_string() const
     {
         return m_var_array_bounded_string;
     }
@@ -5684,11 +5763,12 @@ public:
      * @brief This function returns a reference to member var_array_bounded_string
      * @return Reference to member var_array_bounded_string
      */
-    eProsima_user_DllExport std::array<std::array<std::array<Inner_alias_bounded_string_helper, 10>, 10>,
-            10>& var_array_bounded_string()
+    eProsima_user_DllExport std::array<std::array<std::array<Inner_alias_bounded_string_helper, 10>, 10>, 10>& var_array_bounded_string()
     {
         return m_var_array_bounded_string;
     }
+
+
 
 private:
 
@@ -5724,7 +5804,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionBoundedWString(
             const ArrayMultiDimensionBoundedWString& x)
     {
-        m_var_array_bounded_wstring = x.m_var_array_bounded_wstring;
+                    m_var_array_bounded_wstring = x.m_var_array_bounded_wstring;
 
     }
 
@@ -5746,7 +5826,7 @@ public:
             const ArrayMultiDimensionBoundedWString& x)
     {
 
-        m_var_array_bounded_wstring = x.m_var_array_bounded_wstring;
+                    m_var_array_bounded_wstring = x.m_var_array_bounded_wstring;
 
         return *this;
     }
@@ -5788,8 +5868,7 @@ public:
      * @param _var_array_bounded_wstring New value to be copied in member var_array_bounded_wstring
      */
     eProsima_user_DllExport void var_array_bounded_wstring(
-            const std::array<std::array<std::array<Inner_alias_bounded_wstring_helper, 10>, 10>,
-            10>& _var_array_bounded_wstring)
+            const std::array<std::array<std::array<Inner_alias_bounded_wstring_helper, 10>, 10>, 10>& _var_array_bounded_wstring)
     {
         m_var_array_bounded_wstring = _var_array_bounded_wstring;
     }
@@ -5799,8 +5878,7 @@ public:
      * @param _var_array_bounded_wstring New value to be moved in member var_array_bounded_wstring
      */
     eProsima_user_DllExport void var_array_bounded_wstring(
-            std::array<std::array<std::array<Inner_alias_bounded_wstring_helper, 10>, 10>,
-            10>&& _var_array_bounded_wstring)
+            std::array<std::array<std::array<Inner_alias_bounded_wstring_helper, 10>, 10>, 10>&& _var_array_bounded_wstring)
     {
         m_var_array_bounded_wstring = std::move(_var_array_bounded_wstring);
     }
@@ -5809,8 +5887,7 @@ public:
      * @brief This function returns a constant reference to member var_array_bounded_wstring
      * @return Constant reference to member var_array_bounded_wstring
      */
-    eProsima_user_DllExport const std::array<std::array<std::array<Inner_alias_bounded_wstring_helper, 10>, 10>,
-            10>& var_array_bounded_wstring() const
+    eProsima_user_DllExport const std::array<std::array<std::array<Inner_alias_bounded_wstring_helper, 10>, 10>, 10>& var_array_bounded_wstring() const
     {
         return m_var_array_bounded_wstring;
     }
@@ -5819,11 +5896,12 @@ public:
      * @brief This function returns a reference to member var_array_bounded_wstring
      * @return Reference to member var_array_bounded_wstring
      */
-    eProsima_user_DllExport std::array<std::array<std::array<Inner_alias_bounded_wstring_helper, 10>, 10>,
-            10>& var_array_bounded_wstring()
+    eProsima_user_DllExport std::array<std::array<std::array<Inner_alias_bounded_wstring_helper, 10>, 10>, 10>& var_array_bounded_wstring()
     {
         return m_var_array_bounded_wstring;
     }
+
+
 
 private:
 
@@ -5859,7 +5937,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionEnum(
             const ArrayMultiDimensionEnum& x)
     {
-        m_var_array_enum = x.m_var_array_enum;
+                    m_var_array_enum = x.m_var_array_enum;
 
     }
 
@@ -5881,7 +5959,7 @@ public:
             const ArrayMultiDimensionEnum& x)
     {
 
-        m_var_array_enum = x.m_var_array_enum;
+                    m_var_array_enum = x.m_var_array_enum;
 
         return *this;
     }
@@ -5942,8 +6020,7 @@ public:
      * @brief This function returns a constant reference to member var_array_enum
      * @return Constant reference to member var_array_enum
      */
-    eProsima_user_DllExport const std::array<std::array<std::array<InnerEnumHelper, 10>, 10>,
-            10>& var_array_enum() const
+    eProsima_user_DllExport const std::array<std::array<std::array<InnerEnumHelper, 10>, 10>, 10>& var_array_enum() const
     {
         return m_var_array_enum;
     }
@@ -5957,10 +6034,11 @@ public:
         return m_var_array_enum;
     }
 
+
+
 private:
 
-    std::array<std::array<std::array<InnerEnumHelper, 10>, 10>,
-            10> m_var_array_enum{ {{ {{InnerEnumHelper::ENUM_VALUE_1}} }} };
+    std::array<std::array<std::array<InnerEnumHelper, 10>, 10>, 10> m_var_array_enum{ {{ {{InnerEnumHelper::ENUM_VALUE_1}} }} };
 
 };
 /*!
@@ -5992,7 +6070,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionBitMask(
             const ArrayMultiDimensionBitMask& x)
     {
-        m_var_array_bitmask = x.m_var_array_bitmask;
+                    m_var_array_bitmask = x.m_var_array_bitmask;
 
     }
 
@@ -6014,7 +6092,7 @@ public:
             const ArrayMultiDimensionBitMask& x)
     {
 
-        m_var_array_bitmask = x.m_var_array_bitmask;
+                    m_var_array_bitmask = x.m_var_array_bitmask;
 
         return *this;
     }
@@ -6075,8 +6153,7 @@ public:
      * @brief This function returns a constant reference to member var_array_bitmask
      * @return Constant reference to member var_array_bitmask
      */
-    eProsima_user_DllExport const std::array<std::array<std::array<InnerBitMaskHelper, 10>, 10>,
-            10>& var_array_bitmask() const
+    eProsima_user_DllExport const std::array<std::array<std::array<InnerBitMaskHelper, 10>, 10>, 10>& var_array_bitmask() const
     {
         return m_var_array_bitmask;
     }
@@ -6089,6 +6166,8 @@ public:
     {
         return m_var_array_bitmask;
     }
+
+
 
 private:
 
@@ -6124,7 +6203,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionAlias(
             const ArrayMultiDimensionAlias& x)
     {
-        m_var_array_alias = x.m_var_array_alias;
+                    m_var_array_alias = x.m_var_array_alias;
 
     }
 
@@ -6146,7 +6225,7 @@ public:
             const ArrayMultiDimensionAlias& x)
     {
 
-        m_var_array_alias = x.m_var_array_alias;
+                    m_var_array_alias = x.m_var_array_alias;
 
         return *this;
     }
@@ -6207,8 +6286,7 @@ public:
      * @brief This function returns a constant reference to member var_array_alias
      * @return Constant reference to member var_array_alias
      */
-    eProsima_user_DllExport const std::array<std::array<std::array<InnerAliasHelper, 10>, 10>,
-            10>& var_array_alias() const
+    eProsima_user_DllExport const std::array<std::array<std::array<InnerAliasHelper, 10>, 10>, 10>& var_array_alias() const
     {
         return m_var_array_alias;
     }
@@ -6221,6 +6299,8 @@ public:
     {
         return m_var_array_alias;
     }
+
+
 
 private:
 
@@ -6256,7 +6336,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionSequence(
             const ArrayMultiDimensionSequence& x)
     {
-        m_var_array_sequence = x.m_var_array_sequence;
+                    m_var_array_sequence = x.m_var_array_sequence;
 
     }
 
@@ -6278,7 +6358,7 @@ public:
             const ArrayMultiDimensionSequence& x)
     {
 
-        m_var_array_sequence = x.m_var_array_sequence;
+                    m_var_array_sequence = x.m_var_array_sequence;
 
         return *this;
     }
@@ -6339,8 +6419,7 @@ public:
      * @brief This function returns a constant reference to member var_array_sequence
      * @return Constant reference to member var_array_sequence
      */
-    eProsima_user_DllExport const std::array<std::array<std::array<std::vector<int32_t>, 10>, 10>,
-            10>& var_array_sequence() const
+    eProsima_user_DllExport const std::array<std::array<std::array<std::vector<int32_t>, 10>, 10>, 10>& var_array_sequence() const
     {
         return m_var_array_sequence;
     }
@@ -6353,6 +6432,8 @@ public:
     {
         return m_var_array_sequence;
     }
+
+
 
 private:
 
@@ -6388,7 +6469,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionMap(
             const ArrayMultiDimensionMap& x)
     {
-        m_var_array_map = x.m_var_array_map;
+                    m_var_array_map = x.m_var_array_map;
 
     }
 
@@ -6410,7 +6491,7 @@ public:
             const ArrayMultiDimensionMap& x)
     {
 
-        m_var_array_map = x.m_var_array_map;
+                    m_var_array_map = x.m_var_array_map;
 
         return *this;
     }
@@ -6471,8 +6552,7 @@ public:
      * @brief This function returns a constant reference to member var_array_map
      * @return Constant reference to member var_array_map
      */
-    eProsima_user_DllExport const std::array<std::array<std::array<std::map<int32_t, int32_t>, 10>, 10>,
-            10>& var_array_map() const
+    eProsima_user_DllExport const std::array<std::array<std::array<std::map<int32_t, int32_t>, 10>, 10>, 10>& var_array_map() const
     {
         return m_var_array_map;
     }
@@ -6485,6 +6565,8 @@ public:
     {
         return m_var_array_map;
     }
+
+
 
 private:
 
@@ -6520,7 +6602,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionUnion(
             const ArrayMultiDimensionUnion& x)
     {
-        m_var_array_union = x.m_var_array_union;
+                    m_var_array_union = x.m_var_array_union;
 
     }
 
@@ -6542,7 +6624,7 @@ public:
             const ArrayMultiDimensionUnion& x)
     {
 
-        m_var_array_union = x.m_var_array_union;
+                    m_var_array_union = x.m_var_array_union;
 
         return *this;
     }
@@ -6603,8 +6685,7 @@ public:
      * @brief This function returns a constant reference to member var_array_union
      * @return Constant reference to member var_array_union
      */
-    eProsima_user_DllExport const std::array<std::array<std::array<InnerUnionHelper, 10>, 10>,
-            10>& var_array_union() const
+    eProsima_user_DllExport const std::array<std::array<std::array<InnerUnionHelper, 10>, 10>, 10>& var_array_union() const
     {
         return m_var_array_union;
     }
@@ -6617,6 +6698,8 @@ public:
     {
         return m_var_array_union;
     }
+
+
 
 private:
 
@@ -6652,7 +6735,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionStructure(
             const ArrayMultiDimensionStructure& x)
     {
-        m_var_array_structure = x.m_var_array_structure;
+                    m_var_array_structure = x.m_var_array_structure;
 
     }
 
@@ -6674,7 +6757,7 @@ public:
             const ArrayMultiDimensionStructure& x)
     {
 
-        m_var_array_structure = x.m_var_array_structure;
+                    m_var_array_structure = x.m_var_array_structure;
 
         return *this;
     }
@@ -6735,8 +6818,7 @@ public:
      * @brief This function returns a constant reference to member var_array_structure
      * @return Constant reference to member var_array_structure
      */
-    eProsima_user_DllExport const std::array<std::array<std::array<InnerStructureHelper, 10>, 10>,
-            10>& var_array_structure() const
+    eProsima_user_DllExport const std::array<std::array<std::array<InnerStructureHelper, 10>, 10>, 10>& var_array_structure() const
     {
         return m_var_array_structure;
     }
@@ -6749,6 +6831,8 @@ public:
     {
         return m_var_array_structure;
     }
+
+
 
 private:
 
@@ -6784,7 +6868,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionBitset(
             const ArrayMultiDimensionBitset& x)
     {
-        m_var_array_bitset = x.m_var_array_bitset;
+                    m_var_array_bitset = x.m_var_array_bitset;
 
     }
 
@@ -6806,7 +6890,7 @@ public:
             const ArrayMultiDimensionBitset& x)
     {
 
-        m_var_array_bitset = x.m_var_array_bitset;
+                    m_var_array_bitset = x.m_var_array_bitset;
 
         return *this;
     }
@@ -6867,8 +6951,7 @@ public:
      * @brief This function returns a constant reference to member var_array_bitset
      * @return Constant reference to member var_array_bitset
      */
-    eProsima_user_DllExport const std::array<std::array<std::array<InnerBitsetHelper, 10>, 10>,
-            10>& var_array_bitset() const
+    eProsima_user_DllExport const std::array<std::array<std::array<InnerBitsetHelper, 10>, 10>, 10>& var_array_bitset() const
     {
         return m_var_array_bitset;
     }
@@ -6881,6 +6964,8 @@ public:
     {
         return m_var_array_bitset;
     }
+
+
 
 private:
 
@@ -6918,7 +7003,7 @@ public:
     eProsima_user_DllExport ArraySingleDimensionLiteralsShort(
             const ArraySingleDimensionLiteralsShort& x)
     {
-        m_var_array_short = x.m_var_array_short;
+                    m_var_array_short = x.m_var_array_short;
 
     }
 
@@ -6940,7 +7025,7 @@ public:
             const ArraySingleDimensionLiteralsShort& x)
     {
 
-        m_var_array_short = x.m_var_array_short;
+                    m_var_array_short = x.m_var_array_short;
 
         return *this;
     }
@@ -7015,6 +7100,8 @@ public:
         return m_var_array_short;
     }
 
+
+
 private:
 
     std::array<int16_t, size_1> m_var_array_short{0};
@@ -7049,7 +7136,7 @@ public:
     eProsima_user_DllExport ArraySingleDimensionLiteralsUnsignedShort(
             const ArraySingleDimensionLiteralsUnsignedShort& x)
     {
-        m_var_array_ushort = x.m_var_array_ushort;
+                    m_var_array_ushort = x.m_var_array_ushort;
 
     }
 
@@ -7071,7 +7158,7 @@ public:
             const ArraySingleDimensionLiteralsUnsignedShort& x)
     {
 
-        m_var_array_ushort = x.m_var_array_ushort;
+                    m_var_array_ushort = x.m_var_array_ushort;
 
         return *this;
     }
@@ -7113,7 +7200,7 @@ public:
      * @param _var_array_ushort New value to be copied in member var_array_ushort
      */
     eProsima_user_DllExport void var_array_ushort(
-            const std::array<uint16_t, 5 * 2>& _var_array_ushort)
+            const std::array<uint16_t, 5*2>& _var_array_ushort)
     {
         m_var_array_ushort = _var_array_ushort;
     }
@@ -7123,7 +7210,7 @@ public:
      * @param _var_array_ushort New value to be moved in member var_array_ushort
      */
     eProsima_user_DllExport void var_array_ushort(
-            std::array<uint16_t, 5 * 2>&& _var_array_ushort)
+            std::array<uint16_t, 5*2>&& _var_array_ushort)
     {
         m_var_array_ushort = std::move(_var_array_ushort);
     }
@@ -7132,7 +7219,7 @@ public:
      * @brief This function returns a constant reference to member var_array_ushort
      * @return Constant reference to member var_array_ushort
      */
-    eProsima_user_DllExport const std::array<uint16_t, 5 * 2>& var_array_ushort() const
+    eProsima_user_DllExport const std::array<uint16_t, 5*2>& var_array_ushort() const
     {
         return m_var_array_ushort;
     }
@@ -7141,14 +7228,16 @@ public:
      * @brief This function returns a reference to member var_array_ushort
      * @return Reference to member var_array_ushort
      */
-    eProsima_user_DllExport std::array<uint16_t, 5 * 2>& var_array_ushort()
+    eProsima_user_DllExport std::array<uint16_t, 5*2>& var_array_ushort()
     {
         return m_var_array_ushort;
     }
 
+
+
 private:
 
-    std::array<uint16_t, 5 * 2> m_var_array_ushort{0};
+    std::array<uint16_t, 5*2> m_var_array_ushort{0};
 
 };
 /*!
@@ -7180,7 +7269,7 @@ public:
     eProsima_user_DllExport ArraySingleDimensionLiteralsLong(
             const ArraySingleDimensionLiteralsLong& x)
     {
-        m_var_array_long = x.m_var_array_long;
+                    m_var_array_long = x.m_var_array_long;
 
     }
 
@@ -7202,7 +7291,7 @@ public:
             const ArraySingleDimensionLiteralsLong& x)
     {
 
-        m_var_array_long = x.m_var_array_long;
+                    m_var_array_long = x.m_var_array_long;
 
         return *this;
     }
@@ -7244,7 +7333,7 @@ public:
      * @param _var_array_long New value to be copied in member var_array_long
      */
     eProsima_user_DllExport void var_array_long(
-            const std::array<int32_t, 5 + 5>& _var_array_long)
+            const std::array<int32_t, 5+5>& _var_array_long)
     {
         m_var_array_long = _var_array_long;
     }
@@ -7254,7 +7343,7 @@ public:
      * @param _var_array_long New value to be moved in member var_array_long
      */
     eProsima_user_DllExport void var_array_long(
-            std::array<int32_t, 5 + 5>&& _var_array_long)
+            std::array<int32_t, 5+5>&& _var_array_long)
     {
         m_var_array_long = std::move(_var_array_long);
     }
@@ -7263,7 +7352,7 @@ public:
      * @brief This function returns a constant reference to member var_array_long
      * @return Constant reference to member var_array_long
      */
-    eProsima_user_DllExport const std::array<int32_t, 5 + 5>& var_array_long() const
+    eProsima_user_DllExport const std::array<int32_t, 5+5>& var_array_long() const
     {
         return m_var_array_long;
     }
@@ -7272,14 +7361,16 @@ public:
      * @brief This function returns a reference to member var_array_long
      * @return Reference to member var_array_long
      */
-    eProsima_user_DllExport std::array<int32_t, 5 + 5>& var_array_long()
+    eProsima_user_DllExport std::array<int32_t, 5+5>& var_array_long()
     {
         return m_var_array_long;
     }
 
+
+
 private:
 
-    std::array<int32_t, 5 + 5> m_var_array_long{0};
+    std::array<int32_t, 5+5> m_var_array_long{0};
 
 };
 /*!
@@ -7311,7 +7402,7 @@ public:
     eProsima_user_DllExport ArraySingleDimensionLiteralsUnsignedLong(
             const ArraySingleDimensionLiteralsUnsignedLong& x)
     {
-        m_var_array_ulong = x.m_var_array_ulong;
+                    m_var_array_ulong = x.m_var_array_ulong;
 
     }
 
@@ -7333,7 +7424,7 @@ public:
             const ArraySingleDimensionLiteralsUnsignedLong& x)
     {
 
-        m_var_array_ulong = x.m_var_array_ulong;
+                    m_var_array_ulong = x.m_var_array_ulong;
 
         return *this;
     }
@@ -7408,6 +7499,8 @@ public:
         return m_var_array_ulong;
     }
 
+
+
 private:
 
     std::array<uint32_t, size_1*2> m_var_array_ulong{0};
@@ -7442,7 +7535,7 @@ public:
     eProsima_user_DllExport ArraySingleDimensionLiteralsLongLong(
             const ArraySingleDimensionLiteralsLongLong& x)
     {
-        m_var_array_longlong = x.m_var_array_longlong;
+                    m_var_array_longlong = x.m_var_array_longlong;
 
     }
 
@@ -7464,7 +7557,7 @@ public:
             const ArraySingleDimensionLiteralsLongLong& x)
     {
 
-        m_var_array_longlong = x.m_var_array_longlong;
+                    m_var_array_longlong = x.m_var_array_longlong;
 
         return *this;
     }
@@ -7506,7 +7599,7 @@ public:
      * @param _var_array_longlong New value to be copied in member var_array_longlong
      */
     eProsima_user_DllExport void var_array_longlong(
-            const std::array<int64_t, size_1 + 5>& _var_array_longlong)
+            const std::array<int64_t, size_1+5>& _var_array_longlong)
     {
         m_var_array_longlong = _var_array_longlong;
     }
@@ -7516,7 +7609,7 @@ public:
      * @param _var_array_longlong New value to be moved in member var_array_longlong
      */
     eProsima_user_DllExport void var_array_longlong(
-            std::array<int64_t, size_1 + 5>&& _var_array_longlong)
+            std::array<int64_t, size_1+5>&& _var_array_longlong)
     {
         m_var_array_longlong = std::move(_var_array_longlong);
     }
@@ -7525,7 +7618,7 @@ public:
      * @brief This function returns a constant reference to member var_array_longlong
      * @return Constant reference to member var_array_longlong
      */
-    eProsima_user_DllExport const std::array<int64_t, size_1 + 5>& var_array_longlong() const
+    eProsima_user_DllExport const std::array<int64_t, size_1+5>& var_array_longlong() const
     {
         return m_var_array_longlong;
     }
@@ -7534,14 +7627,16 @@ public:
      * @brief This function returns a reference to member var_array_longlong
      * @return Reference to member var_array_longlong
      */
-    eProsima_user_DllExport std::array<int64_t, size_1 + 5>& var_array_longlong()
+    eProsima_user_DllExport std::array<int64_t, size_1+5>& var_array_longlong()
     {
         return m_var_array_longlong;
     }
 
+
+
 private:
 
-    std::array<int64_t, size_1 + 5> m_var_array_longlong{0};
+    std::array<int64_t, size_1+5> m_var_array_longlong{0};
 
 };
 /*!
@@ -7573,7 +7668,7 @@ public:
     eProsima_user_DllExport ArraySingleDimensionLiteralsUnsignedLongLong(
             const ArraySingleDimensionLiteralsUnsignedLongLong& x)
     {
-        m_var_array_ulonglong = x.m_var_array_ulonglong;
+                    m_var_array_ulonglong = x.m_var_array_ulonglong;
 
     }
 
@@ -7595,7 +7690,7 @@ public:
             const ArraySingleDimensionLiteralsUnsignedLongLong& x)
     {
 
-        m_var_array_ulonglong = x.m_var_array_ulonglong;
+                    m_var_array_ulonglong = x.m_var_array_ulonglong;
 
         return *this;
     }
@@ -7637,7 +7732,7 @@ public:
      * @param _var_array_ulonglong New value to be copied in member var_array_ulonglong
      */
     eProsima_user_DllExport void var_array_ulonglong(
-            const std::array<uint64_t, size_1* size_2>& _var_array_ulonglong)
+            const std::array<uint64_t, size_1*size_2>& _var_array_ulonglong)
     {
         m_var_array_ulonglong = _var_array_ulonglong;
     }
@@ -7647,7 +7742,7 @@ public:
      * @param _var_array_ulonglong New value to be moved in member var_array_ulonglong
      */
     eProsima_user_DllExport void var_array_ulonglong(
-            std::array<uint64_t, size_1* size_2>&& _var_array_ulonglong)
+            std::array<uint64_t, size_1*size_2>&& _var_array_ulonglong)
     {
         m_var_array_ulonglong = std::move(_var_array_ulonglong);
     }
@@ -7670,9 +7765,11 @@ public:
         return m_var_array_ulonglong;
     }
 
+
+
 private:
 
-    std::array<uint64_t, size_1* size_2> m_var_array_ulonglong{0};
+    std::array<uint64_t, size_1*size_2> m_var_array_ulonglong{0};
 
 };
 /*!
@@ -7704,7 +7801,7 @@ public:
     eProsima_user_DllExport ArraySingleDimensionLiteralsFloat(
             const ArraySingleDimensionLiteralsFloat& x)
     {
-        m_var_array_float = x.m_var_array_float;
+                    m_var_array_float = x.m_var_array_float;
 
     }
 
@@ -7726,7 +7823,7 @@ public:
             const ArraySingleDimensionLiteralsFloat& x)
     {
 
-        m_var_array_float = x.m_var_array_float;
+                    m_var_array_float = x.m_var_array_float;
 
         return *this;
     }
@@ -7801,6 +7898,8 @@ public:
         return m_var_array_float;
     }
 
+
+
 private:
 
     std::array<float, size_1> m_var_array_float{0.0};
@@ -7835,7 +7934,7 @@ public:
     eProsima_user_DllExport ArraySingleDimensionLiteralsDouble(
             const ArraySingleDimensionLiteralsDouble& x)
     {
-        m_var_array_double = x.m_var_array_double;
+                    m_var_array_double = x.m_var_array_double;
 
     }
 
@@ -7857,7 +7956,7 @@ public:
             const ArraySingleDimensionLiteralsDouble& x)
     {
 
-        m_var_array_double = x.m_var_array_double;
+                    m_var_array_double = x.m_var_array_double;
 
         return *this;
     }
@@ -7899,7 +7998,7 @@ public:
      * @param _var_array_double New value to be copied in member var_array_double
      */
     eProsima_user_DllExport void var_array_double(
-            const std::array<double, 5 * 2>& _var_array_double)
+            const std::array<double, 5*2>& _var_array_double)
     {
         m_var_array_double = _var_array_double;
     }
@@ -7909,7 +8008,7 @@ public:
      * @param _var_array_double New value to be moved in member var_array_double
      */
     eProsima_user_DllExport void var_array_double(
-            std::array<double, 5 * 2>&& _var_array_double)
+            std::array<double, 5*2>&& _var_array_double)
     {
         m_var_array_double = std::move(_var_array_double);
     }
@@ -7918,7 +8017,7 @@ public:
      * @brief This function returns a constant reference to member var_array_double
      * @return Constant reference to member var_array_double
      */
-    eProsima_user_DllExport const std::array<double, 5 * 2>& var_array_double() const
+    eProsima_user_DllExport const std::array<double, 5*2>& var_array_double() const
     {
         return m_var_array_double;
     }
@@ -7927,14 +8026,16 @@ public:
      * @brief This function returns a reference to member var_array_double
      * @return Reference to member var_array_double
      */
-    eProsima_user_DllExport std::array<double, 5 * 2>& var_array_double()
+    eProsima_user_DllExport std::array<double, 5*2>& var_array_double()
     {
         return m_var_array_double;
     }
 
+
+
 private:
 
-    std::array<double, 5 * 2> m_var_array_double{0.0};
+    std::array<double, 5*2> m_var_array_double{0.0};
 
 };
 /*!
@@ -7966,7 +8067,7 @@ public:
     eProsima_user_DllExport ArraySingleDimensionLiteralsLongDouble(
             const ArraySingleDimensionLiteralsLongDouble& x)
     {
-        m_var_array_longdouble = x.m_var_array_longdouble;
+                    m_var_array_longdouble = x.m_var_array_longdouble;
 
     }
 
@@ -7988,7 +8089,7 @@ public:
             const ArraySingleDimensionLiteralsLongDouble& x)
     {
 
-        m_var_array_longdouble = x.m_var_array_longdouble;
+                    m_var_array_longdouble = x.m_var_array_longdouble;
 
         return *this;
     }
@@ -8030,7 +8131,7 @@ public:
      * @param _var_array_longdouble New value to be copied in member var_array_longdouble
      */
     eProsima_user_DllExport void var_array_longdouble(
-            const std::array<long double, 5 + 5>& _var_array_longdouble)
+            const std::array<long double, 5+5>& _var_array_longdouble)
     {
         m_var_array_longdouble = _var_array_longdouble;
     }
@@ -8040,7 +8141,7 @@ public:
      * @param _var_array_longdouble New value to be moved in member var_array_longdouble
      */
     eProsima_user_DllExport void var_array_longdouble(
-            std::array<long double, 5 + 5>&& _var_array_longdouble)
+            std::array<long double, 5+5>&& _var_array_longdouble)
     {
         m_var_array_longdouble = std::move(_var_array_longdouble);
     }
@@ -8049,7 +8150,7 @@ public:
      * @brief This function returns a constant reference to member var_array_longdouble
      * @return Constant reference to member var_array_longdouble
      */
-    eProsima_user_DllExport const std::array<long double, 5 + 5>& var_array_longdouble() const
+    eProsima_user_DllExport const std::array<long double, 5+5>& var_array_longdouble() const
     {
         return m_var_array_longdouble;
     }
@@ -8058,14 +8159,16 @@ public:
      * @brief This function returns a reference to member var_array_longdouble
      * @return Reference to member var_array_longdouble
      */
-    eProsima_user_DllExport std::array<long double, 5 + 5>& var_array_longdouble()
+    eProsima_user_DllExport std::array<long double, 5+5>& var_array_longdouble()
     {
         return m_var_array_longdouble;
     }
 
+
+
 private:
 
-    std::array<long double, 5 + 5> m_var_array_longdouble{0.0};
+    std::array<long double, 5+5> m_var_array_longdouble{0.0};
 
 };
 /*!
@@ -8097,7 +8200,7 @@ public:
     eProsima_user_DllExport ArraySingleDimensionLiteralsBoolean(
             const ArraySingleDimensionLiteralsBoolean& x)
     {
-        m_var_array_boolean = x.m_var_array_boolean;
+                    m_var_array_boolean = x.m_var_array_boolean;
 
     }
 
@@ -8119,7 +8222,7 @@ public:
             const ArraySingleDimensionLiteralsBoolean& x)
     {
 
-        m_var_array_boolean = x.m_var_array_boolean;
+                    m_var_array_boolean = x.m_var_array_boolean;
 
         return *this;
     }
@@ -8194,6 +8297,8 @@ public:
         return m_var_array_boolean;
     }
 
+
+
 private:
 
     std::array<bool, size_1> m_var_array_boolean{false};
@@ -8228,7 +8333,7 @@ public:
     eProsima_user_DllExport ArraySingleDimensionLiteralsOctet(
             const ArraySingleDimensionLiteralsOctet& x)
     {
-        m_var_array_octet = x.m_var_array_octet;
+                    m_var_array_octet = x.m_var_array_octet;
 
     }
 
@@ -8250,7 +8355,7 @@ public:
             const ArraySingleDimensionLiteralsOctet& x)
     {
 
-        m_var_array_octet = x.m_var_array_octet;
+                    m_var_array_octet = x.m_var_array_octet;
 
         return *this;
     }
@@ -8325,6 +8430,8 @@ public:
         return m_var_array_octet;
     }
 
+
+
 private:
 
     std::array<uint8_t, size_1*2> m_var_array_octet{0};
@@ -8359,7 +8466,7 @@ public:
     eProsima_user_DllExport ArraySingleDimensionLiteralsChar(
             const ArraySingleDimensionLiteralsChar& x)
     {
-        m_var_array_char = x.m_var_array_char;
+                    m_var_array_char = x.m_var_array_char;
 
     }
 
@@ -8381,7 +8488,7 @@ public:
             const ArraySingleDimensionLiteralsChar& x)
     {
 
-        m_var_array_char = x.m_var_array_char;
+                    m_var_array_char = x.m_var_array_char;
 
         return *this;
     }
@@ -8456,6 +8563,8 @@ public:
         return m_var_array_char;
     }
 
+
+
 private:
 
     std::array<char, size_1> m_var_array_char{0};
@@ -8490,7 +8599,7 @@ public:
     eProsima_user_DllExport ArraySingleDimensionLiteralsWChar(
             const ArraySingleDimensionLiteralsWChar& x)
     {
-        m_var_array_wchar = x.m_var_array_wchar;
+                    m_var_array_wchar = x.m_var_array_wchar;
 
     }
 
@@ -8512,7 +8621,7 @@ public:
             const ArraySingleDimensionLiteralsWChar& x)
     {
 
-        m_var_array_wchar = x.m_var_array_wchar;
+                    m_var_array_wchar = x.m_var_array_wchar;
 
         return *this;
     }
@@ -8554,7 +8663,7 @@ public:
      * @param _var_array_wchar New value to be copied in member var_array_wchar
      */
     eProsima_user_DllExport void var_array_wchar(
-            const std::array<wchar_t, size_1 + 5>& _var_array_wchar)
+            const std::array<wchar_t, size_1+5>& _var_array_wchar)
     {
         m_var_array_wchar = _var_array_wchar;
     }
@@ -8564,7 +8673,7 @@ public:
      * @param _var_array_wchar New value to be moved in member var_array_wchar
      */
     eProsima_user_DllExport void var_array_wchar(
-            std::array<wchar_t, size_1 + 5>&& _var_array_wchar)
+            std::array<wchar_t, size_1+5>&& _var_array_wchar)
     {
         m_var_array_wchar = std::move(_var_array_wchar);
     }
@@ -8573,7 +8682,7 @@ public:
      * @brief This function returns a constant reference to member var_array_wchar
      * @return Constant reference to member var_array_wchar
      */
-    eProsima_user_DllExport const std::array<wchar_t, size_1 + 5>& var_array_wchar() const
+    eProsima_user_DllExport const std::array<wchar_t, size_1+5>& var_array_wchar() const
     {
         return m_var_array_wchar;
     }
@@ -8582,14 +8691,16 @@ public:
      * @brief This function returns a reference to member var_array_wchar
      * @return Reference to member var_array_wchar
      */
-    eProsima_user_DllExport std::array<wchar_t, size_1 + 5>& var_array_wchar()
+    eProsima_user_DllExport std::array<wchar_t, size_1+5>& var_array_wchar()
     {
         return m_var_array_wchar;
     }
 
+
+
 private:
 
-    std::array<wchar_t, size_1 + 5> m_var_array_wchar{0};
+    std::array<wchar_t, size_1+5> m_var_array_wchar{0};
 
 };
 /*!
@@ -8621,7 +8732,7 @@ public:
     eProsima_user_DllExport ArraySingleDimensionLiteralsString(
             const ArraySingleDimensionLiteralsString& x)
     {
-        m_var_array_string = x.m_var_array_string;
+                    m_var_array_string = x.m_var_array_string;
 
     }
 
@@ -8643,7 +8754,7 @@ public:
             const ArraySingleDimensionLiteralsString& x)
     {
 
-        m_var_array_string = x.m_var_array_string;
+                    m_var_array_string = x.m_var_array_string;
 
         return *this;
     }
@@ -8718,6 +8829,8 @@ public:
         return m_var_array_string;
     }
 
+
+
 private:
 
     std::array<std::string, size_1> m_var_array_string;
@@ -8752,7 +8865,7 @@ public:
     eProsima_user_DllExport ArraySingleDimensionLiteralsWString(
             const ArraySingleDimensionLiteralsWString& x)
     {
-        m_var_array_wstring = x.m_var_array_wstring;
+                    m_var_array_wstring = x.m_var_array_wstring;
 
     }
 
@@ -8774,7 +8887,7 @@ public:
             const ArraySingleDimensionLiteralsWString& x)
     {
 
-        m_var_array_wstring = x.m_var_array_wstring;
+                    m_var_array_wstring = x.m_var_array_wstring;
 
         return *this;
     }
@@ -8816,7 +8929,7 @@ public:
      * @param _var_array_wstring New value to be copied in member var_array_wstring
      */
     eProsima_user_DllExport void var_array_wstring(
-            const std::array<std::wstring, size_1* size_2>& _var_array_wstring)
+            const std::array<std::wstring, size_1*size_2>& _var_array_wstring)
     {
         m_var_array_wstring = _var_array_wstring;
     }
@@ -8826,7 +8939,7 @@ public:
      * @param _var_array_wstring New value to be moved in member var_array_wstring
      */
     eProsima_user_DllExport void var_array_wstring(
-            std::array<std::wstring, size_1* size_2>&& _var_array_wstring)
+            std::array<std::wstring, size_1*size_2>&& _var_array_wstring)
     {
         m_var_array_wstring = std::move(_var_array_wstring);
     }
@@ -8849,9 +8962,11 @@ public:
         return m_var_array_wstring;
     }
 
+
+
 private:
 
-    std::array<std::wstring, size_1* size_2> m_var_array_wstring;
+    std::array<std::wstring, size_1*size_2> m_var_array_wstring;
 
 };
 /*!
@@ -8883,7 +8998,7 @@ public:
     eProsima_user_DllExport ArraySingleDimensionLiteralsBoundedString(
             const ArraySingleDimensionLiteralsBoundedString& x)
     {
-        m_var_array_bounded_string = x.m_var_array_bounded_string;
+                    m_var_array_bounded_string = x.m_var_array_bounded_string;
 
     }
 
@@ -8905,7 +9020,7 @@ public:
             const ArraySingleDimensionLiteralsBoundedString& x)
     {
 
-        m_var_array_bounded_string = x.m_var_array_bounded_string;
+                    m_var_array_bounded_string = x.m_var_array_bounded_string;
 
         return *this;
     }
@@ -8966,8 +9081,7 @@ public:
      * @brief This function returns a constant reference to member var_array_bounded_string
      * @return Constant reference to member var_array_bounded_string
      */
-    eProsima_user_DllExport const std::array<Inner_alias_bounded_string_helper,
-            size_1>& var_array_bounded_string() const
+    eProsima_user_DllExport const std::array<Inner_alias_bounded_string_helper, size_1>& var_array_bounded_string() const
     {
         return m_var_array_bounded_string;
     }
@@ -8980,6 +9094,8 @@ public:
     {
         return m_var_array_bounded_string;
     }
+
+
 
 private:
 
@@ -9015,7 +9131,7 @@ public:
     eProsima_user_DllExport ArraySingleDimensionLiteralsBoundedWString(
             const ArraySingleDimensionLiteralsBoundedWString& x)
     {
-        m_var_array_bounded_wstring = x.m_var_array_bounded_wstring;
+                    m_var_array_bounded_wstring = x.m_var_array_bounded_wstring;
 
     }
 
@@ -9037,7 +9153,7 @@ public:
             const ArraySingleDimensionLiteralsBoundedWString& x)
     {
 
-        m_var_array_bounded_wstring = x.m_var_array_bounded_wstring;
+                    m_var_array_bounded_wstring = x.m_var_array_bounded_wstring;
 
         return *this;
     }
@@ -9079,7 +9195,7 @@ public:
      * @param _var_array_bounded_wstring New value to be copied in member var_array_bounded_wstring
      */
     eProsima_user_DllExport void var_array_bounded_wstring(
-            const std::array<Inner_alias_bounded_wstring_helper, size_1* size_2>& _var_array_bounded_wstring)
+            const std::array<Inner_alias_bounded_wstring_helper, size_1*size_2>& _var_array_bounded_wstring)
     {
         m_var_array_bounded_wstring = _var_array_bounded_wstring;
     }
@@ -9089,7 +9205,7 @@ public:
      * @param _var_array_bounded_wstring New value to be moved in member var_array_bounded_wstring
      */
     eProsima_user_DllExport void var_array_bounded_wstring(
-            std::array<Inner_alias_bounded_wstring_helper, size_1* size_2>&& _var_array_bounded_wstring)
+            std::array<Inner_alias_bounded_wstring_helper, size_1*size_2>&& _var_array_bounded_wstring)
     {
         m_var_array_bounded_wstring = std::move(_var_array_bounded_wstring);
     }
@@ -9098,8 +9214,7 @@ public:
      * @brief This function returns a constant reference to member var_array_bounded_wstring
      * @return Constant reference to member var_array_bounded_wstring
      */
-    eProsima_user_DllExport const std::array<Inner_alias_bounded_wstring_helper,
-            size_1*size_2>& var_array_bounded_wstring() const
+    eProsima_user_DllExport const std::array<Inner_alias_bounded_wstring_helper, size_1*size_2>& var_array_bounded_wstring() const
     {
         return m_var_array_bounded_wstring;
     }
@@ -9113,9 +9228,11 @@ public:
         return m_var_array_bounded_wstring;
     }
 
+
+
 private:
 
-    std::array<Inner_alias_bounded_wstring_helper, size_1* size_2> m_var_array_bounded_wstring;
+    std::array<Inner_alias_bounded_wstring_helper, size_1*size_2> m_var_array_bounded_wstring;
 
 };
 /*!
@@ -9147,7 +9264,7 @@ public:
     eProsima_user_DllExport ArraySingleDimensionLiteralsEnum(
             const ArraySingleDimensionLiteralsEnum& x)
     {
-        m_var_array_enum = x.m_var_array_enum;
+                    m_var_array_enum = x.m_var_array_enum;
 
     }
 
@@ -9169,7 +9286,7 @@ public:
             const ArraySingleDimensionLiteralsEnum& x)
     {
 
-        m_var_array_enum = x.m_var_array_enum;
+                    m_var_array_enum = x.m_var_array_enum;
 
         return *this;
     }
@@ -9244,6 +9361,8 @@ public:
         return m_var_array_enum;
     }
 
+
+
 private:
 
     std::array<InnerEnumHelper, size_1> m_var_array_enum{InnerEnumHelper::ENUM_VALUE_1};
@@ -9278,7 +9397,7 @@ public:
     eProsima_user_DllExport ArraySingleDimensionLiteralsBitMask(
             const ArraySingleDimensionLiteralsBitMask& x)
     {
-        m_var_array_bitmask = x.m_var_array_bitmask;
+                    m_var_array_bitmask = x.m_var_array_bitmask;
 
     }
 
@@ -9300,7 +9419,7 @@ public:
             const ArraySingleDimensionLiteralsBitMask& x)
     {
 
-        m_var_array_bitmask = x.m_var_array_bitmask;
+                    m_var_array_bitmask = x.m_var_array_bitmask;
 
         return *this;
     }
@@ -9342,7 +9461,7 @@ public:
      * @param _var_array_bitmask New value to be copied in member var_array_bitmask
      */
     eProsima_user_DllExport void var_array_bitmask(
-            const std::array<InnerBitMaskHelper, size_1 + 5>& _var_array_bitmask)
+            const std::array<InnerBitMaskHelper, size_1+5>& _var_array_bitmask)
     {
         m_var_array_bitmask = _var_array_bitmask;
     }
@@ -9352,7 +9471,7 @@ public:
      * @param _var_array_bitmask New value to be moved in member var_array_bitmask
      */
     eProsima_user_DllExport void var_array_bitmask(
-            std::array<InnerBitMaskHelper, size_1 + 5>&& _var_array_bitmask)
+            std::array<InnerBitMaskHelper, size_1+5>&& _var_array_bitmask)
     {
         m_var_array_bitmask = std::move(_var_array_bitmask);
     }
@@ -9361,7 +9480,7 @@ public:
      * @brief This function returns a constant reference to member var_array_bitmask
      * @return Constant reference to member var_array_bitmask
      */
-    eProsima_user_DllExport const std::array<InnerBitMaskHelper, size_1 + 5>& var_array_bitmask() const
+    eProsima_user_DllExport const std::array<InnerBitMaskHelper, size_1+5>& var_array_bitmask() const
     {
         return m_var_array_bitmask;
     }
@@ -9370,14 +9489,16 @@ public:
      * @brief This function returns a reference to member var_array_bitmask
      * @return Reference to member var_array_bitmask
      */
-    eProsima_user_DllExport std::array<InnerBitMaskHelper, size_1 + 5>& var_array_bitmask()
+    eProsima_user_DllExport std::array<InnerBitMaskHelper, size_1+5>& var_array_bitmask()
     {
         return m_var_array_bitmask;
     }
 
+
+
 private:
 
-    std::array<InnerBitMaskHelper, size_1 + 5> m_var_array_bitmask{0};
+    std::array<InnerBitMaskHelper, size_1+5> m_var_array_bitmask{0};
 
 };
 /*!
@@ -9409,7 +9530,7 @@ public:
     eProsima_user_DllExport ArraySingleDimensionLiteralsAlias(
             const ArraySingleDimensionLiteralsAlias& x)
     {
-        m_var_array_alias = x.m_var_array_alias;
+                    m_var_array_alias = x.m_var_array_alias;
 
     }
 
@@ -9431,7 +9552,7 @@ public:
             const ArraySingleDimensionLiteralsAlias& x)
     {
 
-        m_var_array_alias = x.m_var_array_alias;
+                    m_var_array_alias = x.m_var_array_alias;
 
         return *this;
     }
@@ -9506,6 +9627,8 @@ public:
         return m_var_array_alias;
     }
 
+
+
 private:
 
     std::array<InnerAliasHelper, size_1*2> m_var_array_alias{0};
@@ -9540,7 +9663,7 @@ public:
     eProsima_user_DllExport ArraySingleDimensionLiteralsShortArray(
             const ArraySingleDimensionLiteralsShortArray& x)
     {
-        m_var_array_short_array = x.m_var_array_short_array;
+                    m_var_array_short_array = x.m_var_array_short_array;
 
     }
 
@@ -9562,7 +9685,7 @@ public:
             const ArraySingleDimensionLiteralsShortArray& x)
     {
 
-        m_var_array_short_array = x.m_var_array_short_array;
+                    m_var_array_short_array = x.m_var_array_short_array;
 
         return *this;
     }
@@ -9604,7 +9727,7 @@ public:
      * @param _var_array_short_array New value to be copied in member var_array_short_array
      */
     eProsima_user_DllExport void var_array_short_array(
-            const std::array<std::array<int16_t, size_1 + 5>, size_1* size_2>& _var_array_short_array)
+            const std::array<std::array<int16_t, size_1+5>, size_1*size_2>& _var_array_short_array)
     {
         m_var_array_short_array = _var_array_short_array;
     }
@@ -9614,7 +9737,7 @@ public:
      * @param _var_array_short_array New value to be moved in member var_array_short_array
      */
     eProsima_user_DllExport void var_array_short_array(
-            std::array<std::array<int16_t, size_1 + 5>, size_1* size_2>&& _var_array_short_array)
+            std::array<std::array<int16_t, size_1+5>, size_1*size_2>&& _var_array_short_array)
     {
         m_var_array_short_array = std::move(_var_array_short_array);
     }
@@ -9623,8 +9746,7 @@ public:
      * @brief This function returns a constant reference to member var_array_short_array
      * @return Constant reference to member var_array_short_array
      */
-    eProsima_user_DllExport const std::array<std::array<int16_t, size_1 + 5>,
-            size_1*size_2>& var_array_short_array() const
+    eProsima_user_DllExport const std::array<std::array<int16_t, size_1+5>, size_1*size_2>& var_array_short_array() const
     {
         return m_var_array_short_array;
     }
@@ -9633,14 +9755,16 @@ public:
      * @brief This function returns a reference to member var_array_short_array
      * @return Reference to member var_array_short_array
      */
-    eProsima_user_DllExport std::array<std::array<int16_t, size_1 + 5>, size_1*size_2>& var_array_short_array()
+    eProsima_user_DllExport std::array<std::array<int16_t, size_1+5>, size_1*size_2>& var_array_short_array()
     {
         return m_var_array_short_array;
     }
 
+
+
 private:
 
-    std::array<std::array<int16_t, size_1 + 5>, size_1* size_2> m_var_array_short_array{ {{0}} };
+    std::array<std::array<int16_t, size_1+5>, size_1*size_2> m_var_array_short_array{ {{0}} };
 
 };
 /*!
@@ -9672,7 +9796,7 @@ public:
     eProsima_user_DllExport ArraySingleDimensionLiteralsSequence(
             const ArraySingleDimensionLiteralsSequence& x)
     {
-        m_var_array_sequence = x.m_var_array_sequence;
+                    m_var_array_sequence = x.m_var_array_sequence;
 
     }
 
@@ -9694,7 +9818,7 @@ public:
             const ArraySingleDimensionLiteralsSequence& x)
     {
 
-        m_var_array_sequence = x.m_var_array_sequence;
+                    m_var_array_sequence = x.m_var_array_sequence;
 
         return *this;
     }
@@ -9769,6 +9893,8 @@ public:
         return m_var_array_sequence;
     }
 
+
+
 private:
 
     std::array<std::vector<int32_t>, size_1> m_var_array_sequence;
@@ -9803,7 +9929,7 @@ public:
     eProsima_user_DllExport ArraySingleDimensionLiteralsMap(
             const ArraySingleDimensionLiteralsMap& x)
     {
-        m_var_array_map = x.m_var_array_map;
+                    m_var_array_map = x.m_var_array_map;
 
     }
 
@@ -9825,7 +9951,7 @@ public:
             const ArraySingleDimensionLiteralsMap& x)
     {
 
-        m_var_array_map = x.m_var_array_map;
+                    m_var_array_map = x.m_var_array_map;
 
         return *this;
     }
@@ -9900,6 +10026,8 @@ public:
         return m_var_array_map;
     }
 
+
+
 private:
 
     std::array<std::map<int32_t, int32_t>, size_2> m_var_array_map;
@@ -9934,7 +10062,7 @@ public:
     eProsima_user_DllExport ArraySingleDimensionLiteralsUnion(
             const ArraySingleDimensionLiteralsUnion& x)
     {
-        m_var_array_union = x.m_var_array_union;
+                    m_var_array_union = x.m_var_array_union;
 
     }
 
@@ -9956,7 +10084,7 @@ public:
             const ArraySingleDimensionLiteralsUnion& x)
     {
 
-        m_var_array_union = x.m_var_array_union;
+                    m_var_array_union = x.m_var_array_union;
 
         return *this;
     }
@@ -9998,7 +10126,7 @@ public:
      * @param _var_array_union New value to be copied in member var_array_union
      */
     eProsima_user_DllExport void var_array_union(
-            const std::array<InnerUnionHelper, 5 * 2>& _var_array_union)
+            const std::array<InnerUnionHelper, 5*2>& _var_array_union)
     {
         m_var_array_union = _var_array_union;
     }
@@ -10008,7 +10136,7 @@ public:
      * @param _var_array_union New value to be moved in member var_array_union
      */
     eProsima_user_DllExport void var_array_union(
-            std::array<InnerUnionHelper, 5 * 2>&& _var_array_union)
+            std::array<InnerUnionHelper, 5*2>&& _var_array_union)
     {
         m_var_array_union = std::move(_var_array_union);
     }
@@ -10017,7 +10145,7 @@ public:
      * @brief This function returns a constant reference to member var_array_union
      * @return Constant reference to member var_array_union
      */
-    eProsima_user_DllExport const std::array<InnerUnionHelper, 5 * 2>& var_array_union() const
+    eProsima_user_DllExport const std::array<InnerUnionHelper, 5*2>& var_array_union() const
     {
         return m_var_array_union;
     }
@@ -10026,14 +10154,16 @@ public:
      * @brief This function returns a reference to member var_array_union
      * @return Reference to member var_array_union
      */
-    eProsima_user_DllExport std::array<InnerUnionHelper, 5 * 2>& var_array_union()
+    eProsima_user_DllExport std::array<InnerUnionHelper, 5*2>& var_array_union()
     {
         return m_var_array_union;
     }
 
+
+
 private:
 
-    std::array<InnerUnionHelper, 5 * 2> m_var_array_union;
+    std::array<InnerUnionHelper, 5*2> m_var_array_union;
 
 };
 /*!
@@ -10065,7 +10195,7 @@ public:
     eProsima_user_DllExport ArraySingleDimensionLiteralsStructure(
             const ArraySingleDimensionLiteralsStructure& x)
     {
-        m_var_array_structure = x.m_var_array_structure;
+                    m_var_array_structure = x.m_var_array_structure;
 
     }
 
@@ -10087,7 +10217,7 @@ public:
             const ArraySingleDimensionLiteralsStructure& x)
     {
 
-        m_var_array_structure = x.m_var_array_structure;
+                    m_var_array_structure = x.m_var_array_structure;
 
         return *this;
     }
@@ -10162,6 +10292,8 @@ public:
         return m_var_array_structure;
     }
 
+
+
 private:
 
     std::array<InnerStructureHelper, size_1> m_var_array_structure;
@@ -10196,7 +10328,7 @@ public:
     eProsima_user_DllExport ArraySingleDimensionLiteralsBitset(
             const ArraySingleDimensionLiteralsBitset& x)
     {
-        m_var_array_bitset = x.m_var_array_bitset;
+                    m_var_array_bitset = x.m_var_array_bitset;
 
     }
 
@@ -10218,7 +10350,7 @@ public:
             const ArraySingleDimensionLiteralsBitset& x)
     {
 
-        m_var_array_bitset = x.m_var_array_bitset;
+                    m_var_array_bitset = x.m_var_array_bitset;
 
         return *this;
     }
@@ -10260,7 +10392,7 @@ public:
      * @param _var_array_bitset New value to be copied in member var_array_bitset
      */
     eProsima_user_DllExport void var_array_bitset(
-            const std::array<InnerBitsetHelper, size_1 + 5>& _var_array_bitset)
+            const std::array<InnerBitsetHelper, size_1+5>& _var_array_bitset)
     {
         m_var_array_bitset = _var_array_bitset;
     }
@@ -10270,7 +10402,7 @@ public:
      * @param _var_array_bitset New value to be moved in member var_array_bitset
      */
     eProsima_user_DllExport void var_array_bitset(
-            std::array<InnerBitsetHelper, size_1 + 5>&& _var_array_bitset)
+            std::array<InnerBitsetHelper, size_1+5>&& _var_array_bitset)
     {
         m_var_array_bitset = std::move(_var_array_bitset);
     }
@@ -10279,7 +10411,7 @@ public:
      * @brief This function returns a constant reference to member var_array_bitset
      * @return Constant reference to member var_array_bitset
      */
-    eProsima_user_DllExport const std::array<InnerBitsetHelper, size_1 + 5>& var_array_bitset() const
+    eProsima_user_DllExport const std::array<InnerBitsetHelper, size_1+5>& var_array_bitset() const
     {
         return m_var_array_bitset;
     }
@@ -10288,14 +10420,16 @@ public:
      * @brief This function returns a reference to member var_array_bitset
      * @return Reference to member var_array_bitset
      */
-    eProsima_user_DllExport std::array<InnerBitsetHelper, size_1 + 5>& var_array_bitset()
+    eProsima_user_DllExport std::array<InnerBitsetHelper, size_1+5>& var_array_bitset()
     {
         return m_var_array_bitset;
     }
 
+
+
 private:
 
-    std::array<InnerBitsetHelper, size_1 + 5> m_var_array_bitset;
+    std::array<InnerBitsetHelper, size_1+5> m_var_array_bitset;
 
 };
 /*!
@@ -10327,7 +10461,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionLiteralsShort(
             const ArrayMultiDimensionLiteralsShort& x)
     {
-        m_var_array_short = x.m_var_array_short;
+                    m_var_array_short = x.m_var_array_short;
 
     }
 
@@ -10349,7 +10483,7 @@ public:
             const ArrayMultiDimensionLiteralsShort& x)
     {
 
-        m_var_array_short = x.m_var_array_short;
+                    m_var_array_short = x.m_var_array_short;
 
         return *this;
     }
@@ -10391,7 +10525,7 @@ public:
      * @param _var_array_short New value to be copied in member var_array_short
      */
     eProsima_user_DllExport void var_array_short(
-            const std::array<std::array<std::array<int16_t, size_2>, 5 + 5>, size_1>& _var_array_short)
+            const std::array<std::array<std::array<int16_t, size_2>, 5+5>, size_1>& _var_array_short)
     {
         m_var_array_short = _var_array_short;
     }
@@ -10401,7 +10535,7 @@ public:
      * @param _var_array_short New value to be moved in member var_array_short
      */
     eProsima_user_DllExport void var_array_short(
-            std::array<std::array<std::array<int16_t, size_2>, 5 + 5>, size_1>&& _var_array_short)
+            std::array<std::array<std::array<int16_t, size_2>, 5+5>, size_1>&& _var_array_short)
     {
         m_var_array_short = std::move(_var_array_short);
     }
@@ -10410,8 +10544,7 @@ public:
      * @brief This function returns a constant reference to member var_array_short
      * @return Constant reference to member var_array_short
      */
-    eProsima_user_DllExport const std::array<std::array<std::array<int16_t, size_2>, 5 + 5>,
-            size_1>& var_array_short() const
+    eProsima_user_DllExport const std::array<std::array<std::array<int16_t, size_2>, 5+5>, size_1>& var_array_short() const
     {
         return m_var_array_short;
     }
@@ -10420,14 +10553,16 @@ public:
      * @brief This function returns a reference to member var_array_short
      * @return Reference to member var_array_short
      */
-    eProsima_user_DllExport std::array<std::array<std::array<int16_t, size_2>, 5 + 5>, size_1>& var_array_short()
+    eProsima_user_DllExport std::array<std::array<std::array<int16_t, size_2>, 5+5>, size_1>& var_array_short()
     {
         return m_var_array_short;
     }
 
+
+
 private:
 
-    std::array<std::array<std::array<int16_t, size_2>, 5 + 5>, size_1> m_var_array_short{ {{ {{0}} }} };
+    std::array<std::array<std::array<int16_t, size_2>, 5+5>, size_1> m_var_array_short{ {{ {{0}} }} };
 
 };
 /*!
@@ -10459,7 +10594,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionLiteralsUShort(
             const ArrayMultiDimensionLiteralsUShort& x)
     {
-        m_var_array_ushort = x.m_var_array_ushort;
+                    m_var_array_ushort = x.m_var_array_ushort;
 
     }
 
@@ -10481,7 +10616,7 @@ public:
             const ArrayMultiDimensionLiteralsUShort& x)
     {
 
-        m_var_array_ushort = x.m_var_array_ushort;
+                    m_var_array_ushort = x.m_var_array_ushort;
 
         return *this;
     }
@@ -10542,8 +10677,7 @@ public:
      * @brief This function returns a constant reference to member var_array_ushort
      * @return Constant reference to member var_array_ushort
      */
-    eProsima_user_DllExport const std::array<std::array<std::array<uint16_t, 5>, size_1*2>,
-            size_1>& var_array_ushort() const
+    eProsima_user_DllExport const std::array<std::array<std::array<uint16_t, 5>, size_1*2>, size_1>& var_array_ushort() const
     {
         return m_var_array_ushort;
     }
@@ -10556,6 +10690,8 @@ public:
     {
         return m_var_array_ushort;
     }
+
+
 
 private:
 
@@ -10591,7 +10727,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionLiteralsLong(
             const ArrayMultiDimensionLiteralsLong& x)
     {
-        m_var_array_long = x.m_var_array_long;
+                    m_var_array_long = x.m_var_array_long;
 
     }
 
@@ -10613,7 +10749,7 @@ public:
             const ArrayMultiDimensionLiteralsLong& x)
     {
 
-        m_var_array_long = x.m_var_array_long;
+                    m_var_array_long = x.m_var_array_long;
 
         return *this;
     }
@@ -10655,7 +10791,7 @@ public:
      * @param _var_array_long New value to be copied in member var_array_long
      */
     eProsima_user_DllExport void var_array_long(
-            const std::array<std::array<std::array<int32_t, 5>, size_1>, 5 * 2>& _var_array_long)
+            const std::array<std::array<std::array<int32_t, 5>, size_1>, 5*2>& _var_array_long)
     {
         m_var_array_long = _var_array_long;
     }
@@ -10665,7 +10801,7 @@ public:
      * @param _var_array_long New value to be moved in member var_array_long
      */
     eProsima_user_DllExport void var_array_long(
-            std::array<std::array<std::array<int32_t, 5>, size_1>, 5 * 2>&& _var_array_long)
+            std::array<std::array<std::array<int32_t, 5>, size_1>, 5*2>&& _var_array_long)
     {
         m_var_array_long = std::move(_var_array_long);
     }
@@ -10674,7 +10810,7 @@ public:
      * @brief This function returns a constant reference to member var_array_long
      * @return Constant reference to member var_array_long
      */
-    eProsima_user_DllExport const std::array<std::array<std::array<int32_t, 5>, size_1>, 5 * 2>& var_array_long() const
+    eProsima_user_DllExport const std::array<std::array<std::array<int32_t, 5>, size_1>, 5*2>& var_array_long() const
     {
         return m_var_array_long;
     }
@@ -10683,14 +10819,16 @@ public:
      * @brief This function returns a reference to member var_array_long
      * @return Reference to member var_array_long
      */
-    eProsima_user_DllExport std::array<std::array<std::array<int32_t, 5>, size_1>, 5 * 2>& var_array_long()
+    eProsima_user_DllExport std::array<std::array<std::array<int32_t, 5>, size_1>, 5*2>& var_array_long()
     {
         return m_var_array_long;
     }
 
+
+
 private:
 
-    std::array<std::array<std::array<int32_t, 5>, size_1>, 5 * 2> m_var_array_long{ {{ {{0}} }} };
+    std::array<std::array<std::array<int32_t, 5>, size_1>, 5*2> m_var_array_long{ {{ {{0}} }} };
 
 };
 /*!
@@ -10722,7 +10860,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionLiteralsULong(
             const ArrayMultiDimensionLiteralsULong& x)
     {
-        m_var_array_ulong = x.m_var_array_ulong;
+                    m_var_array_ulong = x.m_var_array_ulong;
 
     }
 
@@ -10744,7 +10882,7 @@ public:
             const ArrayMultiDimensionLiteralsULong& x)
     {
 
-        m_var_array_ulong = x.m_var_array_ulong;
+                    m_var_array_ulong = x.m_var_array_ulong;
 
         return *this;
     }
@@ -10786,7 +10924,7 @@ public:
      * @param _var_array_ulong New value to be copied in member var_array_ulong
      */
     eProsima_user_DllExport void var_array_ulong(
-            const std::array<std::array<std::array<uint32_t, size_1>, size_1* size_2>, 5 + 5>& _var_array_ulong)
+            const std::array<std::array<std::array<uint32_t, size_1>, size_1*size_2>, 5+5>& _var_array_ulong)
     {
         m_var_array_ulong = _var_array_ulong;
     }
@@ -10796,7 +10934,7 @@ public:
      * @param _var_array_ulong New value to be moved in member var_array_ulong
      */
     eProsima_user_DllExport void var_array_ulong(
-            std::array<std::array<std::array<uint32_t, size_1>, size_1* size_2>, 5 + 5>&& _var_array_ulong)
+            std::array<std::array<std::array<uint32_t, size_1>, size_1*size_2>, 5+5>&& _var_array_ulong)
     {
         m_var_array_ulong = std::move(_var_array_ulong);
     }
@@ -10805,8 +10943,7 @@ public:
      * @brief This function returns a constant reference to member var_array_ulong
      * @return Constant reference to member var_array_ulong
      */
-    eProsima_user_DllExport const std::array<std::array<std::array<uint32_t, size_1>, size_1*size_2>,
-            5 + 5>& var_array_ulong() const
+    eProsima_user_DllExport const std::array<std::array<std::array<uint32_t, size_1>, size_1*size_2>, 5+5>& var_array_ulong() const
     {
         return m_var_array_ulong;
     }
@@ -10815,15 +10952,16 @@ public:
      * @brief This function returns a reference to member var_array_ulong
      * @return Reference to member var_array_ulong
      */
-    eProsima_user_DllExport std::array<std::array<std::array<uint32_t, size_1>, size_1*size_2>,
-            5 + 5>& var_array_ulong()
+    eProsima_user_DllExport std::array<std::array<std::array<uint32_t, size_1>, size_1*size_2>, 5+5>& var_array_ulong()
     {
         return m_var_array_ulong;
     }
 
+
+
 private:
 
-    std::array<std::array<std::array<uint32_t, size_1>, size_1* size_2>, 5 + 5> m_var_array_ulong{ {{ {{0}} }} };
+    std::array<std::array<std::array<uint32_t, size_1>, size_1*size_2>, 5+5> m_var_array_ulong{ {{ {{0}} }} };
 
 };
 /*!
@@ -10855,7 +10993,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionLiteralsLongLong(
             const ArrayMultiDimensionLiteralsLongLong& x)
     {
-        m_var_array_longlong = x.m_var_array_longlong;
+                    m_var_array_longlong = x.m_var_array_longlong;
 
     }
 
@@ -10877,7 +11015,7 @@ public:
             const ArrayMultiDimensionLiteralsLongLong& x)
     {
 
-        m_var_array_longlong = x.m_var_array_longlong;
+                    m_var_array_longlong = x.m_var_array_longlong;
 
         return *this;
     }
@@ -10919,7 +11057,7 @@ public:
      * @param _var_array_longlong New value to be copied in member var_array_longlong
      */
     eProsima_user_DllExport void var_array_longlong(
-            const std::array<std::array<std::array<int64_t, 5>, 5 * 2>, size_1>& _var_array_longlong)
+            const std::array<std::array<std::array<int64_t, 5>, 5*2>, size_1>& _var_array_longlong)
     {
         m_var_array_longlong = _var_array_longlong;
     }
@@ -10929,7 +11067,7 @@ public:
      * @param _var_array_longlong New value to be moved in member var_array_longlong
      */
     eProsima_user_DllExport void var_array_longlong(
-            std::array<std::array<std::array<int64_t, 5>, 5 * 2>, size_1>&& _var_array_longlong)
+            std::array<std::array<std::array<int64_t, 5>, 5*2>, size_1>&& _var_array_longlong)
     {
         m_var_array_longlong = std::move(_var_array_longlong);
     }
@@ -10938,8 +11076,7 @@ public:
      * @brief This function returns a constant reference to member var_array_longlong
      * @return Constant reference to member var_array_longlong
      */
-    eProsima_user_DllExport const std::array<std::array<std::array<int64_t, 5>, 5 * 2>,
-            size_1>& var_array_longlong() const
+    eProsima_user_DllExport const std::array<std::array<std::array<int64_t, 5>, 5*2>, size_1>& var_array_longlong() const
     {
         return m_var_array_longlong;
     }
@@ -10948,14 +11085,16 @@ public:
      * @brief This function returns a reference to member var_array_longlong
      * @return Reference to member var_array_longlong
      */
-    eProsima_user_DllExport std::array<std::array<std::array<int64_t, 5>, 5 * 2>, size_1>& var_array_longlong()
+    eProsima_user_DllExport std::array<std::array<std::array<int64_t, 5>, 5*2>, size_1>& var_array_longlong()
     {
         return m_var_array_longlong;
     }
 
+
+
 private:
 
-    std::array<std::array<std::array<int64_t, 5>, 5 * 2>, size_1> m_var_array_longlong{ {{ {{0}} }} };
+    std::array<std::array<std::array<int64_t, 5>, 5*2>, size_1> m_var_array_longlong{ {{ {{0}} }} };
 
 };
 /*!
@@ -10987,7 +11126,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionLiteralsULongLong(
             const ArrayMultiDimensionLiteralsULongLong& x)
     {
-        m_var_array_ulonglong = x.m_var_array_ulonglong;
+                    m_var_array_ulonglong = x.m_var_array_ulonglong;
 
     }
 
@@ -11009,7 +11148,7 @@ public:
             const ArrayMultiDimensionLiteralsULongLong& x)
     {
 
-        m_var_array_ulonglong = x.m_var_array_ulonglong;
+                    m_var_array_ulonglong = x.m_var_array_ulonglong;
 
         return *this;
     }
@@ -11051,7 +11190,7 @@ public:
      * @param _var_array_ulonglong New value to be copied in member var_array_ulonglong
      */
     eProsima_user_DllExport void var_array_ulonglong(
-            const std::array<std::array<std::array<uint64_t, 5 + 5>, size_1* size_2>, size_1 + 5>& _var_array_ulonglong)
+            const std::array<std::array<std::array<uint64_t, 5+5>, size_1*size_2>, size_1+5>& _var_array_ulonglong)
     {
         m_var_array_ulonglong = _var_array_ulonglong;
     }
@@ -11061,7 +11200,7 @@ public:
      * @param _var_array_ulonglong New value to be moved in member var_array_ulonglong
      */
     eProsima_user_DllExport void var_array_ulonglong(
-            std::array<std::array<std::array<uint64_t, 5 + 5>, size_1* size_2>, size_1 + 5>&& _var_array_ulonglong)
+            std::array<std::array<std::array<uint64_t, 5+5>, size_1*size_2>, size_1+5>&& _var_array_ulonglong)
     {
         m_var_array_ulonglong = std::move(_var_array_ulonglong);
     }
@@ -11070,8 +11209,7 @@ public:
      * @brief This function returns a constant reference to member var_array_ulonglong
      * @return Constant reference to member var_array_ulonglong
      */
-    eProsima_user_DllExport const std::array<std::array<std::array<uint64_t, 5 + 5>, size_1*size_2>,
-            size_1 + 5>& var_array_ulonglong() const
+    eProsima_user_DllExport const std::array<std::array<std::array<uint64_t, 5+5>, size_1*size_2>, size_1+5>& var_array_ulonglong() const
     {
         return m_var_array_ulonglong;
     }
@@ -11080,16 +11218,16 @@ public:
      * @brief This function returns a reference to member var_array_ulonglong
      * @return Reference to member var_array_ulonglong
      */
-    eProsima_user_DllExport std::array<std::array<std::array<uint64_t, 5 + 5>, size_1*size_2>,
-            size_1 + 5>& var_array_ulonglong()
+    eProsima_user_DllExport std::array<std::array<std::array<uint64_t, 5+5>, size_1*size_2>, size_1+5>& var_array_ulonglong()
     {
         return m_var_array_ulonglong;
     }
 
+
+
 private:
 
-    std::array<std::array<std::array<uint64_t, 5 + 5>, size_1* size_2>,
-            size_1 + 5> m_var_array_ulonglong{ {{ {{0}} }} };
+    std::array<std::array<std::array<uint64_t, 5+5>, size_1*size_2>, size_1+5> m_var_array_ulonglong{ {{ {{0}} }} };
 
 };
 /*!
@@ -11121,7 +11259,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionLiteralsFloat(
             const ArrayMultiDimensionLiteralsFloat& x)
     {
-        m_var_array_float = x.m_var_array_float;
+                    m_var_array_float = x.m_var_array_float;
 
     }
 
@@ -11143,7 +11281,7 @@ public:
             const ArrayMultiDimensionLiteralsFloat& x)
     {
 
-        m_var_array_float = x.m_var_array_float;
+                    m_var_array_float = x.m_var_array_float;
 
         return *this;
     }
@@ -11185,7 +11323,7 @@ public:
      * @param _var_array_float New value to be copied in member var_array_float
      */
     eProsima_user_DllExport void var_array_float(
-            const std::array<std::array<std::array<float, 5 + 5>, size_1>, 5 * 2>& _var_array_float)
+            const std::array<std::array<std::array<float, 5+5>, size_1>, 5*2>& _var_array_float)
     {
         m_var_array_float = _var_array_float;
     }
@@ -11195,7 +11333,7 @@ public:
      * @param _var_array_float New value to be moved in member var_array_float
      */
     eProsima_user_DllExport void var_array_float(
-            std::array<std::array<std::array<float, 5 + 5>, size_1>, 5 * 2>&& _var_array_float)
+            std::array<std::array<std::array<float, 5+5>, size_1>, 5*2>&& _var_array_float)
     {
         m_var_array_float = std::move(_var_array_float);
     }
@@ -11204,8 +11342,7 @@ public:
      * @brief This function returns a constant reference to member var_array_float
      * @return Constant reference to member var_array_float
      */
-    eProsima_user_DllExport const std::array<std::array<std::array<float, 5 + 5>, size_1>,
-            5 * 2>& var_array_float() const
+    eProsima_user_DllExport const std::array<std::array<std::array<float, 5+5>, size_1>, 5*2>& var_array_float() const
     {
         return m_var_array_float;
     }
@@ -11214,14 +11351,16 @@ public:
      * @brief This function returns a reference to member var_array_float
      * @return Reference to member var_array_float
      */
-    eProsima_user_DllExport std::array<std::array<std::array<float, 5 + 5>, size_1>, 5 * 2>& var_array_float()
+    eProsima_user_DllExport std::array<std::array<std::array<float, 5+5>, size_1>, 5*2>& var_array_float()
     {
         return m_var_array_float;
     }
 
+
+
 private:
 
-    std::array<std::array<std::array<float, 5 + 5>, size_1>, 5 * 2> m_var_array_float{ {{ {{0.0}} }} };
+    std::array<std::array<std::array<float, 5+5>, size_1>, 5*2> m_var_array_float{ {{ {{0.0}} }} };
 
 };
 /*!
@@ -11253,7 +11392,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionLiteralsDouble(
             const ArrayMultiDimensionLiteralsDouble& x)
     {
-        m_var_array_double = x.m_var_array_double;
+                    m_var_array_double = x.m_var_array_double;
 
     }
 
@@ -11275,7 +11414,7 @@ public:
             const ArrayMultiDimensionLiteralsDouble& x)
     {
 
-        m_var_array_double = x.m_var_array_double;
+                    m_var_array_double = x.m_var_array_double;
 
         return *this;
     }
@@ -11317,7 +11456,7 @@ public:
      * @param _var_array_double New value to be copied in member var_array_double
      */
     eProsima_user_DllExport void var_array_double(
-            const std::array<std::array<std::array<double, size_1>, size_1 + 5>, size_1>& _var_array_double)
+            const std::array<std::array<std::array<double, size_1>, size_1+5>, size_1>& _var_array_double)
     {
         m_var_array_double = _var_array_double;
     }
@@ -11327,7 +11466,7 @@ public:
      * @param _var_array_double New value to be moved in member var_array_double
      */
     eProsima_user_DllExport void var_array_double(
-            std::array<std::array<std::array<double, size_1>, size_1 + 5>, size_1>&& _var_array_double)
+            std::array<std::array<std::array<double, size_1>, size_1+5>, size_1>&& _var_array_double)
     {
         m_var_array_double = std::move(_var_array_double);
     }
@@ -11336,8 +11475,7 @@ public:
      * @brief This function returns a constant reference to member var_array_double
      * @return Constant reference to member var_array_double
      */
-    eProsima_user_DllExport const std::array<std::array<std::array<double, size_1>, size_1 + 5>,
-            size_1>& var_array_double() const
+    eProsima_user_DllExport const std::array<std::array<std::array<double, size_1>, size_1+5>, size_1>& var_array_double() const
     {
         return m_var_array_double;
     }
@@ -11346,14 +11484,16 @@ public:
      * @brief This function returns a reference to member var_array_double
      * @return Reference to member var_array_double
      */
-    eProsima_user_DllExport std::array<std::array<std::array<double, size_1>, size_1 + 5>, size_1>& var_array_double()
+    eProsima_user_DllExport std::array<std::array<std::array<double, size_1>, size_1+5>, size_1>& var_array_double()
     {
         return m_var_array_double;
     }
 
+
+
 private:
 
-    std::array<std::array<std::array<double, size_1>, size_1 + 5>, size_1> m_var_array_double{ {{ {{0.0}} }} };
+    std::array<std::array<std::array<double, size_1>, size_1+5>, size_1> m_var_array_double{ {{ {{0.0}} }} };
 
 };
 /*!
@@ -11385,7 +11525,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionLiteralsLongDouble(
             const ArrayMultiDimensionLiteralsLongDouble& x)
     {
-        m_var_array_longdouble = x.m_var_array_longdouble;
+                    m_var_array_longdouble = x.m_var_array_longdouble;
 
     }
 
@@ -11407,7 +11547,7 @@ public:
             const ArrayMultiDimensionLiteralsLongDouble& x)
     {
 
-        m_var_array_longdouble = x.m_var_array_longdouble;
+                    m_var_array_longdouble = x.m_var_array_longdouble;
 
         return *this;
     }
@@ -11449,7 +11589,7 @@ public:
      * @param _var_array_longdouble New value to be copied in member var_array_longdouble
      */
     eProsima_user_DllExport void var_array_longdouble(
-            const std::array<std::array<std::array<long double, size_1 + 5>, size_1>, size_1>& _var_array_longdouble)
+            const std::array<std::array<std::array<long double, size_1+5>, size_1>, size_1>& _var_array_longdouble)
     {
         m_var_array_longdouble = _var_array_longdouble;
     }
@@ -11459,7 +11599,7 @@ public:
      * @param _var_array_longdouble New value to be moved in member var_array_longdouble
      */
     eProsima_user_DllExport void var_array_longdouble(
-            std::array<std::array<std::array<long double, size_1 + 5>, size_1>, size_1>&& _var_array_longdouble)
+            std::array<std::array<std::array<long double, size_1+5>, size_1>, size_1>&& _var_array_longdouble)
     {
         m_var_array_longdouble = std::move(_var_array_longdouble);
     }
@@ -11468,8 +11608,7 @@ public:
      * @brief This function returns a constant reference to member var_array_longdouble
      * @return Constant reference to member var_array_longdouble
      */
-    eProsima_user_DllExport const std::array<std::array<std::array<long double, size_1 + 5>, size_1>,
-            size_1>& var_array_longdouble() const
+    eProsima_user_DllExport const std::array<std::array<std::array<long double, size_1+5>, size_1>, size_1>& var_array_longdouble() const
     {
         return m_var_array_longdouble;
     }
@@ -11478,15 +11617,16 @@ public:
      * @brief This function returns a reference to member var_array_longdouble
      * @return Reference to member var_array_longdouble
      */
-    eProsima_user_DllExport std::array<std::array<std::array<long double, size_1 + 5>, size_1>,
-            size_1>& var_array_longdouble()
+    eProsima_user_DllExport std::array<std::array<std::array<long double, size_1+5>, size_1>, size_1>& var_array_longdouble()
     {
         return m_var_array_longdouble;
     }
 
+
+
 private:
 
-    std::array<std::array<std::array<long double, size_1 + 5>, size_1>, size_1> m_var_array_longdouble{ {{ {{0.0}} }} };
+    std::array<std::array<std::array<long double, size_1+5>, size_1>, size_1> m_var_array_longdouble{ {{ {{0.0}} }} };
 
 };
 /*!
@@ -11518,7 +11658,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionLiteralsBoolean(
             const ArrayMultiDimensionLiteralsBoolean& x)
     {
-        m_var_array_boolean = x.m_var_array_boolean;
+                    m_var_array_boolean = x.m_var_array_boolean;
 
     }
 
@@ -11540,7 +11680,7 @@ public:
             const ArrayMultiDimensionLiteralsBoolean& x)
     {
 
-        m_var_array_boolean = x.m_var_array_boolean;
+                    m_var_array_boolean = x.m_var_array_boolean;
 
         return *this;
     }
@@ -11582,7 +11722,7 @@ public:
      * @param _var_array_boolean New value to be copied in member var_array_boolean
      */
     eProsima_user_DllExport void var_array_boolean(
-            const std::array<std::array<std::array<bool, 5>, size_1>, size_1* size_2>& _var_array_boolean)
+            const std::array<std::array<std::array<bool, 5>, size_1>, size_1*size_2>& _var_array_boolean)
     {
         m_var_array_boolean = _var_array_boolean;
     }
@@ -11592,7 +11732,7 @@ public:
      * @param _var_array_boolean New value to be moved in member var_array_boolean
      */
     eProsima_user_DllExport void var_array_boolean(
-            std::array<std::array<std::array<bool, 5>, size_1>, size_1* size_2>&& _var_array_boolean)
+            std::array<std::array<std::array<bool, 5>, size_1>, size_1*size_2>&& _var_array_boolean)
     {
         m_var_array_boolean = std::move(_var_array_boolean);
     }
@@ -11601,8 +11741,7 @@ public:
      * @brief This function returns a constant reference to member var_array_boolean
      * @return Constant reference to member var_array_boolean
      */
-    eProsima_user_DllExport const std::array<std::array<std::array<bool, 5>, size_1>,
-            size_1*size_2>& var_array_boolean() const
+    eProsima_user_DllExport const std::array<std::array<std::array<bool, 5>, size_1>, size_1*size_2>& var_array_boolean() const
     {
         return m_var_array_boolean;
     }
@@ -11616,9 +11755,11 @@ public:
         return m_var_array_boolean;
     }
 
+
+
 private:
 
-    std::array<std::array<std::array<bool, 5>, size_1>, size_1* size_2> m_var_array_boolean{ {{ {{false}} }} };
+    std::array<std::array<std::array<bool, 5>, size_1>, size_1*size_2> m_var_array_boolean{ {{ {{false}} }} };
 
 };
 /*!
@@ -11650,7 +11791,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionLiteralsOctet(
             const ArrayMultiDimensionLiteralsOctet& x)
     {
-        m_var_array_octet = x.m_var_array_octet;
+                    m_var_array_octet = x.m_var_array_octet;
 
     }
 
@@ -11672,7 +11813,7 @@ public:
             const ArrayMultiDimensionLiteralsOctet& x)
     {
 
-        m_var_array_octet = x.m_var_array_octet;
+                    m_var_array_octet = x.m_var_array_octet;
 
         return *this;
     }
@@ -11733,8 +11874,7 @@ public:
      * @brief This function returns a constant reference to member var_array_octet
      * @return Constant reference to member var_array_octet
      */
-    eProsima_user_DllExport const std::array<std::array<std::array<uint8_t, size_1>, size_1*2>,
-            size_1>& var_array_octet() const
+    eProsima_user_DllExport const std::array<std::array<std::array<uint8_t, size_1>, size_1*2>, size_1>& var_array_octet() const
     {
         return m_var_array_octet;
     }
@@ -11747,6 +11887,8 @@ public:
     {
         return m_var_array_octet;
     }
+
+
 
 private:
 
@@ -11782,7 +11924,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionLiteralsChar(
             const ArrayMultiDimensionLiteralsChar& x)
     {
-        m_var_array_char = x.m_var_array_char;
+                    m_var_array_char = x.m_var_array_char;
 
     }
 
@@ -11804,7 +11946,7 @@ public:
             const ArrayMultiDimensionLiteralsChar& x)
     {
 
-        m_var_array_char = x.m_var_array_char;
+                    m_var_array_char = x.m_var_array_char;
 
         return *this;
     }
@@ -11846,7 +11988,7 @@ public:
      * @param _var_array_char New value to be copied in member var_array_char
      */
     eProsima_user_DllExport void var_array_char(
-            const std::array<std::array<std::array<char, 5 + 5>, size_1>, 5 + 5>& _var_array_char)
+            const std::array<std::array<std::array<char, 5+5>, size_1>, 5+5>& _var_array_char)
     {
         m_var_array_char = _var_array_char;
     }
@@ -11856,7 +11998,7 @@ public:
      * @param _var_array_char New value to be moved in member var_array_char
      */
     eProsima_user_DllExport void var_array_char(
-            std::array<std::array<std::array<char, 5 + 5>, size_1>, 5 + 5>&& _var_array_char)
+            std::array<std::array<std::array<char, 5+5>, size_1>, 5+5>&& _var_array_char)
     {
         m_var_array_char = std::move(_var_array_char);
     }
@@ -11865,7 +12007,7 @@ public:
      * @brief This function returns a constant reference to member var_array_char
      * @return Constant reference to member var_array_char
      */
-    eProsima_user_DllExport const std::array<std::array<std::array<char, 5 + 5>, size_1>, 5 + 5>& var_array_char() const
+    eProsima_user_DllExport const std::array<std::array<std::array<char, 5+5>, size_1>, 5+5>& var_array_char() const
     {
         return m_var_array_char;
     }
@@ -11874,14 +12016,16 @@ public:
      * @brief This function returns a reference to member var_array_char
      * @return Reference to member var_array_char
      */
-    eProsima_user_DllExport std::array<std::array<std::array<char, 5 + 5>, size_1>, 5 + 5>& var_array_char()
+    eProsima_user_DllExport std::array<std::array<std::array<char, 5+5>, size_1>, 5+5>& var_array_char()
     {
         return m_var_array_char;
     }
 
+
+
 private:
 
-    std::array<std::array<std::array<char, 5 + 5>, size_1>, 5 + 5> m_var_array_char{ {{ {{0}} }} };
+    std::array<std::array<std::array<char, 5+5>, size_1>, 5+5> m_var_array_char{ {{ {{0}} }} };
 
 };
 /*!
@@ -11913,7 +12057,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionLiteralsWChar(
             const ArrayMultiDimensionLiteralsWChar& x)
     {
-        m_var_array_wchar = x.m_var_array_wchar;
+                    m_var_array_wchar = x.m_var_array_wchar;
 
     }
 
@@ -11935,7 +12079,7 @@ public:
             const ArrayMultiDimensionLiteralsWChar& x)
     {
 
-        m_var_array_wchar = x.m_var_array_wchar;
+                    m_var_array_wchar = x.m_var_array_wchar;
 
         return *this;
     }
@@ -11977,7 +12121,7 @@ public:
      * @param _var_array_wchar New value to be copied in member var_array_wchar
      */
     eProsima_user_DllExport void var_array_wchar(
-            const std::array<std::array<std::array<wchar_t, size_1>, size_1 + 5>, size_1* size_2>& _var_array_wchar)
+            const std::array<std::array<std::array<wchar_t, size_1>, size_1+5>, size_1*size_2>& _var_array_wchar)
     {
         m_var_array_wchar = _var_array_wchar;
     }
@@ -11987,7 +12131,7 @@ public:
      * @param _var_array_wchar New value to be moved in member var_array_wchar
      */
     eProsima_user_DllExport void var_array_wchar(
-            std::array<std::array<std::array<wchar_t, size_1>, size_1 + 5>, size_1* size_2>&& _var_array_wchar)
+            std::array<std::array<std::array<wchar_t, size_1>, size_1+5>, size_1*size_2>&& _var_array_wchar)
     {
         m_var_array_wchar = std::move(_var_array_wchar);
     }
@@ -11996,8 +12140,7 @@ public:
      * @brief This function returns a constant reference to member var_array_wchar
      * @return Constant reference to member var_array_wchar
      */
-    eProsima_user_DllExport const std::array<std::array<std::array<wchar_t, size_1>, size_1 + 5>,
-            size_1*size_2>& var_array_wchar() const
+    eProsima_user_DllExport const std::array<std::array<std::array<wchar_t, size_1>, size_1+5>, size_1*size_2>& var_array_wchar() const
     {
         return m_var_array_wchar;
     }
@@ -12006,15 +12149,16 @@ public:
      * @brief This function returns a reference to member var_array_wchar
      * @return Reference to member var_array_wchar
      */
-    eProsima_user_DllExport std::array<std::array<std::array<wchar_t, size_1>, size_1 + 5>,
-            size_1*size_2>& var_array_wchar()
+    eProsima_user_DllExport std::array<std::array<std::array<wchar_t, size_1>, size_1+5>, size_1*size_2>& var_array_wchar()
     {
         return m_var_array_wchar;
     }
 
+
+
 private:
 
-    std::array<std::array<std::array<wchar_t, size_1>, size_1 + 5>, size_1* size_2> m_var_array_wchar{ {{ {{0}} }} };
+    std::array<std::array<std::array<wchar_t, size_1>, size_1+5>, size_1*size_2> m_var_array_wchar{ {{ {{0}} }} };
 
 };
 /*!
@@ -12046,7 +12190,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionLiteralsString(
             const ArrayMultiDimensionLiteralsString& x)
     {
-        m_var_array_string = x.m_var_array_string;
+                    m_var_array_string = x.m_var_array_string;
 
     }
 
@@ -12068,7 +12212,7 @@ public:
             const ArrayMultiDimensionLiteralsString& x)
     {
 
-        m_var_array_string = x.m_var_array_string;
+                    m_var_array_string = x.m_var_array_string;
 
         return *this;
     }
@@ -12110,7 +12254,7 @@ public:
      * @param _var_array_string New value to be copied in member var_array_string
      */
     eProsima_user_DllExport void var_array_string(
-            const std::array<std::array<std::array<std::string, 5>, 5 * 2>, size_1>& _var_array_string)
+            const std::array<std::array<std::array<std::string, 5>, 5*2>, size_1>& _var_array_string)
     {
         m_var_array_string = _var_array_string;
     }
@@ -12120,7 +12264,7 @@ public:
      * @param _var_array_string New value to be moved in member var_array_string
      */
     eProsima_user_DllExport void var_array_string(
-            std::array<std::array<std::array<std::string, 5>, 5 * 2>, size_1>&& _var_array_string)
+            std::array<std::array<std::array<std::string, 5>, 5*2>, size_1>&& _var_array_string)
     {
         m_var_array_string = std::move(_var_array_string);
     }
@@ -12129,8 +12273,7 @@ public:
      * @brief This function returns a constant reference to member var_array_string
      * @return Constant reference to member var_array_string
      */
-    eProsima_user_DllExport const std::array<std::array<std::array<std::string, 5>, 5 * 2>,
-            size_1>& var_array_string() const
+    eProsima_user_DllExport const std::array<std::array<std::array<std::string, 5>, 5*2>, size_1>& var_array_string() const
     {
         return m_var_array_string;
     }
@@ -12139,14 +12282,16 @@ public:
      * @brief This function returns a reference to member var_array_string
      * @return Reference to member var_array_string
      */
-    eProsima_user_DllExport std::array<std::array<std::array<std::string, 5>, 5 * 2>, size_1>& var_array_string()
+    eProsima_user_DllExport std::array<std::array<std::array<std::string, 5>, 5*2>, size_1>& var_array_string()
     {
         return m_var_array_string;
     }
 
+
+
 private:
 
-    std::array<std::array<std::array<std::string, 5>, 5 * 2>, size_1> m_var_array_string;
+    std::array<std::array<std::array<std::string, 5>, 5*2>, size_1> m_var_array_string;
 
 };
 /*!
@@ -12178,7 +12323,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionLiteralsWString(
             const ArrayMultiDimensionLiteralsWString& x)
     {
-        m_var_array_wstring = x.m_var_array_wstring;
+                    m_var_array_wstring = x.m_var_array_wstring;
 
     }
 
@@ -12200,7 +12345,7 @@ public:
             const ArrayMultiDimensionLiteralsWString& x)
     {
 
-        m_var_array_wstring = x.m_var_array_wstring;
+                    m_var_array_wstring = x.m_var_array_wstring;
 
         return *this;
     }
@@ -12242,8 +12387,7 @@ public:
      * @param _var_array_wstring New value to be copied in member var_array_wstring
      */
     eProsima_user_DllExport void var_array_wstring(
-            const std::array<std::array<std::array<std::wstring, 5 * 2>, size_1* size_2>,
-            size_1 + 5>& _var_array_wstring)
+            const std::array<std::array<std::array<std::wstring, 5*2>, size_1*size_2>, size_1+5>& _var_array_wstring)
     {
         m_var_array_wstring = _var_array_wstring;
     }
@@ -12253,7 +12397,7 @@ public:
      * @param _var_array_wstring New value to be moved in member var_array_wstring
      */
     eProsima_user_DllExport void var_array_wstring(
-            std::array<std::array<std::array<std::wstring, 5 * 2>, size_1* size_2>, size_1 + 5>&& _var_array_wstring)
+            std::array<std::array<std::array<std::wstring, 5*2>, size_1*size_2>, size_1+5>&& _var_array_wstring)
     {
         m_var_array_wstring = std::move(_var_array_wstring);
     }
@@ -12262,8 +12406,7 @@ public:
      * @brief This function returns a constant reference to member var_array_wstring
      * @return Constant reference to member var_array_wstring
      */
-    eProsima_user_DllExport const std::array<std::array<std::array<std::wstring, 5 * 2>, size_1*size_2>,
-            size_1 + 5>& var_array_wstring() const
+    eProsima_user_DllExport const std::array<std::array<std::array<std::wstring, 5*2>, size_1*size_2>, size_1+5>& var_array_wstring() const
     {
         return m_var_array_wstring;
     }
@@ -12272,15 +12415,16 @@ public:
      * @brief This function returns a reference to member var_array_wstring
      * @return Reference to member var_array_wstring
      */
-    eProsima_user_DllExport std::array<std::array<std::array<std::wstring, 5 * 2>, size_1*size_2>,
-            size_1 + 5>& var_array_wstring()
+    eProsima_user_DllExport std::array<std::array<std::array<std::wstring, 5*2>, size_1*size_2>, size_1+5>& var_array_wstring()
     {
         return m_var_array_wstring;
     }
 
+
+
 private:
 
-    std::array<std::array<std::array<std::wstring, 5 * 2>, size_1* size_2>, size_1 + 5> m_var_array_wstring;
+    std::array<std::array<std::array<std::wstring, 5*2>, size_1*size_2>, size_1+5> m_var_array_wstring;
 
 };
 /*!
@@ -12312,7 +12456,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionLiteralsBoundedString(
             const ArrayMultiDimensionLiteralsBoundedString& x)
     {
-        m_var_array_bounded_string = x.m_var_array_bounded_string;
+                    m_var_array_bounded_string = x.m_var_array_bounded_string;
 
     }
 
@@ -12334,7 +12478,7 @@ public:
             const ArrayMultiDimensionLiteralsBoundedString& x)
     {
 
-        m_var_array_bounded_string = x.m_var_array_bounded_string;
+                    m_var_array_bounded_string = x.m_var_array_bounded_string;
 
         return *this;
     }
@@ -12376,8 +12520,7 @@ public:
      * @param _var_array_bounded_string New value to be copied in member var_array_bounded_string
      */
     eProsima_user_DllExport void var_array_bounded_string(
-            const std::array<std::array<std::array<Inner_alias_bounded_string_helper, 5>, 5 * 2>,
-            size_1>& _var_array_bounded_string)
+            const std::array<std::array<std::array<Inner_alias_bounded_string_helper, 5>, 5*2>, size_1>& _var_array_bounded_string)
     {
         m_var_array_bounded_string = _var_array_bounded_string;
     }
@@ -12387,8 +12530,7 @@ public:
      * @param _var_array_bounded_string New value to be moved in member var_array_bounded_string
      */
     eProsima_user_DllExport void var_array_bounded_string(
-            std::array<std::array<std::array<Inner_alias_bounded_string_helper, 5>, 5 * 2>,
-            size_1>&& _var_array_bounded_string)
+            std::array<std::array<std::array<Inner_alias_bounded_string_helper, 5>, 5*2>, size_1>&& _var_array_bounded_string)
     {
         m_var_array_bounded_string = std::move(_var_array_bounded_string);
     }
@@ -12397,8 +12539,7 @@ public:
      * @brief This function returns a constant reference to member var_array_bounded_string
      * @return Constant reference to member var_array_bounded_string
      */
-    eProsima_user_DllExport const std::array<std::array<std::array<Inner_alias_bounded_string_helper, 5>, 5 * 2>,
-            size_1>& var_array_bounded_string() const
+    eProsima_user_DllExport const std::array<std::array<std::array<Inner_alias_bounded_string_helper, 5>, 5*2>, size_1>& var_array_bounded_string() const
     {
         return m_var_array_bounded_string;
     }
@@ -12407,15 +12548,16 @@ public:
      * @brief This function returns a reference to member var_array_bounded_string
      * @return Reference to member var_array_bounded_string
      */
-    eProsima_user_DllExport std::array<std::array<std::array<Inner_alias_bounded_string_helper, 5>, 5 * 2>,
-            size_1>& var_array_bounded_string()
+    eProsima_user_DllExport std::array<std::array<std::array<Inner_alias_bounded_string_helper, 5>, 5*2>, size_1>& var_array_bounded_string()
     {
         return m_var_array_bounded_string;
     }
 
+
+
 private:
 
-    std::array<std::array<std::array<Inner_alias_bounded_string_helper, 5>, 5 * 2>, size_1> m_var_array_bounded_string;
+    std::array<std::array<std::array<Inner_alias_bounded_string_helper, 5>, 5*2>, size_1> m_var_array_bounded_string;
 
 };
 /*!
@@ -12447,7 +12589,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionLiteralsBoundedWString(
             const ArrayMultiDimensionLiteralsBoundedWString& x)
     {
-        m_var_array_bounded_wstring = x.m_var_array_bounded_wstring;
+                    m_var_array_bounded_wstring = x.m_var_array_bounded_wstring;
 
     }
 
@@ -12469,7 +12611,7 @@ public:
             const ArrayMultiDimensionLiteralsBoundedWString& x)
     {
 
-        m_var_array_bounded_wstring = x.m_var_array_bounded_wstring;
+                    m_var_array_bounded_wstring = x.m_var_array_bounded_wstring;
 
         return *this;
     }
@@ -12511,8 +12653,7 @@ public:
      * @param _var_array_bounded_wstring New value to be copied in member var_array_bounded_wstring
      */
     eProsima_user_DllExport void var_array_bounded_wstring(
-            const std::array<std::array<std::array<Inner_alias_bounded_wstring_helper, 5 * 2>, size_1* size_2>,
-            size_1 + 5>& _var_array_bounded_wstring)
+            const std::array<std::array<std::array<Inner_alias_bounded_wstring_helper, 5*2>, size_1*size_2>, size_1+5>& _var_array_bounded_wstring)
     {
         m_var_array_bounded_wstring = _var_array_bounded_wstring;
     }
@@ -12522,8 +12663,7 @@ public:
      * @param _var_array_bounded_wstring New value to be moved in member var_array_bounded_wstring
      */
     eProsima_user_DllExport void var_array_bounded_wstring(
-            std::array<std::array<std::array<Inner_alias_bounded_wstring_helper, 5 * 2>, size_1* size_2>,
-            size_1 + 5>&& _var_array_bounded_wstring)
+            std::array<std::array<std::array<Inner_alias_bounded_wstring_helper, 5*2>, size_1*size_2>, size_1+5>&& _var_array_bounded_wstring)
     {
         m_var_array_bounded_wstring = std::move(_var_array_bounded_wstring);
     }
@@ -12532,8 +12672,7 @@ public:
      * @brief This function returns a constant reference to member var_array_bounded_wstring
      * @return Constant reference to member var_array_bounded_wstring
      */
-    eProsima_user_DllExport const std::array<std::array<std::array<Inner_alias_bounded_wstring_helper, 5 * 2>,
-            size_1*size_2>, size_1 + 5>& var_array_bounded_wstring() const
+    eProsima_user_DllExport const std::array<std::array<std::array<Inner_alias_bounded_wstring_helper, 5*2>, size_1*size_2>, size_1+5>& var_array_bounded_wstring() const
     {
         return m_var_array_bounded_wstring;
     }
@@ -12542,16 +12681,16 @@ public:
      * @brief This function returns a reference to member var_array_bounded_wstring
      * @return Reference to member var_array_bounded_wstring
      */
-    eProsima_user_DllExport std::array<std::array<std::array<Inner_alias_bounded_wstring_helper, 5 * 2>, size_1*size_2>,
-            size_1 + 5>& var_array_bounded_wstring()
+    eProsima_user_DllExport std::array<std::array<std::array<Inner_alias_bounded_wstring_helper, 5*2>, size_1*size_2>, size_1+5>& var_array_bounded_wstring()
     {
         return m_var_array_bounded_wstring;
     }
 
+
+
 private:
 
-    std::array<std::array<std::array<Inner_alias_bounded_wstring_helper, 5 * 2>, size_1* size_2>,
-            size_1 + 5> m_var_array_bounded_wstring;
+    std::array<std::array<std::array<Inner_alias_bounded_wstring_helper, 5*2>, size_1*size_2>, size_1+5> m_var_array_bounded_wstring;
 
 };
 /*!
@@ -12583,7 +12722,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionLiteralsEnum(
             const ArrayMultiDimensionLiteralsEnum& x)
     {
-        m_var_array_enum = x.m_var_array_enum;
+                    m_var_array_enum = x.m_var_array_enum;
 
     }
 
@@ -12605,7 +12744,7 @@ public:
             const ArrayMultiDimensionLiteralsEnum& x)
     {
 
-        m_var_array_enum = x.m_var_array_enum;
+                    m_var_array_enum = x.m_var_array_enum;
 
         return *this;
     }
@@ -12647,7 +12786,7 @@ public:
      * @param _var_array_enum New value to be copied in member var_array_enum
      */
     eProsima_user_DllExport void var_array_enum(
-            const std::array<std::array<std::array<InnerEnumHelper, 5 + 5>, size_1>, 5 * 2>& _var_array_enum)
+            const std::array<std::array<std::array<InnerEnumHelper, 5+5>, size_1>, 5*2>& _var_array_enum)
     {
         m_var_array_enum = _var_array_enum;
     }
@@ -12657,7 +12796,7 @@ public:
      * @param _var_array_enum New value to be moved in member var_array_enum
      */
     eProsima_user_DllExport void var_array_enum(
-            std::array<std::array<std::array<InnerEnumHelper, 5 + 5>, size_1>, 5 * 2>&& _var_array_enum)
+            std::array<std::array<std::array<InnerEnumHelper, 5+5>, size_1>, 5*2>&& _var_array_enum)
     {
         m_var_array_enum = std::move(_var_array_enum);
     }
@@ -12666,8 +12805,7 @@ public:
      * @brief This function returns a constant reference to member var_array_enum
      * @return Constant reference to member var_array_enum
      */
-    eProsima_user_DllExport const std::array<std::array<std::array<InnerEnumHelper, 5 + 5>, size_1>,
-            5 * 2>& var_array_enum() const
+    eProsima_user_DllExport const std::array<std::array<std::array<InnerEnumHelper, 5+5>, size_1>, 5*2>& var_array_enum() const
     {
         return m_var_array_enum;
     }
@@ -12676,15 +12814,16 @@ public:
      * @brief This function returns a reference to member var_array_enum
      * @return Reference to member var_array_enum
      */
-    eProsima_user_DllExport std::array<std::array<std::array<InnerEnumHelper, 5 + 5>, size_1>, 5 * 2>& var_array_enum()
+    eProsima_user_DllExport std::array<std::array<std::array<InnerEnumHelper, 5+5>, size_1>, 5*2>& var_array_enum()
     {
         return m_var_array_enum;
     }
 
+
+
 private:
 
-    std::array<std::array<std::array<InnerEnumHelper, 5 + 5>, size_1>,
-            5 * 2> m_var_array_enum{ {{ {{InnerEnumHelper::ENUM_VALUE_1}} }} };
+    std::array<std::array<std::array<InnerEnumHelper, 5+5>, size_1>, 5*2> m_var_array_enum{ {{ {{InnerEnumHelper::ENUM_VALUE_1}} }} };
 
 };
 /*!
@@ -12716,7 +12855,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionLiteralsBitMask(
             const ArrayMultiDimensionLiteralsBitMask& x)
     {
-        m_var_array_bitmask = x.m_var_array_bitmask;
+                    m_var_array_bitmask = x.m_var_array_bitmask;
 
     }
 
@@ -12738,7 +12877,7 @@ public:
             const ArrayMultiDimensionLiteralsBitMask& x)
     {
 
-        m_var_array_bitmask = x.m_var_array_bitmask;
+                    m_var_array_bitmask = x.m_var_array_bitmask;
 
         return *this;
     }
@@ -12780,8 +12919,7 @@ public:
      * @param _var_array_bitmask New value to be copied in member var_array_bitmask
      */
     eProsima_user_DllExport void var_array_bitmask(
-            const std::array<std::array<std::array<InnerBitMaskHelper, size_1>, size_1 + 5>,
-            size_1>& _var_array_bitmask)
+            const std::array<std::array<std::array<InnerBitMaskHelper, size_1>, size_1+5>, size_1>& _var_array_bitmask)
     {
         m_var_array_bitmask = _var_array_bitmask;
     }
@@ -12791,7 +12929,7 @@ public:
      * @param _var_array_bitmask New value to be moved in member var_array_bitmask
      */
     eProsima_user_DllExport void var_array_bitmask(
-            std::array<std::array<std::array<InnerBitMaskHelper, size_1>, size_1 + 5>, size_1>&& _var_array_bitmask)
+            std::array<std::array<std::array<InnerBitMaskHelper, size_1>, size_1+5>, size_1>&& _var_array_bitmask)
     {
         m_var_array_bitmask = std::move(_var_array_bitmask);
     }
@@ -12800,8 +12938,7 @@ public:
      * @brief This function returns a constant reference to member var_array_bitmask
      * @return Constant reference to member var_array_bitmask
      */
-    eProsima_user_DllExport const std::array<std::array<std::array<InnerBitMaskHelper, size_1>, size_1 + 5>,
-            size_1>& var_array_bitmask() const
+    eProsima_user_DllExport const std::array<std::array<std::array<InnerBitMaskHelper, size_1>, size_1+5>, size_1>& var_array_bitmask() const
     {
         return m_var_array_bitmask;
     }
@@ -12810,16 +12947,16 @@ public:
      * @brief This function returns a reference to member var_array_bitmask
      * @return Reference to member var_array_bitmask
      */
-    eProsima_user_DllExport std::array<std::array<std::array<InnerBitMaskHelper, size_1>, size_1 + 5>,
-            size_1>& var_array_bitmask()
+    eProsima_user_DllExport std::array<std::array<std::array<InnerBitMaskHelper, size_1>, size_1+5>, size_1>& var_array_bitmask()
     {
         return m_var_array_bitmask;
     }
 
+
+
 private:
 
-    std::array<std::array<std::array<InnerBitMaskHelper, size_1>, size_1 + 5>,
-            size_1> m_var_array_bitmask{ {{ {{0}} }} };
+    std::array<std::array<std::array<InnerBitMaskHelper, size_1>, size_1+5>, size_1> m_var_array_bitmask{ {{ {{0}} }} };
 
 };
 /*!
@@ -12851,7 +12988,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionLiteralsAlias(
             const ArrayMultiDimensionLiteralsAlias& x)
     {
-        m_var_array_alias = x.m_var_array_alias;
+                    m_var_array_alias = x.m_var_array_alias;
 
     }
 
@@ -12873,7 +13010,7 @@ public:
             const ArrayMultiDimensionLiteralsAlias& x)
     {
 
-        m_var_array_alias = x.m_var_array_alias;
+                    m_var_array_alias = x.m_var_array_alias;
 
         return *this;
     }
@@ -12915,8 +13052,7 @@ public:
      * @param _var_array_alias New value to be copied in member var_array_alias
      */
     eProsima_user_DllExport void var_array_alias(
-            const std::array<std::array<std::array<InnerAliasHelper, size_1* size_2>, 5 * 2>,
-            size_1*2>& _var_array_alias)
+            const std::array<std::array<std::array<InnerAliasHelper, size_1*size_2>, 5*2>, size_1*2>& _var_array_alias)
     {
         m_var_array_alias = _var_array_alias;
     }
@@ -12926,7 +13062,7 @@ public:
      * @param _var_array_alias New value to be moved in member var_array_alias
      */
     eProsima_user_DllExport void var_array_alias(
-            std::array<std::array<std::array<InnerAliasHelper, size_1* size_2>, 5 * 2>, size_1*2>&& _var_array_alias)
+            std::array<std::array<std::array<InnerAliasHelper, size_1*size_2>, 5*2>, size_1*2>&& _var_array_alias)
     {
         m_var_array_alias = std::move(_var_array_alias);
     }
@@ -12935,8 +13071,7 @@ public:
      * @brief This function returns a constant reference to member var_array_alias
      * @return Constant reference to member var_array_alias
      */
-    eProsima_user_DllExport const std::array<std::array<std::array<InnerAliasHelper, size_1*size_2>, 5 * 2>,
-            size_1*2>& var_array_alias() const
+    eProsima_user_DllExport const std::array<std::array<std::array<InnerAliasHelper, size_1*size_2>, 5*2>, size_1*2>& var_array_alias() const
     {
         return m_var_array_alias;
     }
@@ -12945,16 +13080,16 @@ public:
      * @brief This function returns a reference to member var_array_alias
      * @return Reference to member var_array_alias
      */
-    eProsima_user_DllExport std::array<std::array<std::array<InnerAliasHelper, size_1*size_2>, 5 * 2>,
-            size_1*2>& var_array_alias()
+    eProsima_user_DllExport std::array<std::array<std::array<InnerAliasHelper, size_1*size_2>, 5*2>, size_1*2>& var_array_alias()
     {
         return m_var_array_alias;
     }
 
+
+
 private:
 
-    std::array<std::array<std::array<InnerAliasHelper, size_1* size_2>, 5 * 2>,
-            size_1*2> m_var_array_alias{ {{ {{0}} }} };
+    std::array<std::array<std::array<InnerAliasHelper, size_1*size_2>, 5*2>, size_1*2> m_var_array_alias{ {{ {{0}} }} };
 
 };
 /*!
@@ -12986,7 +13121,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionLiteralsSequence(
             const ArrayMultiDimensionLiteralsSequence& x)
     {
-        m_var_array_sequence = x.m_var_array_sequence;
+                    m_var_array_sequence = x.m_var_array_sequence;
 
     }
 
@@ -13008,7 +13143,7 @@ public:
             const ArrayMultiDimensionLiteralsSequence& x)
     {
 
-        m_var_array_sequence = x.m_var_array_sequence;
+                    m_var_array_sequence = x.m_var_array_sequence;
 
         return *this;
     }
@@ -13050,8 +13185,7 @@ public:
      * @param _var_array_sequence New value to be copied in member var_array_sequence
      */
     eProsima_user_DllExport void var_array_sequence(
-            const std::array<std::array<std::array<std::vector<int32_t>, 5 * 2>, size_1>,
-            size_1 + 5>& _var_array_sequence)
+            const std::array<std::array<std::array<std::vector<int32_t>, 5*2>, size_1>, size_1+5>& _var_array_sequence)
     {
         m_var_array_sequence = _var_array_sequence;
     }
@@ -13061,7 +13195,7 @@ public:
      * @param _var_array_sequence New value to be moved in member var_array_sequence
      */
     eProsima_user_DllExport void var_array_sequence(
-            std::array<std::array<std::array<std::vector<int32_t>, 5 * 2>, size_1>, size_1 + 5>&& _var_array_sequence)
+            std::array<std::array<std::array<std::vector<int32_t>, 5*2>, size_1>, size_1+5>&& _var_array_sequence)
     {
         m_var_array_sequence = std::move(_var_array_sequence);
     }
@@ -13070,8 +13204,7 @@ public:
      * @brief This function returns a constant reference to member var_array_sequence
      * @return Constant reference to member var_array_sequence
      */
-    eProsima_user_DllExport const std::array<std::array<std::array<std::vector<int32_t>, 5 * 2>, size_1>,
-            size_1 + 5>& var_array_sequence() const
+    eProsima_user_DllExport const std::array<std::array<std::array<std::vector<int32_t>, 5*2>, size_1>, size_1+5>& var_array_sequence() const
     {
         return m_var_array_sequence;
     }
@@ -13080,15 +13213,16 @@ public:
      * @brief This function returns a reference to member var_array_sequence
      * @return Reference to member var_array_sequence
      */
-    eProsima_user_DllExport std::array<std::array<std::array<std::vector<int32_t>, 5 * 2>, size_1>,
-            size_1 + 5>& var_array_sequence()
+    eProsima_user_DllExport std::array<std::array<std::array<std::vector<int32_t>, 5*2>, size_1>, size_1+5>& var_array_sequence()
     {
         return m_var_array_sequence;
     }
 
+
+
 private:
 
-    std::array<std::array<std::array<std::vector<int32_t>, 5 * 2>, size_1>, size_1 + 5> m_var_array_sequence;
+    std::array<std::array<std::array<std::vector<int32_t>, 5*2>, size_1>, size_1+5> m_var_array_sequence;
 
 };
 /*!
@@ -13120,7 +13254,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionLiteralsMap(
             const ArrayMultiDimensionLiteralsMap& x)
     {
-        m_var_array_map = x.m_var_array_map;
+                    m_var_array_map = x.m_var_array_map;
 
     }
 
@@ -13142,7 +13276,7 @@ public:
             const ArrayMultiDimensionLiteralsMap& x)
     {
 
-        m_var_array_map = x.m_var_array_map;
+                    m_var_array_map = x.m_var_array_map;
 
         return *this;
     }
@@ -13184,8 +13318,7 @@ public:
      * @param _var_array_map New value to be copied in member var_array_map
      */
     eProsima_user_DllExport void var_array_map(
-            const std::array<std::array<std::array<std::map<int32_t, int32_t>, size_1>, size_1*2>,
-            size_1>& _var_array_map)
+            const std::array<std::array<std::array<std::map<int32_t, int32_t>, size_1>, size_1*2>, size_1>& _var_array_map)
     {
         m_var_array_map = _var_array_map;
     }
@@ -13204,8 +13337,7 @@ public:
      * @brief This function returns a constant reference to member var_array_map
      * @return Constant reference to member var_array_map
      */
-    eProsima_user_DllExport const std::array<std::array<std::array<std::map<int32_t, int32_t>, size_1>, size_1*2>,
-            size_1>& var_array_map() const
+    eProsima_user_DllExport const std::array<std::array<std::array<std::map<int32_t, int32_t>, size_1>, size_1*2>, size_1>& var_array_map() const
     {
         return m_var_array_map;
     }
@@ -13214,11 +13346,12 @@ public:
      * @brief This function returns a reference to member var_array_map
      * @return Reference to member var_array_map
      */
-    eProsima_user_DllExport std::array<std::array<std::array<std::map<int32_t, int32_t>, size_1>, size_1*2>,
-            size_1>& var_array_map()
+    eProsima_user_DllExport std::array<std::array<std::array<std::map<int32_t, int32_t>, size_1>, size_1*2>, size_1>& var_array_map()
     {
         return m_var_array_map;
     }
+
+
 
 private:
 
@@ -13254,7 +13387,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionLiteralsUnion(
             const ArrayMultiDimensionLiteralsUnion& x)
     {
-        m_var_array_union = x.m_var_array_union;
+                    m_var_array_union = x.m_var_array_union;
 
     }
 
@@ -13276,7 +13409,7 @@ public:
             const ArrayMultiDimensionLiteralsUnion& x)
     {
 
-        m_var_array_union = x.m_var_array_union;
+                    m_var_array_union = x.m_var_array_union;
 
         return *this;
     }
@@ -13318,8 +13451,7 @@ public:
      * @param _var_array_union New value to be copied in member var_array_union
      */
     eProsima_user_DllExport void var_array_union(
-            const std::array<std::array<std::array<InnerUnionHelper, size_1*2>, size_1 + 5>,
-            size_1* size_2>& _var_array_union)
+            const std::array<std::array<std::array<InnerUnionHelper, size_1*2>, size_1+5>, size_1*size_2>& _var_array_union)
     {
         m_var_array_union = _var_array_union;
     }
@@ -13329,8 +13461,7 @@ public:
      * @param _var_array_union New value to be moved in member var_array_union
      */
     eProsima_user_DllExport void var_array_union(
-            std::array<std::array<std::array<InnerUnionHelper, size_1*2>, size_1 + 5>,
-            size_1* size_2>&& _var_array_union)
+            std::array<std::array<std::array<InnerUnionHelper, size_1*2>, size_1+5>, size_1*size_2>&& _var_array_union)
     {
         m_var_array_union = std::move(_var_array_union);
     }
@@ -13339,8 +13470,7 @@ public:
      * @brief This function returns a constant reference to member var_array_union
      * @return Constant reference to member var_array_union
      */
-    eProsima_user_DllExport const std::array<std::array<std::array<InnerUnionHelper, size_1*2>, size_1 + 5>,
-            size_1*size_2>& var_array_union() const
+    eProsima_user_DllExport const std::array<std::array<std::array<InnerUnionHelper, size_1*2>, size_1+5>, size_1*size_2>& var_array_union() const
     {
         return m_var_array_union;
     }
@@ -13349,15 +13479,16 @@ public:
      * @brief This function returns a reference to member var_array_union
      * @return Reference to member var_array_union
      */
-    eProsima_user_DllExport std::array<std::array<std::array<InnerUnionHelper, size_1*2>, size_1 + 5>,
-            size_1*size_2>& var_array_union()
+    eProsima_user_DllExport std::array<std::array<std::array<InnerUnionHelper, size_1*2>, size_1+5>, size_1*size_2>& var_array_union()
     {
         return m_var_array_union;
     }
 
+
+
 private:
 
-    std::array<std::array<std::array<InnerUnionHelper, size_1*2>, size_1 + 5>, size_1* size_2> m_var_array_union;
+    std::array<std::array<std::array<InnerUnionHelper, size_1*2>, size_1+5>, size_1*size_2> m_var_array_union;
 
 };
 /*!
@@ -13389,7 +13520,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionLiteralsStructure(
             const ArrayMultiDimensionLiteralsStructure& x)
     {
-        m_var_array_structure = x.m_var_array_structure;
+                    m_var_array_structure = x.m_var_array_structure;
 
     }
 
@@ -13411,7 +13542,7 @@ public:
             const ArrayMultiDimensionLiteralsStructure& x)
     {
 
-        m_var_array_structure = x.m_var_array_structure;
+                    m_var_array_structure = x.m_var_array_structure;
 
         return *this;
     }
@@ -13453,7 +13584,7 @@ public:
      * @param _var_array_structure New value to be copied in member var_array_structure
      */
     eProsima_user_DllExport void var_array_structure(
-            const std::array<std::array<std::array<InnerStructureHelper, size_1 + 5>, size_1>, 5>& _var_array_structure)
+            const std::array<std::array<std::array<InnerStructureHelper, size_1+5>, size_1>, 5>& _var_array_structure)
     {
         m_var_array_structure = _var_array_structure;
     }
@@ -13463,7 +13594,7 @@ public:
      * @param _var_array_structure New value to be moved in member var_array_structure
      */
     eProsima_user_DllExport void var_array_structure(
-            std::array<std::array<std::array<InnerStructureHelper, size_1 + 5>, size_1>, 5>&& _var_array_structure)
+            std::array<std::array<std::array<InnerStructureHelper, size_1+5>, size_1>, 5>&& _var_array_structure)
     {
         m_var_array_structure = std::move(_var_array_structure);
     }
@@ -13472,8 +13603,7 @@ public:
      * @brief This function returns a constant reference to member var_array_structure
      * @return Constant reference to member var_array_structure
      */
-    eProsima_user_DllExport const std::array<std::array<std::array<InnerStructureHelper, size_1 + 5>, size_1>,
-            5>& var_array_structure() const
+    eProsima_user_DllExport const std::array<std::array<std::array<InnerStructureHelper, size_1+5>, size_1>, 5>& var_array_structure() const
     {
         return m_var_array_structure;
     }
@@ -13482,15 +13612,16 @@ public:
      * @brief This function returns a reference to member var_array_structure
      * @return Reference to member var_array_structure
      */
-    eProsima_user_DllExport std::array<std::array<std::array<InnerStructureHelper, size_1 + 5>, size_1>,
-            5>& var_array_structure()
+    eProsima_user_DllExport std::array<std::array<std::array<InnerStructureHelper, size_1+5>, size_1>, 5>& var_array_structure()
     {
         return m_var_array_structure;
     }
 
+
+
 private:
 
-    std::array<std::array<std::array<InnerStructureHelper, size_1 + 5>, size_1>, 5> m_var_array_structure;
+    std::array<std::array<std::array<InnerStructureHelper, size_1+5>, size_1>, 5> m_var_array_structure;
 
 };
 /*!
@@ -13522,7 +13653,7 @@ public:
     eProsima_user_DllExport ArrayMultiDimensionLiteralsBitSet(
             const ArrayMultiDimensionLiteralsBitSet& x)
     {
-        m_var_array_bitset = x.m_var_array_bitset;
+                    m_var_array_bitset = x.m_var_array_bitset;
 
     }
 
@@ -13544,7 +13675,7 @@ public:
             const ArrayMultiDimensionLiteralsBitSet& x)
     {
 
-        m_var_array_bitset = x.m_var_array_bitset;
+                    m_var_array_bitset = x.m_var_array_bitset;
 
         return *this;
     }
@@ -13586,8 +13717,7 @@ public:
      * @param _var_array_bitset New value to be copied in member var_array_bitset
      */
     eProsima_user_DllExport void var_array_bitset(
-            const std::array<std::array<std::array<InnerBitsetHelper, size_1* size_2>, size_1*2>,
-            size_1 + 5>& _var_array_bitset)
+            const std::array<std::array<std::array<InnerBitsetHelper, size_1*size_2>, size_1*2>, size_1+5>& _var_array_bitset)
     {
         m_var_array_bitset = _var_array_bitset;
     }
@@ -13597,8 +13727,7 @@ public:
      * @param _var_array_bitset New value to be moved in member var_array_bitset
      */
     eProsima_user_DllExport void var_array_bitset(
-            std::array<std::array<std::array<InnerBitsetHelper, size_1* size_2>, size_1*2>,
-            size_1 + 5>&& _var_array_bitset)
+            std::array<std::array<std::array<InnerBitsetHelper, size_1*size_2>, size_1*2>, size_1+5>&& _var_array_bitset)
     {
         m_var_array_bitset = std::move(_var_array_bitset);
     }
@@ -13607,8 +13736,7 @@ public:
      * @brief This function returns a constant reference to member var_array_bitset
      * @return Constant reference to member var_array_bitset
      */
-    eProsima_user_DllExport const std::array<std::array<std::array<InnerBitsetHelper, size_1*size_2>, size_1*2>,
-            size_1 + 5>& var_array_bitset() const
+    eProsima_user_DllExport const std::array<std::array<std::array<InnerBitsetHelper, size_1*size_2>, size_1*2>, size_1+5>& var_array_bitset() const
     {
         return m_var_array_bitset;
     }
@@ -13617,15 +13745,16 @@ public:
      * @brief This function returns a reference to member var_array_bitset
      * @return Reference to member var_array_bitset
      */
-    eProsima_user_DllExport std::array<std::array<std::array<InnerBitsetHelper, size_1*size_2>, size_1*2>,
-            size_1 + 5>& var_array_bitset()
+    eProsima_user_DllExport std::array<std::array<std::array<InnerBitsetHelper, size_1*size_2>, size_1*2>, size_1+5>& var_array_bitset()
     {
         return m_var_array_bitset;
     }
 
+
+
 private:
 
-    std::array<std::array<std::array<InnerBitsetHelper, size_1* size_2>, size_1*2>, size_1 + 5> m_var_array_bitset;
+    std::array<std::array<std::array<InnerBitsetHelper, size_1*size_2>, size_1*2>, size_1+5> m_var_array_bitset;
 
 };
 /*!
@@ -13657,7 +13786,7 @@ public:
     eProsima_user_DllExport BoundedSmallArrays(
             const BoundedSmallArrays& x)
     {
-        m_var_array_small = x.m_var_array_small;
+                    m_var_array_small = x.m_var_array_small;
 
     }
 
@@ -13679,7 +13808,7 @@ public:
             const BoundedSmallArrays& x)
     {
 
-        m_var_array_small = x.m_var_array_small;
+                    m_var_array_small = x.m_var_array_small;
 
         return *this;
     }
@@ -13754,6 +13883,8 @@ public:
         return m_var_array_small;
     }
 
+
+
 private:
 
     std::array<int16_t, 1> m_var_array_small{0};
@@ -13788,7 +13919,7 @@ public:
     eProsima_user_DllExport BoundedBigArrays(
             const BoundedBigArrays& x)
     {
-        m_var_array_big = x.m_var_array_big;
+                    m_var_array_big = x.m_var_array_big;
 
     }
 
@@ -13810,7 +13941,7 @@ public:
             const BoundedBigArrays& x)
     {
 
-        m_var_array_big = x.m_var_array_big;
+                    m_var_array_big = x.m_var_array_big;
 
         return *this;
     }
@@ -13884,6 +14015,8 @@ public:
     {
         return m_var_array_big;
     }
+
+
 
 private:
 

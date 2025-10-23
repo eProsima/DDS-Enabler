@@ -81,9 +81,9 @@ public:
             const InnerStructureHelperChild& x)
         : InnerStructureHelper(x)
     {
-        m_var_child_longlong = x.m_var_child_longlong;
+                    m_var_child_longlong = x.m_var_child_longlong;
 
-        m_var_child_ulonglong = x.m_var_child_ulonglong;
+                    m_var_child_ulonglong = x.m_var_child_ulonglong;
 
     }
 
@@ -109,9 +109,9 @@ public:
     {
         InnerStructureHelper::operator =(x);
 
-        m_var_child_longlong = x.m_var_child_longlong;
+                    m_var_child_longlong = x.m_var_child_longlong;
 
-        m_var_child_ulonglong = x.m_var_child_ulonglong;
+                    m_var_child_ulonglong = x.m_var_child_ulonglong;
 
         return *this;
     }
@@ -138,11 +138,11 @@ public:
             const InnerStructureHelperChild& x) const
     {
         if (InnerStructureHelper::operator !=(x))
-        {
-            return false;
-        }
+                {
+                    return false;
+                }
         return (m_var_child_longlong == x.m_var_child_longlong &&
-               m_var_child_ulonglong == x.m_var_child_ulonglong);
+           m_var_child_ulonglong == x.m_var_child_ulonglong);
     }
 
     /*!
@@ -183,6 +183,7 @@ public:
         return m_var_child_longlong;
     }
 
+
     /*!
      * @brief This function sets a value in member var_child_ulonglong
      * @param _var_child_ulonglong New value for member var_child_ulonglong
@@ -210,6 +211,8 @@ public:
     {
         return m_var_child_ulonglong;
     }
+
+
 
 private:
 
@@ -248,9 +251,9 @@ public:
             const InnerStructureHelperChildChild& x)
         : InnerStructureHelperChild(x)
     {
-        m_var_child_childlonglong2 = x.m_var_child_childlonglong2;
+                    m_var_child_childlonglong2 = x.m_var_child_childlonglong2;
 
-        m_var_childchild_ulonglong2 = x.m_var_childchild_ulonglong2;
+                    m_var_childchild_ulonglong2 = x.m_var_childchild_ulonglong2;
 
     }
 
@@ -276,9 +279,9 @@ public:
     {
         InnerStructureHelperChild::operator =(x);
 
-        m_var_child_childlonglong2 = x.m_var_child_childlonglong2;
+                    m_var_child_childlonglong2 = x.m_var_child_childlonglong2;
 
-        m_var_childchild_ulonglong2 = x.m_var_childchild_ulonglong2;
+                    m_var_childchild_ulonglong2 = x.m_var_childchild_ulonglong2;
 
         return *this;
     }
@@ -305,11 +308,11 @@ public:
             const InnerStructureHelperChildChild& x) const
     {
         if (InnerStructureHelperChild::operator !=(x))
-        {
-            return false;
-        }
+                {
+                    return false;
+                }
         return (m_var_child_childlonglong2 == x.m_var_child_childlonglong2 &&
-               m_var_childchild_ulonglong2 == x.m_var_childchild_ulonglong2);
+           m_var_childchild_ulonglong2 == x.m_var_childchild_ulonglong2);
     }
 
     /*!
@@ -350,6 +353,7 @@ public:
         return m_var_child_childlonglong2;
     }
 
+
     /*!
      * @brief This function sets a value in member var_childchild_ulonglong2
      * @param _var_childchild_ulonglong2 New value for member var_childchild_ulonglong2
@@ -377,6 +381,8 @@ public:
     {
         return m_var_childchild_ulonglong2;
     }
+
+
 
 private:
 
@@ -466,9 +472,9 @@ public:
             const InnerStructureHelperEmptyChild& x) const
     {
         if (InnerStructureHelper::operator !=(x))
-        {
-            return false;
-        }
+                {
+                    return false;
+                }
         static_cast<void>(x);
         return true;
     }
@@ -482,6 +488,8 @@ public:
     {
         return !(*this == x);
     }
+
+
 
 private:
 
@@ -518,7 +526,7 @@ public:
             const InnerStructureHelperEmptyChildChild& x)
         : InnerStructureHelperEmptyChild(x)
     {
-        m_var_char = x.m_var_char;
+                    m_var_char = x.m_var_char;
 
     }
 
@@ -543,7 +551,7 @@ public:
     {
         InnerStructureHelperEmptyChild::operator =(x);
 
-        m_var_char = x.m_var_char;
+                    m_var_char = x.m_var_char;
 
         return *this;
     }
@@ -569,9 +577,9 @@ public:
             const InnerStructureHelperEmptyChildChild& x) const
     {
         if (InnerStructureHelperEmptyChild::operator !=(x))
-        {
-            return false;
-        }
+                {
+                    return false;
+                }
         return (m_var_char == x.m_var_char);
     }
 
@@ -613,6 +621,8 @@ public:
         return m_var_char;
     }
 
+
+
 private:
 
     char m_var_char{0};
@@ -649,9 +659,9 @@ public:
             const InnerEmptyStructureHelperChild& x)
         : InnerEmptyStructureHelper(x)
     {
-        m_var_child_longlong = x.m_var_child_longlong;
+                    m_var_child_longlong = x.m_var_child_longlong;
 
-        m_var_child_ulonglong = x.m_var_child_ulonglong;
+                    m_var_child_ulonglong = x.m_var_child_ulonglong;
 
     }
 
@@ -677,9 +687,9 @@ public:
     {
         InnerEmptyStructureHelper::operator =(x);
 
-        m_var_child_longlong = x.m_var_child_longlong;
+                    m_var_child_longlong = x.m_var_child_longlong;
 
-        m_var_child_ulonglong = x.m_var_child_ulonglong;
+                    m_var_child_ulonglong = x.m_var_child_ulonglong;
 
         return *this;
     }
@@ -706,11 +716,11 @@ public:
             const InnerEmptyStructureHelperChild& x) const
     {
         if (InnerEmptyStructureHelper::operator !=(x))
-        {
-            return false;
-        }
+                {
+                    return false;
+                }
         return (m_var_child_longlong == x.m_var_child_longlong &&
-               m_var_child_ulonglong == x.m_var_child_ulonglong);
+           m_var_child_ulonglong == x.m_var_child_ulonglong);
     }
 
     /*!
@@ -751,6 +761,7 @@ public:
         return m_var_child_longlong;
     }
 
+
     /*!
      * @brief This function sets a value in member var_child_ulonglong
      * @param _var_child_ulonglong New value for member var_child_ulonglong
@@ -778,6 +789,8 @@ public:
     {
         return m_var_child_ulonglong;
     }
+
+
 
 private:
 
@@ -816,7 +829,7 @@ public:
             const StructAliasInheritanceStruct& x)
         : inner_structure_helper_alias(x)
     {
-        m_new_member = x.m_new_member;
+                    m_new_member = x.m_new_member;
 
     }
 
@@ -841,7 +854,7 @@ public:
     {
         inner_structure_helper_alias::operator =(x);
 
-        m_new_member = x.m_new_member;
+                    m_new_member = x.m_new_member;
 
         return *this;
     }
@@ -867,9 +880,9 @@ public:
             const StructAliasInheritanceStruct& x) const
     {
         if (inner_structure_helper_alias::operator !=(x))
-        {
-            return false;
-        }
+                {
+                    return false;
+                }
         return (m_new_member == x.m_new_member);
     }
 
@@ -911,6 +924,8 @@ public:
         return m_new_member;
     }
 
+
+
 private:
 
     int16_t m_new_member{0};
@@ -945,17 +960,17 @@ public:
     eProsima_user_DllExport StructuresInheritanceStruct(
             const StructuresInheritanceStruct& x)
     {
-        m_var_InnerStructureHelperChild = x.m_var_InnerStructureHelperChild;
+                    m_var_InnerStructureHelperChild = x.m_var_InnerStructureHelperChild;
 
-        m_var_InnerStructureHelperChildChild = x.m_var_InnerStructureHelperChildChild;
+                    m_var_InnerStructureHelperChildChild = x.m_var_InnerStructureHelperChildChild;
 
-        m_var_InnerStructureHelperEmptyChild = x.m_var_InnerStructureHelperEmptyChild;
+                    m_var_InnerStructureHelperEmptyChild = x.m_var_InnerStructureHelperEmptyChild;
 
-        m_var_InnerStructureHelperEmptyChildChild = x.m_var_InnerStructureHelperEmptyChildChild;
+                    m_var_InnerStructureHelperEmptyChildChild = x.m_var_InnerStructureHelperEmptyChildChild;
 
-        m_var_InnerEmptyStructureHelperChild = x.m_var_InnerEmptyStructureHelperChild;
+                    m_var_InnerEmptyStructureHelperChild = x.m_var_InnerEmptyStructureHelperChild;
 
-        m_var_StructAliasInheritanceStruct = x.m_var_StructAliasInheritanceStruct;
+                    m_var_StructAliasInheritanceStruct = x.m_var_StructAliasInheritanceStruct;
 
     }
 
@@ -982,17 +997,17 @@ public:
             const StructuresInheritanceStruct& x)
     {
 
-        m_var_InnerStructureHelperChild = x.m_var_InnerStructureHelperChild;
+                    m_var_InnerStructureHelperChild = x.m_var_InnerStructureHelperChild;
 
-        m_var_InnerStructureHelperChildChild = x.m_var_InnerStructureHelperChildChild;
+                    m_var_InnerStructureHelperChildChild = x.m_var_InnerStructureHelperChildChild;
 
-        m_var_InnerStructureHelperEmptyChild = x.m_var_InnerStructureHelperEmptyChild;
+                    m_var_InnerStructureHelperEmptyChild = x.m_var_InnerStructureHelperEmptyChild;
 
-        m_var_InnerStructureHelperEmptyChildChild = x.m_var_InnerStructureHelperEmptyChildChild;
+                    m_var_InnerStructureHelperEmptyChildChild = x.m_var_InnerStructureHelperEmptyChildChild;
 
-        m_var_InnerEmptyStructureHelperChild = x.m_var_InnerEmptyStructureHelperChild;
+                    m_var_InnerEmptyStructureHelperChild = x.m_var_InnerEmptyStructureHelperChild;
 
-        m_var_StructAliasInheritanceStruct = x.m_var_StructAliasInheritanceStruct;
+                    m_var_StructAliasInheritanceStruct = x.m_var_StructAliasInheritanceStruct;
 
         return *this;
     }
@@ -1022,11 +1037,11 @@ public:
             const StructuresInheritanceStruct& x) const
     {
         return (m_var_InnerStructureHelperChild == x.m_var_InnerStructureHelperChild &&
-               m_var_InnerStructureHelperChildChild == x.m_var_InnerStructureHelperChildChild &&
-               m_var_InnerStructureHelperEmptyChild == x.m_var_InnerStructureHelperEmptyChild &&
-               m_var_InnerStructureHelperEmptyChildChild == x.m_var_InnerStructureHelperEmptyChildChild &&
-               m_var_InnerEmptyStructureHelperChild == x.m_var_InnerEmptyStructureHelperChild &&
-               m_var_StructAliasInheritanceStruct == x.m_var_StructAliasInheritanceStruct);
+           m_var_InnerStructureHelperChildChild == x.m_var_InnerStructureHelperChildChild &&
+           m_var_InnerStructureHelperEmptyChild == x.m_var_InnerStructureHelperEmptyChild &&
+           m_var_InnerStructureHelperEmptyChildChild == x.m_var_InnerStructureHelperEmptyChildChild &&
+           m_var_InnerEmptyStructureHelperChild == x.m_var_InnerEmptyStructureHelperChild &&
+           m_var_StructAliasInheritanceStruct == x.m_var_StructAliasInheritanceStruct);
     }
 
     /*!
@@ -1077,6 +1092,7 @@ public:
         return m_var_InnerStructureHelperChild;
     }
 
+
     /*!
      * @brief This function copies the value in member var_InnerStructureHelperChildChild
      * @param _var_InnerStructureHelperChildChild New value to be copied in member var_InnerStructureHelperChildChild
@@ -1114,6 +1130,7 @@ public:
     {
         return m_var_InnerStructureHelperChildChild;
     }
+
 
     /*!
      * @brief This function copies the value in member var_InnerStructureHelperEmptyChild
@@ -1153,6 +1170,7 @@ public:
         return m_var_InnerStructureHelperEmptyChild;
     }
 
+
     /*!
      * @brief This function copies the value in member var_InnerStructureHelperEmptyChildChild
      * @param _var_InnerStructureHelperEmptyChildChild New value to be copied in member var_InnerStructureHelperEmptyChildChild
@@ -1190,6 +1208,7 @@ public:
     {
         return m_var_InnerStructureHelperEmptyChildChild;
     }
+
 
     /*!
      * @brief This function copies the value in member var_InnerEmptyStructureHelperChild
@@ -1229,6 +1248,7 @@ public:
         return m_var_InnerEmptyStructureHelperChild;
     }
 
+
     /*!
      * @brief This function copies the value in member var_StructAliasInheritanceStruct
      * @param _var_StructAliasInheritanceStruct New value to be copied in member var_StructAliasInheritanceStruct
@@ -1267,6 +1287,8 @@ public:
         return m_var_StructAliasInheritanceStruct;
     }
 
+
+
 private:
 
     InnerStructureHelperChild m_var_InnerStructureHelperChild;
@@ -1283,19 +1305,19 @@ private:
  */
 struct InnerBitsetHelperChild
 {
-    uint8_t a : 3;
+        uint8_t a : 3;
 
-    bool b : 1;
+        bool b : 1;
 
-    uint8_t  : 4;
+        uint8_t  : 4;
 
-    uint16_t c : 10;
+        uint16_t c : 10;
 
-    uint8_t  : 3;
+        uint8_t  : 3;
 
-    int16_t d : 12;
+        int16_t d : 12;
 
-    uint32_t child_w : 17;
+        uint32_t child_w : 17;
 
 
     /*!
@@ -1306,10 +1328,10 @@ struct InnerBitsetHelperChild
             const InnerBitsetHelperChild& x) const
     {
         return (a == x.a &&
-               b == x.b &&
-               c == x.c &&
-               d == x.d &&
-               child_w == x.child_w);
+           b == x.b &&
+           c == x.c &&
+           d == x.d &&
+           child_w == x.child_w);
     }
 
     /*!
@@ -1321,7 +1343,6 @@ struct InnerBitsetHelperChild
     {
         return !(*this == x);
     }
-
 };
 /*!
  * @brief This structure represents the bitset InnerBitsetHelperChildChild defined by the user in the IDL file.
@@ -1329,21 +1350,21 @@ struct InnerBitsetHelperChild
  */
 struct InnerBitsetHelperChildChild
 {
-    uint8_t a : 3;
+        uint8_t a : 3;
 
-    bool b : 1;
+        bool b : 1;
 
-    uint8_t  : 4;
+        uint8_t  : 4;
 
-    uint16_t c : 10;
+        uint16_t c : 10;
 
-    uint8_t  : 3;
+        uint8_t  : 3;
 
-    int16_t d : 12;
+        int16_t d : 12;
 
-    uint32_t child_w : 17;
+        uint32_t child_w : 17;
 
-    uint16_t childchild_z : 14;
+        uint16_t childchild_z : 14;
 
 
     /*!
@@ -1354,11 +1375,11 @@ struct InnerBitsetHelperChildChild
             const InnerBitsetHelperChildChild& x) const
     {
         return (a == x.a &&
-               b == x.b &&
-               c == x.c &&
-               d == x.d &&
-               child_w == x.child_w &&
-               childchild_z == x.childchild_z);
+           b == x.b &&
+           c == x.c &&
+           d == x.d &&
+           child_w == x.child_w &&
+           childchild_z == x.childchild_z);
     }
 
     /*!
@@ -1370,7 +1391,6 @@ struct InnerBitsetHelperChildChild
     {
         return !(*this == x);
     }
-
 };
 /*!
  * @brief This structure represents the bitset BitsetAliasInheritanceBitset defined by the user in the IDL file.
@@ -1378,19 +1398,19 @@ struct InnerBitsetHelperChildChild
  */
 struct BitsetAliasInheritanceBitset
 {
-    uint8_t a : 3;
+        uint8_t a : 3;
 
-    bool b : 1;
+        bool b : 1;
 
-    uint8_t  : 4;
+        uint8_t  : 4;
 
-    uint16_t c : 10;
+        uint16_t c : 10;
 
-    uint8_t  : 3;
+        uint8_t  : 3;
 
-    int16_t d : 12;
+        int16_t d : 12;
 
-    uint16_t new_bitfield : 10;
+        uint16_t new_bitfield : 10;
 
 
     /*!
@@ -1401,10 +1421,10 @@ struct BitsetAliasInheritanceBitset
             const BitsetAliasInheritanceBitset& x) const
     {
         return (a == x.a &&
-               b == x.b &&
-               c == x.c &&
-               d == x.d &&
-               new_bitfield == x.new_bitfield);
+           b == x.b &&
+           c == x.c &&
+           d == x.d &&
+           new_bitfield == x.new_bitfield);
     }
 
     /*!
@@ -1416,7 +1436,6 @@ struct BitsetAliasInheritanceBitset
     {
         return !(*this == x);
     }
-
 };
 /*!
  * @brief This class represents the structure BitsetsChildInheritanceStruct defined by the user in the IDL file.
@@ -1447,11 +1466,11 @@ public:
     eProsima_user_DllExport BitsetsChildInheritanceStruct(
             const BitsetsChildInheritanceStruct& x)
     {
-        m_var_InnerBitsetHelperChild = x.m_var_InnerBitsetHelperChild;
+                    m_var_InnerBitsetHelperChild = x.m_var_InnerBitsetHelperChild;
 
-        m_var_InnerBitsetHelperChildChild = x.m_var_InnerBitsetHelperChildChild;
+                    m_var_InnerBitsetHelperChildChild = x.m_var_InnerBitsetHelperChildChild;
 
-        m_var_BitsetAliasInheritanceBitset = x.m_var_BitsetAliasInheritanceBitset;
+                    m_var_BitsetAliasInheritanceBitset = x.m_var_BitsetAliasInheritanceBitset;
 
     }
 
@@ -1475,11 +1494,11 @@ public:
             const BitsetsChildInheritanceStruct& x)
     {
 
-        m_var_InnerBitsetHelperChild = x.m_var_InnerBitsetHelperChild;
+                    m_var_InnerBitsetHelperChild = x.m_var_InnerBitsetHelperChild;
 
-        m_var_InnerBitsetHelperChildChild = x.m_var_InnerBitsetHelperChildChild;
+                    m_var_InnerBitsetHelperChildChild = x.m_var_InnerBitsetHelperChildChild;
 
-        m_var_BitsetAliasInheritanceBitset = x.m_var_BitsetAliasInheritanceBitset;
+                    m_var_BitsetAliasInheritanceBitset = x.m_var_BitsetAliasInheritanceBitset;
 
         return *this;
     }
@@ -1506,8 +1525,8 @@ public:
             const BitsetsChildInheritanceStruct& x) const
     {
         return (m_var_InnerBitsetHelperChild == x.m_var_InnerBitsetHelperChild &&
-               m_var_InnerBitsetHelperChildChild == x.m_var_InnerBitsetHelperChildChild &&
-               m_var_BitsetAliasInheritanceBitset == x.m_var_BitsetAliasInheritanceBitset);
+           m_var_InnerBitsetHelperChildChild == x.m_var_InnerBitsetHelperChildChild &&
+           m_var_BitsetAliasInheritanceBitset == x.m_var_BitsetAliasInheritanceBitset);
     }
 
     /*!
@@ -1558,6 +1577,7 @@ public:
         return m_var_InnerBitsetHelperChild;
     }
 
+
     /*!
      * @brief This function copies the value in member var_InnerBitsetHelperChildChild
      * @param _var_InnerBitsetHelperChildChild New value to be copied in member var_InnerBitsetHelperChildChild
@@ -1596,6 +1616,7 @@ public:
         return m_var_InnerBitsetHelperChildChild;
     }
 
+
     /*!
      * @brief This function copies the value in member var_BitsetAliasInheritanceBitset
      * @param _var_BitsetAliasInheritanceBitset New value to be copied in member var_BitsetAliasInheritanceBitset
@@ -1633,6 +1654,8 @@ public:
     {
         return m_var_BitsetAliasInheritanceBitset;
     }
+
+
 
 private:
 

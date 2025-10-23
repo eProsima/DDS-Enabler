@@ -85,7 +85,7 @@ public:
     eProsima_user_DllExport StructShort(
             const StructShort& x)
     {
-        m_var_short = x.m_var_short;
+                    m_var_short = x.m_var_short;
 
     }
 
@@ -107,7 +107,7 @@ public:
             const StructShort& x)
     {
 
-        m_var_short = x.m_var_short;
+                    m_var_short = x.m_var_short;
 
         return *this;
     }
@@ -172,6 +172,8 @@ public:
         return m_var_short;
     }
 
+
+
 private:
 
     int16_t m_var_short{0};
@@ -206,7 +208,7 @@ public:
     eProsima_user_DllExport StructUnsignedShort(
             const StructUnsignedShort& x)
     {
-        m_var_ushort = x.m_var_ushort;
+                    m_var_ushort = x.m_var_ushort;
 
     }
 
@@ -228,7 +230,7 @@ public:
             const StructUnsignedShort& x)
     {
 
-        m_var_ushort = x.m_var_ushort;
+                    m_var_ushort = x.m_var_ushort;
 
         return *this;
     }
@@ -293,6 +295,8 @@ public:
         return m_var_ushort;
     }
 
+
+
 private:
 
     uint16_t m_var_ushort{0};
@@ -327,7 +331,7 @@ public:
     eProsima_user_DllExport StructLong(
             const StructLong& x)
     {
-        m_var_long = x.m_var_long;
+                    m_var_long = x.m_var_long;
 
     }
 
@@ -349,7 +353,7 @@ public:
             const StructLong& x)
     {
 
-        m_var_long = x.m_var_long;
+                    m_var_long = x.m_var_long;
 
         return *this;
     }
@@ -414,6 +418,8 @@ public:
         return m_var_long;
     }
 
+
+
 private:
 
     int32_t m_var_long{0};
@@ -448,7 +454,7 @@ public:
     eProsima_user_DllExport StructUnsignedLong(
             const StructUnsignedLong& x)
     {
-        m_var_ulong = x.m_var_ulong;
+                    m_var_ulong = x.m_var_ulong;
 
     }
 
@@ -470,7 +476,7 @@ public:
             const StructUnsignedLong& x)
     {
 
-        m_var_ulong = x.m_var_ulong;
+                    m_var_ulong = x.m_var_ulong;
 
         return *this;
     }
@@ -535,6 +541,8 @@ public:
         return m_var_ulong;
     }
 
+
+
 private:
 
     uint32_t m_var_ulong{0};
@@ -569,7 +577,7 @@ public:
     eProsima_user_DllExport StructLongLong(
             const StructLongLong& x)
     {
-        m_var_longlong = x.m_var_longlong;
+                    m_var_longlong = x.m_var_longlong;
 
     }
 
@@ -591,7 +599,7 @@ public:
             const StructLongLong& x)
     {
 
-        m_var_longlong = x.m_var_longlong;
+                    m_var_longlong = x.m_var_longlong;
 
         return *this;
     }
@@ -656,6 +664,8 @@ public:
         return m_var_longlong;
     }
 
+
+
 private:
 
     int64_t m_var_longlong{0};
@@ -690,7 +700,7 @@ public:
     eProsima_user_DllExport StructUnsignedLongLong(
             const StructUnsignedLongLong& x)
     {
-        m_var_ulonglong = x.m_var_ulonglong;
+                    m_var_ulonglong = x.m_var_ulonglong;
 
     }
 
@@ -712,7 +722,7 @@ public:
             const StructUnsignedLongLong& x)
     {
 
-        m_var_ulonglong = x.m_var_ulonglong;
+                    m_var_ulonglong = x.m_var_ulonglong;
 
         return *this;
     }
@@ -777,6 +787,8 @@ public:
         return m_var_ulonglong;
     }
 
+
+
 private:
 
     uint64_t m_var_ulonglong{0};
@@ -811,7 +823,7 @@ public:
     eProsima_user_DllExport StructFloat(
             const StructFloat& x)
     {
-        m_var_float = x.m_var_float;
+                    m_var_float = x.m_var_float;
 
     }
 
@@ -833,7 +845,7 @@ public:
             const StructFloat& x)
     {
 
-        m_var_float = x.m_var_float;
+                    m_var_float = x.m_var_float;
 
         return *this;
     }
@@ -898,6 +910,8 @@ public:
         return m_var_float;
     }
 
+
+
 private:
 
     float m_var_float{0.0};
@@ -932,7 +946,7 @@ public:
     eProsima_user_DllExport StructDouble(
             const StructDouble& x)
     {
-        m_var_double = x.m_var_double;
+                    m_var_double = x.m_var_double;
 
     }
 
@@ -954,7 +968,7 @@ public:
             const StructDouble& x)
     {
 
-        m_var_double = x.m_var_double;
+                    m_var_double = x.m_var_double;
 
         return *this;
     }
@@ -1019,6 +1033,8 @@ public:
         return m_var_double;
     }
 
+
+
 private:
 
     double m_var_double{0.0};
@@ -1053,7 +1069,7 @@ public:
     eProsima_user_DllExport StructLongDouble(
             const StructLongDouble& x)
     {
-        m_var_longdouble = x.m_var_longdouble;
+                    m_var_longdouble = x.m_var_longdouble;
 
     }
 
@@ -1075,7 +1091,7 @@ public:
             const StructLongDouble& x)
     {
 
-        m_var_longdouble = x.m_var_longdouble;
+                    m_var_longdouble = x.m_var_longdouble;
 
         return *this;
     }
@@ -1140,6 +1156,8 @@ public:
         return m_var_longdouble;
     }
 
+
+
 private:
 
     long double m_var_longdouble{0.0};
@@ -1174,7 +1192,7 @@ public:
     eProsima_user_DllExport StructBoolean(
             const StructBoolean& x)
     {
-        m_var_boolean = x.m_var_boolean;
+                    m_var_boolean = x.m_var_boolean;
 
     }
 
@@ -1196,7 +1214,7 @@ public:
             const StructBoolean& x)
     {
 
-        m_var_boolean = x.m_var_boolean;
+                    m_var_boolean = x.m_var_boolean;
 
         return *this;
     }
@@ -1261,6 +1279,8 @@ public:
         return m_var_boolean;
     }
 
+
+
 private:
 
     bool m_var_boolean{false};
@@ -1295,7 +1315,7 @@ public:
     eProsima_user_DllExport StructOctet(
             const StructOctet& x)
     {
-        m_var_octet = x.m_var_octet;
+                    m_var_octet = x.m_var_octet;
 
     }
 
@@ -1317,7 +1337,7 @@ public:
             const StructOctet& x)
     {
 
-        m_var_octet = x.m_var_octet;
+                    m_var_octet = x.m_var_octet;
 
         return *this;
     }
@@ -1382,6 +1402,8 @@ public:
         return m_var_octet;
     }
 
+
+
 private:
 
     uint8_t m_var_octet{0};
@@ -1416,7 +1438,7 @@ public:
     eProsima_user_DllExport StructChar8(
             const StructChar8& x)
     {
-        m_var_char8 = x.m_var_char8;
+                    m_var_char8 = x.m_var_char8;
 
     }
 
@@ -1438,7 +1460,7 @@ public:
             const StructChar8& x)
     {
 
-        m_var_char8 = x.m_var_char8;
+                    m_var_char8 = x.m_var_char8;
 
         return *this;
     }
@@ -1503,6 +1525,8 @@ public:
         return m_var_char8;
     }
 
+
+
 private:
 
     char m_var_char8{0};
@@ -1537,7 +1561,7 @@ public:
     eProsima_user_DllExport StructChar16(
             const StructChar16& x)
     {
-        m_var_char16 = x.m_var_char16;
+                    m_var_char16 = x.m_var_char16;
 
     }
 
@@ -1559,7 +1583,7 @@ public:
             const StructChar16& x)
     {
 
-        m_var_char16 = x.m_var_char16;
+                    m_var_char16 = x.m_var_char16;
 
         return *this;
     }
@@ -1624,6 +1648,8 @@ public:
         return m_var_char16;
     }
 
+
+
 private:
 
     wchar_t m_var_char16{0};
@@ -1658,7 +1684,7 @@ public:
     eProsima_user_DllExport StructString(
             const StructString& x)
     {
-        m_var_string = x.m_var_string;
+                    m_var_string = x.m_var_string;
 
     }
 
@@ -1680,7 +1706,7 @@ public:
             const StructString& x)
     {
 
-        m_var_string = x.m_var_string;
+                    m_var_string = x.m_var_string;
 
         return *this;
     }
@@ -1755,6 +1781,8 @@ public:
         return m_var_string;
     }
 
+
+
 private:
 
     std::string m_var_string;
@@ -1789,7 +1817,7 @@ public:
     eProsima_user_DllExport StructWString(
             const StructWString& x)
     {
-        m_var_wstring = x.m_var_wstring;
+                    m_var_wstring = x.m_var_wstring;
 
     }
 
@@ -1811,7 +1839,7 @@ public:
             const StructWString& x)
     {
 
-        m_var_wstring = x.m_var_wstring;
+                    m_var_wstring = x.m_var_wstring;
 
         return *this;
     }
@@ -1886,6 +1914,8 @@ public:
         return m_var_wstring;
     }
 
+
+
 private:
 
     std::wstring m_var_wstring;
@@ -1920,7 +1950,7 @@ public:
     eProsima_user_DllExport StructBoundedString(
             const StructBoundedString& x)
     {
-        m_var_bounded_string = x.m_var_bounded_string;
+                    m_var_bounded_string = x.m_var_bounded_string;
 
     }
 
@@ -1942,7 +1972,7 @@ public:
             const StructBoundedString& x)
     {
 
-        m_var_bounded_string = x.m_var_bounded_string;
+                    m_var_bounded_string = x.m_var_bounded_string;
 
         return *this;
     }
@@ -2017,6 +2047,8 @@ public:
         return m_var_bounded_string;
     }
 
+
+
 private:
 
     Inner_alias_bounded_string_helper m_var_bounded_string;
@@ -2051,7 +2083,7 @@ public:
     eProsima_user_DllExport StructBoundedWString(
             const StructBoundedWString& x)
     {
-        m_var_bounded_wstring = x.m_var_bounded_wstring;
+                    m_var_bounded_wstring = x.m_var_bounded_wstring;
 
     }
 
@@ -2073,7 +2105,7 @@ public:
             const StructBoundedWString& x)
     {
 
-        m_var_bounded_wstring = x.m_var_bounded_wstring;
+                    m_var_bounded_wstring = x.m_var_bounded_wstring;
 
         return *this;
     }
@@ -2148,6 +2180,8 @@ public:
         return m_var_bounded_wstring;
     }
 
+
+
 private:
 
     Inner_alias_bounded_wstring_helper m_var_bounded_wstring;
@@ -2182,7 +2216,7 @@ public:
     eProsima_user_DllExport StructEnum(
             const StructEnum& x)
     {
-        m_var_enum = x.m_var_enum;
+                    m_var_enum = x.m_var_enum;
 
     }
 
@@ -2204,7 +2238,7 @@ public:
             const StructEnum& x)
     {
 
-        m_var_enum = x.m_var_enum;
+                    m_var_enum = x.m_var_enum;
 
         return *this;
     }
@@ -2269,6 +2303,8 @@ public:
         return m_var_enum;
     }
 
+
+
 private:
 
     InnerEnumHelper m_var_enum{InnerEnumHelper::ENUM_VALUE_1};
@@ -2303,7 +2339,7 @@ public:
     eProsima_user_DllExport StructBitMask(
             const StructBitMask& x)
     {
-        m_var_bitmask = x.m_var_bitmask;
+                    m_var_bitmask = x.m_var_bitmask;
 
     }
 
@@ -2325,7 +2361,7 @@ public:
             const StructBitMask& x)
     {
 
-        m_var_bitmask = x.m_var_bitmask;
+                    m_var_bitmask = x.m_var_bitmask;
 
         return *this;
     }
@@ -2400,6 +2436,8 @@ public:
         return m_var_bitmask;
     }
 
+
+
 private:
 
     InnerBitMaskHelper m_var_bitmask{0};
@@ -2434,7 +2472,7 @@ public:
     eProsima_user_DllExport StructAlias(
             const StructAlias& x)
     {
-        m_var_alias = x.m_var_alias;
+                    m_var_alias = x.m_var_alias;
 
     }
 
@@ -2456,7 +2494,7 @@ public:
             const StructAlias& x)
     {
 
-        m_var_alias = x.m_var_alias;
+                    m_var_alias = x.m_var_alias;
 
         return *this;
     }
@@ -2521,6 +2559,8 @@ public:
         return m_var_alias;
     }
 
+
+
 private:
 
     InnerAliasHelper m_var_alias{0};
@@ -2555,7 +2595,7 @@ public:
     eProsima_user_DllExport StructShortArray(
             const StructShortArray& x)
     {
-        m_var_array_short = x.m_var_array_short;
+                    m_var_array_short = x.m_var_array_short;
 
     }
 
@@ -2577,7 +2617,7 @@ public:
             const StructShortArray& x)
     {
 
-        m_var_array_short = x.m_var_array_short;
+                    m_var_array_short = x.m_var_array_short;
 
         return *this;
     }
@@ -2652,6 +2692,8 @@ public:
         return m_var_array_short;
     }
 
+
+
 private:
 
     std::array<int16_t, 10> m_var_array_short{0};
@@ -2686,7 +2728,7 @@ public:
     eProsima_user_DllExport StructSequence(
             const StructSequence& x)
     {
-        m_var_sequence = x.m_var_sequence;
+                    m_var_sequence = x.m_var_sequence;
 
     }
 
@@ -2708,7 +2750,7 @@ public:
             const StructSequence& x)
     {
 
-        m_var_sequence = x.m_var_sequence;
+                    m_var_sequence = x.m_var_sequence;
 
         return *this;
     }
@@ -2783,6 +2825,8 @@ public:
         return m_var_sequence;
     }
 
+
+
 private:
 
     std::vector<int32_t> m_var_sequence;
@@ -2817,7 +2861,7 @@ public:
     eProsima_user_DllExport StructMap(
             const StructMap& x)
     {
-        m_var_map = x.m_var_map;
+                    m_var_map = x.m_var_map;
 
     }
 
@@ -2839,7 +2883,7 @@ public:
             const StructMap& x)
     {
 
-        m_var_map = x.m_var_map;
+                    m_var_map = x.m_var_map;
 
         return *this;
     }
@@ -2914,6 +2958,8 @@ public:
         return m_var_map;
     }
 
+
+
 private:
 
     std::map<int32_t, int32_t> m_var_map;
@@ -2948,7 +2994,7 @@ public:
     eProsima_user_DllExport StructUnion(
             const StructUnion& x)
     {
-        m_var_union = x.m_var_union;
+                    m_var_union = x.m_var_union;
 
     }
 
@@ -2970,7 +3016,7 @@ public:
             const StructUnion& x)
     {
 
-        m_var_union = x.m_var_union;
+                    m_var_union = x.m_var_union;
 
         return *this;
     }
@@ -3045,6 +3091,8 @@ public:
         return m_var_union;
     }
 
+
+
 private:
 
     InnerUnionHelper m_var_union;
@@ -3079,7 +3127,7 @@ public:
     eProsima_user_DllExport StructStructure(
             const StructStructure& x)
     {
-        m_var_structure = x.m_var_structure;
+                    m_var_structure = x.m_var_structure;
 
     }
 
@@ -3101,7 +3149,7 @@ public:
             const StructStructure& x)
     {
 
-        m_var_structure = x.m_var_structure;
+                    m_var_structure = x.m_var_structure;
 
         return *this;
     }
@@ -3176,6 +3224,8 @@ public:
         return m_var_structure;
     }
 
+
+
 private:
 
     InnerStructureHelper m_var_structure;
@@ -3210,7 +3260,7 @@ public:
     eProsima_user_DllExport StructBitset(
             const StructBitset& x)
     {
-        m_var_bitset = x.m_var_bitset;
+                    m_var_bitset = x.m_var_bitset;
 
     }
 
@@ -3232,7 +3282,7 @@ public:
             const StructBitset& x)
     {
 
-        m_var_bitset = x.m_var_bitset;
+                    m_var_bitset = x.m_var_bitset;
 
         return *this;
     }
@@ -3306,6 +3356,8 @@ public:
     {
         return m_var_bitset;
     }
+
+
 
 private:
 
@@ -3401,6 +3453,8 @@ public:
         return !(*this == x);
     }
 
+
+
 private:
 
 
@@ -3434,59 +3488,59 @@ public:
     eProsima_user_DllExport Structures(
             const Structures& x)
     {
-        m_var_StructShort = x.m_var_StructShort;
+                    m_var_StructShort = x.m_var_StructShort;
 
-        m_var_StructUnsignedShort = x.m_var_StructUnsignedShort;
+                    m_var_StructUnsignedShort = x.m_var_StructUnsignedShort;
 
-        m_var_StructLong = x.m_var_StructLong;
+                    m_var_StructLong = x.m_var_StructLong;
 
-        m_var_StructUnsignedLong = x.m_var_StructUnsignedLong;
+                    m_var_StructUnsignedLong = x.m_var_StructUnsignedLong;
 
-        m_var_StructLongLong = x.m_var_StructLongLong;
+                    m_var_StructLongLong = x.m_var_StructLongLong;
 
-        m_var_StructUnsignedLongLong = x.m_var_StructUnsignedLongLong;
+                    m_var_StructUnsignedLongLong = x.m_var_StructUnsignedLongLong;
 
-        m_var_StructFloat = x.m_var_StructFloat;
+                    m_var_StructFloat = x.m_var_StructFloat;
 
-        m_var_StructDouble = x.m_var_StructDouble;
+                    m_var_StructDouble = x.m_var_StructDouble;
 
-        m_var_StructLongDouble = x.m_var_StructLongDouble;
+                    m_var_StructLongDouble = x.m_var_StructLongDouble;
 
-        m_var_StructBoolean = x.m_var_StructBoolean;
+                    m_var_StructBoolean = x.m_var_StructBoolean;
 
-        m_var_StructOctet = x.m_var_StructOctet;
+                    m_var_StructOctet = x.m_var_StructOctet;
 
-        m_var_StructChar8 = x.m_var_StructChar8;
+                    m_var_StructChar8 = x.m_var_StructChar8;
 
-        m_var_StructChar16 = x.m_var_StructChar16;
+                    m_var_StructChar16 = x.m_var_StructChar16;
 
-        m_var_StructString = x.m_var_StructString;
+                    m_var_StructString = x.m_var_StructString;
 
-        m_var_StructWString = x.m_var_StructWString;
+                    m_var_StructWString = x.m_var_StructWString;
 
-        m_var_StructBoundedString = x.m_var_StructBoundedString;
+                    m_var_StructBoundedString = x.m_var_StructBoundedString;
 
-        m_var_StructBoundedWString = x.m_var_StructBoundedWString;
+                    m_var_StructBoundedWString = x.m_var_StructBoundedWString;
 
-        m_var_StructEnum = x.m_var_StructEnum;
+                    m_var_StructEnum = x.m_var_StructEnum;
 
-        m_var_StructBitMask = x.m_var_StructBitMask;
+                    m_var_StructBitMask = x.m_var_StructBitMask;
 
-        m_var_StructAlias = x.m_var_StructAlias;
+                    m_var_StructAlias = x.m_var_StructAlias;
 
-        m_var_StructShortArray = x.m_var_StructShortArray;
+                    m_var_StructShortArray = x.m_var_StructShortArray;
 
-        m_var_StructSequence = x.m_var_StructSequence;
+                    m_var_StructSequence = x.m_var_StructSequence;
 
-        m_var_StructMap = x.m_var_StructMap;
+                    m_var_StructMap = x.m_var_StructMap;
 
-        m_var_StructUnion = x.m_var_StructUnion;
+                    m_var_StructUnion = x.m_var_StructUnion;
 
-        m_var_StructStructure = x.m_var_StructStructure;
+                    m_var_StructStructure = x.m_var_StructStructure;
 
-        m_var_StructBitset = x.m_var_StructBitset;
+                    m_var_StructBitset = x.m_var_StructBitset;
 
-        m_var_StructEmpty = x.m_var_StructEmpty;
+                    m_var_StructEmpty = x.m_var_StructEmpty;
 
     }
 
@@ -3534,59 +3588,59 @@ public:
             const Structures& x)
     {
 
-        m_var_StructShort = x.m_var_StructShort;
+                    m_var_StructShort = x.m_var_StructShort;
 
-        m_var_StructUnsignedShort = x.m_var_StructUnsignedShort;
+                    m_var_StructUnsignedShort = x.m_var_StructUnsignedShort;
 
-        m_var_StructLong = x.m_var_StructLong;
+                    m_var_StructLong = x.m_var_StructLong;
 
-        m_var_StructUnsignedLong = x.m_var_StructUnsignedLong;
+                    m_var_StructUnsignedLong = x.m_var_StructUnsignedLong;
 
-        m_var_StructLongLong = x.m_var_StructLongLong;
+                    m_var_StructLongLong = x.m_var_StructLongLong;
 
-        m_var_StructUnsignedLongLong = x.m_var_StructUnsignedLongLong;
+                    m_var_StructUnsignedLongLong = x.m_var_StructUnsignedLongLong;
 
-        m_var_StructFloat = x.m_var_StructFloat;
+                    m_var_StructFloat = x.m_var_StructFloat;
 
-        m_var_StructDouble = x.m_var_StructDouble;
+                    m_var_StructDouble = x.m_var_StructDouble;
 
-        m_var_StructLongDouble = x.m_var_StructLongDouble;
+                    m_var_StructLongDouble = x.m_var_StructLongDouble;
 
-        m_var_StructBoolean = x.m_var_StructBoolean;
+                    m_var_StructBoolean = x.m_var_StructBoolean;
 
-        m_var_StructOctet = x.m_var_StructOctet;
+                    m_var_StructOctet = x.m_var_StructOctet;
 
-        m_var_StructChar8 = x.m_var_StructChar8;
+                    m_var_StructChar8 = x.m_var_StructChar8;
 
-        m_var_StructChar16 = x.m_var_StructChar16;
+                    m_var_StructChar16 = x.m_var_StructChar16;
 
-        m_var_StructString = x.m_var_StructString;
+                    m_var_StructString = x.m_var_StructString;
 
-        m_var_StructWString = x.m_var_StructWString;
+                    m_var_StructWString = x.m_var_StructWString;
 
-        m_var_StructBoundedString = x.m_var_StructBoundedString;
+                    m_var_StructBoundedString = x.m_var_StructBoundedString;
 
-        m_var_StructBoundedWString = x.m_var_StructBoundedWString;
+                    m_var_StructBoundedWString = x.m_var_StructBoundedWString;
 
-        m_var_StructEnum = x.m_var_StructEnum;
+                    m_var_StructEnum = x.m_var_StructEnum;
 
-        m_var_StructBitMask = x.m_var_StructBitMask;
+                    m_var_StructBitMask = x.m_var_StructBitMask;
 
-        m_var_StructAlias = x.m_var_StructAlias;
+                    m_var_StructAlias = x.m_var_StructAlias;
 
-        m_var_StructShortArray = x.m_var_StructShortArray;
+                    m_var_StructShortArray = x.m_var_StructShortArray;
 
-        m_var_StructSequence = x.m_var_StructSequence;
+                    m_var_StructSequence = x.m_var_StructSequence;
 
-        m_var_StructMap = x.m_var_StructMap;
+                    m_var_StructMap = x.m_var_StructMap;
 
-        m_var_StructUnion = x.m_var_StructUnion;
+                    m_var_StructUnion = x.m_var_StructUnion;
 
-        m_var_StructStructure = x.m_var_StructStructure;
+                    m_var_StructStructure = x.m_var_StructStructure;
 
-        m_var_StructBitset = x.m_var_StructBitset;
+                    m_var_StructBitset = x.m_var_StructBitset;
 
-        m_var_StructEmpty = x.m_var_StructEmpty;
+                    m_var_StructEmpty = x.m_var_StructEmpty;
 
         return *this;
     }
@@ -3637,32 +3691,32 @@ public:
             const Structures& x) const
     {
         return (m_var_StructShort == x.m_var_StructShort &&
-               m_var_StructUnsignedShort == x.m_var_StructUnsignedShort &&
-               m_var_StructLong == x.m_var_StructLong &&
-               m_var_StructUnsignedLong == x.m_var_StructUnsignedLong &&
-               m_var_StructLongLong == x.m_var_StructLongLong &&
-               m_var_StructUnsignedLongLong == x.m_var_StructUnsignedLongLong &&
-               m_var_StructFloat == x.m_var_StructFloat &&
-               m_var_StructDouble == x.m_var_StructDouble &&
-               m_var_StructLongDouble == x.m_var_StructLongDouble &&
-               m_var_StructBoolean == x.m_var_StructBoolean &&
-               m_var_StructOctet == x.m_var_StructOctet &&
-               m_var_StructChar8 == x.m_var_StructChar8 &&
-               m_var_StructChar16 == x.m_var_StructChar16 &&
-               m_var_StructString == x.m_var_StructString &&
-               m_var_StructWString == x.m_var_StructWString &&
-               m_var_StructBoundedString == x.m_var_StructBoundedString &&
-               m_var_StructBoundedWString == x.m_var_StructBoundedWString &&
-               m_var_StructEnum == x.m_var_StructEnum &&
-               m_var_StructBitMask == x.m_var_StructBitMask &&
-               m_var_StructAlias == x.m_var_StructAlias &&
-               m_var_StructShortArray == x.m_var_StructShortArray &&
-               m_var_StructSequence == x.m_var_StructSequence &&
-               m_var_StructMap == x.m_var_StructMap &&
-               m_var_StructUnion == x.m_var_StructUnion &&
-               m_var_StructStructure == x.m_var_StructStructure &&
-               m_var_StructBitset == x.m_var_StructBitset &&
-               m_var_StructEmpty == x.m_var_StructEmpty);
+           m_var_StructUnsignedShort == x.m_var_StructUnsignedShort &&
+           m_var_StructLong == x.m_var_StructLong &&
+           m_var_StructUnsignedLong == x.m_var_StructUnsignedLong &&
+           m_var_StructLongLong == x.m_var_StructLongLong &&
+           m_var_StructUnsignedLongLong == x.m_var_StructUnsignedLongLong &&
+           m_var_StructFloat == x.m_var_StructFloat &&
+           m_var_StructDouble == x.m_var_StructDouble &&
+           m_var_StructLongDouble == x.m_var_StructLongDouble &&
+           m_var_StructBoolean == x.m_var_StructBoolean &&
+           m_var_StructOctet == x.m_var_StructOctet &&
+           m_var_StructChar8 == x.m_var_StructChar8 &&
+           m_var_StructChar16 == x.m_var_StructChar16 &&
+           m_var_StructString == x.m_var_StructString &&
+           m_var_StructWString == x.m_var_StructWString &&
+           m_var_StructBoundedString == x.m_var_StructBoundedString &&
+           m_var_StructBoundedWString == x.m_var_StructBoundedWString &&
+           m_var_StructEnum == x.m_var_StructEnum &&
+           m_var_StructBitMask == x.m_var_StructBitMask &&
+           m_var_StructAlias == x.m_var_StructAlias &&
+           m_var_StructShortArray == x.m_var_StructShortArray &&
+           m_var_StructSequence == x.m_var_StructSequence &&
+           m_var_StructMap == x.m_var_StructMap &&
+           m_var_StructUnion == x.m_var_StructUnion &&
+           m_var_StructStructure == x.m_var_StructStructure &&
+           m_var_StructBitset == x.m_var_StructBitset &&
+           m_var_StructEmpty == x.m_var_StructEmpty);
     }
 
     /*!
@@ -3713,6 +3767,7 @@ public:
         return m_var_StructShort;
     }
 
+
     /*!
      * @brief This function copies the value in member var_StructUnsignedShort
      * @param _var_StructUnsignedShort New value to be copied in member var_StructUnsignedShort
@@ -3750,6 +3805,7 @@ public:
     {
         return m_var_StructUnsignedShort;
     }
+
 
     /*!
      * @brief This function copies the value in member var_StructLong
@@ -3789,6 +3845,7 @@ public:
         return m_var_StructLong;
     }
 
+
     /*!
      * @brief This function copies the value in member var_StructUnsignedLong
      * @param _var_StructUnsignedLong New value to be copied in member var_StructUnsignedLong
@@ -3826,6 +3883,7 @@ public:
     {
         return m_var_StructUnsignedLong;
     }
+
 
     /*!
      * @brief This function copies the value in member var_StructLongLong
@@ -3865,6 +3923,7 @@ public:
         return m_var_StructLongLong;
     }
 
+
     /*!
      * @brief This function copies the value in member var_StructUnsignedLongLong
      * @param _var_StructUnsignedLongLong New value to be copied in member var_StructUnsignedLongLong
@@ -3902,6 +3961,7 @@ public:
     {
         return m_var_StructUnsignedLongLong;
     }
+
 
     /*!
      * @brief This function copies the value in member var_StructFloat
@@ -3941,6 +4001,7 @@ public:
         return m_var_StructFloat;
     }
 
+
     /*!
      * @brief This function copies the value in member var_StructDouble
      * @param _var_StructDouble New value to be copied in member var_StructDouble
@@ -3978,6 +4039,7 @@ public:
     {
         return m_var_StructDouble;
     }
+
 
     /*!
      * @brief This function copies the value in member var_StructLongDouble
@@ -4017,6 +4079,7 @@ public:
         return m_var_StructLongDouble;
     }
 
+
     /*!
      * @brief This function copies the value in member var_StructBoolean
      * @param _var_StructBoolean New value to be copied in member var_StructBoolean
@@ -4054,6 +4117,7 @@ public:
     {
         return m_var_StructBoolean;
     }
+
 
     /*!
      * @brief This function copies the value in member var_StructOctet
@@ -4093,6 +4157,7 @@ public:
         return m_var_StructOctet;
     }
 
+
     /*!
      * @brief This function copies the value in member var_StructChar8
      * @param _var_StructChar8 New value to be copied in member var_StructChar8
@@ -4130,6 +4195,7 @@ public:
     {
         return m_var_StructChar8;
     }
+
 
     /*!
      * @brief This function copies the value in member var_StructChar16
@@ -4169,6 +4235,7 @@ public:
         return m_var_StructChar16;
     }
 
+
     /*!
      * @brief This function copies the value in member var_StructString
      * @param _var_StructString New value to be copied in member var_StructString
@@ -4206,6 +4273,7 @@ public:
     {
         return m_var_StructString;
     }
+
 
     /*!
      * @brief This function copies the value in member var_StructWString
@@ -4245,6 +4313,7 @@ public:
         return m_var_StructWString;
     }
 
+
     /*!
      * @brief This function copies the value in member var_StructBoundedString
      * @param _var_StructBoundedString New value to be copied in member var_StructBoundedString
@@ -4282,6 +4351,7 @@ public:
     {
         return m_var_StructBoundedString;
     }
+
 
     /*!
      * @brief This function copies the value in member var_StructBoundedWString
@@ -4321,6 +4391,7 @@ public:
         return m_var_StructBoundedWString;
     }
 
+
     /*!
      * @brief This function copies the value in member var_StructEnum
      * @param _var_StructEnum New value to be copied in member var_StructEnum
@@ -4358,6 +4429,7 @@ public:
     {
         return m_var_StructEnum;
     }
+
 
     /*!
      * @brief This function copies the value in member var_StructBitMask
@@ -4397,6 +4469,7 @@ public:
         return m_var_StructBitMask;
     }
 
+
     /*!
      * @brief This function copies the value in member var_StructAlias
      * @param _var_StructAlias New value to be copied in member var_StructAlias
@@ -4434,6 +4507,7 @@ public:
     {
         return m_var_StructAlias;
     }
+
 
     /*!
      * @brief This function copies the value in member var_StructShortArray
@@ -4473,6 +4547,7 @@ public:
         return m_var_StructShortArray;
     }
 
+
     /*!
      * @brief This function copies the value in member var_StructSequence
      * @param _var_StructSequence New value to be copied in member var_StructSequence
@@ -4510,6 +4585,7 @@ public:
     {
         return m_var_StructSequence;
     }
+
 
     /*!
      * @brief This function copies the value in member var_StructMap
@@ -4549,6 +4625,7 @@ public:
         return m_var_StructMap;
     }
 
+
     /*!
      * @brief This function copies the value in member var_StructUnion
      * @param _var_StructUnion New value to be copied in member var_StructUnion
@@ -4586,6 +4663,7 @@ public:
     {
         return m_var_StructUnion;
     }
+
 
     /*!
      * @brief This function copies the value in member var_StructStructure
@@ -4625,6 +4703,7 @@ public:
         return m_var_StructStructure;
     }
 
+
     /*!
      * @brief This function copies the value in member var_StructBitset
      * @param _var_StructBitset New value to be copied in member var_StructBitset
@@ -4663,6 +4742,7 @@ public:
         return m_var_StructBitset;
     }
 
+
     /*!
      * @brief This function copies the value in member var_StructEmpty
      * @param _var_StructEmpty New value to be copied in member var_StructEmpty
@@ -4700,6 +4780,8 @@ public:
     {
         return m_var_StructEmpty;
     }
+
+
 
 private:
 
@@ -4763,9 +4845,9 @@ public:
     eProsima_user_DllExport foo(
             const foo& x)
     {
-        m_a = x.m_a;
+                    m_a = x.m_a;
 
-        m_b = x.m_b;
+                    m_b = x.m_b;
 
     }
 
@@ -4788,9 +4870,9 @@ public:
             const foo& x)
     {
 
-        m_a = x.m_a;
+                    m_a = x.m_a;
 
-        m_b = x.m_b;
+                    m_b = x.m_b;
 
         return *this;
     }
@@ -4816,7 +4898,7 @@ public:
             const foo& x) const
     {
         return (m_a == x.m_a &&
-               m_b == x.m_b);
+           m_b == x.m_b);
     }
 
     /*!
@@ -4857,6 +4939,7 @@ public:
         return m_a;
     }
 
+
     /*!
      * @brief This function sets a value in member b
      * @param _b New value for member b
@@ -4884,6 +4967,8 @@ public:
     {
         return m_b;
     }
+
+
 
 private:
 
@@ -4924,7 +5009,7 @@ public:
     eProsima_user_DllExport foo(
             const foo& x)
     {
-        m_d = x.m_d;
+                    m_d = x.m_d;
 
     }
 
@@ -4946,7 +5031,7 @@ public:
             const foo& x)
     {
 
-        m_d = x.m_d;
+                    m_d = x.m_d;
 
         return *this;
     }
@@ -5011,6 +5096,8 @@ public:
         return m_d;
     }
 
+
+
 private:
 
     bool m_d{false};
@@ -5047,7 +5134,7 @@ public:
     eProsima_user_DllExport bar(
             const bar& x)
     {
-        m_e = x.m_e;
+                    m_e = x.m_e;
 
     }
 
@@ -5069,7 +5156,7 @@ public:
             const bar& x)
     {
 
-        m_e = x.m_e;
+                    m_e = x.m_e;
 
         return *this;
     }
@@ -5134,6 +5221,8 @@ public:
         return m_e;
     }
 
+
+
 private:
 
     double m_e{0.0};
@@ -5168,9 +5257,9 @@ public:
     eProsima_user_DllExport root1(
             const root1& x)
     {
-        m_foo_struct = x.m_foo_struct;
+                    m_foo_struct = x.m_foo_struct;
 
-        m_c = x.m_c;
+                    m_c = x.m_c;
 
     }
 
@@ -5193,9 +5282,9 @@ public:
             const root1& x)
     {
 
-        m_foo_struct = x.m_foo_struct;
+                    m_foo_struct = x.m_foo_struct;
 
-        m_c = x.m_c;
+                    m_c = x.m_c;
 
         return *this;
     }
@@ -5221,7 +5310,7 @@ public:
             const root1& x) const
     {
         return (m_foo_struct == x.m_foo_struct &&
-               m_c == x.m_c);
+           m_c == x.m_c);
     }
 
     /*!
@@ -5272,6 +5361,7 @@ public:
         return m_foo_struct;
     }
 
+
     /*!
      * @brief This function sets a value in member c
      * @param _c New value for member c
@@ -5299,6 +5389,8 @@ public:
     {
         return m_c;
     }
+
+
 
 private:
 
@@ -5335,9 +5427,9 @@ public:
     eProsima_user_DllExport root2(
             const root2& x)
     {
-        m_foo_struct = x.m_foo_struct;
+                    m_foo_struct = x.m_foo_struct;
 
-        m_bar_struct = x.m_bar_struct;
+                    m_bar_struct = x.m_bar_struct;
 
     }
 
@@ -5360,9 +5452,9 @@ public:
             const root2& x)
     {
 
-        m_foo_struct = x.m_foo_struct;
+                    m_foo_struct = x.m_foo_struct;
 
-        m_bar_struct = x.m_bar_struct;
+                    m_bar_struct = x.m_bar_struct;
 
         return *this;
     }
@@ -5388,7 +5480,7 @@ public:
             const root2& x) const
     {
         return (m_foo_struct == x.m_foo_struct &&
-               m_bar_struct == x.m_bar_struct);
+           m_bar_struct == x.m_bar_struct);
     }
 
     /*!
@@ -5439,6 +5531,7 @@ public:
         return m_foo_struct;
     }
 
+
     /*!
      * @brief This function copies the value in member bar_struct
      * @param _bar_struct New value to be copied in member bar_struct
@@ -5477,6 +5570,8 @@ public:
         return m_bar_struct;
     }
 
+
+
 private:
 
     testing_2::foo m_foo_struct;
@@ -5512,9 +5607,9 @@ public:
     eProsima_user_DllExport root(
             const root& x)
     {
-        m_var_root1 = x.m_var_root1;
+                    m_var_root1 = x.m_var_root1;
 
-        m_var_root2 = x.m_var_root2;
+                    m_var_root2 = x.m_var_root2;
 
     }
 
@@ -5537,9 +5632,9 @@ public:
             const root& x)
     {
 
-        m_var_root1 = x.m_var_root1;
+                    m_var_root1 = x.m_var_root1;
 
-        m_var_root2 = x.m_var_root2;
+                    m_var_root2 = x.m_var_root2;
 
         return *this;
     }
@@ -5565,7 +5660,7 @@ public:
             const root& x) const
     {
         return (m_var_root1 == x.m_var_root1 &&
-               m_var_root2 == x.m_var_root2);
+           m_var_root2 == x.m_var_root2);
     }
 
     /*!
@@ -5616,6 +5711,7 @@ public:
         return m_var_root1;
     }
 
+
     /*!
      * @brief This function copies the value in member var_root2
      * @param _var_root2 New value to be copied in member var_root2
@@ -5653,6 +5749,8 @@ public:
     {
         return m_var_root2;
     }
+
+
 
 private:
 
