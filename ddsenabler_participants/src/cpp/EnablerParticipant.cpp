@@ -47,54 +47,6 @@ EnablerParticipant::EnablerParticipant(
 {
 }
 
-bool EnablerParticipant::service_discovered_nts_(
-        const std::shared_ptr<RpcInfo> rpc_info,
-        const DdsTopic& topic)
-{
-    auto [it, inserted] = services_.try_emplace(rpc_info->service_name,
-                    std::make_shared<ServiceDiscovered>(rpc_info->service_name, rpc_info->rpc_protocol));
-    if (it->second->add_topic(topic, rpc_info->service_type))
-    {
-        it->second->external_server = true;
-        return true;
-    }
-    return false;
-}
-
-bool EnablerParticipant::action_discovered_nts_(
-        const std::shared_ptr<RpcInfo> rpc_info,
-        const DdsTopic& topic)
-{
-    auto [it, inserted] = actions_.try_emplace(rpc_info->action_name,
-                    std::make_shared<ActionDiscovered>(rpc_info->action_name, rpc_info->rpc_protocol));
-    if (ServiceType::NONE != rpc_info->service_type)
-    {
-        if (service_discovered_nts_(rpc_info, topic))
-        {
-            auto service_it = services_.find(rpc_info->service_name);
-            if (services_.end() == service_it)
-            {
-                EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                        "Service " << rpc_info->service_name << " not found in action " << rpc_info->action_name);
-                return false;
-            }
-
-            it->second->add_service(service_it->second, rpc_info->action_type);
-        }
-    }
-    else
-    {
-        it->second->add_topic(topic, rpc_info->action_type);
-    }
-
-    if (it->second->check_fully_discovered())
-    {
-        it->second->external_server = true;
-        return true;
-    }
-    return false;
-}
-
 std::shared_ptr<IReader> EnablerParticipant::create_reader(
         const ITopic& topic)
 {
@@ -181,41 +133,6 @@ std::shared_ptr<IReader> EnablerParticipant::create_reader(
     }
     cv_.notify_all();
     return reader;
-}
-
-bool EnablerParticipant::create_topic_writer_nts_(
-        const DdsTopic& topic,
-        std::shared_ptr<IReader>& reader,
-        std::unique_lock<std::mutex>& lck)
-{
-    ddspipe::core::types::Endpoint request_edp;
-    return create_topic_writer_nts_(topic, reader, request_edp, lck);
-}
-
-bool EnablerParticipant::create_topic_writer_nts_(
-        const DdsTopic& topic,
-        std::shared_ptr<IReader>& reader,
-        ddspipe::core::types::Endpoint& request_edp,
-        std::unique_lock<std::mutex>& lck)
-{
-    request_edp = rtps::CommonParticipant::simulate_endpoint(topic, this->id());
-    this->discovery_database_->add_endpoint(request_edp);
-
-    // Wait for reader to be created from discovery thread
-    // NOTE: Set a timeout to avoid a deadlock in case the reader is never created for some reason (e.g. the topic
-    // is blocked or the underlying DDS Pipe object is disabled/destroyed before the reader is created).
-    if (!cv_.wait_for(lck, std::chrono::seconds(5), [&]
-            {
-                return nullptr != (reader = lookup_reader_nts_(topic.m_topic_name));
-            }))
-    {
-        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                "Failed to create internal reader for topic " << topic.m_topic_name <<
-                " , please verify that the topic is allowed.");
-        return false;
-    }
-
-    return true;
 }
 
 bool EnablerParticipant::publish(
@@ -379,35 +296,6 @@ bool EnablerParticipant::publish_rpc(
     return true;
 }
 
-bool EnablerParticipant::create_service_request_writer_nts_(
-        std::shared_ptr<ServiceDiscovered> service,
-        std::unique_lock<std::mutex>& lck)
-{
-    auto reader = lookup_reader_nts_(service->topic_request.m_topic_name);
-
-    if (nullptr == reader)
-    {
-        ddspipe::core::types::Endpoint request_edp;
-        if (create_topic_writer_nts_(
-                    service->topic_request,
-                    reader,
-                    request_edp,
-                    lck))
-        {
-            service->endpoint_request = request_edp;
-            return true;
-        }
-        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                "Failed to create service request writer for service " << service->service_name << ".");
-        return false;
-    }
-
-    EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-            "Failed to create server as there is already a server running for service " << service->service_name <<
-            ".");
-    return false;
-}
-
 bool EnablerParticipant::announce_service(
         const std::string& service_name,
         RpcProtocol RpcProtocol)
@@ -451,44 +339,6 @@ bool EnablerParticipant::revoke_service(
     std::unique_lock<std::mutex> lck(mtx_);
 
     return revoke_service_nts_(service_name);
-}
-
-bool EnablerParticipant::revoke_service_nts_(
-        const std::string& service_name)
-{
-    auto it = services_.find(service_name);
-    if (it == services_.end())
-    {
-        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                "Failed to revoke service " << service_name << " : service not found.");
-        return false;
-    }
-    if (!it->second->enabler_as_server || !it->second->endpoint_request.has_value())
-    {
-        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                "Failed to revoke service " << service_name << " : service not announced as server.");
-        return false;
-    }
-
-    if (it->second->external_server)
-    {
-        it->second->enabler_as_server = false;
-        return true;
-    }
-
-    std::string request_name = it->second->topic_request.m_topic_name;
-
-    this->discovery_database_->erase_endpoint(it->second->endpoint_request.value());
-    it->second->endpoint_request.reset();
-    it->second->remove_topic(ServiceType::REQUEST);
-
-    auto reader = lookup_reader_nts_(request_name);
-    if (nullptr != reader)
-    {
-        readers_.erase(reader->topic());
-    }
-
-    return true;
 }
 
 bool EnablerParticipant::send_service_request(
@@ -670,338 +520,6 @@ bool EnablerParticipant::revoke_action(
     EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
             "Failed to revoke action " << action_name << " : error revoking action services.");
     return false;
-}
-
-bool EnablerParticipant::query_topic_nts_(
-        const std::string& topic_name,
-        DdsTopic& topic)
-{
-    if (!topic_query_callback_)
-    {
-        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                "Failed to query data from topic " << topic_name <<
-                " : topic is unknown and topic query callback not set.");
-        return false;
-    }
-    TopicInfo topic_info;
-    if (!topic_query_callback_(topic_name.c_str(), topic_info))
-    {
-        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                "Failed to query data from topic " << topic_name << " : topic query callback failed.");
-        return false;
-    }
-
-    return fill_topic_struct_nts_(topic_name, topic_info, topic);
-}
-
-bool EnablerParticipant::fill_topic_struct_nts_(
-        const std::string& topic_name,
-        const TopicInfo& topic_info,
-        DdsTopic& topic)
-
-{
-    // Deserialize QoS if provided by the user (otherwise use default one)
-    TopicQoS qos;
-    if (!topic_info.serialized_qos.empty())
-    {
-        try
-        {
-            qos = serialization::deserialize_qos(topic_info.serialized_qos);
-        }
-        catch (const std::exception& e)
-        {
-            EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                    "Failed to deserialize QoS for topic " << topic_name << ": " << e.what());
-            return false;
-        }
-    }
-
-    fastdds::dds::xtypes::TypeIdentifier type_identifier;
-    if (!handler_->get_type_identifier(topic_info.type_name, type_identifier))
-    {
-        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                "Failed to create topic " << topic_name << " : type identifier not found.");
-        return false;
-    }
-
-    topic.m_topic_name = topic_name;
-    topic.type_name = topic_info.type_name;
-    topic.topic_qos = qos;
-    topic.type_identifiers.type_identifier1(type_identifier);
-
-    return true;
-}
-
-bool EnablerParticipant::fill_service_type_nts_(
-        const ServiceInfo& service_info,
-        std::shared_ptr<ServiceDiscovered> service,
-        RpcProtocol RpcProtocol)
-{
-    std::string rq_prefix, rq_suffix, rp_prefix, rp_suffix;
-    switch (RpcProtocol)
-    {
-        case RpcProtocol::ROS2:
-            rq_prefix = ROS_REQUEST_PREFIX;
-            rq_suffix = ROS_REQUEST_SUFFIX;
-            rp_prefix = ROS_REPLY_PREFIX;
-            rp_suffix = ROS_REPLY_SUFFIX;
-            break;
-        case RpcProtocol::FASTDDS:
-            rq_prefix = FASTDDS_REQUEST_PREFIX;
-            rq_suffix = FASTDDS_REQUEST_SUFFIX;
-            rp_prefix = FASTDDS_REPLY_PREFIX;
-            rp_suffix = FASTDDS_REPLY_SUFFIX;
-            break;
-        default:
-            EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                    "Failed to announce service " << service->service_name << ": unknown RPC protocol.");
-            return false;
-    }
-
-    DdsTopic topic_request;
-    std::string topic_request_name = rq_prefix + service->service_name + rq_suffix;
-    if (!fill_topic_struct_nts_(topic_request_name, service_info.request, topic_request))
-    {
-        return false;
-    }
-    service->add_topic(topic_request, ServiceType::REQUEST);
-
-    DdsTopic topic_reply;
-    std::string topic_reply_name = rp_prefix + service->service_name + rp_suffix;
-    if (!fill_topic_struct_nts_(topic_reply_name, service_info.reply, topic_reply))
-    {
-        return false;
-    }
-    service->add_topic(topic_reply, ServiceType::REPLY);
-
-    if (!service->fully_discovered)
-    {
-        return false;
-    }
-
-    service->enabler_as_server = true;
-    return true;
-}
-
-bool EnablerParticipant::query_service_nts_(
-        std::shared_ptr<ServiceDiscovered> service,
-        RpcProtocol RpcProtocol)
-{
-    if (!service_query_callback_)
-    {
-        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                "Failed to announce service " << service->service_name <<
-                " : service is unknown and service request callback not set.");
-        return false;
-    }
-
-    std::string request_type_name;
-    std::string serialized_request_qos_content;
-    std::string reply_type_name;
-    std::string serialized_reply_qos_content;
-
-
-    ServiceInfo service_info;
-    if (!service_query_callback_(service->service_name.c_str(), service_info))
-    {
-        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                "Failed to announce service " << service->service_name << " : service type request failed.");
-        return false;
-    }
-
-    return fill_service_type_nts_(service_info, service, RpcProtocol);
-}
-
-bool EnablerParticipant::query_action_nts_(
-        ActionDiscovered& action,
-        RpcProtocol RpcProtocol,
-        std::unique_lock<std::mutex>& lck)
-{
-    if (!action_query_callback_)
-    {
-        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                "Failed to announce action " << action.action_name <<
-                " : action is unknown and action request callback not set.");
-        return false;
-    }
-
-    ActionInfo action_info;
-
-    if (!action_query_callback_(action.action_name.c_str(),
-            action_info))
-    {
-        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                "Failed to announce action " << action.action_name << " : action type request failed.");
-        return false;
-    }
-
-    std::string goal_service_name = action.action_name + ACTION_GOAL_SUFFIX;
-    std::string cancel_service_name = action.action_name + ACTION_CANCEL_SUFFIX;
-    std::string result_service_name = action.action_name + ACTION_RESULT_SUFFIX;
-    std::vector<std::string> topics_names =
-    {
-        goal_service_name,
-        cancel_service_name,
-        result_service_name
-    };
-    for (const auto& topic_name : topics_names)
-    {
-        auto it = services_.find(topic_name);
-        if (it != services_.end())
-        {
-            // Erase the service, to allow re-announcing it
-            services_.erase(it);
-        }
-    }
-
-    std::shared_ptr<ServiceDiscovered> goal_service = std::make_shared<ServiceDiscovered>(goal_service_name,
-                    RpcProtocol);
-    if (!fill_service_type_nts_(
-                action_info.goal,
-                goal_service,
-                RpcProtocol))
-    {
-        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                "Failed to announce action " << action.action_name << " : goal service type not found.");
-        return false;
-    }
-    if (!create_service_request_writer_nts_(goal_service, lck))
-    {
-        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                "Failed to announce action " << action.action_name << " : goal service writer creation failed.");
-        return false;
-    }
-    services_.insert_or_assign(goal_service_name, goal_service);
-    action.goal = goal_service;
-
-    std::shared_ptr<ServiceDiscovered> cancel_service = std::make_shared<ServiceDiscovered>(cancel_service_name,
-                    RpcProtocol);
-    if (!fill_service_type_nts_(
-                action_info.cancel,
-                cancel_service,
-                RpcProtocol))
-    {
-        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                "Failed to announce action " << action.action_name << " : cancel service type not found.");
-        return false;
-    }
-    if (!create_service_request_writer_nts_(cancel_service, lck))
-    {
-        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                "Failed to announce action " << action.action_name << " : cancel service writer creation failed.");
-        return false;
-    }
-    services_.insert_or_assign(cancel_service_name, cancel_service);
-    action.cancel = cancel_service;
-
-    std::shared_ptr<ServiceDiscovered> result_service = std::make_shared<ServiceDiscovered>(result_service_name,
-                    RpcProtocol);
-    if (!fill_service_type_nts_(
-                action_info.result,
-                result_service,
-                RpcProtocol))
-    {
-        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                "Failed to announce action " << action.action_name << " : result service type not found.");
-        return false;
-    }
-    if (!create_service_request_writer_nts_(result_service, lck))
-    {
-        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                "Failed to announce action " << action.action_name << " : result service writer creation failed.");
-        return false;
-    }
-    services_.insert_or_assign(result_service_name, result_service);
-    action.result = result_service;
-
-    std::string prefix;
-    switch (RpcProtocol)
-    {
-        case RpcProtocol::ROS2:
-            prefix = ROS_TOPIC_PREFIX;
-            break;
-        case RpcProtocol::FASTDDS:
-            prefix = FASTDDS_TOPIC_PREFIX;
-            break;
-        default:
-            EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                    "Failed to announce action " << action.action_name << " : unsupported RPC protocol.");
-            return false;
-    }
-
-    std::string feedback_topic_name = prefix + action.action_name + ACTION_FEEDBACK_SUFFIX;
-    DdsTopic feedback_topic;
-    if (!fill_topic_struct_nts_(
-                feedback_topic_name,
-                action_info.feedback,
-                feedback_topic))
-    {
-        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                "Failed to announce action " << action.action_name << " : feedback topic type not found.");
-        return false;
-    }
-    {
-        auto feedback_reader = lookup_reader_nts_(feedback_topic_name);
-        if (!feedback_reader)
-        {
-            create_topic_writer_nts_(
-                feedback_topic,
-                feedback_reader,
-                lck);
-        }
-    }
-    action.feedback = feedback_topic;
-    action.feedback_discovered = true;
-
-    std::string status_topic_name = prefix + action.action_name + ACTION_STATUS_SUFFIX;
-    DdsTopic status_topic;
-    if (!fill_topic_struct_nts_(
-                status_topic_name,
-                action_info.status,
-                status_topic))
-    {
-        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                "Failed to announce action " << action.action_name << " : status topic type not found.");
-        return false;
-    }
-    {
-        auto status_reader = lookup_reader_nts_(action.status.m_topic_name);
-        if (!status_reader)
-        {
-            create_topic_writer_nts_(
-                status_topic,
-                status_reader,
-                lck);
-        }
-    }
-    action.status = status_topic;
-    action.status_discovered = true;
-
-    action.fully_discovered = true;
-    action.enabler_as_server = true;
-    return true;
-}
-
-std::shared_ptr<IReader> EnablerParticipant::lookup_reader_nts_(
-        const std::string& topic_name,
-        std::string& type_name) const
-{
-    for (const auto& reader : readers_)
-    {
-        if (reader.first.m_topic_name == topic_name)
-        {
-            type_name = reader.first.type_name;
-            return reader.second;
-        }
-    }
-    return nullptr;
-}
-
-std::shared_ptr<IReader> EnablerParticipant::lookup_reader_nts_(
-        const std::string& topic_name) const
-{
-    std::string _;
-    return lookup_reader_nts_(topic_name, _);
 }
 
 bool EnablerParticipant::send_action_goal(
@@ -1279,6 +797,488 @@ bool EnablerParticipant::update_action_status(
     std::string status_json = RpcUtils::create_status_msg(goal_id, status_code, goal_accepted_stamp);
     std::string status_topic = prefix + action_name + ACTION_STATUS_SUFFIX;
     return publish(status_topic, status_json);
+}
+
+bool EnablerParticipant::query_topic_nts_(
+        const std::string& topic_name,
+        DdsTopic& topic)
+{
+    if (!topic_query_callback_)
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
+                "Failed to query data from topic " << topic_name <<
+                " : topic is unknown and topic query callback not set.");
+        return false;
+    }
+    TopicInfo topic_info;
+    if (!topic_query_callback_(topic_name.c_str(), topic_info))
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
+                "Failed to query data from topic " << topic_name << " : topic query callback failed.");
+        return false;
+    }
+
+    return fill_topic_struct_nts_(topic_name, topic_info, topic);
+}
+
+bool EnablerParticipant::query_service_nts_(
+        std::shared_ptr<ServiceDiscovered> service,
+        RpcProtocol RpcProtocol)
+{
+    if (!service_query_callback_)
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
+                "Failed to announce service " << service->service_name <<
+                " : service is unknown and service request callback not set.");
+        return false;
+    }
+
+    std::string request_type_name;
+    std::string serialized_request_qos_content;
+    std::string reply_type_name;
+    std::string serialized_reply_qos_content;
+
+
+    ServiceInfo service_info;
+    if (!service_query_callback_(service->service_name.c_str(), service_info))
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
+                "Failed to announce service " << service->service_name << " : service type request failed.");
+        return false;
+    }
+
+    return fill_service_type_nts_(service_info, service, RpcProtocol);
+}
+
+bool EnablerParticipant::query_action_nts_(
+        ActionDiscovered& action,
+        RpcProtocol RpcProtocol,
+        std::unique_lock<std::mutex>& lck)
+{
+    if (!action_query_callback_)
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
+                "Failed to announce action " << action.action_name <<
+                " : action is unknown and action request callback not set.");
+        return false;
+    }
+
+    ActionInfo action_info;
+
+    if (!action_query_callback_(action.action_name.c_str(),
+            action_info))
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
+                "Failed to announce action " << action.action_name << " : action type request failed.");
+        return false;
+    }
+
+    std::string goal_service_name = action.action_name + ACTION_GOAL_SUFFIX;
+    std::string cancel_service_name = action.action_name + ACTION_CANCEL_SUFFIX;
+    std::string result_service_name = action.action_name + ACTION_RESULT_SUFFIX;
+    std::vector<std::string> topics_names =
+    {
+        goal_service_name,
+        cancel_service_name,
+        result_service_name
+    };
+    for (const auto& topic_name : topics_names)
+    {
+        auto it = services_.find(topic_name);
+        if (it != services_.end())
+        {
+            // Erase the service, to allow re-announcing it
+            services_.erase(it);
+        }
+    }
+
+    std::shared_ptr<ServiceDiscovered> goal_service = std::make_shared<ServiceDiscovered>(goal_service_name,
+                    RpcProtocol);
+    if (!fill_service_type_nts_(
+                action_info.goal,
+                goal_service,
+                RpcProtocol))
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
+                "Failed to announce action " << action.action_name << " : goal service type not found.");
+        return false;
+    }
+    if (!create_service_request_writer_nts_(goal_service, lck))
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
+                "Failed to announce action " << action.action_name << " : goal service writer creation failed.");
+        return false;
+    }
+    services_.insert_or_assign(goal_service_name, goal_service);
+    action.goal = goal_service;
+
+    std::shared_ptr<ServiceDiscovered> cancel_service = std::make_shared<ServiceDiscovered>(cancel_service_name,
+                    RpcProtocol);
+    if (!fill_service_type_nts_(
+                action_info.cancel,
+                cancel_service,
+                RpcProtocol))
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
+                "Failed to announce action " << action.action_name << " : cancel service type not found.");
+        return false;
+    }
+    if (!create_service_request_writer_nts_(cancel_service, lck))
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
+                "Failed to announce action " << action.action_name << " : cancel service writer creation failed.");
+        return false;
+    }
+    services_.insert_or_assign(cancel_service_name, cancel_service);
+    action.cancel = cancel_service;
+
+    std::shared_ptr<ServiceDiscovered> result_service = std::make_shared<ServiceDiscovered>(result_service_name,
+                    RpcProtocol);
+    if (!fill_service_type_nts_(
+                action_info.result,
+                result_service,
+                RpcProtocol))
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
+                "Failed to announce action " << action.action_name << " : result service type not found.");
+        return false;
+    }
+    if (!create_service_request_writer_nts_(result_service, lck))
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
+                "Failed to announce action " << action.action_name << " : result service writer creation failed.");
+        return false;
+    }
+    services_.insert_or_assign(result_service_name, result_service);
+    action.result = result_service;
+
+    std::string prefix;
+    switch (RpcProtocol)
+    {
+        case RpcProtocol::ROS2:
+            prefix = ROS_TOPIC_PREFIX;
+            break;
+        case RpcProtocol::FASTDDS:
+            prefix = FASTDDS_TOPIC_PREFIX;
+            break;
+        default:
+            EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
+                    "Failed to announce action " << action.action_name << " : unsupported RPC protocol.");
+            return false;
+    }
+
+    std::string feedback_topic_name = prefix + action.action_name + ACTION_FEEDBACK_SUFFIX;
+    DdsTopic feedback_topic;
+    if (!fill_topic_struct_nts_(
+                feedback_topic_name,
+                action_info.feedback,
+                feedback_topic))
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
+                "Failed to announce action " << action.action_name << " : feedback topic type not found.");
+        return false;
+    }
+    {
+        auto feedback_reader = lookup_reader_nts_(feedback_topic_name);
+        if (!feedback_reader)
+        {
+            create_topic_writer_nts_(
+                feedback_topic,
+                feedback_reader,
+                lck);
+        }
+    }
+    action.feedback = feedback_topic;
+    action.feedback_discovered = true;
+
+    std::string status_topic_name = prefix + action.action_name + ACTION_STATUS_SUFFIX;
+    DdsTopic status_topic;
+    if (!fill_topic_struct_nts_(
+                status_topic_name,
+                action_info.status,
+                status_topic))
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
+                "Failed to announce action " << action.action_name << " : status topic type not found.");
+        return false;
+    }
+    {
+        auto status_reader = lookup_reader_nts_(action.status.m_topic_name);
+        if (!status_reader)
+        {
+            create_topic_writer_nts_(
+                status_topic,
+                status_reader,
+                lck);
+        }
+    }
+    action.status = status_topic;
+    action.status_discovered = true;
+
+    action.fully_discovered = true;
+    action.enabler_as_server = true;
+    return true;
+}
+
+bool EnablerParticipant::create_topic_writer_nts_(
+        const DdsTopic& topic,
+        std::shared_ptr<IReader>& reader,
+        std::unique_lock<std::mutex>& lck)
+{
+    ddspipe::core::types::Endpoint request_edp;
+    return create_topic_writer_nts_(topic, reader, request_edp, lck);
+}
+
+bool EnablerParticipant::create_topic_writer_nts_(
+        const DdsTopic& topic,
+        std::shared_ptr<IReader>& reader,
+        ddspipe::core::types::Endpoint& request_edp,
+        std::unique_lock<std::mutex>& lck)
+{
+    request_edp = rtps::CommonParticipant::simulate_endpoint(topic, this->id());
+    this->discovery_database_->add_endpoint(request_edp);
+
+    // Wait for reader to be created from discovery thread
+    // NOTE: Set a timeout to avoid a deadlock in case the reader is never created for some reason (e.g. the topic
+    // is blocked or the underlying DDS Pipe object is disabled/destroyed before the reader is created).
+    if (!cv_.wait_for(lck, std::chrono::seconds(5), [&]
+            {
+                return nullptr != (reader = lookup_reader_nts_(topic.m_topic_name));
+            }))
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
+                "Failed to create internal reader for topic " << topic.m_topic_name <<
+                " , please verify that the topic is allowed.");
+        return false;
+    }
+
+    return true;
+}
+
+bool EnablerParticipant::create_service_request_writer_nts_(
+        std::shared_ptr<ServiceDiscovered> service,
+        std::unique_lock<std::mutex>& lck)
+{
+    auto reader = lookup_reader_nts_(service->topic_request.m_topic_name);
+
+    if (nullptr == reader)
+    {
+        ddspipe::core::types::Endpoint request_edp;
+        if (create_topic_writer_nts_(
+                    service->topic_request,
+                    reader,
+                    request_edp,
+                    lck))
+        {
+            service->endpoint_request = request_edp;
+            return true;
+        }
+        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
+                "Failed to create service request writer for service " << service->service_name << ".");
+        return false;
+    }
+
+    EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
+            "Failed to create server as there is already a server running for service " << service->service_name <<
+            ".");
+    return false;
+}
+
+bool EnablerParticipant::fill_topic_struct_nts_(
+        const std::string& topic_name,
+        const TopicInfo& topic_info,
+        DdsTopic& topic)
+
+{
+    // Deserialize QoS if provided by the user (otherwise use default one)
+    TopicQoS qos;
+    if (!topic_info.serialized_qos.empty())
+    {
+        try
+        {
+            qos = serialization::deserialize_qos(topic_info.serialized_qos);
+        }
+        catch (const std::exception& e)
+        {
+            EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
+                    "Failed to deserialize QoS for topic " << topic_name << ": " << e.what());
+            return false;
+        }
+    }
+
+    fastdds::dds::xtypes::TypeIdentifier type_identifier;
+    if (!handler_->get_type_identifier(topic_info.type_name, type_identifier))
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
+                "Failed to create topic " << topic_name << " : type identifier not found.");
+        return false;
+    }
+
+    topic.m_topic_name = topic_name;
+    topic.type_name = topic_info.type_name;
+    topic.topic_qos = qos;
+    topic.type_identifiers.type_identifier1(type_identifier);
+
+    return true;
+}
+
+bool EnablerParticipant::fill_service_type_nts_(
+        const ServiceInfo& service_info,
+        std::shared_ptr<ServiceDiscovered> service,
+        RpcProtocol RpcProtocol)
+{
+    std::string rq_prefix, rq_suffix, rp_prefix, rp_suffix;
+    switch (RpcProtocol)
+    {
+        case RpcProtocol::ROS2:
+            rq_prefix = ROS_REQUEST_PREFIX;
+            rq_suffix = ROS_REQUEST_SUFFIX;
+            rp_prefix = ROS_REPLY_PREFIX;
+            rp_suffix = ROS_REPLY_SUFFIX;
+            break;
+        case RpcProtocol::FASTDDS:
+            rq_prefix = FASTDDS_REQUEST_PREFIX;
+            rq_suffix = FASTDDS_REQUEST_SUFFIX;
+            rp_prefix = FASTDDS_REPLY_PREFIX;
+            rp_suffix = FASTDDS_REPLY_SUFFIX;
+            break;
+        default:
+            EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
+                    "Failed to announce service " << service->service_name << ": unknown RPC protocol.");
+            return false;
+    }
+
+    DdsTopic topic_request;
+    std::string topic_request_name = rq_prefix + service->service_name + rq_suffix;
+    if (!fill_topic_struct_nts_(topic_request_name, service_info.request, topic_request))
+    {
+        return false;
+    }
+    service->add_topic(topic_request, ServiceType::REQUEST);
+
+    DdsTopic topic_reply;
+    std::string topic_reply_name = rp_prefix + service->service_name + rp_suffix;
+    if (!fill_topic_struct_nts_(topic_reply_name, service_info.reply, topic_reply))
+    {
+        return false;
+    }
+    service->add_topic(topic_reply, ServiceType::REPLY);
+
+    if (!service->fully_discovered)
+    {
+        return false;
+    }
+
+    service->enabler_as_server = true;
+    return true;
+}
+
+std::shared_ptr<IReader> EnablerParticipant::lookup_reader_nts_(
+        const std::string& topic_name,
+        std::string& type_name) const
+{
+    for (const auto& reader : readers_)
+    {
+        if (reader.first.m_topic_name == topic_name)
+        {
+            type_name = reader.first.type_name;
+            return reader.second;
+        }
+    }
+    return nullptr;
+}
+
+std::shared_ptr<IReader> EnablerParticipant::lookup_reader_nts_(
+        const std::string& topic_name) const
+{
+    std::string _;
+    return lookup_reader_nts_(topic_name, _);
+}
+
+bool EnablerParticipant::service_discovered_nts_(
+        const std::shared_ptr<RpcInfo> rpc_info,
+        const DdsTopic& topic)
+{
+    auto [it, inserted] = services_.try_emplace(rpc_info->service_name,
+                    std::make_shared<ServiceDiscovered>(rpc_info->service_name, rpc_info->rpc_protocol));
+    if (it->second->add_topic(topic, rpc_info->service_type))
+    {
+        it->second->external_server = true;
+        return true;
+    }
+    return false;
+}
+
+bool EnablerParticipant::action_discovered_nts_(
+        const std::shared_ptr<RpcInfo> rpc_info,
+        const DdsTopic& topic)
+{
+    auto [it, inserted] = actions_.try_emplace(rpc_info->action_name,
+                    std::make_shared<ActionDiscovered>(rpc_info->action_name, rpc_info->rpc_protocol));
+    if (ServiceType::NONE != rpc_info->service_type)
+    {
+        if (service_discovered_nts_(rpc_info, topic))
+        {
+            auto service_it = services_.find(rpc_info->service_name);
+            if (services_.end() == service_it)
+            {
+                EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
+                        "Service " << rpc_info->service_name << " not found in action " << rpc_info->action_name);
+                return false;
+            }
+
+            it->second->add_service(service_it->second, rpc_info->action_type);
+        }
+    }
+    else
+    {
+        it->second->add_topic(topic, rpc_info->action_type);
+    }
+
+    if (it->second->check_fully_discovered())
+    {
+        it->second->external_server = true;
+        return true;
+    }
+    return false;
+}
+
+bool EnablerParticipant::revoke_service_nts_(
+        const std::string& service_name)
+{
+    auto it = services_.find(service_name);
+    if (it == services_.end())
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
+                "Failed to revoke service " << service_name << " : service not found.");
+        return false;
+    }
+    if (!it->second->enabler_as_server || !it->second->endpoint_request.has_value())
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
+                "Failed to revoke service " << service_name << " : service not announced as server.");
+        return false;
+    }
+
+    if (it->second->external_server)
+    {
+        it->second->enabler_as_server = false;
+        return true;
+    }
+
+    std::string request_name = it->second->topic_request.m_topic_name;
+
+    this->discovery_database_->erase_endpoint(it->second->endpoint_request.value());
+    it->second->endpoint_request.reset();
+    it->second->remove_topic(ServiceType::REQUEST);
+
+    auto reader = lookup_reader_nts_(request_name);
+    if (nullptr != reader)
+    {
+        readers_.erase(reader->topic());
+    }
+
+    return true;
 }
 
 } /* namespace participants */
