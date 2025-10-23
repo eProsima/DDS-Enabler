@@ -94,6 +94,7 @@ struct RpcInfo
             rpc_protocol = RpcProtocol::ROS2;
             return;
         }
+        // With the current Fast Prefixes being empty strings, this check must be the last one
         else if (topic_name.rfind(FASTDDS_TOPIC_PREFIX, 0) == 0 ||
                 topic_name.rfind(FASTDDS_REQUEST_PREFIX, 0) == 0 ||
                 topic_name.rfind(FASTDDS_REPLY_PREFIX, 0) == 0)

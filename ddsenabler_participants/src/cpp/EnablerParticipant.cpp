@@ -69,16 +69,18 @@ bool EnablerParticipant::action_discovered_nts_(
                     std::make_shared<ActionDiscovered>(rpc_info->action_name, rpc_info->rpc_protocol));
     if (ServiceType::NONE != rpc_info->service_type)
     {
-        service_discovered_nts_(rpc_info, topic);
-        auto service_it = services_.find(rpc_info->service_name);
-        if (services_.end() == service_it)
+        if (service_discovered_nts_(rpc_info, topic))
         {
-            EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                    "Service " << rpc_info->service_name << " not found in action " << rpc_info->action_name);
-            return false;
-        }
+            auto service_it = services_.find(rpc_info->service_name);
+            if (services_.end() == service_it)
+            {
+                EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
+                        "Service " << rpc_info->service_name << " not found in action " << rpc_info->action_name);
+                return false;
+            }
 
-        it->second->add_service(service_it->second, rpc_info->action_type);
+            it->second->add_service(service_it->second, rpc_info->action_type);
+        }
     }
     else
     {
@@ -164,10 +166,6 @@ std::shared_ptr<IReader> EnablerParticipant::create_reader(
                         }
                     }
                 }
-            }
-            else
-            {
-                std::cout << "Topic " << dds_topic.m_topic_name << " discovered from topic query callback. Not adding RPC." << std::endl;
             }
         }
         else
@@ -287,7 +285,7 @@ bool EnablerParticipant::publish(
 bool EnablerParticipant::publish_rpc(
         const std::string& topic_name,
         const std::string& json,
-        const uint64_t& request_id)
+        const uint64_t request_id)
 {
     std::unique_lock<std::mutex> lck(mtx_);
 
@@ -462,13 +460,13 @@ bool EnablerParticipant::revoke_service_nts_(
     if (it == services_.end())
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                "Failed to stop service " << service_name << " : service not found.");
+                "Failed to revoke service " << service_name << " : service not found.");
         return false;
     }
     if (!it->second->enabler_as_server || !it->second->endpoint_request.has_value())
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                "Failed to stop service " << service_name << " : service not announced as server.");
+                "Failed to revoke service " << service_name << " : service not announced as server.");
         return false;
     }
 
@@ -632,14 +630,14 @@ bool EnablerParticipant::revoke_action(
     if (it == actions_.end())
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                "Failed to stop action " << action_name << " : action not found.");
+                "Failed to revoke action " << action_name << " : action not found.");
         return false;
     }
 
     if (!it->second->enabler_as_server)
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                "Failed to stop action " << action_name << " : action not announced as server.");
+                "Failed to revoke action " << action_name << " : action not announced as server.");
         return false;
     }
 
@@ -657,7 +655,7 @@ bool EnablerParticipant::revoke_action(
     if (!goal || !result || !cancel)
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                "Failed to stop action " << action_name << " : action services not fully discovered.");
+                "Failed to revoke action " << action_name << " : action services not fully discovered.");
         return false;
     }
     if (this->revoke_service_nts_(goal->service_name) &&
@@ -670,7 +668,7 @@ bool EnablerParticipant::revoke_action(
     }
 
     EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-            "Failed to stop action " << action_name << " : error revoking action services.");
+            "Failed to revoke action " << action_name << " : error revoking action services.");
     return false;
 }
 
@@ -734,7 +732,7 @@ bool EnablerParticipant::fill_topic_struct_nts_(
     return true;
 }
 
-bool EnablerParticipant::fulfill_service_type_nts_(
+bool EnablerParticipant::fill_service_type_nts_(
         const ServiceInfo& service_info,
         std::shared_ptr<ServiceDiscovered> service,
         RpcProtocol RpcProtocol)
@@ -811,7 +809,7 @@ bool EnablerParticipant::query_service_nts_(
         return false;
     }
 
-    return fulfill_service_type_nts_(service_info, service, RpcProtocol);
+    return fill_service_type_nts_(service_info, service, RpcProtocol);
 }
 
 bool EnablerParticipant::query_action_nts_(
@@ -858,7 +856,7 @@ bool EnablerParticipant::query_action_nts_(
 
     std::shared_ptr<ServiceDiscovered> goal_service = std::make_shared<ServiceDiscovered>(goal_service_name,
                     RpcProtocol);
-    if (!fulfill_service_type_nts_(
+    if (!fill_service_type_nts_(
                 action_info.goal,
                 goal_service,
                 RpcProtocol))
@@ -878,7 +876,7 @@ bool EnablerParticipant::query_action_nts_(
 
     std::shared_ptr<ServiceDiscovered> cancel_service = std::make_shared<ServiceDiscovered>(cancel_service_name,
                     RpcProtocol);
-    if (!fulfill_service_type_nts_(
+    if (!fill_service_type_nts_(
                 action_info.cancel,
                 cancel_service,
                 RpcProtocol))
@@ -898,7 +896,7 @@ bool EnablerParticipant::query_action_nts_(
 
     std::shared_ptr<ServiceDiscovered> result_service = std::make_shared<ServiceDiscovered>(result_service_name,
                     RpcProtocol);
-    if (!fulfill_service_type_nts_(
+    if (!fill_service_type_nts_(
                 action_info.result,
                 result_service,
                 RpcProtocol))

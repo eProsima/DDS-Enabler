@@ -67,7 +67,7 @@ public:
     bool publish_rpc(
             const std::string& topic_name,
             const std::string& json,
-            const uint64_t& request_id);
+            const uint64_t request_id);
 
     DDSENABLER_PARTICIPANTS_DllAPI
     void set_topic_query_callback(
@@ -218,7 +218,7 @@ protected:
             const TopicInfo& topic_info,
             ddspipe::core::types::DdsTopic& topic);
 
-    bool fulfill_service_type_nts_(
+    bool fill_service_type_nts_(
             const ServiceInfo& service_info,
             std::shared_ptr<ServiceDiscovered> service,
             RpcProtocol RpcProtocol);
