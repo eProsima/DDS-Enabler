@@ -10,17 +10,17 @@ Users are encouraged to implement their own functional server logic as needed in
 
 ### CLIENT
 ```bash
-./install/ddsenabler/bin/ddsenabler_example_service client \
-	--persistence-path ./install/ddsenabler/bin/persistence/ \
-	--requests-path ./install/ddsenabler/bin/requests \
-	--config ./install/ddsenabler/bin/config_service.yml \
+./install/ddsenabler/bin/examples/service/ddsenabler_example_service client \
+	--persistence-path ./install/ddsenabler/bin/examples/persistence/ \
+	--requests-path ./install/ddsenabler/bin/examples/service/requests \
 	--request-initial-wait 3
+	<optional> --config $PATH_TO_CONFIG_FILE
 ```
 
 ### SERVER
 ```bash
-./install/ddsenabler/bin/ddsenabler_example_service server \
-	--persistence-path ./install/ddsenabler/bin/persistence/ \
-	--config ./install/ddsenabler/bin/config_service.yml \
-	--expected-requests 3
+./install/ddsenabler/bin/examples/service/ddsenabler_example_service server \
+	--persistence-path ./install/ddsenabler/bin/examples/persistence/
+	<optional> --expected-requests N
+	<optional> --config $PATH_TO_CONFIG_FILE
 ```

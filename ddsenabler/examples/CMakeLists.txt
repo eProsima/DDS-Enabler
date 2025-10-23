@@ -12,6 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Install persistence directory
+install(
+    DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/persistence
+    DESTINATION bin
+)
+
 # Add subdirectories for examples
 add_subdirectory(utils)
 add_subdirectory(publish)

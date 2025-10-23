@@ -10,18 +10,18 @@ Users are encouraged to implement their own functional server logic as needed in
 
 ### CLIENT
 ```bash
-./install/ddsenabler/bin/ddsenabler_example_action client \
-	--persistence-path ./install/ddsenabler/bin/persistence/ \
-	--goals-path ./install/ddsenabler/bin/goals/ \
-	--config ./install/ddsenabler/bin/config_service.yml \
+./install/ddsenabler/bin/examples/action/ddsenabler_example_action client \
+	--persistence-path ./install/ddsenabler/bin/examples/persistence/ \
+	--goals-path ./install/ddsenabler/bin/examples/action/goals/ \
 	--request-initial-wait 3 \
 	--cancel-requests false
+	<optional> --config $PATH_TO_CONFIG_FILE
 ```
 
 ### SERVER
 ```bash
-./install/ddsenabler/bin/ddsenabler_example_action server \
-	--persistence-path ./install/ddsenabler/bin/persistence/ \
-	--config ./install/ddsenabler/bin/config_service.yml \
-	--expected-requests 3
+./install/ddsenabler/bin/examples/action/ddsenabler_example_action server \
+	--persistence-path ./install/ddsenabler/bin/examples/persistence/
+	<optional> --config $PATH_TO_CONFIG_FILE
+	<optional> --expected-requests N
 ```

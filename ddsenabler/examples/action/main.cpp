@@ -41,10 +41,22 @@ uint32_t received_results_ = 0;
 std::vector<std::pair<eprosima::ddsenabler::participants::UUID, std::string>> received_requests_;
 std::mutex app_mutex_;
 std::condition_variable app_cv_;
+bool stop_app_ = false;
 
 const std::string REQUESTS_SUBDIR = "goals";
 const std::string TYPES_SUBDIR = "types";
 const std::string ACTION_SUBDIR = "actions";
+
+void signal_handler(
+        int signum)
+{
+    std::cout << "Signal " << CLIParser::parse_signal(signum) << " received, stopping..." << std::endl;
+    {
+        std::lock_guard<std::mutex> lock(app_mutex_);
+        stop_app_ = true;
+    }
+    app_cv_.notify_all();
+}
 
 // Static log callback
 void test_log_callback(
@@ -268,10 +280,10 @@ bool wait_for_action_discovery(
         std::condition_variable& app_cv)
 {
     std::unique_lock<std::mutex> lock(app_mutex);
-    if (!app_cv.wait_for(lock, std::chrono::seconds(timeout),
+    if (stop_app_ || !app_cv.wait_for(lock, std::chrono::seconds(timeout),
             []()
             {
-                return action_discovered_;
+                return stop_app_ || action_discovered_;
             }))
     {
         std::cerr << "Timeout waiting for service discovery." << std::endl;
@@ -288,10 +300,10 @@ bool wait_for_action_request(
         std::string& goal_json)
 {
     std::unique_lock<std::mutex> lock(app_mutex);
-    if (!app_cv.wait_for(lock, std::chrono::seconds(timeout),
+    if (stop_app_ || !app_cv.wait_for(lock, std::chrono::seconds(timeout),
             []()
             {
-                return !received_requests_.empty();
+                return stop_app_ || !received_requests_.empty();
             }))
     {
         std::cerr << "Timeout waiting for service request." << std::endl;
@@ -311,10 +323,10 @@ bool wait_for_action_result(
         uint32_t sent_requests)
 {
     std::unique_lock<std::mutex> lock(app_mutex);
-    if (!app_cv.wait_for(lock, std::chrono::seconds(timeout),
+    if (stop_app_ || !app_cv.wait_for(lock, std::chrono::seconds(timeout),
             [&sent_requests]()
             {
-                return received_results_ >= sent_requests;
+                return stop_app_ || received_results_ >= sent_requests;
             }))
     {
         std::cerr << "Timeout waiting for action result." << std::endl;
@@ -452,7 +464,7 @@ bool server_routine(
 
     std::cout << "Action announced: " << action_name << std::endl;
 
-    while (true)
+    while (!stop_app_)
     {
         eprosima::ddsenabler::participants::UUID request_id;
         std::string goal_json;
@@ -477,10 +489,10 @@ bool server_routine(
             return false;
         }
 
-        // Check if we have received the expected number of requests
+        // Check if we have received the expected number of requests (or run indefinitely if expected_requests is 0)
         {
             std::lock_guard<std::mutex> lock(app_mutex_);
-            if (++received_results_ >= expected_requests)
+            if (expected_requests != 0 && ++received_results_ >= expected_requests)
             {
                 break;
             }
@@ -537,7 +549,12 @@ int main(
     };
 
     std::shared_ptr<DDSEnabler> enabler;
-    if (!create_dds_enabler(config.config_file_path.c_str(), callbacks, enabler))
+    bool enabler_created = false;
+    if (config.config_file_path.empty())
+        enabler_created = create_dds_enabler(yaml::EnablerConfiguration(""), callbacks, enabler);
+    else
+        enabler_created = create_dds_enabler(config.config_file_path.c_str(), callbacks, enabler);
+    if (!enabler_created)
     {
         std::cerr << "Failed to create DDSEnabler instance." << std::endl;
         return EXIT_FAILURE;
@@ -552,17 +569,13 @@ int main(
     }
     else
     {
-        std::string goal_path;
-        if (!config.goals_path.empty())
+        if (config.goals_path.empty())
         {
-            goal_path = config.goals_path;
+            std::cerr << "Request path is not set." << std::endl;
+            return EXIT_FAILURE;
         }
-        else
-        {
-            goal_path = config.persistence_path.empty() ? std::string() :
-                    (std::filesystem::path(config.persistence_path) / REQUESTS_SUBDIR).string();
-        }
-        ret = client_routine(enabler, config.action_name, goal_path, config.timeout, config.request_initial_wait,
+
+        ret = client_routine(enabler, config.action_name, config.goals_path, config.timeout, config.request_initial_wait,
                         config.cancel_requests);
     }
 

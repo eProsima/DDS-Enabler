@@ -293,21 +293,9 @@ public:
             print_help(EXIT_FAILURE);
         }
 
-        if (config.config_file_path.empty())
-        {
-            std::cerr << "Configuration file path is required" << std::endl;
-            print_help(EXIT_FAILURE);
-        }
-
         if (client_flag && config.goals_path.empty())
         {
             std::cerr << "--goals-path is required in client mode" << std::endl;
-            print_help(EXIT_FAILURE);
-        }
-
-        if (server_flag && config.expected_requests == 0)
-        {
-            std::cerr << "--expected-requests is required in server mode and must be greater than 0" << std::endl;
             print_help(EXIT_FAILURE);
         }
 

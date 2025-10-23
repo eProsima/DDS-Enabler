@@ -42,10 +42,22 @@ uint32_t sent_replies_ = 0;
 std::vector<std::pair<uint64_t, std::string>> received_requests_;
 std::mutex app_mutex_;
 std::condition_variable app_cv_;
+bool stop_app_ = false;
 
 const std::string REQUESTS_SUBDIR = "requests";
 const std::string TYPES_SUBDIR = "types";
 const std::string SERVICES_SUBDIR = "services";
+
+void signal_handler(
+        int signum)
+{
+    std::cout << "Signal " << CLIParser::parse_signal(signum) << " received, stopping..." << std::endl;
+    {
+        std::lock_guard<std::mutex> lock(app_mutex_);
+        stop_app_ = true;
+    }
+    app_cv_.notify_all();
+}
 
 // Static log callback
 void test_log_callback(
@@ -237,10 +249,10 @@ bool wait_for_service_discovery(
         std::condition_variable& app_cv)
 {
     std::unique_lock<std::mutex> lock(app_mutex);
-    if (!app_cv.wait_for(lock, std::chrono::seconds(timeout),
+    if (stop_app_ || !app_cv.wait_for(lock, std::chrono::seconds(timeout),
             []()
             {
-                return service_discovered_;
+                return stop_app_ || service_discovered_;
             }))
     {
         std::cerr << "Timeout waiting for service discovery." << std::endl;
@@ -257,10 +269,10 @@ bool wait_for_service_request(
         std::string& request)
 {
     std::unique_lock<std::mutex> lock(app_mutex);
-    if (!app_cv.wait_for(lock, std::chrono::seconds(timeout),
+    if (stop_app_ || !app_cv.wait_for(lock, std::chrono::seconds(timeout),
             []()
             {
-                return !received_requests_.empty();
+                return stop_app_ || !received_requests_.empty();
             }))
     {
         std::cerr << "Timeout waiting for service request." << std::endl;
@@ -281,10 +293,10 @@ bool wait_for_service_reply(
         uint32_t sent_requests)
 {
     std::unique_lock<std::mutex> lock(app_mutex);
-    if (!app_cv.wait_for(lock, std::chrono::seconds(timeout),
+    if (stop_app_ || !app_cv.wait_for(lock, std::chrono::seconds(timeout),
             [&sent_requests]()
             {
-                return received_replies_ >= sent_requests;
+                return stop_app_ || received_replies_ >= sent_requests;
             }))
     {
         std::cerr << "Timeout waiting for service reply." << std::endl;
@@ -380,7 +392,7 @@ bool server_routine(
 
     std::cout << "Service announced: " << service_name << std::endl;
 
-    while (true)
+    while (!stop_app_)
     {
         uint64_t request_id = 0;
         std::string request;
@@ -400,10 +412,10 @@ bool server_routine(
             request,
             request_id);
 
-        // Check if we have received the expected number of requests
+        // Check if we have received the expected number of requests (or run indefinitely if expected_requests is 0)
         {
             std::lock_guard<std::mutex> lock(app_mutex_);
-            if (++sent_replies_ >= expected_requests)
+            if (expected_requests != 0 && ++sent_replies_ >= expected_requests)
             {
                 // Wait to ensure the last sent reply reaches destination
                 std::this_thread::sleep_for(std::chrono::milliseconds(1000));
@@ -418,6 +430,7 @@ bool server_routine(
         std::cerr << "Failed to revoke service: " << service_name << std::endl;
         return false;
     }
+    return true;
 }
 
 int main(
@@ -454,7 +467,12 @@ int main(
     };
 
     std::shared_ptr<DDSEnabler> enabler;
-    if (!create_dds_enabler(config.config_file_path.c_str(), callbacks, enabler))
+    bool enabler_created = false;
+    if (config.config_file_path.empty())
+        enabler_created = create_dds_enabler(yaml::EnablerConfiguration(""), callbacks, enabler);
+    else
+        enabler_created = create_dds_enabler(config.config_file_path.c_str(), callbacks, enabler);
+    if (!enabler_created)
     {
         std::cerr << "Failed to create DDSEnabler instance." << std::endl;
         return EXIT_FAILURE;
@@ -468,17 +486,12 @@ int main(
     }
     else
     {
-        std::string requests_path;
-        if (!config.requests_path.empty())
-        {
-            requests_path = config.requests_path;
-        }
-        else
+        if (config.requests_path.empty())
         {
             std::cerr << "Request path is not set." << std::endl;
             return EXIT_FAILURE;
         }
-        ret = client_routine(enabler, config.service_name, requests_path, config.timeout, config.request_initial_wait);
+        ret = client_routine(enabler, config.service_name, config.requests_path, config.timeout, config.request_initial_wait);
     }
 
     return ret ? EXIT_SUCCESS : EXIT_FAILURE;
