@@ -706,14 +706,14 @@ bool Handler::store_action_request(
     {
         if (it->second.action_name != action_name)
         {
-            EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
+            EPROSIMA_LOG_ERROR(DDSENABLER_HANDLER,
                     "Action name mismatch for action, expected "
                     << it->second.action_name << ", got " << action_name);
             return false;
         }
         if (ActionType::GOAL == action_type)
         {
-            EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
+            EPROSIMA_LOG_ERROR(DDSENABLER_HANDLER,
                     "Cannot store action goal request as action id already exists.");
             return false;
         }
@@ -725,7 +725,7 @@ bool Handler::store_action_request(
         // If it does not exist, create a new entry only if the action type is goal request
         if (ActionType::GOAL != action_type)
         {
-            EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
+            EPROSIMA_LOG_ERROR(DDSENABLER_HANDLER,
                     "Cannot store action request, action does not exist and request type is not GOAL.");
             return false;
         }
@@ -746,7 +746,7 @@ bool Handler::handle_action_result(
     {
         if (it->second.action_name != action_name)
         {
-            EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
+            EPROSIMA_LOG_ERROR(DDSENABLER_HANDLER,
                     "Action name mismatch for action, expected " << it->second.action_name
                                                                  << ", got " << action_name);
             return false;
@@ -765,12 +765,12 @@ bool Handler::handle_action_result(
         }
         else
         {
-            EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
+            EPROSIMA_LOG_ERROR(DDSENABLER_HANDLER,
                     "Failed to store action result for action, result already set.");
             return false;
         }
     }
-    EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
+    EPROSIMA_LOG_ERROR(DDSENABLER_HANDLER,
             "Failed to send action result, goal id not found.");
     return false;
 }
@@ -842,7 +842,7 @@ bool Handler::get_action_request_UUID(
         }
         catch(const std::exception& e)
         {
-            EPROSIMA_LOG_ERROR(DDSENABLER_EXECUTION,
+            EPROSIMA_LOG_ERROR(DDSENABLER_HANDLER,
                     "Error getting action request ID: " << e.what());
         }
     }

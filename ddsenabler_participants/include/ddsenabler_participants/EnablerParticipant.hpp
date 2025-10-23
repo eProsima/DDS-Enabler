@@ -93,7 +93,7 @@ public:
     DDSENABLER_PARTICIPANTS_DllAPI
     bool announce_service(
             const std::string& service_name,
-            RpcProtocol RpcProtocol = RpcProtocol::ROS2);
+            RpcProtocol RpcProtocol);
 
     DDSENABLER_PARTICIPANTS_DllAPI
     bool revoke_service(

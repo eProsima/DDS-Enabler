@@ -326,6 +326,13 @@ bool DDSEnabler::announce_service(
     return enabler_participant_->announce_service(service_name, RpcProtocol);
 }
 
+
+bool DDSEnabler::announce_service(
+        const std::string& service_name)
+{
+    return announce_service(service_name, participants::RpcProtocol::ROS2);
+}
+
 bool DDSEnabler::revoke_service(
         const std::string& service_name)
 {

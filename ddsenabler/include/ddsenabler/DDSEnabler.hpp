@@ -118,14 +118,18 @@ public:
      * for the corresponding request and reply topics.
      *
      * @param service_name The name of the service to be announced.
-     * @param RpcProtocol The RPC protocol to be used (default is ROS2).
+     * @param RpcProtocol The RPC protocol to be used (overloaded function, without this parameter uses ROS2 by default).
      *
      * @return true if the service was successfully announced, false otherwise.
      */
     DDSENABLER_DllAPI
     bool announce_service(
             const std::string& service_name,
-            participants::RpcProtocol RpcProtocol = participants::RpcProtocol::ROS2);
+            participants::RpcProtocol RpcProtocol);
+
+    DDSENABLER_DllAPI
+    bool announce_service(
+            const std::string& service_name);
 
     /**
      * @brief Stops the server for the given service.

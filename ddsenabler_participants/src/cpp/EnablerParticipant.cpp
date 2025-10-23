@@ -982,10 +982,15 @@ bool EnablerParticipant::query_action_nts_(
         auto feedback_reader = lookup_reader_nts_(feedback_topic_name);
         if (!feedback_reader)
         {
-            create_topic_writer_nts_(
+            if (!create_topic_writer_nts_(
                 feedback_topic,
                 feedback_reader,
-                lck);
+                lck))
+            {
+                EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
+                        "Failed to announce action " << action.action_name << " : feedback topic writer creation failed.");
+                return false;
+            }
         }
     }
     action.feedback = feedback_topic;
@@ -1006,10 +1011,15 @@ bool EnablerParticipant::query_action_nts_(
         auto status_reader = lookup_reader_nts_(action.status.m_topic_name);
         if (!status_reader)
         {
-            create_topic_writer_nts_(
+            if (!create_topic_writer_nts_(
                 status_topic,
                 status_reader,
-                lck);
+                lck))
+            {
+                EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
+                        "Failed to announce action " << action.action_name << " : status topic writer creation failed.");
+                return false;
+            }
         }
     }
     action.status = status_topic;
