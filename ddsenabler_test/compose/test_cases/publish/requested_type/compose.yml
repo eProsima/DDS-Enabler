@@ -16,7 +16,7 @@ services:
       - ./config.yml:/config/config.yml
       - ./samples:/samples
       - ./persistence:/persistence
-    command: ./build/ddsenabler/examples/publish/ddsenabler_example_publish --config /config/config.yml --timeout 5 --publish-path /samples --publish-topic test_topic --publish-period 200 --persistence-path /persistence
+    command: ./install/ddsenabler/examples/publish/ddsenabler_example_publish --config /config/config.yml --timeout 5 --publish-path /samples --publish-topic test_topic --publish-period 200 --persistence-path /persistence
 
   subscriber:
     image: ${DDSENABLER_COMPOSE_TEST_DOCKER_IMAGE}

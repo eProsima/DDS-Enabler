@@ -22,11 +22,11 @@ target_link_libraries(ddsenabler_example_action PRIVATE ddsenabler utils)
 
 # Install rule
 install(TARGETS ddsenabler_example_action
-    RUNTIME DESTINATION bin/examples/action
+    RUNTIME DESTINATION examples/action
 )
 
 # Install goals directory
 install(
     DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/goals
-    DESTINATION bin/examples/action
+    DESTINATION examples/action
 )

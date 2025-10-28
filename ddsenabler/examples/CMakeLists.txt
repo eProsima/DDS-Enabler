@@ -15,7 +15,7 @@
 # Install persistence directory
 install(
     DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/persistence
-    DESTINATION bin
+    DESTINATION examples
 )
 
 # Add subdirectories for examples

@@ -302,12 +302,6 @@ public:
             }
         }
 
-        if (config.config_file_path.empty())
-        {
-            std::cerr << "Configuration file path is required" << std::endl;
-            print_help(EXIT_FAILURE);
-        }
-
         // Check that if publish path is set, publish topic is also set
         if (!config.publish_path.empty() && config.publish_topic.empty())
         {

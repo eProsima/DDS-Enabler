@@ -306,9 +306,18 @@ int main(
     };
 
     std::shared_ptr<DDSEnabler> enabler;
-    if (!create_dds_enabler(config.config_file_path.c_str(), callbacks, enabler))
+    bool enabler_created = false;
+    if (config.config_file_path.empty())
     {
-        std::cerr << "Failed to create DDS Enabler with the provided configuration." << std::endl;
+        enabler_created = create_dds_enabler(yaml::EnablerConfiguration(""), callbacks, enabler);
+    }
+    else
+    {
+        enabler_created = create_dds_enabler(config.config_file_path.c_str(), callbacks, enabler);
+    }
+    if (!enabler_created)
+    {
+        std::cerr << "Failed to create DDSEnabler instance." << std::endl;
         return EXIT_FAILURE;
     }
 

@@ -290,7 +290,7 @@ To run this *eProsima DDS Enabler* example, source the installation path and exe
     cd <dds-enabler-workspace>
     source install/setup.bash
     export TEST_PATH=$PWD/src/DDS-Enabler/ddsenabler_test/compose/test_cases/publish/discovered_type
-    ./build/ddsenabler/examples/publish/ddsenabler_example_publish --config $TEST_PATH/config.yml --timeout 10 --expected-types 1 --expected-topics 1 --publish-path $TEST_PATH/samples --publish-topic rt/chatter --publish-period 200 --publish-initial-wait 5000
+    ./install/ddsenabler/examples/publish/ddsenabler_example_publish --config $TEST_PATH/config.yml --timeout 10 --expected-types 1 --expected-topics 1 --publish-path $TEST_PATH/samples --publish-topic rt/chatter --publish-period 200 --publish-initial-wait 5000
 
 .. important::
 
