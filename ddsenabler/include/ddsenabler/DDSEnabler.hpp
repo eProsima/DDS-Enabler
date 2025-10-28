@@ -118,14 +118,14 @@ public:
      * for the corresponding request and reply topics.
      *
      * @param service_name The name of the service to be announced.
-     * @param RpcProtocol The RPC protocol to be used (overloaded function, without this parameter uses ROS2 by default).
+     * @param Protocol The RPC protocol to be used (overloaded function, without this parameter uses ROS2 by default).
      *
      * @return true if the service was successfully announced, false otherwise.
      */
     DDSENABLER_DllAPI
     bool announce_service(
             const std::string& service_name,
-            participants::RpcProtocol RpcProtocol);
+            participants::Protocol Protocol);
 
     DDSENABLER_DllAPI
     bool announce_service(
@@ -158,7 +158,7 @@ public:
      * @param service_name The target service name.
      * @param json The JSON-formatted request data.
      * @param request_id Reference to store the unique request identifier.
-     * @param RpcProtocol The RPC protocol to be used (overloaded function, without this parameter uses ROS2 by default).
+     * @param Protocol The RPC protocol to be used (overloaded function, without this parameter uses ROS2 by default).
      *
      * @return true if the request was successfully sent, false otherwise.
      */
@@ -167,7 +167,7 @@ public:
             const std::string& service_name,
             const std::string& json,
             uint64_t& request_id,
-            participants::RpcProtocol RpcProtocol);
+            participants::Protocol Protocol);
 
     DDSENABLER_DllAPI
     bool send_service_request(
@@ -208,14 +208,14 @@ public:
      * Failure may occur if there is an issue requesting the data types to user's app.
      *
      * @param action_name The name of the action to be announced.
-     * @param RpcProtocol The RPC protocol to be used (overloaded function, without this parameter uses ROS2 by default).
+     * @param Protocol The RPC protocol to be used (overloaded function, without this parameter uses ROS2 by default).
      *
      * @return true if the action was successfully announced, false otherwise.
      */
     DDSENABLER_DllAPI
     bool announce_action(
             const std::string& action_name,
-            participants::RpcProtocol RpcProtocol);
+            participants::Protocol Protocol);
 
     DDSENABLER_DllAPI
     bool announce_action(
@@ -331,7 +331,7 @@ public:
      * @param action_name The name of the action to send the goal to.
      * @param json The JSON data to be sent with the action goal.
      * @param goal_id Reference to store the unique identifier of the action goal.
-     * @param RpcProtocol The RPC protocol to be used (overloaded function, without this parameter uses ROS2 by default).
+     * @param Protocol The RPC protocol to be used (overloaded function, without this parameter uses ROS2 by default).
      *
      * @return true if the action goal was successfully sent, false otherwise.
      */
@@ -340,7 +340,7 @@ public:
             const std::string& action_name,
             const std::string& json,
             participants::UUID& goal_id,
-            participants::RpcProtocol RpcProtocol);
+            participants::Protocol Protocol);
 
     DDSENABLER_DllAPI
     bool send_action_goal(

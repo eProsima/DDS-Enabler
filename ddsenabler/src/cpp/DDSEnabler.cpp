@@ -302,33 +302,33 @@ bool DDSEnabler::send_service_request(
         service_name,
         json,
         request_id,
-        participants::RpcProtocol::ROS2);
+        participants::Protocol::ROS2);
 }
 
 bool DDSEnabler::send_service_request(
         const std::string& service_name,
         const std::string& json,
         uint64_t& request_id,
-        participants::RpcProtocol RpcProtocol)
+        participants::Protocol Protocol)
 {
     return enabler_participant_->send_service_request(
         service_name,
         json,
         request_id,
-        RpcProtocol);
+        Protocol);
 }
 
 bool DDSEnabler::announce_service(
         const std::string& service_name,
-        participants::RpcProtocol RpcProtocol)
+        participants::Protocol Protocol)
 {
-    return enabler_participant_->announce_service(service_name, RpcProtocol);
+    return enabler_participant_->announce_service(service_name, Protocol);
 }
 
 bool DDSEnabler::announce_service(
         const std::string& service_name)
 {
-    return announce_service(service_name, participants::RpcProtocol::ROS2);
+    return announce_service(service_name, participants::Protocol::ROS2);
 }
 
 bool DDSEnabler::revoke_service(
@@ -357,20 +357,20 @@ bool DDSEnabler::send_action_goal(
         action_name,
         json,
         action_id,
-        participants::RpcProtocol::ROS2);
+        participants::Protocol::ROS2);
 }
 
 bool DDSEnabler::send_action_goal(
         const std::string& action_name,
         const std::string& json,
         UUID& action_id,
-        participants::RpcProtocol RpcProtocol)
+        participants::Protocol Protocol)
 {
     return enabler_participant_->send_action_goal(
         action_name,
         json,
         action_id,
-        RpcProtocol);
+        Protocol);
 }
 
 bool DDSEnabler::send_action_get_result_request(
@@ -396,14 +396,14 @@ bool DDSEnabler::cancel_action_goal(
 bool DDSEnabler::announce_action(
         const std::string& action_name)
 {
-    return announce_action(action_name, participants::RpcProtocol::ROS2);
+    return announce_action(action_name, participants::Protocol::ROS2);
 }
 
 bool DDSEnabler::announce_action(
         const std::string& action_name,
-        participants::RpcProtocol RpcProtocol)
+        participants::Protocol Protocol)
 {
-    return enabler_participant_->announce_action(action_name, RpcProtocol);
+    return enabler_participant_->announce_action(action_name, Protocol);
 }
 
 bool DDSEnabler::revoke_action(

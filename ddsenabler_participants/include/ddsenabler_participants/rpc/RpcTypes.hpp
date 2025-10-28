@@ -31,10 +31,10 @@ namespace participants {
 
 using UUID = std::array<uint8_t, 16>;
 
-enum class RpcProtocol
+enum class Protocol
 {
     ROS2 = 0,
-    FASTDDS,
+    DDS,
     PROTOCOL_UNKNOWN
 };
 

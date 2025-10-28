@@ -41,68 +41,71 @@ RpcAction::RpcAction(
 RpcInfo::RpcInfo(
         const std::string& dds_topic_name)
     : topic_name(dds_topic_name)
-    , rpc_protocol(RpcProtocol::PROTOCOL_UNKNOWN)
+    , protocol(Protocol::PROTOCOL_UNKNOWN)
     , rpc_type(RpcType::NONE)
     , service_type(ServiceType::NONE)
     , action_type(ActionType::NONE)
 {
-    detect_rpc_protocol();
+    detect_protocol();
     try
     {
-        remove_prefix_suffix();
+        extract_rpc_info();
     }
     catch (const std::exception& e)
     {
-        throw std::runtime_error("Error extracting RPC info from topic name '" + topic_name + "': " + e.what());
+        EPROSIMA_LOG_ERROR(DDSENABLER_RPC_UTILS,
+                "Error extracting RPC info from topic name " << dds_topic_name << ": " << e.what());
     }
 }
 
-void RpcInfo::detect_rpc_protocol()
+void RpcInfo::detect_protocol()
 {
     if (topic_name.rfind(ROS_TOPIC_PREFIX, 0) == 0 ||
             topic_name.rfind(ROS_REQUEST_PREFIX, 0) == 0 ||
             topic_name.rfind(ROS_REPLY_PREFIX, 0) == 0)
     {
-        rpc_protocol = RpcProtocol::ROS2;
+        protocol = Protocol::ROS2;
         return;
     }
     // With the current Fast Prefixes being empty strings, this check must be the last one
     else if (topic_name.rfind(FASTDDS_TOPIC_PREFIX, 0) == 0 ||
-            topic_name.rfind(FASTDDS_REQUEST_PREFIX, 0) == 0 ||
-            topic_name.rfind(FASTDDS_REPLY_PREFIX, 0) == 0)
+            topic_name.rfind(DDS_REQUEST_PREFIX, 0) == 0 ||
+            topic_name.rfind(DDS_REPLY_PREFIX, 0) == 0)
     {
-        rpc_protocol = RpcProtocol::FASTDDS;
+        protocol = Protocol::DDS;
         return;
     }
-    rpc_protocol = RpcProtocol::PROTOCOL_UNKNOWN;
+    protocol = Protocol::PROTOCOL_UNKNOWN;
 }
 
-void RpcInfo::remove_prefix_suffix()
+void RpcInfo::extract_rpc_info()
 {
     std::string request_prefix, request_suffix, reply_prefix, reply_suffix, topic_prefix;
-    switch (rpc_protocol)
+    switch (protocol)
     {
-        case RpcProtocol::ROS2:
+        case Protocol::ROS2:
             request_prefix = ROS_REQUEST_PREFIX;
             request_suffix = ROS_REQUEST_SUFFIX;
             reply_prefix = ROS_REPLY_PREFIX;
             reply_suffix = ROS_REPLY_SUFFIX;
             topic_prefix = ROS_TOPIC_PREFIX;
             break;
-        case RpcProtocol::FASTDDS:
-            request_prefix = FASTDDS_REQUEST_PREFIX;
-            request_suffix = FASTDDS_REQUEST_SUFFIX;
-            reply_prefix = FASTDDS_REPLY_PREFIX;
-            reply_suffix = FASTDDS_REPLY_SUFFIX;
-            topic_prefix = FASTDDS_TOPIC_PREFIX;
+        case Protocol::DDS:
+            request_prefix = DDS_REQUEST_PREFIX;
+            request_suffix = DDS_REQUEST_SUFFIX;
+            reply_prefix = DDS_REPLY_PREFIX;
+            reply_suffix = DDS_REPLY_SUFFIX;
+            // As there are no fastdds actions there is no need to check for feedback/status topics with prefix
             break;
         default:
             EPROSIMA_LOG_ERROR(DDSENABLER_RPC_UTILS,
-                    "Invalid RPC protocol");
-            throw std::runtime_error("Invalid RPC protocol");
+                    "Invalid protocol");
+            throw std::runtime_error("Invalid protocol");
     }
 
     std::string base = topic_name;
+
+    // Check for request topics
     if ((base.rfind(request_prefix, 0) == 0) &&
             (base.size() >= request_suffix.length()) &&
             (base.substr(base.size() - request_suffix.length()) == request_suffix))
@@ -140,6 +143,8 @@ void RpcInfo::remove_prefix_suffix()
         rpc_type = RpcType::SERVICE;
         return;
     }
+
+    // Check for reply topics
     if ((base.rfind(reply_prefix, 0) == 0) &&
             (base.size() >= reply_suffix.length()) &&
             (base.substr(base.size() - reply_suffix.length()) == reply_suffix))
@@ -179,6 +184,10 @@ void RpcInfo::remove_prefix_suffix()
     }
 
     // Check for action feedback/status topics
+    if (Protocol::ROS2 != protocol) // Feedback and Status topics only exist for ROS2 actions
+    {
+        return;
+    }
     base = base.substr(topic_prefix.length());
     if (base.size() >= (std::strlen(ACTION_FEEDBACK_SUFFIX) + 1) &&
             base.substr(base.size() - (std::strlen(ACTION_FEEDBACK_SUFFIX) + 1)) ==
@@ -206,10 +215,10 @@ ActionRequestInfo::ActionRequestInfo(
         const std::string& _action_name,
         ActionType action_type,
         uint64_t request_id,
-        RpcProtocol rpc_protocol)
+        Protocol protocol)
     : action_name(_action_name)
     , goal_accepted_stamp(std::chrono::system_clock::now())
-    , rpc_protocol(rpc_protocol)
+    , protocol(protocol)
 {
     set_request(request_id, action_type);
 }
@@ -276,16 +285,16 @@ bool ActionRequestInfo::erase(
     return final_status_received && result_received;
 }
 
-RpcProtocol ActionRequestInfo::get_rpc_protocol() const
+Protocol ActionRequestInfo::get_protocol() const
 {
-    return rpc_protocol;
+    return protocol;
 }
 
 ServiceDiscovered::ServiceDiscovered(
         const std::string& service_name,
-        RpcProtocol rpc_protocol)
+        Protocol protocol)
     : service_name(service_name)
-    , rpc_protocol(rpc_protocol)
+    , protocol(protocol)
 {
 }
 
@@ -383,16 +392,16 @@ bool ServiceDiscovered::get_topic(
     return false;
 }
 
-RpcProtocol ServiceDiscovered::get_rpc_protocol() const
+Protocol ServiceDiscovered::get_protocol() const
 {
-    return rpc_protocol;
+    return protocol;
 }
 
 ActionDiscovered::ActionDiscovered(
         const std::string& action_name,
-        RpcProtocol rpc_protocol)
+        Protocol protocol)
     : action_name(action_name)
-    , rpc_protocol(rpc_protocol)
+    , protocol(protocol)
 {
 }
 

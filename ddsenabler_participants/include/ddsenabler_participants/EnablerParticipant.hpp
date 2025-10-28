@@ -93,7 +93,7 @@ public:
     DDSENABLER_PARTICIPANTS_DllAPI
     bool announce_service(
             const std::string& service_name,
-            RpcProtocol RpcProtocol);
+            Protocol Protocol);
 
     DDSENABLER_PARTICIPANTS_DllAPI
     bool revoke_service(
@@ -104,7 +104,7 @@ public:
             const std::string& service_name,
             const std::string& json,
             uint64_t& request_id,
-            participants::RpcProtocol RpcProtocol);
+            participants::Protocol Protocol);
 
     DDSENABLER_PARTICIPANTS_DllAPI
     bool send_service_reply(
@@ -113,13 +113,13 @@ public:
             const uint64_t request_id);
 
     DDSENABLER_PARTICIPANTS_DllAPI
-    RpcProtocol get_service_rpc_protocol(
+    Protocol get_service_protocol(
             const std::string& service_name);
 
     DDSENABLER_PARTICIPANTS_DllAPI
     bool announce_action(
             const std::string& action_name,
-            RpcProtocol RpcProtocol);
+            Protocol Protocol);
 
     DDSENABLER_PARTICIPANTS_DllAPI
     bool revoke_action(
@@ -130,7 +130,7 @@ public:
             const std::string& action_name,
             const std::string& json,
             UUID& action_id,
-            participants::RpcProtocol RpcProtocol);
+            participants::Protocol Protocol);
 
     DDSENABLER_PARTICIPANTS_DllAPI
     bool cancel_action_goal(
@@ -190,11 +190,11 @@ protected:
 
     bool query_service_nts_(
             std::shared_ptr<ServiceDiscovered> service,
-            RpcProtocol RpcProtocol);
+            Protocol Protocol);
 
     bool query_action_nts_(
             ActionDiscovered& action,
-            RpcProtocol RpcProtocol,
+            Protocol Protocol,
             std::unique_lock<std::mutex>& lck);
 
     bool create_topic_writer_nts_(
@@ -221,7 +221,7 @@ protected:
     bool fill_service_type_nts_(
             const ServiceInfo& service_info,
             std::shared_ptr<ServiceDiscovered> service,
-            RpcProtocol RpcProtocol);
+            Protocol Protocol);
 
     std::shared_ptr<ddspipe::core::IReader> lookup_reader_nts_(
             const std::string& topic_name,

@@ -61,14 +61,14 @@ struct RpcInfo
     RpcInfo(
             const std::string& dds_topic_name);
 
-    void detect_rpc_protocol();
+    void detect_protocol();
 
-    void remove_prefix_suffix();
+    void extract_rpc_info();
 
     std::string topic_name;
     std::string service_name;
     std::string action_name;
-    RpcProtocol rpc_protocol;
+    Protocol protocol;
     RpcType rpc_type;
     ServiceType service_type;
     ActionType action_type;
@@ -82,7 +82,7 @@ struct ActionRequestInfo
             const std::string& _action_name,
             ActionType action_type,
             uint64_t request_id,
-            RpcProtocol rpc_protocol);
+            Protocol protocol);
 
     void set_request(
             uint64_t request_id,
@@ -97,10 +97,10 @@ struct ActionRequestInfo
     bool erase(
             ActionEraseReason erase_reason);
 
-    RpcProtocol get_rpc_protocol() const;
+    Protocol get_protocol() const;
 
     std::string action_name;
-    RpcProtocol rpc_protocol;
+    Protocol protocol;
     uint64_t goal_request_id = 0;
     uint64_t result_request_id = 0;
     std::chrono::system_clock::time_point goal_accepted_stamp;
@@ -114,7 +114,7 @@ struct ServiceDiscovered
 
     ServiceDiscovered(
             const std::string& service_name,
-            RpcProtocol rpc_protocol);
+            Protocol protocol);
 
     bool add_topic(
             const ddspipe::core::types::DdsTopic& topic,
@@ -129,10 +129,10 @@ struct ServiceDiscovered
             ServiceType service_type,
             ddspipe::core::types::DdsTopic& topic);
 
-    RpcProtocol get_rpc_protocol() const;
+    Protocol get_protocol() const;
 
     std::string service_name;
-    RpcProtocol rpc_protocol{RpcProtocol::PROTOCOL_UNKNOWN};
+    Protocol protocol{Protocol::PROTOCOL_UNKNOWN};
 
     ddspipe::core::types::DdsTopic topic_request;
     bool request_discovered{false};
@@ -152,7 +152,7 @@ struct ActionDiscovered
 {
     ActionDiscovered(
             const std::string& action_name,
-            RpcProtocol rpc_protocol);
+            Protocol protocol);
 
     bool check_fully_discovered();
 
@@ -167,7 +167,7 @@ struct ActionDiscovered
     RpcAction get_action();
 
     std::string action_name;
-    RpcProtocol rpc_protocol{RpcProtocol::PROTOCOL_UNKNOWN};
+    Protocol protocol{Protocol::PROTOCOL_UNKNOWN};
     std::weak_ptr<ServiceDiscovered> goal;
     std::weak_ptr<ServiceDiscovered> result;
     std::weak_ptr<ServiceDiscovered> cancel;

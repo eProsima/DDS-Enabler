@@ -156,15 +156,7 @@ void Handler::add_data(
         throw utils::InconsistencyException(STR_ENTRY << "Received sample with no payload.");
     }
 
-    std::shared_ptr<RpcInfo> rpc_info;
-    try
-    {
-        rpc_info = std::make_shared<RpcInfo>(topic.m_topic_name);
-    }
-    catch (const std::exception& e)
-    {
-        throw utils::InconsistencyException(STR_ENTRY << e.what());
-    }
+    std::shared_ptr<RpcInfo> rpc_info = std::make_shared<RpcInfo>(topic.m_topic_name);
 
     switch (rpc_info->rpc_type)
     {
@@ -697,7 +689,7 @@ bool Handler::store_action_request(
         const UUID& action_id,
         const uint64_t request_id,
         const ActionType action_type,
-        const RpcProtocol RpcProtocol)
+        const Protocol Protocol)
 {
     std::lock_guard<std::recursive_mutex> lock(mtx_);
 
@@ -729,7 +721,7 @@ bool Handler::store_action_request(
                     "Cannot store action request, action does not exist and request type is not GOAL.");
             return false;
         }
-        action_request_id_to_uuid_[action_id] = ActionRequestInfo(action_name, action_type, request_id, RpcProtocol);
+        action_request_id_to_uuid_[action_id] = ActionRequestInfo(action_name, action_type, request_id, Protocol);
     }
 
     return true;
@@ -809,7 +801,7 @@ bool Handler::is_UUID_active(
     return false;
 }
 
-RpcProtocol Handler::get_action_rpc_protocol(
+Protocol Handler::get_action_protocol(
         const std::string& action_name,
         const UUID& action_id)
 {
@@ -817,10 +809,10 @@ RpcProtocol Handler::get_action_rpc_protocol(
     auto it = action_request_id_to_uuid_.find(action_id);
     if (it != action_request_id_to_uuid_.end() && action_name == it->second.action_name)
     {
-        return it->second.rpc_protocol;
+        return it->second.protocol;
     }
 
-    return RpcProtocol::PROTOCOL_UNKNOWN;
+    return Protocol::PROTOCOL_UNKNOWN;
 }
 
 bool Handler::get_action_request_UUID(

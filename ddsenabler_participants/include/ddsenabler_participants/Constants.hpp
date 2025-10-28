@@ -38,10 +38,10 @@ constexpr const char* ROS_REQUEST_SUFFIX("Request");
 constexpr const char* ROS_REPLY_PREFIX("rr/");
 constexpr const char* ROS_REPLY_SUFFIX("Reply");
 
-constexpr const char* FASTDDS_REQUEST_PREFIX("");
-constexpr const char* FASTDDS_REQUEST_SUFFIX("_Request");
-constexpr const char* FASTDDS_REPLY_PREFIX("");
-constexpr const char* FASTDDS_REPLY_SUFFIX("_Reply");
+constexpr const char* DDS_REQUEST_PREFIX("");
+constexpr const char* DDS_REQUEST_SUFFIX("_Request");
+constexpr const char* DDS_REPLY_PREFIX("");
+constexpr const char* DDS_REPLY_SUFFIX("_Reply");
 
 // Action mangling
 constexpr const char* ACTION_GOAL_SUFFIX("send_goal");
