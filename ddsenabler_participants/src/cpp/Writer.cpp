@@ -306,10 +306,10 @@ void Writer::write_action_feedback_notification(
         const std::string& action_name)
 {
     nlohmann::json json_data;
-    std::stringstream instanceHandle;
-    instanceHandle << msg.instanceHandle;
     if (action_feedback_notification_callback_ && prepare_json_data_(msg, dyn_type, json_data))
     {
+        std::stringstream instanceHandle;
+        instanceHandle << msg.instanceHandle;
         UUID uuid;
         try
         {
