@@ -15,6 +15,8 @@ Users are encouraged to implement their own functional server logic as needed in
 	--requests-path ./install/ddsenabler/examples/service/requests \
 	--request-initial-wait 3
 	<optional> --config $PATH_TO_CONFIG_FILE
+	<optional> --service-name $SERVICE_NAME
+	<optional> --timeout N
 ```
 
 ### SERVER
@@ -23,4 +25,6 @@ Users are encouraged to implement their own functional server logic as needed in
 	--persistence-path ./install/ddsenabler/examples/persistence/
 	<optional> --expected-requests N
 	<optional> --config $PATH_TO_CONFIG_FILE
+	<optional> --service-name $SERVICE_NAME
+	<optional> --timeout N
 ```

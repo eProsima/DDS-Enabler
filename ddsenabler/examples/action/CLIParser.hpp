@@ -50,13 +50,15 @@ public:
     static void print_help(
             uint8_t return_code)
     {
-        std::cout << "Usage: ddsenabler_example_action <client|server> [options]"                                 <<
+        std::cout << "Usage: ddsenabler_example_action <client|server> [options]"                                  <<
             std::endl;
         std::cout << ""                                                                                            <<
             std::endl;
         std::cout << "--config <str>                        Path to the configuration file"                        <<
             std::endl;
-        std::cout << "--action-name <str>                  Name of the action to be registered"                    <<
+        std::cout << "                                      (optional, if not provided default config is used)"    <<
+            std::endl;
+        std::cout << "--action-name <str>                   Name of the action to be registered"                   <<
             std::endl;
         std::cout << "                                      (Default: 'Fibonacci/_action/')"                       <<
             std::endl;
@@ -68,9 +70,13 @@ public:
             std::endl;
         std::cout << "--persistence-path <str>              Path to the persistence directory"                     <<
             std::endl;
+        std::cout << "                                      (No default value as it is required)"                  <<
+            std::endl;
         std::cout << "\n-------------------------------------SERVER OPTIONS------------------------------------\n" <<
             std::endl;
-        std::cout << "--expected-requests <num>              Number of requests expected to be received"           <<
+        std::cout << "--expected-requests <num>             Number of requests expected to be received"            <<
+            std::endl;
+        std::cout << "                                      (Default: 0, meaning infinite)"                        <<
             std::endl;
         std::cout << "\n-------------------------------------CLIENT OPTIONS------------------------------------\n" <<
             std::endl;
@@ -85,6 +91,8 @@ public:
         std::cout << "                                      (Default: false)"                                      <<
             std::endl;
         std::cout << "--goals-path <str>                    Directory containing goal JSON files"                  <<
+            std::endl;
+        std::cout << "                                      (No default value as it is required for client mode)"  <<
             std::endl;
         std::exit(return_code);
     }

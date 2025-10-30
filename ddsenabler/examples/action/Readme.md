@@ -13,9 +13,11 @@ Users are encouraged to implement their own functional server logic as needed in
 ./install/ddsenabler/examples/action/ddsenabler_example_action client \
 	--persistence-path ./install/ddsenabler/examples/persistence/ \
 	--goals-path ./install/ddsenabler/examples/action/goals/ \
-	--request-initial-wait 3 \
-	--cancel-requests false
+	--request-initial-wait 3
+	<optional> --cancel-requests false
 	<optional> --config $PATH_TO_CONFIG_FILE
+	<optional> --action-name $ACTION_NAME
+	<optional> --timeout N
 ```
 
 ### SERVER
@@ -24,4 +26,6 @@ Users are encouraged to implement their own functional server logic as needed in
 	--persistence-path ./install/ddsenabler/examples/persistence/
 	<optional> --config $PATH_TO_CONFIG_FILE
 	<optional> --expected-requests N
+	<optional> --action-name $ACTION_NAME
+	<optional> --timeout N
 ```

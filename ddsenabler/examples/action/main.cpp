@@ -164,10 +164,9 @@ static void test_action_notification_callback(
                 action_file,
                 action_name,
                 action_info);
-
-            action_discovered_ = true;
-            app_cv_.notify_all();
         }
+        action_discovered_ = true;
+        app_cv_.notify_all();
     }
     else
     {

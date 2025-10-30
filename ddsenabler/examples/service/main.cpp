@@ -164,10 +164,9 @@ static void test_service_notification_callback(
                 service_file,
                 service_name,
                 service_info);
-
-            service_discovered_ = true;
-            app_cv_.notify_all();
         }
+        service_discovered_ = true;
+        app_cv_.notify_all();
     }
     else
     {
