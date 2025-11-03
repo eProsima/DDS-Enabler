@@ -22,32 +22,9 @@ services:
       - std_net
     environment:
       - ROS_DOMAIN_ID=42
-    command: >
-      sh -c "sleep 3 && ros2 run action_tutorials_cpp fibonacci_action_client"
-
-  fibonacci_client_2:
-    image: ${DDSENABLER_COMPOSE_TEST_ROS2_DOCKER_IMAGE}
-    container_name: fibonacci_client_2
-    depends_on:
-      - ddsenabler
-    networks:
-      - std_net
-    environment:
-      - ROS_DOMAIN_ID=42
-    command: >
-      sh -c "sleep 3 && ros2 run action_tutorials_cpp fibonacci_action_client"
-
-  fibonacci_client_3:
-    image: ${DDSENABLER_COMPOSE_TEST_ROS2_DOCKER_IMAGE}
-    container_name: fibonacci_client_3
-    depends_on:
-      - ddsenabler
-    networks:
-      - std_net
-    environment:
-      - ROS_DOMAIN_ID=42
-    command: >
-      sh -c "sleep 3 && ros2 run action_tutorials_cpp fibonacci_action_client"
+    volumes:
+      - ../../../scripts:/scripts
+    command: python3 /scripts/execute_and_validate_action_client.py --timeout 20 --samples 3
 
 networks:
   std_net:

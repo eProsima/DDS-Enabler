@@ -13,6 +13,9 @@
 // limitations under the License.
 
 #include <mutex>
+#include <algorithm>
+#include <filesystem>
+
 
 #include <fastdds/dds/domain/DomainParticipantFactory.hpp>
 #include <fastdds/dds/publisher/DataWriter.hpp>
@@ -49,8 +52,8 @@ static int write_delay_ms_ =  20;
 static int wait_for_ack_ns_ =  1000000000;
 static int wait_after_publication_ms_ =  200;
 
-const auto input_file_path = std::filesystem::current_path() / "test_files";
-auto persistence_dir = input_file_path.string();
+static const auto input_file_path = std::filesystem::current_path() / "test_files";
+static std::string persistence_dir = input_file_path.string();
 #if defined(_WIN32) // On windows, the path separator is '\'
 std::replace(persistence_dir.begin(), persistence_dir.end(), '/', '\\');
 #endif // _WIN32

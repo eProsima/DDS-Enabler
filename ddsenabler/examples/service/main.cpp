@@ -367,7 +367,24 @@ bool server_specific_logic(
         uint64_t request_id)
 {
     std::this_thread::sleep_for(std::chrono::milliseconds(200)); // Simulate processing time
-    std::string json = "{\"sum\": 3}"; // Example response, replace with actual logic
+
+    // Add_two_ints service logic
+    int a = 1; // Default values in case of parsing failure
+    int b = 2; // Default values in case of parsing failure
+    try
+    {
+        auto request_json = nlohmann::json::parse(request);
+        a = request_json["rq/add_two_intsRequest"]["data"]["0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0"]["a"].get<int>();
+        b = request_json["rq/add_two_intsRequest"]["data"]["0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0"]["b"].get<int>();
+    }
+    catch (const std::exception& e)
+    {
+        std::cerr << "Failed to parse request JSON: " << e.what() << " Using default values a=1, b=2." << std::endl;
+    }
+    nlohmann::json response_json;
+    response_json["sum"] = a + b;
+    std::string json = response_json.dump();
+
     if (!enabler->send_service_reply(service_name, json, request_id))
     {
         std::cerr << "Failed to send service reply for request ID: " << request_id << std::endl;

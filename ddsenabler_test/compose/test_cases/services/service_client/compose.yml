@@ -24,8 +24,8 @@ services:
     environment:
       - ROS_DOMAIN_ID=33
     volumes:
-      - ./../run_service_server_timeout.sh:/run_service_server_timeout.sh:ro
-    entrypoint: ["/bin/bash", "/run_service_server_timeout.sh"]
+      - ../../../scripts:/scripts
+    command: python3 /scripts/execute_and_validate_server.py --timeout 10 --samples 3
 
 networks:
   std_net:
