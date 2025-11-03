@@ -20,6 +20,7 @@ set(TESTS
     reception/topics_yaml
     services/service_server
     services/service_client
+    services/service_client_discovered
     actions/action_client
     actions/action_client_cancel
     actions/action_server

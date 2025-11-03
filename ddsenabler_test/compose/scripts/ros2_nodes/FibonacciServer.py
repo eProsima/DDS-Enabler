@@ -16,27 +16,26 @@
 ROS 2 Fibonacci Action Server used for testing.
 """
 
+import time
+
+from rclpy.node import Node
+from rclpy.action import ActionServer, CancelResponse, GoalResponse
+from rclpy.callback_groups import ReentrantCallbackGroup
+from rclpy.executors import MultiThreadedExecutor
+
+# Prefer action_tutorials_interfaces to match standard tutorial servers
+from action_tutorials_interfaces.action import Fibonacci
+
 import inspect
 import os
 import sys
-import time
 
 currentdir = os.path.dirname(
     os.path.abspath(inspect.getfile(inspect.currentframe())))
 parentdir = os.path.dirname(currentdir)
 sys.path.insert(0, parentdir)
 
-import rclpy
-from rclpy.node import Node
-from rclpy.action import ActionServer, CancelResponse, GoalResponse
-from rclpy.callback_groups import ReentrantCallbackGroup
-from rclpy.executors import MultiThreadedExecutor
-import time
-
-# Prefer action_tutorials_interfaces to match standard tutorial servers
-from action_tutorials_interfaces.action import Fibonacci
-
-from utils import print_with_timestamp
+from utils import print_with_timestamp  # noqa: E402
 
 
 class FibonacciServer(Node):

@@ -399,6 +399,7 @@ bool client_routine(
             return false;
         }
     }
+    std::this_thread::sleep_for(std::chrono::seconds(1)); // Wait for any last feedback/result/cancel notifications
     return true;
 }
 

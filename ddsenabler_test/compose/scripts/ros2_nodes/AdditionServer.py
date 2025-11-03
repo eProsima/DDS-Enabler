@@ -16,6 +16,13 @@
 ROS 2 Add two ints Service Server used for testing.
 """
 
+import time
+
+import rclpy
+from rclpy.node import Node
+
+from example_interfaces.srv import AddTwoInts
+
 ###
 # Required for import ../utils
 import inspect
@@ -28,13 +35,7 @@ parentdir = os.path.dirname(currentdir)
 sys.path.insert(0, parentdir)
 ###
 
-import rclpy
-from rclpy.node import Node
-import time
-
-from example_interfaces.srv import AddTwoInts
-
-from utils import print_with_timestamp, sleep_random_time
+from utils import print_with_timestamp, sleep_random_time  # noqa: E402
 
 
 class AdditionServer(Node):
@@ -51,8 +52,7 @@ class AdditionServer(Node):
         self.samples_replied = 0
         self.wait_ = False
 
-        print_with_timestamp(
-            f'Server Addition created.')
+        print_with_timestamp('Server Addition created.')
 
     def _addition_service_callback(
             self,

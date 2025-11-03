@@ -16,6 +16,13 @@
 ROS 2 Addition Service Client used for testing.
 """
 
+import random
+
+from example_interfaces.srv import AddTwoInts
+
+import rclpy
+from rclpy.node import Node
+
 ###
 # Required for import ../utils
 import inspect
@@ -28,14 +35,7 @@ parentdir = os.path.dirname(currentdir)
 sys.path.insert(0, parentdir)
 ###
 
-import random
-
-from example_interfaces.srv import AddTwoInts
-
-import rclpy
-from rclpy.node import Node
-
-from utils import print_with_timestamp, sleep_random_time
+from utils import print_with_timestamp, sleep_random_time  # noqa: E402
 
 
 class AdditionClient(Node):
@@ -50,8 +50,7 @@ class AdditionClient(Node):
         self.addition_client = self.create_client(
             AddTwoInts, 'add_two_ints')
 
-        print_with_timestamp(
-            f'Client Addition created.')
+        print_with_timestamp('Client Addition created.')
 
     def run(
             self,
@@ -64,8 +63,7 @@ class AdditionClient(Node):
 
         :return: True if all samples have been replied, False otherwise.
         """
-        print_with_timestamp(
-            f'Client waiting for server.')
+        print_with_timestamp('Client waiting for server.')
         while not self.addition_client.wait_for_service(timeout_sec=1.0):
             print_with_timestamp(
                 f'Server not available yet...')

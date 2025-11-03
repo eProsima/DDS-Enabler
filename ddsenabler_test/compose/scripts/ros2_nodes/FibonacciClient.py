@@ -16,6 +16,13 @@
 ROS 2 Fibonacci Action Client used for testing.
 """
 
+import rclpy
+from rclpy.node import Node
+from rclpy.action import ActionClient
+
+# Prefer action_tutorials_interfaces to match standard tutorial servers
+from action_tutorials_interfaces.action import Fibonacci
+
 # Required for import ../utils
 import inspect
 import os
@@ -26,14 +33,7 @@ currentdir = os.path.dirname(
 parentdir = os.path.dirname(currentdir)
 sys.path.insert(0, parentdir)
 
-import rclpy
-from rclpy.node import Node
-from rclpy.action import ActionClient
-
-# Prefer action_tutorials_interfaces to match standard tutorial servers
-from action_tutorials_interfaces.action import Fibonacci
-
-from utils import print_with_timestamp, sleep_random_time
+from utils import print_with_timestamp, sleep_random_time  # noqa: E402
 
 
 class FibonacciClient(Node):

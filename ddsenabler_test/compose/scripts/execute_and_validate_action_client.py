@@ -101,15 +101,15 @@ def _extract_number_sequences_from_line(line: str) -> List[int]:
     The function returns the first reasonable list of ints found.
     """
     # Prefer content inside brackets or braces
-    for opening, closing in [("[", "]"), ("{", "}")]:
+    for opening, closing in [('[', ']'), ('{', '}')]:
         if opening in line and closing in line:
             content = line.split(opening, 1)[1].split(closing, 1)[0]
-            nums = re.findall(r"-?\d+", content)
+            nums = re.findall(r'-?\d+', content)
             return [int(n) for n in nums]
 
     # Otherwise, extract from the tail of the line
     tail = line.split(':', 1)[-1]
-    nums = re.findall(r"-?\d+", tail)
+    nums = re.findall(r'-?\d+', tail)
     return [int(n) for n in nums]
 
 
