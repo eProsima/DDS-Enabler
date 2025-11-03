@@ -219,7 +219,7 @@ bool EnablerParticipant::publish_rpc(
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
                 "Failed to publish data in service " << rpc_info->service_name <<
-                            " : service is only announced on the enabler side.");
+                " : service is only announced on the enabler side.");
         return false;
     }
 
@@ -972,7 +972,7 @@ bool EnablerParticipant::query_action_nts_(
             {
                 EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
                         "Failed to announce action " << action.action_name <<
-                                    " : feedback topic writer creation failed.");
+                        " : feedback topic writer creation failed.");
                 return false;
             }
         }
@@ -1002,7 +1002,7 @@ bool EnablerParticipant::query_action_nts_(
             {
                 EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
                         "Failed to announce action " << action.action_name <<
-                                    " : status topic writer creation failed.");
+                        " : status topic writer creation failed.");
                 return false;
             }
         }
