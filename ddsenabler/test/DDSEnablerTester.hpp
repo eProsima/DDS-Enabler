@@ -26,6 +26,8 @@
 
 #include "ddsenabler/dds_enabler_runner.hpp"
 
+#include <Utils.hpp>
+
 using namespace eprosima::ddspipe;
 using namespace eprosima::ddsenabler;
 using namespace eprosima::ddsenabler::participants;
@@ -90,6 +92,21 @@ public:
                 test_data_notification_callback,
                 test_type_query_callback,
                 test_topic_query_callback
+            },
+            {
+                test_service_notification_callback,
+                test_service_request_notification_callback,
+                test_service_reply_notification_callback,
+                test_service_query_callback
+            },
+            {
+                test_action_notification_callback,
+                test_action_goal_request_notification_callback,
+                test_action_feedback_notification_callback,
+                test_action_cancel_request_notification_callback,
+                test_action_result_notification_callback,
+                test_action_status_notification_callback,
+                test_action_query_callback
             }
         };
 
@@ -130,6 +147,21 @@ public:
                 test_data_notification_callback,
                 test_type_query_callback,
                 test_topic_query_callback
+            },
+            {
+                test_service_notification_callback,
+                test_service_request_notification_callback,
+                test_service_reply_notification_callback,
+                test_service_query_callback
+            },
+            {
+                test_action_notification_callback,
+                test_action_goal_request_notification_callback,
+                test_action_feedback_notification_callback,
+                test_action_cancel_request_notification_callback,
+                test_action_result_notification_callback,
+                test_action_status_notification_callback,
+                test_action_query_callback
             }
         };
 
@@ -325,6 +357,16 @@ public:
             std::unique_ptr<const unsigned char []>& serialized_type_internal,
             uint32_t& serialized_type_internal_size)
     {
+    constexpr char persistence_dir[] = "test_files";
+        if (utils::load_type_from_file(
+                    persistence_dir,
+                    type_name,
+                    serialized_type_internal,
+                    serialized_type_internal_size))
+        {
+            return true;
+        }
+        std::cout << "ERROR: fail to load type from directory: " << persistence_dir << std::endl;
         return false;
     }
 
@@ -380,6 +422,119 @@ public:
         }
     }
 
+    // SERVICES
+    static void test_service_notification_callback(
+            const char* service_name,
+            const eprosima::ddsenabler::participants::ServiceInfo& service_info)
+    {
+    }
+
+    static bool test_service_query_callback(
+            const char* service_name,
+            eprosima::ddsenabler::participants::ServiceInfo& service_info)
+    {
+        constexpr char persistence_dir[] = "test_files";
+        if (utils::load_service_from_file(
+                    persistence_dir,
+                    service_name,
+                    service_info))
+        {
+            return true;
+        }
+        std::cout << "ERROR: fail to load service from directory: " << persistence_dir << std::endl;
+        return false;
+    }
+
+    static void test_service_reply_notification_callback(
+            const char* service_name,
+            const char* json,
+            uint64_t request_id,
+            int64_t publish_time)
+    {
+    }
+
+    static void test_service_request_notification_callback(
+            const char* service_name,
+            const char* json,
+            uint64_t request_id,
+            int64_t publish_time)
+    {
+    }
+
+    // ACTIONS
+
+    // Static action notification callback
+    static void test_action_notification_callback(
+            const char* action_name,
+            const eprosima::ddsenabler::participants::ActionInfo& action_info)
+    {
+    }
+
+    // Static action query callback
+    static bool test_action_query_callback(
+            const char* action_name,
+            eprosima::ddsenabler::participants::ActionInfo& action_info)
+    {
+        constexpr char persistence_dir[] = "test_files";
+        if (!utils::load_action_from_file(
+                    persistence_dir,
+                    action_name,
+                    action_info))
+        {
+            std::cerr << "Failed to load action: " << action_name << std::endl;
+            return false;
+        }
+        return true;
+    }
+
+    // Static action goal request notification callback
+    static bool test_action_goal_request_notification_callback(
+            const char* action_name,
+            const char* json,
+            const eprosima::ddsenabler::participants::UUID& goal_id,
+            int64_t publish_time)
+    {
+        return false;
+    }
+
+    // Static action result notification callback
+    static void test_action_result_notification_callback(
+            const char* action_name,
+            const char* json,
+            const eprosima::ddsenabler::participants::UUID& goal_id,
+            int64_t publish_time)
+    {
+    }
+
+    // Static action feedback notification callback
+    static void test_action_feedback_notification_callback(
+            const char* action_name,
+            const char* json,
+            const eprosima::ddsenabler::participants::UUID& goal_id,
+            int64_t publish_time)
+    {
+    }
+
+    // Static action status notification callback
+    static void test_action_status_notification_callback(
+            const char* action_name,
+            const eprosima::ddsenabler::participants::UUID& goal_id,
+            eprosima::ddsenabler::participants::StatusCode statusCode,
+            const char* statusMessage,
+            int64_t publish_time)
+    {
+    }
+
+    // Static action cancel request notification callback
+    static void test_action_cancel_request_notification_callback(
+            const char* action_name,
+            const eprosima::ddsenabler::participants::UUID& goal_id,
+            int64_t timestamp,
+            uint64_t request_id,
+            int64_t publish_time)
+    {
+    }
+
     // Pointer to the current test instance (for use in the static callback)
     static DDSEnablerTester* current_test_instance_;
 
@@ -394,6 +549,11 @@ public:
     std::mutex data_received_mutex_;
     std::mutex rpc_mutex_;
 };
+
+
+
+
+
 
 
 } // namespace ddsenablertester

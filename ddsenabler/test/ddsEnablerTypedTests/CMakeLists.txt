@@ -686,6 +686,7 @@ set(TEST_NEEDED_SOURCES
 set(TEST_EXTRA_HEADERS
     ${PROJECT_SOURCE_DIR}/test
     ${PROJECT_SOURCE_DIR}/test/ddsEnablerTypedTests/types
+    ${PROJECT_SOURCE_DIR}/examples/utils
 )
 
 add_blackbox_executable(
@@ -696,4 +697,7 @@ add_blackbox_executable(
     "${TEST_EXTRA_HEADERS}"
     "${TEST_LIBRARY_SOURCES}"
 )
+
+target_sources(blackbox_DDSEnablerTypedTest PRIVATE ${PROJECT_SOURCE_DIR}/examples/utils/Utils.cpp)
+target_include_directories(blackbox_DDSEnablerTypedTest PRIVATE ${PROJECT_SOURCE_DIR}/examples/utils)
 
