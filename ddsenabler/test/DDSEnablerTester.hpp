@@ -49,6 +49,12 @@ static int write_delay_ms_ =  20;
 static int wait_for_ack_ns_ =  1000000000;
 static int wait_after_publication_ms_ =  200;
 
+const auto input_file_path = std::filesystem::current_path() / "test_files";
+auto persistence_dir = input_file_path.string();
+#if defined(_WIN32) // On windows, the path separator is '\'
+std::replace(persistence_dir.begin(), persistence_dir.end(), '/', '\\');
+#endif // _WIN32
+
 class DDSEnablerTester : public ::testing::Test
 {
 public:
@@ -357,7 +363,6 @@ public:
             std::unique_ptr<const unsigned char []>& serialized_type_internal,
             uint32_t& serialized_type_internal_size)
     {
-    constexpr char persistence_dir[] = "test_files";
         if (utils::load_type_from_file(
                     persistence_dir,
                     type_name,
@@ -433,7 +438,6 @@ public:
             const char* service_name,
             eprosima::ddsenabler::participants::ServiceInfo& service_info)
     {
-        constexpr char persistence_dir[] = "test_files";
         if (utils::load_service_from_file(
                     persistence_dir,
                     service_name,
@@ -475,7 +479,6 @@ public:
             const char* action_name,
             eprosima::ddsenabler::participants::ActionInfo& action_info)
     {
-        constexpr char persistence_dir[] = "test_files";
         if (!utils::load_action_from_file(
                     persistence_dir,
                     action_name,
