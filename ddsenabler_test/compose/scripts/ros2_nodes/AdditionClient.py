@@ -65,8 +65,7 @@ class AdditionClient(Node):
         """
         print_with_timestamp('Client waiting for server.')
         while not self.addition_client.wait_for_service(timeout_sec=1.0):
-            print_with_timestamp(
-                f'Server not available yet...')
+            print_with_timestamp('Server not available yet...')
 
         print_with_timestamp(
             f'Running Client Addition for {samples} samples.')
