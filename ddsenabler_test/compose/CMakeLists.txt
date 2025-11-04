@@ -23,6 +23,7 @@ set(TESTS
     services/service_client_discovered
     actions/action_client
     actions/action_client_cancel
+    actions/action_client_discovered
     actions/action_server
 )
 

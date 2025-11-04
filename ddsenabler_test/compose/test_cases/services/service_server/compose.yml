@@ -25,3 +25,8 @@ services:
     volumes:
       - ../../../scripts:/scripts
     command: python3 /scripts/execute_and_validate_client.py --timeout 10 --samples 3
+
+networks:
+  std_net:
+  default:
+    driver: none

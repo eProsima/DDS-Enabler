@@ -74,6 +74,19 @@ add_custom_command(TARGET blackbox_DDSEnablerTest POST_BUILD
             $<TARGET_FILE_DIR:blackbox_DDSEnablerTest>/test_files
 )
 
+# Also copy test resources to the test target binary directory (configuration-agnostic)
+# Rationale: On single-config generators (Linux), CTest runs from the target dir, which matches
+# $<TARGET_FILE_DIR>. On multi-config generators (Windows/MSVC), CTest's working directory is usually
+# the CMake current binary dir (e.g., .../ddsEnablerTests) while the executable lives under a
+# configuration subfolder (e.g., .../ddsEnablerTests/Debug). The tests locate resources via
+# std::filesystem::current_path()/"test_files"; thus, we ensure the resources are available from
+# the CTest working dir as well.
+add_custom_command(TARGET blackbox_DDSEnablerTest POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+            ${PROJECT_SOURCE_DIR}/test/ddsEnablerTests/test_files
+            ${CMAKE_CURRENT_BINARY_DIR}/test_files
+)
+
 ##################################################################################
 
 
