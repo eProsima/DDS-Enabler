@@ -248,13 +248,16 @@ bool wait_for_service_discovery(
         std::condition_variable& app_cv)
 {
     std::unique_lock<std::mutex> lock(app_mutex);
-    if (stop_app_ || !app_cv.wait_for(lock, std::chrono::seconds(timeout),
+    if (!app_cv.wait_for(lock, std::chrono::seconds(timeout),
             []()
             {
                 return stop_app_ || service_discovered_;
-            }))
+            }) || stop_app_)
     {
-        std::cerr << "Timeout waiting for service discovery." << std::endl;
+        if (!stop_app_)
+        {
+            std::cerr << "Timeout waiting for service discovery." << std::endl;
+        }
         return false;
     }
     return true;
@@ -268,13 +271,16 @@ bool wait_for_service_request(
         std::string& request)
 {
     std::unique_lock<std::mutex> lock(app_mutex);
-    if (stop_app_ || !app_cv.wait_for(lock, std::chrono::seconds(timeout),
+    if (!app_cv.wait_for(lock, std::chrono::seconds(timeout),
             []()
             {
                 return stop_app_ || !received_requests_.empty();
-            }))
+            }) || stop_app_)
     {
-        std::cerr << "Timeout waiting for service request." << std::endl;
+        if (!stop_app_)
+        {
+            std::cerr << "Timeout waiting for service request." << std::endl;
+        }
         return false;
     }
 
@@ -292,13 +298,16 @@ bool wait_for_service_reply(
         uint32_t sent_requests)
 {
     std::unique_lock<std::mutex> lock(app_mutex);
-    if (stop_app_ || !app_cv.wait_for(lock, std::chrono::seconds(timeout),
+    if (!app_cv.wait_for(lock, std::chrono::seconds(timeout),
             [&sent_requests]()
             {
                 return stop_app_ || received_replies_ >= sent_requests;
-            }))
+            }) || stop_app_)
     {
-        std::cerr << "Timeout waiting for service reply." << std::endl;
+        if (!stop_app_)
+        {
+            std::cerr << "Timeout waiting for service reply." << std::endl;
+        }
         return false;
     }
     return true;
@@ -314,7 +323,6 @@ bool client_routine(
     // Wait for service to be discovered
     if (!wait_for_service_discovery(timeout, app_mutex_, app_cv_))
     {
-        std::cerr << "Failed to discover service: " << service_name << std::endl;
         return false;
     }
 
@@ -327,6 +335,11 @@ bool client_routine(
     uint32_t sent_requests = 0;
     for (const auto& [path, number] : sample_files)
     {
+        if (stop_app_)
+        {
+            return false;
+        }
+
         std::ifstream file(path, std::ios::binary);
         if (file)
         {
@@ -353,7 +366,6 @@ bool client_routine(
         // Wait publish period or until stop signal is received
         if (!wait_for_service_reply(timeout, app_mutex_, app_cv_, sent_requests))
         {
-            std::cerr << "Failed to receive service reply." << std::endl;
             return false;
         }
     }
@@ -414,7 +426,6 @@ bool server_routine(
         std::string request;
         if (!wait_for_service_request(timeout, app_mutex_, app_cv_, request_id, request))
         {
-            std::cerr << "Timeout waiting for service request." << std::endl;
             return false;
         }
 
@@ -453,6 +464,13 @@ int main(
         int argc,
         char** argv)
 {
+    signal(SIGINT, signal_handler);
+    signal(SIGTERM, signal_handler);
+#ifndef _WIN32
+    signal(SIGQUIT, signal_handler);
+    signal(SIGHUP, signal_handler);
+#endif // _WIN32
+
     using namespace eprosima::ddsenabler;
 
     eprosima::utils::Log::ReportFilenames(true);

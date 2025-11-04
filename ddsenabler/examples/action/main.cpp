@@ -279,13 +279,16 @@ bool wait_for_action_discovery(
         std::condition_variable& app_cv)
 {
     std::unique_lock<std::mutex> lock(app_mutex);
-    if (stop_app_ || !app_cv.wait_for(lock, std::chrono::seconds(timeout),
+    if (!app_cv.wait_for(lock, std::chrono::seconds(timeout),
             []()
             {
                 return stop_app_ || action_discovered_;
-            }))
+            }) || stop_app_)
     {
-        std::cerr << "Timeout waiting for service discovery." << std::endl;
+        if (!stop_app_)
+        {
+            std::cerr << "Timeout waiting for service discovery." << std::endl;
+        }
         return false;
     }
     return true;
@@ -299,13 +302,16 @@ bool wait_for_action_request(
         std::string& goal_json)
 {
     std::unique_lock<std::mutex> lock(app_mutex);
-    if (stop_app_ || !app_cv.wait_for(lock, std::chrono::seconds(timeout),
+    if (!app_cv.wait_for(lock, std::chrono::seconds(timeout),
             []()
             {
                 return stop_app_ || !received_requests_.empty();
-            }))
+            }) || stop_app_)
     {
-        std::cerr << "Timeout waiting for service request." << std::endl;
+        if (!stop_app_)
+        {
+            std::cerr << "Timeout waiting for service request." << std::endl;
+        }
         return false;
     }
 
@@ -322,13 +328,16 @@ bool wait_for_action_result(
         uint32_t sent_requests)
 {
     std::unique_lock<std::mutex> lock(app_mutex);
-    if (stop_app_ || !app_cv.wait_for(lock, std::chrono::seconds(timeout),
+    if (!app_cv.wait_for(lock, std::chrono::seconds(timeout),
             [&sent_requests]()
             {
                 return stop_app_ || received_results_ >= sent_requests;
-            }))
+            }) || stop_app_)
     {
-        std::cerr << "Timeout waiting for action result." << std::endl;
+        if (!stop_app_)
+        {
+            std::cerr << "Timeout waiting for action result." << std::endl;
+        }
         return false;
     }
     return true;
@@ -345,7 +354,6 @@ bool client_routine(
     // Wait for service to be discovered
     if (!wait_for_action_discovery(timeout, app_mutex_, app_cv_))
     {
-        std::cerr << "Failed to discover service: " << action_name << std::endl;
         return false;
     }
 
@@ -395,7 +403,6 @@ bool client_routine(
         // Wait publish period or until stop signal is received
         else if (!wait_for_action_result(timeout, app_mutex_, app_cv_, sent_requests))
         {
-            std::cerr << "Failed to receive service reply." << std::endl;
             return false;
         }
     }
@@ -414,6 +421,10 @@ bool server_specific_logic(
     std::string feedback_json = "{\"partial_sequence\": [";
     for (size_t i = 0; i < fibonacci_number; ++i)
     {
+        if (stop_app_)
+        {
+            return false;
+        }
         json += std::to_string(fibonacci_sequence[i]);
         feedback_json += std::to_string(fibonacci_sequence[i]);
 
@@ -470,7 +481,6 @@ bool server_routine(
         std::string goal_json;
         if (!wait_for_action_request(timeout, app_mutex_, app_cv_, request_id, goal_json))
         {
-            std::cerr << "Timeout waiting for action request." << std::endl;
             return false;
         }
 
@@ -513,6 +523,13 @@ int main(
         int argc,
         char** argv)
 {
+    signal(SIGINT, signal_handler);
+    signal(SIGTERM, signal_handler);
+#ifndef _WIN32
+    signal(SIGQUIT, signal_handler);
+    signal(SIGHUP, signal_handler);
+#endif // _WIN32
+
     using namespace eprosima::ddsenabler;
 
     eprosima::utils::Log::ReportFilenames(true);
