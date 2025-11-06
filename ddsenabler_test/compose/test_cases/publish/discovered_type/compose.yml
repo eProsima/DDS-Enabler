@@ -21,7 +21,7 @@ services:
     volumes:
       - ./config.yml:/config/config.yml
       - ./samples:/samples
-    command: ./build/ddsenabler/examples/ddsenabler_example --config /config/config.yml --timeout 5 --expected-types 1 --expected-topics 1 --publish-path /samples --publish-topic rt/chatter --publish-period 200 --publish-initial-wait 2000
+    command: ./install/ddsenabler/examples/publish/ddsenabler_example_publish --config /config/config.yml --timeout 5 --expected-types 1 --expected-topics 1 --publish-path /samples --publish-topic rt/chatter --publish-period 200 --publish-initial-wait 2000
 
   listener:
     image: ${DDSENABLER_COMPOSE_TEST_ROS2_DOCKER_IMAGE}

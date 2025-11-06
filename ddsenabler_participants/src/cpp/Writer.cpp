@@ -16,8 +16,6 @@
  * @file Writer.cpp
  */
 
-#include <nlohmann/json.hpp>
-
 #include <fastdds/dds/xtypes/dynamic_types/DynamicDataFactory.hpp>
 #include <fastdds/dds/xtypes/dynamic_types/DynamicPubSubType.hpp>
 #include <fastdds/dds/xtypes/utils.hpp>
@@ -25,9 +23,12 @@
 #include <fastdds/rtps/common/Types.hpp>
 
 #include <ddsenabler_participants/Serialization.hpp>
+#include <ddsenabler_participants/rpc/RpcUtils.hpp>
 #include <ddsenabler_participants/types/dynamic_types_collection/DynamicTypesCollection.hpp>
 
 #include <ddsenabler_participants/Writer.hpp>
+
+#include <nlohmann/json.hpp>
 
 namespace eprosima {
 namespace ddsenabler {
@@ -35,6 +36,25 @@ namespace participants {
 
 using namespace eprosima::ddsenabler::participants::serialization;
 using namespace eprosima::ddspipe::core::types;
+
+
+UUID json_to_uuid(
+        const nlohmann::json& json)
+{
+    UUID uuid;
+    if (!json.contains("uuid") || !json["uuid"].is_array() || json["uuid"].size() != sizeof(UUID))
+
+    {
+        throw std::invalid_argument("Invalid UUID format in JSON");
+    }
+
+    for (size_t i = 0; i < sizeof(UUID); ++i)
+    {
+        uuid[i] = json["uuid"][i].get<uint8_t>();
+    }
+
+    return uuid;
+}
 
 void Writer::write_schema(
         const fastdds::dds::DynamicType::_ref_type& dyn_type,
@@ -85,6 +105,44 @@ void Writer::write_schema(
         return;
     }
 
+    // Filter placeholder based on action/service type suffix
+    std::string data_placeholder = ss_data_holder.str();
+    try
+    {
+        using json = nlohmann::json;
+        auto j = json::parse(data_placeholder);
+
+        if (type_name.find("SendGoal_Request_") != std::string::npos)
+        {
+            // only the 'goal' sub-object
+            data_placeholder = j.at("goal").dump();
+        }
+        else if (type_name.find("GetResult_Response_") != std::string::npos)
+        {
+            // only the 'result' sub-object
+            data_placeholder = j.at("result").dump();
+        }
+        else if (type_name.find("FeedbackMessage_") != std::string::npos)
+        {
+            // only the 'feedback' sub-object
+            data_placeholder = j.at("feedback").dump();
+        }
+        // all other types (SendGoal_Response, CancelGoal_*, GetResult_Request,
+        // GoalStatusArray_ get an empty placeholder
+        else if (type_name.find("SendGoal_Response_") != std::string::npos ||
+                type_name.find("CancelGoal_Request_") != std::string::npos ||
+                type_name.find("GetResult_Request_") != std::string::npos ||
+                type_name.find("GoalStatusArray_") != std::string::npos)
+        {
+            data_placeholder = "{}";
+        }
+    }
+    catch (const std::exception& e)
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_WRITER,
+                "JSON filter failed for " << type_name << ": " << e.what());
+    }
+
     // Notify type reception
     if (type_notification_callback_)
     {
@@ -93,7 +151,7 @@ void Writer::write_schema(
             ss_idl.str().c_str(),
             types_collection_payload->data,
             types_collection_payload->length,
-            ss_data_holder.str().c_str()
+            data_placeholder.c_str()
             );
     }
 }
@@ -110,8 +168,7 @@ void Writer::write_topic(
         std::string serialized_qos = serialize_qos(topic.topic_qos);
         topic_notification_callback_(
             topic.topic_name().c_str(),
-            topic.type_name.c_str(),
-            serialized_qos.c_str()
+            TopicInfo(topic.type_name, serialized_qos)
             );
     }
 }
@@ -119,6 +176,526 @@ void Writer::write_topic(
 void Writer::write_data(
         const Message& msg,
         const fastdds::dds::DynamicType::_ref_type& dyn_type)
+{
+    nlohmann::json json_data;
+    if (data_notification_callback_ && prepare_json_data_(msg, dyn_type, json_data))
+    {
+        data_notification_callback_(
+            msg.topic.topic_name().c_str(),
+            json_data.dump(4).c_str(),
+            msg.publish_time.to_ns()
+            );
+    }
+}
+
+void Writer::write_service_notification(
+        const ddspipe::core::types::RpcTopic& service)
+{
+    EPROSIMA_LOG_INFO(DDSENABLER_WRITER,
+            "Writting service: " << service.service_name() << ".");
+
+    if (service_notification_callback_)
+    {
+        std::string request_serialized_qos = serialize_qos(service.request_topic().topic_qos);
+        std::string reply_serialized_qos = serialize_qos(service.reply_topic().topic_qos);
+        service_notification_callback_(
+            service.service_name().c_str(),
+            ServiceInfo(
+                TopicInfo(service.request_topic().type_name, request_serialized_qos),
+                TopicInfo(service.reply_topic().type_name, reply_serialized_qos)
+                )
+            );
+    }
+}
+
+void Writer::write_service_reply_notification(
+        const Message& msg,
+        const fastdds::dds::DynamicType::_ref_type& dyn_type,
+        const uint64_t request_id,
+        const std::string& service_name)
+{
+    nlohmann::json json_data;
+    if (service_reply_notification_callback_ && prepare_json_data_(msg, dyn_type, json_data))
+    {
+        service_reply_notification_callback_(
+            service_name.c_str(),
+            json_data.dump(4).c_str(),
+            request_id,
+            msg.publish_time.to_ns()
+            );
+    }
+}
+
+void Writer::write_service_request_notification(
+        const Message& msg,
+        const fastdds::dds::DynamicType::_ref_type& dyn_type,
+        const uint64_t request_id,
+        const std::string& service_name)
+{
+    nlohmann::json json_data;
+    if (service_request_notification_callback_ && prepare_json_data_(msg, dyn_type, json_data))
+    {
+        service_request_notification_callback_(
+            service_name.c_str(),
+            json_data.dump(4).c_str(),
+            request_id,
+            msg.publish_time.to_ns()
+            );
+    }
+}
+
+void Writer::write_action_notification(
+        const RpcAction& action)
+{
+    EPROSIMA_LOG_INFO(DDSENABLER_WRITER,
+            "Writting action: " << action.action_name << ".");
+
+    if (action_notification_callback_)
+    {
+        std::string goal_request_serialized_qos = serialize_qos(action.goal.request_topic().topic_qos);
+        std::string goal_reply_serialized_qos = serialize_qos(action.goal.reply_topic().topic_qos);
+        std::string cancel_request_serialized_qos = serialize_qos(action.cancel.request_topic().topic_qos);
+        std::string cancel_reply_serialized_qos = serialize_qos(action.cancel.reply_topic().topic_qos);
+        std::string result_request_serialized_qos = serialize_qos(action.result.request_topic().topic_qos);
+        std::string result_reply_serialized_qos = serialize_qos(action.result.reply_topic().topic_qos);
+        std::string feedback_serialized_qos = serialize_qos(action.feedback.topic_qos);
+        std::string status_serialized_qos = serialize_qos(action.status.topic_qos);
+
+        action_notification_callback_(
+            action.action_name.c_str(),
+            ActionInfo(
+                ServiceInfo(
+                    TopicInfo(action.goal.request_topic().type_name, goal_request_serialized_qos),
+                    TopicInfo(action.goal.reply_topic().type_name, goal_reply_serialized_qos)
+                    ),
+                ServiceInfo(
+                    TopicInfo(action.cancel.request_topic().type_name, cancel_request_serialized_qos),
+                    TopicInfo(action.cancel.reply_topic().type_name, cancel_reply_serialized_qos)
+                    ),
+                ServiceInfo(
+                    TopicInfo(action.result.request_topic().type_name, result_request_serialized_qos),
+                    TopicInfo(action.result.reply_topic().type_name, result_reply_serialized_qos)
+                    ),
+                TopicInfo(action.feedback.type_name, feedback_serialized_qos),
+                TopicInfo(action.status.type_name, status_serialized_qos)
+                ));
+    }
+}
+
+void Writer::write_action_result_notification(
+        const Message& msg,
+        const fastdds::dds::DynamicType::_ref_type& dyn_type,
+        const UUID& action_id,
+        const std::string& action_name)
+{
+    nlohmann::json json_data;
+    if (action_result_notification_callback_ && prepare_json_data_(msg, dyn_type, json_data))
+    {
+        action_result_notification_callback_(
+            action_name.c_str(),
+            json_data.dump(4).c_str(),
+            action_id,
+            msg.publish_time.to_ns()
+            );
+    }
+}
+
+void Writer::write_action_feedback_notification(
+        const Message& msg,
+        const fastdds::dds::DynamicType::_ref_type& dyn_type,
+        const std::string& action_name)
+{
+    nlohmann::json json_data;
+    if (action_feedback_notification_callback_ && prepare_json_data_(msg, dyn_type, json_data))
+    {
+        std::stringstream instanceHandle;
+        instanceHandle << msg.instanceHandle;
+        UUID uuid;
+        try
+        {
+            uuid = json_to_uuid(json_data[msg.topic.topic_name()]["data"][instanceHandle.str()]["goal_id"]);
+        }
+        catch (const nlohmann::json::exception& e)
+        {
+            EPROSIMA_LOG_ERROR(DDSENABLER_WRITER,
+                    "Error parsing UUID from JSON: " << e.what());
+            return;
+        }
+
+        action_feedback_notification_callback_(
+            action_name.c_str(),
+            json_data[msg.topic.topic_name()]["data"][instanceHandle.str()]["feedback"].dump(4).c_str(),
+            uuid,
+            msg.publish_time.to_ns()
+            );
+    }
+}
+
+void Writer::write_action_goal_reply_notification(
+        const Message& msg,
+        const fastdds::dds::DynamicType::_ref_type& dyn_type,
+        const UUID& action_id,
+        const std::string& action_name)
+{
+    nlohmann::json json_data;
+    if (!prepare_json_data_(msg, dyn_type, json_data))
+    {
+        return;
+    }
+
+    std::string status_message = "Action goal accepted";
+    ddsenabler::participants::StatusCode status_code = ddsenabler::participants::StatusCode::ACCEPTED;
+    std::stringstream instanceHandle;
+    instanceHandle << msg.instanceHandle;
+    try
+    {
+        if (!json_data[msg.topic.topic_name()]["data"][instanceHandle.str()]["accepted"])
+        {
+            status_message = "Action goal rejected";
+            status_code = ddsenabler::participants::StatusCode::REJECTED;
+        }
+    }
+    catch (const nlohmann::json::exception& e)
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_WRITER,
+                "Error parsing action goal reply notification: " << e.what());
+        status_message = "Action goal reply notification malformed";
+        status_code = ddsenabler::participants::StatusCode::UNKNOWN;
+    }
+    if (action_status_notification_callback_)
+    {
+        action_status_notification_callback_(
+            action_name.c_str(),
+            action_id,
+            status_code,
+            status_message.c_str(),
+            msg.publish_time.to_ns()
+            );
+    }
+
+    if (ddsenabler::participants::StatusCode::ACCEPTED == status_code &&
+            send_action_get_result_request_callback_ &&
+            !send_action_get_result_request_callback_(
+                action_name.c_str(),
+                action_id))
+    {
+        status_message = "Action goal aborted";
+        status_code = ddsenabler::participants::StatusCode::ABORTED;
+
+        if (action_status_notification_callback_)
+        {
+            action_status_notification_callback_(
+                action_name.c_str(),
+                action_id,
+                status_code,
+                status_message.c_str(),
+                msg.publish_time.to_ns()
+                );
+        }
+    }
+}
+
+void Writer::write_action_cancel_reply_notification(
+        const Message& msg,
+        const fastdds::dds::DynamicType::_ref_type& dyn_type,
+        const uint64_t request_id,
+        const std::string& action_name)
+{
+    ddsenabler::participants::StatusCode status_code = ddsenabler::participants::StatusCode::CANCELED;
+
+    nlohmann::json json_data;
+    if (!prepare_json_data_(msg, dyn_type, json_data))
+    {
+        return;
+    }
+
+    std::stringstream instanceHandle;
+    instanceHandle << msg.instanceHandle;
+
+    std::string status_message;
+    int return_code;
+    try
+    {
+        return_code = json_data[msg.topic.topic_name()]["data"][instanceHandle.str()]["return_code"];
+    }
+    catch (const nlohmann::json::exception& e)
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_WRITER,
+                "Error parsing action cancel reply notification: " << e.what());
+        status_code = ddsenabler::participants::StatusCode::UNKNOWN;
+        return;
+    }
+    switch (return_code)
+    {
+        case 0:
+            status_message = "Action canceled successfully";
+            status_code = ddsenabler::participants::StatusCode::CANCELED;
+            break;
+        case 1:
+            status_message = "Action cancel request rejected";
+            status_code = ddsenabler::participants::StatusCode::REJECTED;
+            break;
+        case 2:
+            status_message = "Action cancel request unknown goal ID";
+            status_code = ddsenabler::participants::StatusCode::CANCEL_REQUEST_FAILED;
+            break;
+        case 3:
+            status_message = "Action cancel request rejected as goal was already terminated";
+            status_code = ddsenabler::participants::StatusCode::CANCEL_REQUEST_FAILED;
+            break;
+        default:
+            status_message = "Action cancel request unknown code";
+            status_code = ddsenabler::participants::StatusCode::UNKNOWN;
+            break;
+    }
+
+    try
+    {
+        const auto& goals = json_data[msg.topic.topic_name()]["data"][instanceHandle.str()]["goals_canceling"];
+        for (const auto& goal : goals)
+        {
+            UUID uuid;
+            try
+            {
+                uuid = json_to_uuid(goal["goal_id"]);
+            }
+            catch (const nlohmann::json::exception& e)
+            {
+                EPROSIMA_LOG_ERROR(DDSENABLER_WRITER,
+                        "Error parsing UUID from JSON: " << e.what());
+                return;
+            }
+
+            if (is_UUID_active_callback_ && !is_UUID_active_callback_(action_name, uuid))
+            {
+                continue;
+            }
+
+            if (action_status_notification_callback_)
+            {
+                action_status_notification_callback_(
+                    action_name.c_str(),
+                    uuid,
+                    status_code,
+                    status_message.c_str(),
+                    msg.publish_time.to_ns()
+                    );
+            }
+        }
+    }
+    catch (const nlohmann::json::exception& e)
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_WRITER,
+                "Error parsing action cancel reply notification goals: " << e.what());
+    }
+}
+
+void Writer::write_action_status_notification(
+        const Message& msg,
+        const fastdds::dds::DynamicType::_ref_type& dyn_type,
+        const std::string& action_name)
+{
+    nlohmann::json json_data;
+    if (!prepare_json_data_(msg, dyn_type, json_data))
+    {
+        return;
+    }
+
+    std::stringstream instanceHandle;
+    instanceHandle << msg.instanceHandle;
+
+    try
+    {
+        const auto& list = json_data[msg.topic.topic_name()]["data"][instanceHandle.str()]["status_list"];
+        for (const auto& status : list)
+        {
+            UUID uuid;
+            try
+            {
+                uuid = json_to_uuid(status["goal_info"]["goal_id"]);
+            }
+            catch (const nlohmann::json::exception& e)
+            {
+                EPROSIMA_LOG_ERROR(DDSENABLER_WRITER,
+                        "Error parsing UUID from JSON: " << e.what());
+                return;
+            }
+
+            if (is_UUID_active_callback_ && !is_UUID_active_callback_(action_name, uuid))
+            {
+                continue;
+            }
+
+            ddsenabler::participants::StatusCode status_code(status["status"]);
+            std::string status_message;
+            switch (status_code)
+            {
+                case ddsenabler::participants::StatusCode::UNKNOWN:
+                    status_message = "The status has not been properly set";
+                    break;
+
+                case ddsenabler::participants::StatusCode::ACCEPTED:
+                    status_message = "The goal has been accepted and is awaiting execution";
+                    break;
+
+                case ddsenabler::participants::StatusCode::EXECUTING:
+                    status_message = "The goal is currently being executed by the action server";
+                    break;
+
+                case ddsenabler::participants::StatusCode::CANCELING:
+                    status_message =
+                            "The client has requested that the goal be canceled and the action server has accepted the cancel request";
+                    break;
+
+                case ddsenabler::participants::StatusCode::SUCCEEDED:
+                    if (erase_action_UUID_callback_)
+                    {
+                        erase_action_UUID_callback_(uuid, ActionEraseReason::FINAL_STATUS);
+                    }
+                    status_message = "The goal was achieved successfully by the action server";
+                    break;
+
+                case ddsenabler::participants::StatusCode::CANCELED:
+                    if (erase_action_UUID_callback_)
+                    {
+                        erase_action_UUID_callback_(uuid, ActionEraseReason::FINAL_STATUS);
+                    }
+                    status_message = "The goal was canceled after an external request from an action client";
+                    break;
+
+                case ddsenabler::participants::StatusCode::ABORTED:
+                    if (erase_action_UUID_callback_)
+                    {
+                        erase_action_UUID_callback_(uuid, ActionEraseReason::FINAL_STATUS);
+                    }
+                    status_message = "The goal was terminated by the action server without an external request";
+                    break;
+                case ddsenabler::participants::StatusCode::REJECTED:
+                    if (erase_action_UUID_callback_)
+                    {
+                        erase_action_UUID_callback_(uuid, ActionEraseReason::FINAL_STATUS);
+                    }
+                    status_message = "The goal was rejected by the action server, it will not be executed";
+                    break;
+                default:
+                    status_message = "Unknown status code";
+                    break;
+            }
+
+            if (action_status_notification_callback_)
+            {
+                action_status_notification_callback_(
+                    action_name.c_str(),
+                    uuid,
+                    status_code,
+                    status_message.c_str(),
+                    msg.publish_time.to_ns()
+                    );
+            }
+        }
+    }
+    catch (const nlohmann::json::exception& e)
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_WRITER,
+                "Error parsing action status notification: " << e.what());
+        return;
+    }
+}
+
+void Writer::write_action_request_notification(
+        const Message& msg,
+        const fastdds::dds::DynamicType::_ref_type& dyn_type,
+        const uint64_t request_id,
+        const std::string& action_name,
+        const ActionType action_type)
+{
+    nlohmann::json json_data;
+    if (!prepare_json_data_(msg, dyn_type, json_data))
+    {
+        return;
+    }
+
+    std::stringstream instanceHandle;
+    instanceHandle << msg.instanceHandle;
+    try
+    {
+        if (ActionType::GOAL == action_type)
+        {
+            bool accepted;
+            if (action_goal_request_notification_callback_)
+            {
+                accepted = action_goal_request_notification_callback_(
+                    action_name.c_str(),
+                    json_data.dump(4).c_str(),
+                    json_to_uuid(json_data[msg.topic.topic_name()]["data"][instanceHandle.str()]["goal_id"]),
+                    msg.publish_time.to_ns()
+                    );
+            }
+
+            send_action_send_goal_reply_callback_(
+                action_name.c_str(),
+                request_id,
+                accepted);
+
+            return;
+        }
+        if (ActionType::CANCEL == action_type)
+        {
+            if (action_cancel_request_notification_callback_)
+            {
+                auto sec = json_data[msg.topic.topic_name()]["data"][instanceHandle.str()]["goal_info"]["sec"];
+                auto nanosec = json_data[msg.topic.topic_name()]["data"][instanceHandle.str()]["goal_info"]["nanosec"];
+                int64_t timestamp = static_cast<int64_t>(sec.get<int64_t>()) * 1000000000 +
+                        static_cast<int64_t>(nanosec.get<uint32_t>());
+                action_cancel_request_notification_callback_(
+                    action_name.c_str(),
+                    json_to_uuid(json_data[msg.topic.topic_name()]["data"][instanceHandle.str()]["goal_id"]),
+                    timestamp,
+                    request_id,
+                    msg.publish_time.to_ns()
+                    );
+            }
+            return;
+        }
+    }
+    catch (const nlohmann::json::exception& e)
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_WRITER,
+                "Error parsing action request notification: " << e.what());
+        return;
+    }
+}
+
+bool Writer::uuid_from_request_json(
+        const Message& msg,
+        const fastdds::dds::DynamicType::_ref_type& dyn_type,
+        UUID& uuid)
+{
+    nlohmann::json json_data;
+    if (!prepare_json_data_(msg, dyn_type, json_data))
+    {
+        return false;
+    }
+
+    std::stringstream instanceHandle;
+    instanceHandle << msg.instanceHandle;
+    try
+    {
+        uuid = json_to_uuid(json_data[msg.topic.topic_name()]["data"][instanceHandle.str()]["goal_id"]);
+    }
+    catch (const nlohmann::json::exception& e)
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_WRITER,
+                "Error parsing UUID from request JSON: " << e.what());
+        return false;
+    }
+    return true;
+}
+
+bool Writer::prepare_json_data_(
+        const Message& msg,
+        const fastdds::dds::DynamicType::_ref_type& dyn_type,
+        nlohmann::json& json_output)
 {
     assert(nullptr != dyn_type);
 
@@ -132,7 +709,7 @@ void Writer::write_data(
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_WRITER,
                 "Not able to get DynamicData from topic " << msg.topic.topic_name() << ".");
-        return;
+        return false;
     }
 
     std::stringstream ss_dyn_data;
@@ -142,11 +719,10 @@ void Writer::write_data(
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_WRITER,
                 "Not able to serialize data of topic " << msg.topic.topic_name() << " into JSON format.");
-        return;
+        return false;
     }
 
     // Fill JSON object with the data
-    nlohmann::json json_output;
     {
         // Set id to be the source guid prefix
         std::stringstream ss_source_guid_prefix;
@@ -168,15 +744,7 @@ void Writer::write_data(
         json_output[msg.topic.topic_name()]["data"][ss_instanceHandle.str()] = nlohmann::json::parse(ss_dyn_data.str());
     }
 
-    // Notify data reception
-    if (data_notification_callback_)
-    {
-        data_notification_callback_(
-            msg.topic.topic_name().c_str(),
-            json_output.dump(4).c_str(),
-            msg.publish_time.to_ns()
-            );
-    }
+    return true;
 }
 
 fastdds::dds::DynamicData::_ref_type Writer::get_dynamic_data_(

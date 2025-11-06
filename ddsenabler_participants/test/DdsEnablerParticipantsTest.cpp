@@ -127,8 +127,7 @@ public:
     // eprosima::ddsenabler::participants::DdsTopicNotification topic_notification;
     static void test_topic_notification_callback(
             const char* topic_name,
-            const char* type_name,
-            const char* serialized_qos)
+            const eprosima::ddsenabler::participants::TopicInfo& topic_info)
     {
         if (current_test_instance_ == nullptr)
         {

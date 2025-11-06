@@ -28,11 +28,12 @@
 #include <thread>
 #include <vector>
 
+#include <Utils.hpp>
+
 #include "ddsenabler/dds_enabler_runner.hpp"
 #include "ddsenabler/DDSEnabler.hpp"
 
 #include "CLIParser.hpp"
-#include "utils.hpp"
 
 CLIParser::example_config config;
 uint32_t received_types_ = 0;
@@ -87,7 +88,8 @@ static void test_type_notification_callback(
         std::cout << "Type callback received: " << type_name << ", Total types: " <<
             received_types_ << std::endl << serialized_type << std::endl << std::endl;
         if (!config.persistence_path.empty() &&
-                !save_type_to_file((std::filesystem::path(config.persistence_path) / TYPES_SUBDIR).string(), type_name,
+                !utils::save_type_to_file((std::filesystem::path(config.persistence_path) / TYPES_SUBDIR).string(),
+                type_name,
                 serialized_type_internal, serialized_type_internal_size))
         {
             std::cerr << "Failed to save type: " << type_name << std::endl;
@@ -112,7 +114,7 @@ static bool test_type_query_callback(
     }
 
     // Load the type from file
-    if (!load_type_from_file((std::filesystem::path(config.persistence_path) / TYPES_SUBDIR).string(), type_name,
+    if (!utils::load_type_from_file((std::filesystem::path(config.persistence_path) / TYPES_SUBDIR).string(), type_name,
             serialized_type_internal, serialized_type_internal_size))
     {
         std::cerr << "Failed to load type: " << type_name << std::endl;
@@ -124,19 +126,19 @@ static bool test_type_query_callback(
 // Static topic notification callback
 static void test_topic_notification_callback(
         const char* topic_name,
-        const char* type_name,
-        const char* serialized_qos)
+        const eprosima::ddsenabler::participants::TopicInfo& topic_info)
 {
     bool notify = false;
     {
         std::lock_guard<std::mutex> lock(app_mutex_);
         notify = ++received_topics_ >= config.expected_topics;
-        std::cout << "Topic callback received: " << topic_name << " of type " << type_name << ", Total topics: " <<
-            received_topics_ << std::endl << serialized_qos << std::endl << std::endl;
+        std::cout << "Topic callback received: " << topic_name << " of type " << topic_info.type_name <<
+            ", Total topics: " <<
+            received_topics_ << std::endl << topic_info.serialized_qos << std::endl << std::endl;
         if (!config.persistence_path.empty() &&
-                !save_topic_to_file((std::filesystem::path(config.persistence_path) / TOPICS_SUBDIR).string(),
+                !utils::save_topic_to_file((std::filesystem::path(config.persistence_path) / TOPICS_SUBDIR).string(),
                 topic_name,
-                type_name, serialized_qos))
+                topic_info))
         {
             std::cerr << "Failed to save topic: " << topic_name << std::endl;
         }
@@ -150,8 +152,7 @@ static void test_topic_notification_callback(
 // Static type query callback
 static bool test_topic_query_callback(
         const char* topic_name,
-        std::string& type_name,
-        std::string& serialized_qos)
+        eprosima::ddsenabler::participants::TopicInfo& topic_info)
 {
     if (config.persistence_path.empty())
     {
@@ -160,9 +161,9 @@ static bool test_topic_query_callback(
     }
 
     // Load the topic from file
-    if (!load_topic_from_file((std::filesystem::path(config.persistence_path) / TOPICS_SUBDIR).string(), topic_name,
-            type_name,
-            serialized_qos))
+    if (!utils::load_topic_from_file((std::filesystem::path(config.persistence_path) / TOPICS_SUBDIR).string(),
+            topic_name,
+            topic_info))
     {
         std::cerr << "Failed to load topic: " << topic_name << std::endl;
         return false;
@@ -183,7 +184,7 @@ static void test_data_notification_callback(
         std::cout << "Data callback received: " << topic_name << ", Total data: " <<
             received_data_ << std::endl << json << std::endl << std::endl;
         if (!config.persistence_path.empty() &&
-                !save_data_to_file((std::filesystem::path(config.persistence_path) / SAMPLES_SUBDIR).string(),
+                !utils::save_data_to_file((std::filesystem::path(config.persistence_path) / SAMPLES_SUBDIR).string(),
                 topic_name, json,
                 publish_time))
         {
@@ -215,57 +216,6 @@ bool expected_received(
     return validate_received(config);
 }
 
-void init_persistence(
-        const std::string& persistence_path)
-{
-    auto ensure_directory_exists = [](const std::filesystem::path& path)
-            {
-                if (!std::filesystem::exists(path) && !std::filesystem::create_directories(path))
-                {
-                    std::cerr << "Failed to create directory: " << path << std::endl;
-                }
-            };
-
-    if (!persistence_path.empty())
-    {
-        ensure_directory_exists(persistence_path);
-        std::vector<std::string> subdirs = {SAMPLES_SUBDIR, TYPES_SUBDIR, TOPICS_SUBDIR};
-        for (const auto& sub : subdirs)
-        {
-            ensure_directory_exists(std::filesystem::path(persistence_path) / sub);
-        }
-    }
-}
-
-void get_sorted_files(
-        const std::string& directory,
-        std::vector<std::pair<std::filesystem::path, int32_t>>& files)
-{
-    for (const auto& entry : std::filesystem::directory_iterator(directory))
-    {
-        if (entry.is_regular_file())
-        {
-            std::string filename = entry.path().filename().string();
-            try
-            {
-                // assumes name is just a number
-                files.emplace_back(entry.path(), static_cast<int32_t>(std::stoll(filename)));
-            }
-            catch (const std::invalid_argument& e)
-            {
-                std::cerr << "Skipping non-numeric file: " << filename << std::endl;
-            }
-        }
-    }
-
-    // Sort files by numeric value
-    std::sort(files.begin(), files.end(),
-            [](const auto& a, const auto& b)
-            {
-                return a.second < b.second;
-            });
-}
-
 void publish_routine(
         std::shared_ptr<eprosima::ddsenabler::DDSEnabler> enabler,
         const std::string& publish_path,
@@ -281,7 +231,7 @@ void publish_routine(
 
     // Get collection of files to publish, sorted in increasing order by their name (assumed to be numeric)
     std::vector<std::pair<std::filesystem::path, int32_t>> sample_files;
-    get_sorted_files(publish_path, sample_files);
+    utils::get_sorted_files(publish_path, sample_files);
 
     for (const auto& [path, number] : sample_files)
     {
@@ -341,7 +291,8 @@ int main(
 
     config = CLIParser::parse_cli_options(argc, argv);
 
-    init_persistence(config.persistence_path);
+    std::vector<std::string> subdirs = {SAMPLES_SUBDIR, TYPES_SUBDIR, TOPICS_SUBDIR};
+    utils::init_persistence(config.persistence_path, subdirs);
 
     CallbackSet callbacks{
         test_log_callback,
@@ -355,9 +306,18 @@ int main(
     };
 
     std::shared_ptr<DDSEnabler> enabler;
-    if (!create_dds_enabler(config.config_file_path.c_str(), callbacks, enabler))
+    bool enabler_created = false;
+    if (config.config_file_path.empty())
     {
-        std::cerr << "Failed to create DDS Enabler with the provided configuration." << std::endl;
+        enabler_created = create_dds_enabler(yaml::EnablerConfiguration(""), callbacks, enabler);
+    }
+    else
+    {
+        enabler_created = create_dds_enabler(config.config_file_path.c_str(), callbacks, enabler);
+    }
+    if (!enabler_created)
+    {
+        std::cerr << "Failed to create DDSEnabler instance." << std::endl;
         return EXIT_FAILURE;
     }
 

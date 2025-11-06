@@ -1,0 +1,60 @@
+# Test description:
+#   Run ddsenabler example action server and 3 Fibonacci clients sending each one 3 goals.
+#   Domain 43 is used by all containers.
+
+services:
+  ddsenabler:
+    image: ${DDSENABLER_COMPOSE_TEST_DOCKER_IMAGE}
+    container_name: ddsenabler
+    networks:
+      - std_net
+    volumes:
+      - ./config.yml:/config/config.yml
+      - ../persistence:/persistence
+    command: ./install/ddsenabler/examples/action/ddsenabler_example_action server --persistence-path /persistence --goals-path /persistence/goals --config /config/config.yml --expected-requests 9
+
+  fibonacci_client_1:
+    image: ${DDSENABLER_COMPOSE_TEST_ROS2_DOCKER_IMAGE}
+    container_name: fibonacci_client_1
+    depends_on:
+      - ddsenabler
+    networks:
+      - std_net
+    environment:
+      - ROS_DOMAIN_ID=43
+    volumes:
+      - ../../../scripts:/scripts
+    command: python3 /scripts/execute_and_validate_action_client.py --timeout 40 --samples 3
+
+  fibonacci_client_2:
+    image: ${DDSENABLER_COMPOSE_TEST_ROS2_DOCKER_IMAGE}
+    container_name: fibonacci_client_2
+    depends_on:
+      - ddsenabler
+    networks:
+      - std_net
+    environment:
+      - ROS_DOMAIN_ID=43
+    volumes:
+      - ../../../scripts:/scripts
+    command: python3 /scripts/execute_and_validate_action_client.py --timeout 40 --samples 3
+
+  fibonacci_client_3:
+    image: ${DDSENABLER_COMPOSE_TEST_ROS2_DOCKER_IMAGE}
+    container_name: fibonacci_client_3
+    depends_on:
+      - ddsenabler
+    networks:
+      - std_net
+    environment:
+      - ROS_DOMAIN_ID=43
+    volumes:
+      - ../../../scripts:/scripts
+    command: python3 /scripts/execute_and_validate_action_client.py --timeout 40 --samples 3
+
+
+
+networks:
+  std_net:
+  default:
+    driver: none

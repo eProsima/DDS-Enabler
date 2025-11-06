@@ -12,15 +12,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <filesystem>
-#include <fstream>
-#include <string>
+/**
+ * @file Utils.cpp
+ */
+
+#include "Utils.hpp"
 
 #include <nlohmann/json.hpp>
+#include <fstream>
+#include <random>
+#include <iostream>
 
-#pragma once
-
-// TODO: move these methods somewhere they can be reused
+namespace utils {
 
 std::string safe_file_name(
         const std::string& name)
@@ -147,8 +150,7 @@ bool load_type_from_file(
 bool save_topic_to_file(
         const std::string& directory,
         const char* topic_name,
-        const char* type_name,
-        const char* serialized_qos)
+        const TopicInfo& topic_info)
 {
     // Check if directory exists
     if (!std::filesystem::exists(directory))
@@ -179,14 +181,14 @@ bool save_topic_to_file(
     }
 
     // Write type name
-    uint32_t len_type_name = static_cast<uint32_t>(std::strlen(type_name));
+    uint32_t len_type_name = static_cast<uint32_t>(topic_info.type_name.size());
     ofs.write(reinterpret_cast<const char*>(&len_type_name), sizeof(len_type_name));
-    ofs.write(type_name, len_type_name);
+    ofs.write(topic_info.type_name.data(), len_type_name);
 
     // Write serialized QoS
-    uint32_t len_serialized_qos = static_cast<uint32_t>(std::strlen(serialized_qos));
+    uint32_t len_serialized_qos = static_cast<uint32_t>(topic_info.serialized_qos.size());
     ofs.write(reinterpret_cast<const char*>(&len_serialized_qos), sizeof(len_serialized_qos));
-    ofs.write(serialized_qos, len_serialized_qos);
+    ofs.write(topic_info.serialized_qos.data(), len_serialized_qos);
 
     if (!ofs.good())
     {
@@ -201,8 +203,7 @@ bool save_topic_to_file(
 bool load_topic_from_file(
         const std::string& directory,
         const char* topic_name,
-        std::string& type_name,
-        std::string& serialized_qos)
+        TopicInfo& topic_info)
 {
     // Check if directory exists
     if (!std::filesystem::exists(directory))
@@ -268,8 +269,8 @@ bool load_topic_from_file(
         return false;
     }
 
-    type_name.assign(type_name_buffer.begin(), type_name_buffer.end());
-    serialized_qos.assign(serialized_qos_buffer.begin(), serialized_qos_buffer.end());
+    topic_info.type_name.assign(type_name_buffer.begin(), type_name_buffer.end());
+    topic_info.serialized_qos.assign(serialized_qos_buffer.begin(), serialized_qos_buffer.end());
 
     return true;
 }
@@ -362,3 +363,256 @@ bool save_data_to_file(
     ofs.close();
     return true;
 }
+
+void save_service_to_file(
+        const std::string& directory,
+        const char* service_name,
+        const ServiceInfo& service_info)
+{
+    // Check if directory exists
+    if (!std::filesystem::exists(directory))
+    {
+        std::cerr << "Directory does not exist: " << directory << std::endl;
+        return;
+    }
+
+    // Remove problematic characters
+    std::string safe_service_name = safe_file_name(service_name);
+
+    // Construct full file path
+    auto file_path = std::filesystem::path(directory) / safe_service_name;
+
+    // Check if already exists, do nothing if it does
+    if (std::filesystem::exists(file_path))
+    {
+        std::cout << "File already exists: " << file_path << std::endl;
+        return;
+    }
+
+    nlohmann::json j;
+    j["service_name"] = service_name;
+    j["request_type_name"] = service_info.request.type_name;
+    j["reply_type_name"] = service_info.reply.type_name;
+    j["request_serialized_qos"] = service_info.request.serialized_qos;
+    j["reply_serialized_qos"] = service_info.reply.serialized_qos;
+
+    std::ofstream ofs(file_path);
+    if (ofs.is_open())
+    {
+        ofs << j.dump(4);
+    }
+}
+
+bool load_service_from_file(
+        const std::string& directory,
+        const char* service_name,
+        ServiceInfo& service_info)
+{
+    // Check if directory exists
+    if (!std::filesystem::exists(directory))
+    {
+        std::cerr << "Directory does not exist: " << directory << std::endl;
+        return false;
+    }
+
+    // Remove problematic characters
+    std::string safe_service_name = safe_file_name(service_name);
+
+    // Construct full file path
+    auto file_path = std::filesystem::path(directory) / safe_service_name;
+
+    // Check if already exists, do nothing if it does not
+    if (!std::filesystem::exists(file_path))
+    {
+        std::cout << "File does not exist: " << file_path << std::endl;
+        return false;
+    }
+
+    std::ifstream ifs(file_path);
+    if (!ifs.is_open())
+    {
+        return false;
+    }
+
+    nlohmann::json j;
+    ifs >> j;
+
+    std::string file_service_name = j["service_name"].get<std::string>();
+    if (file_service_name != std::string(service_name))
+    {
+        return false;  // Service name does not match
+    }
+
+    service_info.request.type_name = j["request_type_name"].get<std::string>();
+    service_info.reply.type_name = j["reply_type_name"].get<std::string>();
+    service_info.request.serialized_qos = j["request_serialized_qos"].get<std::string>();
+    service_info.reply.serialized_qos = j["reply_serialized_qos"].get<std::string>();
+    ifs.close();
+
+    return true;
+}
+
+void save_action_to_file(
+        const std::string& directory,
+        const char* action_name,
+        const ActionInfo& action_info)
+{
+    // Check if directory exists
+    if (!std::filesystem::exists(directory))
+    {
+        std::cerr << "Directory does not exist: " << directory << std::endl;
+        return;
+    }
+
+    // Remove problematic characters
+    std::string safe_action_name = safe_file_name(action_name);
+
+    // Construct full file path
+    auto file_path = std::filesystem::path(directory) / safe_action_name;
+
+    // Check if already exists, do nothing if it does
+    if (std::filesystem::exists(file_path))
+    {
+        std::cout << "File already exists: " << file_path << std::endl;
+        return;
+    }
+
+    nlohmann::json j;
+    j["action_name"] = action_name;
+    j["goal_request_action_type"] = action_info.goal.request.type_name;
+    j["goal_reply_action_type"] = action_info.goal.reply.type_name;
+    j["cancel_request_action_type"] = action_info.cancel.request.type_name;
+    j["cancel_reply_action_type"] = action_info.cancel.reply.type_name;
+    j["result_request_action_type"] = action_info.result.request.type_name;
+    j["result_reply_action_type"] = action_info.result.reply.type_name;
+    j["feedback_action_type"] = action_info.feedback.type_name;
+    j["status_action_type"] = action_info.status.type_name;
+    j["goal_request_action_serialized_qos"] = action_info.goal.request.serialized_qos;
+    j["goal_reply_action_serialized_qos"] = action_info.goal.reply.serialized_qos;
+    j["cancel_request_action_serialized_qos"] = action_info.cancel.request.serialized_qos;
+    j["cancel_reply_action_serialized_qos"] = action_info.cancel.reply.serialized_qos;
+    j["result_request_action_serialized_qos"] = action_info.result.request.serialized_qos;
+    j["result_reply_action_serialized_qos"] = action_info.result.reply.serialized_qos;
+    j["feedback_action_serialized_qos"] = action_info.feedback.serialized_qos;
+    j["status_action_serialized_qos"] = action_info.status.serialized_qos;
+
+    std::ofstream ofs(file_path);
+    if (ofs.is_open())
+    {
+        ofs << j.dump(4);
+        ofs.close();
+    }
+}
+
+bool load_action_from_file(
+        const std::string& directory,
+        const char* action_name,
+        ActionInfo& action_info)
+{
+    // Check if directory exists
+    if (!std::filesystem::exists(directory))
+    {
+        std::cerr << "Directory does not exist: " << directory << std::endl;
+        return false;
+    }
+
+    // Remove problematic characters
+    std::string safe_action_name = safe_file_name(action_name);
+
+    // Construct full file path
+    auto file_path = std::filesystem::path(directory) / safe_action_name;
+
+    // Check if already exists, do nothing if it does not
+    if (!std::filesystem::exists(file_path))
+    {
+        std::cout << "File does not exist: " << file_path << std::endl;
+        return false;
+    }
+
+    std::ifstream ifs(file_path);
+    if (!ifs.is_open())
+    {
+        return false;
+    }
+
+    nlohmann::json j;
+    ifs >> j;
+
+    std::string file_action_name = j["action_name"].get<std::string>();
+    if (file_action_name != std::string(action_name))
+    {
+        return false;  // Action name does not match
+    }
+    action_info.goal.request.type_name = j["goal_request_action_type"].get<std::string>();
+    action_info.goal.reply.type_name = j["goal_reply_action_type"].get<std::string>();
+    action_info.cancel.request.type_name = j["cancel_request_action_type"].get<std::string>();
+    action_info.cancel.reply.type_name = j["cancel_reply_action_type"].get<std::string>();
+    action_info.result.request.type_name = j["result_request_action_type"].get<std::string>();
+    action_info.result.reply.type_name = j["result_reply_action_type"].get<std::string>();
+    action_info.feedback.type_name = j["feedback_action_type"].get<std::string>();
+    action_info.status.type_name = j["status_action_type"].get<std::string>();
+    action_info.goal.request.serialized_qos = j["goal_request_action_serialized_qos"].get<std::string>();
+    action_info.goal.reply.serialized_qos = j["goal_reply_action_serialized_qos"].get<std::string>();
+    action_info.cancel.request.serialized_qos = j["cancel_request_action_serialized_qos"].get<std::string>();
+    action_info.cancel.reply.serialized_qos = j["cancel_reply_action_serialized_qos"].get<std::string>();
+    action_info.result.request.serialized_qos = j["result_request_action_serialized_qos"].get<std::string>();
+    action_info.result.reply.serialized_qos = j["result_reply_action_serialized_qos"].get<std::string>();
+    action_info.feedback.serialized_qos = j["feedback_action_serialized_qos"].get<std::string>();
+    action_info.status.serialized_qos = j["status_action_serialized_qos"].get<std::string>();
+    ifs.close();
+
+    return true;
+}
+
+void init_persistence(
+        const std::string& persistence_path,
+        std::vector<std::string> subdirs)
+{
+    auto ensure_directory_exists = [](const std::filesystem::path& path)
+            {
+                if (!std::filesystem::exists(path) && !std::filesystem::create_directories(path))
+                {
+                    std::cerr << "Failed to create directory: " << path << std::endl;
+                }
+            };
+
+    if (!persistence_path.empty())
+    {
+        ensure_directory_exists(persistence_path);
+        for (const auto& sub : subdirs)
+        {
+            ensure_directory_exists(std::filesystem::path(persistence_path) / sub);
+        }
+    }
+}
+
+void get_sorted_files(
+        const std::string& directory,
+        std::vector<std::pair<std::filesystem::path, int32_t>>& files)
+{
+    for (const auto& entry : std::filesystem::directory_iterator(directory))
+    {
+        if (entry.is_regular_file())
+        {
+            std::string filename = entry.path().filename().string();
+            try
+            {
+                // assumes name is just a number
+                files.emplace_back(entry.path(), static_cast<int32_t>(std::stoll(filename)));
+            }
+            catch (const std::invalid_argument& e)
+            {
+                std::cerr << "Skipping non-numeric file: " << filename << std::endl;
+            }
+        }
+    }
+
+    // Sort files by numeric value
+    std::sort(files.begin(), files.end(),
+            [](const auto& a, const auto& b)
+            {
+                return a.second < b.second;
+            });
+}
+
+} // namespace utils

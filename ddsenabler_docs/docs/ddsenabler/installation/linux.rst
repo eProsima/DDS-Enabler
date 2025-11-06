@@ -272,6 +272,10 @@ Run an example
 In this section, we will run a publish example mimicking the behavior of the classic *Hello World* ROS 2 talker in a specific domain. For simplicity, we will use the *eProsima DDS Enabler* example application
 with the already provided configuration file and sample data from a test case in the *dds_enabler_test* package.
 
+.. note::
+
+    To run a service or action example, please refer to the corresponding readme in the examples folder.
+
 To run this *eProsima DDS Enabler* example, source the installation path and execute the executable file that has been installed in :code:`<install-path>/dds_enabler_tool/bin/dds_enabler`:
 
 .. code-block:: bash
@@ -286,7 +290,7 @@ To run this *eProsima DDS Enabler* example, source the installation path and exe
     cd <dds-enabler-workspace>
     source install/setup.bash
     export TEST_PATH=$PWD/src/DDS-Enabler/ddsenabler_test/compose/test_cases/publish/discovered_type
-    ./build/ddsenabler/examples/ddsenabler_example --config $TEST_PATH/config.yml --timeout 10 --expected-types 1 --expected-topics 1 --publish-path $TEST_PATH/samples --publish-topic rt/chatter --publish-period 200 --publish-initial-wait 5000
+    ./install/ddsenabler/examples/publish/ddsenabler_example_publish --config $TEST_PATH/config.yml --timeout 10 --expected-types 1 --expected-topics 1 --publish-path $TEST_PATH/samples --publish-topic rt/chatter --publish-period 200 --publish-initial-wait 5000
 
 .. important::
 

@@ -12,12 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <ddsenabler/DDSEnabler.hpp>
+
 #include <cpp_utils/exception/InitializationException.hpp>
 #include <cpp_utils/utils.hpp>
 
 #include <ddspipe_core/types/dynamic_types/types.hpp>
 
-#include "ddsenabler/DDSEnabler.hpp"
+#include <ddsenabler_participants/rpc/RpcUtils.hpp>
 
 namespace eprosima {
 namespace ddsenabler {
@@ -60,6 +62,30 @@ DDSEnabler::DDSEnabler(
     handler_ = std::make_shared<participants::Handler>(
         handler_config,
         payload_pool_);
+
+    handler_->set_send_action_get_result_request_callback(
+        [this](const std::string& action_name, const UUID& action_id)
+        {
+            if (this->send_action_get_result_request(action_name, action_id))
+            {
+                return true;
+            }
+            this->cancel_action_goal(action_name, action_id, 0);
+            return false;
+        });
+
+    handler_->set_send_action_send_goal_reply_callback(
+        [this](const std::string& action_name, const uint64_t goal_id, bool accepted)
+        {
+            return this->send_action_send_goal_reply(action_name, goal_id, accepted);
+        });
+
+    handler_->set_send_action_get_result_reply_callback(
+        [this](const std::string& action_name, const UUID& goal_id, const std::string& reply_json,
+        const uint64_t request_id)
+        {
+            return this->send_action_get_result_reply(action_name, goal_id, reply_json, request_id);
+        });
 
     // Create Enabler Participant
     enabler_participant_ = std::make_shared<EnablerParticipant>(
@@ -209,6 +235,55 @@ void DDSEnabler::set_internal_callbacks_(
     {
         enabler_participant_->set_topic_query_callback(callbacks.dds.topic_query);
     }
+    if (callbacks.service.service_notification)
+    {
+        handler_->set_service_notification_callback(callbacks.service.service_notification);
+    }
+    if (callbacks.service.service_request_notification)
+    {
+        handler_->set_service_request_notification_callback(callbacks.service.service_request_notification);
+    }
+    if (callbacks.service.service_reply_notification)
+    {
+        handler_->set_service_reply_notification_callback(callbacks.service.service_reply_notification);
+    }
+    if (callbacks.service.service_query)
+    {
+        enabler_participant_->set_service_query_callback(callbacks.service.service_query);
+    }
+    if (callbacks.action.action_notification)
+    {
+        handler_->set_action_notification_callback(callbacks.action.action_notification);
+    }
+    if (callbacks.action.action_goal_request_notification)
+    {
+        handler_->set_action_goal_request_notification_callback(
+            callbacks.action.action_goal_request_notification);
+    }
+    if (callbacks.action.action_feedback_notification)
+    {
+        handler_->set_action_feedback_notification_callback(
+            callbacks.action.action_feedback_notification);
+    }
+    if (callbacks.action.action_cancel_request_notification)
+    {
+        handler_->set_action_cancel_request_notification_callback(
+            callbacks.action.action_cancel_request_notification);
+    }
+    if (callbacks.action.action_result_notification)
+    {
+        handler_->set_action_result_notification_callback(
+            callbacks.action.action_result_notification);
+    }
+    if (callbacks.action.action_status_notification)
+    {
+        handler_->set_action_status_notification_callback(
+            callbacks.action.action_status_notification);
+    }
+    if (callbacks.action.action_query)
+    {
+        enabler_participant_->set_action_query_callback(callbacks.action.action_query);
+    }
 }
 
 bool DDSEnabler::publish(
@@ -216,6 +291,197 @@ bool DDSEnabler::publish(
         const std::string& json)
 {
     return enabler_participant_->publish(topic_name, json);
+}
+
+bool DDSEnabler::send_service_request(
+        const std::string& service_name,
+        const std::string& json,
+        uint64_t& request_id)
+{
+    return send_service_request(
+        service_name,
+        json,
+        request_id,
+        participants::Protocol::ROS2);
+}
+
+bool DDSEnabler::send_service_request(
+        const std::string& service_name,
+        const std::string& json,
+        uint64_t& request_id,
+        participants::Protocol Protocol)
+{
+    return enabler_participant_->send_service_request(
+        service_name,
+        json,
+        request_id,
+        Protocol);
+}
+
+bool DDSEnabler::announce_service(
+        const std::string& service_name,
+        participants::Protocol Protocol)
+{
+    return enabler_participant_->announce_service(service_name, Protocol);
+}
+
+bool DDSEnabler::announce_service(
+        const std::string& service_name)
+{
+    return announce_service(service_name, participants::Protocol::ROS2);
+}
+
+bool DDSEnabler::revoke_service(
+        const std::string& service_name)
+{
+    return enabler_participant_->revoke_service(service_name);
+}
+
+bool DDSEnabler::send_service_reply(
+        const std::string& service_name,
+        const std::string& json,
+        const uint64_t request_id)
+{
+    return enabler_participant_->send_service_reply(
+        service_name,
+        json,
+        request_id);
+}
+
+bool DDSEnabler::send_action_goal(
+        const std::string& action_name,
+        const std::string& json,
+        UUID& action_id)
+{
+    return send_action_goal(
+        action_name,
+        json,
+        action_id,
+        participants::Protocol::ROS2);
+}
+
+bool DDSEnabler::send_action_goal(
+        const std::string& action_name,
+        const std::string& json,
+        UUID& action_id,
+        participants::Protocol Protocol)
+{
+    return enabler_participant_->send_action_goal(
+        action_name,
+        json,
+        action_id,
+        Protocol);
+}
+
+bool DDSEnabler::send_action_get_result_request(
+        const std::string& action_name,
+        const UUID& action_id)
+{
+    return enabler_participant_->send_action_get_result_request(
+        action_name,
+        action_id);
+}
+
+bool DDSEnabler::cancel_action_goal(
+        const std::string& action_name,
+        const participants::UUID& goal_id,
+        const int64_t timestamp)
+{
+    return enabler_participant_->cancel_action_goal(
+        action_name,
+        goal_id,
+        timestamp);
+}
+
+bool DDSEnabler::announce_action(
+        const std::string& action_name)
+{
+    return announce_action(action_name, participants::Protocol::ROS2);
+}
+
+bool DDSEnabler::announce_action(
+        const std::string& action_name,
+        participants::Protocol Protocol)
+{
+    return enabler_participant_->announce_action(action_name, Protocol);
+}
+
+bool DDSEnabler::revoke_action(
+        const std::string& action_name)
+{
+    return enabler_participant_->revoke_action(action_name);
+}
+
+void DDSEnabler::send_action_send_goal_reply(
+        const std::string& action_name,
+        const uint64_t goal_id,
+        bool accepted)
+{
+    enabler_participant_->send_action_send_goal_reply(
+        action_name,
+        goal_id,
+        accepted);
+}
+
+bool DDSEnabler::send_action_cancel_goal_reply(
+        const char* action_name,
+        const std::vector<participants::UUID>& goal_ids,
+        const participants::CancelCode& cancel_code,
+        const uint64_t request_id)
+{
+    return enabler_participant_->send_action_cancel_goal_reply(
+        action_name,
+        goal_ids,
+        cancel_code,
+        request_id);
+}
+
+bool DDSEnabler::send_action_result(
+        const char* action_name,
+        const participants::UUID& goal_id,
+        const participants::StatusCode& status_code,
+        const char* json)
+{
+    return enabler_participant_->send_action_result(
+        action_name,
+        goal_id,
+        status_code,
+        json);
+}
+
+bool DDSEnabler::send_action_get_result_reply(
+        const std::string& action_name,
+        const participants::UUID& goal_id,
+        const std::string& reply_json,
+        const uint64_t request_id)
+{
+    return enabler_participant_->send_action_get_result_reply(
+        action_name,
+        goal_id,
+        reply_json,
+        request_id);
+}
+
+bool DDSEnabler::send_action_feedback(
+        const char* action_name,
+        const char* json,
+        const participants::UUID& goal_id)
+{
+    return enabler_participant_->send_action_feedback(
+        action_name,
+        json,
+        goal_id);
+}
+
+bool DDSEnabler::update_action_status(
+        const std::string& action_name,
+        const participants::UUID& goal_id,
+        const participants::StatusCode& status_code)
+{
+    return enabler_participant_->update_action_status(
+        action_name,
+        goal_id,
+        status_code);
 }
 
 } /* namespace ddsenabler */

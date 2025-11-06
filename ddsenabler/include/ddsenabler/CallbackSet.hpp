@@ -44,6 +44,45 @@ struct DdsCallbacks
     participants::DdsTopicQuery topic_query{nullptr};
 };
 
+struct ServiceCallbacks
+{
+    //! Callback for notifying the discovery of DDS services
+    participants::ServiceNotification service_notification{nullptr};
+
+    //! Callback for notifying the reception of service requests
+    participants::ServiceRequestNotification service_request_notification{nullptr};
+
+    //! Callback for notifying the reception of service replies
+    participants::ServiceReplyNotification service_reply_notification{nullptr};
+
+    //! Callback for requesting information of a DDS service
+    participants::ServiceQuery service_query{nullptr};
+};
+
+struct ActionCallbacks
+{
+    //! Callback for notifying the discovery of DDS actions
+    participants::ActionNotification action_notification{nullptr};
+
+    //! Callback for notifying the reception of action goal requests
+    participants::ActionGoalRequestNotification action_goal_request_notification{nullptr};
+
+    //! Callback for notifying the reception of action feedback
+    participants::ActionFeedbackNotification action_feedback_notification{nullptr};
+
+    //! Callback for notifying the reception of action cancel requests
+    participants::ActionCancelRequestNotification action_cancel_request_notification{nullptr};
+
+    //! Callback for notifying the reception of action results
+    participants::ActionResultNotification action_result_notification{nullptr};
+
+    //! Callback for notifying the reception of action status notifications
+    participants::ActionStatusNotification action_status_notification{nullptr};
+
+    //! Callback for requesting information of a DDS action
+    participants::ActionQuery action_query{nullptr};
+};
+
 /**
  * @brief Struct that encapsulates all the callbacks used by the DDS Enabler.
  */
@@ -54,6 +93,10 @@ struct CallbackSet
 
     //! DDS related callbacks
     DdsCallbacks dds;
+    //! Service related callbacks
+    ServiceCallbacks service;
+    //! Action related callbacks
+    ActionCallbacks action;
 };
 
 } /* namespace ddsenabler */

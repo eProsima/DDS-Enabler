@@ -1,4 +1,4 @@
-[![DDS Enabler](resources/images/github_banner_ddsenabler.png)](https://eprosima.com/middleware/tools/DDS-Enabler)
+[![DDS Enabler](resources/images/github_banner_ddsenabler.png)](https://dds-enabler.readthedocs.io/en/latest/02-formalia/titlepage.html)
 
 <br>
 
@@ -60,7 +60,6 @@ Find more about us at [eProsima’s webpage](https://eprosima.com/).
 
 Explore the full user and developer guide hosted on ReadTheDocs:
 
-- [Introduction](https://dds-enabler.readthedocs.io/en/latest/rst/02-formalia/titlepage.html)
-- [Project Overview](https://dds-enabler.readthedocs.io/en/latest/rst/getting_started/project_overview.html)
-- [User Manual](https://dds-enabler.readthedocs.io/en/latest/rst/user_manual/context_broker_interface.html)
-- [API Reference](https://dds-enabler.readthedocs.io/en/latest/rst/ddsenabler/api_reference/api_reference.html)
+- [Introduction](https://dds-enabler.readthedocs.io/en/latest/02-formalia/titlepage.html)
+- [Installation Guide](https://dds-enabler.readthedocs.io/en/latest/ddsenabler/installation/linux.html)
+- [API Reference](https://dds-enabler.readthedocs.io/en/latest/ddsenabler/api_reference/api_reference.html)

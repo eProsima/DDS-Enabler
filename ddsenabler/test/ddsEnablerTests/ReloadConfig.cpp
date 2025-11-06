@@ -16,6 +16,7 @@
 #include <gtest/gtest.h>
 
 #include "dds_enabler_runner.hpp"
+#include "ddsenabler_participants/Callbacks.hpp"
 
 #include <filesystem>
 #include <fstream>
@@ -47,16 +48,14 @@ void test_type_notification_callback(
 // eprosima::ddsenabler::participants::DdsTopicNotification topic_notification;
 void test_topic_notification_callback(
         const char* topic_name,
-        const char* type_name,
-        const char* serialized_qos)
+        const eprosima::ddsenabler::participants::TopicInfo& topic_info)
 {
 }
 
 // eprosima::ddsenabler::participants::DdsTopicQuery topic_query;
 bool test_topic_query_callback(
         const char* topic_name,
-        std::string& type_name,
-        std::string& serialized_qos)
+        eprosima::ddsenabler::participants::TopicInfo& topic_info)
 {
     return false;
 }

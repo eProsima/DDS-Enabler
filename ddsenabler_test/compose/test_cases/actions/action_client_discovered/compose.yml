@@ -1,0 +1,35 @@
+# Test description:
+#   Run ddsenabler example action client against an already running Fibonacci action server.
+#   No persistence path is used as the types are discovered at runtime.
+#   The action client sends 3 consecutive goal requests and expects to receive
+#   the corresponding feedbacks, status and results.
+#   Domain 45 is set for ROS 2 nodes.
+
+services:
+  fibonacci_server:
+    image: ${DDSENABLER_COMPOSE_TEST_ROS2_DOCKER_IMAGE}
+    container_name: fibonacci_server
+    networks:
+      - std_net
+    environment:
+      - ROS_DOMAIN_ID=45
+    volumes:
+      - ../../../scripts:/scripts
+    command: python3 /scripts/execute_and_validate_action_server.py --timeout 20 --samples 3
+
+  ddsenabler:
+    image: ${DDSENABLER_COMPOSE_TEST_DOCKER_IMAGE}
+    container_name: ddsenabler
+    depends_on:
+      - fibonacci_server
+    networks:
+      - std_net
+    volumes:
+      - ./config.yml:/config/config.yml
+      - ../persistence:/persistence
+    command: ./install/ddsenabler/examples/action/ddsenabler_example_action client --goals-path /persistence/goals --config /config/config.yml --request-initial-wait 2
+
+networks:
+  std_net:
+  default:
+    driver: none

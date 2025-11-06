@@ -1,0 +1,34 @@
+# Test description:
+#   Run ddsenabler example service client against an already running AddTwoInts server.
+#   No persistence path is used as the types are discovered at runtime.
+#   3 requests are sent to the server.
+#   Domain 33 is used.
+
+services:
+  add_two_ints_server:
+    image: ${DDSENABLER_COMPOSE_TEST_ROS2_DOCKER_IMAGE}
+    container_name: add_two_ints_server
+    networks:
+      - std_net
+    environment:
+      - ROS_DOMAIN_ID=33
+    volumes:
+      - ../../../scripts:/scripts
+    command: python3 /scripts/execute_and_validate_server.py --timeout 10 --samples 3
+
+  ddsenabler:
+    image: ${DDSENABLER_COMPOSE_TEST_DOCKER_IMAGE}
+    container_name: ddsenabler
+    depends_on:
+      - add_two_ints_server
+    networks:
+      - std_net
+    volumes:
+      - ./config.yml:/config/config.yml
+      - ../persistence:/persistence
+    command: ./install/ddsenabler/examples/service/ddsenabler_example_service client --requests-path /persistence/requests --config /config/config.yml --request-initial-wait 2
+
+networks:
+  std_net:
+  default:
+    driver: none
