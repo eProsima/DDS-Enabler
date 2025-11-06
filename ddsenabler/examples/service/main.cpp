@@ -335,9 +335,12 @@ bool client_routine(
     uint32_t sent_requests = 0;
     for (const auto& [path, number] : sample_files)
     {
-        if (stop_app_)
         {
-            return false;
+            std::lock_guard<std::mutex> lock(app_mutex_);
+            if (stop_app_)
+            {
+                return false;
+            }
         }
 
         std::ifstream file(path, std::ios::binary);
@@ -420,7 +423,13 @@ bool server_routine(
 
     std::cout << "Service announced: " << service_name << std::endl;
 
-    while (!stop_app_)
+    bool stop_app = false;
+    {
+        std::lock_guard<std::mutex> lock(app_mutex_);
+        stop_app = stop_app_;
+    }
+
+    while (!stop_app)
     {
         uint64_t request_id = 0;
         std::string request;
@@ -448,6 +457,7 @@ bool server_routine(
                 std::this_thread::sleep_for(std::chrono::milliseconds(1000));
                 return true;
             }
+            stop_app = stop_app_;
         }
     }
 

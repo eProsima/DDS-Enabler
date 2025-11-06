@@ -421,10 +421,14 @@ bool server_specific_logic(
     std::string feedback_json = "{\"partial_sequence\": [";
     for (size_t i = 0; i < fibonacci_number; ++i)
     {
-        if (stop_app_)
         {
-            return false;
+            std::lock_guard<std::mutex> lock(app_mutex_);
+            if (stop_app_)
+            {
+                return false;
+            }
         }
+
         json += std::to_string(fibonacci_sequence[i]);
         feedback_json += std::to_string(fibonacci_sequence[i]);
 
@@ -474,8 +478,12 @@ bool server_routine(
     }
 
     std::cout << "Action announced: " << action_name << std::endl;
-
-    while (!stop_app_)
+    bool stop_app = false;
+    {
+        std::lock_guard<std::mutex> lock(app_mutex_);
+        stop_app = stop_app_;
+    }
+    while (!stop_app)
     {
         eprosima::ddsenabler::participants::UUID request_id;
         std::string goal_json;
@@ -506,6 +514,7 @@ bool server_routine(
             {
                 break;
             }
+            stop_app = stop_app_;
         }
     }
 
