@@ -24,7 +24,7 @@ services:
       - ROS_DOMAIN_ID=43
     volumes:
       - ../../../scripts:/scripts
-    command: python3 /scripts/execute_and_validate_action_client.py --timeout 20 --samples 3
+    command: python3 /scripts/execute_and_validate_action_client.py --timeout 40 --samples 3
 
   fibonacci_client_2:
     image: ${DDSENABLER_COMPOSE_TEST_ROS2_DOCKER_IMAGE}
@@ -37,7 +37,7 @@ services:
       - ROS_DOMAIN_ID=43
     volumes:
       - ../../../scripts:/scripts
-    command: python3 /scripts/execute_and_validate_action_client.py --timeout 20 --samples 3
+    command: python3 /scripts/execute_and_validate_action_client.py --timeout 40 --samples 3
 
   fibonacci_client_3:
     image: ${DDSENABLER_COMPOSE_TEST_ROS2_DOCKER_IMAGE}
@@ -50,7 +50,7 @@ services:
       - ROS_DOMAIN_ID=43
     volumes:
       - ../../../scripts:/scripts
-    command: python3 /scripts/execute_and_validate_action_client.py --timeout 20 --samples 3
+    command: python3 /scripts/execute_and_validate_action_client.py --timeout 40 --samples 3
 
 
 

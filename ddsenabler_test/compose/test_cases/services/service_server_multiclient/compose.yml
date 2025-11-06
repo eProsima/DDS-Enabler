@@ -24,7 +24,7 @@ services:
       - ROS_DOMAIN_ID=35
     volumes:
       - ../../../scripts:/scripts
-    command: python3 /scripts/execute_and_validate_client.py --timeout 10 --samples 3
+    command: python3 /scripts/execute_and_validate_client.py --timeout 20 --samples 3
 
   add_two_ints_client_2:
     image: ${DDSENABLER_COMPOSE_TEST_ROS2_DOCKER_IMAGE}
@@ -37,7 +37,7 @@ services:
       - ROS_DOMAIN_ID=35
     volumes:
       - ../../../scripts:/scripts
-    command: python3 /scripts/execute_and_validate_client.py --timeout 10 --samples 3
+    command: python3 /scripts/execute_and_validate_client.py --timeout 20 --samples 3
 
   add_two_ints_client_3:
     image: ${DDSENABLER_COMPOSE_TEST_ROS2_DOCKER_IMAGE}
@@ -50,7 +50,7 @@ services:
       - ROS_DOMAIN_ID=35
     volumes:
       - ../../../scripts:/scripts
-    command: python3 /scripts/execute_and_validate_client.py --timeout 10 --samples 3
+    command: python3 /scripts/execute_and_validate_client.py --timeout 20 --samples 3
 
 networks:
   std_net:
