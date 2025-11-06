@@ -13,7 +13,7 @@ services:
       - ../persistence:/persistence
     command: ./install/ddsenabler/examples/action/ddsenabler_example_action server --persistence-path /persistence --goals-path /persistence/goals --config /config/config.yml --expected-requests 3
 
-  fibonacci_client_1:
+  fibonacci_client:
     image: ${DDSENABLER_COMPOSE_TEST_ROS2_DOCKER_IMAGE}
     container_name: fibonacci_client_1
     depends_on:

@@ -19,12 +19,14 @@ set(TESTS
     reception/topics_json
     reception/topics_yaml
     services/service_server
+    services/service_server_multiclient
     services/service_client
     services/service_client_discovered
     actions/action_client
     actions/action_client_cancel
     actions/action_client_discovered
     actions/action_server
+    actions/action_server_multiclient
 )
 
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/test_cases DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
