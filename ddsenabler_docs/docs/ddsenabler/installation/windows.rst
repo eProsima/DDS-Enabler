@@ -196,7 +196,7 @@ Colcon installation (recommended)
         mkdir <path\to\user\workspace>\DDS-Enabler
         cd <path\to\user\workspace>\DDS-Enabler
         mkdir src
-        wget https://raw.githubusercontent.com/eProsima/DDS-Enabler/main/ddsenabler.repos -output ddsenabler.repos
+        wget https://raw.githubusercontent.com/eProsima/DDS-Enabler/v1.1.0/ddsenabler.repos -output ddsenabler.repos
         vcs import src --input ddsenabler.repos
 
     .. note::
@@ -243,7 +243,7 @@ Local installation
         mkdir <path\to\user\workspace>\DDS-Enabler\src
         mkdir <path\to\user\workspace>\DDS-Enabler\build
         cd <path\to\user\workspace>\DDS-Enabler
-        wget https://raw.githubusercontent.com/eProsima/DDS-Enabler/main/ddsenabler.repos ddsenabler.repos
+        wget https://raw.githubusercontent.com/eProsima/DDS-Enabler/v1.1.0/ddsenabler.repos ddsenabler.repos
         vcs import src < ddsenabler.repos
 
 #.  Compile all dependencies using CMake_.
