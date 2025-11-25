@@ -269,12 +269,12 @@ void Writer::write_action_notification(
                     TopicInfo(action.goal.reply_topic().type_name, goal_reply_serialized_qos)
                     ),
                 ServiceInfo(
-                    TopicInfo(action.cancel.request_topic().type_name, cancel_request_serialized_qos),
-                    TopicInfo(action.cancel.reply_topic().type_name, cancel_reply_serialized_qos)
-                    ),
-                ServiceInfo(
                     TopicInfo(action.result.request_topic().type_name, result_request_serialized_qos),
                     TopicInfo(action.result.reply_topic().type_name, result_reply_serialized_qos)
+                    ),
+                ServiceInfo(
+                    TopicInfo(action.cancel.request_topic().type_name, cancel_request_serialized_qos),
+                    TopicInfo(action.cancel.reply_topic().type_name, cancel_reply_serialized_qos)
                     ),
                 TopicInfo(action.feedback.type_name, feedback_serialized_qos),
                 TopicInfo(action.status.type_name, status_serialized_qos)

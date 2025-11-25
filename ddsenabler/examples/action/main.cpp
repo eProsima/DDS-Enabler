@@ -418,7 +418,7 @@ bool server_specific_logic(
 {
     std::vector<uint64_t> fibonacci_sequence = {0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610};
     std::string json = "{\"sequence\": [";
-    std::string feedback_json = "{\"partial_sequence\": [";
+    std::string feedback_json = "{\"partial_sequence\": ["; // From Kilted onwardards, the feedback attribute name is "sequence"
     for (size_t i = 0; i < fibonacci_number; ++i)
     {
         {
