@@ -30,7 +30,7 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
     libyaml-cpp-dev
 
 # Install required python modules
-RUN pip3 install \
+RUN pip3 install --break-system-packages \
         colcon-common-extensions \
         colcon-mixin \
         lxml \
