@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 LABEL author=raul@eprosima.com
 
 # Avoid interactuation with installation of some package that needs the locale.
@@ -30,7 +30,7 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
     libyaml-cpp-dev
 
 # Install required python modules
-RUN pip3 install \
+RUN pip3 install --break-system-packages \
         colcon-common-extensions \
         colcon-mixin \
         lxml \

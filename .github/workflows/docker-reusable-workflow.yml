@@ -54,7 +54,7 @@ env:
 jobs:
   docker-test:
 
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
 
     env:
       DDSENABLER_COMPOSE_TEST_DOCKER_IMAGE: "ddsenabler:ci"
@@ -101,7 +101,7 @@ jobs:
       - name: Download dependencies and install requirements
         uses: ./src/.github/actions/project_dependencies
         with:
-          os: ubuntu-22.04
+          os: ubuntu-24.04
           cmake_build_type: "Release"
           dependencies_artifact_postfix: ${{ inputs.dependencies_artifact_postfix }}
           secret_token: ${{ secrets.GITHUB_TOKEN }}
