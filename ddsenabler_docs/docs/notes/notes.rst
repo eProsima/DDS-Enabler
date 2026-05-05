@@ -5,12 +5,22 @@
 .. include:: forthcoming_version.rst
 
 ##############
-Version v1.1.0
+Version v1.2.0
 ##############
 
-This release includes the following **features**:
+This release includes the following **bugfixes**:
 
-* Support for ROS 2 services and actions
+* Fix action notification callback
+
+This release includes the following **documentation updates**:
+
+* Update Windows documentation (new **Asio** version)
+
+This release includes the following **CI improvements**:
+
+* Update Docker workflow to use Ubuntu Noble
+* Upgrade `Linters CI` runner image to `ubuntu-24.04`
+* Update `foonathan` version to 1.4.1
 
 This release includes the following **Dependencies Update**:
 
@@ -24,26 +34,27 @@ This release includes the following **Dependencies Update**:
     *   - Foonathan Memory Vendor
         - `eProsima/foonathan_memory_vendor <https://github.com/eProsima/foonathan_memory_vendor>`_
         - `v1.3.1 <https://github.com/eProsima/foonathan_memory_vendor/releases/tag/v1.3.1>`_
-        - `v1.3.1 <https://github.com/eProsima/foonathan_memory_vendor/releases/tag/v1.3.1>`_
+        - `v1.4.1 <https://github.com/eProsima/foonathan_memory_vendor/releases/tag/v1.4.1>`_
     *   - Fast CDR
         - `eProsima/Fast-CDR <https://github.com/eProsima/Fast-CDR>`_
-        - `v2.3.0 <https://github.com/eProsima/Fast-CDR/releases/tag/v2.3.0>`_
         - `v2.3.4 <https://github.com/eProsima/Fast-CDR/releases/tag/v2.3.4>`_
+        - `v2.3.5 <https://github.com/eProsima/Fast-CDR/releases/tag/v2.3.5>`_
     *   - Fast DDS
         - `eProsima/Fast-DDS <https://github.com/eProsima/Fast-DDS>`_
-        - `v3.3.0 <https://github.com/eProsima/Fast-DDS/releases/tag/v3.3.0>`_
         - `v3.4.1 <https://github.com/eProsima/Fast-DDS/releases/tag/v3.4.1>`_
+        - `v3.6.1 <https://github.com/eProsima/Fast-DDS/releases/tag/v3.6.1>`_
     *   - Dev Utils
         - `eProsima/dev-utils <https://github.com/eProsima/dev-utils>`_
-        - `v1.3.0 <https://github.com/eProsima/dev-utils/releases/tag/v1.3.0>`__
         - `v1.4.0 <https://github.com/eProsima/dev-utils/releases/tag/v1.4.0>`__
+        - `v1.5.1 <https://github.com/eProsima/dev-utils/releases/tag/v1.5.1>`__
     *   - DDS Pipe
         - `eProsima/DDS-Pipe <https://github.com/eProsima/DDS-Pipe.git>`_
-        - `v1.3.0 <https://github.com/eProsima/DDS-Pipe/releases/tag/v1.3.0>`__
         - `v1.4.0 <https://github.com/eProsima/DDS-Pipe/releases/tag/v1.4.0>`__
+        - `v1.5.1 <https://github.com/eProsima/DDS-Pipe/releases/tag/v1.5.1>`__
 
 #################
 Previous Versions
 #################
 
+.. include:: ./previous_versions/v1.1.0.rst
 .. include:: ./previous_versions/v1.0.0.rst
