@@ -22,6 +22,25 @@ namespace eprosima {
 namespace ddsenabler {
 namespace participants {
 
+/**
+ *  Try to strip the trailing ACTION_INFIX ("/_action/") from a name produced by the topic parser.
+ *
+ *  @param [in, out] name The name to be stripped.
+ *  @return true and updates `name` if the infix was found at the end; false otherwise.
+ */
+static bool strip_action_infix(
+        std::string& name)
+{
+    const std::size_t infix_len = std::strlen(ACTION_INFIX);
+    if (name.size() < infix_len ||
+            name.substr(name.size() - infix_len) != ACTION_INFIX)
+    {
+        return false;
+    }
+    name = name.substr(0, name.size() - infix_len);
+    return true;
+}
+
 RpcAction::RpcAction(
         const std::string& action_name,
         const ddspipe::core::types::RpcTopic& goal,
@@ -115,29 +134,42 @@ void RpcInfo::extract_rpc_info()
         service_type = ServiceType::REQUEST;
         service_name = base;
 
+        // Check if it's an action topic by looking for the action suffixes and infix in the remaining base name
         if (base.size() >= (std::strlen(ACTION_GOAL_SUFFIX)) &&
                 base.substr(base.size() - (std::strlen(ACTION_GOAL_SUFFIX))) == ACTION_GOAL_SUFFIX)
         {
-            action_name = base.substr(0, base.size() - (std::strlen(ACTION_GOAL_SUFFIX)));
-            rpc_type = RpcType::ACTION;
-            action_type = ActionType::GOAL;
-            return;
+            std::string candidate = base.substr(0, base.size() - (std::strlen(ACTION_GOAL_SUFFIX)));
+            if (strip_action_infix(candidate))
+            {
+                action_name = candidate;
+                rpc_type = RpcType::ACTION;
+                action_type = ActionType::GOAL;
+                return;
+            }
         }
         else if (base.size() >= (std::strlen(ACTION_RESULT_SUFFIX)) &&
                 base.substr(base.size() - (std::strlen(ACTION_RESULT_SUFFIX))) == ACTION_RESULT_SUFFIX)
         {
-            action_name = base.substr(0, base.size() - (std::strlen(ACTION_RESULT_SUFFIX)));
-            rpc_type = RpcType::ACTION;
-            action_type = ActionType::RESULT;
-            return;
+            std::string candidate = base.substr(0, base.size() - (std::strlen(ACTION_RESULT_SUFFIX)));
+            if (strip_action_infix(candidate))
+            {
+                action_name = candidate;
+                rpc_type = RpcType::ACTION;
+                action_type = ActionType::RESULT;
+                return;
+            }
         }
         else if (base.size() >= (std::strlen(ACTION_CANCEL_SUFFIX)) &&
                 base.substr(base.size() - (std::strlen(ACTION_CANCEL_SUFFIX))) == ACTION_CANCEL_SUFFIX)
         {
-            action_name = base.substr(0, base.size() - (std::strlen(ACTION_CANCEL_SUFFIX)));
-            rpc_type = RpcType::ACTION;
-            action_type = ActionType::CANCEL;
-            return;
+            std::string candidate = base.substr(0, base.size() - (std::strlen(ACTION_CANCEL_SUFFIX)));
+            if (strip_action_infix(candidate))
+            {
+                action_name = candidate;
+                rpc_type = RpcType::ACTION;
+                action_type = ActionType::CANCEL;
+                return;
+            }
         }
 
         rpc_type = RpcType::SERVICE;
@@ -157,26 +189,38 @@ void RpcInfo::extract_rpc_info()
         if (base.size() >= (std::strlen(ACTION_GOAL_SUFFIX)) &&
                 base.substr(base.size() - (std::strlen(ACTION_GOAL_SUFFIX))) == ACTION_GOAL_SUFFIX)
         {
-            action_name = base.substr(0, base.size() - (std::strlen(ACTION_GOAL_SUFFIX)));
-            rpc_type = RpcType::ACTION;
-            action_type = ActionType::GOAL;
-            return;
+            std::string candidate = base.substr(0, base.size() - (std::strlen(ACTION_GOAL_SUFFIX)));
+            if (strip_action_infix(candidate))
+            {
+                action_name = candidate;
+                rpc_type = RpcType::ACTION;
+                action_type = ActionType::GOAL;
+                return;
+            }
         }
         else if (base.size() >= (std::strlen(ACTION_RESULT_SUFFIX)) &&
                 base.substr(base.size() - (std::strlen(ACTION_RESULT_SUFFIX))) == ACTION_RESULT_SUFFIX)
         {
-            action_name = base.substr(0, base.size() - (std::strlen(ACTION_RESULT_SUFFIX)));
-            rpc_type = RpcType::ACTION;
-            action_type = ActionType::RESULT;
-            return;
+            std::string candidate = base.substr(0, base.size() - (std::strlen(ACTION_RESULT_SUFFIX)));
+            if (strip_action_infix(candidate))
+            {
+                action_name = candidate;
+                rpc_type = RpcType::ACTION;
+                action_type = ActionType::RESULT;
+                return;
+            }
         }
         else if (base.size() >= (std::strlen(ACTION_CANCEL_SUFFIX)) &&
                 base.substr(base.size() - (std::strlen(ACTION_CANCEL_SUFFIX))) == ACTION_CANCEL_SUFFIX)
         {
-            action_name = base.substr(0, base.size() - (std::strlen(ACTION_CANCEL_SUFFIX)));
-            rpc_type = RpcType::ACTION;
-            action_type = ActionType::CANCEL;
-            return;
+            std::string candidate = base.substr(0, base.size() - (std::strlen(ACTION_CANCEL_SUFFIX)));
+            if (strip_action_infix(candidate))
+            {
+                action_name = candidate;
+                rpc_type = RpcType::ACTION;
+                action_type = ActionType::CANCEL;
+                return;
+            }
         }
 
         rpc_type = RpcType::SERVICE;
@@ -193,18 +237,26 @@ void RpcInfo::extract_rpc_info()
             base.substr(base.size() - (std::strlen(ACTION_FEEDBACK_SUFFIX) + 1)) ==
             (std::string("/") + ACTION_FEEDBACK_SUFFIX))
     {
-        action_name = base.substr(0, base.size() - std::strlen(ACTION_FEEDBACK_SUFFIX));
-        rpc_type = RpcType::ACTION;
-        action_type = ActionType::FEEDBACK;
+        std::string candidate = base.substr(0, base.size() - std::strlen(ACTION_FEEDBACK_SUFFIX));
+        if (strip_action_infix(candidate))
+        {
+            action_name = candidate;
+            rpc_type = RpcType::ACTION;
+            action_type = ActionType::FEEDBACK;
+        }
         return;
     }
     if (base.size() >= (std::strlen(ACTION_STATUS_SUFFIX) + 1) &&
             base.substr(base.size() - (std::strlen(ACTION_STATUS_SUFFIX) + 1)) ==
             (std::string("/") + ACTION_STATUS_SUFFIX))
     {
-        action_name = base.substr(0, base.size() - (std::strlen(ACTION_STATUS_SUFFIX)));
-        rpc_type = RpcType::ACTION;
-        action_type = ActionType::STATUS;
+        std::string candidate = base.substr(0, base.size() - (std::strlen(ACTION_STATUS_SUFFIX)));
+        if (strip_action_infix(candidate))
+        {
+            action_name = candidate;
+            rpc_type = RpcType::ACTION;
+            action_type = ActionType::STATUS;
+        }
         return;
     }
 

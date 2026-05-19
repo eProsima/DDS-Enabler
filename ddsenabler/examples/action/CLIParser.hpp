@@ -30,7 +30,7 @@ public:
     struct example_config
     {
         std::string config_file_path = "";
-        std::string action_name = "fibonacci/_action/";
+        std::string action_name = "fibonacci";
         bool announce_server = true;
         uint32_t timeout = 30;
         std::string persistence_path = "";

@@ -44,6 +44,7 @@ constexpr const char* DDS_REPLY_PREFIX("");
 constexpr const char* DDS_REPLY_SUFFIX("_Reply");
 
 // Action mangling
+constexpr const char* ACTION_INFIX("/_action/");
 constexpr const char* ACTION_GOAL_SUFFIX("send_goal");
 constexpr const char* ACTION_RESULT_SUFFIX("get_result");
 constexpr const char* ACTION_CANCEL_SUFFIX("cancel_goal");

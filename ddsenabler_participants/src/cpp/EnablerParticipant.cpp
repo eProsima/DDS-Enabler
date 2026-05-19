@@ -512,7 +512,7 @@ bool EnablerParticipant::send_action_goal(
         Protocol Protocol)
 {
     std::string goal_json = RpcUtils::create_goal_request_msg(json, action_id);
-    std::string goal_request_topic = action_name + ACTION_GOAL_SUFFIX;
+    std::string goal_request_topic = action_name + ACTION_INFIX + ACTION_GOAL_SUFFIX;
     uint64_t goal_request_id = 0;
 
     if (!send_service_request(
@@ -561,7 +561,7 @@ bool EnablerParticipant::cancel_action_goal(
     Protocol protocol = handler_->get_action_protocol(action_name, goal_id);
 
     uint64_t cancel_request_id = 0;
-    std::string cancel_request_topic = action_name + ACTION_CANCEL_SUFFIX;
+    std::string cancel_request_topic = action_name + ACTION_INFIX + ACTION_CANCEL_SUFFIX;
 
     if (send_service_request(
                 cancel_request_topic,
@@ -583,7 +583,7 @@ bool EnablerParticipant::send_action_get_result_request(
 {
     std::string json = RpcUtils::create_result_request_msg(action_id);
 
-    std::string get_result_request_topic = action_name + ACTION_RESULT_SUFFIX;
+    std::string get_result_request_topic = action_name + ACTION_INFIX + ACTION_RESULT_SUFFIX;
     uint64_t get_result_request_id = 0;
 
     Protocol protocol = handler_->get_action_protocol(action_name, action_id);
@@ -623,7 +623,7 @@ void EnablerParticipant::send_action_send_goal_reply(
     std::string reply_json = RpcUtils::create_goal_reply_msg(accepted);
 
     if (!send_service_reply(
-                action_name + ACTION_GOAL_SUFFIX,
+                action_name + ACTION_INFIX + ACTION_GOAL_SUFFIX,
                 reply_json,
                 goal_id))
     {
@@ -654,7 +654,7 @@ bool EnablerParticipant::send_action_cancel_goal_reply(
     std::string reply_json = RpcUtils::create_cancel_reply_msg(cancelling_goals, cancel_code);
 
     if (!send_service_reply(
-                std::string(action_name) + ACTION_CANCEL_SUFFIX,
+                std::string(action_name) + ACTION_INFIX + ACTION_CANCEL_SUFFIX,
                 reply_json,
                 request_id))
     {
@@ -691,7 +691,7 @@ bool EnablerParticipant::send_action_get_result_reply(
         const std::string& reply_json,
         const uint64_t request_id)
 {
-    std::string result_topic = action_name + ACTION_RESULT_SUFFIX;
+    std::string result_topic = action_name + ACTION_INFIX + ACTION_RESULT_SUFFIX;
 
     if (send_service_reply(
                 result_topic,
@@ -740,7 +740,7 @@ bool EnablerParticipant::send_action_feedback(
     }
 
     std::string feedback_json = RpcUtils::create_feedback_msg(json, goal_id);
-    std::string feedback_topic = prefix + std::string(action_name) + ACTION_FEEDBACK_SUFFIX;
+    std::string feedback_topic = prefix + std::string(action_name) + ACTION_INFIX + ACTION_FEEDBACK_SUFFIX;
 
     return publish(feedback_topic, feedback_json);
 }
@@ -778,7 +778,7 @@ bool EnablerParticipant::update_action_status(
     }
 
     std::string status_json = RpcUtils::create_status_msg(goal_id, status_code, goal_accepted_stamp);
-    std::string status_topic = prefix + action_name + ACTION_STATUS_SUFFIX;
+    std::string status_topic = prefix + action_name + ACTION_INFIX + ACTION_STATUS_SUFFIX;
     return publish(status_topic, status_json);
 }
 
@@ -856,9 +856,9 @@ bool EnablerParticipant::query_action_nts_(
         return false;
     }
 
-    std::string goal_service_name = action.action_name + ACTION_GOAL_SUFFIX;
-    std::string cancel_service_name = action.action_name + ACTION_CANCEL_SUFFIX;
-    std::string result_service_name = action.action_name + ACTION_RESULT_SUFFIX;
+    std::string goal_service_name = action.action_name + ACTION_INFIX + ACTION_GOAL_SUFFIX;
+    std::string cancel_service_name = action.action_name + ACTION_INFIX + ACTION_CANCEL_SUFFIX;
+    std::string result_service_name = action.action_name + ACTION_INFIX + ACTION_RESULT_SUFFIX;
     std::vector<std::string> topics_names =
     {
         goal_service_name,
@@ -950,7 +950,7 @@ bool EnablerParticipant::query_action_nts_(
             return false;
     }
 
-    std::string feedback_topic_name = prefix + action.action_name + ACTION_FEEDBACK_SUFFIX;
+    std::string feedback_topic_name = prefix + action.action_name + ACTION_INFIX + ACTION_FEEDBACK_SUFFIX;
     DdsTopic feedback_topic;
     if (!fill_topic_struct_nts_(
                 feedback_topic_name,
@@ -980,7 +980,7 @@ bool EnablerParticipant::query_action_nts_(
     action.feedback = feedback_topic;
     action.feedback_discovered = true;
 
-    std::string status_topic_name = prefix + action.action_name + ACTION_STATUS_SUFFIX;
+    std::string status_topic_name = prefix + action.action_name + ACTION_INFIX + ACTION_STATUS_SUFFIX;
     DdsTopic status_topic;
     if (!fill_topic_struct_nts_(
                 status_topic_name,
