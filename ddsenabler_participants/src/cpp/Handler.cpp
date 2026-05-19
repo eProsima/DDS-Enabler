@@ -671,9 +671,9 @@ bool Handler::register_type_nts_(
     if (_type_name != type_name)
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_HANDLER,
-                "Unexpected dynamic types collection format: " << type_name << " expected to be last item, found " <<
-                _type_name <<
-                " instead.");
+                "Unexpected dynamic types collection format: " << type_name << " expected to be last item, found "
+                                                               << _type_name
+                                                               << " instead.");
         return false;
     }
 

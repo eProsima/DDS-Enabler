@@ -186,16 +186,16 @@ public:
 
         if (RETCODE_OK != a_type.type_sup_.register_type(participant))
         {
-            std::cout << "ERROR DDSEnablerTester: fail to register type: " <<
-                a_type.type_sup_.get_type_name() << std::endl;
+            std::cout << "ERROR DDSEnablerTester: fail to register type: "
+                      << a_type.type_sup_.get_type_name() << std::endl;
             return false;
         }
 
         Publisher* publisher = participant->create_publisher(PUBLISHER_QOS_DEFAULT);
         if (publisher == nullptr)
         {
-            std::cout << "ERROR DDSEnablerTester: create_publisher: " <<
-                a_type.type_sup_.get_type_name() << std::endl;
+            std::cout << "ERROR DDSEnablerTester: create_publisher: "
+                      << a_type.type_sup_.get_type_name() << std::endl;
             return false;
         }
 
@@ -204,8 +204,8 @@ public:
         Topic* topic = participant->create_topic(topic_name.str(), a_type.type_sup_.get_type_name(), TOPIC_QOS_DEFAULT);
         if (topic == nullptr)
         {
-            std::cout << "ERROR DDSEnablerTester: create_topic: " <<
-                a_type.type_sup_.get_type_name() << std::endl;
+            std::cout << "ERROR DDSEnablerTester: create_topic: "
+                      << a_type.type_sup_.get_type_name() << std::endl;
             return false;
         }
 
@@ -213,8 +213,8 @@ public:
         a_type.writer_ = publisher->create_datawriter(topic, wqos);
         if (a_type.writer_ == nullptr)
         {
-            std::cout << "ERROR DDSEnablerTester: create_datawriter: " <<
-                a_type.type_sup_.get_type_name() << std::endl;
+            std::cout << "ERROR DDSEnablerTester: create_datawriter: "
+                      << a_type.type_sup_.get_type_name() << std::endl;
             return false;
         }
         std::this_thread::sleep_for(std::chrono::milliseconds(wait_after_writer_creation_ms_));
@@ -235,16 +235,16 @@ public:
 
         if (RETCODE_OK != a_type.type_sup_.register_type(participant))
         {
-            std::cout << "ERROR DDSEnablerTester: fail to register type: " <<
-                a_type.type_sup_.get_type_name() << std::endl;
+            std::cout << "ERROR DDSEnablerTester: fail to register type: "
+                      << a_type.type_sup_.get_type_name() << std::endl;
             return false;
         }
 
         Publisher* publisher = participant->create_publisher(PUBLISHER_QOS_DEFAULT);
         if (publisher == nullptr)
         {
-            std::cout << "ERROR DDSEnablerTester: create_publisher: " <<
-                a_type.type_sup_.get_type_name() << std::endl;
+            std::cout << "ERROR DDSEnablerTester: create_publisher: "
+                      << a_type.type_sup_.get_type_name() << std::endl;
             return false;
         }
 
@@ -253,8 +253,8 @@ public:
         Topic* topic = participant->create_topic(topic_name.str(), a_type.type_sup_.get_type_name(), TOPIC_QOS_DEFAULT);
         if (topic == nullptr)
         {
-            std::cout << "ERROR DDSEnablerTester: create_topic: " <<
-                a_type.type_sup_.get_type_name() << std::endl;
+            std::cout << "ERROR DDSEnablerTester: create_topic: "
+                      << a_type.type_sup_.get_type_name() << std::endl;
             return false;
         }
 
@@ -263,8 +263,8 @@ public:
         a_type.writer_ = publisher->create_datawriter(topic, wqos);
         if (a_type.writer_ == nullptr)
         {
-            std::cout << "ERROR DDSEnablerTester: create_datawriter: " <<
-                a_type.type_sup_.get_type_name() << std::endl;
+            std::cout << "ERROR DDSEnablerTester: create_datawriter: "
+                      << a_type.type_sup_.get_type_name() << std::endl;
             return false;
         }
         std::this_thread::sleep_for(std::chrono::milliseconds(wait_after_writer_creation_ms_));
@@ -280,8 +280,8 @@ public:
             void* sample = a_type.type_sup_.create_data();
             if (RETCODE_OK != a_type.writer_->write(sample))
             {
-                std::cout << "ERROR DDSEnablerTester: fail writing sample: " <<
-                    a_type.type_sup_.get_type_name() << std::endl;
+                std::cout << "ERROR DDSEnablerTester: fail writing sample: "
+                          << a_type.type_sup_.get_type_name() << std::endl;
                 return false;
             }
 
@@ -291,8 +291,8 @@ public:
 
         if (RETCODE_OK != a_type.writer_->wait_for_acknowledgments(Duration_t(0, wait_for_ack_ns_)))
         {
-            std::cout << "ERROR DDSEnablerTester: fail waiting for acknowledgments: " <<
-                a_type.type_sup_.get_type_name() << std::endl;
+            std::cout << "ERROR DDSEnablerTester: fail waiting for acknowledgments: "
+                      << a_type.type_sup_.get_type_name() << std::endl;
             return false;
         }
 
@@ -310,8 +310,8 @@ public:
             std::lock_guard<std::mutex> lock(current_test_instance_->data_received_mutex_);
 
             current_test_instance_->received_data_++;
-            std::cout << "Data callback received: " << topic_name << ", Total data: " <<
-                current_test_instance_->received_data_ << std::endl;
+            std::cout << "Data callback received: " << topic_name << ", Total data: "
+                      << current_test_instance_->received_data_ << std::endl;
         }
     }
 
@@ -328,8 +328,8 @@ public:
             std::lock_guard<std::mutex> lock(current_test_instance_->type_received_mutex_);
 
             current_test_instance_->received_types_++;
-            std::cout << "Type callback received: " << type_name << ", Total types: " <<
-                current_test_instance_->received_types_ << std::endl;
+            std::cout << "Type callback received: " << type_name << ", Total types: "
+                      << current_test_instance_->received_types_ << std::endl;
         }
     }
 
@@ -343,8 +343,8 @@ public:
             std::lock_guard<std::mutex> lock(current_test_instance_->topic_received_mutex_);
 
             current_test_instance_->received_topics_++;
-            std::cout << "Topic callback received: " << topic_name << ", Total topics: " <<
-                current_test_instance_->received_topics_ << std::endl;
+            std::cout << "Topic callback received: " << topic_name << ", Total topics: "
+                      << current_test_instance_->received_topics_ << std::endl;
         }
     }
 
