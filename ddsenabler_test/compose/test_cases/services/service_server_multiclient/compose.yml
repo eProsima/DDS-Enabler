@@ -10,7 +10,7 @@ services:
       - std_net
     volumes:
       - ./config.yml:/config/config.yml
-      - ../persistence:/persistence
+      - ../persistence:/persistence:ro
     command: ./install/ddsenabler/examples/service/ddsenabler_example_service server --persistence-path /persistence --requests-path /persistence/requests --config /config/config.yml --expected-requests 9
 
   add_two_ints_client_1:

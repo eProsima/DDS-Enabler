@@ -60,7 +60,7 @@ public:
             std::endl;
         std::cout << "--action-name <str>                   Name of the action to be registered"                   <<
             std::endl;
-        std::cout << "                                      (Default: 'Fibonacci/_action/')"                       <<
+        std::cout << "                                      (Default: 'fibonacci')"                       <<
             std::endl;
         std::cout << "--timeout <num>                       Time (seconds) to wait before stopping the"            <<
             std::endl;
