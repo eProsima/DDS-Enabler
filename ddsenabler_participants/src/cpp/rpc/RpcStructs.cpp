@@ -166,8 +166,8 @@ void RpcInfo::extract_rpc_info()
         else
         {
             EPROSIMA_LOG_ERROR(DDSENABLER_RPC_UTILS,
-                    "Failed to extract RPC info from topic name " << topic_name <<
-                                ": unknown action request type suffix");
+                    "Failed to extract RPC info from topic name " << topic_name
+                                                                  << ": unknown action request type suffix");
             throw std::runtime_error("Unknown action request type suffix");
         }
         return;
@@ -215,8 +215,8 @@ void RpcInfo::extract_rpc_info()
         else
         {
             EPROSIMA_LOG_ERROR(DDSENABLER_RPC_UTILS,
-                    "Failed to extract RPC info from topic name " << topic_name <<
-                                ": unknown action reply type suffix");
+                    "Failed to extract RPC info from topic name " << topic_name
+                                                                  << ": unknown action reply type suffix");
             throw std::runtime_error("Unknown action reply type suffix");
         }
         return;
