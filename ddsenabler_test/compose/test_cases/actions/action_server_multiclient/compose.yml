@@ -10,7 +10,7 @@ services:
       - std_net
     volumes:
       - ./config.yml:/config/config.yml
-      - ../persistence:/persistence
+      - ../persistence:/persistence:ro
     command: ./install/ddsenabler/examples/action/ddsenabler_example_action server --persistence-path /persistence --goals-path /persistence/goals --config /config/config.yml --expected-requests 9
 
   fibonacci_client_1:

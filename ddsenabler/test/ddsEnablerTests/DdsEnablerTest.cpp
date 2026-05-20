@@ -428,7 +428,7 @@ TEST_F(DDSEnablerTest, action_client)
     std::this_thread::sleep_for(std::chrono::seconds(2));
 
     std::string json = "{\"order\": 20}";
-    std::string action_name = "fibonacci/_action/";
+    std::string action_name = "fibonacci";
     UUID action_id;
 
     ASSERT_FALSE(enabler->send_action_goal(action_name, json, action_id));
@@ -439,7 +439,7 @@ TEST_F(DDSEnablerTest, action_server)
     auto enabler = create_ddsenabler();
     ASSERT_TRUE(enabler != nullptr);
 
-    std::string action_name = "fibonacci/_action/";
+    std::string action_name = "fibonacci";
 
     ASSERT_FALSE(enabler->revoke_action(action_name));
     ASSERT_TRUE(enabler->announce_action(action_name));

@@ -12,7 +12,7 @@ services:
       - std_net
     volumes:
       - ./config.yml:/config/config.yml
-      - ../persistence:/persistence
+      - ../persistence:/persistence:ro
     command: ./install/ddsenabler/examples/service/ddsenabler_example_service client --persistence-path /persistence --requests-path /persistence/requests --config /config/config.yml --request-initial-wait 2
   add_two_ints_server:
     image: ${DDSENABLER_COMPOSE_TEST_ROS2_DOCKER_IMAGE}

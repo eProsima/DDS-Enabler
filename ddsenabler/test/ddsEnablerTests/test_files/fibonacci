@@ -1,5 +1,5 @@
 {
-    "action_name": "fibonacci/_action/",
+    "action_name": "fibonacci",
     "cancel_reply_action_serialized_qos": "reliability: true\ndurability: false\nownership: false\nkeyed: false",
     "cancel_reply_action_type": "action_msgs::srv::dds_::CancelGoal_Response_",
     "cancel_request_action_serialized_qos": "reliability: true\ndurability: false\nownership: false\nkeyed: false",

@@ -22,6 +22,24 @@ namespace eprosima {
 namespace ddsenabler {
 namespace participants {
 
+/**
+ *  Remove the ACTION_INFIX ("/_action/") substring from @p name wherever it occurs.
+ *
+ *  @param [in, out] name The name to be stripped.
+ *  @return true and updates @p name if the infix was found; false otherwise.
+ */
+static bool strip_action_infix(
+        std::string& name)
+{
+    const std::size_t pos = name.find(ACTION_INFIX);
+    if (pos == std::string::npos)
+    {
+        return false;
+    }
+    name.erase(pos, std::strlen(ACTION_INFIX));
+    return true;
+}
+
 RpcAction::RpcAction(
         const std::string& action_name,
         const ddspipe::core::types::RpcTopic& goal,
@@ -115,32 +133,43 @@ void RpcInfo::extract_rpc_info()
         service_type = ServiceType::REQUEST;
         service_name = base;
 
+        if (strip_action_infix(base))
+        {
+            rpc_type = RpcType::ACTION;
+        }
+
+        if (rpc_type != RpcType::ACTION)
+        {
+            rpc_type = RpcType::SERVICE;
+            return;
+        }
+
+        // Check the action type suffix, and extract the action name
         if (base.size() >= (std::strlen(ACTION_GOAL_SUFFIX)) &&
                 base.substr(base.size() - (std::strlen(ACTION_GOAL_SUFFIX))) == ACTION_GOAL_SUFFIX)
         {
             action_name = base.substr(0, base.size() - (std::strlen(ACTION_GOAL_SUFFIX)));
-            rpc_type = RpcType::ACTION;
             action_type = ActionType::GOAL;
-            return;
         }
         else if (base.size() >= (std::strlen(ACTION_RESULT_SUFFIX)) &&
                 base.substr(base.size() - (std::strlen(ACTION_RESULT_SUFFIX))) == ACTION_RESULT_SUFFIX)
         {
             action_name = base.substr(0, base.size() - (std::strlen(ACTION_RESULT_SUFFIX)));
-            rpc_type = RpcType::ACTION;
             action_type = ActionType::RESULT;
-            return;
         }
         else if (base.size() >= (std::strlen(ACTION_CANCEL_SUFFIX)) &&
                 base.substr(base.size() - (std::strlen(ACTION_CANCEL_SUFFIX))) == ACTION_CANCEL_SUFFIX)
         {
             action_name = base.substr(0, base.size() - (std::strlen(ACTION_CANCEL_SUFFIX)));
-            rpc_type = RpcType::ACTION;
             action_type = ActionType::CANCEL;
-            return;
         }
-
-        rpc_type = RpcType::SERVICE;
+        else
+        {
+            EPROSIMA_LOG_ERROR(DDSENABLER_RPC_UTILS,
+                    "Failed to extract RPC info from topic name " << topic_name <<
+                                ": unknown action request type suffix");
+            throw std::runtime_error("Unknown action request type suffix");
+        }
         return;
     }
 
@@ -154,58 +183,74 @@ void RpcInfo::extract_rpc_info()
         service_type = ServiceType::REPLY;
         service_name = base;
 
+        if (strip_action_infix(base))
+        {
+            rpc_type = RpcType::ACTION;
+        }
+
+        if (rpc_type != RpcType::ACTION)
+        {
+            rpc_type = RpcType::SERVICE;
+            return;
+        }
+
         if (base.size() >= (std::strlen(ACTION_GOAL_SUFFIX)) &&
                 base.substr(base.size() - (std::strlen(ACTION_GOAL_SUFFIX))) == ACTION_GOAL_SUFFIX)
         {
             action_name = base.substr(0, base.size() - (std::strlen(ACTION_GOAL_SUFFIX)));
-            rpc_type = RpcType::ACTION;
             action_type = ActionType::GOAL;
-            return;
         }
         else if (base.size() >= (std::strlen(ACTION_RESULT_SUFFIX)) &&
                 base.substr(base.size() - (std::strlen(ACTION_RESULT_SUFFIX))) == ACTION_RESULT_SUFFIX)
         {
             action_name = base.substr(0, base.size() - (std::strlen(ACTION_RESULT_SUFFIX)));
-            rpc_type = RpcType::ACTION;
             action_type = ActionType::RESULT;
-            return;
         }
         else if (base.size() >= (std::strlen(ACTION_CANCEL_SUFFIX)) &&
                 base.substr(base.size() - (std::strlen(ACTION_CANCEL_SUFFIX))) == ACTION_CANCEL_SUFFIX)
         {
             action_name = base.substr(0, base.size() - (std::strlen(ACTION_CANCEL_SUFFIX)));
-            rpc_type = RpcType::ACTION;
             action_type = ActionType::CANCEL;
-            return;
         }
-
-        rpc_type = RpcType::SERVICE;
+        else
+        {
+            EPROSIMA_LOG_ERROR(DDSENABLER_RPC_UTILS,
+                    "Failed to extract RPC info from topic name " << topic_name <<
+                                ": unknown action reply type suffix");
+            throw std::runtime_error("Unknown action reply type suffix");
+        }
         return;
     }
 
     // Check for action feedback/status topics
-    if (Protocol::ROS2 != protocol) // Feedback and Status topics only exist for ROS2 actions
+    if (strip_action_infix(base))
+    {
+        rpc_type = RpcType::ACTION;
+    }
+    if (Protocol::ROS2 != protocol || rpc_type != RpcType::ACTION) // Feedback and Status topics only exist for ROS2 actions
     {
         return;
     }
     base = base.substr(topic_prefix.length());
-    if (base.size() >= (std::strlen(ACTION_FEEDBACK_SUFFIX) + 1) &&
-            base.substr(base.size() - (std::strlen(ACTION_FEEDBACK_SUFFIX) + 1)) ==
-            (std::string("/") + ACTION_FEEDBACK_SUFFIX))
+    if (base.size() >= (std::strlen(ACTION_FEEDBACK_SUFFIX)) &&
+            base.substr(base.size() - (std::strlen(ACTION_FEEDBACK_SUFFIX))) ==
+            (ACTION_FEEDBACK_SUFFIX))
     {
-        action_name = base.substr(0, base.size() - std::strlen(ACTION_FEEDBACK_SUFFIX));
-        rpc_type = RpcType::ACTION;
+        action_name = base.substr(0, base.size() - (std::strlen(ACTION_FEEDBACK_SUFFIX)));
         action_type = ActionType::FEEDBACK;
-        return;
     }
-    if (base.size() >= (std::strlen(ACTION_STATUS_SUFFIX) + 1) &&
-            base.substr(base.size() - (std::strlen(ACTION_STATUS_SUFFIX) + 1)) ==
-            (std::string("/") + ACTION_STATUS_SUFFIX))
+    else if (base.size() >= (std::strlen(ACTION_STATUS_SUFFIX)) &&
+            base.substr(base.size() - (std::strlen(ACTION_STATUS_SUFFIX))) ==
+            (ACTION_STATUS_SUFFIX))
     {
         action_name = base.substr(0, base.size() - (std::strlen(ACTION_STATUS_SUFFIX)));
-        rpc_type = RpcType::ACTION;
         action_type = ActionType::STATUS;
-        return;
+    }
+    else
+    {
+        EPROSIMA_LOG_ERROR(DDSENABLER_RPC_UTILS,
+                "Failed to extract RPC info from topic name " << topic_name << ": unknown topic type suffix");
+        throw std::runtime_error("Unknown topic type suffix");
     }
 
     return;
