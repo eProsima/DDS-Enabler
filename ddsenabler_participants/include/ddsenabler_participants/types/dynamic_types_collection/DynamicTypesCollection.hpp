@@ -88,11 +88,11 @@ public:
     eProsima_user_DllExport DynamicType(
             const DynamicType& x)
     {
-        m_type_name = x.m_type_name;
+                    m_type_name = x.m_type_name;
 
-        m_type_identifier = x.m_type_identifier;
+                    m_type_identifier = x.m_type_identifier;
 
-        m_type_object = x.m_type_object;
+                    m_type_object = x.m_type_object;
 
     }
 
@@ -116,11 +116,11 @@ public:
             const DynamicType& x)
     {
 
-        m_type_name = x.m_type_name;
+                    m_type_name = x.m_type_name;
 
-        m_type_identifier = x.m_type_identifier;
+                    m_type_identifier = x.m_type_identifier;
 
-        m_type_object = x.m_type_object;
+                    m_type_object = x.m_type_object;
 
         return *this;
     }
@@ -147,8 +147,8 @@ public:
             const DynamicType& x) const
     {
         return (m_type_name == x.m_type_name &&
-               m_type_identifier == x.m_type_identifier &&
-               m_type_object == x.m_type_object);
+           m_type_identifier == x.m_type_identifier &&
+           m_type_object == x.m_type_object);
     }
 
     /*!
@@ -199,6 +199,7 @@ public:
         return m_type_name;
     }
 
+
     /*!
      * @brief This function copies the value in member type_identifier
      * @param _type_identifier New value to be copied in member type_identifier
@@ -236,6 +237,7 @@ public:
     {
         return m_type_identifier;
     }
+
 
     /*!
      * @brief This function copies the value in member type_object
@@ -275,6 +277,8 @@ public:
         return m_type_object;
     }
 
+
+
 private:
 
     std::string m_type_name;
@@ -311,7 +315,7 @@ public:
     eProsima_user_DllExport DynamicTypesCollection(
             const DynamicTypesCollection& x)
     {
-        m_dynamic_types = x.m_dynamic_types;
+                    m_dynamic_types = x.m_dynamic_types;
 
     }
 
@@ -333,7 +337,7 @@ public:
             const DynamicTypesCollection& x)
     {
 
-        m_dynamic_types = x.m_dynamic_types;
+                    m_dynamic_types = x.m_dynamic_types;
 
         return *this;
     }
@@ -407,6 +411,8 @@ public:
     {
         return m_dynamic_types;
     }
+
+
 
 private:
 
