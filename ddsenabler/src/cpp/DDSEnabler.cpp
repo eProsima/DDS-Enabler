@@ -140,7 +140,7 @@ bool DDSEnabler::set_file_watcher(
     // WARNING: it is needed to pass file_path, as FileWatcher only retrieves file_name
     std::function<void(std::string)> file_watcher_callback =
             [this, file_path]
-                (std::string file_name)
+            (std::string file_name)
             {
                 EPROSIMA_LOG_INFO(DDSENABLER_EXECUTION,
                         "FileWatcher notified changes in file " << file_path << ". Reloading configuration");

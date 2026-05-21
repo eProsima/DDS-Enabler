@@ -135,8 +135,8 @@ public:
                     }
                     catch (const std::exception& e)
                     {
-                        std::cerr << "Invalid --expected-types argument " << std::string(argv[i]) << ": " <<
-                            std::string(e.what()) << std::endl;
+                        std::cerr << "Invalid --expected-types argument " << std::string(argv[i]) << ": "
+                                  << std::string(e.what()) << std::endl;
                         print_help(EXIT_FAILURE);
                     }
                 }
@@ -156,8 +156,8 @@ public:
                     }
                     catch (const std::exception& e)
                     {
-                        std::cerr << "Invalid --expected-topics argument " << std::string(argv[i]) << ": " <<
-                            std::string(e.what()) << std::endl;
+                        std::cerr << "Invalid --expected-topics argument " << std::string(argv[i]) << ": "
+                                  << std::string(e.what()) << std::endl;
                         print_help(EXIT_FAILURE);
                     }
                 }
@@ -261,8 +261,8 @@ public:
                     }
                     catch (const std::exception& e)
                     {
-                        std::cerr << "Invalid --publish-period argument " << std::string(argv[i]) << ": " <<
-                            std::string(
+                        std::cerr << "Invalid --publish-period argument " << std::string(argv[i]) << ": "
+                                  << std::string(
                             e.what()) << std::endl;
                         print_help(EXIT_FAILURE);
                     }
@@ -283,8 +283,8 @@ public:
                     }
                     catch (const std::exception& e)
                     {
-                        std::cerr << "Invalid --publish-initial-wait argument " << std::string(argv[i]) << ": " <<
-                            std::string(
+                        std::cerr << "Invalid --publish-initial-wait argument " << std::string(argv[i]) << ": "
+                                  << std::string(
                             e.what()) << std::endl;
                         print_help(EXIT_FAILURE);
                     }

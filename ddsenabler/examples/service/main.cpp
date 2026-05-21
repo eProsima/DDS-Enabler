@@ -438,8 +438,8 @@ bool server_routine(
             return false;
         }
 
-        std::cout << "Received request for service: " << service_name << " with request ID: " << request_id <<
-            std::endl;
+        std::cout << "Received request for service: " << service_name << " with request ID: " << request_id
+                  << std::endl;
 
         // Example response
         server_specific_logic(

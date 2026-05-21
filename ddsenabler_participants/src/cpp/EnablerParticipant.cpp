@@ -218,8 +218,8 @@ bool EnablerParticipant::publish_rpc(
     if (!it->second->external_server && rpc_info->service_type == ServiceType::REQUEST)
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                "Failed to publish data in service " << rpc_info->service_name <<
-                " : service is only announced on the enabler side.");
+                "Failed to publish data in service " << rpc_info->service_name
+                                                     << " : service is only announced on the enabler side.");
         return false;
     }
 
@@ -789,8 +789,8 @@ bool EnablerParticipant::query_topic_nts_(
     if (!topic_query_callback_)
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                "Failed to query data from topic " << topic_name <<
-                " : topic is unknown and topic query callback not set.");
+                "Failed to query data from topic " << topic_name
+                                                   << " : topic is unknown and topic query callback not set.");
         return false;
     }
     TopicInfo topic_info;
@@ -811,8 +811,8 @@ bool EnablerParticipant::query_service_nts_(
     if (!service_query_callback_)
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                "Failed to announce service " << service->service_name <<
-                " : service is unknown and service request callback not set.");
+                "Failed to announce service " << service->service_name
+                                              << " : service is unknown and service request callback not set.");
         return false;
     }
 
@@ -841,8 +841,8 @@ bool EnablerParticipant::query_action_nts_(
     if (!action_query_callback_)
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                "Failed to announce action " << action.action_name <<
-                " : action is unknown and action request callback not set.");
+                "Failed to announce action " << action.action_name
+                                             << " : action is unknown and action request callback not set.");
         return false;
     }
 
@@ -971,8 +971,8 @@ bool EnablerParticipant::query_action_nts_(
                         lck))
             {
                 EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                        "Failed to announce action " << action.action_name <<
-                        " : feedback topic writer creation failed.");
+                        "Failed to announce action " << action.action_name
+                                                     << " : feedback topic writer creation failed.");
                 return false;
             }
         }
@@ -1001,8 +1001,8 @@ bool EnablerParticipant::query_action_nts_(
                         lck))
             {
                 EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                        "Failed to announce action " << action.action_name <<
-                        " : status topic writer creation failed.");
+                        "Failed to announce action " << action.action_name
+                                                     << " : status topic writer creation failed.");
                 return false;
             }
         }
@@ -1042,8 +1042,8 @@ bool EnablerParticipant::create_topic_writer_nts_(
             }))
     {
         EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-                "Failed to create internal reader for topic " << topic.m_topic_name <<
-                " , please verify that the topic is allowed.");
+                "Failed to create internal reader for topic " << topic.m_topic_name
+                                                              << " , please verify that the topic is allowed.");
         return false;
     }
 
@@ -1074,8 +1074,8 @@ bool EnablerParticipant::create_service_request_writer_nts_(
     }
 
     EPROSIMA_LOG_ERROR(DDSENABLER_ENABLER_PARTICIPANT,
-            "Failed to create server as there is already a server running for service " << service->service_name <<
-            ".");
+            "Failed to create server as there is already a server running for service " << service->service_name
+                                                                                        << ".");
     return false;
 }
 

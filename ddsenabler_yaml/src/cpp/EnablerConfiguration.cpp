@@ -338,8 +338,8 @@ void EnablerConfiguration::load_ddsenabler_configuration_from_yaml_file_(
         catch (const std::exception& e)
         {
             throw eprosima::utils::ConfigurationException(
-                      utils::Formatter() << "Error loading DDS Enabler configuration from file: <" << file_path <<
-                          "> :\n " << e.what());
+                      utils::Formatter() << "Error loading DDS Enabler configuration from file: <" << file_path
+                                         << "> :\n " << e.what());
         }
     }
     else
@@ -384,8 +384,8 @@ void EnablerConfiguration::load_ddsenabler_configuration_from_json_file_(
                 else
                 {
                     throw eprosima::utils::ConfigurationException(
-                              utils::Formatter() <<
-                                  "\"ddsmodule\" not found or is not an object within \"dds\" in the JSON file");
+                              utils::Formatter()
+                                  << "\"ddsmodule\" not found or is not an object within \"dds\" in the JSON file");
                 }
             }
             else
@@ -398,8 +398,8 @@ void EnablerConfiguration::load_ddsenabler_configuration_from_json_file_(
         catch (const std::exception& e)
         {
             throw eprosima::utils::ConfigurationException(
-                      utils::Formatter() << "Error loading DDS Enabler configuration from file: <" << file_path <<
-                          "> :\n " << e.what());
+                      utils::Formatter() << "Error loading DDS Enabler configuration from file: <" << file_path
+                                         << "> :\n " << e.what());
         }
     }
     else
