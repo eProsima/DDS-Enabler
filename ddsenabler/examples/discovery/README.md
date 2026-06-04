@@ -11,6 +11,28 @@ It registers only the three discovery notification callbacks of the `CallbackSet
 - `service.service_notification` → prints discovered service names.
 - `action.action_notification` → prints discovered action names.
 
+## Compilation
+
+The example is compiled together with the DDS Enabler when the project is built with the `-DCOMPILE_EXAMPLES=ON` CMake option.
+It can also be compiled standalone against an already installed DDS Enabler.
+
+First, source the environment where the DDS Enabler is installed.
+
+```bash
+source <ddsenabler-installation-path>/install/setup.bash
+```
+
+Then configure and build the example from its own directory.
+
+```bash
+mkdir build
+cd build
+cmake ..
+cmake --build .
+```
+
+The `ddsenabler_example_discovery` executable is generated inside the `build` directory.
+
 ## Example Command
 
 ```bash
