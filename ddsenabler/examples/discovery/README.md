@@ -1,7 +1,7 @@
-# Discovery Example Readme
+# Discovery Example README
 
 This is the simplest DDS Enabler example and a good starting point.
-It launches a DDS Enabler that listens to the DDS network and prints the **name** of every topic, service and action it discovers — nothing else (no types, no QoS, no data).
+It launches a DDS Enabler that listens to the DDS network and prints the **name** of every topic, service and action it discovers - nothing else (no types, no QoS, no data).
 
 The application keeps running until it is stopped with `Ctrl+C`.
 
@@ -40,7 +40,7 @@ The `ddsenabler_example_discovery` executable is generated inside the `build` di
 ```
 
 Run it and then start any DDS / ROS 2 application (for instance the ROS 2 `talker`, or another DDS Enabler example such as `publish`, `service` or `action`).
-Each newly discovered topic, service or action prints a line like:
+When a topic, service, or action is discovered, the application prints a line like:
 
 ```
 [Discovery] Topic discovered: rt/chatter
