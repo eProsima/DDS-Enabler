@@ -37,3 +37,8 @@ target_link_libraries(ddsenabler_example_discovery PRIVATE ddsenabler)
 install(TARGETS ddsenabler_example_discovery
     RUNTIME DESTINATION examples/discovery
 )
+
+# Install the example configuration file
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/config.yml
+    DESTINATION examples/discovery
+)
