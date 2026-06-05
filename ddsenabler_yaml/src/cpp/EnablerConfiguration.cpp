@@ -180,6 +180,12 @@ void EnablerConfiguration::load_ddsenabler_configuration_(
         enabler_configuration->app_id = "DDS_ENABLER";
 
         /////
+        // Set the DDS Enabler default log verbosity to ERROR, so that INFO and WARNING traces
+        // (from both the Enabler and the underlying DDS Pipe) are silenced unless the user
+        // explicitly raises the verbosity through the logging configuration.
+        ddspipe_configuration.log_configuration.verbosity.set_value(utils::VerbosityKind::Error);
+
+        /////
         // Get optional Enabler configuration options
         if (YamlReader::is_tag_present(yml, ENABLER_ENABLER_TAG))
         {

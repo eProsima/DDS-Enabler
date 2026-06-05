@@ -20,6 +20,7 @@ install(
 
 # Add subdirectories for examples
 add_subdirectory(utils)
+add_subdirectory(discovery)
 add_subdirectory(publish)
 add_subdirectory(service)
 add_subdirectory(action)
