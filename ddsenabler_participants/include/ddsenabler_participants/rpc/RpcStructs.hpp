@@ -39,7 +39,7 @@ enum class ActionEraseReason
 
 struct RpcAction
 {
-    RpcAction() = default;
+    RpcAction() = delete;
     RpcAction(
             const std::string& action_name,
             const ddspipe::core::types::RpcTopic& goal,
