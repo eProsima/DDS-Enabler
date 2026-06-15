@@ -1,0 +1,165 @@
+/*
+ * Copyright 2026 Proyectos y Sistemas de Mantenimiento SL (eProsima).
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: #f4f6f8;
+  color: #1f2933;
+}
+
+header {
+  background: #1b2a4a;
+  color: #fff;
+  padding: 1rem 1.5rem;
+}
+
+header h1 {
+  margin: 0 0 0.75rem;
+  font-size: 1.35rem;
+}
+
+.connection {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.connection label {
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+.connection input {
+  padding: 0.35rem 0.5rem;
+  border: 1px solid #3b4a6b;
+  border-radius: 4px;
+  min-width: 220px;
+  background: #fff;
+  color: #1f2933;
+}
+
+.connection button {
+  padding: 0.35rem 0.9rem;
+  border: none;
+  border-radius: 4px;
+  background: #2f80ed;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.connection button:hover {
+  background: #1c63c7;
+}
+
+.status {
+  margin-left: 0.5rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.status.connected {
+  background: #1f9d55;
+  color: #fff;
+}
+
+.status.disconnected {
+  background: #cf1124;
+  color: #fff;
+}
+
+.status.connecting {
+  background: #f0a020;
+  color: #1f2933;
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  padding: 1.5rem;
+}
+
+.panel {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  padding: 1rem 1.25rem;
+}
+
+.panel h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.badge {
+  display: inline-block;
+  min-width: 1.5rem;
+  text-align: center;
+  background: #2f80ed;
+  color: #fff;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  padding: 0.1rem 0.5rem;
+}
+
+.items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.items li {
+  padding: 0.45rem 0.5rem;
+  border-bottom: 1px solid #eef1f4;
+  font-family: "Consolas", "Menlo", monospace;
+  font-size: 0.9rem;
+  word-break: break-all;
+}
+
+.items li:last-child {
+  border-bottom: none;
+}
+
+.items li.new {
+  animation: flash 1.2s ease-out;
+}
+
+@keyframes flash {
+  from {
+    background: #fff3cd;
+  }
+  to {
+    background: transparent;
+  }
+}
+
+.empty {
+  color: #7b8794;
+  font-style: italic;
+  font-size: 0.9rem;
+}

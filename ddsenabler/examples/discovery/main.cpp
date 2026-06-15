@@ -15,18 +15,27 @@
 /**
  * @file main.cpp
  *
- * Minimal DDS Enabler example: print the name of every topic, service and action
- * the Enabler discovers, and keep running until the user presses Ctrl+C.
+ * DDS Enabler discovery example: print the name of every topic, service and action
+ * the Enabler discovers, and also broadcast each discovery over a WebSocket server
+ * so a web dashboard can display them live. Keeps running until the user presses
+ * Ctrl+C.
  */
 
 #include <condition_variable>
 #include <csignal>
+#include <cstdlib>
 #include <iostream>
 #include <mutex>
 #include <string>
 
 #include "ddsenabler/dds_enabler_runner.hpp"
 #include "ddsenabler/DDSEnabler.hpp"
+
+#include "ws/WebSocketServer.hpp"
+
+// Default port the embedded WebSocket server listens on. It can be overridden with
+// the second command-line argument (after the optional config file).
+constexpr uint16_t DEFAULT_WS_PORT = 8080;
 
 // Synchronization used to keep the application alive until a stop signal arrives.
 std::mutex app_mutex;
@@ -38,7 +47,7 @@ void on_topic_discovered(
         const char* topic_name,
         const eprosima::ddsenabler::participants::TopicInfo& /* topic_info */)
 {
-    std::cout << "[Discovery] Topic discovered: " << topic_name << std::endl;
+    eprosima::ddsenabler::examples::ws::ws_server().on_discovery("topic", topic_name);
 }
 
 // Called by the Enabler every time a new ROS 2 / DDS service is discovered.
@@ -46,7 +55,7 @@ void on_service_discovered(
         const char* service_name,
         const eprosima::ddsenabler::participants::ServiceInfo& /* service_info */)
 {
-    std::cout << "[Discovery] Service discovered: " << service_name << std::endl;
+    eprosima::ddsenabler::examples::ws::ws_server().on_discovery("service", service_name);
 }
 
 // Called by the Enabler every time a new ROS 2 / DDS action is discovered.
@@ -54,7 +63,7 @@ void on_action_discovered(
         const char* action_name,
         const eprosima::ddsenabler::participants::ActionInfo& /* action_info */)
 {
-    std::cout << "[Discovery] Action discovered: " << action_name << std::endl;
+    eprosima::ddsenabler::examples::ws::ws_server().on_discovery("action", action_name);
 }
 
 // Stops the application cleanly when Ctrl+C (or another termination signal) is received.
@@ -74,6 +83,22 @@ int main(
 {
     using namespace eprosima::ddsenabler;
 
+    // Ignore SIGPIPE so that a dashboard client closing its browser tab cannot kill
+    // this process when the server writes to a now-closed socket.
+    signal(SIGPIPE, SIG_IGN);
+
+    // Start the WebSocket server before creating the Enabler, so that it is already
+    // listening when the first discovery callback fires. The port defaults to
+    // DEFAULT_WS_PORT and can be overridden with the second command-line argument.
+    const uint16_t ws_port = (argc > 2)
+            ? static_cast<uint16_t>(std::atoi(argv[2]))
+            : DEFAULT_WS_PORT;
+    if (!examples::ws::ws_server().start(ws_port))
+    {
+        std::cerr << "Failed to start the WebSocket server." << std::endl;
+        return EXIT_FAILURE;
+    }
+
     // Register only the discovery notification callbacks; everything else is left unset.
     CallbackSet callbacks{};
     callbacks.dds.topic_notification = on_topic_discovered;
@@ -89,6 +114,7 @@ int main(
     if (!enabler_created)
     {
         std::cerr << "Failed to create DDSEnabler instance." << std::endl;
+        examples::ws::ws_server().stop();
         return EXIT_FAILURE;
     }
 
@@ -109,5 +135,9 @@ int main(
     }
 
     std::cout << "Stopping DDS Enabler..." << std::endl;
+
+    // Stop the WebSocket server before the Enabler is torn down, so no discovery
+    // callback can fire into a half-destroyed server.
+    examples::ws::ws_server().stop();
     return EXIT_SUCCESS;
 }

@@ -29,9 +29,22 @@ if(NOT TARGET ddsenabler)
     find_package(ddsenabler REQUIRED)
 endif()
 
-add_executable(ddsenabler_example_discovery main.cpp)
+# The example embeds a tiny WebSocket server to broadcast discovery traces.
+find_package(Threads REQUIRED)
 
-target_link_libraries(ddsenabler_example_discovery PRIVATE ddsenabler)
+add_executable(ddsenabler_example_discovery
+    main.cpp
+    ws/WebSocketServer.cpp
+)
+
+target_include_directories(ddsenabler_example_discovery PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}
+)
+
+target_link_libraries(ddsenabler_example_discovery PRIVATE
+    ddsenabler
+    Threads::Threads
+)
 
 # Install rule
 install(TARGETS ddsenabler_example_discovery
@@ -40,5 +53,10 @@ install(TARGETS ddsenabler_example_discovery
 
 # Install the example configuration file
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/config.yml
+    DESTINATION examples/discovery
+)
+
+# Install the web dashboard (WebSocket client) alongside the example
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/dashboard
     DESTINATION examples/discovery
 )
