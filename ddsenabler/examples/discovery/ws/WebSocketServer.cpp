@@ -76,12 +76,18 @@ std::string json_escape(
     return out;
 }
 
-// Build the per-item JSON message: {"kind":"<kind>","name":"<name>"}.
+// Build the per-item JSON message:
+// {"kind":"<kind>","name":"<name>","details":"<json-placeholder>"}.
+// "details" carries the JSON data placeholder as an escaped string (empty when there is
+// none, e.g. for services and actions). The dashboard parses it back for display.
 std::string make_item_message(
         const std::string& kind,
-        const std::string& name)
+        const std::string& name,
+        const std::string& details)
 {
-    return "{\"kind\":\"" + json_escape(kind) + "\",\"name\":\"" + json_escape(name) + "\"}";
+    return "{\"kind\":\"" + json_escape(kind) +
+           "\",\"name\":\"" + json_escape(name) +
+           "\",\"details\":\"" + json_escape(details) + "\"}";
 }
 
 // Read a full line (terminated by CRLF or LF) from @p fd. Returns false on EOF/error.
@@ -310,7 +316,7 @@ void WebSocketServer::handle_client(
         std::lock_guard<std::mutex> lock(registry_mutex_);
         for (const Item& item : registry_)
         {
-            if (!send_item(fd, item.kind, item.name))
+            if (!send_item(fd, item.kind, item.name, item.details))
             {
                 drop_client(fd);
                 return;
@@ -396,9 +402,31 @@ void WebSocketServer::handle_client(
 bool WebSocketServer::send_item(
         int fd,
         const std::string& kind,
-        const std::string& name)
+        const std::string& name,
+        const std::string& details)
 {
-    return send_all(fd, encode_text_frame(make_item_message(kind, name)));
+    return send_all(fd, encode_text_frame(make_item_message(kind, name, details)));
+}
+
+void WebSocketServer::broadcast_frame(
+        const std::string& frame)
+{
+    std::vector<int> to_drop;
+    {
+        std::lock_guard<std::mutex> lock(clients_mutex_);
+        for (const Client& client : clients_)
+        {
+            if (!send_all(client.fd, frame))
+            {
+                to_drop.push_back(client.fd);
+            }
+        }
+    }
+
+    for (const int fd : to_drop)
+    {
+        drop_client(fd);
+    }
 }
 
 void WebSocketServer::on_discovery(
@@ -425,27 +453,88 @@ void WebSocketServer::on_discovery(
         {
             return;
         }
-        registry_.push_back({kind_str, name_str});
+        registry_.push_back({kind_str, name_str, "", ""});
     }
 
     // Broadcast to all currently connected clients.
-    std::vector<int> to_drop;
+    broadcast_frame(encode_text_frame(make_item_message(kind_str, name_str, "")));
+}
+
+void WebSocketServer::on_type(
+        const char* type_name,
+        const char* data_placeholder)
+{
+    if (type_name == nullptr)
     {
-        std::lock_guard<std::mutex> lock(clients_mutex_);
-        const std::string frame = encode_text_frame(make_item_message(kind_str, name_str));
-        for (const Client& client : clients_)
+        return;
+    }
+
+    const std::string type_str(type_name);
+    const std::string placeholder_str = (data_placeholder != nullptr) ? data_placeholder : "";
+
+    // Store the placeholder and back-fill any topic of this type that was discovered
+    // before the placeholder became available (the type and topic notifications are
+    // independent, so either may arrive first).
+    std::vector<std::string> frames;
+    {
+        std::lock_guard<std::mutex> lock(registry_mutex_);
+        type_placeholders_[type_str] = placeholder_str;
+
+        for (Item& item : registry_)
         {
-            if (!send_all(client.fd, frame))
+            if (item.kind == "topic" && item.type_name == type_str && item.details.empty() &&
+                    !placeholder_str.empty())
             {
-                to_drop.push_back(client.fd);
+                item.details = placeholder_str;
+                frames.push_back(encode_text_frame(make_item_message(item.kind, item.name,
+                        item.details)));
             }
         }
     }
 
-    for (const int fd : to_drop)
+    // Re-broadcast the back-filled topics so connected dashboards pick up the placeholder.
+    for (const std::string& frame : frames)
     {
-        drop_client(fd);
+        broadcast_frame(frame);
     }
+}
+
+void WebSocketServer::on_topic(
+        const char* topic_name,
+        const char* type_name)
+{
+    if (topic_name == nullptr)
+    {
+        return;
+    }
+
+    const std::string name_str(topic_name);
+    const std::string type_str = (type_name != nullptr) ? type_name : "";
+
+    std::string details;
+    // Deduplicate and register (insertion-ordered) before broadcasting.
+    {
+        std::lock_guard<std::mutex> lock(registry_mutex_);
+        const bool exists = std::any_of(registry_.begin(), registry_.end(),
+                        [&](const Item& item)
+                        {
+                            return item.kind == "topic" && item.name == name_str;
+                        });
+        if (exists)
+        {
+            return;
+        }
+
+        // The type's placeholder may already be known; if not, on_type() back-fills it.
+        const auto it = type_placeholders_.find(type_str);
+        if (it != type_placeholders_.end())
+        {
+            details = it->second;
+        }
+        registry_.push_back({"topic", name_str, type_str, details});
+    }
+
+    broadcast_frame(encode_text_frame(make_item_message("topic", name_str, details)));
 }
 
 void WebSocketServer::drop_client(

@@ -42,12 +42,32 @@ std::mutex app_mutex;
 std::condition_variable app_cv;
 bool stop_app = false;
 
-// Called by the Enabler every time a new DDS topic is discovered.
+// Called by the Enabler every time a new DDS type is discovered. The Enabler builds a
+// JSON "data placeholder" for the type (a skeleton with default values) that shows the
+// exact JSON one would need to publish a sample of this type. We hand it to the server,
+// keyed by type name, so topics of that type can expose it on the dashboard.
+void on_type_discovered(
+        const char* type_name,
+        const char* /* serialized_type */,
+        const unsigned char* /* serialized_type_internal */,
+        uint32_t /* serialized_type_internal_size */,
+        const char* data_placeholder)
+{
+    std::cout << "[Discovery] Type discovered: " << (type_name ? type_name : "(null)") << "\n"
+              << "            JSON placeholder: "
+              << (data_placeholder ? data_placeholder : "(none)") << std::endl;
+    eprosima::ddsenabler::examples::ws::ws_server().on_type(type_name, data_placeholder);
+}
+
+// Called by the Enabler every time a new DDS topic is discovered. We forward the topic's
+// type name so the server can attach the matching JSON placeholder to the topic.
 void on_topic_discovered(
         const char* topic_name,
-        const eprosima::ddsenabler::participants::TopicInfo& /* topic_info */)
+        const eprosima::ddsenabler::participants::TopicInfo& topic_info)
 {
-    eprosima::ddsenabler::examples::ws::ws_server().on_discovery("topic", topic_name);
+    std::cout << "[Discovery] Topic discovered: " << (topic_name ? topic_name : "(null)")
+              << " (type: " << topic_info.type_name << ")" << std::endl;
+    eprosima::ddsenabler::examples::ws::ws_server().on_topic(topic_name, topic_info.type_name.c_str());
 }
 
 // Called by the Enabler every time a new ROS 2 / DDS service is discovered.
@@ -55,6 +75,8 @@ void on_service_discovered(
         const char* service_name,
         const eprosima::ddsenabler::participants::ServiceInfo& /* service_info */)
 {
+    std::cout << "[Discovery] Service discovered: " << (service_name ? service_name : "(null)")
+              << std::endl;
     eprosima::ddsenabler::examples::ws::ws_server().on_discovery("service", service_name);
 }
 
@@ -63,6 +85,8 @@ void on_action_discovered(
         const char* action_name,
         const eprosima::ddsenabler::participants::ActionInfo& /* action_info */)
 {
+    std::cout << "[Discovery] Action discovered: " << (action_name ? action_name : "(null)")
+              << std::endl;
     eprosima::ddsenabler::examples::ws::ws_server().on_discovery("action", action_name);
 }
 
@@ -101,6 +125,7 @@ int main(
 
     // Register only the discovery notification callbacks; everything else is left unset.
     CallbackSet callbacks{};
+    callbacks.dds.type_notification = on_type_discovered;
     callbacks.dds.topic_notification = on_topic_discovered;
     callbacks.service.service_notification = on_service_discovered;
     callbacks.action.action_notification = on_action_discovered;

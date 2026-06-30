@@ -4,6 +4,10 @@ A minimal, dependency-free web application that connects to the `discovery` exam
 embedded WebSocket server and displays every discovered **topic**, **service** and
 **action** in three live sections.
 
+Each discovered **topic** is expandable: click it to open a dropdown showing the **JSON
+data placeholder** for the topic's type — the JSON skeleton (with default values) that you
+would fill in to publish a sample on that topic.
+
 It is plain HTML + CSS + JavaScript — there is **no build step** and no `npm install`.
 
 ## Files
@@ -41,10 +45,19 @@ couple of seconds.
 The server sends one small JSON message per discovered item:
 
 ```json
-{ "kind": "topic",   "name": "rt/chatter" }
-{ "kind": "service", "name": "/add_two_ints" }
-{ "kind": "action",  "name": "/fibonacci" }
+{ "kind": "topic",   "name": "rt/chatter",   "details": "{\n    \"data\": \"\"\n}" }
+{ "kind": "service", "name": "/add_two_ints", "details": "" }
+{ "kind": "action",  "name": "/fibonacci",    "details": "" }
 ```
+
+`details` carries the JSON data placeholder as an escaped string. It is populated for
+**topics** (from the Enabler's type-discovery callback) and empty for services and actions.
+The dashboard parses and pretty-prints it inside the topic's dropdown.
+
+Because the type and topic discovery notifications are independent, a topic may be
+announced before its placeholder is known. In that case the server first sends the topic
+with an empty `details`, then re-sends the same topic with the placeholder filled in once
+the type is discovered; the dashboard updates the dropdown in place.
 
 When a client connects, the server first **replays a snapshot** of everything discovered
 so far (so a dashboard opened late still shows the full picture) and then streams live

@@ -30,6 +30,7 @@
 #include <mutex>
 #include <string>
 #include <thread>
+#include <unordered_map>
 #include <vector>
 
 namespace eprosima {
@@ -84,6 +85,34 @@ public:
             const char* name);
 
     /**
+     * @brief Register a discovered DDS type and its JSON data placeholder.
+     *
+     * The placeholder is stored keyed by @p type_name. Any topic of this type that was
+     * already discovered (placeholders may arrive after the topic) gets its placeholder
+     * filled in and re-broadcast.
+     *
+     * @param type_name The discovered type name.
+     * @param data_placeholder JSON skeleton (default values) for samples of this type.
+     */
+    void on_type(
+            const char* type_name,
+            const char* data_placeholder);
+
+    /**
+     * @brief Register a discovered topic and broadcast it to all clients.
+     *
+     * Like @ref on_discovery for the "topic" kind, but it also attaches the JSON data
+     * placeholder of @p type_name (if already known) so the dashboard can show the JSON
+     * needed to publish on the topic.
+     *
+     * @param topic_name The discovered topic name.
+     * @param type_name The name of the topic's data type.
+     */
+    void on_topic(
+            const char* topic_name,
+            const char* type_name);
+
+    /**
      * @brief Stop the server: unblock the accept loop, join threads, close sockets.
      */
     void stop();
@@ -108,7 +137,12 @@ private:
     bool send_item(
             int fd,
             const std::string& kind,
-            const std::string& name);
+            const std::string& name,
+            const std::string& details);
+
+    // Broadcast a pre-encoded frame to every connected client, dropping those that error.
+    void broadcast_frame(
+            const std::string& frame);
 
     // Remove (and close) a client socket from the broadcast set.
     void drop_client(
@@ -128,9 +162,14 @@ private:
     {
         std::string kind;
         std::string name;
+        std::string type_name;  // Topics only; empty for services/actions.
+        std::string details;    // JSON placeholder for topics; empty otherwise.
     };
     std::mutex registry_mutex_;
     std::vector<Item> registry_;
+    // Type name -> JSON data placeholder, used to resolve topic placeholders.
+    // Guarded by registry_mutex_.
+    std::unordered_map<std::string, std::string> type_placeholders_;
 };
 
 /**

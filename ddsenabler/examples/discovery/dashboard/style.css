@@ -149,6 +149,63 @@ main {
   animation: flash 1.2s ease-out;
 }
 
+/* Expandable topic rows: a clickable header and a hidden JSON placeholder view. */
+.items li .item-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Only topics that carry a JSON placeholder are clickable to fold/unfold. */
+.items li.has-details .item-row {
+  cursor: pointer;
+}
+
+.items li.has-details .item-row:hover .item-name {
+  color: #2f80ed;
+}
+
+.items li .item-name {
+  word-break: break-all;
+}
+
+.items li .toggle {
+  flex: 0 0 auto;
+  width: 0.9rem;
+  text-align: center;
+  font-size: 0.75rem;
+  line-height: 1;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+/* Arrow (foldable topic): blue, rotates to point down when unfolded. */
+.items li.has-details .toggle {
+  color: #2f80ed;
+  opacity: 0.6;
+}
+
+.items li.has-details.open .toggle {
+  opacity: 1;
+  transform: rotate(90deg);
+}
+
+/* Empty circle (no placeholder available): muted, static. */
+.items li:not(.has-details) .toggle {
+  color: #9aa5b1;
+}
+
+.items li .details {
+  margin: 0.5rem 0 0.25rem;
+  padding: 0.6rem 0.75rem;
+  background: #0f1b33;
+  color: #d6e2ff;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  overflow-x: auto;
+  white-space: pre;
+}
+
 @keyframes flash {
   from {
     background: #fff3cd;
