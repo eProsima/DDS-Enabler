@@ -15,10 +15,10 @@
 /**
  * @file main.cpp
  *
- * DDS Enabler discovery example: print the name of every topic, service and action
- * the Enabler discovers, and also broadcast each discovery over a WebSocket server
- * so a web dashboard can display them live. Keeps running until the user presses
- * Ctrl+C.
+ * DDS Enabler discovery example: broadcast every topic, service and action the Enabler
+ * discovers over a WebSocket server, together with the JSON data placeholder(s) of the
+ * relevant type(s), so a web dashboard can display them live. Keeps running until the
+ * user presses Ctrl+C.
  */
 
 #include <condition_variable>

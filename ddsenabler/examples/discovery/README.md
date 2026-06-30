@@ -7,16 +7,16 @@ It launches a DDS Enabler that listens to the DDS network and reports the **name
 - A **service** exposes two placeholders, one for the **request** and one for the **reply**.
 - An **action** exposes three placeholders relevant for driving it: the **goal request**, the **feedback**, and the **result reply**.
 
-Each discovery is both **printed to the terminal** and **broadcast over a WebSocket server** embedded in the example, so a [web dashboard](dashboard/README.md) can display the discovered topics, services and actions live. In the dashboard, clicking a topic opens a dropdown with its JSON placeholder; clicking a service opens a dropdown with its **Request** and **Reply** entries; clicking an action opens a dropdown with its **Goal Request**, **Feedback** and **Result Reply** entries — each entry opens its own JSON dropdown.
+Each discovery is **broadcast over a WebSocket server** embedded in the example, so a [web dashboard](dashboard/README.md) can display the discovered topics, services and actions live. In the dashboard, clicking a topic opens a dropdown with its JSON placeholder; clicking a service opens a dropdown with its **Request** and **Reply** entries; clicking an action opens a dropdown with its **Goal Request**, **Feedback** and **Result Reply** entries — each entry opens its own JSON dropdown.
 
 The application keeps running until it is stopped with `Ctrl+C`.
 
 It registers the discovery notification callbacks of the `CallbackSet`:
 
-- `dds.topic_notification` → prints / broadcasts discovered topic names.
+- `dds.topic_notification` → broadcasts discovered topic names.
 - `dds.type_notification` → captures each type's JSON data placeholder, attached to the topics, services and actions that use that type.
-- `service.service_notification` → prints / broadcasts discovered service names (with their request and reply types).
-- `action.action_notification` → prints / broadcasts discovered action names (with their goal request, feedback and result reply types).
+- `service.service_notification` → broadcasts discovered service names (with their request and reply types).
+- `action.action_notification` → broadcasts discovered action names (with their goal request, feedback and result reply types).
 
 ## Live Dashboard
 
@@ -69,16 +69,14 @@ The `ddsenabler_example_discovery` executable is generated inside the `build` di
 ```
 
 Run it and then start any DDS / ROS 2 application (for instance the ROS 2 `talker`, or another DDS Enabler example such as `publish`, `service` or `action`).
-When a topic, service, or action is discovered, the application prints a line like:
+On startup the application prints the WebSocket server address:
 
 ```text
 [WebSocket] Server listening on ws://localhost:8080
-[Discovery] Topic discovered: rt/chatter
-[Discovery] Service discovered: /add_two_ints
-[Discovery] Action discovered: /fibonacci
+DDS Enabler running. Listening for topics, services and actions. Press Ctrl+C to stop.
 ```
 
-Open the [dashboard](dashboard/README.md) in a browser to see the same discoveries rendered live.
+Open the [dashboard](dashboard/README.md) in a browser to see the discovered topics, services and actions — and their JSON placeholders — rendered live.
 
 Press `Ctrl+C` to stop the application cleanly.
 
