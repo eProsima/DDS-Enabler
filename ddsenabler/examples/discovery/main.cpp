@@ -53,9 +53,6 @@ void on_type_discovered(
         uint32_t /* serialized_type_internal_size */,
         const char* data_placeholder)
 {
-    std::cout << "[Discovery] Type discovered: " << (type_name ? type_name : "(null)") << "\n"
-              << "            JSON placeholder: "
-              << (data_placeholder ? data_placeholder : "(none)") << std::endl;
     eprosima::ddsenabler::examples::ws::ws_server().on_type(type_name, data_placeholder);
 }
 
@@ -65,8 +62,6 @@ void on_topic_discovered(
         const char* topic_name,
         const eprosima::ddsenabler::participants::TopicInfo& topic_info)
 {
-    std::cout << "[Discovery] Topic discovered: " << (topic_name ? topic_name : "(null)")
-              << " (type: " << topic_info.type_name << ")" << std::endl;
     eprosima::ddsenabler::examples::ws::ws_server().on_topic(topic_name, topic_info.type_name.c_str());
 }
 
@@ -77,23 +72,25 @@ void on_service_discovered(
         const char* service_name,
         const eprosima::ddsenabler::participants::ServiceInfo& service_info)
 {
-    std::cout << "[Discovery] Service discovered: " << (service_name ? service_name : "(null)")
-              << " (request type: " << service_info.request.type_name
-              << ", reply type: " << service_info.reply.type_name << ")" << std::endl;
     eprosima::ddsenabler::examples::ws::ws_server().on_service(
         service_name,
         service_info.request.type_name.c_str(),
         service_info.reply.type_name.c_str());
 }
 
-// Called by the Enabler every time a new ROS 2 / DDS action is discovered.
+// Called by the Enabler every time a new ROS 2 / DDS action is discovered. An action is
+// modeled as several services and topics; for publishing purposes the three JSONs of
+// interest are the goal request, the feedback, and the result reply, so we forward those
+// three types and the server attaches their JSON placeholders.
 void on_action_discovered(
         const char* action_name,
-        const eprosima::ddsenabler::participants::ActionInfo& /* action_info */)
+        const eprosima::ddsenabler::participants::ActionInfo& action_info)
 {
-    std::cout << "[Discovery] Action discovered: " << (action_name ? action_name : "(null)")
-              << std::endl;
-    eprosima::ddsenabler::examples::ws::ws_server().on_discovery("action", action_name);
+    eprosima::ddsenabler::examples::ws::ws_server().on_action(
+        action_name,
+        action_info.goal.request.type_name.c_str(),
+        action_info.feedback.type_name.c_str(),
+        action_info.result.reply.type_name.c_str());
 }
 
 // Stops the application cleanly when Ctrl+C (or another termination signal) is received.

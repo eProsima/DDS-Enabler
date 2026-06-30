@@ -459,40 +459,6 @@ void WebSocketServer::broadcast_frame(
     }
 }
 
-void WebSocketServer::on_discovery(
-        const char* kind,
-        const char* name)
-{
-    if (kind == nullptr || name == nullptr)
-    {
-        return;
-    }
-
-    const std::string kind_str(kind);
-    const std::string name_str(name);
-
-    Item item;
-    // Deduplicate and register (insertion-ordered) before broadcasting.
-    {
-        std::lock_guard<std::mutex> lock(registry_mutex_);
-        const bool exists = std::any_of(registry_.begin(), registry_.end(),
-                        [&](const Item& it)
-                        {
-                            return it.kind == kind_str && it.name == name_str;
-                        });
-        if (exists)
-        {
-            return;
-        }
-        // No parts: actions are shown as plain entries (no JSON placeholder).
-        item = Item{kind_str, name_str, {}};
-        registry_.push_back(item);
-    }
-
-    // Broadcast to all currently connected clients.
-    broadcast_frame(item_frame(item));
-}
-
 void WebSocketServer::on_type(
         const char* type_name,
         const char* data_placeholder)
@@ -612,6 +578,49 @@ void WebSocketServer::on_service(
         item = Item{"service", name_str, {
                         Part{"Request", request_type, resolve_placeholder_nts(request_type)},
                         Part{"Reply", reply_type, resolve_placeholder_nts(reply_type)}
+                    }};
+        registry_.push_back(item);
+    }
+
+    broadcast_frame(item_frame(item));
+}
+
+void WebSocketServer::on_action(
+        const char* action_name,
+        const char* goal_request_type_name,
+        const char* feedback_type_name,
+        const char* result_reply_type_name)
+{
+    if (action_name == nullptr)
+    {
+        return;
+    }
+
+    const std::string name_str(action_name);
+    const std::string goal_request_type = (goal_request_type_name != nullptr) ? goal_request_type_name : "";
+    const std::string feedback_type = (feedback_type_name != nullptr) ? feedback_type_name : "";
+    const std::string result_reply_type = (result_reply_type_name != nullptr) ? result_reply_type_name : "";
+
+    Item item;
+    // Deduplicate and register (insertion-ordered) before broadcasting.
+    {
+        std::lock_guard<std::mutex> lock(registry_mutex_);
+        const bool exists = std::any_of(registry_.begin(), registry_.end(),
+                        [&](const Item& it)
+                        {
+                            return it.kind == "action" && it.name == name_str;
+                        });
+        if (exists)
+        {
+            return;
+        }
+
+        // An action exposes the three placeholders relevant for driving it: the goal
+        // request, the feedback, and the result reply.
+        item = Item{"action", name_str, {
+                        Part{"Goal Request", goal_request_type, resolve_placeholder_nts(goal_request_type)},
+                        Part{"Feedback", feedback_type, resolve_placeholder_nts(feedback_type)},
+                        Part{"Result Reply", result_reply_type, resolve_placeholder_nts(result_reply_type)}
                     }};
         registry_.push_back(item);
     }

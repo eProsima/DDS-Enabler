@@ -185,7 +185,7 @@
     const views = [];
 
     if (parts.length === 0) {
-      // Actions: plain entry, no dropdown.
+      // Items with no placeholder (e.g. plain discoveries): plain entry, no dropdown.
       li.textContent = name;
     } else if (parts.length === 1 && !parts[0].label) {
       // Topics: a single JSON dropdown labelled with the topic name.
@@ -193,8 +193,8 @@
       li.appendChild(view.wrapper);
       views.push({ details: parts[0].details || "", setDetails: view.setDetails });
     } else {
-      // Services (and any future multi-part item): an outer dropdown for the name that
-      // contains one JSON dropdown per part (e.g. "Request" and "Reply").
+      // Services and actions: an outer dropdown for the name that contains one JSON
+      // dropdown per part (e.g. "Request"/"Reply", or "Goal Request"/"Feedback"/"Result Reply").
       const group = makeGroup(name);
       for (const part of parts) {
         const view = makeJsonView(part.label, part.details);

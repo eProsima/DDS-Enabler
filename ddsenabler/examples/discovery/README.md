@@ -5,17 +5,18 @@ It launches a DDS Enabler that listens to the DDS network and reports the **name
 
 - A **topic** exposes one placeholder (its data type).
 - A **service** exposes two placeholders, one for the **request** and one for the **reply**.
+- An **action** exposes three placeholders relevant for driving it: the **goal request**, the **feedback**, and the **result reply**.
 
-Each discovery is both **printed to the terminal** and **broadcast over a WebSocket server** embedded in the example, so a [web dashboard](dashboard/README.md) can display the discovered topics, services and actions live. In the dashboard, clicking a topic opens a dropdown with its JSON placeholder; clicking a service opens a dropdown with its **Request** and **Reply** entries, each of which opens its own JSON dropdown.
+Each discovery is both **printed to the terminal** and **broadcast over a WebSocket server** embedded in the example, so a [web dashboard](dashboard/README.md) can display the discovered topics, services and actions live. In the dashboard, clicking a topic opens a dropdown with its JSON placeholder; clicking a service opens a dropdown with its **Request** and **Reply** entries; clicking an action opens a dropdown with its **Goal Request**, **Feedback** and **Result Reply** entries — each entry opens its own JSON dropdown.
 
 The application keeps running until it is stopped with `Ctrl+C`.
 
 It registers the discovery notification callbacks of the `CallbackSet`:
 
 - `dds.topic_notification` → prints / broadcasts discovered topic names.
-- `dds.type_notification` → captures each type's JSON data placeholder, attached to the topics and services that use that type.
+- `dds.type_notification` → captures each type's JSON data placeholder, attached to the topics, services and actions that use that type.
 - `service.service_notification` → prints / broadcasts discovered service names (with their request and reply types).
-- `action.action_notification` → prints / broadcasts discovered action names.
+- `action.action_notification` → prints / broadcasts discovered action names (with their goal request, feedback and result reply types).
 
 ## Live Dashboard
 
@@ -27,10 +28,11 @@ Each discovered entity is broadcast to all connected clients as a JSON message:
   "parts": [ { "label": "", "details": "{\n    \"data\": \"\"\n}" } ] }
 { "kind": "service", "name": "/add_two_ints",
   "parts": [ { "label": "Request", "details": "..." }, { "label": "Reply", "details": "..." } ] }
-{ "kind": "action",  "name": "/fibonacci", "parts": [] }
+{ "kind": "action",  "name": "/fibonacci",
+  "parts": [ { "label": "Goal Request", "details": "..." }, { "label": "Feedback", "details": "..." }, { "label": "Result Reply", "details": "..." } ] }
 ```
 
-Each entry in `parts` carries a JSON data placeholder (as an escaped string) under `details`. A topic has a single unlabelled part; a service has `Request` and `Reply` parts; actions have none. Since type and topic/service notifications are independent, an item may be broadcast first with empty `details` and then re-broadcast with the placeholder(s) filled in once the corresponding type(s) are discovered.
+Each entry in `parts` carries a JSON data placeholder (as an escaped string) under `details`. A topic has a single unlabelled part; a service has `Request` and `Reply` parts; an action has `Goal Request`, `Feedback` and `Result Reply` parts. Since type and topic/service/action notifications are independent, an item may be broadcast first with empty `details` and then re-broadcast with the placeholder(s) filled in once the corresponding type(s) are discovered.
 
 When a client connects, the server first replays a **snapshot** of everything discovered so far, then streams live updates. A late-joining dashboard therefore still sees the full picture.
 

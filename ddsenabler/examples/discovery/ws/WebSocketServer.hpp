@@ -45,9 +45,9 @@ namespace ws {
  * connects later still receives a full snapshot of what has been discovered so
  * far, followed by live updates.
  *
- * All public methods are thread-safe: @ref on_discovery is called from the DDS
- * Enabler callback threads, while the accept loop and the per-client readers run
- * on their own threads.
+ * All public methods are thread-safe: the on_topic / on_service / on_action / on_type
+ * registration methods are called from the DDS Enabler callback threads, while the
+ * accept loop and the per-client readers run on their own threads.
  */
 class WebSocketServer
 {
@@ -72,19 +72,6 @@ public:
             uint16_t port);
 
     /**
-     * @brief Register a discovered item and broadcast it to all clients.
-     *
-     * Items already present in the registry are ignored (deduplicated by
-     * @p kind + @p name), so each item is broadcast at most once.
-     *
-     * @param kind "topic", "service" or "action".
-     * @param name The discovered entity name.
-     */
-    void on_discovery(
-            const char* kind,
-            const char* name);
-
-    /**
      * @brief Register a discovered DDS type and its JSON data placeholder.
      *
      * The placeholder is stored keyed by @p type_name. Any topic of this type that was
@@ -101,9 +88,8 @@ public:
     /**
      * @brief Register a discovered topic and broadcast it to all clients.
      *
-     * Like @ref on_discovery for the "topic" kind, but it also attaches the JSON data
-     * placeholder of @p type_name (if already known) so the dashboard can show the JSON
-     * needed to publish on the topic.
+     * Attaches the JSON data placeholder of @p type_name (if already known) so the
+     * dashboard can show the JSON needed to publish on the topic.
      *
      * @param topic_name The discovered topic name.
      * @param type_name The name of the topic's data type.
@@ -128,6 +114,25 @@ public:
             const char* service_name,
             const char* request_type_name,
             const char* reply_type_name);
+
+    /**
+     * @brief Register a discovered action and broadcast it to all clients.
+     *
+     * An action is shown with three JSON placeholders relevant for driving it: the goal
+     * request, the feedback, and the result reply. The placeholders of the given types are
+     * attached if already known; otherwise @ref on_type back-fills them when the types are
+     * discovered.
+     *
+     * @param action_name The discovered action name.
+     * @param goal_request_type_name The name of the action's goal request type.
+     * @param feedback_type_name The name of the action's feedback type.
+     * @param result_reply_type_name The name of the action's result reply type.
+     */
+    void on_action(
+            const char* action_name,
+            const char* goal_request_type_name,
+            const char* feedback_type_name,
+            const char* result_reply_type_name);
 
     /**
      * @brief Stop the server: unblock the accept loop, join threads, close sockets.
