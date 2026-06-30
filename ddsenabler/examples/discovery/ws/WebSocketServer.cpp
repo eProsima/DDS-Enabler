@@ -22,6 +22,7 @@
 #include <cctype>
 #include <cstring>
 #include <iostream>
+#include <utility>
 
 #include <arpa/inet.h>
 #include <netinet/in.h>
@@ -77,17 +78,29 @@ std::string json_escape(
 }
 
 // Build the per-item JSON message:
-// {"kind":"<kind>","name":"<name>","details":"<json-placeholder>"}.
-// "details" carries the JSON data placeholder as an escaped string (empty when there is
-// none, e.g. for services and actions). The dashboard parses it back for display.
+//   {"kind":"<kind>","name":"<name>",
+//    "parts":[{"label":"<label>","details":"<json-placeholder>"}, ...]}
+// Each part's "details" carries a JSON data placeholder as an escaped string (empty until
+// the type is known). A topic has a single unlabelled part, a service has "Request" and
+// "Reply" parts, and actions have none. The dashboard parses each "details" for display.
 std::string make_item_message(
         const std::string& kind,
         const std::string& name,
-        const std::string& details)
+        const std::vector<std::pair<std::string, std::string>>& parts)
 {
-    return "{\"kind\":\"" + json_escape(kind) +
-           "\",\"name\":\"" + json_escape(name) +
-           "\",\"details\":\"" + json_escape(details) + "\"}";
+    std::string msg = "{\"kind\":\"" + json_escape(kind) +
+            "\",\"name\":\"" + json_escape(name) + "\",\"parts\":[";
+    for (std::size_t i = 0; i < parts.size(); ++i)
+    {
+        if (i != 0)
+        {
+            msg += ",";
+        }
+        msg += "{\"label\":\"" + json_escape(parts[i].first) +
+                "\",\"details\":\"" + json_escape(parts[i].second) + "\"}";
+    }
+    msg += "]}";
+    return msg;
 }
 
 // Read a full line (terminated by CRLF or LF) from @p fd. Returns false on EOF/error.
@@ -316,7 +329,7 @@ void WebSocketServer::handle_client(
         std::lock_guard<std::mutex> lock(registry_mutex_);
         for (const Item& item : registry_)
         {
-            if (!send_item(fd, item.kind, item.name, item.details))
+            if (!send_item(fd, item))
             {
                 drop_client(fd);
                 return;
@@ -399,13 +412,30 @@ void WebSocketServer::handle_client(
     drop_client(fd);
 }
 
+std::string WebSocketServer::resolve_placeholder_nts(
+        const std::string& type_name) const
+{
+    const auto it = type_placeholders_.find(type_name);
+    return (it != type_placeholders_.end()) ? it->second : std::string();
+}
+
+std::string WebSocketServer::item_frame(
+        const Item& item) const
+{
+    std::vector<std::pair<std::string, std::string>> parts;
+    parts.reserve(item.parts.size());
+    for (const Part& part : item.parts)
+    {
+        parts.emplace_back(part.label, part.details);
+    }
+    return encode_text_frame(make_item_message(item.kind, item.name, parts));
+}
+
 bool WebSocketServer::send_item(
         int fd,
-        const std::string& kind,
-        const std::string& name,
-        const std::string& details)
+        const Item& item)
 {
-    return send_all(fd, encode_text_frame(make_item_message(kind, name, details)));
+    return send_all(fd, item_frame(item));
 }
 
 void WebSocketServer::broadcast_frame(
@@ -441,23 +471,26 @@ void WebSocketServer::on_discovery(
     const std::string kind_str(kind);
     const std::string name_str(name);
 
+    Item item;
     // Deduplicate and register (insertion-ordered) before broadcasting.
     {
         std::lock_guard<std::mutex> lock(registry_mutex_);
         const bool exists = std::any_of(registry_.begin(), registry_.end(),
-                        [&](const Item& item)
+                        [&](const Item& it)
                         {
-                            return item.kind == kind_str && item.name == name_str;
+                            return it.kind == kind_str && it.name == name_str;
                         });
         if (exists)
         {
             return;
         }
-        registry_.push_back({kind_str, name_str, "", ""});
+        // No parts: actions are shown as plain entries (no JSON placeholder).
+        item = Item{kind_str, name_str, {}};
+        registry_.push_back(item);
     }
 
     // Broadcast to all currently connected clients.
-    broadcast_frame(encode_text_frame(make_item_message(kind_str, name_str, "")));
+    broadcast_frame(item_frame(item));
 }
 
 void WebSocketServer::on_type(
@@ -472,9 +505,17 @@ void WebSocketServer::on_type(
     const std::string type_str(type_name);
     const std::string placeholder_str = (data_placeholder != nullptr) ? data_placeholder : "";
 
-    // Store the placeholder and back-fill any topic of this type that was discovered
-    // before the placeholder became available (the type and topic notifications are
-    // independent, so either may arrive first).
+    if (placeholder_str.empty())
+    {
+        // Nothing to resolve; still record the (empty) placeholder for completeness.
+        std::lock_guard<std::mutex> lock(registry_mutex_);
+        type_placeholders_[type_str] = placeholder_str;
+        return;
+    }
+
+    // Store the placeholder and back-fill any item part of this type that was discovered
+    // before the placeholder became available (the type and topic/service notifications
+    // are independent, so either may arrive first).
     std::vector<std::string> frames;
     {
         std::lock_guard<std::mutex> lock(registry_mutex_);
@@ -482,17 +523,23 @@ void WebSocketServer::on_type(
 
         for (Item& item : registry_)
         {
-            if (item.kind == "topic" && item.type_name == type_str && item.details.empty() &&
-                    !placeholder_str.empty())
+            bool changed = false;
+            for (Part& part : item.parts)
             {
-                item.details = placeholder_str;
-                frames.push_back(encode_text_frame(make_item_message(item.kind, item.name,
-                        item.details)));
+                if (part.type_name == type_str && part.details.empty())
+                {
+                    part.details = placeholder_str;
+                    changed = true;
+                }
+            }
+            if (changed)
+            {
+                frames.push_back(item_frame(item));
             }
         }
     }
 
-    // Re-broadcast the back-filled topics so connected dashboards pick up the placeholder.
+    // Re-broadcast the back-filled items so connected dashboards pick up the placeholder.
     for (const std::string& frame : frames)
     {
         broadcast_frame(frame);
@@ -511,30 +558,65 @@ void WebSocketServer::on_topic(
     const std::string name_str(topic_name);
     const std::string type_str = (type_name != nullptr) ? type_name : "";
 
-    std::string details;
+    Item item;
     // Deduplicate and register (insertion-ordered) before broadcasting.
     {
         std::lock_guard<std::mutex> lock(registry_mutex_);
         const bool exists = std::any_of(registry_.begin(), registry_.end(),
-                        [&](const Item& item)
+                        [&](const Item& it)
                         {
-                            return item.kind == "topic" && item.name == name_str;
+                            return it.kind == "topic" && it.name == name_str;
                         });
         if (exists)
         {
             return;
         }
 
-        // The type's placeholder may already be known; if not, on_type() back-fills it.
-        const auto it = type_placeholders_.find(type_str);
-        if (it != type_placeholders_.end())
-        {
-            details = it->second;
-        }
-        registry_.push_back({"topic", name_str, type_str, details});
+        // A topic has a single, unlabelled part holding its type's placeholder.
+        item = Item{"topic", name_str, {Part{"", type_str, resolve_placeholder_nts(type_str)}}};
+        registry_.push_back(item);
     }
 
-    broadcast_frame(encode_text_frame(make_item_message("topic", name_str, details)));
+    broadcast_frame(item_frame(item));
+}
+
+void WebSocketServer::on_service(
+        const char* service_name,
+        const char* request_type_name,
+        const char* reply_type_name)
+{
+    if (service_name == nullptr)
+    {
+        return;
+    }
+
+    const std::string name_str(service_name);
+    const std::string request_type = (request_type_name != nullptr) ? request_type_name : "";
+    const std::string reply_type = (reply_type_name != nullptr) ? reply_type_name : "";
+
+    Item item;
+    // Deduplicate and register (insertion-ordered) before broadcasting.
+    {
+        std::lock_guard<std::mutex> lock(registry_mutex_);
+        const bool exists = std::any_of(registry_.begin(), registry_.end(),
+                        [&](const Item& it)
+                        {
+                            return it.kind == "service" && it.name == name_str;
+                        });
+        if (exists)
+        {
+            return;
+        }
+
+        // A service has two parts: the request and the reply, each with its own placeholder.
+        item = Item{"service", name_str, {
+                        Part{"Request", request_type, resolve_placeholder_nts(request_type)},
+                        Part{"Reply", reply_type, resolve_placeholder_nts(reply_type)}
+                    }};
+        registry_.push_back(item);
+    }
+
+    broadcast_frame(item_frame(item));
 }
 
 void WebSocketServer::drop_client(

@@ -149,27 +149,27 @@ main {
   animation: flash 1.2s ease-out;
 }
 
-/* Expandable topic rows: a clickable header and a hidden JSON placeholder view. */
-.items li .item-row {
+/* Foldable disclosures: topics (one JSON view) and services (a group of JSON views). */
+.disclosure > .item-row {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-/* Only topics that carry a JSON placeholder are clickable to fold/unfold. */
-.items li.has-details .item-row {
+/* A disclosure is clickable only when foldable (has a placeholder, or is a group). */
+.disclosure.has-details > .item-row {
   cursor: pointer;
 }
 
-.items li.has-details .item-row:hover .item-name {
+.disclosure.has-details > .item-row:hover > .item-name {
   color: #2f80ed;
 }
 
-.items li .item-name {
+.item-name {
   word-break: break-all;
 }
 
-.items li .toggle {
+.disclosure > .item-row > .toggle {
   flex: 0 0 auto;
   width: 0.9rem;
   text-align: center;
@@ -178,23 +178,23 @@ main {
   transition: transform 0.15s ease, opacity 0.15s ease;
 }
 
-/* Arrow (foldable topic): blue, rotates to point down when unfolded. */
-.items li.has-details .toggle {
+/* Arrow (foldable): blue, rotates to point down when the disclosure is open. */
+.disclosure.has-details > .item-row > .toggle {
   color: #2f80ed;
   opacity: 0.6;
 }
 
-.items li.has-details.open .toggle {
+.disclosure.has-details.open > .item-row > .toggle {
   opacity: 1;
   transform: rotate(90deg);
 }
 
 /* Empty circle (no placeholder available): muted, static. */
-.items li:not(.has-details) .toggle {
+.disclosure:not(.has-details) > .item-row > .toggle {
   color: #9aa5b1;
 }
 
-.items li .details {
+.disclosure > .details {
   margin: 0.5rem 0 0.25rem;
   padding: 0.6rem 0.75rem;
   background: #0f1b33;
@@ -204,6 +204,17 @@ main {
   line-height: 1.4;
   overflow-x: auto;
   white-space: pre;
+}
+
+/* Nested Request/Reply views of a service, indented under the service name. */
+.group-body {
+  margin: 0.4rem 0 0.25rem 0.45rem;
+  padding-left: 0.6rem;
+  border-left: 2px solid #eef1f4;
+}
+
+.group-body .disclosure + .disclosure {
+  margin-top: 0.3rem;
 }
 
 @keyframes flash {

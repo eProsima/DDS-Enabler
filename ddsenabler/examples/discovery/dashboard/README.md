@@ -4,9 +4,12 @@ A minimal, dependency-free web application that connects to the `discovery` exam
 embedded WebSocket server and displays every discovered **topic**, **service** and
 **action** in three live sections.
 
-Each discovered **topic** is expandable: click it to open a dropdown showing the **JSON
-data placeholder** for the topic's type — the JSON skeleton (with default values) that you
-would fill in to publish a sample on that topic.
+Topics and services are expandable:
+
+- A **topic** opens a dropdown showing the **JSON data placeholder** for its type — the
+  JSON skeleton (with default values) that you would fill in to publish a sample on it.
+- A **service** opens a dropdown with two nested entries, **Request** and **Reply**, each
+  of which opens its own JSON placeholder dropdown.
 
 It is plain HTML + CSS + JavaScript — there is **no build step** and no `npm install`.
 
@@ -45,19 +48,22 @@ couple of seconds.
 The server sends one small JSON message per discovered item:
 
 ```json
-{ "kind": "topic",   "name": "rt/chatter",   "details": "{\n    \"data\": \"\"\n}" }
-{ "kind": "service", "name": "/add_two_ints", "details": "" }
-{ "kind": "action",  "name": "/fibonacci",    "details": "" }
+{ "kind": "topic",   "name": "rt/chatter",
+  "parts": [ { "label": "", "details": "{\n    \"data\": \"\"\n}" } ] }
+{ "kind": "service", "name": "/add_two_ints",
+  "parts": [ { "label": "Request", "details": "..." }, { "label": "Reply", "details": "..." } ] }
+{ "kind": "action",  "name": "/fibonacci", "parts": [] }
 ```
 
-`details` carries the JSON data placeholder as an escaped string. It is populated for
-**topics** (from the Enabler's type-discovery callback) and empty for services and actions.
-The dashboard parses and pretty-prints it inside the topic's dropdown.
+Each entry in `parts` carries a JSON data placeholder (as an escaped string) under
+`details`, populated from the Enabler's type-discovery callback. A topic has a single
+unlabelled part, a service has `Request` and `Reply` parts, and actions have none. The
+dashboard parses and pretty-prints each `details` inside its dropdown.
 
-Because the type and topic discovery notifications are independent, a topic may be
-announced before its placeholder is known. In that case the server first sends the topic
-with an empty `details`, then re-sends the same topic with the placeholder filled in once
-the type is discovered; the dashboard updates the dropdown in place.
+Because the type and topic/service discovery notifications are independent, an item may be
+announced before its placeholder(s) are known. In that case the server first sends the item
+with empty `details`, then re-sends it with the placeholder(s) filled in once the
+type(s) are discovered; the dashboard updates the dropdowns in place.
 
 When a client connects, the server first **replays a snapshot** of everything discovered
 so far (so a dashboard opened late still shows the full picture) and then streams live

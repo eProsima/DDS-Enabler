@@ -15,14 +15,17 @@
 //
 // WebSocket client for the DDS Enabler discovery dashboard.
 //
-// Connects to the example's embedded WebSocket server, receives discovery
-// messages of the form
-//   { "kind": "topic"|"service"|"action", "name": "...", "details": "..." },
+// Connects to the example's embedded WebSocket server, receives discovery messages of the
+// form
+//   { "kind": "topic"|"service"|"action", "name": "...",
+//     "parts": [ { "label": "...", "details": "<json-placeholder>" }, ... ] },
 // deduplicates them by kind+name, and renders them into three live sections.
 //
-// For topics, "details" carries the JSON data placeholder for the topic's type: the
-// JSON skeleton (with default values) that one would fill in to publish a sample on
-// that topic. Clicking a topic toggles a dropdown showing this JSON.
+// Each "details" is a JSON data placeholder: the JSON skeleton (with default values) that
+// one would fill in to publish/send that data. A topic has a single unlabelled part and is
+// shown as one dropdown with its JSON. A service has two parts, "Request" and "Reply", and
+// is shown as an outer dropdown (the service name) containing one JSON dropdown per part.
+// Actions have no parts and are shown as plain entries.
 //
 
 (function () {
@@ -34,8 +37,9 @@
   for (const kind of KINDS) {
     const plural = kind + "s";
     sections[kind] = {
-      // name -> { li, pre, details } for the items already shown, to deduplicate
-      // and to allow back-filling a placeholder that arrives after its topic.
+      // name -> { li, views } for the items already shown, to deduplicate and to allow
+      // back-filling placeholders that arrive after the item. "views" holds one entry per
+      // part (in order), each with its current details and a setDetails() updater.
       items: new Map(),
       list: document.getElementById(plural + "-list"),
       count: document.getElementById(plural + "-count"),
@@ -43,10 +47,10 @@
     };
   }
 
-  // Set the topic's fold indicator: a right-pointing arrow when a JSON placeholder is
-  // available (foldable), or an unfilled circle when there is none (not foldable).
-  function setHasDetails(li, toggle, hasDetails) {
-    li.classList.toggle("has-details", hasDetails);
+  // Set a disclosure's fold indicator: a right-pointing arrow when it is foldable (a JSON
+  // placeholder is available, or it is a group), or an unfilled circle when there is none.
+  function setHasDetails(wrapper, toggle, hasDetails) {
+    wrapper.classList.toggle("has-details", hasDetails);
     toggle.textContent = hasDetails ? "▶" : "○";  // ▶ triangle / ○ empty circle
   }
 
@@ -54,13 +58,88 @@
   // JSON (it normally already arrives indented from the server).
   function formatDetails(details) {
     if (!details) {
-      return "No JSON placeholder available for this topic's type yet.";
+      return "No JSON placeholder available for this type yet.";
     }
     try {
       return JSON.stringify(JSON.parse(details), null, 2);
     } catch (e) {
       return details;
     }
+  }
+
+  // Build a disclosure header: a row with a fold indicator (arrow / circle) on the left
+  // and a label. Returns the wrapper, the row, the toggle and the label elements.
+  function makeDisclosure(labelText) {
+    const wrapper = document.createElement("div");
+    wrapper.className = "disclosure";
+
+    const row = document.createElement("div");
+    row.className = "item-row";
+
+    const toggle = document.createElement("span");
+    toggle.className = "toggle";
+
+    const label = document.createElement("span");
+    label.className = "item-name";
+    label.textContent = labelText;
+
+    row.appendChild(toggle);
+    row.appendChild(label);
+    wrapper.appendChild(row);
+
+    return { wrapper: wrapper, row: row, toggle: toggle, label: label };
+  }
+
+  // Build a foldable JSON view: header (arrow/circle + label) plus a hidden <pre> with the
+  // pretty-printed placeholder. Foldable only when a placeholder is available. Returns an
+  // object with the wrapper and a setDetails(details) updater (used for late back-fills).
+  function makeJsonView(labelText, details) {
+    const d = makeDisclosure(labelText);
+
+    const pre = document.createElement("pre");
+    pre.className = "details";
+    pre.style.display = "none";
+    d.wrapper.appendChild(pre);
+
+    d.row.addEventListener("click", function (e) {
+      e.stopPropagation();
+      if (!d.wrapper.classList.contains("has-details")) {
+        return;  // no placeholder to show
+      }
+      const open = pre.style.display !== "none";
+      pre.style.display = open ? "none" : "block";
+      d.wrapper.classList.toggle("open", !open);
+    });
+
+    function setDetails(value) {
+      pre.textContent = formatDetails(value);
+      setHasDetails(d.wrapper, d.toggle, !!value);
+    }
+    setDetails(details);
+
+    return { wrapper: d.wrapper, setDetails: setDetails };
+  }
+
+  // Build a foldable group: header (arrow + label) plus a hidden body to hold nested
+  // disclosures. Always foldable. Returns the wrapper and the body container.
+  function makeGroup(labelText) {
+    const d = makeDisclosure(labelText);
+
+    const body = document.createElement("div");
+    body.className = "group-body";
+    body.style.display = "none";
+    d.wrapper.appendChild(body);
+
+    d.row.addEventListener("click", function (e) {
+      e.stopPropagation();
+      const open = body.style.display !== "none";
+      body.style.display = open ? "none" : "block";
+      d.wrapper.classList.toggle("open", !open);
+    });
+
+    setHasDetails(d.wrapper, d.toggle, true);  // groups are always foldable
+
+    return { wrapper: d.wrapper, body: body };
   }
 
   const urlInput = document.getElementById("ws-url");
@@ -77,21 +156,24 @@
     statusEl.className = "status " + cls;
   }
 
-  function addItem(kind, name, details) {
+  function addItem(kind, name, parts) {
     const section = sections[kind];
     if (!section) {
       return;
     }
+    parts = Array.isArray(parts) ? parts : [];
 
     const existing = section.items.get(name);
     if (existing) {
-      // Already shown. The placeholder may arrive after the topic, so update the
-      // dropdown and switch the indicator from "no JSON" to an arrow if details
-      // just became available.
-      if (details && !existing.details && existing.pre) {
-        existing.details = details;
-        existing.pre.textContent = formatDetails(details);
-        setHasDetails(existing.li, existing.toggle, true);
+      // Already shown. Placeholders may arrive after the item, so back-fill any part
+      // (in order) whose details just became available.
+      for (let i = 0; i < parts.length && i < existing.views.length; i++) {
+        const view = existing.views[i];
+        const incoming = parts[i] && parts[i].details ? parts[i].details : "";
+        if (incoming && !view.details) {
+          view.details = incoming;
+          view.setDetails(incoming);
+        }
       }
       return;
     }
@@ -99,51 +181,31 @@
     const li = document.createElement("li");
     li.classList.add("new");
 
-    let pre = null;
-    let toggle = null;
-    if (kind === "topic") {
-      // Topics with a placeholder are expandable: a clickable row (arrow on the
-      // left of the name) plus a hidden JSON view. Topics with no placeholder show
-      // an unfilled circle and are not expandable.
-      const row = document.createElement("div");
-      row.className = "item-row";
+    // One updater per part, kept in part order so back-fills can target them.
+    const views = [];
 
-      toggle = document.createElement("span");
-      toggle.className = "toggle";
-
-      const nameSpan = document.createElement("span");
-      nameSpan.className = "item-name";
-      nameSpan.textContent = name;
-
-      // Arrow on the left, then the topic name.
-      row.appendChild(toggle);
-      row.appendChild(nameSpan);
-
-      pre = document.createElement("pre");
-      pre.className = "details";
-      pre.style.display = "none";
-      pre.textContent = formatDetails(details);
-
-      row.addEventListener("click", function () {
-        // Only foldable when there is a JSON placeholder to show.
-        if (!li.classList.contains("has-details")) {
-          return;
-        }
-        const open = pre.style.display !== "none";
-        pre.style.display = open ? "none" : "block";
-        li.classList.toggle("open", !open);
-      });
-
-      setHasDetails(li, toggle, !!details);
-
-      li.appendChild(row);
-      li.appendChild(pre);
-    } else {
+    if (parts.length === 0) {
+      // Actions: plain entry, no dropdown.
       li.textContent = name;
+    } else if (parts.length === 1 && !parts[0].label) {
+      // Topics: a single JSON dropdown labelled with the topic name.
+      const view = makeJsonView(name, parts[0].details);
+      li.appendChild(view.wrapper);
+      views.push({ details: parts[0].details || "", setDetails: view.setDetails });
+    } else {
+      // Services (and any future multi-part item): an outer dropdown for the name that
+      // contains one JSON dropdown per part (e.g. "Request" and "Reply").
+      const group = makeGroup(name);
+      for (const part of parts) {
+        const view = makeJsonView(part.label, part.details);
+        group.body.appendChild(view.wrapper);
+        views.push({ details: part.details || "", setDetails: view.setDetails });
+      }
+      li.appendChild(group.wrapper);
     }
 
     section.list.appendChild(li);
-    section.items.set(name, { li: li, pre: pre, toggle: toggle, details: details || "" });
+    section.items.set(name, { li: li, views: views });
 
     section.count.textContent = String(section.items.size);
     section.empty.style.display = "none";
@@ -168,7 +230,7 @@
       return;
     }
     if (msg && typeof msg.kind === "string" && typeof msg.name === "string") {
-      addItem(msg.kind, msg.name, typeof msg.details === "string" ? msg.details : "");
+      addItem(msg.kind, msg.name, Array.isArray(msg.parts) ? msg.parts : []);
     }
   }
 

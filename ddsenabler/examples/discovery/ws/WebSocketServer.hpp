@@ -113,6 +113,23 @@ public:
             const char* type_name);
 
     /**
+     * @brief Register a discovered service and broadcast it to all clients.
+     *
+     * A service has two types, so the dashboard can show two JSON placeholders: one for
+     * the request and one for the reply. The placeholders of @p request_type_name and
+     * @p reply_type_name are attached if already known; otherwise @ref on_type back-fills
+     * them when the types are discovered.
+     *
+     * @param service_name The discovered service name.
+     * @param request_type_name The name of the service's request type.
+     * @param reply_type_name The name of the service's reply type.
+     */
+    void on_service(
+            const char* service_name,
+            const char* request_type_name,
+            const char* reply_type_name);
+
+    /**
      * @brief Stop the server: unblock the accept loop, join threads, close sockets.
      */
     void stop();
@@ -133,12 +150,21 @@ private:
     void handle_client(
             int fd);
 
+    struct Item;  // forward declaration; defined below.
+
+    // Look up a type's already-known JSON placeholder, or "" if not discovered yet.
+    // The caller must hold @ref registry_mutex_.
+    std::string resolve_placeholder_nts(
+            const std::string& type_name) const;
+
+    // Encode a discovery item as a WebSocket text frame ready to send.
+    std::string item_frame(
+            const Item& item) const;
+
     // Send a single discovery item as a text frame to @p fd. Returns false on error.
     bool send_item(
             int fd,
-            const std::string& kind,
-            const std::string& name,
-            const std::string& details);
+            const Item& item);
 
     // Broadcast a pre-encoded frame to every connected client, dropping those that error.
     void broadcast_frame(
@@ -158,16 +184,24 @@ private:
     std::vector<Client> clients_;
 
     // ---- Discovery registry (insertion-ordered, deduplicated) ----
+
+    // A discoverable item may expose one or more JSON placeholders. A topic has a single
+    // (unlabelled) part; a service has two parts, "Request" and "Reply"; actions have none.
+    struct Part
+    {
+        std::string label;      // "" for topics; "Request"/"Reply" for services.
+        std::string type_name;  // Type whose placeholder fills this part.
+        std::string details;    // Resolved JSON placeholder (empty until the type is known).
+    };
     struct Item
     {
-        std::string kind;
+        std::string kind;       // "topic", "service" or "action".
         std::string name;
-        std::string type_name;  // Topics only; empty for services/actions.
-        std::string details;    // JSON placeholder for topics; empty otherwise.
+        std::vector<Part> parts;
     };
     std::mutex registry_mutex_;
     std::vector<Item> registry_;
-    // Type name -> JSON data placeholder, used to resolve topic placeholders.
+    // Type name -> JSON data placeholder, used to resolve part placeholders.
     // Guarded by registry_mutex_.
     std::unordered_map<std::string, std::string> type_placeholders_;
 };

@@ -70,14 +70,20 @@ void on_topic_discovered(
     eprosima::ddsenabler::examples::ws::ws_server().on_topic(topic_name, topic_info.type_name.c_str());
 }
 
-// Called by the Enabler every time a new ROS 2 / DDS service is discovered.
+// Called by the Enabler every time a new ROS 2 / DDS service is discovered. A service has
+// two types (request and reply), so we forward both type names; the server attaches the
+// matching JSON placeholders so the dashboard can show the JSON for requesting and replying.
 void on_service_discovered(
         const char* service_name,
-        const eprosima::ddsenabler::participants::ServiceInfo& /* service_info */)
+        const eprosima::ddsenabler::participants::ServiceInfo& service_info)
 {
     std::cout << "[Discovery] Service discovered: " << (service_name ? service_name : "(null)")
-              << std::endl;
-    eprosima::ddsenabler::examples::ws::ws_server().on_discovery("service", service_name);
+              << " (request type: " << service_info.request.type_name
+              << ", reply type: " << service_info.reply.type_name << ")" << std::endl;
+    eprosima::ddsenabler::examples::ws::ws_server().on_service(
+        service_name,
+        service_info.request.type_name.c_str(),
+        service_info.reply.type_name.c_str());
 }
 
 // Called by the Enabler every time a new ROS 2 / DDS action is discovered.
