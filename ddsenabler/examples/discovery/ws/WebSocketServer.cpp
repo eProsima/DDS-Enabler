@@ -197,7 +197,11 @@ bool WebSocketServer::start(
         return true;
     }
 
-    listen_fd_ = ::socket(AF_INET, SOCK_STREAM, 0);
+    // Open an IPv6 socket and clear IPV6_V6ONLY so it accepts both IPv6 and IPv4
+    // (via IPv4-mapped addresses) clients. Otherwise a client connecting to
+    // "ws://localhost:..." — where "localhost" commonly resolves to the IPv6 "::1"
+    // first — would stall on the IPv6 attempt before falling back to IPv4.
+    listen_fd_ = ::socket(AF_INET6, SOCK_STREAM, 0);
     if (listen_fd_ < 0)
     {
         std::cerr << "[WebSocket] Failed to create socket." << std::endl;
@@ -207,10 +211,17 @@ bool WebSocketServer::start(
     int opt = 1;
     ::setsockopt(listen_fd_, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt));
 
-    sockaddr_in addr{};
-    addr.sin_family = AF_INET;
-    addr.sin_addr.s_addr = htonl(INADDR_ANY);
-    addr.sin_port = htons(port);
+    int v6only = 0;
+    if (::setsockopt(listen_fd_, IPPROTO_IPV6, IPV6_V6ONLY, &v6only, sizeof(v6only)) < 0)
+    {
+        std::cerr << "[WebSocket] Warning: could not enable dual-stack (IPv4-mapped) mode; "
+                  << "IPv4 clients may be unable to connect." << std::endl;
+    }
+
+    sockaddr_in6 addr{};
+    addr.sin6_family = AF_INET6;
+    addr.sin6_addr = in6addr_any;
+    addr.sin6_port = htons(port);
 
     if (::bind(listen_fd_, reinterpret_cast<sockaddr*>(&addr), sizeof(addr)) < 0)
     {
