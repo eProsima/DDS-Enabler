@@ -40,11 +40,11 @@ RUN pip3 install --break-system-packages \
 WORKDIR /ddsenabler
 
 
-ARG fastcdr_branch=master
-ARG fastdds_branch=master
-ARG devutils_branch=main
-ARG ddspipe_branch=main
-ARG ddsenabler_branch=main
+ARG fastcdr_branch=v2.3.6
+ARG fastdds_branch=v3.6.2
+ARG devutils_branch=v1.5.3
+ARG ddspipe_branch=v1.5.2
+ARG ddsenabler_branch=v1.2.1
 
 RUN echo "fastcdr branch: <${fastcdr_branch}>" && \
     echo "fastdds branch: <${fastdds_branch}>" && \
