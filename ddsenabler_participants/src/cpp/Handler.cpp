@@ -677,6 +677,25 @@ bool Handler::register_type_nts_(
         return false;
     }
 
+    // Register the main type under its name as well. The loop above registers every type by its TypeObject only,
+    // which leaves the TypeObjectRegistry unable to answer a lookup by type name - and that lookup is how the type of
+    // the other topic of a service or action pair is found (see ddspipe::core::types::RpcTopic). Without it, the
+    // endpoints of a service announced here are created without type information, and a remote client can never
+    // learn the request and reply types.
+    if (fastdds::dds::xtypes::EK_COMPLETE == _type_object._d())
+    {
+        auto& registry = fastdds::dds::DomainParticipantFactory::get_instance()->type_object_registry();
+        fastdds::dds::xtypes::TypeIdentifierPair named_type_identifiers;
+
+        if (fastdds::dds::RETCODE_OK != registry.get_type_identifiers(type_name, named_type_identifiers) &&
+                fastdds::dds::RETCODE_OK !=
+                registry.register_type_object(type_name, _type_object.complete(), named_type_identifiers))
+        {
+            EPROSIMA_LOG_WARNING(DDSENABLER_HANDLER,
+                    "Failed to register " << type_name << " under its name.");
+        }
+    }
+
     // Assign type identifier and object after all types have been registered
     type_identifier = _type_identifier;
     type_object = _type_object;

@@ -32,6 +32,7 @@ set(TEST_LIST
     ddsenabler_participants_add_data_without_schema
     ddsenabler_participants_write_schema_first_time
     ddsenabler_participants_write_schema_repeated
+    ddsenabler_participants_type_query_registers_type_name
 )
 
 set(TEST_EXTRA_LIBRARIES
