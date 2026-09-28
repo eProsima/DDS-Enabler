@@ -34,6 +34,7 @@
 #include <Handler.hpp>
 #include <HandlerConfiguration.hpp>
 #include <Message.hpp>
+#include <Serialization.hpp>
 #include <Writer.hpp>
 
 #include "types/DDSEnablerTestTypesPubSubTypes.hpp"
@@ -91,6 +92,16 @@ public:
         }
 
         current_test_instance_->type_query_called++;
+
+        if (!current_test_instance_->queried_type_.empty())
+        {
+            auto serialized_type = std::make_unique<unsigned char[]>(current_test_instance_->queried_type_.size());
+            std::copy(current_test_instance_->queried_type_.begin(), current_test_instance_->queried_type_.end(),
+                    serialized_type.get());
+            serialized_type_internal = std::move(serialized_type);
+            serialized_type_internal_size = static_cast<uint32_t>(current_test_instance_->queried_type_.size());
+        }
+
         return true;
     }
 
@@ -138,6 +149,9 @@ public:
     }
 
     uint32_t type_query_called = 0;
+
+    // What the type query callback answers with, if not empty
+    std::vector<unsigned char> queried_type_;
     uint32_t data_called_ = 0;
     uint32_t type_called_ = 0;
     uint32_t topic_called_ = 0;
@@ -450,6 +464,52 @@ TEST(DdsEnablerParticipantsTest, ddsenabler_participants_write_schema_first_time
 
     handler_->writer_->write_data(msg2, dynamic_type2);
     ASSERT_EQ(handler_->data_called_, 2);
+}
+
+TEST(DdsEnablerParticipantsTest, ddsenabler_participants_type_query_registers_type_name)
+{
+    const std::string type_name = "ddsenabler_test::msg::dds_::QueriedType_";
+
+    // Create a type, and register it in the TypeObjectRegistry by its TypeObject only
+    auto factory = DynamicTypeBuilderFactory::get_instance();
+    TypeDescriptor::_ref_type type_descriptor {traits<TypeDescriptor>::make_shared()};
+    type_descriptor->kind(TK_STRUCTURE);
+    type_descriptor->name(type_name);
+    DynamicTypeBuilder::_ref_type builder {factory->create_type(type_descriptor)};
+    MemberDescriptor::_ref_type member_descriptor {traits<MemberDescriptor>::make_shared()};
+    member_descriptor->name("value");
+    member_descriptor->type(factory->get_primitive_type(TK_INT32));
+    builder->add_member(member_descriptor);
+
+    auto& registry = DomainParticipantFactory::get_instance()->type_object_registry();
+    xtypes::TypeIdentifierPair type_identifiers;
+    ASSERT_EQ(RETCODE_OK, registry.register_typeobject_w_dynamic_type(builder->build(), type_identifiers));
+
+    // Serialize it the way it is handed over by the type query callback
+    participants::DynamicTypesCollection dynamic_types;
+    ASSERT_TRUE(participants::serialization::serialize_dynamic_type(type_name, type_identifiers.type_identifier2(),
+            dynamic_types));
+    auto serialized_type = participants::serialization::serialize_dynamic_types(dynamic_types);
+    ASSERT_TRUE(serialized_type != nullptr);
+
+    // Create Handler, answering the type query with the serialized type
+    std::shared_ptr<ddspipe::core::PayloadPool> payload_pool_ = std::make_shared<ddspipe::core::FastPayloadPool>();
+    participants::HandlerConfiguration handler_config;
+    auto handler_ = std::make_shared<HandlerTest>(handler_config, payload_pool_);
+    handler_->queried_type_.assign(serialized_type->data, serialized_type->data + serialized_type->length);
+
+    // Not registered under its name yet
+    xtypes::TypeIdentifierPair named_type_identifiers;
+    ASSERT_NE(RETCODE_OK, registry.get_type_identifiers(type_name, named_type_identifiers));
+
+    // Obtained through the type query
+    xtypes::TypeIdentifier type_identifier;
+    ASSERT_TRUE(handler_->get_type_identifier(type_name, type_identifier));
+    ASSERT_EQ(handler_->type_query_called, 1u);
+
+    // Registered under its name now, with the same complete TypeIdentifier
+    ASSERT_EQ(RETCODE_OK, registry.get_type_identifiers(type_name, named_type_identifiers));
+    ASSERT_TRUE(named_type_identifiers.type_identifier2() == type_identifier);
 }
 
 int main(

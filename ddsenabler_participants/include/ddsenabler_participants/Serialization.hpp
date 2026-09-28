@@ -26,6 +26,7 @@
 
 #include <ddspipe_core/types/dds/TopicQoS.hpp>
 
+#include <ddsenabler_participants/library/library_dll.h>
 #include <ddsenabler_participants/types/dynamic_types_collection/DynamicTypesCollection.hpp>
 
 namespace eprosima {
@@ -59,6 +60,7 @@ ddspipe::core::types::TopicQoS deserialize_qos(
  * @param [in,out] dynamic_types Collection to store the serialized dynamic type
  * @return True if serialization was successful, false otherwise
  */
+DDSENABLER_PARTICIPANTS_DllAPI
 bool serialize_dynamic_type(
         const std::string& type_name,
         const fastdds::dds::xtypes::TypeIdentifier& type_identifier,
@@ -100,6 +102,7 @@ bool deserialize_dynamic_type(
  * @param [in] dynamic_types Collection of dynamic types to be serialized
  * @return Serialized payload containing the dynamic types
  */
+DDSENABLER_PARTICIPANTS_DllAPI
 std::unique_ptr<fastdds::rtps::SerializedPayload_t> serialize_dynamic_types(
         const DynamicTypesCollection& dynamic_types);
 
