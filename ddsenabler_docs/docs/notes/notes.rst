@@ -5,12 +5,13 @@
 .. include:: forthcoming_version.rst
 
 ##############
-Version v1.2.2
+Version v1.2.3
 ##############
 
 This release includes the following **improvements**:
 
-* Add missing Test Report step to the TSAN CI job
+* Run the Uncrustify workflow only in PRs
+* Run the Python Linters workflow only in PRs
 
 This release includes the following **Dependencies Update**:
 
@@ -36,16 +37,17 @@ This release includes the following **Dependencies Update**:
     *   - Dev Utils
         - `eProsima/dev-utils <https://github.com/eProsima/dev-utils>`__
         - `v1.5.3 <https://github.com/eProsima/dev-utils/releases/tag/v1.5.3>`__
-        - `v1.5.3 <https://github.com/eProsima/dev-utils/releases/tag/v1.5.3>`__
+        - `v1.5.4 <https://github.com/eProsima/dev-utils/releases/tag/v1.5.4>`__
     *   - DDS Pipe
         - `eProsima/DDS-Pipe <https://github.com/eProsima/DDS-Pipe>`__
-        - `v1.5.2 <https://github.com/eProsima/DDS-Pipe/releases/tag/v1.5.2>`__
         - `v1.5.3 <https://github.com/eProsima/DDS-Pipe/releases/tag/v1.5.3>`__
+        - `v1.5.4 <https://github.com/eProsima/DDS-Pipe/releases/tag/v1.5.4>`__
 
 #################
 Previous Versions
 #################
 
+.. include:: ./previous_versions/v1.2.2.rst
 .. include:: ./previous_versions/v1.2.1.rst
 .. include:: ./previous_versions/v1.2.0.rst
 .. include:: ./previous_versions/v1.1.0.rst
